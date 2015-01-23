@@ -1,0 +1,20 @@
+\begin{homeworkProblem}
+
+The time-averaged potential of a neutral hydrogen atom is given by 
+
+\begin{equation}
+\Phi = \frac{q}{4\pi\epsilon_0}\frac{e^{-\alpha r}{r}}(1+\frac{\alpha r}{2})
+\end{equation}
+ 
+where q is the magnitude of the electronic charge, and a^1 = ao/2, a0 being the 
+Bohr radius. Find the distribution of charge (both continuous and discrete) that will 
+give this potential and interpret your result physically. 
+
+What I will do to solve this will be to take the Laplacian of both sides of this equation. I will use the following identities: $\del^2 (f g) = g \del^2 f + f \del^2 g + 2 \grad f \cdot \grad g$ and $\del^2 \frac{1}{r} = -4\pi\delta^3(\vec{r})$ and $\del \frac{1}{r} = -\frac{\hat{r}}{r^2}$.
+
+\begin{align}
+\rho &= -\epsilon_0 \del^2 \Phi \nonumber \\
+&=-\epsilon_0 A \big(\frac{1}{r}\del^2 e^{-\alpha r} + e^{-\alpha r}\del^2 \frac{1}{r} + 2 \del {1}{r} \cdot \del e^{-\alpha r} + \frac{\alpha}{2}\del^2 e^{-\alpha r}\big) \nonumber \\
+\intertext{Using the identities above and the following results, $\del^2 e^{- \alpha r} = \frac{e^{-\alpha r}\alpha}{x}(x\alpha -2)$ and $\del e^{-\alpha r} = - \alpha e^{-\alpha r} \hat{r}$:} \nonumber \\
+&= A' \big(\frac{1}{r}(\frac{e^{-\alpha r}\alpha}{x}(x\alpha -2)) - e^{-\alpha r}4\pi\delta^3(\vec{r})-2\frac{\hat{r}}{r^2}(-r e^{-\alpha r} \hat{r}) + \frac{\alpha}{2}\frac{e^{-\alpha r}\alpha}{x}(x\alpha -2)\big) \nonumber \\
+&= A' \big( \frac{e^{-\alpha r}
