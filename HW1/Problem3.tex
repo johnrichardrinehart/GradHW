@@ -1,11 +1,11 @@
 \begin{homeworkProblem}
 
-Each of three charged spheres of radius a, one conducting, one having a uniform 
+\textbf{Each of three charged spheres of radius a, one conducting, one having a uniform 
 charge density within its volume, and one having a spherically symmetric charge 
-density that varies radially as $r^n$ (n> -3), has a total charge Q. Use Gauss's theorem 
+density that varies radially as $r^n$ ($n> -3$), has a total charge Q. Use Gauss's theorem 
 to obtain the electric fields both inside and outside each sphere. Sketch the behavior 
 of the fields as a function of radius for the first two spheres, and for the third with 
-n = -2, +2. 
+n = -2, +2. }
 
 \begin{homeworkSection}{(a)}
 
@@ -37,21 +37,21 @@ I must attack the same problem where, now, the charge density is uniform within 
 
 \begin{homeworkSection}{(c)}
 
-I must now obtain the charge distribution. I have been told that the charge density varies as $r^n$. This implies that $\rho(r) \alpha r^n H(a-|\vec(r)|)$ or that $\rho(r) = C r^n H(a-|\vec(r)|)$, where C is a normalization constant. C is constrained by the fact that $\int_{all space} \rho(r')d\tau' = Q = 4\pi C \frac{R^{n+3}}{n+3}$. Thus, $C = \frac{Q (n+3)}{4\pi R^3 R^n}$. Identifying $\frac{Q}{4\pi R^3}$ as a sort of volume density, I will assign it the label $\rho_0$. Thus, $\rho(r) = \rho_0 \frac{n+3}{R^n} r^n$; the units work. Now, skipping some algebra $E_n(r) 4\pi r^2 = \rho_0 \frac{n+3}{R^n} \frac{r^{n+3}}{n+3} 4\pi$. So, $E(r) = \rho_0 \frac{n+3}{R^n} \frac{r^{n+1}}{n+3}$. This is up until we reach the radius of the sphere. After that point, the sphere looks like a point charge. So, the field will drop off inverse quadratically.
+I must now obtain the charge distribution for a nonuniform charge distribution. I have been told that the charge density varies as $r^n$. This implies that $\rho(r) \alpha r^n H(a-|\vec{r}|)$ or that $\rho(r) = C r^n H(a-|\vec{r}|)$, where C is a normalization constant. C is constrained by the fact that $\int_{all space} \rho(r')d\tau' = Q = 4\pi C \frac{R^{n+3}}{n+3}$. Thus, $C = \frac{Q (n+3)}{4\pi R^3 R^n}$. Identifying $\frac{Q}{4\pi R^3}$ as a sort of volume density, I will assign it the label $\rho_0$. Thus, $\rho(r) = \rho_0 \frac{n+3}{R^n} r^n$; the units work. Now, skipping some algebra $E_n(r) 4\pi r^2 = \rho_0 \frac{n+3}{R^n} \frac{r^{n+3}}{n+3} 4\pi$. So, $E(r) = \rho_0 \frac{n+3}{R^n} \frac{r^{n+1}}{n+3}$. This is up until we reach the radius of the sphere. After that point, the sphere looks like a point charge. So, the field will drop off inverse quadratically.
 \\
 When n=2, $E_2(r<a) =  \rho_0 \frac{5}{R^5} \frac{r^{3}}{8}$. For n = -2, $E_{-2}(r<a)=\rho_0 \frac{1}{R^-3} r^{-1}$. Thus, for n=2, the field rises cubically until the boundary, then it decays quadratically. For n=-2, the field drops as inverse r until the boundary. Then, it drops off quadratically. The plots for $E_2(r)$ and $E_{-2}(r)$ are given in figures \ref{nistwo} and \ref{nisminustwo}, respetively. Similar scaling has been applied.
 
 
 \begin{figure}%
 \centerline{\includegraphics[width=.75\columnwidth,height=.25\paperheight]{./Images/nsphereequalstwo.eps}}%
-\caption{Magnitude of the electric field for a uniformly charged sphere.}%
+\caption{Magnitude of the electric field for a charged sphere whose volume charge density varies as $r^2$.}%
 \label{nistwo}%
 \end{figure}
 
 
 \begin{figure}%
 \centerline{\includegraphics[width=.75\columnwidth,height=.25\paperheight]{./Images/nsphereequalsminustwo.eps}}%
-\caption{Magnitude of the electric field for a uniformly charged sphere.}%
+\caption{Magnitude of the electric field for a charged sphere whose volume charge density varies as $r^-2$.}%
 \label{nisminustwo}%
 \end{figure}
 

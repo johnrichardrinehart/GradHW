@@ -1,17 +1,16 @@
 \begin{homeworkProblem}
 
-The time-averaged potential of a neutral hydrogen atom is given by 
+\textbf{The time-averaged potential of a neutral hydrogen atom is given by }
 
 \begin{equation}
-\Phi = \frac{q}{4\pi\epsilon_0}\frac{e^{-\alpha r}{r}}(1+\frac{\alpha r}{2})
+\Phi = \frac{q}{4\pi\epsilon_0}\frac{e^{-\alpha r}}{r}(1+\frac{\alpha r}{2})
 \end{equation}
  
-where q is the magnitude of the electronic charge, and $a^{-1} = a_0/2$, $a_0$ being the 
+\textbf{where q is the magnitude of the electronic charge, and $a^{-1} = a_0/2$, $a_0$ being the 
 Bohr radius. Find the distribution of charge (both continuous and discrete) that will 
-give this potential and interpret your result physically. 
-
+give this potential and interpret your result physically. }
+\\ \par
 What I will do to solve this will be to take the Laplacian of both sides of this equation. I will use the following identities: $\nabla^2 (f g) = g \nabla^2 f + f \nabla^2 g + 2 \nabla f \cdot \nabla g $ and $\nabla^2 \frac{1}{r} = -4\pi \delta^3(\vec{r})$ and $\nabla \frac{1}{r} = -\frac{\hat{r}}{r^2}$.
-
 
 \begin{align}
 	\rho &= -\epsilon_0 \nabla^2 \Phi \nonumber \\
@@ -20,7 +19,7 @@ What I will do to solve this will be to take the Laplacian of both sides of this
 		&= A' \big(\frac{1}{r}(\frac{e^{-\alpha r}\alpha}{r}(r\alpha -2)) - e^{-\alpha r}4\pi \delta^3(\vec{r})-2	\frac{\hat{r}}{r^2} \cdot (-\alpha e^{-\alpha r} \hat{r}) + \frac{\alpha}{2}\frac{e^{-\alpha r}\alpha}{r}(r\alpha -2)\big) \nonumber \\
 	&= A' \big( \frac{e^{-\alpha r}\alpha}{r^2}(r\alpha -2) - e^{-\alpha r}4\pi \delta^3(\vec{r}) + 2 \alpha \frac{e^{-\alpha r}}{r^2} + \frac{\alpha^3}{2} e^{-\alpha r} -\frac{e^{-\alpha r} \alpha^2}{r} \big) \nonumber \\
 	&= A' (-e^{-\alpha r} 4\pi \delta^3(\vec{r}) + \frac{\alpha^3}{2}e^{-\alpha r}) \nonumber \\
-	&= -\epsilon_0 \frac{q}{4\pi epsilon_0} (-e^{-\alpha r} 4\pi \delta^3(\vec{r}) + \frac{\alpha^3}{2}e^{-\alpha r}) \nonumber \\
+	&= -\epsilon_0 \frac{q}{4\pi \epsilon_0} (-e^{-\alpha r} 4\pi \delta^3(\vec{r}) + \frac{\alpha^3}{2}e^{-\alpha r}) \nonumber \\
 	&= q \delta^3(\vec{r}) - q e^{-\alpha r} \frac{1}{a_0^3 \pi} \nonumber
 \end{align}
 
