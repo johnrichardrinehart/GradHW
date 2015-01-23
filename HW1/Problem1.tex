@@ -17,28 +17,26 @@ Now, let's consider the ring of charge. Given that this is a distribution of cha
 \begin{align}
 \vec{dE} = k \frac{\lambda R d\theta}{|z\hat{z}-R\hat{\rho}|^3}(z\hat{z} - R\hat{\rho}) \nonumber \\
 \intertext{Here, $\hat{\rho}$ is the unit vector that points radially towards the center of the ring in the XY plane} \nonumber \\
-E_z = \vec{dE_z} \cdot \hat{z} = k \frac{\lambda R d\theta}{(z^2+R^2)^{1.5}}z \nonumber \\
-\vec{dE}_{z_{ring}}(z>R) = k \frac{\lambda R d\theta}{(z^2+R^2)^{2.5}}z \hat{z} \nonumber \\
+dE_z = \vec{dE_z} \cdot \hat{z} = k \frac{\lambda R d\theta}{(z^2+R^2)^{1.5}}z \nonumber \\
+\vec{dE}_{z_{ring}}(z>R) = k \frac{\lambda R d\theta}{(z^2+R^2)^{1.5}}z \hat{z} \nonumber \\
 \intertext{Now, we need to add up all of the charge. I'll use a polar integral around the circumference of the ring.} \nonumber \\
 E_{z_{ring}}(z>R) = k \frac{\lambda R}{(z^2+R^2)^{1.5}}z \int_0^{2\pi} d\theta \nonumber \\
 E_{z_{ring}}(z>R) = 2\pi k \frac{\lambda R}{(z^2+R^2)^{1.5}}z \nonumber \\
 \intertext{Of course, $2\pi R \lambda  = -2Q$.} \nonumber \\
-E_{z_{ring}}(z>R) = -k \frac{2Q}{(z^2+R^2)^{1.5}}z \nonumber \\
-\intertext{$k \equiv \frac{1}{4\pi \epsilon_0}$ so I could reduce this expression. I won't. The field for $z<-R$ is the same, but it is directed in the $\hat{+z}$ direction.} \nonumber
+\vec{E}_{z_{ring}}(z>R,z<-R) = -k \frac{2Q}{(z^2+R^2)^{1.5}}z \hat{z}\nonumber \\
+\intertext{$k \equiv \frac{1}{4\pi \epsilon_0}$ so I could reduce this expression. I won't. The z in the numerator takes care of the direction. When $z > R$ the field is directed downward; when $z< -R$ the field is directed upward. when The field for $z<-R$ is the same, but it is directed in the $\hat{+z}$ direction.} \nonumber
 \end{align}
-
-\\ \par
-
+\par
 Thus, the total electric field in the z-direction is $\vec{E_z} = \vec{E}_{z_{ring}} + \vec{E}_{z_{pc}}$ which can be written as $\vec{E_z}(z>R,z<-R) = (-k \frac{2Q}{(z^2+R^2)^{1.5}}z + k \frac{Q}{(z-R)^2} + k \frac{Q}{(z+R)^2} ) \hat{z} (\theta(z+R)-1)$. Here, $\theta (z)$ is a Heaviside step function in z. That is, the function returns 1 when the argument is non-negative and 0 when the argument is negative. This toggles the unit vector symbol correctly. Note that this field expression is only valid (as stated) when z lies above R or below -R. The field in the region along the z axis where $z>-R$ and $z<R$ has not been determined. It has not been requested.
 \\ \par
 By convention, the electric potential is zero at infinity. Also, by convention, the electric potential is defined in terms of the electric field as $V(x_1,x_2,x_3) = -\int_\infty^{x_1} \int_\infty^{x_2} \int_\infty^{x_3} \vec{E}(x'_1,x'_2,x'_3) \cdot dl \hat{dl}$. Here, $\vec{dl}$ is an infinitesimal displacement in the direction of the path that takes me from $(\infty,\infty,\infty)$ to $(x_1,x_2,x_3)$. Such an integral is called a ``path integral''. Let's consider a path integral along the z-axis to some position where $z>R$. I will integrate the electric field along that line and determine the electric potential along the z axis for all points where $z > R$. 
 \\ \par 
 
 \begin{align}
-&\int_\infty^{z>R} (k \frac{-2Q}{(z^2+R^2)^{1.5}}z + k \frac{Q}{(z-R)^2}+ k \frac{Q}{(z+R)^2} ) \hat{z} \cdot dz -\hat{z} \nonumber \\
-&\int_\infty^{z>R}  (-k \frac{2Q}{(z^2+R^2)^{1.5}}z) dz + \int_\infty^{z>R} k \frac{Q}{(z-R)^2} + k \frac{Q}{(z+R)^2} dz \nonumber \\
-\intertext{At this time it is useful to cite the following integral identity: $\int_\infty^a \frac{x}{(x^2+b^2)^1.5}dx = -(b^2+a^2)^{-.5}$} \nonumber \\
-V(z>R) = &-\frac{2Q}{(z^2+R^2)^{1.5}} + k\frac{Q}{z-R} + k\frac{Q}{z+R} \nonumber
+V(z_0>R)&\int_\infty^{z_0>R} (k \frac{-2Q}{(z^2+R^2)^{1.5}}z + k \frac{Q}{(z-R)^2}+ k \frac{Q}{(z+R)^2} ) \hat{z} \cdot dz (-\hat{z}) \nonumber \\
+&\int_\infty^{z_0>R}  (k \frac{2Q}{(z^2+R^2)^{1.5}}z) dz - \int_\infty^{z_0>R} k \frac{Q}{(z-R)^2} - k \frac{Q}{(z+R)^2} dz \nonumber \\
+\intertext{At this time it is useful to cite the following integral identity: $\int_\infty^a \frac{x}{(x^2+b^2)^{1.5}}dx = -(b^2+a^2)^{-.5}$} \nonumber \\
+V(z_0>R) = &-\frac{k2Q}{(z_0^2+R^2)^{1.5}} + k\frac{Q}{z_0-R} + k\frac{Q}{z_0+R} \nonumber
 \end{align}
 \\ \par
 However, given the symmetry of the problem, traversing the path from $-\infty \rightarrow z < -R$ would result in the same potential. I would be climbing electric field vectors from the positive point charges, still. I would be traveling in the direction of the field lines from the charged ring. So, I would have the same potential.
@@ -49,9 +47,8 @@ Thus, $V(z>R) = V(z<-R) = -\frac{2kQ}{(z^2+R^2)^{1.5}} + k\frac{Q}{z-R} + k\frac
 \end{homeworkSection}
 
 \begin{homeworkSection}{(b)}
+\textbf{Determine the E-field along the z-axis (for $r>R$). This solution can be taken immediately from part a).}
 \\ \par
-\textbf{Determine the E-field along the z-axis (for $r>R$). This solution can be taken immediately from part a). }
-
  $\vec{E_z} = \vec{E}_{z_{ring}} + \vec{E}_{z_{pc}}$ which can be written as $\vec{E_z}(z>R,z<-R) = (-k \frac{2Q}{(z^2+R^2)^{1.5}}z + k \frac{Q}{(z-R)^2} + k \frac{Q}{(z+R)^2} ) \hat{z} (\theta(z+R)-1)$
 
 \end{homeworkSection}
@@ -65,7 +62,7 @@ This problem requires that I expand the potential. I will consider a fixed z. I 
 \\ \par
 Thus, $V(z) = -\frac{2kQ}{z(1+(\frac{R}{z})^2)} + k \frac{Q}{z(1-\frac{R}{z})} + k\frac{Q}{z(1+\frac{R}{z})}$. It can easily be shown that the expansion of a function of the form $(1+x^2)^{-.5}$ for sufficiently small x is $1-\frac{x^2}{2}+\frac{3}{8}x^4$. Similarly, a function of the form $(1 \pm x)^{-1}$ for sufficiently small x resembles $1 \mp x + x^2$.
 \\ \par
-Expanding the potential about $\frac{R}{z} = 0$ yields, then, to second order in $\frac{R}{z}$: $V_{O(2)}(z) = -\frac{2Q}{z}\big(1-(\frac{1}{2}\frac{R}{z})^2\big)+\frac{kQ}{z}(1-\frac{R}{z}-(\frac{R}{z})^2)+\frac{kQ}{z}(1+\frac{R}{z}+(\frac{R}{z})^2)=3k\frac{Q}{z}(\frac{R}{z})^2$.
+Expanding the potential about $\frac{R}{z} = 0$ yields, then, to second order in $\frac{R}{z}$: $V_{O(2)}(z) = -\frac{2kQ}{z}\big(1-(\frac{1}{2}\frac{R}{z})^2\big)+\frac{kQ}{z}(1-\frac{R}{z}+(\frac{R}{z})^2)+\frac{kQ}{z}(1+\frac{R}{z}+(\frac{R}{z})^2)=3k\frac{Q}{z}(\frac{R}{z})^2$.
 
 \end{homeworkSection}
 
