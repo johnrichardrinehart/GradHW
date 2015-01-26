@@ -150,11 +150,18 @@
  \usepackage[OT1]{fontenc}
  \usepackage[absolute,overlay]{textpos}
  \usepackage{graphicx}
- \usepackage[bookmarks=false,pdffitwindow]{hyperref}
+ \usepackage[bookmarks=false,pdffitwindow,dvipdfm]{hyperref}
  \usepackage{tikz}
  \usepackage{xcolor}
  \usepackage{calc}
 \usepackage{chngcntr}
+\hypersetup{
+    colorlinks,
+    citecolor=black,
+    filecolor=black,
+    linkcolor=black,
+    urlcolor=black
+}
 %----------------------------------------------------------------
 \numberwithin{equation}{section}
 \renewcommand{\theequation}{\arabic{equation}}
