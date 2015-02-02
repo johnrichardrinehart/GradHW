@@ -1,0 +1,70 @@
+\begin{homeworkProblem}
+
+\begin{homeworkSection}{a}
+\textbf{A hollow cube has conducting walls defined by six planes $x = 0$, $y = 0$, $z = 0$, and 
+$x = a$, $y = a$, $z = a$. The walls $z = 0$ and $z = a$ are held at a constant potential V. 
+The other four sides are at zero potential.}
+
+\textbf{Find the potential $\Phi(x, y, z)$ at any point inside the cube.}
+
+The solution to a problem of this type is found by solving Laplace's equation, $\nabla^2 = 0$ everywhere in space where charges are absent. Given the rectangular symmetry of the problem I will propose a solution in Cartesian coordinates. That is, I will propose a solution of the form: $V(x,y,z) = V_x(x)V_y(y)V_z(z)$. Inserting this into Laplace's equation above yields:
+\begin{center}
+\begin{align}
+\nabla^2 V &= V_y(y)V_z(z)\ppds{V_x(x)}{x} + V_x(x)V_z(z)\ppds{V_y(y)}{y} + V_x(x)V_y(y)\ppds{V_z(z)}{z} = 0 \nonumber \\
+0 &= \dfrac{1}{V_x(x)}\ppds{V_x(x)}{x} + \dfrac{1}{V(y)}\ppds{V_y(y)}{y} + \dfrac{1}{V_z(z)}V_x(x)V_y(y)\ppds{V_z(z)}{z} \nonumber
+\end{align}
+
+This implies that each term in the sum is a constant such that the sum of all of the terms is zero for any particular x, y or z.
+\[
+\ppds{V_x(x)}{x} = -\alpha^2 V_x(x) \quad,\quad \ppds{V_y(y)}{y} = -\beta^2 V_y(y) \quad,\quad \ppds{V_z(z)}{z} = -\gamma^2 V_z(z) \nonumber
+\]
+
+\begin{align}
+V_x(x) &= A \exp(-i \alpha x) + B \exp(i \alpha x) \nonumber \\
+V_y(y) &= C \exp(-i \beta y) + D \exp(i \beta y) \nonumber \\
+V_z(z) &= E \exp(\sqrt{\alpha^2+\beta^2} z) + F \exp(-\sqrt{\alpha^2+\beta^2} z) \nonumber
+\end{align}
+
+Solving for A and B using $V_x(x)$'s two boundary conditions:
+
+\begin{align}
+V_x(a) &= 0 = A + B \quad,\quad 0 = A (\exp(-i \alpha a) - \exp(i \alpha a)) = -2iA \sin(\alpha a) \quad,\enskip \alpha = \frac{n\pi}{a}\enskip,\enskip n=0,1,2,... \nonumber \\
+\intertext{Solving for C and D using $V_y(y)$'s two boundary conditions:} \nonumber 
+V_y(a) &= 0 = C + D \quad,\quad 0 = C (\exp(-i \alpha a) - \exp(i \alpha a)) = -2iC \sin(\alpha a) \quad,\enskip \alpha = \frac{m\pi}{a}\enskip,\enskip n=0,1,2,... \nonumber \\
+\intertext{Solving for E and F using $V_z(z)$'s two boundary conditions:} \nonumber 
+V_z(0) &= V = E + F \quad,\quad V_z(a) = E \exp(\sqrt{\alpha^2+\beta^2} a) + F \exp(\sqrt{\alpha^2+\beta^2} a) \nonumber
+\end{align}
+
+\[
+\begin{pmatrix} \exp(\sqrt{\alpha^2+\beta^2}\frac{a}{2}) & \exp(-\sqrt{\alpha^2+\beta^2}\frac{a}{2}) 
+\\ \exp(-\sqrt{\alpha^2+\beta^2}\frac{a}{2}) & \exp(\sqrt{\alpha^2+\beta^2}\frac{a}{2}) \end{pmatrix}
+\left( \begin{array}{c} E \\ F \end{array} \right) = \left( \begin{array}{c} V \\ V \end{array} \right) \nonumber
+\]
+%\intertext{By inverting this 2x2 matrix we obtain} \nonumber
+
+\[
+\left( \begin{array}{c} E \\ F \end{array} \right) = \frac{1}{exp(\sqrt{\alpha^2+\beta^2}a)-exp(\sqrt{\alpha^2+\beta^2}a)} \begin{pmatrix} exp(\sqrt{\alpha^2+\beta^2}\frac{a}{2}) & -exp(-\sqrt{\alpha^2+\beta^2}\frac{a}{2}) \\ -exp(-\sqrt{\alpha^2+\beta^2}\frac{a}{2})) & exp(\sqrt{\alpha^2+\beta^2}\frac{a}{2}) \end{pmatrix} \left( \begin{array}{c} V \\ V \end{array} \right) \nonumber
+\]
+
+\begin{align}
+&E = V \frac{1}{exp({\sqrt{\alpha^2+\beta^2}a}+1}) \quad,\quad F = V \frac{1}{exp({-\sqrt{\alpha^2+\beta^2}a}+1}) \nonumber
+\end{align}
+
+\[
+V(z) = 
+\end{center}
+\end{homeworkSection}
+
+\begin{homeworkSection}{b}
+\textbf{Evaluate the potential at the center of the cube numerically, accurate to three 
+significant figures. How many terms in the series is it necessary to keep in 
+order to attain this accuracy? Compare your numerical result with the average 
+value of the potential on the walls. See Problem 2.28.}
+
+\end{homeworkSection}
+
+\begin{homeworkSection}{c}
+\textbf{Find the surface-charge density on the surface z = a.}
+\end{homeworkSection}
+
+\end{homeworkProblem}
