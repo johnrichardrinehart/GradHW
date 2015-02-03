@@ -59,7 +59,7 @@
 }
 
 \newcommand{\problemAnswer}[1]{ % Defines the problem answer command with the content as the only argument
-\noindent\framebox[\columnwidth][c]{\begin{minipage}{0.98\columnwidth}#1\end{minipage}} % Makes the box around the problem answer and puts the content inside
+\noindent\framebox[\columnwidth][c]{\begin{minipage}{0.98\columnwidth}\begin{center}#1\end{center}\end{minipage}} % Makes the box around the problem answer and puts the content inside
 }
 
 \newcommand{\homeworkSectionName}{}
@@ -202,13 +202,12 @@
 \tableofcontents
 \newpage
 
-
 %----Problems-------
 \input{Problem1}
 \setcounter{equation}{0}
-%---------------------
-%%%\input{answer2}
-%%%\setcounter{equation}{0}
+---------------------
+\input{Problem2}
+\setcounter{equation}{0}
 %--------------------- 
 %%%\input{answer3}
 %%%\setcounter{equation}{0}
