@@ -1,0 +1,48 @@
+\begin{homeworkProblem}
+\textbf{A spherical surface of radius R has charge uniformly distributed over its surface 
+with a density $\dfrac{Q}{4\pi R^2}$, except for a spherical cap at the north pole, defined by the 
+cone $\theta = \alpha$.}
+
+\begin{homeworkSection}{a}
+\textbf{Show that the potential inside the spherical surface can be expressed as 
+\[
+\frac{Q}{8 \pi \epsilon_0} \sum\limits_{l=0}^{\infty} \frac{1}{2l+1}\left(P_{l+1}(\cos\alpha) - P_{l-1}(\cos\alpha)\right) \frac{r^l}{R^{l+1}} P_l(\cos\theta)
+\]
+where, for $l = 0$, $P_l(\cos \alpha) = -1$. What is the potential outside?}
+
+First, we'll realize that the potential due to the sphere is just $\frac{Q}{4\pi\epsilon_0 R}$. Then, we'll realize that superposition allows us to combine the results of a charged sphere and an equally negatively charged cap defined as in the problem statement. Additionally, since the final form has no potential like that given for the uniformly charged sphere we will shift the potential by a constant equal to the potential due to the sphere alone. Thus, our final answer will only include the potential from the cone. Given that the charge distribution of the cone goes as $\sigma = \frac{-Q}{4\pi R^2}$ we can express the potential on the interior as:
+
+\begin{align}
+V(\vec{r})&=\frac{1}{4\pi\epsilon_0}\int\limits_0^{2\pi}\int\limits_0^{\pi}\int\limits_0^{\infty}\sigma \delta(|\vec{r}|-R)H(\alpha - \theta) |\vec{r}-\vec{r'}|^{-1} r'^2 d\Omega' \nonumber \\
+\intertext{Here, we have allowed $\Omega' \equiv \sin\theta' d\theta' d\phi'$ and H(x) is the Heaviside step function in x. Now, we can use the following identity:}\nonumber
+%|\vec{x}-\vec{x'}|^{-1} &= 4\pi \sum\limits_{l=0}^{\infty}\sum\limits_{m=-l}^{l} \frac{1}{2l + 1} \frac{r^l}{R^{l+1}} Y_{l m}^*(\theta',\phi')Y_{l m}^(\theta,\phi) \text{\quad where r < R} \nonumber \\
+|\vec{x}-\vec{x'}|^{-1} &= 4\pi \sum\limits_{l=0}^{\infty}\frac{r^l}{R^{l+1}} P_l{\cos\gamma} \text{\quad where r < R and $\gamma$ is the angle between $\vec{r}$ and $\vec{r'}$} \nonumber \\
+%V(|\vec{r}|<R)&=\frac{\sigma 4\pi  R^2 Y_{lm}(\theta,\phi)}{4\pi\epsilon_0} \frac{r^l}{R^{l+1}} \sum\limits_{l=0}^{\infty} \sum \limits_{m=-l}^{l} \frac{1}{2l + 1} \int\limits_0^{2\pi}\int\limits_0^{\alpha}Y_{lm}^*(\theta',\phi') d\Omega' \nonumber
+V(|\vec{r}|<R)&=\frac{\sigma  R^2 }{4\pi\epsilon_0} \sum\limits_{l=0}^{\infty} \frac{r^l}{R^{l+1}} \int\limits_0^{2\pi}\int\limits_0^{\alpha} P_l(\cos\gamma) d\Omega' \nonumber \\
+\intertext{In general, $\gamma$ could be a function of both $\theta'$ and $\phi'$ so this could be a very hard integral. However, the following result, known as the ``spherical harmonic addition theorem'' allows us to express} \nonumber
+P_l(\cos\gamma) &= P_l(\cos\theta')P_l(\cos\theta)+2\sum\limits_{m=-l}^{l}\frac{(l-m)!}{(l+m)!}P_l^m(\cos\theta')P_l^m(\cos\theta)\cos(m(\phi'-\phi)) \nonumber \\
+\intertext{By noting that the charge distribution has no azimuthal asymmetry we can assume that there must be no dependence on $\phi$ in the final answer. This implies that $m=0$. Substituting the reduced expression into the integral we find:}
+V(|\vec{r}|<R)&=\frac{\sigma  R^2 }{4\pi\epsilon_0} \sum\limits_{l=0}^{\infty} \frac{r^l}{R^{l+1}} \int\limits_0^{2\pi}\int\limits_0^{\alpha} P_l(\cos\theta')P_l(\cos\theta) d\Omega' \nonumber
+\end{align}
+
+Now, I will seize the extremely powerful property of Legendre polynomials that I have used in the last problem: \[P_n{x} = \frac{1}{2n+1} \der{}{x} \left(p_{n+1}(x)-P_{n-1}(x)\right) \].
+\begin{align}
+V(|\vec{r}|<R)&=\frac{\sigma  R^2 }{4\pi\epsilon_0} \sum\limits_{l=0}^{\infty} \frac{r^l}{R^{l+1}} P_l(\cos\theta) \int\limits_0^{2\pi}\int\limits_0^{\alpha} \frac{1}{l+1} \der{}{x} \left(p_{l+1}(x)-P_{l-1}(x)\right) d\Omega' \nonumber
+\intertext{Realizing that $P_l(\cos(0)) = 1$ for all $l$ the final expression is obtained.} \nonumber
+V(|\vec{r}|<R)&=\frac{-\sigma  R^2 }{4\pi\epsilon_0} \sum\limits_{l=0}^{\infty} \frac{r^l}{R^{l+1}} P_l(\cos\theta) (2\pi) \left(p_{l-1}(\alpha)-P_{l+1}(\alpha)\right) \nonumber
+V(|\vec{r}|<R)&=\frac{Q }{8 \pi \epsilon_0} \sum\limits_{l=0}^{\infty} \frac{r^l}{R^{l+1}} P_l(\cos\theta) \left(p_{l-1}(\cos\alpha)-P_{l+1}(\cos\alpha)\right) \nonumber
+\end{align}
+
+\end{homeworkSection}
+
+\begin{homeworkSection}{b}
+\textbf{Find the magnitude and the direction of the electric field at the origin.}
+\end{homeworkSection}
+
+\begin{homeworkSection}{c}
+\textbf{Discuss the limiting forms of the potential (part a) and electric field (part b) 
+as the spherical cap becomes A) very small, and B) so large that the area with 
+charge on it becomes a very small cap at the south pole.}
+\end{homeworkSection}
+
+\end{homeworkProblem}
