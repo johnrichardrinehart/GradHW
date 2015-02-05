@@ -1,11 +1,5 @@
-\begin{homeworkProblem}
-\textbf{Two concentric spheres have radii a, b $(b > a)$ and each is divided into two hemi- 
-spheres by the same horizontal plane. The upper hemisphere of the inner sphere 
-and the lower hemisphere of the outer sphere are maintained at potential V. The 
-other hemispheres are at zero potential 
-Determine the potential in the region $a < r < b$ as a series in Legendre poly- 
-nomials. Include terms at least up to $l = 4$. Check your solution against known 
-results in the limiting cases $b \rightarrow \infty$, and $a \rightarrow 0$. } \\
+\begin{homeworkProblem}{Problem 2 (Jackson ed. 3 Problem 3.1)}
+\textbf{Two concentric spheres have radii a, b $(b > a)$ and each is divided into two hemispheres by the same horizontal plane. The upper hemisphere of the inner sphere and the lower hemisphere of the outer sphere are maintained at potential V. The other hemispheres are at zero potential Determine the potential in the region $a < r < b$ as a series in Legendre polynomials. Include terms at least up to $l = 4$. Check your solution against known results in the limiting cases $b \rightarrow \infty$, and $a \rightarrow 0$. } \\
 \par
 The boundary conditions are expressed in terms of potentials. Thus, I should use Laplace's equation and the Legendre polynomials to determine the potential everywhere between the two spheres. Due to the azimuthal symmetry of the problem I can assume that ``$m = 0$'' for my associated Legendre polynomials.
 
@@ -13,11 +7,11 @@ The boundary conditions are expressed in terms of potentials. Thus, I should use
 \Phi(r,\theta) = \sum\limits_{l = 0}^{\infty} \left( A_l r^l + B_l r^{-(l+1)} P_l(\cos\theta) \right)
 \]
 
-Using orthogonality of the Legendre polynomials we can solve for $A_l$ and $B_l$. We have two boundary conditions. At $r = a$ $\Phi = V$ and at $r = b$ $\Phi = $. This sets up the two equations (note that $\int\limits_0^\pi P_l(\cos \theta)P_m(\cos \theta) d\cos\theta = \frac{2}{l + 1} \delta_{l m}$). 
+Using orthogonality of the Legendre polynomials we can solve for $A_l$ and $B_l$. We have two boundary conditions. At $r = a$ $\Phi = V$ and at $r = b$ $\Phi = $. This sets up the two equations (note that $\int\limits_{-1}^1 P_l(\cos \theta)P_m(\cos \theta) d\cos\theta = \frac{2}{2l + 1} \delta_{l m}$). 
 
 \begin{align}
-\int_{\theta = 0}^{\theta = \pi} V(a,\theta) P_k(\cos\theta) d\cos\theta &= A_k a^k + B_k a^{-(k+1)} \nonumber \\
-\int_{\theta = 0}^{\theta = \pi} V(b,\theta) P_k(\cos\theta) d\cos\theta &= A_k b^k + B_k b^{-(k+1)} \nonumber \\
+\frac{2k+1}{2}\int_{\theta = 0}^{\theta = \pi} V(a,\theta) P_k(\cos\theta) d\cos\theta &= A_k a^k + B_k a^{-(k+1)} \nonumber \\
+\frac{2k+1}{2}\int_{\theta = 0}^{\theta = \pi} V(b,\theta) P_k(\cos\theta) d\cos\theta &= A_k b^k + B_k b^{-(k+1)} \nonumber \\
 \intertext{These two integrals can be substantially reduced by realizing that the potential (hence, the integrand) is zero for half of the integration.} \nonumber
 V\int_{\theta = 0}^{\theta = \pi/2} P_k(\cos\theta) d\cos\theta &= A_k a^k + B_k a^{-(k+1)} \nonumber \\
 V\int_{\theta = \pi/2}^{\theta = \pi} P_k(\cos\theta) d\cos\theta &= A_k a^k + B_k a^{-(k+1)} \nonumber \\
@@ -25,19 +19,21 @@ V\int_{\theta = \pi/2}^{\theta = \pi} P_k(\cos\theta) d\cos\theta &= A_k a^k + B
 V\int_{1}^{0} P_k(x) dx &= A_k a^k + B_k a^{-(k+1)} \nonumber \\
 V\int_{0}^{-1} P_k(x) dx &= A_k a^k + B_k a^{-(k+1)} \nonumber \\
 \intertext{Now, a useful property for evaluating Legendre polynomials is the following: $P_l(x) = \dfrac{1}{2l+1} \der{}{x}\left(P_{l+1}(x)+P_{l-1}(x)\right)$. One might be concerned regarding the $P_0(x)$ case. However, $P_0(x)$ = 1 from $x = -1 \rightarrow 1$. Thus, the expression for the $P_0(x)$ case is given below. After, the $P_l(x)$ cases will be evaluated (where $l>1$).} \nonumber \\
-V\int_{1}^{0} P_0(x) dx &= A_k a^k + B_k a^{-(k+1)} = -V \nonumber \\
-V\int_{0}^{-1} P_0{x} dx &= A_k a^k + B_k a^{-(k+1)} = -V \nonumber
+\frac{V}{2}\int_{1}^{0} P_0(x) dx &= A_k a^k + B_k a^{-(k+1)} = -V \nonumber \\
+2V\int_{0}^{-1} P_0{x} dx &= A_k b^k + B_k b^{-(k+1)} = -V \nonumber
 \end{align}
 
 \begin{align}
-\intertext{For $k>1$ we consider the first integral: $V\int_{1}^{0} P_k(x) dx = A_k a^k + B_k a^{-(k+1)}$:} \nonumber \\
-V\int_{1}^{0} P_k(x) dx &= \gamma_k \der{}{x}\left(P_{k+1}(x)+P_{k-1}(x)\right) \nonumber \\
+\intertext{For $k>1$ we consider the first integral (the one whose bounds are $1 \rightarrow 0$), $\frac{V(2k+1)}{2}\int_{1}^{0} P_k(x) dx$}
+\frac{V(2k+1)}{2} \int_{1}^{0} P_k(x) dx &= \gamma_k \der{}{x}\left(P_{k+1}(x)+P_{k-1}(x)\right) \quad \gamma_k \equiv \dfrac{1}{2k+1} \nonumber \\
+\intertext{Note that $\dfrac{2k+1}{2} = \frac{\gamma_k}{2}$.}
+\frac{V}{2} \int_{1}^{0} P_k(x) dx &= \der{}{x}\left(P_{k+1}(x)+P_{k-1}(x)\right) \nonumber \\
 \intertext{Throwing in a couple more Legendre polynomial properties (thank you, Wikipedia!) $P_l(1) = 1 \forall l$ and $(-1)^l P_l(-x) = P_l(x) \forall l$. In plain English, the second identity states that if $l$ is odd that $P_l$ is odd. So, $P_l(-1) = -1$ for odd $l$. For even $l$, $P_l(-1) = 1$. Considering even $l = 2p \; p = 0,1,2,...$} \nonumber 
 % Even l's
-V\int_{1}^{0} P_{2p}(x) d x &= \gamma_{2p} \int_1^0 \der{}{x}\left(P_{2p+1}(x)+P_{2p-1}(x)\right)dx \nonumber \\
+\frac{V(2(2p)+1)}{2}\int_{1}^{0} P_{2p}(x) d x &= \gamma_{2p} \int_1^0 \der{}{x}\left(P_{2p+1}(x)+P_{2p-1}(x)\right)dx \nonumber \\
 &= \gamma_{2p} \big(P_{2p+1}(1)-P_{2p-1}(1) + P_{2p-1}(0) - P_{2p+1}(0) \big) \nonumber
 \intertext{According to the properties above this can be easily seen to be zero for all $p$. Now, considering odd $l = 2p+1 \; p = 0,1,2,...$} \nonumber
-V\int_{1}^{0} P_{2p+1}(x) d x &= \gamma_k \int_1^0 \der{}{x}\left(P_{2p+2}(x)+P_{2p}(x)\right)dx \nonumber \\
+\frac{V(2(2p+1)+1)}{2}\int_{1}^{0} P_{2p+1}(x) d x &= \gamma_k \int_1^0 \der{}{x}\left(P_{2p+2}(x)+P_{2p}(x)\right)dx \nonumber \\
 &= \gamma_{2p+1} \big(P_{2p+2}(0)-P{2p}(0) + P_{2p}(1) - P_{2p+2}(1) \big) \nonumber \\
 \intertext{By the properties listed above we can reduce this to the following expression:} \nonumber
 &= \gamma_{2p+1} \big(P_{2p+2}(0) - P_{2p}(0) \big) \nonumber \\
@@ -46,16 +42,50 @@ V\int_{1}^{0} P_{2p+1}(x) d x &= \gamma_k \int_1^0 \der{}{x}\left(P_{2p+2}(x)+P_
 
 Performing similar analysis on the other integral yields the following:
 \[
-\int_{-1}^0 P_l(x) dx = \begin{cases} 0 & \text{l is even and $l > 0$} \\ -\gamma_l \big(P_{l+1}(0) - P_{l-1}(0) \big) & \text{l is odd} \\ -\frac{1}{2} & \text{l is 0} \end{cases}
+\int_{-1}^0 \frac{V(2l+1)}{2} P_l(x) dx = \begin{cases} 0 & \text{l is even and $l > 0$} \\ -\gamma_l \big(P_{l+1}(0) - P_{l-1}(0) \big) & \text{l is odd} \\ -1 & \text{l is 0} \end{cases}
 \]
 
 Succinctly put, the first result is:
 
 \[
-\int_{0}^{-1} P_l(x) dx = \begin{cases} 0 & \text{l is even and $l > 0$} \\ \gamma_l \big(P_{l+1}(0) - P_{l-1}(0) \big) & \text{l is odd} \\ -\frac{1}{2} & \text{l is 0} \end{cases}
+\frac{V(2l+1)}{2} \int_{1}^{0} P_l(x) dx = \begin{cases} 0 & \text{l is even and $l > 0$} \\ \gamma_l \big(P_{l+1}(0) - P_{l-1}(0) \big) & \text{l is odd} \\ -1 & \text{l is 0} \end{cases}
 \]
 
+Given the similarity of the two expressions I will allow the expression $\gamma_l\big(P_{l+1}(0)-P_{l-1}(0)\big) = \kappa_l$. So, expressing the two equations for $A_{k}$ and $B_{k}$ (for odd k) in a matrix form yields:
 
-Given the similarity of the two expressions I can express 
+\[
+V\gamma_k \kappa_k
+\begin{pmatrix}
+1 \\ -1
+\end{pmatrix}
+=
+\begin{pmatrix}
+a^k & a^{-(k+1)} \\
+b^k & b^{-(k+1)}
+\end{pmatrix}
+\begin{pmatrix}
+	A_k \\ B_k
+\end{pmatrix}
+\]
+
+Inverting this, we obtain:
+
+\[
+\begin{pmatrix}
+	A_k \\ B_k
+\end{pmatrix}
+=
+\frac{V\gamma_k \kappa_k}{a^k b^{-(k+1)} - b^k a^{-(k+1)}}
+\begin{pmatrix}
+b^{-(k+1)} & -a^{-(k+1)} \\
+-b^k & a^k
+\end{pmatrix}
+\begin{pmatrix}
+	1 \\ -1
+\end{pmatrix}
+\]
+
+For the case where $k = 0$, this expression reduces to $A_k = -1$ and $B_k = 1$ as seen by allowing $k=0$ in the above expression and realizing that $\gamma_0 = \frac{1}{2(0)+1} = 1$ and 
+Now, writing an expression for $A_k$ and $B_k$ and substituting this into the original expression for $\Phi(r,\theta)$ would be extremely cumbersome at this point. Ra
 
 \end{homeworkProblem}
