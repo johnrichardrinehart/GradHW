@@ -1,4 +1,4 @@
-\begin{homeworkProblem}[Jackson ed. 3: 2.23)]
+\begin{homeworkProblem}[Jackson 3rd ed. : 2.23]
 
 \begin{homeworkSection}{a}
 \textbf{A hollow cube has conducting walls defined by six planes $x = 0$, $y = 0$, $z = 0$, and 
@@ -25,9 +25,10 @@ V_z(z) &= E \exp(\sqrt{\alpha^2+\beta^2} z) + F \exp(-\sqrt{\alpha^2+\beta^2} z)
 \end{align}
 
 Solving for A and B using $V_x(x)$'s two boundary conditions:
+\begin{center}
 
 \begin{align}
-V_x(a) = 0 = A + B \quad,\quad 0 &= A (\exp(-i \alpha a) - \exp(i \alpha a)) = -2iA \sin(\alpha a) \quad,\enskip \alpha = \frac{n\pi}{a}\enskip,\enskip n=0,1,2,... \nonumber \\
+V_x(a) &= 0 = A + B \quad,\quad 0 = A (\exp(-i \alpha a) - \exp(i \alpha a)) = -2iA \sin(\alpha a) \quad,\enskip \alpha = \frac{n\pi}{a}\enskip,\enskip n=0,1,2,... \nonumber \\
 \intertext{Solving for C and D using $V_y(y)$'s two boundary conditions:} \nonumber 
 V_y(a) &= 0 = C + D \quad,\quad 0 = C (\exp(-i \alpha a) - \exp(i \alpha a)) = -2iC \sin(\alpha a) \quad,\enskip \alpha = \frac{m\pi}{a}\enskip,\enskip m=0,1,2,... \nonumber \\
 \intertext{Solving for E and F using $V_z(z)$'s two boundary conditions:} \nonumber
@@ -44,13 +45,16 @@ Note above the change in variables $\sqrt{\alpha^2+\beta^2} = \sqrt{(\frac{n\pi 
 \frac{16 V^2}{k l \pi} &= A_{kl}\exp(-\theta a) + B_{kl}\exp(\theta a) \nonumber
 \end{align}
 
-\begin{align}
-\intertext{Combining these two equations into a matrix equation and inverting:}
+Combining these two equations into a matrix equation and inverting:
+
+
+\[
 \left( \begin{array}{c} P \\ P \end{array} \right) = 
 \begin{pmatrix} 1 & 1 \\ \exp(-\theta a) & \exp(\theta a) \end{pmatrix}
-\left( \begin{array}{c} A_{kl} \\ B_{kl} \end{array} \right) \nonumber 
-\intertext{Above I have used the value P to absorb all the relevant constants: $P = \frac{16 V}{k l \pi}$}
-\end{align}
+\left( \begin{array}{c} A_{kl} \\ B_{kl} \end{array} \right)
+\]
+
+Above I have used the value P to absorb all the relevant constants: $P = \frac{16 V}{k l \pi}$
 
 By inverting this 2x2 matrix we obtain:
 \[
@@ -58,6 +62,8 @@ By inverting this 2x2 matrix we obtain:
 \begin{pmatrix} exp(\theta a) & -1 \\ -\exp(-\theta a) & 1 \end{pmatrix}
 \left( \begin{array}{c} P \\ P \end{array} \right)
 \]
+
+\end{center}
 
 Now it is clear that $A_{kl} = P\frac{(\exp(\theta a) - 1)}{\exp(\theta a)-\exp(-\theta a)}$ and that $B_{kl} = P\frac{(1-\exp(-\theta a))}{\exp(\theta a)-\exp(-\theta a)}$. Exponential identities can be used to reduce these expressions: $A_{kl} = P\frac{\exp(\theta a)}{1+\exp(\theta a)}$ and $B_{kl} = P\frac{1}{1+\exp(\theta a)}$.
 
@@ -95,14 +101,21 @@ Thus, it seems as if I need the first 4 terms in my sub in order to reach 3 sign
 \begin{homeworkSection}{c}
 \textbf{Find the surface-charge density on the surface z = a.} \\
 To find the surface charge density $\sigma(x,y)$ I will take advantage of the fact that due to the discontinuity in the electric field, the change in potential with respect to the normal direction at a surface is proportional to the surface charge density. That is $\pd{V}{n} = \frac{\sigma}{\epsilon_0}$. In this case, the normal vector is in the z direction. So, I must take a partial derivative of my potential with respect to z and multiply it by $\epsilon_0$ and evaluate it at $z=a$.
-
+\begin{center}
 \begin{align}
 \sigma(x,y) &= \epsilon_0 \sum\limits_{odd\;n} \sum\limits_{odd\;m} \frac{16 V}{n m \pi} \frac{1}{1+\exp(\theta a)} \sin(\frac{n \pi x}{a}) \sin(\frac{m \pi y}{a}) \pd{}{z}\big(\exp(\theta a)exp(-\theta z) + \exp(\theta z)\big)\Big|_{z=a} \nonumber \\
 \sigma(x,y) &= \epsilon_0 \sum\limits_{odd\;n} \sum\limits_{odd\;m} \frac{16 V}{n m \pi} \frac{1}{1+\exp(\theta a)} \sin(\frac{n \pi x}{a}) \sin(\frac{m \pi y}{a}) \big(-\theta \exp(\theta a)exp(-\theta a) + \theta \exp(\theta a)\big) \nonumber \\
 \sigma(x,y) &= \epsilon_0 \sum\limits_{odd\;n} \sum\limits_{odd\;m} \frac{16 V}{n m \pi} \frac{1}{1+\exp(\theta a)} \sin(\frac{n \pi x}{a}) \sin(\frac{m \pi y}{a}) \theta\big(-1 + \exp(\theta a)\big) \nonumber \\
 \intertext{Realizing that $\frac{e^x-1}{e^x+1} = \tanh(x/2)$ this last expression can be rewritten} \nonumber
-\sigma(x,y) &= \epsilon_0 \sum\limits_{odd\;n} \sum\limits_{odd\;m} \frac{16 V}{n m \pi} \sin(\frac{n \pi x}{a}) \sin(\frac{m \pi y}{a})\tanh(\theta a/2) \theta \nonumber
 \end{align}
+\end{center}
+
+\problemAnswer{
+\[
+\sigma(x,y) = \epsilon_0 \sum\limits_{odd\;n} \sum\limits_{odd\;m} \frac{16 V}{n m \pi} \sin(\frac{n \pi x}{a}) \sin(\frac{m \pi y}{a})\tanh(\theta a/2) \theta \nonumber
+\]
+}
+
 \end{homeworkSection}
 
 \end{homeworkProblem}

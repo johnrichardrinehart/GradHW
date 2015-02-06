@@ -77,7 +77,7 @@
 
 \newcommand{\hmwkTitle}{Assignment 2} % Assignment title
 \newcommand{\hmwkDueDate}{Wendesday,\ January\ 30,\ 2013} % Due date
-\newcommand{\courseTitle}{Physics 760: Electricity and Magnetism} % Course/class
+\newcommand{\courseTitle}{Physics 760} % Course/class
 \newcommand{\hmwkClassInstructor}{Dr. Stefan Kycia} % Teacher/lecturer
 \newcommand{\hmwkAuthorName}{John Rinehart} % Your name
 \newcommand{\sudentNumber}{20503440} % Your name
@@ -97,7 +97,7 @@
 \newcommand{\T}[1]{\widetilde{#1}}
 
 \newcommand{\pd}[2]{\dfrac{\partial #1}{\partial #2}}
-\newcommand{\ppds}[2]{\dfrac{\partial^2 {#1}}{\partial {#2}^2}}
+\newcommand {\ppds}[2]{\dfrac{\partial^2 {#1}}{\partial {#2}^2}}
 \newcommand{\ppdss}[2]{\dfrac{\partial^2}{\partial #1 \partial #2}}
 \newcommand{\pdtt}[3]{\dfrac{\partial^2 {#1}}{\partial {#2} \partial {#3}}}
 
@@ -176,6 +176,30 @@
  \usepackage{calc}
 \usepackage{chngcntr}
 \usepackage{microtype}
+
+% Matlab code section obtained from StackExchange: http://tex.stackexchange.com/questions/75116/what-can-i-use-to-typeset-matlab-code-in-my-document
+\usepackage{listings}
+\usepackage{color} %red, green, blue, yellow, cyan, magenta, black, white
+\definecolor{mygreen}{RGB}{28,172,0} % color values Red, Green, Blue
+\definecolor{mylilas}{RGB}{170,55,241}
+
+\lstset{language=Matlab,%
+    %basicstyle=\color{red},
+    breaklines=true,%
+    morekeywords={matlab2tikz},
+    keywordstyle=\color{blue},%
+    morekeywords=[2]{1}, keywordstyle=[2]{\color{black}},
+    identifierstyle=\color{black},%
+    stringstyle=\color{mylilas},
+    commentstyle=\color{mygreen},%
+    showstringspaces=false,%without this there will be a symbol in the places where there is a space
+    numbers=left,%
+    numberstyle={\tiny \color{black}},% size of the numbers
+    numbersep=9pt, % this defines how far the numbers are from the text
+    emph=[1]{for,end,break},emphstyle=[1]\color{red}, %some words to emphasise
+    %emph=[2]{word1,word2}, emphstyle=[2]{style},    
+}
+
 %----------------------------------------------------------------
 \numberwithin{equation}{section}
 \renewcommand{\theequation}{\arabic{equation}}
@@ -223,6 +247,8 @@
 
 \input{Problem5}
 \setcounter{equation}{0}
+\newpage
+\input{Appendix}
 %%%\newpage
 %%%\input{Mybib}
 
