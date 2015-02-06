@@ -10,15 +10,14 @@ The other four sides are at zero potential.}
 The solution to a problem of this type is found by solving Laplace's equation, $\nabla^2 = 0$ everywhere in space where charges are absent. Given the rectangular symmetry of the problem I will propose a solution in Cartesian coordinates. That is, I will propose a solution of the form: $V(x,y,z) = V_x(x)V_y(y)V_z(z)$. Inserting this into Laplace's equation above yields:
 
 \begin{align}
-\nabla^2 V &= V_y(y)V_z(z)\ppds{V_x(x)}{x} + V_x(x)V_z(z)\ppds{V_y(y)}{y} + V_x(x)V_y(y)\ppds{V_z(z)}{z} = 0 \nonumber \\
-0 &= \dfrac{1}{V_x(x)}\ppds{V_x(x)}{x} + \dfrac{1}{V(y)}\ppds{V_y(y)}{y} + \dfrac{1}{V_z(z)}V_x(x)V_y(y)\ppds{V_z(z)}{z} \nonumber
+\nabla^2 V &= V_y(y)V_z(z)\ppds{V_x(x)}{x} + V_x(x)V_z(z)\ppds{V_y(y)}{y} + V_x(x)V_y(y)\ppds{V_z(z)}{z}  \nonumber \\
+&= \dfrac{1}{V_x(x)}\ppds{V_x(x)}{x} + \dfrac{1}{V(y)}\ppds{V_y(y)}{y} + \dfrac{1}{V_z(z)}V_x(x)V_y(y)\ppds{V_z(z)}{z} = 0 \nonumber
 \end{align}
 
 This implies that each term in the sum is a constant such that the sum of all of the terms is zero for any particular x, y or z.
 \[
 \ppds{V_x(x)}{x} = -\alpha^2 V_x(x) \quad,\quad \ppds{V_y(y)}{y} = -\beta^2 V_y(y) \quad,\quad \ppds{V_z(z)}{z} = -\gamma^2 V_z(z) \nonumber
 \]
-
 \begin{align}
 V_x(x) &= A \exp(-i \alpha x) + B \exp(i \alpha x) \nonumber \\
 V_y(y) &= C \exp(-i \beta y) + D \exp(i \beta y) \nonumber \\
@@ -30,13 +29,13 @@ Solving for A and B using $V_x(x)$'s two boundary conditions:
 \begin{align}
 V_x(a) &= 0 = A + B \quad,\quad 0 = A (\exp(-i \alpha a) - \exp(i \alpha a)) = -2iA \sin(\alpha a) \quad,\enskip \alpha = \frac{n\pi}{a}\enskip,\enskip n=0,1,2,... \nonumber \\
 \intertext{Solving for C and D using $V_y(y)$'s two boundary conditions:} \nonumber 
-V_y(a) &= 0 = C + D \quad,\quad 0 = C (\exp(-i \alpha a) - \exp(i \alpha a)) = -2iC \sin(\alpha a) \quad,\enskip \alpha = \frac{m\pi}{a}\enskip,\enskip n=0,1,2,... \nonumber \\
+V_y(a) &= 0 = C + D \quad,\quad 0 = C (\exp(-i \alpha a) - \exp(i \alpha a)) = -2iC \sin(\alpha a) \quad,\enskip \alpha = \frac{m\pi}{a}\enskip,\enskip m=0,1,2,... \nonumber \\
 \intertext{Solving for E and F using $V_z(z)$'s two boundary conditions:} \nonumber
-\Phi(x,y,z)&=\sum\limits_{odd n > 0}\sum\limits_{odd m > 0} \sin(\frac{n \pi x}{a}) \sin(\frac{m \pi x}{a}) (A_{nm}\exp(-\theta z) + B_{nm}\exp(\theta z)) \nonumber \\
-\Phi(x,y,0) &= V = \sum\limits_{odd n > 0}\sum\limits_{odd m > 0} \sin(\frac{n \pi x}{a}) \sin(\frac{m \pi x}{a}) (A_{nm}+ B_{nm}) \nonumber \\
-\Phi(x,y,a) &= V = \sum\limits_{odd n > 0}\sum\limits_{odd m > 0} \sin(\frac{n \pi x}{a}) \sin(\frac{m \pi x}{a}) (A_{nm}\exp(-\theta a) + B_{nm}\exp(\theta a)) \nonumber 
+\Phi(x,y,z)&=\sum\limits_{\text{odd n > 0}}\sum\limits_{odd m > 0} \sin(\frac{n \pi x}{a}) \sin(\frac{m \pi x}{a}) (A_{nm}\exp(-\theta z) + B_{nm}\exp(\theta z)) \nonumber \\
+\Phi(x,y,0) = V &= \sum\limits_{\text{odd n > 0}}\sum\limits_{odd m > 0} \sin(\frac{n \pi x}{a}) \sin(\frac{m \pi x}{a}) (A_{nm}+ B_{nm}) \nonumber \\
+\Phi(x,y,a) = V &= \sum\limits_{\text{odd n > 0}}\sum\limits_{odd m > 0} \sin(\frac{n \pi x}{a}) \sin(\frac{m \pi x}{a}) (A_{nm}\exp(-\theta a) + B_{nm}\exp(\theta a)) \nonumber 
 \end{align}
-
+Note above the change in variables $\sqrt{\alpha^2+\beta^2} = \sqrt{(\frac{n\pi x}{a})^2 + (\frac{m\pi y}{a})^2} = \theta$. 
 \begin{align}
 \intertext{Using the orthogonality of sine functions I can multiply both sides by two functions $f(x) = sin(\frac{k \pi x}{a})$ and $g(y) = sin(\frac{l \pi y}{a})$ and integrate over the domain of the box to obtain the following two results. Note that I have used the following two integral identities: $\int\limits_0^a sin(\frac{k \pi x}{a}) dx = \frac{2a}{k\pi}$ for odd k (the integral is zero for even k) and $\int\limits_0^a sin^2(\frac{k \pi x}{a}) dx = \frac{a}{2}$.}
 \int\limits_0^a \int\limits_0^a V sin(\frac{k \pi x}{a}) sin(\frac{l \pi y}{a}) dx dy &= \int\limits_0^a sin^2(\frac{k \pi x}{a}) sin^2(\frac{l \pi y}{a}) (A_{kl} + B_{kl}) dx dy \nonumber \\
@@ -46,7 +45,7 @@ V_y(a) &= 0 = C + D \quad,\quad 0 = C (\exp(-i \alpha a) - \exp(i \alpha a)) = -
 \end{align}
 
 \begin{align}
-\intertext{Note above the change in variables $\sqrt{\alpha^2+\beta^2} = \sqrt{(\frac{n\pi x}{a})^2 + (\frac{m\pi y}{a})^2} = \theta$. Combining these two equations into a matrix equation and inverting:}
+\intertext{Combining these two equations into a matrix equation and inverting:}
 \left( \begin{array}{c} P \\ P \end{array} \right) = 
 \begin{pmatrix} 1 & 1 \\ \exp(-\theta a) & \exp(\theta a) \end{pmatrix}
 \left( \begin{array}{c} A_{kl} \\ B_{kl} \end{array} \right) \nonumber 
@@ -102,7 +101,7 @@ To find the surface charge density $\sigma(x,y)$ I will take advantage of the fa
 \sigma(x,y) &= \epsilon_0 \sum\limits_{odd\;n} \sum\limits_{odd\;m} \frac{16 V}{n m \pi} \frac{1}{1+\exp(\theta a)} \sin(\frac{n \pi x}{a}) \sin(\frac{m \pi y}{a}) \big(-\theta \exp(\theta a)exp(-\theta a) + \theta \exp(\theta a)\big) \nonumber \\
 \sigma(x,y) &= \epsilon_0 \sum\limits_{odd\;n} \sum\limits_{odd\;m} \frac{16 V}{n m \pi} \frac{1}{1+\exp(\theta a)} \sin(\frac{n \pi x}{a}) \sin(\frac{m \pi y}{a}) \theta\big(-1 + \exp(\theta a)\big) \nonumber \\
 \intertext{Realizing that $\frac{e^x-1}{e^x+1} = \tanh(x/2)$ this last expression can be rewritten} \nonumber
-\sigma(x,y) &= \epsilon_0 \sum\limits_{odd\;n} \sum\limits_{odd\;m} \frac{16 V}{n m \pi} \sin(\frac{n \pi x}{a}) \sin(\frac{m \pi y}{a})\tanh(a/2) \theta \nonumber
+\sigma(x,y) &= \epsilon_0 \sum\limits_{odd\;n} \sum\limits_{odd\;m} \frac{16 V}{n m \pi} \sin(\frac{n \pi x}{a}) \sin(\frac{m \pi y}{a})\tanh(\theta a/2) \theta \nonumber
 \end{align}
 \end{homeworkSection}
 
