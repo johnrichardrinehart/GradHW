@@ -64,11 +64,20 @@ V &= \frac{Q }{8 \pi \epsilon_0} \sum\limits_{l=0}^{\infty}\frac{1}{2l+1} \frac{
 \intertext{Now, it seems that the potential is zero at $r=0$ since $r^l$ occurs in both sums. And the second sum is zero by the angular constraint mentioned earlier. The first sum would be zero except for the $l=1$ term. This raises the undefined condition whereby $0^0$ results in the sum. What value this should have is hotly debated in mathematical literature. However, it can be reasoned that $0^0=1$ since $\lim\limits_{r\rightarrow 0}r^0 = \lim\limits_{r\rightarrow 0}1 = 1$. Thus, one term in the sum survives and, thus, the electric field at the origin is:} \nonumber
 \vec{E}(0,0,0)= A \gamma_1 \hat{r} \nonumber
 \end{align}
+\begin{center}
+\begin{align}
+	A &= \frac{Q}{8\pi \epsilon_0} \quad,\quad \gamma_1 = \frac{P_2(\cos\alpha)-P_0(\cos\alpha)}{R^{l+1}2l+1} \quad,\quad P_2(\cos\alpha) = .5(3\cos^2\alpha-1); P_0(\cos\alpha) = 1
+\end{align}
+\end{center}
 
-Now, $A = \frac{Q}{8\pi \epsilon_0}$ and $\gamma_1 = \frac{P_2(\cos\alpha)-P_0(\cos\alpha)}{R^{l+1}2l+1}$. \\
-$P_2(\cos\alpha) = .5(3\cos^2\alpha-1)$; $P_0(\cos\alpha) = 1$. 
-
-So, now, $\vec{E}(0,0,0)= \frac{Q}{8\pi \epsilon_0} (1.5 \cos^2\alpha - 1.5)\frac{1}{3R^2} \hat{r}= \frac{Q}{16\pi \epsilon_0} \frac{\cos^2\alpha - 1}{R^2} \hat{r} = \frac{Q}{16\pi \epsilon_0} \frac{\sin^2\alpha}{R^2}$.
+Substituting the above expressions into the expression for $\vec{E}$: 
+\begin{center}
+	\begin{align}
+		\vec{E}(0,0,0) &= \frac{Q}{8\pi \epsilon_0} (1.5 \cos^2\alpha - 1.5)\frac{1}{3R^2} \hat{r} \nonumber \\
+		&= \frac{Q}{16\pi \epsilon_0} \frac{\cos^2\alpha - 1}{R^2} \hat{r} \nonumber \\
+		&= \frac{Q}{16\pi \epsilon_0} \frac{\sin^2\alpha}{R^2} \nonumber
+	\end{align}
+\end{center}
 
 \end{homeworkSection}
 
@@ -76,6 +85,39 @@ So, now, $\vec{E}(0,0,0)= \frac{Q}{8\pi \epsilon_0} (1.5 \cos^2\alpha - 1.5)\fra
 \textbf{Discuss the limiting forms of the potential (part a) and electric field (part b) 
 as the spherical cap becomes A) very small, and B) so large that the area with 
 charge on it becomes a very small cap at the south pole.}
+
+In will discuss the four cases in the following order: $\vec{E}$ field for small then large cap followed by $V$ for small then large cap.
+
+The first case, where the cap is small, is easily handled by considering an expansion of $\sin^2\alpha$ for small $\alpha$. To first order in $\alpha$ this yields $\alpha^2$. Thus, for small $\alpha$, $\vec{E}(0,0,0) \approx \frac{Q}{16\pi\epsilon_0} \frac{\alpha^2}{R^2}$.
+
+Similarly, when the cap is large, $\sin^2\alpha$ can be handled again. Expanding, this time about $\alpha = 2\pi$ yields $\alpha - 2\pi$ to first order in $\alpha$. Thus, for large caps, the field looks approximately like $\frac{Q}{16\pi\epsilon_0}\frac{(\alpha-2\pi)^2}{R^2}$.
+
+The potential is a little tricker to discuss. The nature of what happens inside the sphere as $\alpha \rightarrow 0$ is tucked inside of Legendre polynomials. Firs, then, I will say that $\cos\alpha$ for $\alpha \approx 0$ is $\approx 1-\frac{\alpha^2}{2}$. Then, I will expand the Legendre polynomials to their first derivative and evaluate near $\alpha = 0$ (that is, I'll expand $P_l(x)$ about 1).
+
+\begin{center}
+	\begin{align}
+		P_l^2(x=1-\frac{\alpha^2}{2})|_{x=1} &= P_l(1)+\der{}{x}P_l(x)|_{x=1}((1-\frac{\alpha^2}{2})-1) \nonumber \\
+		\intertext{Now, considering P(1). It is 1 for all values of l greater than -1. However, we have a term in our sum whereby $l=-1$. We can thus express $P_l(1) = 1 - 2\delta_{-1,l}$. This is a nice expression for $P_l(1)$ (thanks Jean-Philippe for the suggestion).} \nonumber \\
+		P_{l+1}-P_{l-1} &= 2 (\delta_{0,l}-\delta_{-2,l}) - \frac{\alpha^2}{2}(P'_{l+1}(1)-P'_{l-1}(1)) \nonumber \\
+		\intertext{Note, however, that $l$ never equals -2. So, this kronecker delta function is always zero. At this time we can use our handy ''Legendre derivative'' property: $P_l(x) = \frac{1}{2l+1}\der{}{x}(P'_{l+1}(x)-P'_{l-1}(x))$.} \nonumber
+		P_{l+1}-P_{l-1} &= 2 (\delta_{0,l}) - \frac{\alpha^2}{2}\frac{1}{2l+1}P_l(1) \nonumber
+	\end{align}
+\end{center}
+
+This is simplified enough to substitute back into the sum.
+
+
+\[
+V(|\vec{R}|<R\text{ for small $\alpha$ is} \approx \frac{Q}{8\pi\epsilon_0}\sum_{l=0}^{\infty} \frac{1}{2l+1}\frac{r^l}{R^{l+1}}P_l(\cos\theta) \big(2 (\delta_{0,l}) - \frac{\alpha^2}{2}\frac{2l+1}{2}P_l(1)\big) 
+\]
+
+And, finally,
+
+\[
+V(|\vec{R}|<R\text{ for small $\alpha$ is} \approx \frac{Q}{4\pi\epsilon_0 R} -  \frac{Q\alpha^2}{4\pi\epsilon_0}\sum_{l=0}^{\infty} \frac{r^l}{R^{l+1}}P_l(\cos\theta) big) 
+\]
+
+This wouldn't change for the case where where $|\vec{r}|>R$ except for that, now, the roles of $r^l$ and $R^{l+1}$ would change.
 
 \end{homeworkSection}
 

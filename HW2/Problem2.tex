@@ -86,6 +86,10 @@ b^{-(k+1)} & -a^{-(k+1)} \\
 \]
 
 For the case where $k = 0$, this expression reduces to $A_k = -1$ and $B_k = 1$ as seen by allowing $k=0$ in the above expression and realizing that $\gamma_0 = \frac{1}{2(0)+1} = 1$ and 
-Now, writing an expression for $A_k$ and $B_k$ and substituting this into the original expression for $\Phi(r,\theta)$ would be extremely cumbersome at this point. Ra
+Now, writing an expression for $A_k$ and $B_k$ and substituting this into the original expression for $\Phi(r,\theta)$ would be extremely cumbersome at this point. Rather than do this, we will leave this as the solution for this problem.
+
+Considering the two cases where $a->0$ and $b \rightarrow \infty$. As $a->0$ the $A_k$ and $B_k$ terms go to $b^-k$ and 0 respectively. Thus, for the case where the small sphere ``disappears'' we recover: $V(r,\theta) = \sum\limits_{l=0}^\infty V\gamma_l \kappa_l\frac{r^l}{b^l}P_l\cos\theta$ for odd k.
+
+For the case where $b \rightarrow \infty$ the $A_k$s can be shown to go to zero (rather trivially) and the $B_k$ terms go to $a^{1+k}$. Thus, for the case of $b \rightarrow \infty$ we recover the expression: $V(r,\theta) = \sum\limits_{l=0}^\infty V\gamma_l \kappa_l r^{-(l+1)} a^{1+l}P_l\cos\theta$
 
 \end{homeworkProblem}
