@@ -25,13 +25,44 @@ For a = $0,\pi/2,\pi,3\pi/2$ the expression for $\exp(-i m a)$ can be reduced as
 This can be easily seen to be zero for even $m$. Consider $f(m) =  (1-(-1)^m) - (i^m - (-i)^m $. $f(1) = 2-2i,\, f(3) = 2+2i,\, f(5) = 2-2i,\, f(7) = 2+2i,\, \cdots$. Additionally, though, $P_{lm}(x)$ is odd for any combination of $l$ and $m$ that is also odd. Since $m$ is constrained to be odd for nonzero $q_{lm}$ then $l$ must be constrained to be odd as well for nonvanishing $q_{lm}$ Thus, the final expression for $q_{lm}$ can be reduced:
 
 \[
-	q_{2j+1,2k+1} = 2q a^{2j+1} \big\{ 1+(-i)^{2k+1} \big\}Y_{2j+1,2k+1}P_{2j+1,2k+1}(0)
+	q_{2j+1,2k+1} = 2q a^{2j+1} \big\{ 1+(-i)^{2k+1} \big\}\gamma_{1,1}P_{2j+1,2k+1}(0)
 \]
+
+To meet the problem demands
+\begin{center}
+	\begin{align*}
+		q_{1,1} &= 2qa^3(1-i)\gamma_{1,1}P_{1,1}(0) = -\sqrt{\frac{3}{2\pi}}qa^3(1-i) \\
+		q_{1,-1} &= 2qa^3(1-i)\gamma_{1,-1}P_{1,-1}(0) = \sqrt{\frac{3}{2\pi}}qa^3(1+i)
+	\end{align*}
+\end{center}
+
 \end{homeworkSection}
 
 \begin{homeworkSection}{b}
-	In a similar fashion as before, we can construct $\rho(
+	In a similar fashion as before, we can construct $\rho(r,\theta,\phi) = \frac{q\delta(\phi')}{r'^2\sin^2\theta'}\big( \delta(\theta')\delta(|\vec{r'}-a\hat{z}|) + \delta(\theta'-\pi)\delta(|\vec{r'}+a\hat{z}|)- 2\delta(\theta')\delta(|\vec{r'}|)$. Thus, the $q_{lm}s$ are given by:
+	\[
+	\int\limits_{\text{all space}}\frac{qr'^l\delta(\phi')}{r'^2\sin^2\theta'} Y^*_{l,m}(\theta',\phi')\bigg(\delta(|\vec{r'}|-a)\delta(\theta')+\delta(|\vec{r'}|-a|)\delta(\theta'-\pi)-2\delta(r')\delta(\theta')\big)
+	\]
 	
-	q_{lm} = 
+	Reducing this expression yields:
+	\[
+	q_{lm} = -2q\delta_{l,0} + qa^l(Y^*_{l,m}(0,0)+Y^*_{l,m}(\pi,0))
+	\]
+	
+	Since, $Y_{l,m}(\theta,\phi) = \gamma_{l,m}P_{l,m}(\cos\theta)\exp(-im\phi)$ then $Y_{l,m}(0,0)$ can be written as $\gamma_{l,m}P_{l,m}(1)$ and $Y_{l,m}(\pi,0)$ can be written as $\gamma_{l,m}P_{l,m}(-1)$.
+	
+	\[
+	q_{l,m} = -2q\delta_{l,0}+qa^l\gamma_{l,m}(P_{l,m}(1)+P_{l,m}(-1))
+	\]
+	Now, $P_{l,m}$ is odd if $l+m$ is odd. Thus, in order to have nonvanishing $q_{l,m}$ it must be the case that the sum of $l$ and $m$ must be even. Additionally, it must be the case the $P_{l,m}(1) \text{\,and\,} P_{l,m}(-1) \ne 0$. Note that for all associated Legendre polynomials for which m is nonzero, $P_{l,m}(\pm 1) = 0$. This can be seen in that $P_{l,l} = (-1)^l(2l-1)!!(1-x^2)^{l/2}$. This is a restatement of the fact that this charge distribution exhibits azimuthal symmetry.  Thus, $q_{0,0}$ dies and \Leftrightarrow$q_{1,-1}$ and $q_{1,1}$ die (as a consequence of $P_{1,\pm 1}(\pm 1) = 0$). Note that $q_{1,0}$ dies, too. Thus, the first set of nonvanishing $q_{l,m}$ are:
+\begin{center}
+	\begin{align*}
+	q_{2,0} &= qa^2\gamma_{2,0}(P_{2,0}(1) + P_{2,0}(-1)) = qa^2\sqrt{\frac{5}{4\pi}}(1+1) = qa^2\sqrt{5/\pi}
+	\end{align*}
+\end{center}
+	
 \end{homeworkSection}
+%\begin{homeworkSection}
+%\end{homeworkSection}
+
 \end{homeworkProblem}
