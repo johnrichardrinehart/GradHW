@@ -1,0 +1,60 @@
+\begin{homeworkProblem}
+\begin{homeworkSection}{a}
+As the wave travels through the medium with index of refraction $n_2$ it will acquire phase 
+relative to the incident wave. Consider a wave that is incident on the slab of material 2 
+at some angle $\theta_1$ relative to the normal to the surface. It will first travel through 
+a distance of $l_1 = \frac{d}{\cos\theta_2}$. Then it will reflect off the surface where 
+material 3 meets material 2. If we compare the phase of the wave at the point that it 
+entered material 2 with the phase that it has when it reaches a point in its path that 
+intersects the perpendicular to the initial direction of the wave when it entered material 
+2 we will really be finding the phase difference between adjacent plane waves that are 
+formed by reflections off material 3.
+\\
+
+To find this ``distance to the perpendicular'', consider the wave after the reflection off of 
+material 3. The wave will travel another distance which can be shown to be 
+$l_2 = \frac{d}{\cos\theta_2}\sin(\pi-(\pi/2+2\theta_2))$. Summing $l_1$ with $l_2$ and using 
+some trigonometric identities, the total distance $l$ traveled through material before the 
+wave reaches the ``next plane'' can be shown to be $\delta_l = 2d\cos\theta_2$. The phase 
+difference between the two fictitious plane waves (the original plane wave and a time-advanced 
+version of that wave is given by the $\vec{k}\cdot\vec{x}$ in the exponential describing the 
+plane wave. Thus, the phase difference is $\delta_{\phi} = \frac{2\pi}{\lambda_2}\delta_l = 
+\frac{4\pi}{\lambda_2}d \cos\theta_2$. In the case of normal incidence this expression 
+reduces to $\delta_{\phi} = \frac{4\pi d}{\lambda_2}$.
+\\
+
+The above was necessary in order to perform the folowing steps. See, depending on the indices 
+of refraction $n_1, n_2, \,\text{and}\, n_3$ the wave will reflect an infinite number of times 
+between the two surfaces (where material 1 meets material 2 and, also, where material 2 
+meets material 3. Each time it encounters an interface some portion of the wave will get 
+reflected and some portion will be transmitted. Because of the thickness of material 2, the 
+wave will also acquire a complex phase which will result in one reflected and/or transmitted 
+wave's interference with all of the other instances of reflection or transmission.
+\\
+
+Consider a ray of light incident normally to the surface where materal 1 meets material 2. Assign this light a plane wave of the form $\vec{E_I(\vec{x},t)} = \vec{E_0}\exp(i(\vec{k}\cdot\vec{x}-\omega t))$. The first transmitted wave will have the form $\vec{E_{t_1}} = \vec{E_0}*t_{21}*\exp(i(\vec{k_2}\cdot\vec{x}-\omega t))*\exp(i\phi)$. $\phi$ in the previous expression accounts for the accumulation of the wave's phase as it travels though material 2 towards material 3. Note, also, that I have introduced a notation that I will use throughout the rest of this problem set. $t_{ij}$ is the scaling factor for waves which are transmitted from region j into region i. Similarly, $r_{ij}$ is the scaling factor for waves which are reflected off material j into material i. 
+\\
+%Upon reflection off the interface where material 2 meets material 3 the wave is described as: $\vec{E_t_1} = \vec{E_0}*t_{21}*r_{23}*\exp{i(\vec(k_2)\cdot\vec{x}-\omega t))*\exp(i\phi')$. Note that the wave has accumulated more phase by traveling through more of material 2.
+
+It is sufficient to consider just the amplitude of the wave from this point on. That is, I can safely drop the time component since I am dealing with monochromatic light and the time dependence is the same between all generated rays. The sum of all of the complex amplitudes of the transmitted rays will give me the amplitude of the resultant wave.
+\\
+
+Now, I will define a reference for the phase in this problem. The reference phase is that of the first wave immediately after it has exited the 3rd material (or, equivalently, as soon as it encounters the interface). Subsequent transmissions (due to reflections off of the interface between material 2 and material 3) will acquire a phase determined by the total distance traveled through the material. Thus, utilizing this definition and the fact that I can disregard the time component of the wave, I can express the ray that is first transmitted into material 3 as : $\vec{E}_{t_1} = \vec{E_0}*t_{21}*t_{32}$.
+\\
+Now, part of the incident wave makes it in the ``first pass'' to material 3. Some of this wave is reflected before any of the wave is transmitted into material 2. Some of the wave is transmitted into material 2 (this is the wave we have just considered). However, after this wave encounters material 3 a portion of this wave may be reflected at this interface. Thus, a new wave will later exit material 2 into material 3 and we must consider this wave's interference with our first wave.
+\\
+
+Utilizing the prior disussion regarding the acquired phase. I may write that the complex amplitude of the wave due to the transmission into material 1, reflections off of the two interfaces, transmission into material 3 and total distance traveled through material 2 as : $\vec{E}_{t_2} = \vec{E_0}*t_{21}*r_{23}*r_{21}*t_{32}*exp(i\frac{4\pi d}{\lambda_2}) = \vec{E}_{t_1}*r_{23}*r_{21}*exp(i\phi)$. I will omit the vector arrow above $E_0$ for brevity. I still maintain that it is a complex vector quantity. I will also allow the phase acquired due to the thickness of the plate to be designated as $\phi$. 
+\\
+
+Although we have discovered the amplitude of the second ray to penetrate material 3 we must consider that some of this ray reflected at the interface between material 2 and 3 and thus, there is a 3rd ray that will exit material 2 into material 3. Its amplitude is described by: $E_0*t_{21}*r_{23}*r_{21}*r_{23}*r_{21}*t_{23}*\exp(2 i\phi) = E_{t_2}*r_{23}*r_{21}*exp(i\phi) = E_{t_1}* (r_{23}*r_{21}*exp(i\phi))^2$.
+\\
+
+It is clear that this trend will continue ad infinitum and that the amplitude of the nth transmitted wave can be described as $E_{t_n} = E_0*t_{21}*t_{32}*(r_{23}*r_{21}*exp(i*\phi))^n$. Thus, the net wave will have an amplitude $E_t = \sum\limits_{n=0}^\infty E_0 t_{21} t_{32} (r_{23}r_{21}\exp(i\phi))^n$. This is a simple geometric series with solution $E_t = E_0 t_{21} t_{32} \frac{1}{1-r_{23}r_{21}\exp(i\phi)}$. To find the transmission coefficient T I will first normalize the transmitted wave amplitude by the incident wave. Then, I will multiply the wave amplitude by its complex conjugate. Avoiding tying a lot of tedious algebra: $T = |\frac{E_t}{E_0}|^2 = \frac{(t_{21}t_{32})^2}{1-(r_{23}r_{21})^2-2 r_{23} r_{21} \cos\phi }$. Since $\phi = \frac{4\pi}{\lambda_2}d$. $\phi$ in terms of the wavelength in vacuum is $\phi = \frac{4\pi n_2}{\lambda_0}d$.
+
+\end{homeworkSection}
+
+\begin{homeworkSection}{b}
+
+\end{homeworkSection}
+\end{homeworkProblem}
