@@ -5,7 +5,7 @@
 \usepackage{graphicx} % Required to insert images
 \usepackage{lipsum} % Used for inserting dummy 'Lorem ipsum' text into the template
 \usepackage{amsmath,amsthm,amsxtra}
-
+%\usepackage{mathtools}
 % Margins
 \topmargin=-0.45in
 \evensidemargin=0in
@@ -59,7 +59,15 @@
 }
 
 \newcommand{\problemAnswer}[1]{ % Defines the problem answer command with the content as the only argument
-\noindent\framebox[\columnwidth][c]{\begin{minipage}{0.98\columnwidth}\begin{center}#1\end{center}\end{minipage}} % Makes the box around the problem answer and puts the content inside
+%\noindent\framebox[\textwidth][c]{\begin{minipage}{\textwidth}\begin{center}#1\end{center}\end{minipage}} % Makes the box around the problem answer and puts the content inside
+\noindent
+ \begin{center} 
+    \boxed{
+      \begin{aligned} 
+         #1
+      \end{aligned}
+    }
+ \end{center}
 }
 
 \newcommand{\homeworkSectionName}{}
@@ -114,7 +122,7 @@
 \newcommand{\er}{\epsilon_{r}}
 \newcommand{\mr}{\mu_{r}}
 \newcommand{\Lrw}{\Longrightarrow}
-\newcommand{\refeq}[1]{(\ref{#1})}
+%\newcommand{\refeq}[1]{(\ref{#1})}
 \newcommand{\abs}[1]{\left| #1\right|}
 \newcommand{\ket}[1]{|#1\rangle}
 \newcommand{\bra}[1]{\langle #1| }

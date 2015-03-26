@@ -5,7 +5,8 @@
 \contentsline {subsection}{c}{4}{section*.5}
 \contentsline {section}{Problem 2}{4}{section*.6}
 \contentsline {subsection}{a}{4}{section*.7}
-\contentsline {subsection}{b}{5}{section*.8}
-\contentsline {section}{Problem 3}{5}{section*.9}
-\contentsline {subsection}{a}{5}{section*.10}
-\contentsline {subsection}{b}{5}{section*.11}
+\contentsline {subsection}{b}{6}{section*.8}
+\contentsline {section}{Problem 3}{7}{section*.9}
+\contentsline {subsection}{a}{7}{section*.10}
+\contentsline {subsection}{b}{8}{section*.11}
+\contentsline {subsection}{c}{8}{section*.12}
