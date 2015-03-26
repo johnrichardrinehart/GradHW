@@ -34,8 +34,6 @@ wave's interference with all of the other instances of reflection or transmissio
 
 Consider a ray of light incident normally to the surface where materal 1 meets material 2. Assign this light a plane wave of the form $\vec{E_I(\vec{x},t)} = \vec{E_0}\exp(i(\vec{k}\cdot\vec{x}-\omega t))$. The first transmitted wave will have the form $\vec{E_{t_1}} = \vec{E_0}*t_{21}*\exp(i(\vec{k_2}\cdot\vec{x}-\omega t))*\exp(i\phi)$. $\phi$ in the previous expression accounts for the accumulation of the wave's phase as it travels though material 2 towards material 3. Note, also, that I have introduced a notation that I will use throughout the rest of this problem set. $t_{ij}$ is the scaling factor for waves which are transmitted from region j into region i. Similarly, $r_{ij}$ is the scaling factor for waves which are reflected off material j into material i. 
 \\
-%Upon reflection off the interface where material 2 meets material 3 the wave is described as: $\vec{E_t_1} = \vec{E_0}*t_{21}*r_{23}*\exp{i(\vec(k_2)\cdot\vec{x}-\omega t))*\exp(i\phi')$. Note that the wave has accumulated more phase by traveling through more of material 2.
-
 It is sufficient to consider just the amplitude of the wave from this point on. That is, I can safely drop the time component since I am dealing with monochromatic light and the time dependence is the same between all generated rays. The sum of all of the complex amplitudes of the transmitted rays will give me the amplitude of the resultant wave.
 \\
 
@@ -50,14 +48,40 @@ Utilizing the prior disussion regarding the acquired phase. I may write that the
 Although we have discovered the amplitude of the second ray to penetrate material 3 we must consider that some of this ray reflected at the interface between material 2 and 3 and thus, there is a 3rd ray that will exit material 2 into material 3. Its amplitude is described by: $E_0*t_{21}*r_{23}*r_{21}*r_{23}*r_{21}*t_{23}*\exp(2 i\phi) = E_{t_2}*r_{23}*r_{21}*exp(i\phi) = E_{t_1}* (r_{23}*r_{21}*exp(i\phi))^2$.
 \\
 
-It is clear that this trend will continue ad infinitum and that the amplitude of the nth transmitted wave can be described as $E_{t_n} = E_0*t_{21}*t_{32}*(r_{23}*r_{21}*exp(i*\phi))^n$. Thus, the net wave will have an amplitude $E_t = \sum\limits_{n=0}^\infty E_0 t_{21} t_{32} (r_{23}r_{21}\exp(i\phi))^n$. This is a simple geometric series with solution $E_t = E_0 t_{21} t_{32} \frac{1}{1-r_{23}r_{21}\exp(i\phi)}$. To find the transmission coefficient T I will first normalize the transmitted wave amplitude by the incident wave. Then, I will multiply the wave amplitude by its complex conjugate. Avoiding tying a lot of tedious algebra: $T = |\frac{E_t}{E_0}|^2 = \frac{(t_{21}t_{32})^2}{1-(r_{23}r_{21})^2-2 r_{23} r_{21} \cos\phi }$. Since $\phi = \frac{4\pi}{\lambda_2}d$. $\phi$ in terms of the wavelength in vacuum is $\phi = \frac{4\pi n_2}{\lambda_0}d$.
+It is clear that this trend will continue ad infinitum and that the amplitude of the nth transmitted wave can be described as $E_{t_n} = E_0*t_{21}*t_{32}*(r_{23}*r_{21}*exp(i*\phi))^n$. Thus, the net wave will have an amplitude $E_t = \sum\limits_{n=0}^\infty E_0 t_{21} t_{32} (r_{23}r_{21}\exp(i\phi))^n$. This is a simple geometric series with solution $E_t = E_0 t_{21} t_{32} \frac{1}{1-r_{23}r_{21}\exp(i\phi)}$. To find the transmission coefficient T I will first normalize the transmitted wave amplitude by the incident wave. Then, I will multiply the wave amplitude by its complex conjugate. This is not complete, though. The transmission coeffecient is defined as the ratio of the transmited power per unit area and the incident power per unit area. The power per unit area is given by $\frac{1}{2}\sqrt{\epsilon}{\mu}|E_0|^2$. This can be expressed in terms of $n$ (the index of refraction of the material) as $\frac{1}{2} \sqrt{n}{c\mu}|E_0^2$. Thus, the intensity of light in the third medium divided by the intensity of light in the first medium would be given by $T = \frac{n_3}{n_1} \frac{|E_t|^2}{|E_I^2|}$.
 
+Using the previous expression and explicitly avoiding typing a lot of tedious algebra: 
+
+\begin{problemAnswer}{
+T = \frac{n_3}{n_1}|\frac{E_t}{E_0}|^2 =\frac{n_3}{n_1} \frac{(t_{21}t_{32})^2}{1-(r_{23}r_{21})^2-2 r_{23} r_{21} \cos\phi }}
+\end{problemAnswer}
+
+Since $\phi = \frac{4\pi}{\lambda_2}d$. $\phi$ in terms of the wavelength in vacuum is $\phi = \frac{4\pi n_2}{\lambda_0}d$.
+
+I have plotted this transmission coefficient as $n_2$ takes on different values.$n_1$ and $n_3$ are 1 and 1.5, respectively.
+
+\begin{figure}
+  \centering\includegraphics[width=.5\textwidth]{Images/TransCoef.eps}
+  \caption{Transmission coefficient with $n_2$ = 1.5 (green), 1 (blue), 1.2 (orange) }
+\end{figure}
 \end{homeworkSection}
 
 \begin{homeworkSection}{b}
 The analysis for this part of the problem will be very similar to the previous problem. The zeroth wave that is reflected will have amplitude $E_{r_0} = E_0*r_{12}$. The first wave will be related to the incident wave by $E_{r_1} = E_0*t_{21}*r_{23}*t_{12}*\exp(i\phi)$. Here, $\phi$ has the same form it did before. The second wave will have amplitude: $E_{r_2} = E_0*t_{21}*r_{23}*r_{21}*r_{23}*t_{12}*\exp(2 i\phi) = E_{r_1} * r_{21}*r_{23}*\exp(i\phi)$. The third wave will bear the same relationship with the second wave as the second wave has with the first $E_{r_3} = E_{r_2} *r_{21} * r_{23}*\exp(i\phi) = E_{r_1} * (r_{21}*r_{23})^2*\exp(2i\phi)$. Thus, it seems that the $E_{n>0}$ wave can be expressd as $E_{n} = E_{r_1}(r_{21}*r_{23}*exp(i\phi))^(n-1)$.
 \\
-Thus, the reflected amplitude is $E_{r} = E_{r_0} + \sum\limits_{n=1}^\infty E_{r_1}(r_{21}*r_{23}*\exp(i\phi))^(n-1)$. Recognizing the geometric series, again, and simplifying the resulting expression yields: $a$. Taking the magnitude squared of this expression yields the reflection coefficient $R = |\frac{E_r}{E_0}|^2 = (\frac{\alpha^2 + 2 \alpha r_{12}\cos\delta\phi - 2\alpha r_{12}r_{21}r_{23}}{1+(r_{21}r_{23})^2-2 r_{21} r_{23} \cos\delta\phi} + r_{12}^2)$.
+Thus, the reflected amplitude is $E_{r} = E_{r_0} + \sum\limits_{n=1}^\infty E_{r_1}(r_{21}*r_{23}*\exp(i\phi))^(n-1)$. Recognizing the geometric series, again, and simplifying the resulting expression yields: $a$. Taking the magnitude squared of this expression yields the reflection coefficient $R = |\frac{E_r}{E_0}|^2 = (\frac{\alpha^2 + 2 \alpha r_{12}\cos\delta\phi - 2\alpha r_{12}r_{21}r_{23}}{1+(r_{21}r_{23})^2-2 r_{21} r_{23} \cos\delta\phi} + r_{12}^2)$. $\alpha = t_{21}t_{12}r_{23}$: Substituting this into my previous expression, factoring and simplifying yields:
+\begin{problemAnswer}{
+R = \frac{r_{12}^2+r_{23}^2+2r_{12} r_{23}\cos\delta\phi}{1+r_{23}^2r_{21}^2-2r_{23}r_{21}\cos\delta\phi}
+}
+\end{problemAnswer}
+
+I have plotted this in the second figure for the same $n_1, n_2 \,\text{and}\, n_3$ values as before for the transmission coefficient. Note that the sum of each of the corresponding plots yields 1 at any choice of the thickness of the plates.
+
+\begin{figure}
+  \centering\includegraphics[width=.5\textwidth]{Images/RefCoef.eps}
+  \caption{Transmission coefficient with $n_2$ = 1.5 (green), 1 (blue), 1.2 (orange)}
+\end{figure}
+
 \end{homeworkSection}
 
 \begin{homeworkSection}{c}

@@ -2,11 +2,11 @@
 \contentsline {section}{Problem 1}{3}{section*.2}
 \contentsline {subsection}{a}{3}{section*.3}
 \contentsline {subsection}{b}{4}{section*.4}
-\contentsline {subsection}{c}{4}{section*.5}
-\contentsline {section}{Problem 2}{4}{section*.6}
-\contentsline {subsection}{a}{4}{section*.7}
-\contentsline {subsection}{b}{6}{section*.8}
-\contentsline {section}{Problem 3}{7}{section*.9}
-\contentsline {subsection}{a}{7}{section*.10}
-\contentsline {subsection}{b}{8}{section*.11}
-\contentsline {subsection}{c}{8}{section*.12}
+\contentsline {subsection}{c}{5}{section*.5}
+\contentsline {section}{Problem 2}{5}{section*.6}
+\contentsline {subsection}{a}{5}{section*.7}
+\contentsline {subsection}{b}{7}{section*.8}
+\contentsline {section}{Problem 3}{8}{section*.9}
+\contentsline {subsection}{a}{8}{section*.10}
+\contentsline {subsection}{b}{9}{section*.11}
+\contentsline {subsection}{c}{9}{section*.12}
