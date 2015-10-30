@@ -137,8 +137,17 @@ sympy-plots-for-*.tex/
 *.ps
 *.tmp
 
-#Direcories
+#Directories
 QIC885Majedi/BehroozFromCaryStuff/
 Quantum\ Photonics/
+HomeworkTemplate.pdf
+Phys706Kycia/HW3
+QIC750ImplementationsChris
+QIC820
+QIC880NanoElectronicsLupascu
+QIC885Majedi
+QIP870Cleve
 TA/
+ECE671/Lecture1.tex
+ECE671/Lectures*pdf
 *.zip
