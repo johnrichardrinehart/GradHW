@@ -124,3 +124,21 @@ sympy-plots-for-*.tex/
 # WinEdt
 *.bak
 *.sav
+
+#Books
+*.djvu
+
+#System files
+*.db
+*DS_STORE
+*.swp
+*.tcp
+*.tps
+*.ps
+*.tmp
+
+#Direcories
+QIC885Majedi/BehroozFromCaryStuff/
+Quantum\ Photonics/
+TA/
+*.zip
