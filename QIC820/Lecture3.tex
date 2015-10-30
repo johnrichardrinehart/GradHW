@@ -1,0 +1,173 @@
+\begin{document}
+
+We are interested in some positive semi-definite operator P \element
+Pos(\scriptx) and some vector u \element \scriptx \tenors \scripty such
+that Tr_{y}(u u^*) = P. u is a purification of P.
+
+P doesn't necessarily have to be a density operator. Even though, many
+times, that is what we're interested in. We showed, last time, that such
+a purification, u, of P exists if dim(\scripty) \ge rank(P).
+
+\begin{theorem}[Singular Value Theorem]
+    \scriptx and \scripty are complex euclidean spaces. A \element
+    L(\scriptx,\scripty) is any linear operator. Let r = rank(A). The
+    singular value theorem indicates that there must exist positive real
+    numbers s_1\ge s_2 \ge \cdots s_r \gt 0 and orthonormal sets of
+    vectors {x_1,x_2,\cdots,x_r} \containedin \scriptx ,
+    {y_1,y_2,\cdots,y_r}\containedin \scripty such that A = \sum_{k=1}^r
+    s_k y_k x_k^*. 
+
+    s_1,\cdots,s_r are the singular values of A. They are unique. They
+    are uniquely determined by A. The operator norm of A is the largest
+    singular value of A, s_1. s_k(A) = \sqrt(\lambda_k(A A^*)) =
+    \sqrt(\lambda_k(A^* A)). Moreover, x_1,\cdots,x_r are eigenvectors
+    of A^*A. Likewise, y_1,\cdots,y_r are the eigenvectors of AA^*.
+    Although the x_n's and y_n's are not uniquely determined, once you
+    select a set, x_n or y_n, your choice constrains the other set.
+
+    For example, if we choose {x_1,\cdots,x_r} to be an orthonormal set
+    of eigenvectors of AA^* corresponding to eigenvalues
+    \lambda_1(A^*A),\cdots,\lambda_r(A^*A) then we can solve to find
+    {y_1,\cdots,y_r}. Then, using s_k y_k = A x_k we can solve for the
+    y_k.
+\end{theorem}
+
+\begin{theorem}[Unitary equivalence of purifications]
+    Suppose P\element Pos(\scriptx) and suppose u,v \element \scriptx
+    \tensor \scripty are purifacionts of P. That is, Tr_y{u u^*} = P =
+    Tr_y{v v^*}. There exists a unitary operator U \element
+    \scriptU(\scripty) such that (\math1_\scriptx \tensor U)u = v.
+
+    What does this mean? Imagine we have two registers X and Y. X is
+    held by Alice and Y by Bob. Consider the state of both registers
+    could be expressed in terms of some vector u or v. Alice can't tell
+    the difference between the entire system being in u or v. Bob can
+    apply any unitary to his register and it won't affect Alice's
+    measurement.
+\end{theorem}
+
+Let's concsider u = vec(A) and v = vec(B) for A,B \element
+L(\scripty,\scriptx). Therefore, A A^* = P = B B^*. Now consider
+singular value decompositions of A and B. The singular values of A and B
+are the same because AA^* = BB^*. We can singular-value-decompose both
+operators and write A = \sum_{k=1}^{r} \sqrt{\lambda_k(P)}x_k y_k^* and
+B = \sum_{k=1}^{r} \sqrt{\lambda_k(P)}x_k z_k^* for {x_1,\cdots,x_n}
+\containedin \scriptx and {y_1,\cdots,y_r} and {z_1,\cdots,z_r}
+\containedin \scripty.
+
+Note that u = \sum_{k=1}^r \sqrt{\lambda_k (P)} x_k \tensor
+\overbar{y_k} and v = \sum_{k=1}^r \sqrt{\lambda_k(P)} x_k \tensor
+\overbar{z_k}. This is the same as Schmidt decomposition written in a
+form involving tensor products of vectors.
+
+Now, it's clear how to select U. We can select any U that changes the
+basis of \scripty. So, U \element \scriptu(\scripty) so that U
+\overbar{y_k} = \overbar{z_k} for k=1,\cdots,r. So, u and v are the same
+up to a basis transformation.
+
+Next, we'll consider channels.
+
+\begin{section}[Channels]
+    Channels are going to be objects that transform states at
+    discrete-time instances. Consider two registers X and Y with
+    corresponding euclidean spaces \scriptx and \scripty, respectively.
+    The set of all linear maps of the form \Phi : L(\scriptx) \mapsto
+    L(\scripty). This set is T(\scriptx,\scripty). This is not as a
+    linear map from \scriptx to \scripty. This is a linear map from all
+    of the linear maps on \scriptx to all of the linear maps on
+    \scripty. The transpose, the trace: These are elements of
+    T(\scriptx,\scripty).
+
+    Tensor products of channels work in a very similar way as for
+    operators. Consider we have many \Phi_1 \elementof
+    T(\scriptx_1,\scripty_1),\cdots, \Phi_n \elementof
+    T(\scriptx_n,\scripty_n). \Phi_1 \tensor \cdots \Phi_n \element
+    T(\scriptx_1\tensor \cdots \tensor \scriptx_n, \scripty_1 \tensor
+    \cdots \mapsto L(\scripty_1 \tensor \cdots \tensor \scripty_n). This
+    map is determined by this equation: (\Phi_1 \tensor \cdots \tensor
+    \Phi_n)(X_1 \tensor \cdots \tensor X_n) = \Phi_1(X_1)\tensor \cdots
+    \tensor \Phi_n(X_n) for all X_1 \element L(\scriptx_1) , \cdots, X_n
+    \element L(\scriptx_n).
+
+    Consider the adjoints of elements of T. \Phi \element
+    T(\scriptx,\scripty). Then \Phi^* \element T(\scripty,\scriptx) is
+    defined to be the unique linear map for which <Y,\Phi(X). =
+    <\Phi^*(Y),X> for all X \element L(\scriptx) and Y \element
+    L(\scripty).
+
+    The identity map is denoted as \math1_{L(\scriptx)} \element
+    T(\scriptx) which satisfies \math_{L(\scriptx)}(X) = X for all X
+    \element L(\scriptx).
+
+    As an example, let's consider the trace mapping Tr on \scriptx. Tr
+    \element T(\scriptx,\mathc). i.e. Tr: L(\scriptx) \mapsto L(\mathc)
+    = \mathc. What is the adjoint of the trace? Well, <\alpha, Tr(X)> =
+    <Tr^*(\alpha),X> tells us how to find the adjoint of the trace. If I
+    assume Tr^*(\alpha) = \alpha * \math1 then I will obtain equality.
+    UNDERSTAND THIS!!!
+
+    X and Y are registers. Imagine X is in the state \rho \element
+    D(\scriptx). Some physical process occurs to transform X into a new
+    register Y. The state \rho is transformed into a new state \sigma
+    \element D(\scripty). Whatever the transformation is, it should
+    definitely be linear. We can write this as \sigma = \Phi(\rho) for
+    some \Phi \element T(\scriptx,\scripty). Linearity is a requirement to
+    conserver probability. 
+    1. What other requirements do we have for \Phi,
+    besides linearity? 
+    2. It should preserve the trace in order that the
+    output is a density operator. Tr(\Phi(X)) = Tr(X) for all X \element
+    L(\scriptx). Since positive semidefinite operators span the space of
+    operators then it preserves the trace of all operators.
+    3. \Phi is positive: \Phi(P) \element Pos(\scripty) for all P
+    \element Pos(\scriptx).
+
+    It turns out that this isn't quite enough. Note that there could
+    exist some register Z and it could be the case that (x,Z) is in some
+    state. \psi \element D(\scriptx \tensor \scriptz). So, appyling \Phi
+    to L(\scriptx) (X) and doing nothing to Z is described by the map
+    \Phi \tensor \math1_{L(\scriptz)} \element T(\scriptx \tensor
+    \scriptz, \scripty \tensor \scriptz). We need that (\Phi \tensor
+    \math1_{L(\scriptz)}(\rho) \element D(\scripty \tensor \scriptz).
+
+    Example: Consider the transpose operator. \Phi({\alpha \beta ;
+    \gamma \delta}) = {\alpha \gamma; \beta \delta}. It preserves the
+    trace and the eigenvalues. However, consider you now perform the
+    transpose operator on entangled qubits. |\Phi^+> =
+    \frac{1}{\sqrt{2}}(\ket{00} + \ket{11}). Now,
+    \ket{\Phi^+}\bra{\Phi^+} = .5 {1 0 0 1; 0 0 0 0 ; 0 0 0 0; 1 0 0
+    1}. (\Phi \tensor \math1_{L(\scriptz)})(\ket{\Phi^+}\bra{\Phi^+}) =
+    .5 {1 0 0 0; 0 0 1 0; 0 1 0 0; 0 0 0 1}. This is not positive
+    semi-definite. It has two .5 eigenvalues and a single -.5
+    eigenvalue. Thus, this is not a density operator and it's not a
+    valid quantum operation. So, we'll add a condition to \Phi needing
+    to be positive.
+
+    3b. \Phi needs to be completely positive. A compeletely positive map
+    is one that satisfies that \Phi \tensor \math1_{L(\scriptz)} is
+    positive for all \scriptz.
+
+    Notation: Cp(\scriptx,\scripty) is the set of all completely
+    positive maps. C(\scriptx,\scripty) will be the set of all channels
+    \Phi: L(\scriptx) \mapsto L(\scripty) (completely positive and trace
+    preserving). C(\scriptx,\scripty) are typicall called CPTP maps.
+
+    Representations of maps \Phi \element T(\scriptx,\scripty).
+    1. Natural representation (linear representation)
+    2. Choi representation (a.k.a, Choi-Jamiolkowski representation)
+    3. Krauss representation
+    4. Stinespring representation
+
+    \begin{subsection}[Natural Representation]
+        \Phi \element T(\scriptx,\scripty). Consider vec(X) \mapsto
+        vec(\Phi(X)). X \element L(\scriptx), vec(X) \element \scriptx
+        \tensor \scriptx. \Phi(X) \element L(\scripty). vec(\Phi(X))
+        \element \scripty \tensor \scripty. So, we are taking \scriptx
+        \tensor \scriptx to \scripty \tensor \scripty. \Phi must be a
+        linear map and vec is linear. So, we are composing linear maps
+        and everything will be linear. Since there exists a linear map
+        between these spaces then there must be some operator that tells
+        us how this map works. Consider K(\Phi) \element L(\scriptx
+        \tensor \scriptx, \scripty \tensor \scripty) such that K_\Phi
+        vec(X) = vec(\Phi(X)). K is the natural representation of \Phi.
+        Generally we write as K(\Phi) rather than K_\Phi.

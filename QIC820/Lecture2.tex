@@ -1,0 +1,227 @@
+\begin{document}
+\begin{section}[Correction to Last Lecture]
+    \scripttx = \mathc^\Sigma, \scripty = \mathc^\Gamma
+    A\elementof L(\scriptx,\scripty)
+    M_A: \Gamma x \Sigma -> \mathc (complex numbers)
+    M_A (a,b) = <e_a,Ae_b> for all a \elementof \Gamma, b \elementof
+    \Sigma
+    Identify A with M_A, so A(a,b) = <e_a, A e_b> = <a|A|b> for a
+    \elementof \Gamma, b \elementof \Sigma
+\end{section}
+\begin{section}[Lecture 2 Material]
+    Additional notation: Suppose that we have \scriptx = \mathc^\Sigma
+    and L(\scriptx), L(\scriptx) being all linear operators of the form
+    A:\scriptx \rightarrow \scriptx
+    e.g. Herm(\scriptx) = {H\element L(\scriptx): H = H^*}
+    e.g. Pos(\scriptx) = {P \element L(\scriptx): P = A^*A for
+        e.g. PD(\scriptx) = {\rho \element Pos(\scriptx): Tr(\rho) = 1}
+        e.g. PU(\scriptx) = {U \element L(\scriptx): U*u = \math1_\scriptx}
+    A\elementof L(\scriptx}
+
+    e.g. Pos(\scriptx) = {P \element L(\scriptx): u^*Pu \ge 0 for all u
+    \element \scriptx}
+    Where, if u \element \scriptx, then u^* is the linear map u^*v =
+    <u,v> (it
+    is the adjoint of the linear map \alpha \rightarrow \alpha u)
+    u \element \scriptx, u \element L (\mathc, \scriptx), u^* \element
+    L(\scriptx,\mathc)
+
+
+    If we have a register X whose associated complex Euclidean space is
+    \scriptx, then a state of X is a density opoerator \rho \element
+    D(\scriptx).
+
+    Important fact: D(\scriptx) is a convex set. This means that if
+    \rho_0, \rho_1 are two density operator and \lamda \element [0,1]
+    then: \lamda \rho_0 + (1-\lambda)\rho_1 \element
+    D(\scriptx). It's easy to show that the trace is 1 and that the
+    result is positive semi-definite. Such a density operator could be
+    constructed by considering an experiment whereby a coin flip,
+    outcome weighted by lambda, determines whether or not you choose
+    \rho_0 or \rho_1 to represent the state.
+
+    Typically, states are introduced as unit vectors in introductory QM
+    courses (pure states). However, with a density operator formalism
+    you can consider pure states as a special case of density operators.
+    Pure states ar states of the form uu^* for some unit vector u 
+    \element \scriptx.
+
+    Consider S(\scriptx) = {u\element \scriptx: ||u|| = 1}. This is the set
+    of all unit vectors.
+
+    The pure states are the extreme points on the convex set
+    D(\scriptx). There would be no way to write a pure state as a convex
+    combination of states.
+
+    The set of density operators is also a compact set (closed and
+    bounded). The density operators have a ``solid boundary''. The
+    sequence of density operators converges to a density operator. The
+    convex set is equal to its hull at extreme points. So, the density
+    operator is a convex combination of pure states.
+
+    More generally, a convex combination of density operators is
+    \Sigma_{a\alement\Gamma}p(a)\rho_a for some arbitarary alphabet
+    \Gamma, a probability vector p \element P(\Gamma), and {\rho_a : a
+    \element Gamma} \properlycontainedin D(\scriptx). In this class, convex
+    combination is finite. 
+
+    \begin{Theorem}[Spectral Theorem - Unproved, just stated]
+        Allow A \element L(\scriptx) to be a normal operator, let n =
+        dim(\scriptx), and let \lambda_1,\cdots,\lambda_n be the
+        eigenvalues of A. The theorem results in the fact that there
+        exists an orthonormal basis {x_1,\cdots,x_n} \containedin
+        \scriptx such taht A = \Sigma_{k=1}^n \lambda_k x_k x_k^*p.
+
+        {x_1,\cdots,x_n} is a spectral decomposition of A. (A normal
+        operator is one that has the property that AA^* = A^*A)
+
+        Warning: This theorem only holds for NORMAL operators! For
+        example {0 1; 0 0} is not a normal operator and can not use the
+        spectral decomposition theorem. You can always write any
+        operator A as A = H + i K, H,K \element Herm(\scriptx)
+        H = \frac{A + A^*}{2}, K = \frac{A - A^*}{2i}. For A to be
+        normal can also be stated as saying that [H,K] = HK-KH = 0.
+
+    \end{Theorem}
+
+    Consider compound registers. X = (Y_1,\cdots,Y_n). The set of
+    classical states corresponding to X (the classical state set of X)
+    is \Sigma =\Gamma_1 x \cdots x \Gamma_n (cartesian product), where
+    \Gamma_1,\cdots,\Gamma_n are the classical state sets of
+    Y_1,\cdots,Y_n. The complex Euclidean space associated with X is
+    \scriptx = \mathc^\Sigma = \mathC^{\Gamma_1 x \cdots x \Gamma_n} =
+    \mathC^\Gamma_1 \tensor \cdots \tensor \mathc^\Gamma_n = y_1 \tensor
+    \cdots \tensor y_n.
+
+    In general, the tensor product of vectors y_1 \element
+    \scripty_1,\cdots, y_n \scripty_n is the (y_1\tensor \cdots \tensor
+    y_n)(a_1,\cdots,a_n) = y_1(a_1)\cdots y_n(a_n). Not every element of
+    \scripty_1 \tensor \cdots \tensor \scripty_2 can be written as y_1
+    \tensor \cdots \tensor y_n, but \scripty_1 \tensor \cdots \tensor
+    \scripty_n is spannesd by these vectors.
+
+    We have a Similar definition of the tensor product for operators.
+    A_1 \elementof
+    L(\scriptx_1,\scripty_1),\cdots,A_n\elementL(\scriptx_n,\scripty_n).
+    The tensor product of these operators is the operator A_1 \tensor
+    \cdots \tensor A_n \element L(\scriptx_1 \tensor \cdots \tensor
+    \scriptx_n, \scripty_1\tensor \cdots \tensor \scripty_n) defined as
+    (A_1\tensor \cdots \tensor
+    A_n)((a_1,\cdots,a_n),b_1,\cdots,b_n))=A_1(a_1,b_1)\cdots
+    A_n(a_n,b_n).
+
+    Alternatively, A_1\tensor \cdots \tensorA_n is the unique operator
+    for which (A_1A\tensor \cdots \tensorA,_n)(x_1\tensor \cdots \tensor
+    x_n) = (A,x_1)\tensor \cdots \tensorA(A_n,x_n) for all x_1 \element
+    \scriptx_1,\cdots,x_n \element \scriptx_n.
+
+    Consider a state of X (compound register) of the form \rho = \rho_1
+    \tensor \cdots \tensor \rho_n for \rho_1 \element
+    D(\scripty_1),\cdots,\rho_n\element D(\scripty_n) is called a product
+    state. It represents independence amoung the systems.
+
+    Consider a simple example. \Gamma_1 and \Gamma_2 = {0,1} and \Sigma
+    = Gamma_1 x Gamma_2 (cart prod) = {00,01,10,11}. Y_1 and Y_2 are
+    qubits and X = (Y_1,Y_2) (the pair of qubits).
+
+    Note: In general, E_{a,b} is the matrix with a 1 in the entry (a,b),
+    0 everywhere else.  E_{0,0} = {1 0; 0 0} \element D(\scripty_1).
+
+    u = \frac{e_1+e_2}{\sqrt{2}}, u u^* = .5 * {1 1; 1 1} \element
+    D(\scripty_2).
+
+    Let \rho_1 = {1 0; 0 0} and \rho_2 = .5 * {1 1; 1 1}. Then \rho_1
+    \tensor \rho_2 = {.5 .5 0 0 ; .5 .5 0 0; 0 0 0 0 ; 0 0 0 0}.
+
+    We cans also consider \rho = .5 {1 0 0 0; 0 0 0 0; 0 0 0 0; 0 0 0
+    1}. It's also a valid density opeartor. It's a convex combination of
+    .5 E_{0,0}\tensor E_{0,0} + .5 E_{1,1}\tensor E_[1,1}.
+
+    a final example is rho = .5{1 0 0 1; 0 0 0 0; 0 0 0 0; 1 0 0 1} = v
+    v^* for v = \frac{1}{\sqrt{2}} (e_0\tensor e_0+e_1 \tensor e_1) =
+    \frac{|00>+|11>}{\sqrt{2}}.
+
+    Imagine we have X = (Y_1,\cdots,Y_n) in a particular state \rho =
+    D(\scriptx) = D(\scripty_1 \tensor \cdots \tensor \scripty_n).
+    Remove Y_k. The state of (Y_1,\cdots,Y_{k-1},Y_{k+1},\cdots,Y_n) is
+    uniquely determined by \rho and is Tr_{\scripty_k}(\rho) (the
+    partial trace of \rho).
+
+    The partial trace is Tr_{\scripty_k} is the unique linear map that
+    satisfies Tr_{\scripty_k}(Y_1 \tensor \cdots \tensor Y_n) =
+    Tr(Y_k)y_1\tensor \cdots\tensor y__{k-1} \tensor y_{k+1} \tensor
+    \cdots \tensor y_n. \rho_1 \tensor \cdots \tensor \rho_n (taking
+    away Y_k) must be \rho_1 \tensor \cdots \tensor \rho_{k-1} \tensor
+    \rho_{k+1}  \tensor \cdots \tensor \rho_n. It can'b te that removing
+    \rho_k changes the other states.
+
+    Tr_{\scripty_k}(\rho) = \Sigma_{b_k}(\math1  \tensor \cdots \tensor
+    \e_{bx}^* \tensor \math1) \rho (\math1 \tensor \cdots
+    \tensor e_{bk} \tensor \cdots \tensor \math1)
+
+    We can alse go in the other direction (X,Y). Suppose we have a state
+    \rho \elementt D(\scriptx) of X. We may ask what states \sigma
+    \element D(\scriptx \tensor \scripty) are consistent with \rho,
+    meaning Tr_{\scripty}(\sigma) = \rho. In general, there are many
+    states \sigma that accomplish this. It is intersting to consider the
+    case when \sigma is a pure state.
+
+    \begin{Theorem}[Operator vector correspondence]
+        Let \scriptx and \scriptty be complex Euclidean spaces and let P
+        \element Pos(\scirptx). A purifications u \element (\scriptx
+        \tensor \scripty) exists if and only if dim(\scripty) \ge
+        rank(P). The rank is the dimension of the image (the dimension
+        of the space spanned by the row or column vectors in any
+        representation).
+
+        Let's introduce the operator vector correspondence. Imagine we
+        have two complex Euclidean spaces \scriptx \element
+        \mathc^\Sigma, \scripty \element \mathc^\Gamma. Define a linear
+        map vec: L(\scriptx,\scripty) \rightarrow \scripty \tensor
+        \scriptx as follows: vec(E_{a,b}) = e_a \tensor e_b.
+        Alternatively, vec(\ket{a}\bra{b}) = \ket{a}\ket{b} for all a
+        \element Gamma, b \element \sigma. e.g. vec({\alpha \beta;
+        \gamma \delta} = {\alpha; \beta; \gamma; \delta}.
+    \end{Theorem}
+
+    Introducing some identities: 1. <vec(A),vec(B)> = <A,B> (``def''
+    over equals) Tr(A^* B). 2. (A\tensor B)vec(C) = vec(A C B^T).
+    3. A,B \element L(\scripty,\scriptx) then
+    Tr_{\scripty}(vec(A)vec(B^*) = AB^* and
+    Tr_{\scriptx}(vec(A)vec(B^*)) = (B^*A)^T. 4. vec(uv^*) = u\tensor
+    \overbar(v) (overbar means element-wise conjugate)
+
+    \begin{Theorem}
+        Definition: Suppose \scriptx and \scripty are complex Euclidean
+        spaces and that P\element Pos(\scriptx). A vector u \element
+        \scriptx \tensor \scripty is a purification if Tr_{\scripty}(u
+        u^*) = P. We would like to know under which conditions a
+        purifications exists. Also, if it exists, what relationships can
+        we draw relating it to other purifications? Thankfully, we can
+        answer these questions.
+
+        Proof: Assume a purification u \element \scriptx \tensor
+        \scripty of P exists. Let's let A \element L(\scripty,\scriptx)
+        be the unique operator with u = vec(A) (since vec is one-to-one
+        and onto; bijective). We have P = Tr_{\scripty}(u u^*) =
+        Tr_{\scripty}(vec(A)vec(^*)) = A A^*. Therefore rank(P) =
+        rank(AA^*) \le rank(A) \le dim(\scripty). That's the first part
+        of the proof.
+
+        To prove the second part suppose that dim(\scripty) \ge rank(P). 
+
+        Using the spectral theorem, we may write P = \Sigma _k=1}^r
+        \lambda_k x_k x_k^* (where r is the rank(P)) for
+        \lamba_1,\cdots,\lambda_r > 0. We don't care about 0 eigenvalues
+        because they don't change the sum.  {x_1,\cdots,x_r} will be an
+        orthonormal set by the spectral theorem. In general, for any
+        Hermitian H \properlycontainedin Herm(\mathc^n) we order
+        eigenvalues \lambda_1 \ge \lambda_2 \ge \cdots \ge \lambda_n.
+        Choose {y_1,\cdots,y_r} to be any other normal set. we can do
+        this because the dimension of \scripty is as big as the rank of
+        P. Let's define A = \Sigma_{k=1}^r \sqrt{\lambda_k} x_k y_k^*
+        \element L(\scripty,\scriptx) we have A AA^* = \Sigma_{k=1}^r
+        \lambda_k x_k x_k^* = P. Theefore vec(A) is a purification of P.
+        Thus, there exists a purifaction. QED.
+\end{Theorem}
+\end{section}

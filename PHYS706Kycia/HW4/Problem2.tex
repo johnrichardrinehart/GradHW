@@ -1,0 +1,97 @@
+\begin{homeworkProblem}
+\textbf{A plane wave is incident normally (from vacuum) upon a flat surface of a semi-metal for
+which the conductivity, $\sigma$ is very small.}
+
+\begin{homeworkSection}{a}
+\textbf{Find the intensity and the phase of the reflected light to the first order in the conductivity, $\sigma$.
+}
+\\
+
+The trick to this problem is to understand that a finite (not infinity) conductivity $\sigma$ has the physical effect of introducing an imaginary component into the permittiviy $\epsilon = \epsilon_{d} + j\frac{\sigma}{\omega}$. All of the other equations remain the same. As $\epsilon$ is now a complex quantity let us write it as $\epsilon = A'\exp(i2\theta)$. This will have advantages over the polar form as will become apparent shortly.
+\\
+
+Light reflecting normally off of a surface can be shown to change amplitude as : $\frac{E_r}{E_0} = \frac{n_1-n_2}{n_2+n_1}$ where $n_2$ is the index of refraction of the material upon which the light impinges. If this index of refraction is larger than $n_1$ then the wave will experience a sign reversal. Now, $n = \sqrt{\frac{\mu \epsilon}{\mu_0 \epsilon_0}}$. Assuming the material has a magnetic permeability close to that of vacuum (a reasonably assumption for optical materials). $n \approx \sqrt{\epsilon/\epsilon_0}$. But, I will not make this approximation (it's not necessary). Using my expression for $\epsilon$ in conjunction with my expression for $n$ allows 
+\begin{align*}
+n^2 &= \frac{\mu A' exp(i2\theta)}{\mu_0\epsilon_0} \\ &= A^2\exp(2i\theta) \\
+A^2 &= \mu/(\mu_0 \epsilon_0)\sqrt{\epsilon_{d}^2+(\sigma/\omega)^2}
+\end{align*}
+Substituting this expression for $n$ into the prior expression for the ratio of the electric field amplitudes allows me to write: 
+\begin{align*}
+\frac{E_r}{E_I} &= \frac{1-A\exp(i\theta)}{1+A\exp(i\theta)} \\
+&= \frac{1-A^2-2i\sin(\theta)}{1+A^2+2A\cos\theta}
+\end{align*}
+Now, I must consider expansions of $A(\sigma)$ and $\theta(\sigma)$.
+\\
+
+Expanding $A^2(\sigma)$ about zero $\sigma$ yields : $\frac{\mu  \epsilon _d}{\mu _0 \epsilon _0}+\frac{\mu  \sigma ^2}{2 \mu _0 \omega ^2 \epsilon _0 \epsilon
+   _d}+O\left(\sigma ^3\right)$. Keeping only first order in $\sigma$ simplifies this expression to:
+	
+	\[ A^2(\sigma) \approx \frac{\mu \epsilon_d}{\mu_0 \epsilon_0} \]
+\\
+
+Expanding $A(\sigma)$ about zero $\sigma$ and retaining small orders yields $\sqrt{\frac{\mu  \epsilon _d}{\mu _0 \epsilon _0}}+\frac{\sigma ^2 \sqrt{\frac{\mu }{\mu _0 \epsilon _0}}}{4 \omega ^2
+   \epsilon _d^{3/2}}+O\left(\sigma ^3\right)$: However, I'm only required to retain orders up to 1st in $\sigma$. Thus, 
+	
+	\[ A(\sigma) \approx \sqrt{\frac{\mu  \epsilon_{d}}{\mu _0 \epsilon _0}} \].
+	\\
+		
+Finally, expanding $\theta(\sigma)$ similarly yields: \[\frac{\sigma }{\omega \epsilon_{d}}+O\left(\sigma ^3\right)\approx \frac{\sigma}{\omega \epsilon_{d}} \].
+
+	You may notice that the second order term in the expansion for $A^2$ and the second order term in $A$ are not related through a square root. We might expect this to be the case as, in general, for some function $f$, its power series expansions (denoted by $P(f)$) does exhibit the following property: $(P(f))^2 =P(f^2)$. However, this is only true for both expansions. While executing $P(f)*P(f)$ to determine $P(f^2)$ terms of different order will combine to form the terms generated natively in expanding $P(f^2)$. This is why it is important to expand $A^2$ and $A$ separately. This idea can be summarized more concretely by considering the power series expansion of $\sin(x)$ whose preliminary expansion about $x=0$ is $x-\frac{x^3}{3!}$ and $\sin^2(x)$ whose first preliminary terms are $x^2-\frac{x^4}{3}$. But, $(\frac{x^3}{3})^2 \ne \frac{x^4}{3}$. Notice that $2*x*\frac{x^3}{3!} = \frac{x^4}{3}$ which is exactly the term that appears in the power series expansion of $\sin^2(x)$.
+	\\
+
+I will also utilize the fact that $\sin\theta$ expands to first order in $\theta$ as $\theta$ and that $\cos\theta$ expands to first order in $\theta$ as 1. More properly, I should separately expand $\cos(\theta(\sigma))$ and $\sin(\theta(\sigma))$. However, this approximation turns out to be the same. So, ignoring this slight breach of protocol: the ratio of my field amplitudes is now (letting $\frac{\mu\epsilon_d}{\mu_0 \epsilon_0} = B^2$): $\frac{1 - B^2 - 2i B \frac{\sigma}{\omega \epsilon_d}}{1 + B^2 + 2 B \frac{\sigma}{\omega \epsilon_d}}$.
+\\
+
+The phase of the reflected wave can be obtained by taking the arctangent of the imaginary and the real portions of the previous expression.
+
+\begin{problemAnswer}{\Phi &= \arctan(2\frac{B \frac{\sigma}{\omega \epsilon_d}}{B^2-1})}\end{problemAnswer}
+
+I could express this in terms of more fundamental variables (by substituting my expression for B), but this is not particularly illuminating. This solves the problem. Note that in the limit of no conductivity the reflected phase is zero.
+\\
+
+Now, to determine the intensity of the reflected wave I must find the squared magnitude of $\frac{E_r}{E_I}$. Utilizing my prowess in solving for squared magnitudes: $|\frac{E_r}{E_I}|^2 = \frac{(1-A^2)^2+4\sin^2\theta}{(1+A^2+2A\cos\theta)^2}$. Substituting my approximations of $\theta$ and $A$ I obtain:
+\begin{problemAnswer}{ \frac{(1-B^2)^2+4(\frac{\sigma}{\omega \epsilon_d})^2}{(1+B)^2}}\end{problemAnswer}
+
+Don't complain that my expansions of $\sin\theta$ and $\cos\theta$ were premature or ill-formed. They are satisfactory in the limit of sufficiently low $\sigma$. There may exist a simpler expression than this. I could substitute $B = \sqrt{\frac{\mu\epsilon_d}{\mu_0 \epsilon_0}}$ but that would only make this solution uglier. This is a solution to the problem. 
+
+\end{homeworkSection}
+
+\begin{homeworkSection}{b}
+\textbf{Find the intensity of the transmitted light as a function of the distance from the surface (to the
+leading order of $\sigma$).}
+\\
+
+This problem requires me using knowledge of the skin depth of a material. The next few lines are pretty much copy-pasted from 5.18 (a) of Jackson's Electrodynamics where he discusses this exact phenomenon.
+\\
+
+For a material with finite conductivity, imagine an H field (oriented in the $\hat{x}$ direction) is given by $H_x(z,t) = h(z)\exp(-i\omega t)$. By manipulating Maxwell's equations ($\nabla x H = J + \frac{\partial D}{\partial t}$, $\nabla x E = -\frac{\mu\partial H}{\partial t}$ and $J = \sigma E$) we can show that $\nabla^2 B = \mu\sigma \frac{\partial{B}}{\partial{t}}+\mu\epsilon\frac{\partial^2B}{\partial t^2}$ (where I have assumed a linear medium ($\mu B = H$). I have assumed a linear medium in this case. Assuming a wave incident on the medium as described previously: Substituting this into Maxwell's equations we can find that $k^2 = \mu \epsilon \omega^2 + i\mu\sigma \omega$. The complex part of this solution accounts for an attenuation into the medium ($\exp(i(\text{real}+i*\text{imaginary})) = \exp(i*\text{real})*\exp(-\text{imaginary})$). Thus, after being transmitted into the material, the wave encounters an exponential attenuation due to the finite conductivity. This length scale depends on $1/Im(k) = \Big( 2/(\mu\epsilon\omega^2)(\sqrt{1+(\sigma/(\epsilon\omega))^2)}-1)\Big)^{-.5}$. This is the so-called ``skin depth'' of the material. By making the assumption that $\sigma$ is small relative to the other quantities in the problem I obtain an approximate expression for this skin depth: In this limit, $\delta \approx 2\sqrt{\frac{\epsilon}{\mu\sigma^2}}$: the high-frequency or low conductivity limit of the skin depth of this material.
+\\
+
+Thus, consider the amplitude of the transmitted wave. If the incident wave has amplitude $E_0$ the transmitted wave will have intensity $E_0*n_1/(n_1+n_2)$, where $n_1$ describes the index of refraction of the ``host'' material. Thus, using our knowledge of the skin depth we can postulate that the amplitude of the wave a distance ``d'' into the surface will be of the strength $E_0\exp(-d/\delta)/(1+n_2)$, where $n_2$ can be obtained from part a) of this problem. Thus, the intensity of the wave is $|E_0|^2 |1/(1+n_2)|^2 \exp(-2d/\delta)$ (the magnitude squared of the amplitude). The expression for $|1/(1+n_2)|^2$ is not particularly interesting but can be shown to be $1/(1+A^2-2A\ cos\phi)$, where $ A = \sqrt{\epsilon_{d}^2+(\sigma/\omega)^2}$ and $\phi = \arctan(\sigma/\omega \epsilon_{d})$. Expanding this expression about small $\sigma$ yields 
+\begin{align*}
+1/(1+A^2-2A\cos\phi) \approx & \frac{1}{\frac{\mu  \epsilon_{d}}{\mu _0 \epsilon _0}+2 \sqrt{\frac{\mu  \epsilon_{d}}{\mu _0 \epsilon _0}}+1} \\ &+\frac{\mu ^2
+   \sigma ^2 \left(2 \omega ^2 \epsilon_{d}^2-\omega \epsilon_{d}^2 \left(\sqrt{\frac{\mu  \epsilon_{d}}{\mu _0 \epsilon
+   _0}}+1\right)\right)}{2 \omega ^2 \omega \epsilon_{d}^2 \left(\frac{\mu  \epsilon_{d}}{\mu _0 \epsilon
+   _0}\right){}^{3/2} \left(\mu  \epsilon_{d}+\mu _0 \epsilon _0 \left(2 \sqrt{\frac{\mu  \epsilon_{d}}{\mu _0 \epsilon
+   _0}}+1\right)\right){}^2}+O\left(\sigma ^3\right) . 
+\end{align*}
+	The first term looks just like $1/(1+n_2)^2$ for $n_2$ being completely real. 
+	\\
+	
+	Admittedly, the second term in my solution is a little ugly. However, the problem explicitly asks for an expression for the transmitted intensity given the ``leading order'' in the approximation of $\sigma$. Thus, my final solution for problem 2 part b) is as follows:
+	\\
+	
+	\begin{problemAnswer}{
+	|E_0|^2 |1/(1+n_2)|^2 &\exp(-2d/\delta) \\ &= |E_0|^2 \Big( 1/(1+A^2-2A\cos\phi)\Big) \\ 
+	& \approx |E_0|^2 \frac{1}{(1+\sqrt{\frac{\mu  \epsilon_{d}}{\mu _0 \epsilon _0}})^2} \\
+	&+\frac{\mu ^2
+   \sigma ^2 \left(2 \omega ^2 \epsilon_{d}^2-\omega \epsilon_{d}^2 \left(\sqrt{\frac{\mu  \epsilon_{d}}{\mu _0 \epsilon
+   _0}}+1\right)\right)}{2 \omega ^2 \omega \epsilon_{d}^2 \left(\frac{\mu  \epsilon_{d}}{\mu _0 \epsilon
+   _0}\right){}^{3/2} \left(\mu  \epsilon_{d}+\mu _0 \epsilon _0 \left(2 \sqrt{\frac{\mu  \epsilon_{d}}{\mu _0 \epsilon
+   _0}}+1\right)\right){}^2}+O\left(\sigma ^3\right) \Big)\exp \Big(-d\sqrt{\frac{\mu\sigma^2}{\epsilon}}\Big)
+	}
+	\end{problemAnswer}
+\end{homeworkSection}
+\end{homeworkProblem}
+

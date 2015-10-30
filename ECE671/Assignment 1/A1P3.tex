@@ -1,0 +1,57 @@
+\section*{Problem 3: Lossy LC matching network}
+
+The first thing to do is to find the amount of loss in the matching network.
+This loss will be due to two non-ideal conditions for the circuit elements
+\begin{enumerate}
+    \item The inductor is lossy with series lossy element $R_s$
+    \item The capacitor is lossy with parallel lossy element $R_p$
+\end{enumerate}
+
+Thus, the loss in $R_s$ can be found by driving the now-matched input network
+with a voltage $V_{in}$ and finding the following:
+
+\[ 
+        P_{s} = \frac{1}{2} \Re \left( V_{s} I_s^* \right) 
+\]
+
+$V_s = V_{in} \frac{R_s}{Z_{in}}$ and $I_s = \frac{V_{in}}{Z_{in}}$ 
+
+The power delivered to the series resistor is now 
+\[ 
+    P_s = \frac{1}{2} \frac{\left|V_{in}\right|^2 R_s}{\left|Z_{in}\right|^2}
+\]
+
+The power delivered to the parallel resistor is a bit more tricky. We can
+consider the voltage across the parallel branch (with $R_p$, $R_L$ and $Z_C$).
+The voltage across that branch is 
+
+\[ 
+        V_p = V_{in} \frac{Z_c||R_L||R_p}{Z_{in}}
+\]
+
+The current through $R_p$, $I_p$, is:
+\[ 
+    I_p = \frac{V_p}{R_p} 
+\]
+
+Thus, we can write the power delivered to this resistor as:
+
+\[ 
+    P_p = \frac{1}{2}  \frac{\left|V_p \right|^2 }{R_p}
+\]
+
+And the total power delivered to these two circuits elements is just
+
+\begin{align}
+    P_s + P_p = \frac{1}{2} \frac{\left| V_{in} \right|^2 R_s}{\left| Z_{in}
+    \right|^2} + \frac{1}{2} \frac{\left| V_{in} \right|^2 \Big|
+Z_c||R_L||R_p \Big|^2}{R_p\left| Z_{in} \right|^2}
+\end{align}
+
+%TODO: Keep expanding the expression for total loss and express this in terms of
+%a ratio n = R_l / R_s. Show that the loss increases as n grows. 
+
+%TODO:To find the insertion loss, calculate the amount of power received by the
+%load and subtract that from the power delivered by the source. This is, find
+%Z_{in}(f) and calculate V_{source}^2/(Z_{in}) and subtract 
+%from V_source^2/{Z_{in}+Z_{source})

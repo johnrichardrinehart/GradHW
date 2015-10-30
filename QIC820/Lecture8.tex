@@ -1,0 +1,224 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\begin{document}
+
+Recall the optimal measurement problem: Given an ensemble
+%$ \eta: \Gamma \rightarrow \Pos(\scriptx) $ 
+%find a measurement $ \mu: \Gamma \rightarrow Pos(\scriptx) $ 
+so that $ \sum\limits_{a \in \Gamma} <\mu(a),\eta(a)> $ is maximized.
+
+\section{Reviewing SDPs}
+
+$   \Phi \in T(\scriptx,\scripty)$ $ A \in Herm(\scriptx) $ $B \in
+Herm(\scripty)$ (must be hermiticity-preserving)
+
+We construct a primal and dual problem (he defines those below, like
+last time)
+
+Stardard tricks to cast interesting semidefinite optimization problems
+as SDPs (in a formal sense) include:
+
+\begin{enumerate}
+    \item Multiple variables can be represented by block matrices
+    \item Introduce aux. variables (e.g. "slack" variables)
+\end{enumerate}
+
+Let us define $ \scriptz = \mathbb{C}^\Gamma$ and let $ A = \sum\limits_{a \in
+\Gamma} E_{a,a} \tensor \eta(a) \in Pos(\scriptz \tensor \scriptx) $ 
+
+This thing $A$ looks like a block diogonal matrix with $\eta(i)$ in the
+ith block (draws block diagonal matrix).
+
+$ Tr(A) = \sum\limits_{a\in \Gamma} Tr(E_{a,a})Tr(\eta(a)) =
+Tr(\sum\limits_{a \in
+    \Gamma} \eta(a) = 1 (because \eta is an ensemble) $
+
+    In fact $A \in D(\scriptz \tensor \scriptx)$. Sometimes we call $A$ a
+    classical-quantum state (or CQ state). We often associate such a
+    state with an ensemble of quantum states. If $\eta(a) =
+    p(a)\rho(a)$, then this state is: \[ 
+            \sum\limits_{a \in \Gamma} p(a) E_{a,a} \tensor \rho_a  =
+            \sum\limits_{a
+            \in \Gamma} p(a) \ket{a}\bra{a} \tensor \rho_a
+    \]
+
+    Now consider the SDP $ (\Phi,A,B) $ where $ \Phi \in T(\scriptz
+    \tensor \scriptx, \scriptx)$ is $Tr_z $ and $B = \math1_\scriptx$.
+    \subsection{Primal Problem}
+    The primal problem is: $max <A,X>$ such that $Tr_\scriptz(X) =
+    \math1_\scriptx$ for $X \in Pos(\scriptz \tensor \scriptx)$.
+
+    To see the connection to measurements concsider any primal feasible
+    X. Write $X = \sum\limits_{a,b \in \Gamma} E{a,b} \tensor X{a,b}$ for some
+    choice of ${X_{a,b}: a,b \in \Gamma} \subset L(\scriptx)$. $X_{a,b}
+    = (e_a^* \tensor \math1_\scriptx)X(e_b \tensor \math1_\scriptx)$
+
+    \begin{enumerate}
+        \item $X \in Pos(\scriptz \otimes \scriptx)$ then $X_{a,a} \in
+            Pos(\scriptx)$ for every $a \in \Gamma$
+        \item  We also know that for this X, $Tr_\scriptz(X) =
+            \sum\limits_{a
+            \in \Gamma} X_{a,a}$. If it's primal feasible then this sum
+            must equal $\math1_{\scriptx}$.
+        \item $ <A,X> = \sum\limits_{a \in \Gamma} <\eta(a),X_{a,a}>$
+    \end{enumerate}
+    If $X \in \scriptA$ (is primal feasible)then by defining $\mu(a) =
+    X_{a,a}$ we obtain a measurement $\mu$ such that $<A,X> =
+    \sum\limits_a
+    <\mu(a), \eta(a)>$.
+
+    Given a measurement $\mu$, $X = \sum\limits_{a \in \Gamma} E_{a,a} \otimes
+    \mu(a)$ is primal feasible.
+    \subsection{Dual Problem}
+    Now, let's compute the dual problem. Let's start with the definition
+    of the dual problem: 
+    \[ 
+            min <\math1_{\scriptx}, Y> 
+    \]
+    such that $Tr_\scriptz^*(Y) \ge A$ and $Y \in Herm(\scripttx$. This
+        is great because all we have to do is minimize a trace! This
+        problem can be written as follows by identifing that we are
+        trying to find the $min
+        Tr(Y)$. The adjoint of the $Tr_\scriptz$ can be expressed as $\math1_\scriptz \tensor Y$
+    
+   So, now, casting the problem as a semidefinite algorithm
+   \begin{align}
+       \min Tr(Y) \intertext{such that} \sum_{a\in \Gamma} E_{a,a}
+       \otimes (Y-\eta(a)) \in Pos(\scriptz \otimes \scriptx) \\
+       Y \in Herm(\scriptx)
+   \end{align}
+  Equivalently,
+  \begin{align}
+      minimize Tr(Y) \intertext{such that} Y \ge \eta(a) for all a \in
+      Gamma \\
+      Y \in Herm(\scriptx)
+  \end{align}
+
+  $\Phi \in T(\scriptx,\scripty)$, $\Phi: L(\scriptx) \rightarrow
+  L(\scripty)$
+  $<Y,\Phi(X)> = <\Phi^*(Y),X>$.
+
+  Note that strong duality holds by Slater's theorem. One way you can
+  think about the Slater theorem is that it gives you a condition of the
+  primal feasible sets that guarantees you strong duality. It's not
+  flat. None of these feasible regions is flattened into some lower
+  dimensional region. You know that optimal values must be achieved in
+  both the primal problem and the dual problem.
+
+  \section{Simple Example of a Measurement}
+        it's going to be a simple problem that could be solved with the
+        Holevo-Helstrom theorem (two states). Consider the following
+        case: With probabilty .5 you are given $\ket{0}\bra{0}$ and with
+        probability half you are given $\ket{1}\bra{1}$. What is the
+        optimal probability to be correct? (From earlier in our lives we
+        might know that the answer is $\cos^2(\pi/8)$.
+        
+        Let's try to solve this problem using semidefinite programming.
+        Now we can prove that we can't do any better than
+        $\cos^2(\pi/8)$. If we think about an ensemble $\eta(0) = .5 {1
+        & 0 \\ 0 & 0 }$ and $\eta(1) = .25 {1 & 1 \\ 1 & 1} $. You can
+            ask a computer to solve for $Y = {\frac{3+\sqrt{2}}{8} & 1/8
+        \\ 1/8 & \frac{1+\sqrt{2}}{8}}$. He did this in MATLAB before
+        class and used WolframAlpha to turn the numbers into the
+        symbols.
+
+        Then $\Tr(Y) = .5 + \frac{1}{\sqrt{2}} = .85\cdots =
+        \cos^8(\pi/8)$. Thus, we know that $\cos^2(\pi/8)$ is the
+        best we can do to distinguish between the two states.
+
+    \section{Complementary Slackness}
+        $(\Phi, A, B)$ is an SDP. Let's assume that strong duality holds
+        and that optimal values have been achieved. So, $X \in \scripta$
+        and $ Y \in \scriptb $, $<A,X> = <B,Y>$. This tells us that
+        $X\Phi^*(Y) = XA$ and that $ Y\Phi(X) = YB $ (this second
+        equality is trivial but demonstrates the primal-dual symmetry).
+
+        We can prove this:
+        
+        \begin{proof}
+            <A,X> = <B,Y> = <\Phi(X),Y> (by the primal feasibility of X)
+             = <X,\Phi^*(Y) = <\Phi^*(Y),X> (by hermiticity)
+             This implies that $ <\Phi^*(Y) - A , X> = 0 $ . But this is
+             the inner product of two positive semidefinite operators.
+             The images of the two operators must be orthogonal in order
+             that the two operators have zero trace. You can show this
+             by showing if $<P,Q> = 0$ that $P,Q \ge 0$ (handy fact).
+
+         This impplies that $\Phi^(Y)-A)X = 0 = \Phi^(Y)X = AX$. This is
+         equivalent to $X\Phi^*(Y) = XA$ (by taking the adjoint of both
+         sides taking advantage of the hermiticity).
+        \end{proof}
+
+        Let's suppose that we have an optimal measurement $\mu : \Gamma
+        \mapsto Pos(\scriptx)$ is an optimal measurement. This means
+        that $X = \sum\limits_{a \in \Gamma} E_{a,a} \otimes \mu(a)$ is
+        optimal for our SDP. Let Y be any optimal solution to the dual.
+        What does complementary slackness get us?
+
+        $X\Phi^*(Y) = \sum\limits_{a \in \Gamma} E_{a,a} \otimes \mu(a)
+        Y$ so we know that $XA = \sum\limits_{a \in \Gamma} E{a,a}
+        \otimes \mu(a) \eta(a)$ (we should have a double sum but we use
+        orthogonality of $E_{a,a}E_{b,b}$). Thus, $\mu(a)Y =
+        \mu(a)\eta(a)$ for all $a \in \Gamma$.
+
+        Finally, $\sum_a \mu(a)Y = \sum_a \mu(a)\eta(a) = Y$. So we
+        have discovered that $Y$ is unique. We have shown that the
+        measurement is optimal. If Y is dual feasible for some given
+        measurement then you can show that the measurement given is
+        optimal. If the measurement is not optimal then Y will not be
+        dual feasible. This can be stated in a theorem:
+
+        \begin{theorem}[Holevo, Yuen-Kennedy-Lax]
+            \eta: \Gamma \in Pos(\scriptx) is an ensemble
+            \mu: \Gamma \mapsto Pos(\scriptx) is a measurement
+            We can say that $\mu$ is optimal for $\eta$ if and only if
+            $Y = \sum\limits_{a\in \Gamma} \mu(a) \eta(a)$ is hermitian
+            and $Y \ge \eta(a)$ for all $a \in \Gamma$. This was proven
+            by Yuen-Kennedy-Lax without thinking about semidefinite
+            programming. They solved this as a convex optimization
+            problem. This is impressive.
+        \end{theorem}
+        \section{Final Example} 
+        Let's suppose that $P,Q \in Pos(\scriptx)$. Consider the
+        following SDP:
+        \subsection{Primal Problem} 
+        \begin{align}
+            \max .5 Tr(X) + .5 Tr(X^*) such that {P & X \\ X^* & Q} \ge
+            0 \\
+            X \in L(\scriptx) \\
+        \end{align}
+
+        We can cast this as some $w \in Pos(\scriptx \directsum \scriptx)$
+        where $\Phi(w_{11} & w_{12} \\ w_{21} & w_{22} def= {w_{11} & 0
+    \\ 0 & w_{22}} = {P & 0 \\ 0 & Q}$
+        We could equally well describe this like this:
+    $\max Re(Tr(X)) : { P & X \\ X^* & Q) \ge 0}$. Note that $F(P,Q) =
+        \max {|Tr(X)|: {P & X \\ X^* & Q} \ge 0}$. These are almost the
+        same thing. In fact, they are the same thing because for any
+        choice of $X$, ${P & X \\ X^* Q} \ge 0$ if and only if ${P &
+        \alpha X \\ \overbar{\alpha} X^* & Q}$ for $\alpha \in
+        \mathbb{C}$ and $|\alpha| = 1$.
+
+        \subsection{Dual Problem}
+        $\Phi$ describes the primal problem. It's its own adjoint. This
+        makes the dual problem easy to write down.
+
+        \begin{align}
+            \min .5 <P,Y> + .5 <Q,Z>  such that {Y & -\math1 \\ -\math1
+                                                   & Z} \ge 0 \\
+            Y,Z \in Pos(\scriptx)
+        \end{align}
+       
+        Slater's theorem can show us that we can find an optimal value.
+        The only possible way that the dual problem matrix can be positive
+        semidefinite is if and only if $Y,Z > 0$ and $Z \ge Y^-1$.
+
+        Now $F(P,Q) = \inf_{Y > 0} {.5<P,Y> + .5<Q,Y^-1>}$. This is
+        easily obtained from SDP duality.
+
+        This is equivalent to a known theorem known as Alberti's
+        theorem. Of course, the original proof of Alberti's theorem has
+        nothing to do with semidefinite programming.
+
+\end{document}

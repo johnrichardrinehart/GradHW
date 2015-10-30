@@ -1,0 +1,179 @@
+\section*{Problem 1a}
+The maximum power available from the source is determined by the condition where
+the source is conjugately matched to the load (this is when $Z_s = Z_{in}^*$).
+The load impedance is specified as 100~$\Omega$. Thus, a conjugately matched
+input impedance would be given by (100~$\Omega$)$^*$. This load will divide the
+voltage of the source. Thus, the power available
+from the source is given by:
+\begin{align*}
+    P_{avl} &= \Re(V_{in}I_{in}^*) \\
+            &= \Re(\frac{|V_{in}|^2}{Z_{in}^2} \\
+            &= \Re\left(\frac{(\SI{10}{\volt)^2}}{100 \Omega}\right) \\
+            &= \SI{1}{\watt}
+\end{align*}
+\section*{Problem 1b}
+\subsection*{Port 1 Waves}
+To calculate the port 1 power waves I will use the following 
+relationships:
+\begin{align}
+    \sqrt{Z_c}\left( a_1 + b_1 \right) &= V_s \frac{Z_{in}}{Z_{in}+Z_s}
+    \label{eq1} \\
+    b_1 &= \Gamma_{in}a_1 \label{eq2} \\
+    \Gamma_{in} &=\frac{Z_{in}-Z_c}{Z_{in}+Z_c} \label{eq3}
+\end{align}
+Combining (\ref{eq1}) and (\ref{eq2}) yields:
+
+\begin{equation}
+    a_1 = \frac{V_s}{\sqrt{Z_c}} \frac{1}{( 1+\Gamma_{in} )}
+    \frac{Z_{in}}{Z_{in}+Z_s} \label{prea1}
+\end{equation}
+
+Rearranging (\ref{eq3}) for $Z_{in}$ produces $Z_{in} = Z_c
+\frac{1+\Gamma_{ in }}{1-\Gamma_{ in }}$. Substituting this into (\ref{prea1}) yields:
+
+\begin{align}
+    a_1 &= \frac{V_s}{\sqrt{Z_c}( 1+\Gamma_{in} )} \frac{Z_c \frac{1+\Gamma_{ in }}{1-\Gamma_{
+    in }}}{Z_c \frac{1+\Gamma_{ in }}{1-\Gamma_{ in }} + Z_s} \nonumber \\
+    &= \frac{V_s}{\sqrt{Z_c}( 1+\Gamma_{in} )} \frac{Z_c \left( 1+\Gamma_{in}
+    \right)}{Z_c \left( 1+ \Gamma_{in} \right) + Z_s \left( 1 - \Gamma_{in}
+    \right)} \nonumber \\
+    &= V_s \frac{\sqrt{Z_c}}{Z_c \left( 1+\Gamma_{in} \right) + Z_s \left( 1 -
+\Gamma_{in} \right) } \label{a1}
+\end{align}
+
+$b_1$ is easily obtained from this using (\ref{eq2}). 
+\begin{equation}        
+b_1 = V_s \frac{\sqrt{Z_c}\Gamma_{in}}{Z_c \left( 1+\Gamma_{in} \right) +
+Z_s(1-\Gamma_{in})} \label{b1}
+\end{equation}
+
+Notice that if $\Gamma_{in} = 1$ (an open) that 
+$a_1 = \frac{V_s}{2 \sqrt{Z_c}}$
+and 
+$b_1 = \frac{V_s}{2 \sqrt{Z_c}}$ such
+that 
+$V_{load} = \sqrt{Z_c} (a_1+b_1) = V_s$ (reflects completely in phase).
+
+If $\Gamma_{in} = -1$ (a short)
+\begin{gather*}
+    a_1 = \frac{V_s \sqrt{Z_c}}{2 Z_s} \\
+    b_1 = -\frac{V_s\sqrt{Z_c}}{2Z_s} \\
+    V_{load} = 0
+\end{gather*}
+
+If $\Gamma_{in} = 0$ (a matched load)
+\begin{gather*}
+    b_1 = 0 \\
+    a_1 = \frac{V_s \sqrt{Z_c}}{Z_c + Z_s} \\
+    V_{load} = \frac{V_s Z_c}{Z_c + Z_s}
+\end{gather*}
+
+But, of course, in matched conditions $Z_c = Z_L$.
+\subsection*{Port 2 Waves}
+Calculating the port 2 power waves I will use the following relationships:
+
+\begin{align}
+    b_2 &= S_{21}a_1 + S_{22}a_2 \label{eq1a}\\
+    a_2 &= \Gamma_l b_2 \label{eq2a} \\
+    a_1 &= V_s \frac{\sqrt{Z_c}}{Z_c \left( 1+\Gamma_{in} \right) + Z_s \left( 1 -
+\Gamma_{in} \right)} \label{eq3a}
+\end{align}
+
+Combining (\ref{eq1a}) and (\ref{eq2a}) yield:
+
+\begin{equation}
+b_2 = \frac{S_{21}a_1}{1-S_{22}\Gamma_l} \label{eq4a}
+\end{equation}
+
+Combining (\ref{eq4a}) and (\ref{eq3a}) yields:
+
+\begin{equation}
+    b_2 =  \frac{V_s \sqrt{Z_c}}{Z_c \left( 1 + \Gamma_{in} \right) +
+    Z_s(1-\Gamma_{in})}\frac{S_{21}}{1-S_{22}\Gamma_l} \label{b2}
+\end{equation}
+
+Obtaining $a_2$ from (\ref{eq2a}) and (\ref{eq5a}) is trivial:
+
+\begin{equation}
+    a_2 = \frac{V_s \sqrt{Z_c}}{Z_c \left( 1+\Gamma_{in} \right) +
+    Z_s(1-\Gamma_{in})}\frac{S_{21}\Gamma_l}{1-S_{22}\Gamma_l} \label{a2}
+\end{equation}
+%TODO: DEFINE AND GAMMA_IN
+\section*{Problem 1c}
+To determine the power delivered to the load we begin with the definition of
+real power
+
+\[ 
+        P_{load} =  \frac{1}{2}\Re\left( V_{load}I^*_{load} \right) 
+\]
+
+In this case, $V_{load} = \sqrt{Z_c} \left( a_2 + b_2 \right) $ and $I_{load} =
+\frac{b_2-a_2}{\sqrt{Z_c}}$. But, $a_2 = b_2 \Gamma_l$ so $P_{load}$ can be
+rewritten as follows:
+
+\begin{align*}
+    P_{load} &= \frac{1}{2}\Re\Big( \left( a_2+b_2 \right)\left( b_2^*-a_2^*
+    \right)\Big) \\
+    &= \frac{1}{2}\Re\Big( \left( b_2 \left( 1+\Gamma_l \right) \right)\left(
+    b_2^* \left( 1-\Gamma_l^* \right) \right)\Big) \\
+    &= \frac{\left| b_2 \right|^2 }{2}\Re \left( 1- \left| \Gamma_l \right|^2 + 2j
+\Im(\Gamma_l) \right) \\ 
+    &= \frac{\left| b_2 \right|^2 }{2} \left( 1- \left| \Gamma_l \right|^2 \right)
+\end{align*}
+
+To calculate the power reflected to the source I need to take the incident power
+and subtract the amount that is delivered to the load and the 2-port network.
+
+\[ 
+        P_{source} = \frac{1}{2}\Re \left( V_{source}I^*_{source} \right) 
+\]
+
+$$V_{source} = V_s \frac{Z_s}{Z_s+Z_{in}}$$ and $$I_{source} =\frac{V_s}{Z_s +
+Z_{in}}$$.
+
+Substituting these two expressions into $P_{source}$ yields:
+
+\begin{align*}
+    P_{source} &= \frac{1}{2} \Re \left( \frac{V_s Z_s}{Z_s + Z_{in}}
+\frac{V_s^*}{Z_S^* + Z_{in}^*} \right) \\
+&= \frac{\left| V_S \right|^2}{2} \Re \left( \frac{Z_s}{|Z_s+Z_{in}|^2} \right)
+\\
+&= \frac{\left| V_s \right|^2}{2 \left| Z_s + Z_{in} \right|^2} \Re(Z_s)
+\end{align*}
+
+We will now plug the following numbers into equations (\ref{a1}, \ref{b1}, \ref{b2},\ref{a2}
+) to obtain $a_1$, $b_1$, $b_2$ and $a_2$, respectively.
+
+\[
+        \def\arraystretch{1.5}
+        \begin{array}{|c|c|}
+            \hline  \text{\quad Variable \quad}  & \text{\quad Value \quad } \\
+            \hline \hline Z_{l} = Z_c & \SI{50}{\ohm} \\
+            \hline Z_{s} & \SI{100}{\ohm} \\
+            \hline \Gamma_s = \frac{Z_s - Z_c}{Z_s+Z_c} & \frac{1}{3} \\
+            \hline \Gamma_l = \frac{Z_l-Z_c}{Z_l+Z_c}  & 0 \\
+            \hline S_{11} & .1 \phase{-30 \degree} \\
+            \hline S_{12} & .4 \phase{-75 \degree} \\
+            \hline S_{21} & .95 \phase{- 45 \degree} \\
+            \hline S_{22} & .15 \phase{-10 \degree} \\
+            \hline V_{s} & \SI{20}{\volt}\phase{0 \degree} \\
+            \hline Z_{in} = Z_c \frac{1+\Gamma_{in}}{1 - \Gamma_{in}} &  \approx
+            \SI{56.3}{\ohm} \\
+            \hline \Gamma_{in} & \approx 59.2\cdot 10^{-3} \\ \hline
+        \end{array}
+\]
+
+Plugging these numbers in yields:
+
+\[
+        \def\arraystretch{1.5}
+        \begin{array}{|c|c|}
+            \hline \text{ \quad Voltage \quad } & \text{ \quad Voltage \quad }
+            \\
+            \hline \hline a_1 & \approx \SI{961}{\milli\volt\per\sqrt{\ohm}} \\
+            \hline b_1 & \approx \SI{57.0}{\milli\volt\per\sqrt{\ohm}} \\
+            \hline a_2 & \SI{0.0}{\milli\volt\per\sqrt{\ohm}} \text{\quad
+        (exactly)} \\
+            \hline b_2 & \approx \SI{417}{\milli\volt\per\sqrt{\ohm}} \\ \hline
+        \end{array}
+\]

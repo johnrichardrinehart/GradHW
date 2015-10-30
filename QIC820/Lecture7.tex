@@ -1,0 +1,232 @@
+\begin{document}
+\begin{section}[Continuing our Discussion of the Fidelity Function]
+
+Continuing from last time:
+
+\begin{theorem}[Fuchs-van de Graaf Inequalities]
+    $\rho_0, \rho_1 \in D(\scriptx)$
+
+    1-.5||\rho_0 - \rho_1 ||_1 \le F(\rho_0,\rho_1) \le
+    \sqrt{1-.25||\rho_0-\rho_1||_1^2}
+
+\end{theorem}
+\begin{proof}
+    Let $u_0, u_1 \in \scriptx \tensor \scripty$ be purifications of
+    $\rho_0$ and $\rho_1$:
+
+    $\rho_0 = Tr_\scripty(u_0 u_0^*)$, $\rho_1 = Tr_y(u_1 u_1^*)$
+
+    By Uhlmann's theorem, we can choose $u_0, u_1$ such that
+    $F(\rho_0,\rho_1) = |<u_0,u_1>|.
+
+    ||rho_0 - rho_1||_1 \le ||u_0 u_0^* - u_1 u_1^*|_1
+
+    In general, the trace norm is always non-increasing under partial
+    tracing: 
+    $X \in L(\scriptx \tensor \scripty)$, 
+    $||X||_1 \ge ||Tr_\scripty(X)||_1$
+    ||X||_1 = max{|<U,X>|: U \in \scriptu(\scriptx \tensor \scripty)}
+    = max{|<V\tensor\math1_\scripty,X>|: V\in \scriptu(\scriptx)}
+    
+    So, now, $||\rho_0 - \rho_1||_1 \le ||u_0 u_0^* - u_1 u_1^*||_1 =
+    2\sqrt{1-|<u_0,u_1>|^2} = 2\sqrt{1-F(\rho_0,\rho_1)^2}$.
+
+    This proves the second inequality.
+\end{proof}
+
+Let $\mu: \Sigma \rightarrow Pos(\scriptx)$ be a measurement. such that
+$B_\mu(\rho_0,\rho_1) = F(\rho_0, \rho_1)$. This can be written as
+follows: $\sum_{a\in\Sigma} \sqrt{<\mu(0),\rho_0>}\sqrt{<\mu(0),\rho_1>}
+
+Let's define probability vectors $p_0$ and $p_1$ which are elements of
+\scriptp(\Sigma) as follows: $p_0(a) = <\mu(a),\rho_0>$ and $\rho_1(a) =
+<\mu(a),\rho_1>$.
+
+$||rho_0 - \rho_1||_1 \ge ||p_0 - p_1||_1 = \sum_{a\in\Sigma}|p_0(a) -
+p_1(a)|$. One way to see this is that this follows from the
+Holevo-Holstrom theorem.
+
+Now we can bound the previous expression. $\sum_{a\in\Sigma}|p_0(a)
+-p_1(a)| \ge \sum{a\in\Sigma} |\sqrt{p_0(a)} - \sqrt{p_1(a)}|^2.
+
+We can write it this way because $|\alpha - \beta| \ge
+|\sqrt{\alpha}-\sqrt{\beta}|^2 (this is an application of the difference of
+squares). Note that for opoerators, non commuting operators have the
+following ``difference of squares'' relationship: $A^2-B^2 = .5
+(A+B)(A-B)+.5(A-B)(A+B)$. That's kind of neat.
+
+Expanding the term inside the sum, then, yields: $\sum_{a\in\Sigma}
+p_0(a) + p_1(a) - \sqrt{p_0(a)}\sqrt{p_1{a}}$ which reduces to $2 -
+2B(p_0,p_1) = 2(1-F(\rho_0,\rho_1))$ ($B(p_0,p_1)$ being the Battacharya
+coefficient of $p_0$ and $p_1$).
+
+We'll only discuss one more thing regarding the fidelity function.
+Another useful characterization of the fidelity is that: $F(P,Q) =
+max{|Tr(X)|: X \in L(\scriptx), {P & X \\ X^* & Q} \ge 0$. There are
+some choices of X that work and some that don't. If X is zero it's
+definitely positive semidefinite. If X gets too big then you won't be
+able to maintain positive semidefiniteness. It's ``easy'' to show why this
+is true.
+
+Lemma: $P \in Pos(\scriptx)$, $Q \in Pos(\scripty)$, $X \in
+L(\scripty,\scriptx). It is true that ${P & X \\ X^* Q} \ge 0$ if and
+only if $X = \sqrt{P}K\sqrt{Q}$ for some $||K|| \le 1$ (spectral norm of
+K).
+
+Assuming this lemma is true (there's a proof in the book) we can show
+the following:
+
+\begin{align}
+    & max{|Tr(X)|: X \in L(\scriptx), {P & X \\ X^* & Q} \ge 0} \nonumber
+    \\
+    & = max{|Tr(\sqrt{P}K\sqrt{Q}|: ||K|| \le 1}
+    & = max{|Tr(K\sqrt{Q}\sqrt{P}|: ||K|| \le 1}
+    & = max{|<K,\sqrt{Q}\sqrt{P}>|: ||K|| \le 1}
+    & = ||\sqrt{Q}\sqrt{P}||_1 = ||\sqrt{P}\sqrt{Q}||_1 = F(P,Q)
+\end{align}
+
+One way to proove the reduction of the maximization to the norm is to
+consider that you can always write an operator whose spectral norm is
+less than 1 as a convex combination of unitaries.
+\end{section}
+\begin{section}[Optimal Measurements]
+    The Holevo-Helstrom theorem tells us what the optimal measurement is
+    for discriminating \em{two} quantum state alternatives.
+
+    Suppose, however, that we have three or more alternatives. Consider
+    some we have some register X and some alphabet $\Gamma$. We also
+    have a probability distribution over the alphabet, $p \in
+    \script(\Gamma)$, and a set $\rho_{set} = {\rho_a : a \in Gamma} \subseteq
+    D(\scriptx)$. Our goal is to maximize correctness probability in
+    measuring an unknown state $\rho_b \in \rho_{set}$. 
+    
+    We can represent this situation by an ensemble: $\eta: \Gamma
+    \rightarrow Pos(\scriptx)$. We can write $\eta(a) = p(a)\rho_a$.
+    More abstractly, an ensemble is a map of the form $\eta: \Gamma
+    \rightarrow Pos(\scriptx)$ such that $\sum{a\in\Gamma} \eta(a) \in
+    D(\scriptx)$.
+
+    If we pick a measurement $\mu: \Gamma \rightarrow Pos(\scriptx)$ we
+    will be correct with probability $\sum_{a \in Gamma}
+    <\mu(a),\eta(a)> = \sum_{a\in Gamma} p(a) <\mu(a),\rho_a>$. This is
+    an average over all the times when you measure the state properly
+    (i.e. when your measurement $\mu(a)$ is consistent with the state
+    being measured $\rho_a$).
+
+    We want to find some function 
+    $Opt(\neta) = max_\mu [ \sum_{a\in \Gamma} <\mu(a), \eta(a)>$ such
+    that $\mu: \Gamma \rightarrow Pos(\scriptx)$.
+
+    Except for simple cases there is no known closed form for
+    $Opt(\eta)$. It is possible that it doesn't exist. However, a
+    computer can get its hands on $Opt(\eta)$ and can determine what the
+    optimal measurement(s) is(are). Of course these will be numerical
+    solutions, not analytic, with good precision using semidefinite
+    programming.
+
+    So, now we're going to discuss semidefinite programming. If you're
+    interested in probing an implementation of semidefinite programming
+    you can use CVX for MATLAB. It's pretty user friendly.
+\end{section}
+\begin{section}[SDPs]
+    SDPS represent optimizations (min/maximization) of real-valued
+    linear functions of positive semidefinite operators subject to
+    linear constraints.
+
+    As an example, consider $H \in Herm(\scriptx)$. We want to maximize
+    $<H,\rho>$ subject to the constraint that $\rho \in D(\scriptx)$
+    (i.e., $\rho \ge 0$ and $Tr(\rho) = 1). The $Tr(\rho) = 1$ is a
+    linear constraint. The optimal value for this is $\lambda_1(H)$. One
+    way to formalize SDPs is as follows: An SDP is described by a
+    triple $(\Phi, a, b)$ where 
+    1. $\Phi \in t(\scriptx,\scripty)$ is a hermiticity-preserving map
+    ($\Phi(H) \in Herm(\scripty)$ for all $H \in Herm(\scriptx)$).
+    2. $ A in Herm(\scriptx)$
+    3. $B \in Herm(\scripty)$
+
+    We associate these two optimization problems with $(\Phi, A, B)$:
+    The primal problem and the dual problem.
+
+    The primal problem is the $max <A,X>$ subject to $\Phi(X) = B$ and
+    $X\in Pos(\scriptx)$.
+
+    The dual problem is $min <B,Y>$ subject to $\Phi^*(Y) \ge A$ (i.e.
+    $\Phi^* - A$ must be positive semidefinite) and $Y \in
+    Herm(\scripty)$.
+
+    We talk about the primal feasible region: $A = {X \in Pos(\scriptx):
+    \Phi(X) = B}. And we talk about the dual feasible region: $B = {Y\in
+    Herm(\scripty): \Phi^*(Y) \ge A}.
+
+    The primal objective function is the function that maps X to
+    $<A,X>$. The dual objective function is one that $Y \mapsto <B,Y>$).
+
+    The primal optimum is $\alpha = sup{<A,X>: X \in A}$ while the dual
+    optimum is $\beta = inf{<B,Y>: Y\in B}$.
+
+    NOTE: What the fuck is the difference between the max and the
+    supremum and the min and the infimum (convex set shit in there
+    somewhere)?
+
+    A very simple example for why you can't replace sup/inf with max/min
+    is the following problem: ${X & 1 \\ 1 & y} \ge 0$. If we take $inf
+    y$ such that the matrix is greater then zero then y should be zero.
+    He could also take $x = n$ and $y = \frac{1}{n}$. But, then he
+    couldn't put a 0 in for y because he'd have an $\infty$ for x which
+    isn't allowed. I didn't understand this.
+
+    Considering our example from before ($H \in Herm(\scriptx)$
+    problem): $\scriptx$ is given and $\scripty = \mathc$ and $\Phi =
+    Tr$, $A = H$, $B = 1$. Plugging all of these things in, we have our
+    SDP. 
+
+    \begin{align}
+        &max <A,X> such that \Phi(X) = B \nonumber \\
+        &X\in Pos(\scriptx) \nonumber \\
+        simplify simplify (that's what he said)
+        max <H,X>
+        Tr(X) = 1
+        X \in Pos(\scriptx)
+        squiggly down arrow
+        max <H,\rho> such that \rho \in D(\scriptx)
+    \end{align}
+
+    Writing the dual problem for our example:
+
+    \begin{align}
+        min <B,Y> such that $\Phi^*(Y) \ge A$
+        Y \in Herm(\scripty)
+        squiggly arrow (simplify)
+        min <1,y> = y subject to \Phi^*(y) \ge H
+        y \in Reals
+        Thus y \math1_\scriptx \ge H
+        The dual optimum is thus $\lambda_1(H)$.
+    \end{align}
+
+    Note that the dual optimum is equal to the primal optimum. This is
+    usually the case. We have conditions under which the primal and dual
+    optimum can be shown to be equal.
+
+    Proposition (weak duality): For every SDP ($\Phi$,A,B) it holds that
+    $\alpha$ \le $\beta$. This is easy to prove.
+
+    When $\alpha = \beta$ we refer to such a situation as ``strong
+    duality``. Strong duality holds when (Slater's theorem for SDPs):
+
+    \begin{theorem}[Slater's theorem]
+        ($Phi$,A,B) as before. The following statements are both true
+        and you can use both statements interchangeaby or jointly.
+        
+        1. If $A \ne 0$ and there exists $Y \in Herm(\scripty)$ such
+        that $\Phi^*Y > A$, then $\alpha = \beta$ and $\alpha = <A,X>$
+        for some $X \in A$.
+
+        2. If $B \ne 0$ and there exists $X \in Pos(\scriptx)$ and $X
+        >0$ such that $\Phi(X) = B$, then $\alpha = \beta$ and there
+        exists some $Y \in B$ such that $\beta = <B,Y>$.
+    \end{theorem}
+
+    This theorem is not the easiest to prove. You need to use the
+    separating hyperplane theorem and more convexity stuff.
+\end{section}
+\end{document}

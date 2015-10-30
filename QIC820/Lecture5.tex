@@ -1,0 +1,176 @@
+\begin{document}
+\begin{section}[Measurements]
+    This is the mechanism for extracting class information from
+    (quantum) registers.
+
+    Recall the completely dephasing channel: X register with classical
+    state set \Sigma, \scriptx = \mathc^\Sigma
+    \Delta \in C(\scriptx) is the completely dephasing channel:
+    \Delta(E_{a,b}) = {E_{a,a} if a = b; 0 if a \ne b}.
+
+    Think of \Delta as an ideal classical channel.
+
+    Here we are associating the classical state a \in \Sigma with the
+    density operator E_{a,a} = \ket{a}\bra{a}.
+    
+    \begin{subsection}[Classical registers]
+        We mean by this an ordinary register where the state is always
+        classical. More precisely, this is a register whose state is
+        invariant under the action of \Delta.
+
+        Suppose we have a register X and we want to imagine extracting
+        classical information from X.
+
+        In particular, suppose some element of \Gamma is produced.
+
+        \phi: D(\scriptx) \rightarrow P(\Gamma).
+
+        \phi(\rho)(b) = probability of symbol b being produced from a
+        measurement of \rho.
+
+        \phi should be a linear function in order that it's consistent
+        with probability theory.
+
+        We can extend \phi to a linear map. \phi: Herm(\scriptx)
+        \rightarrow \Reals^\Gamma
+
+        or \phi: L(\scriptx) \rightarrow \mathc^\Gamma
+
+        (only one possible mapping in either case that can be consistent
+        with the fact that \phi: D(\scriptx) \rightarrow P(\Gamma) ).
+
+        For some hermitian operator H, we can always write H = P - Q for
+        P,Q \in Pos(\scriptx). We can even impose the additional
+        constraint that <P,Q> = 0. If we impose that constraint then
+        there is only one choice of P,Q. This is called a Jordan-Hahn
+        decomposition.
+
+        Proposition: Suppose that \phi: L(\scriptx) \rightarrow
+        \mathc^\Gamma is a linear map such that \phi(\rho) \in P(\Gamma)
+        for evey \rho \in D(\scriptx). There must exist a collection of
+        positive semidefinite operators {P_a: a \in \Gamma} \containedin
+        Pos(\scriptx) such that:
+        1. \phi(X)(a) = <P_a, X> = Tr(P_a X) for all a \in \Gamma and X \in
+        L(\scriptx),
+        2. \sum_{a\in \Gamma} P_a = \math1_\scriptx.
+
+        Proof: First note that every linear function \Psi: L(\scriptx)
+        \rightarrow \mathc can be expressed as \Psi(X) = <Y,X> for some
+        Y \in L(\scriptx) (Reese's theorem).
+
+        X \mapsto \phi(X)(a) is a linear function of the previous form.
+        So, there must exist some Y_a such that \phi(X)(a) = <Y_a,X> for
+        all X \in L(\scriptx) (for some choice of Y_a \in L(\scriptx) ).
+        We have \phi(u u^*)(a) = <Y_a,u u^*> = u^* Y_a^* u \ge 0. Based on
+        this, we can determine that Y_a must be positive semidefinite.
+
+        Now, we'll just substitute the variable P_a for Y_a. Now,
+        \sum_{a \in P} \phi(rho)(a) = \sum <P_a, \rho> = <\sum P_a,
+        \rho> for every \rho \in D(\scriptx). This implies that the only
+        thing that satisfies this is \sum_{a \in \Gamma} P_a = \math1.
+
+        Definition: A measurement on a complex Euclidean space
+        (register) \scriptx is a function \mu: \Gamma \rightarrow
+        Pos(\scriptx) (for \Gamma an alphabet of output symbols) which
+        satisfies \sum_{a\in \Gamma} \mu(a) = \math1_\scriptx.
+        Performing \mu on a register X in state \rho causes 2 things to
+        happen.
+
+        1. Each outcome a \in \Gama appears with probability
+        <\mu(a),\rho>.
+        2. X is destroyed.
+
+        We often write {P_a: a\in \Gamma} rather that \mu (identifying
+        P_a = \mu(a) ).
+
+        A projective measurement is one where \mu(a) is a projection
+        operator for each a \in \Gamma. This forces \mu(a)\mu(b) =
+        \delta_{a,b}.
+
+        This is one way to think about measurement. Another way to
+        think about measurement is to consider a measurement as a
+        channel.
+
+        Let \scriptx = \mathc^\Sigma and let \scripty = \mathc^Gamma. A
+        channel \Phi = C(\scriptx,\scripty) is a quantum-to-classical
+        channel if and only if \Phi = \Delta \Phi (because \Delta
+        shouldn't change a classical state).
+
+        Theorem: \Phi \in C(\scriptx,\scripty) is a quantum-to-classical
+        channel if and only if \Phi(X) = \sum_{a \in \Gamma}
+        <\mu(a),X>E_{a,a} for some measurement \mu: \Gamma \rightarrow
+        Pos(\scriptx) for all X \in L(\scriptx).
+
+        So, we can associate measurements with quantum-to-classical
+        channels.
+
+        Suppose (X,Z) is a pair of registers in some state \rho \in
+        D(\scriptx \tensor \scriptz).
+
+        Let's measure X only with respect to \mu: \Gamma \rightarrow
+        Pos(\scriptx).
+
+        We can determine the state of Z conditioned on each measurement
+        outcome by associating \mu with a quantum-to-classical channel
+        \Psi_{\mu}(X) = \sum_{a \in \Gamma} <\mu(a),X> E_{a,a}.
+
+        \Psi_\mu \tensor \math1_{L(\scriptz)}(\rho) = \sum_{a\in \Gamma}
+        p(a) E_{a,a} \tensor \rho_a. Both p(a) and \rho_a depend on
+        \rho.
+
+        We can determine what p and {p_a} should be:
+
+        p(a) = <\mu(a),Tr_{\scriptz}(\rho)> = <\mu(a) \tensor
+        \math1_(\scriptz), \rho>.
+        \rho_a = \frac{Tr_{\scriptx}((\mu(a) \tensor \math1)\rho)/{p(a)}
+
+        In a similar way as we can "isometrize" channels and purify
+        mixed states, we can think about complicated measurements as
+        being small parts of a bigger simple measurements. By using
+        Naimark's theorem we can show this is true.
+
+        Theorem: Let \scriptx be a complex euclidean space, let \Sigma
+        be an alphabet, and let \mu: \Sigma \rightarrow Pos(\scriptx)
+        be a measurement. There exists an isometry \[A \in U(\scriptx,
+        \scriptx \tensor \mathc^\Sigma) \] such that \[ \mu(a) =
+        A^*(\math_\scriptx \tensor E_{a,a})A \]
+        for every a \in \Sigma.
+
+        Another way to think about the above is as follows. Consider
+        that for some Y \in \mathc^\Sigma there is a projective
+        measurement \[ \nu : \Sigma \rightarrow Pos(\scriptx \tensor
+        \scripty) \] such that \[ <\mu(a),\rho> = <\nu(a), \rho \tensor
+        y y^*> \] for all a \in \Sigma and \rho \in D(\scriptx).
+      
+        To connect Naimark's theorem with the alternative description
+        just given consider the following. Define U \in U(\scriptx
+        \tensor \scripty) so that \[ U(\scriptx \tensor \scripty) = Ax f
+        or all x \in \scriptx \] and let \nu(a) = U^*(\math1\tensor
+        E_{a,a})U.
+
+        Let's prove Naimark's theorem and then we can walk away for
+        today.
+
+        Proof: Let P_a = \mu(a) for all a \in \Sigma. Define \[ A /
+        \sum_{a \in \Sigma} \sqrt{p_a} \tensor e_a  \in
+    L(\scriptx,\scriptx \tensor \scripty (for \scripty \in
+\mathc^\Sigma) \] where \sqrt{P} is the unique positive semidefinite
+operator such that (\sqrt{P}*\sqrt{p}) = P. You can obtain this by
+performing a spectral decomposition on P and and taking the square root
+of the eigenvalues and leave the eigenvectors alone. We need to check to
+make sure that:
+1. A is an isometry.
+2. A works in our equation that \mu(a) = A^*(\math1 \tensor E_{a,a})A
+
+Now, A^* A = (\sum_{a} \sqrt{P_a} \tensor e_a^*)(\sum_{b \in \Sigma}
+\sqrt{P_b} \tensor e_b) = \sum{a,b}\sqrt{P_a}\sqrt{P_b}\tensor e_a^*e_b.
+However, e_a^*e_b = \delta_{a,b}. So, \sum_{a\in \Sigma}
+\sqrt{P_a}\sqrt{P_a} = \sum_{a} P_a = \math1_{\scriptx} (since it's a
+measurement, by assumption). Thus, A is an isometry.
+
+The second part can be shown as follows: Consider \[
+    A^*(\math1_{\scriptx} \tensor E_{a,a})A = \sqrt{P_a}\sqrt{P_a} = P_a
+= \mu(a)\]
+for all a \in \Sigma. Thus, we have proven Naimark's theorem.
+
+\end{section}

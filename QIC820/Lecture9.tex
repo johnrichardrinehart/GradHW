@@ -1,0 +1,168 @@
+\documentclass{article}
+\begin{document}
+\section{Shannon Entropy - Classical}
+For $p \in P(\Sigma)$ (probability vector) we define the Shannon entropy
+of p as $ H(p) = -\sum_{a\in \Sigma, p(a)\ne 0} p(a)\log_2(p(a)) $. We
+understand $0\cdot \log(0) = 0$. If X is a classical register we write
+H(X) rather than H(p). We mean H(p) for whatever p describes the state
+of X at some moment.
+
+Examples:
+\[ 
+        \Sigma = \{0,1\}\quad p(0) = p(1) = \frac{1}{2}
+\]
+
+$ H(p) = 1 $
+
+\[ 
+        \Sigma = \{0,1,2\}\quad p(0) = \frac{1}{2}, p(1)=p(2) = \frac{1}{4} 
+\]
+
+$H(p)=\frac{3}{2} $ 
+
+The interpretation of H as a measure of the number of bits of
+uncertainty is important but it's not important to take it too
+seriously. For example, consider the following:
+\[ 
+        \Sigma = \{0,1,\cdots,2^{n^2}\}\quad p(0) = 1-\frac{1}{n},\quad
+        p(i>0) =  \frac{1}{n}2^{n^2}
+\]
+
+Now, the entropy of this probability vector places a high probabality
+on not being measured in the ``0'' state. However, conditioned on the
+fact that the probability vector is not found in the ``0'' state there
+is a large amount of randomness in the possible state of a measurement
+of p.
+
+\section{Source Coding Theorem}
+
+Let's imagine we have a probability vector, $p \in \scriptP(\Sigma)$. We
+imagine a source spitting out random $a$s (in $ \Sigma $) without any correlation
+between them. We would like to use the fact that some symols from the
+alphabet that happens more easily to compress the information being
+generated from the source.
+
+As a simple compression algorithm allow $ \Gamma = \{0,1\} $. We will
+allow ourselves ``n'' symbols in $\Sigma$ to ``m'' symbols. We have some
+function f (the compression function). $ f: \Sigma^n \mapsto \Gamma^m $.
+Our goal is to get m to be as small as possible while still being able
+to recover the string. The decompression function g $ g: \Gamma^m
+\mapsto \Sigma^n $. We understand that m will be a function of n: $m =
+\alpha n$ where $\alpha$ denotes the rate of compression.
+
+Definition: A pair of funtions (f,g) is an $(n,\alpha,\delta)$
+compression scheme for $p \in \scriptp(\Sigma)$ if and only if $
+Pr(g(f(a,\cdots,a_n)) = a_1\cdots a_n) > 1-\delta$ for $a_1,\cdots,a_n$
+chosen independently according to p. So, $\delta$ represents some
+maximum amount of tolerable error.
+
+\begin{theorem}[Shannon's Source Coding Theorem]
+        This theorem relates the compression rates and the entropy. We
+        have some $ p \in \scriptP(\Sigma)$, $\delta > 0$ which are
+        fixed. The following statements hold:
+        \begin{enumerate}
+            \item For every $\alpha < H(p) $ there exists an $
+                (n,\alpha,\delta) $-compression scheme for p for all but
+                finitely many values of $ n\in N = \{0,1,2,\ldots \} $.
+            \item For every $ \alpha > H(p) $, there exists an $
+                (n,\alpha,\delta) $-compression scheme for at most
+                finitely many values of $ n\in N = \{0,1,2,\ldots \} $.
+        \end{enumerate}
+\end{theorem}
+
+The proof for this theorem relies on a concept known as typicality. The
+idea is that you have some idea of the entropy of the source, some
+strings will be very likely. By controlling the size of the set of
+sequences which is most likely generated you can design a compression
+scheme for that set.
+
+So, we'll define a set of strings $T_{n,\epsilon}(p) = \{a_1,\ldots,\a_n
+        \in \Sigma^n : 2^{-n(H(p)+\epsilon)} < p(a_1)\ldots p(a_n) <
+        2^{-n(H(p)-\epsilon)}$. This is the set of typical strings.
+
+        We usually write $T_{n,\epsilon}$ when p is fixed. We have the
+        following lemma:
+    Consider $p\in \scriptP(\Sigma),\quad \epsilon >0$
+    $\lim_{n \rightarrow \infty} \sum_{a_1,\ldots,a_n \in
+    T_{n,\epsilon}} p(a_1)\ldots p(a_n) = 1$. 
+    
+    The proof for this lemma can be shown as follows. Let $Y_i$ be a
+    random variable whose value is $\log(p(a))$ for each $a \in \Sigma$.
+    Considering the expected value of these random variables $E[Y_i] =
+    H(p)$. Now, if we think about the weak law of large numbers
+    (sampling a large number of independently distributed random
+    variables converges to the expected value): 
+    \[ 
+    \lim_{n\rightarrow
+    \infty} Pr((\frac{Y_i + \ldots + Y_n }{n} - H(p)) > \epsilon) = 0$
+    \]
+    
+    This statement is equivalent to the lemma. We have one more lemma:
+
+    $ p \in \scriptP(\Sigma) $ and $\epsilon > 0$. For all but finitely
+    many n we have $ (1-\epsilon)2^{n(H(p)-\epsilon)} < T_{n,\epsilon} <
+    2^{n(H(p)+\epsilon)} $. This bounds the number of typical sequences.
+    Why is this true? Well, consider $ \Sigma_{a_1,\ldots,a_n \in
+    T_{n,\epsilon}}  MORE HERE $  (can't read). And, it's been proven!
+
+    Let's prove statement 1 of the source coding theorem. We know that
+    $\alpha < H(p)$. So, let's choose some $\epsilon$ that's big enough
+    for us to work with but small enough that we can do this: $ \alpha +
+    2\epsilon < H(p)$. For sufficiently large $N > \frac{1}{\epsilon}$
+    we have (CAN'T READ). Now we have that the number of typical strings
+    is upper bounded as (CAN'T READ).
+
+    Now, it's time to define the compression scheme, f. Choose f and g
+    so that $g(f(a_1\cdots a_n)) = a_1\cdots a_n$ holds for all typical
+    strings (not for all strings).
+   
+\section{Quantum Entropy}
+Now, allow $\rho$ to be a density operator. $\rho \in D(\scriptx)$ for
+$\scriptx$ a complex Euclidean space: $\scriptx: \scriptc^\Sigma$.
+Define the Von-Neumann entropy of $\rho$ as 
+
+\[ 
+        H(\rho) = H(\lambda(\rho)) 
+\]
+
+where $\lambda(\rho) = (\lambda_1(\rho), \lambda_2(\rho), \ldots,
+\lambda_n(\rho))$ is the vector of eigenvalues of $\rho$ ($n =
+|\Sigma|$). We often write the entropy as $ H(\rho) =
+-Tr(\rho\log(\rho)) $. This makes sense if you consider $\rho$ as
+$\sum\limits_{i} \lambda_i x_i x_i^*$.
+
+Let's consider what quantum compression would look like. Imagine the
+following scenario. Alice holds a bunch of registers $X_1,\ldots,X_n$.
+each register is in the same Euclidean space (have the same classical
+state set). Let's also assume that we know the state of these registers.
+
+$(X_1,\ldots,X_n)$ is in state $ \rho^{\otimes n} $.
+
+There could be correlation with other external registers. What we would
+like to do is compress and decompress this information. A compression
+scheme should work in the the following way $\Phi \in
+C(\scriptx_1\otimes\cdots\otimes\scritpx_n, \scripty_1\otimes,\scripty_n)$. A
+decompression would look like $\Psi \in
+C(\scripty_1\otimes,\scripty_n,\scriptx_1\otimes\scritpx_n)$. We would
+like $\Psi\Phi $ to not disturb the original state too much.
+
+Goal: Devise a scheme where we don't disturb any possible correlations
+with the N registers and any other system. That is, we want some
+$(\Phi,\Psi)$ such that $\xi \in D(\scriptz \otimes \scriptx_1 \otimes
+\cdots \otimes \scriptx_n)$ with $Tr_{\scriptz}(\xi) = \rho^{\otimes
+n}$.
+
+More precisely we'll aim to have $F_{channel}(\Psi\Phi,\rho^{\otimes
+    n})$ (the channel fidelity) be close to 1. In general for $\Xi \in
+    C(\scriptx)$, $\sigma \in D(\scriptx)$, we define
+    \[
+            F_{channel}(\Xi,\sigma) = \inf_{\xi} F(\xi,(\Xi \otimes
+            \math1_{L(\scriptw)})(\xi)) 
+    \]
+    
+    over all $\scriptw$ and $\rho \in D(\scriptx \otimes \scriptw)$ with
+    $Tr_{\scriptw}(\xi) = \sigma$.
+
+    Alternatively, $ F_{channel}(\Xi,\sigma) = F(u u^*, (Xi \otimes
+    \math1)(u u^*)) $ for \emph{any} purification of $\sigma$.
+\end{document}

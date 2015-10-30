@@ -1,0 +1,150 @@
+\documentclass{article}
+\usepackage[]{amsfonts,amsmath}
+\begin{document}
+    \section{Majorization}
+    Next week we'll talk about entanglement. This week we'll talk about
+    Nielsen's theorem.
+    \begin{itemize}
+        \item Doubly-stochastic operators
+    \end{itemize}
+    Consider some alphabet $\Sigma$ and some linear mapping
+    $L(\mathcal{R})^\Sigma $. This linear mapping being identified with
+    rows and columns indexed by $\Sigma$.
+
+    An operator $A \in L(\mathcal{R}^\Sigma)$ is called ``doubly stochastic'' if
+    the following hold:
+    \begin{itemize}
+        \item $A(a,b) \in [0,1]$ for all $a,b \in \Sigma$
+        \item $\sum\limits_{a\in\Sigma} A(a,b) = 1$ for every $b\in\Sigma$
+        \item $\sum\limits_{b\in\Sigma} A(a,b) = 1$ for every $ a \in \Sigma $ 
+    \end{itemize}
+
+    Ex: Suppose $\Pi \in Sym(\Sigma)$. Now, define $ V_\Pi(a,b) = 1 $ if $a =
+    \Pi(b)$ and equals $0$ otherwise. This describes the class of permutation
+    operators, e.g. : $$\begin{pmatrix} 0 & 1 \\ 1 & 0 \end{pmatrix}$$ or 
+    $$\begin{pmatrix} 1 & 0 \\ 0 & 1 \end{pmatrix}$$.
+    Also, for $p\in P(Sym(\Sigma))$, $A = \sum\limits_{\Pi \in Sym(\Sigma)}
+    p(\pi)V_\Pi$ is doubly stochastic (by convexity).
+
+    There exist a theorem (Birkhoff-von Neumann theorem):
+    An operator $A\in L(\mathbb{R}^\Sigma)$ is doubly stochastic if and only if
+    $A = \sum\limits_{\pi \in Sym(\Sigma)} p(\pi)V_\pi$ for some choice of $p
+    \in P(Sym(\Sigma))$.
+
+    \section{Majorization for real vectors}
+    Definition: For vectors $u,v \ in \mathbb{R}^\Sigma$ we say that u majorizes
+    v written as $ u \succ v$ ($v \prec u$) if and only if there exists a doubly
+    sthocastic $A \in L(\mathbb{R}^\Sigma$ such that $v = Au$.
+
+    Notation: $u \in \mathbb{R}^\Sigma$ and $n = |\Sigma|$. Define $r(u) =
+    (r_1(u),\ldots, r_2(u))$ to be the unique vector such that
+    
+    \begin{itemize}
+        \item $r_1(u) \ge \cdots \ge r_n(u)$
+        \item ${r_1(u),\ldots,r_n(u)} = {u(a): a \in \Sigma}$ (as
+            multisets)
+    \end{itemize}
+
+    Consider the following theorem where $u,v \in \mathbb{R}^\Sigma$. The
+    following are equivalent:
+    \begin{enumerate}
+        \item $ u \succ v $ (i.e., $v = Au$ for A doubly stochastic)
+        \item For every $k \in {1,\ldots,n}$ it holds that
+            $$\sum\limits_{j=1}^{k} r_j(u) \ge \sum\limits_{j=1}^k r_j(v)$$
+            and also that $\sum\limits_{j=1}^n r_j(u) =
+            \sum\limits_{j=1}^nr_j(v)$.
+        \item It holds that $v= Bu$ for $B \in L(\mathbb{R})^\Sigma$ given by
+                $B(a,b) = |U(a,b)|^2$ for some unitary $U \in U(\mathbb{C})^\Sigma$.
+    \end{enumerate}
+
+    We can easily show 1 from 2 by using the Birkhoff-von Neumann theorem by
+    writing each doubly stochastic operator as a convex combination of
+    permutation operators.
+
+    Going from 2 to 3 is difficult. You can show it by performing induction on
+    n.
+
+    Going from 3 to 1 is trivial because if 3 holds then you can just let A =
+    B.
+
+    This is majorization for real vectors. We can also discuss majorization in
+    the context of Hermitian operators.
+    \section{Majorization of Hermitian operators}
+
+    Definition: A channel $\Phi \in C(\mathcal{X})$ is a mixed-unitary channel
+    if and only if there exists an alphabet $\Sigma$, a probability vector $p
+    \in P(\Sigma)$ and a collection of unitary operators ${U_a : A \in  \Sigma}$
+    such that $\Phi(X) = \sum\limits_{a\in\Sigma} p(a) U_a X U_a ^*$ (for all 
+    $X \in L(\mathcal{X})$.
+
+    Definition: Let's suppose that $A,B\in Herm(\mathcal{X})$. We say that A
+    majorizes B, $A \succ B$ or $B \prec A$, if only if there exists a mixed
+    unitary channel $\Phi \in C(\mathcal{X})$ such that $B = \Phi(A)$.
+
+    Theorem: Let's suppose that we have $ A,B \in Herm(\mathcal{X}) $ . It holds
+    that $ A \succ B$ if and only if their vectors of eigenvalues have the
+    following relationship: $\lambda(A) \succ \lambda(B)$. Let's prove this
+    theorem.
+
+    Proof of this theorem: Let $n = dim(\mathcal{X})$. Consider the spectral
+    decompositions of two operators $A$ and $B$ as $A = \sum\limits_{k=1}^n
+    \lambda_k(A)v_k v_k^*$ and $ B = \sum\limits_{k=1}^n \lambda_k(B)u_k u_k^*
+    $. \subsubsection*{Right to Left}
+    Assume, first, that $\lambda(A) \succ \lambda(B)$. It follows that
+    \[ 
+            \lambda_j(B) = \sum\limits_{\pi \in S_n} p(\pi) \lambda_{\pi(j)} (A) 
+    \]
+
+
+    for some $p \in P(S_n)$.
+    Now, let's define $U_\pi = \sum\limits_k u_k v_{\pi(k)}^*$ for each $\pi \in
+    S_n$. Now, we'll average these: $\sum\limits_\pi p(\pi) U_\pi A U_\pi^*$. We'll
+    bustitute our spectral decomposition of A so that the previous sum becomes:
+    \begin{align*}
+        &\sum\limits_\pi p(\pi) U_\pi(\sum\limits_{k=1}^n \lambda_k(A) v_k v_k^*)
+        U_\pi^* \\
+        &=\sum_\pi p(\pi) \sum_{k=1}^n \lambda_{\pi(k)}(A)u_k u_k^* \\
+        &= \sum_{k=1}^n \lambda_k(B) u_k u_k^* \\
+        &= B
+    \end{align*}
+    
+    \subsubsection*{Going from left to right}
+    Suppose, on the other hand, that $A \succ B$:
+    \[ 
+            B = \sum_{i=1}^m p_i U_i A U_i^* 
+    \]
+
+    We have that $ \lambda_j(B) = u_j^* B u_j = \sum_{i=1}^m p_i u_j^* U_i$.
+    This can be written as:
+    \begin{align*}
+        &\sum_{k=1}^n \sum_{i=1}^m p_i (u_j^* U_i v_k)(v_k^* U_i^* u_j)
+        \lambda_k(A) \\
+        =&\sum_{k=1}^n \sum_{i=1}^m p_i |u_j^* U_i v_k|^2 \lambda_k(A) \\
+        =&\sum_{k=1}^n D(j,k) \lambda_k(A)
+    \end{align*}
+
+    Where $D(j,k) = \sum\limits_{i=1}^m p_i|u_j^* U_i v_k|^2$ is doubly
+    stochastic. This is equivalent to saying that $D \lambda(A) = \lambda(B)$.
+
+    The following are equivalent conditions:
+    \begin{enumerate}
+        \item $A \succ B$ (i.e. $B = \Phi(A)$ for $\Phi$ being a mixed unitary)
+        \item $B = \Phi(A)$ for $\Phi$ being a unital channel
+        \item $B = \Phi(A)$ for $\Phi$ being a positive, trace-preserving and
+            unital channel (note that $\Phi$ does not need to be completely
+            positive)
+    \end{enumerate}
+
+    Consider the following proposition: Suppose $\rho,\sigma\in D(\mathcal{X})$
+    satisfy $\rho \succ \sigma$. It holds that $H(\sigma) \ge H(\rho)$.
+
+    Proof: We know that $\rho \succ \sigma$ implies that $\sigma = \sum_{k=1}^n
+    p_k U_k \rho U_k^*$. Then we use the concavity of the entropy to write:
+    \begin{align*}
+        H(\sigma) &= H(\sum_{k=1}^n p_k U_k \rho U_k^*) \\
+        &\ge \sum_{k=1}^n p_k H(U_k \rho U_k^*) \\
+        &= \sum_{k=1}^n p_k H(\rho) \\
+        &= H(\rho)
+    \end{align*}
+    
+\end{document}

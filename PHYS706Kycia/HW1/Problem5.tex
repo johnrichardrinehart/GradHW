@@ -1,0 +1,46 @@
+\begin{homeworkProblem}
+\textbf{A simple capacitor is a device formed by two insulated conductors adjacent to each 
+other. If equal and opposite charges are placed on the conductors, there will be a 
+certain difference of potential between them. The ratio of the magnitude of the 
+charge on one conductor to the magnitude of the potential difference is called the 
+capacitance (in SI units it is measured in farads). Using Gauss's law, calculate the 
+capacitance of: }
+
+\begin{homeworkSection}{(a)}
+
+\textbf{Two large, flat, conducting sheets of area A, separated by a small distance d. }
+\\ \par
+Using a small Gaussian surface on either side of the sheet I find that the electric field looks like $E * 2A = \frac{\sigma a}{\epsilon_0}$, where the factor of 2A on the left side came from the fact that there is flux through both sides of my pill box. Thus, the electric field from a sheet of charge can be approximated in the large A, small d limit as $E = \frac{Q}{2 A \epsilon_0}$ pointing perpendicular to the plates. Thus, the electric field inside, due to both the positive and negative charge is $E_{inside} = \frac{Q}{A \epsilon_0}$. The potential gained by traveling from one plate to another is just $\int \vec{E}\cdot \vec{dl} = \frac{2Q d}{a \epsilon_0}$. This was obtained by taking a path perpendicular to the plates (the direction in which the field faces). The ratio of the charge on one plate to the change in potential is : $\frac{Q}{V} = \frac{A \epsilon_0}{d}$.
+
+\end{homeworkSection}
+
+\begin{homeworkSection}{(b)}
+
+\textbf{Two concentric conducting spheres with radii a, b ($b > a$); }
+\\ \par
+Using the results from Problem 1, I know that the potential outside of a sphere of charge is $\frac{k Q}{r}$, where r is my distance from the center of the sphere of charge and Q is the charge on the sphere. Thus, the change in potential between distances a and b with $ b > a $ is $|\Delta V| = \frac{k Q}{\frac{1}{a} - \frac{1}{b}}$, where the difference has been taken in order to make the result a positive quantity. So, the capacitance, which is given by $ C = \frac{Q}{V} = \frac{1}{4\pi \epsilon_0}\frac{1}{\frac{1}{a}-\frac{1}{b}} $.
+
+\end{homeworkSection}
+
+\begin{homeworkSection}{(c)}
+\textbf{Two concentric conducting cylinders of length L, large compared to their radii a,b ($b > a$). }
+\\ \par
+Using a Gaussian cylinder as my test volume and assuming that the field is radially-distributed (reasonable given the conditions of the problem statement). Thus $E(r) 2 \pi r \Delta z = \frac{\sigma 2 \pi a \Delta z}{\epsilon_0}$. Here, $\sigma$ is the charge per unit area on the surface of the cylinder. Thus, $E(r) = \frac{\sigma a}{\epsilon_0 r}$. But, if we consider the charge per unit length $\lambda$ that runs along the length of the cylinder : $\sigma = \frac{\lambda}{2 \pi a}$. Thus $E(r) = \frac{\lambda}{2\pi \epsilon_0 r}$. $\lambda = \frac{Q}{L}$. The potential gained from moving out along the radius will go as the integral of $E(r)$ over r. Thus, the expression obtained will be a natural log. $\Delta V(r) = \frac{Q}{2\pi L \epsilon_0} ln(b/a)$ where b is a distance chosen to be larger than a so as to make the change in potential a positive quantity. Now, $C = \frac{Q}{V} = \frac{Q}{\frac{Q}{2\pi L \epsilon_0} ln(b/a)} = \frac{2 \pi L \epsilon_0}{ln(b/a)}$. 
+
+\end{homeworkSection}
+
+\begin{homeworkSection}{(d)}
+
+\textbf{What is the inner diameter of the outer conductor in an air-filled coaxial cable 
+whose center conductor is a cylindrical wire of diameter 1 mm and whose 
+capacitance is:
+\begin{itemize}
+	\item $ 3*10^{-11} \frac{F}{m}?$
+	\item $ 3*10^{-12} \frac{F}{m}?$
+\end{itemize}}
+\par
+To be general I will solve for the inner diameter as a function of an arbitrary capacitance. From problem 5 (c) I know that $C/L = \frac{2 \pi \epsilon_0}{ln(b/a)}$. Thus, $ b = a e^{\frac{2 \pi \epsilon_0}{C/L}}$. I am given b. $2\pi \epsilon_0 \approx 5.563*10^-11 F/m$. Thus, substituting the proper values: $b_{3*10^{-11} F/m} \approx 1 mm * e^{1.85} \approx 6.36 mm$ and $b_{3*10^{-12} F/m} \approx 1 mm * e^{18.5} \approx 108 km $.
+
+\end{homeworkSection}
+
+\end{homeworkProblem}

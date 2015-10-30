@@ -1,0 +1,183 @@
+\date{September 15, 2015}
+
+\begin{document}
+\begin{enumerate}
+    \item{Course web page : cs.uwaterloo.ca/~watrous/CS766/}
+    \item{Office hours: Tuesday 1-3 @ QNC 3312 (or whenever)}
+    \item{Email: John Watrous (watrous@uwaterloo.ca)}
+\end{enumerate}
+\begin{section}[Introductory Course Information]
+    Grades wil be split up with 80% problem sets (of which there are 4)
+    and 20% final project.
+
+    Dr. Watrous has written a book posted on the course web page. Send
+    errata to his email. Notes from the 2011 offering of the course are
+    also on the course website.
+    \begin{subsection}[Course Overview]
+        Course addresses the mathematics of quantum information. Focuses
+        on fundamental concepts and methods.  Application is not a focus
+        of this course. This course will focus on quantum algorithms and
+        ompelexity, quantum cryptography, error correction and fault
+        tolerance, etc. There will be some discussion of Physics
+        (how condensed matter relates to quantum information).
+    \end{subsection}
+    \begin{subsection}[Summary of Topics]
+        \begin{enumerate}
+            \item{Basic notions: states, measurements, channels}
+            \item{Distance and similarity of states (trace distance or
+                    fidelity, diamond norm/completely bounded trace
+                norm)}
+            \item{Quantum Entropy and related things (source coding,
+                    Holevo's theorem). We'll prove a fundamental fact of
+                quantum entropy: strong subadditivity)}
+            \item{Entanglement Theory. What does it mean to be entangled
+                    (separability), LOCC paradigm (distant labs
+                paradigm), bound entanglement}
+            \item{Random topics: Semidefinite programming, Harr
+                measure, others.}
+        \end{enumerate}
+    \end{subsection}
+    \begin{subsection}[What we should know]
+        Read the first chapter of the book (Mathematical Preliminaries).
+
+        We should ask questions. There will be sessions to ask the
+        course TA ``dumb questions''.
+    \end{subsection}
+\end{section}
+\begin{section}[Actual Content: Basic Notions of Quantum Information]
+    Introducing the concept of a register: The intuitive understanding
+    of a register is an abstraction of a physical system that stores a
+    finite amount of information. For example, a qubit is a register. A
+    qutrit or a collection of qubits or a quantum computer (no size
+    restriction) are all, also, examples of registers.
+
+    He's not going to try to define ``information'' or a ``physical
+    system''. This is an ``intuitive definition''.
+
+    Note that a finite system is a system comprising a finite number of
+    elements/symbols (\alpha, \beta, \gamma, \cdots or a, b, c, \cdots
+    or \sigma_0, \sigma_1, \sigma_2, \cdots).
+
+    Imagine you have access to two registers and you place both on a
+    table. You could consider both registers as a single register. This
+    is similar to how multiple objects (e.g. bowling balls) can be
+    considered as a single objects by considering their center of mass,
+    moment of inertia, etc.
+
+    So, a register X is either:
+    a) a simple register (X = $\Sigma$ for some alphabet $\Sigma$
+
+    b) a compound register (tuple of registers: X = (Y_1,, \cdots, Y_n)
+    for Y_1,\cdots,Y_n being registers. Of course, X can not be a
+    self-referential register. Y_1 and Y_2 and \cdots Y_n should be
+    well-defined. X is not equal to $\Sigma$, it's identified with the
+    set of states that it can store which is $\Sigma$. $\Sigma$ is the
+    set of states that can be stored in the register.
+
+    Example of a register: Allow $\Sigma = {0,1}$ and $\Gamma =
+    {1,\cdots,n}$ for $n element of Z$. Z_1 = $\Sigma$,\cdots, Z_n =
+    \Sigma. W = (Z_1,\cdots,Z_n$. Y = \Gamma$. X = (Y,W) =
+    (Y,(Z_1,\cdots,Z_n)). I could draw a tree structure that relates
+    these things. X is top node. Y and W are chldren nodes of X.
+    Z_1,\cdots,Z_n are children nodes of W.
+
+    \begin{subsection}[Defining a classical state set]
+        The classical state of a register X is defined in this way:
+        1. 
+        If X is a simple register X = \Sigma then the classical state set
+        is $\Sigma$. 
+        If X = (Y_1,\cdots,Y_n) is a compound register then the
+        classical state set of X is $\Sigma = Cartesian product of classical
+        state sets of Y_\alpha$. This is the reason why the tensor product
+        is identified as the way in which to combine quantum states.
+
+        We can think about states in a different way than just defining the
+        ``bits'' of a register. We can think about states in a probabilistic
+        sense, too. This could happen, for example, if we wanted to consider
+        the effect of noise on a state.
+
+        A probabilistic state of a register X having clasical state set
+        $\Sigma$ is a probability vector, $p \element P(\Sigma)$.
+
+        p(a) is interpereted as the probability that X is in the classical
+        state $a \element \Sigma$.
+
+        Note that if $\Sigma$ is an alphabet then $C^\Sigma$ (all of the
+        functions from $\Sigma$ to the complex numbers) or $R^\Sigma$ are
+        Euclidean vector spaces over particular fields. We can define a norm
+        and/or an inner product on these spaces.
+
+        Note: P(\Sigma) means {p\element R^\Sigma such that \Sum_{p\Element
+        \Sigma} P(x) = 1} // MISSING SOMETHING HERE
+    \end{subsection}
+\end{subsection}
+\begin{subsection}[Some Underlying Mathematics]
+    $C^\Sigma$ is a complex Euclidean space.
+    An inner product on $C^\Sigma$ is defined as: for $u,v \element
+    \Sigma: <u,v> = \Sigma_{a\element Sigma} \overbar{u(a)}v(a)$. This
+    definition of an inner pdoruct is used to define the Euclidiean
+    norm: $||u|| = \sqrt{<u,u>} = \sqrt{\Sigma_{a\element\Sigma}
+    |u(a)|^2}$. Typical names for these spaces are x,y,z,w,\cdots
+
+    Every register X has associated with it some complex euclidean space,
+    \script{X}. Typically, we will adopt the convention that registers
+    will be in arial font and the complex space associated with it will
+    be in script font. $script{x} = C^\Sigma$ where $\Sigma$ is the
+    classical state set of X.
+
+    For complex Euclidean spaces \script{x} and \script{y} the set of
+    all linear maps from \script{x} to \script{y} will be denoted as
+    L(\script{x},\script{y}). We also use L(\script{x}) to denote all
+    the linear maps from $\script{x}$ to itself $L(\script{x}) =
+    L(\script{x},\script{x})$. A linear map will be
+    referred to as an operator in this course. Of course, all the
+    operators we discuss will be linear operators.
+
+    The standard basis: Most of the information in this course is
+    basis-dependent. If I have a space $\script{x} = C^\Sigma$ then for
+    each a \element \Sigma, e_a is this vector:
+    e_a(b) = 1 if b = a or 0 if b \ne a. \\ USE CASES BEFORE HERE
+    i.e. this basis is an orthonormal basis.
+
+    E_A = \KET{A} IN dirac notation. {e_a: a \element\Sigma} is the
+    standard basis of $\script{x}$.
+    
+    Having picked a standard basis for scriptx and scripty we can
+    associate linear operatosr with matrices. A \element L(scriptx,
+    scripty) (scriptx is C^\Sigma and scripty is C^\Gamma) then M_{A}e(a,b)
+    = <e_b,A e_a> = <b|A|a> for all a\element \Gamma and b\element Sigma
+
+    However, int he future M_A wil be denoted as A(a,b) to mean <e_b,A
+    e_a> instead of M_A (a,b).
+
+    If I have a  linear opetar of the form A\elementL(\scriptx) then we
+    define the trace to be $Tr(A) = \Sigma_{a \element Sigma} A(a,a)$
+
+    If A\element L(\scriptx,\scripty) then we define A^* \element
+    L(\scripty,\scriptx) as the unique operator such that <y,A x> =
+    <A^*y,x> for all x \element \scriptx, y \element \scripty. This is
+    the conjugate transpose of A: $A^*(b,a) = \overbar{A(a,b)}$ for all
+    a\element Gamma, b \element \Sigma. This is also known as the
+    adjoint of A. Typical notation: $A^*$ can be written as $A^\dagger$.
+
+    An operator A\elementL(\scriptx) is positive semidefinite if and
+    only if (iff) A = B*B f or some choice of B \element L(\scriptx).
+    This is only one of many formulations of a positive semidefinite operator.
+    Another way to define it is as a hermitian operator whose
+    eigenvalues are all non-negative. A hermitian operator being one
+    that has the property that A = A^*.
+\end{subsection}
+\begin{subsection}[Defining/Describing Quantum States]
+    A quantum state of a register X is a positive semidefinite, trace 1
+    operator. $p \element L(\scriptx)$ for $\scriptx$ being the complex
+    Euclidean space associated with X. $p \element L(\scriptx)$ for
+    $\scriptx$ being the complex Euclidean space associated with X. $p
+    \element L(\scriptx)$ for $\scriptx$ being the complex Euclidean
+    space associated with X. $\rho \element L(\scriptx)$ for $\scriptx$
+    being the complex Euclidean space associated with X. $\rho$ is
+    also known as a density operator. We use the following notation:
+    D(\scriptx) = {\rho \element L(\scriptX): \rho is positive
+    semidefinite and Tr(\rho) = 1}.
+\end{subsection}
+\end{section}
+\end{document}

@@ -1,0 +1,158 @@
+\documentclass{article}
+\usepackage{dsfont,amsmath}
+\begin{document}
+    \section{Compression of Quantum Channels}
+    The channel fidelity of a quantum channel is given by $
+    F_{channel}(\Xi,\sigma) = \sqrt{\sum\limits_{k=1}^N |\langle A_k, \sigma
+    \rangle |^2 }$, where $ \Xi(X) = \sum\limits_{k=1}^N A_k X A_k^* $.
+    
+    $ (\Phi,\Psi) $ is an $(n,\alpha,\delta)$-quantum compression scheme
+    if $ F_{channel}(\Psi\Phi,\rho^{\otimes n}) > 1- \delta $.
+
+    \begin{theorem}[Schumacher's Theorem]
+        Let 
+        \[
+                \rho \in D(\mathds(C)^\Sigma),\quad \alpha \ge 0, \delta >
+                0
+        \]
+
+        \begin{enumerate}
+            \item If $ \alpha > H(\rho) $  then there exists an $
+                (n,\alpha,\delta) $-compression scheme for $ \rho $  for
+                all but finitely many $ n \in \mathds{N}$.
+            \item If $ \alpha < H(\rho) $ then there exists an $
+                (n,\alpha,\delta) $-compression scheme for $\rho$ for at
+                most finitely many $ n \in \mathds{N} $.
+        \end{enumerate}
+
+        Proof sketch: Start with a spectral decomposition 
+        \[ 
+                \rho = \sum_{a\in \Sigma} p(a) x_a x_a^* 
+        \]
+        
+        for some $ p \in P(\Sigma) $ and $\{x_a: a \in \Sigma \}$ an
+        orthonormal basis of X.
+
+        Remember that the typical sequences of length n are : $
+        T_{n,\epsilon}(p) = \{a_1\ldots a_n \in \Sigma^n:
+                2^{-n(H(\rho)+\epsilon)}<p(a_1)\ldots
+        p(a_n)<2^{-n(H(p)-\epsilon)} \} $ 
+
+        In a similar way we define a typical projector $
+        \Pi_{n,\epsilon} = \sum_{a_1\ldots a_n \in T_{n,\epsilon}} x_a_1
+        x_a_1^* \otimes \cdots \otimes x_a_n x_a_n^*$.
+
+        Note that $\langle \Pi_{n,\epsilon}, \rho^{\otimes n} \rangle =
+        Pr[a_1\ldots a_n \in T_{n,\epsilon} \xrightarrow{(\text{as n}\rightarrow
+        \infty)} 1$, where each $ a \in \Sigma $ independently chosen
+        according to p.
+
+        Now, we define an isometry $ A = \sum\limits_{a_1 \cdots a_n \in
+        T_{n,\epsilon} } e_{f(a_1\cdots a_n)} x_{a_1 \cdots a_n}^* $.
+    $f: \Sigma^n \rightarrow \Sigma^m$ is an encoding function from a
+    classical compression scheme.
+
+    $ A \in L(\mathcal{X}_1 \otimes \cdots \otimes \mathcal{X}_n,
+        \mathcal{Y}_1
+    \otimes \cdots \otimes \mathcal{Y}_n) $.
+
+    If we consider $ \Phi(X) = A X A^* $ we don't have a channel because
+    it doesn't necessarily preserve trace. But, we can make it a channel
+    by modifying it a bit $ \Phi(X) = A X A^* + \langle
+    \mathds{1}-\Pi_{n,\epsilon},X\rangle\sigma $ for any $\sigma \in
+    D(\mathcal{Y}_1\otimes\cdots\otimes \mathcal{Y}_n)$. If this is a
+    channel then it should be the case that $Tr(\Phi(X)) = Tr(X) =
+    Tr(A^*AX) + \langle \mathds{1}-\Pi_{n,\epsilon},X \rangle$. But,
+    $A^*A = \Pi_{n,\epsilon}$ so $Tr(\Phi(X)) = Tr(X)$.
+
+    We could propose some $ \Psi'(Y) = A^* Y A  $ to undo what $\Phi$
+    does. However, this may not be a channel so we should add another
+    correction term: $\Psi = A^* Y A + \langle \mathds{1} - A
+    A^*,Y\rangle \xi$ for any state $\xi \in D(\mathcal{X}_1 \otimes
+    \cdots \otimes \mathcal{X}_n)$. We should check to make sure that
+    this actually undoes $\Psi$. We want to show that
+    $F_{channel}(\Psi\Phi,\rho^{\otimes n})$. So let's consider what
+    $(\Psi \Phi)(X)$ is.
+
+    If I knew that $\Phi(X) = \sum_k A_k X A_k^*$ (Kraus rep) and $
+    \Phi(Y) = \sum_l B_l Y B_l^* $ then 
+    $ (\Psi\Phi(X) = \sum_{k,l} (B_l A_k)X(B_lA_k)^* $. 
+
+    So, $ (\Phi\Psi)(X) = (A^*A)X(A A^*)^* + \cdots
+    \text{more things like $B_k X B_k^*$} $.
+
+    Now, \begin{align*}
+        F_{channel}(\Psi\Phi, \rho^{\otimes n}) &= \sqrt{ | \langle
+        A^*A,\rho^{\otimes n} \rangle |^2 + \text{non-negative terms} }
+        \\
+        &\ge \langle A^*A,\rho^{\otimes n} \rangle \\
+        &= \langle \Pi_{n,\epsilon} ,\rho^{\otimes n}\rangle \rightarrow
+1
+    \end{align*}
+
+    So, the compression is good and this works!
+
+    \section{Quantum Entropy}
+    \subsection{Properties of the Von-Neumann entropy}
+        \begin{enumerate}
+            \item The Shannon entropy is continuous : $H(p) = -
+                \sum_{a\in \Sigma} p(a) \log(p(a))$.  The von Neumann
+                entropy, $H(\rho) = H(\lambda(\rho))$, equals the entropy
+                of a vector of eigenvalues. Since eigenvalues are
+                continuous so the von Neumann entropy is continuous (you
+                can understand this by considering constructing an
+                arbitrary characteristic polynomial to obtain the
+                eigenvalues. Since the von Neumann entropy is the
+                composition of two continuous functions then it is
+                continuous. It's easy to understand this when applied to
+                hermitian operators whose eigenvalues can be ordered
+                ($||\lambda(A) - \lambda(B)||_1 \le ||A-B||_1$).
+
+            \item
+
+        \end{enumerate}
+
+        \begin{theorem}[Fannes-Audenaert]
+            Consider two density operators $ \rho_0,\rho_1 $ and $
+            \delta = .5 ||\rho_0 - \rho_1 ||_1 $ . You can conclude that
+            $ |H(\rho_0)-H(\rho_1)| \le \delta \log(n-1) +
+            H(\delta,1-\delta)$. This puts an upper bound on the
+            difference in entropy when you perturb a density operator a
+            little bit.
+        \end{theorem}
+        \subsection{Quantum relative entropy}
+        $D(P||Q) = Tr \left(  P\log \left( P \right)-P\log \left( Q
+        \right) \right) $ for $ P,Q \in Pos(\mathcal{X}) $. If $ ker(Q)
+        \subseteq ker(P) $ then this is well defined and I can find
+        $D(P||Q)$. However, when this is not the case we allow $ D(P||Q)
+        = \infty $ .
+
+        One way to think about this function is as one that tells you
+        how much compression ``loss'' you have if you design a
+        compression scheme for some $\rho$ and you used that on some
+        $\sigma$.
+
+        \begin{theorem}[Klein's inequality]
+            Imagine you have $\rho,\sigma \in D(\mathcal{X})$ then
+            $D(\rho||\sigma) \ge 0$ with equality if and only if $\rho =
+            \sigma$.
+        \end{theorem}
+
+        Proof: Let's assume (without loss of generality) that $
+        \rho,\sigma >0 $ (positive definite). Let's assume that we have
+        spectral decompositions of $\rho$ and $\sigma$.  
+        
+        \[\rho = \sum_{a\in \Sigma} p(a) u_a u_a^*\] 
+        \[\sigma = \sum_{a \in \Sigma} q(a) v_a v_a^*}\]. 
+        Now,
+        \begin{align*} 
+            D(\rho||\sigma) &= \frac{1}{\ln(2)} \sum_{a,b} |\langle u_a,
+            v_b \rangle |^2 (p(a) ln(a) - p(a) ln(b) \\
+            & \intertext{It can be shown that $ln(x) < x-1$ (draw a
+            2d plot} \\
+            & = -p \ln(q/p) \ge -p (\frac{q}{p} -1) = p-q \\
+            D(\rho||\sigma) & \ge \frac{1}{\ln(2)} \sum_{a,b} |\langle
+            u_a, v_b \rangle |^2 (p(a)-q(b)) = 0
+        \end{align*}
+
+\end{document}

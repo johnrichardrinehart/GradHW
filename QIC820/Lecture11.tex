@@ -1,0 +1,244 @@
+\documentclass{article}
+\usepackage{amsmath,amssymb,bbm}
+\begin{document}
+    From last time:
+    \[ 
+            H(P) = -Tr(P \log(P)) 
+    \]
+    
+    \[ 
+            D(P||Q) = Tr(P\log(P)) - Tr(P\log(Q)) 
+    \]
+    
+        Klein's inequality
+    \[ 
+            \rho, \sigma \in D(\scriptx) \rightarrow D(\rho||\sigma \ge
+            0 \text{\quad with equality if and only if $\rho = \sigma$}
+    \]
+    
+    Suppose $ \rho \in D(\scriptx) $ and that $dim(\scriptx) = n$. It
+    holds that $ H(\rho) \le \log(n) $ with equality if and ontly if $
+    \rho = \mathbb{1}/n $.
+
+    We know that $ 0 \le D(\rho || \mathbbm{1}/n) = -H(\rho) - Tr(\rho
+    \log(\mathbbm{1}/n))  $.
+
+    In general, if you want to know $ \log(\alpha P) = \sum\limits_k
+    \log(\alpha \lambda_k(P))x_k x_k^*$ and 
+    
+    \[ 
+            \sum\limits_k (\log(\alpha) + \log(\lambda_k(P))) x_k x_k^*
+            = \log(P) + \log(\alpha) \mathbbm{1}
+    \]
+    
+    Plugging this expression in to our earlier expression for $ D(\rho
+    || \mathbbm{1}/n) $.
+
+    \begin{align*}
+        D(\rho || \mathbbm{1}/n) &= -H(\rho) -
+            Tr(\rho\log(\mathbbm{1}) + \log(\frac{1}{n})\mathbbm{1}) \\
+            & = -H(\rho) - \log(1/n) \\
+            & = -H(\rho) + \log(n) 
+            &\intertext{Thus: }
+            H(\rho) &\le \log(n)
+    \end{align*}
+    Let's demonstrate the subadditivity of the quantum entropy. If X is
+    a register in some state $ \rho \in \mathcal{X}$, we write $
+    H(\mathcal{X}) $ to mean $H(\rho)$. Consider two registers X and Y
+    in the state $ \rho \in D(\mathcal{X} \otimes D(\methcal{Y}) $. $
+        H(X) = H(Tr_y(\rho)) $  and $H(X,Y) = ``H((X,Y))''$.
+
+        Proposition: for any state $\rho \in D(\mathcal{X} \otimes
+        \mathcal{Y})$ it holds that $H(X)+H(Y) \ge H(X,Y)$. This is a
+        statement of subadditivity.
+
+        More notation: If $\rho \in D(\mathcal{X} \otimes \mathcal{Y})$
+        then we write $\rho[X] = Tr_y{\rho}$ and $\rho[Y] = Tr_x{\rho}$.
+        This is often shown as $\rho^X$ or $\rho_X$.
+
+        Subaddivity means that 
+        \[ 
+                H(\rho[X]) + H(\rho[Y]) \ge H(\rho).
+        \]
+
+        It also means that 
+        \[ 
+                0 \le D(\rho || \rho[X]\otimes \rho[Y]) 
+        \]
+        
+        Suppose that you have $\log(P \otimes Q)$. What should that be?
+        If they were scalars we'd get the sum. But, with a tensor
+        product we get $ \log(P\otimes Q) = \log(P)\otimes \mathbb{1} +
+        \mathbb{1} \otimes \log(Q)$. This generalizes the $\log$ for
+        tensor products of operators.
+
+        Going back to subadditivity:
+
+        \begin{align*}
+            0 & \le D(\rho || \rho[X] \otimes \rho[Y]) \\
+              & = -H(\rho) - Tr(\rho \log(\rho[X]\otimes \rho[Y])) \\
+              & = -H(\rho) - Tr(\rho(\log(\rho[X])\otimes \mathbbm{1})) -
+            Tr(\rho(\mathbbm{1} \otimes \log(\rho[Y])))
+            \\
+            & = -H(\rho) - Tr(\rho[X]\log(\rho[X])) \\
+            & = -H(\rho) + H(\rho[X]) + H(\rho[Y]) 
+        \end{align*}
+        
+        Let's next demonstrate the concavity of the von Neumann entropy.
+        Consider $ P,Q \in Pd(\mathcal{X})$ (they are positive
+        definite).
+        \begin{align}
+            & D\left(\begin{pmatrix} P & 0 \\ 0 & Q \end{pmatrix} ||
+    \begin{pmatrix} \frac{P+Q}{2} & 0 \\ 0 & \frac{P+Q}{2}
+    \end{pmatrix}\right) \\
+        & = Tr(P \log(P)) - Tr(P\log(\frac{P+Q}{2})) \\
+        & = Tr(Q \log(Q)) - Tr(Q\log(\frac{P+Q}{2})) \\
+        & = Tr(P\log(P)) + Tr(Q\log(Q)) - 2 Tr(\frac{P+Q}{2}
+    \log(\frac{P+Q}{2}))
+        \end{align}
+
+        \begin{align}
+            0 &\le \frac{1}{2}Tr(P\log(P)) + \frac{1}{2}Tr(Q\log(Q)) -
+            Tr(\frac{P+Q}{2} \log(\frac{P+Q}{2})) \\
+            & = H(\frac{P+Q}{2} - \frac{1}{2}H(P) - \frac{1}{2}H(Q)
+        \end{align}
+
+        So,
+        
+        \[
+                \frac{1}{2}\left( H(P)+H(Q) \right) \le H(\frac{P+Q}{2})
+        \]
+
+        This states that the entropy is ``midpoint concave''.  Since the
+        entropy is continuous, though, and we know that it's midpoint
+        concave we can say that it's concave. For any continuous
+        midpoint concave function it is concave.
+
+        Let's consider strong subadditivity. Let X,Y and Z be registers
+        and $ \rho \in D(\mathcal{X} \otimes \mathcal{Y} \mathcal{Z}) $
+        be any state. It can be shown that $ H(X,Y,Z) + H(Z) \le H(X,Z)
+        + H(Y,Z)$.
+
+        Let's prove this (it will take a while)
+
+        \begin{align*}
+            &\rho_0, \rho_1, \sigma_0, \sigma_1 \in D(\mathcal{X}) \\
+            &\lambda \in [0,1] \\
+            D(\lambda \rho_0 + (1-\lambda) \rho_1 || \lambda \sigma_0 +
+            (1-\lambda)\sigma_1) &\le \lambda D(\rho_0 || \sigma_0) +
+            (1-\lambda)D(\rho_1 || \sigma_1) \\
+        \end{align*}
+
+        Step 1 for the proof is going to be to get rid of the
+        logarithms. So consider $ \rho, \sigma \in D(\mathcal{X}) $ .
+        Let's define a funnction $ f_{\rho,\sigma} : \mathbbm{R} \mapsto
+        \mathbbm{R}$ as $ f_{\rho,\sigma}(\alpha) = Tr(\sigma^\alpha
+        \rho^{1-\alpha}) $. This function is continous and, in fact,
+        differentiable. So, let's calculate its derivative.
+
+        \[ 
+                f^{'}(\alpha) = Tr(\sigma^\alpha
+                \rho^{1-\alpha}(\ln(\sigma) -\ln(\rho))) 
+        \]
+        
+        This function is interesting for one reason because of its
+        value at ``\alpha = 0'': $ f'(0) =Tr\left(\rho \ln(\sigma) - \rho
+        \ln(\rho)\right) = - \ln(2)D(\rho || \sigma) $. This new
+        function is nice because it has no logarithms but it has
+        relationships to things we want to calculated.
+
+        There is another way that we can think about this function:
+
+        \[ 
+                D(\rho || \sigma) = \frac{1}{\ln(2)}
+    \lim\limits_{\alpha^+ \rightarrow 0} \frac{Tr\left(\sigma^\alpha
+    \rho^{1-\alpha}\right) - 1 }{\alpha}
+        \]
+
+        Imagine we could prove this theorem. This theorem is known as
+        the ``Lieb concavity theorem''.
+
+        \begin{align}
+            \rho_0,\rho_1,\sigma_0,\sigma_1 &\in D(\mathcal{X}) \\
+                                            &\alpha, \lambda \in [0,1] \\
+            Tr \left( \left( \lambda\sigma_0 + \left( 1-\lamda
+                \right)\sigma_1 \right)^\alpha \left( \lambda \rho_0
+    +\left(1-\lambda)\rho_1 \right)^{1-\alpha} \right) \right)
+    &\ge \lambda Tr \left( \sigma_0^\alpha \rho_0^{1-\alpha} \right) +
+    \left( 1-\lambda \right)Tr(\sigma_1^\alpha \rho_1^{1-\alpha})
+        \end{align}
+
+        Using this result:
+
+        \begin{align*}
+            &(\lambda \rho_0 + (1-\lambda) \rho_1 || \lambda \sigma_0 +
+            (1-\lambda)\sigma_1) \\
+            & = -\frac{1}{\ln(2)} \lim\limits_{\alpha^+ \rightarrow 0}
+            \left( \frac{Tr((\lambda\sigma_0 +
+                        (1-\lambda)\sigma_{1})^\alpha ( \lambda\rho_0 +
+        (1-\lambda)\rho_1)^{1-\alpha})-1}{\alpha} \right) \\
+    & \le \frac{1}{\ln{2}} \lim\limits_{\alpha^+ \rightarrow 0}
+        \frac{1}{\alpha} \left( \lambda Tr(\sigma_0^\alpha
+            \rho_0^{1-\alpha}) + (1-\lambda)Tr(\sigma_1^\alpha \rho_1
+^{1-\alpha}) - \lambda(1-\lambda)) \right) \\
+& = \lambda D(\rho_0 || \sigma_0) + ( 1-\lambda) D (\rho_1 ||
+\sigma_1)\\
+\intertext{QED}
+        \end{align*}
+        
+        Consider another theorem: $ A_0, A_1 \in Pd(\mathcal{X}) $ and $
+        B_0, B_1 \in Pd(\mathcal{Y})$  and $ \alpha \in [0,1] $. We can
+        show that $ (A_0 + A_1)^\alpha \otimes (B_0 + B_1)^{1-\alpha}
+        \ge A_0^\alpha \otimes B_0^{1-\alpha} + A_1^\alpha \otimes
+        B_1^{1-\alpha} $. To get Lieb, take $ A_0 = \lambda \sigma_0,
+        A_1 = (1-\lambda)\sigma_1 $ and $B_0 = \lambda \rho_0^T, B_1 =
+        (1-\lambda)\rho_1^T  $.
+
+        Writing out all of this yields: $ (\lambda\sigma_0 +
+            (1-\lambda)\sigma_1)^\alpha \otimes (\lambda \rho_0^T +
+        (1-\lambda)\rho_1^T)^{1-\alpha} \ge \lambda \sigma_0^\alpha
+        \otimes (\rho_0^T)^{1-\alpha} + (1-\lambda)\sigma_1^\alpha
+        \otimes (\rho_1^T)^{1-\alpha} $. Now, we make a ``sandwich``
+        where the ``bread'' is $ vec(\mathbbm{1}) $.
+
+        \[ 
+                vec(\mathbbm{1}^*\sigma_0^\alpha
+                    \otimes(\rho_0^T)^{1-\alpha} vec(\mathbbm{1}) +
+                    (1-\lambda)vec{\mathbbm{1}^* \sigma_1^\alpha\otimes
+                        (\rho_1^T)^{1-\alpha} vec(\mathbbm{1})
+        \]
+        
+        Now we use the fact that $ vec(\mathbbm{1}^* (X \otimes Y)
+            vec(\mathbbm{1}) = Tr(XY) $. Using this fact we can show
+            that the previous expression implies Lieb's concavity
+            theorem.
+
+            Now let us prove Ando's version of Lieb's concavity theorem.
+            We will use the following lemma: Suppose that we have $ P,Q
+            \in Pd(\mathcal{X})$. We'll also assume that $ [P,Q] = 0 $.
+            Let's also assume that $ H\in Herm(\mathcal{X}) $. If 
+            \[ 
+                \begin{pmatrix} P & H \\ H & Q \end{pmatrix} \ge 0
+            \]
+            then $ H \le \sqrt{P}\sqrt{Q} $.
+
+            From before we had the condition that if and only if$ \begin{pmatrix}
+                P & X \\ X^* &Q
+            \end{pmatrix} \ge 0 $ then $ X = \sqrt{P}X\sqrt{Q} $ for $
+            ||K||\le 1 $. So, $ H = \sqrt{P}K \sqrt{Q} $ for $ ||K|| \le
+            1$. So $||P^{-\frac{1}{2}}HQ^{-\frac{1}{2}} || \le 1$.
+
+            If $\lambda$ is an eigenvalue of
+            $P^{-\frac{1}{2}}HQ^{-\frac{1}{2}}$, then $|\lambda| \le
+            1$.
+
+            In general, if $ X,Y \in L(\mathcal{X}) $, then the
+            eigenvalues of $XY$ and $YX$ must always be the same.
+
+            Considering more operator stamements: $
+            \lambda_1 \left(P^{-1/4}Q^{-1/4}HQ^{-1/4}P^{-1/4}\right) \le
+            1$. This implies that $ P^{-1/4}Q^{-1/4}HQ^{-1/4}P^{-1/4}
+            \le \mathbbm{1}$. So, $ H \le \sqrt{P}\sqrt{Q} $. Bhatia's
+            Matrix Analysis has a lot of these relatonships. It's a good
+            reference text.
+\end{document}

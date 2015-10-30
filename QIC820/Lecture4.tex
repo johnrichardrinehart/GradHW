@@ -1,0 +1,186 @@
+\begin{document}
+
+\begin{section}[Choi Representation]
+
+    We will define a linear map J: T(\scriptx,\scripty) \mapsto
+    L(\scripty \tensor \scriptx) as follows (assuming \scriptx =
+    \mathC^\Sigma:
+
+    J(\Phi) = \sum_{a,b \elementsof \Sigma} \Phi(E_{a,b})\tensor
+    E_{a,b}. This is the Choi representation of \Phi.
+
+    Alternatively, J(\Phi) = (\Phi \tensor
+    \math1_{L(\scriptx)}(vec(\math1_{\scriptx})vec(\math1_{\scriptx})^*)
+    These are equivalent because vec(\math1) = vec(\sum_{a\elementsof
+    \Sigma} E_{a,a}) = \sum_{a\elementsof \Sigma} e_a \tensor e_a
+
+    vec(\math1_\scriptx)vec(\math1_\scriptx)^* = \sum_{a,b} E_{a,b} \tensor
+    E_{a,b} \elementsof L(\scriptx \tensor \scriptx)
+
+    (\Phi \tensor
+    \math1_{L(\scriptx)})(vec(\math1_{\scriptx})vec(\math1_\scriptx)^*)\elementsof
+    L(\scripty \tensor \scriptx)
+
+    J(\Phi) \element L(\scripty \tensor \scriptx) is a linear mapping. It
+    does not implement \Phi directly but it includes all the information
+    about \Phi. It applies \Phi in a different way (it doesn't vec the
+    objects \Phi acts on).
+
+    We cane recover the action of \Phi from J(\Phi) like this: \Phi(X) =
+    Tr_\scriptx(J(\Phi)(\math1_\scripty \tensor X^T)). This is a
+    basis-dependent representation. With a different choice of basis you
+    would get a different operator.
+
+    If you want to know if \Phi is completely positive you can check to
+    make sure that J is positive semidefinite. They are if and only if
+    conditions.
+
+    e.g. \Delta \element T(\scriptx) \elementof T(\scriptx,\scriptx). This
+    operator will leave the diagonal alone and zero-out everything else.
+
+    It's the action on E_{a,b} = {E_{a,a} if a = b, 0 if a \ne b}
+    So, \Delta {\alpha \beta; \gamma \delta} = {\alpha 0 ; 0 \delta}
+
+    J(\Delta) = \Sigma_{a,b \elementsof \Sigma} \Delta(E_{a,b}) \tensor
+    E_{a,b} = \Sigma_{a\elementsof \Sigma} E_{a,a}\tensor E_{a,a}
+\end{section}
+\begin{section}[Kraus Representations]
+
+    Suppose \Phi \elementof T(\scriptx,\scripty), and suppose we have
+    {A_a : a \elementof \Sigma} \containedin {B_a : a \element \Sigma}
+    \containedin L(\scriptx,\scripty) so that \sum_{a\elementof \Sigma}
+    A_a X B_a^* = \Phi(X) (for all X \element L(\scriptx)). Then, the
+    sum would be a Kraus representation of \Phi. A popular choice of
+    representation will be that where A_a = B_a for all a \element
+    \Sigma. This is possible if and only if \Phi is completely positive. 
+\end{section}
+\begin{section}[Stinespring Representations]
+    Suppose \Phi \element T(\scriptx,\scripty) and also suppose A,B
+    \element L(\scriptx, \scripty \tensor \scriptz) (for \scriptz a
+    complex Euclidean space) so that \Phi(X) = Tr_\scriptz(AXB^*) (for
+    all X \element L(\scriptx)). Then, this a Stinespring representation
+    of X.
+\end{section}
+
+Proposition: Let \Phi \element T(\scriptx,\scripty) for complex
+Euclidean spaces \scriptx and \scripty and let {A_a: a \element \Sigma},
+{B_\a : a \element \Sigma} \containedin L(\scriptx, \scripty) be
+operators (for any alphabet \Sigma). The following are equivalent:
+
+1. \Phi(X) = \sum_{a\element \Sigma} A_a X B_a^* for all X \element
+L(\scriptx)
+2. For \scriptz = \mathc^\Sigma and A,B \elementsof L(\scriptx,\scripty
+\tensor \scriptz) given by A = \sum_{a \elementsof \Sigma} A_a \tensor
+e_a, B = \sum_{a\element \Sigma} B_a \tensor e_a we have \Phi(X) =
+Tr_\scriptz(A X B^*) for all X \element L(\scriptx).
+3. It holds that K(\Phi) = \sum_{a \element \Sigma} A_a \tensor
+\overbar{B_a}
+4. It holds that J(\Phi) = \sum_{a \element \Sigma} vec(A_a)vec(B_a)^*.
+
+To prove the above proposition use the formula vec(C X D^*) = C \tensor
+\overbar{D}vec(X). Specifically, vec(C) = (C \tensor \math1)vec(\math1).
+To show 1 implies 2 is not so hard. To show that 3 implies 4 is not that
+hard.
+
+\begin{theorem}[Characterization of Completely Positive Maps]
+    Let \scriptx and \scripty be complex Euclidean spaces and let \Phi
+    \element T(\scriptx,\scripty). The following are equivalent:
+    1. \Phi is completely positive.  \Phi \tensor \math1_{L(\scriptz)}
+    is positive for all choice of \scriptz
+    2. \Phi \tensor \math1_{L(\scriptx)} is positive.
+    3. J(\Phi) \element Pos(\scripty \tensor \scriptx) (is positive
+    semi-definite)
+    4. There exists operators {A_a: a \element \Sigma} \containedin
+    L(\scriptx,\scripty) so that \Phi(X) = \sum_{a \element \Sigma} A_a
+    X A_a^* (for all X \element L(\scriptx))
+    5. Statement 4 holds if |\Sigma| = rank(J(\Phi))
+    6. There exists an operator A \element L(\scriptx, \scripty \tensor
+    \scriptz) such that \Phi(X) = Tr_\scriptz (A X A^*) for all X
+    \element L(\scriptx)
+    7. Statement 6 holds for dim(\scriptz) = rank(J(\Phi))
+
+\end{theorem}
+Proof of the above statements:
+
+(1) \rightarrow (2) \rightarrow (3) \rightarrow (5) \rightarrow (4)
+\rightarrow (1)
+(5) \rightarrow (7) \rightarrow (6) \rightarrow (1)
+
+To show (2) \rightarrow (3) you can use the Choi representation to show
+that a positive operator * semidefinite operator begets a positive
+semidefinite operator.
+
+(4)\rightarrow (1): Suppose \scriptw is any complex euclidean space and
+P \element Pos(\scriptx \tensor \scriptw). Assuming that 94) is true we
+have \Phi \tensor \math1_{L(\scriptw)}(P) = \sum_{a \element \Sigma}
+(A_a \tensor \math1_\scriptw) P (A_a \tensor \math1_\scriptw)^*.
+
+By the form of the operators in the sum, we have a positive semidefinite
+operator since positive semidefinite operators are closed over summation
+(something about cones and higher dimensional spaces and convexity).
+
+(3) \rightarrow (5) ((6) \rightarrow (1) is similar): J(\Phi) \element
+Pos(\scripty \tensor \scriptx). By the spectral theorem we can write
+J(\Phi) = \sum_{k = 1}^{r = rank(J(\Phi))} u_k u_k^*, u_1,\cdots,u_r
+\element \scripty \tensor \scriptx. The eigenvalues have been sucked
+into the u_k's. Now we write u_k = vec(A_k) for A_1,\cdots,A_r \element
+L(\scriptx,\scripty). J(\Phi) = \sum_{k=1}^r vec(A_k)vec(A_k)^8. So,
+\Phi(X) = \sum_{k=1}^r A_k X A_k^* for all X \element L(\scriptx) by the
+proposition.
+
+\begin{theorem}
+    \Phi \element T(\scriptx,\scripty)
+    The following are equivalent:
+    1. \Phi is trace-preserving
+    2. \Phi^* is a unital map (a map that maps identity to identity)
+    3. Tr_\scripty(J(\Phi)) = \math1_\scriptx
+    4. For every (any) Kraus representation \Phi(X) = \sum_{a \element
+    \Sigma} A_a X B_a^* we have \sum_{a \element \Sigma} B_a^* A_a =
+    \math1_\scriptx
+    5. For every (any) Stinespring representation: \Phi(X) = Tr_\scriptz
+    (A X B^*) it holds that B^*A = \math1_\scriptx
+\end{theorem}
+
+Corollary: The following are equivalent:
+1. \Phi \element C(\scriptx,\scripty) (\Phi is a channel)
+2. J(\Phi) \element Pos(\scripty \tensor \scriptx) and
+Tr_\scripty(J(\Phi)) = \math1_{scriptx}
+3. \Phi(X) = \sum_{a \element \Sigma} A_a X A_a^* and \sum_{a \element
+\Sigma} A_a^* A_a = \math1_\scriptx
+4. \Phi(X) = Tr_\scriptz(A X A^*) and A^*A = \math1_\scriptx
+
+In general if you have two spaces where dim(\scripty) \ge dim(\scriptx)
+and A \element L(\scriptx,\scripty) satisfies A^*A = \math1_\scriptx
+then we say that A is an isometry (or linear isometry).
+
+Imagine we have two vectiors x,y \element \scriptx then <Ax, Ay> =
+<A^*Ax,y> = <x,y> so it preserves the inner product. Additionally ||Ax||
+= ||x|| (you can see this by allowing x = y). U(\scriptx, \scripty)
+will, in this course, denote all isometries from \scriptx \mapsto
+\scripty.
+
+Example: We have already talked about \Delta \element T(\scriptx) (the
+completely dephasing map): J(\Delta) = \sum_{a\element \Sigma} E_{a,a}
+\tensor E_{a,a}. It's obvious that it preserves trace. If you want a
+Kraus representation you could write this:
+
+\Delta(X) = \sum_{a \element \Sigma} E_{a,a} X E_{a,a}^* (the adjoint
+star being unnecessary). This will throw away the off-diagonal entries
+and leave the diagonal entries alone.
+
+The natural representation of \Delta looks like: K(\Delta) =
+\sum_{a\element \Sigma} E_{a,a} \tensor E_{a,a}. In this case the Choi
+and natural representations are equal.
+
+If X = \mathc^\scriptz then 
+K(\Delta) = {1 0 0 0; 0 0 0 0; 0 0 0 0; 0 0 0 1} vec(\alpha \beta;
+\gamma \delta) \rightarrow {1 0 0 0; 0 0 0 0; 0 0 0 0; 0 0 0 1} {\alpha;
+\beta; \gamma; \delta} = {\alpha; 0; 0; \delta}.
+
+Consider, now, a unitary channel. That is, one that follows: \Phi(X) = U
+X U^* for U \element \mathu(\scriptx). This is a Kraus representation
+because U^*U = \math1_\scriptx. This is also a Stinespring
+representation where \scriptz is one-dimensional. What does the Choi representation of
+this channel look like?
+J(\Phi) = vec(U)vec(U)^*. To check to make sure this works: Tr_\scripty
+(vec(U)vec(U)^*) = (U^* U)^T = \math1^T = \math1.

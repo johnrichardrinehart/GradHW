@@ -1,0 +1,115 @@
+\begin{document}
+\section{Norms on Operators}
+Suppose A \in L(\scriptx,\scripty) has a singular value decomposition A = \sum_{k=1}^r S_k(A)y_k x_k^*
+
+We'll define three norms: The trace norm, the Frobenius norm and the spectral norm as follows:
+
+The trace norm: $||A||_1 = ||A||_{tr} = \sum_{k=1}^r S_k(A)$
+The Frobenius norm: $||A||_2 = \sqrt{\sum_{k=1}^r S_k(A)^2} = ||A||_F$
+The infinity (spectral) norm: $|A|| = S_1(A) =||A||_\infty$
+
+Note that the norms are listed in terms of decreasing size. All of the singular values are positive real number.
+
+Alternative expressions for these norms can be given as follows:
+
+The trace norm can be re-written as $||A||_1 = Tr(\sqrt{A^*A}) = Tr(\Sqrt{AA^*})$ (The trace is the sum of the eigenvalues. The eigenvalues of $AA^*$ are the same as those of $A^*A$.)
+If $A \in L(\scriptx)$, then $||A||_1 = max{|<U,A>| : U \in U(\scriptx)} = max{|Tr(UA)|: U \in U(\scriptx)}$.
+
+The Frobenius norm (2-norm) can be rewritten as $||A||_2 = \sqrt{<A,A>} = ||vec(A)|| (euclidean norm)$.
+
+The spectral norm can be re-written as $max{||Ax||: x \in S(\scriptx)} = sup_{x \ne 0} \frac{||Ax||}{||x||}$.
+
+These norms satisfy the folowing properties: $||AA^*|| = ||A||^2$. You can also prove that all of these norms are operator norms. That is $||AB|| \le ||A|| ||B||$, $||AB||_2 \le ||A|| ||B||_2$ and $||AB||_1 \le ||A|| ||B||_1$.
+
+Norms are useful in measuring the distance between operators. Different norms supply different notions of distance.
+
+We often use the trace norm to define a notion of a distance between states: $||\rho_0 - \rho-1||_1$ is the trace distance between $\rho_0, \rho_1 \in D(\scriptx)$.
+
+The trace distance can be bounded by the following expression: $||\rho_0 - \rho_1||_1 \in [0,2]$. There is a theorem that stipulates that this norm does 
+particularly well in establishing a ``distance'' between two states.
+
+\begin{theorem}[Holevo-Helstrom Theorem]
+	Let \scriptx be a complex Euclidean space, let $\rho_0, \rho_1 \in D(\scriptx)$ and let $\lambda \in [0,1]$. 
+	For every measurement $\mu: {0,1} \in Pos(\scriptx)$ it holds that $\lambda <\mu(0),\rho_0> + (1-\lambda)<\mu(1),\rho_1> \le \frac{1}{2}\big( 1 + ||lambda \rho_0 - (1-\lambda)\rho_1||_1 \big)$. Moreover, there exists a (projective) measurement that always achieves this bound. Thus, this is an optimal bound and the trace norms tells you exactly how well you can distinguish the two states.
+\end{theorem}
+
+We will prove this theorem now:
+
+\begin{proof}
+	Define $\rho = \lambda \rho_0 + (1-\lambda)\rho_1$ such that $\rho \in D(\scriptx)$ and we'll define $X = \lambda \rho_0 - (1-\lambda)\rho_1$.
+
+	Now, if we were to do some algebra we could see that $\lambda <\mu(0),\rho_0> + (1-\lambda)<\mu(1),\rho_1> = \frac{1}{2}<\mu(0)+\mu(1),\rho> + \frac{1}{2}<\mu(0)-\mu(1),X>$.
+
+	Realizing that $\mu(0)+\mu(1) = \math1$: $\frac{1}{2} + \frac{1}{2}<\mu(0)-\mu(1),X>$. To realize an upper bound we can use the Holder inequality which stipulates that, in general,
+
+	$|<A,B>| \le ||A|| ||B||_1$. For the 2-norm you can write the following: $|<A,B>| \le ||A||_2 ||B||_2$ (cauchy-schwarz).
+
+	In general, for $|<A,B| \le ||A||_p||B||_{p^*}$ where $p^*$ satisfies $\frac{1}{p} + \frac{1}{p^*} = 1$.
+
+	Applying the Holder inequality to our case allows us to write: $\frac{1}{2} + \frac{1}{2}<\mu(0)-\mu(1),X> \le \frac{1}{2} + \frac{1}{2}||\mu(0)-\mu(1)|| ||X||_1$.
+
+	The last thing that we need is that $||P-Q|| \le ||P+Q||$. Thus the upper bound is: $\lambda<\mu(0),\rho_0> + (1-\lambda)<\mu(1),\rho_1> = \frac{1}{2}\big( 1 + ||X||_1 \big)$.
+
+	To achieve the bound, we'll take a Jordan-Hahn decomposition of X: $X = \lambda \rho_0 - (1-\lambda)\rho_1 = P-Q$ for $P,Q \ge 0$ and $PQ = 0$.
+	Now, we'll take $\mu(0) = \Pi_{im(P)} \mu(1) = \math1 - \mu(0) =\math1 - \Pi_{im(P)}$. Thus, $<\mu(0)-\mu(1),P-Q> = Tr(P)+Tr(Q) = ||X||_1$. Thus, it has been shown.
+\end{proof}
+
+This is completely analogous to a classical case. Consider some alphabet $\Sigma$ and some probability vectors $p_0, p_1 \in P(\Sigma)$. Imagine that you make a measurement and 
+you measure $a \in \Sigma$. To determine which probability vector you're
+sampling from if $p_0(a) > p_1(a)$ then you should guess that the state was
+prepared in 0. If $p_1(a) > p_0(a)$ then you should guess that the state was
+prepared as 1.  If $p_0(a) = p_1(a)$ then you should guess arbitrarily.
+In this case, you can show that $\frac{1}{2} + \frac{1}{4} \Sum_{a\in \Sigma} |p_0(a) - p_1(a)| = \frac{1}{2}\big(1+||\frac{1}{2}(p_0-p_1)||_1\big)$. This method of analyzing the bound on determining the initial state given some measurement completely breaks down as soon as three or more states are considered. One has to use semidefinite programming (SDP) in order to use a computer to determine the distance between states.
+
+\end{section}
+\begin{section}[Fidelity function]
+	This function is nice because it's easy to use and has many nice properties.
+
+	Definition: For positive semidefinite operators $P,Q \in Pos(\scriptx)$ we define $F(P,Q) = ||\sqrt{P}\sqrt{Q}||_1 = Tr(\Sqrt{\Sqrt{P}Q\sqrt{P}}) = Tr(\Sqrt{\sqrt{Q}P\sqrt{Q}})$.
+
+	For density operators $\rho_0, \rho_1 \in D(\scriptx)$ we have that $0 \le F(\rho_0,\rho_1) \le 1$. $F(rho_0,\rho_1) = 0$ implies that $\rho_0$ is farthest from $\rho_1$. 
+	$F(\rho_0,\rho_1) = 1$ implies that $\rho_0 = \rho_1$. You can think about the fidelity function as describing the degree of overlap between $\rho_1$ and $\rho_1$.
+
+	Consider the following theorem:
+	
+	\begin{theorem}[Fuchs-van de Graaf inequalities]
+		If $\rho_0, \rho_1 \in D(\scriptx)$ then $1 - \frac{1}{2}||\rho_0 - \rho_1||_1 \le F(\rho_0,\rho_1) \le \sqrt{1- \frac{1}{4}||\rho_0-\rho_1||_1^2}$.
+		Equivalently, $2-2F(\rho_0,\rho_1) \le ||\rho_0-\rho_1|| \le 2\sqrt{1-F(\rho_0,\rho_1)^2}$. This can be used to upper bound the trace distance (which is harder to compute).
+
+		This is often used to bound the trace distance when it's desired. This bound is pretty tight. One nice property of these inequalities are that they are independent of 
+		the dimension of the space.
+
+	\end{theorem}
+
+Some properties of the fidelity:
+\begin{enumerate}
+	\item $F(P_0 \tensor Q_0, P_1 \tensor Q_1) = F(P_0,P_1)F(Q_0,Q_1)$
+		for $P_0,P_1 \in Pos(\scriptx)$,$Q_0,Q_1 \in Pos(\scripty)$
+	\item If $P_0,P_1 \in Pos(\scriptx)$ and $Q_0 = Pos(\scriptx \tensor \scripty)$ and $Tr_y(Q_0) = P_0$.
+		It holds that $F_(P_0,P_1) = max{F(Q_0,Q_1): Q_1 \in Pos(\scriptx \tensor \scripty), Tr_y(Q_1) = P_1}$. This demonstrates that the fidelity is ``respectful'' of extensions of spaces.
+	\item $F(u u^*, Q) = \sqrt{u^* Q u}$. In particular, $F(u u*, v v*) = |<u,v>|$.
+	\item $F(P,QPQ) = <P,Q>$
+\end{enumerate}
+
+Consider the following theorem:
+
+\begin{theorem}[Uhlmann's theorem]
+	Let $P,Q \in Pos(\scriptx)$ and let $\scripty = \scriptx$. Then $F(P,Q) = max{|<u,v>|: u,v \in \scriptx \tensor \scripty, Tr_\scripty (u u^*) = P, Tr_\scripty (v v^*) = Q}$.
+\end{theorem}
+\begin{proof}
+	We have that $Tr_\scripty (u u^*) = P$ if and only if $u = (\math1_\scriptx \tensor U) vec(\sqrt{P})$ for some $U \in U(\scripty)$. 
+	Similarly: $Tr_\scripty (v v^*) = Q$ if and only if $v = (\math1 \tensor v) vec(\sqrt{Q})$ for some $v \in U(\scripty)$.
+	$max{|<u,v|: u, v are purifications of P,Q} = max{|<(\math1 \tensor U)vec(\sqrt{P})>,(\math1 \tensor V)vec(\sqrt{Q})>|: U,V \in U(\scripty)}$
+	$ = max{|<vec(\sqrt{PU^T},vec(\sqrt{Q}V^T)>|: U,V \in U(\scripty)} = max{|<\sqrt{P}U^T,\sqrt{Q}V^T>|: U,Vof  \in U(\scripty)}$
+	Using the cyclic property of the trace: $ = max{|Tr((V^T\overbar{U})\sqrt{P}\sqrt{Q})|: U,V \in U(\scripty)} = ||\sqrt{P}\sqrt{Q}||1$.
+	Note that $P,Q \in Pos(\scriptx)$ so they are Hermitian (there is no need for *s).
+\end{proof}
+Another characterization of fidelity: Suppose $P,Q \in Pos(\scriptx)$ and $\mu: \Sigma \rightarrow Pos(\scriptx)$ is a measurement. Define $B_\mu(P,Q) = \Sigma_{a\in \Sigma} \sqrt{<\mu(a),P>}\sqrt{<\mu(a),Q>}$. This is a quantum generalization of the Bhattacharyya coefficient $B(p,q) = \sum_{a\in\Sigma} \sqrt{p(a)}\sqrt{q(a)}$.
+
+\begin{theorem}
+	$P,Q \in Pos(\scriptx)$ and $\mu: \Sigma \in Pos(\scriptx)$ (a measurement)
+	$F(P,Q) \le B_\mu(P,Q)$. If $|\Sigma| \ge dim(\scriptx)$, then there exists a measurement $\mu$ with $F(P,Q) = B_\mu(P,Q)$. 
+	The inequality is easy. To get the equality, measure with respect to a basis of eigenvectors of $\sqrt{P^{-1}}\sqrt{\sqrt{P}Q\sqrt{P}}\sqrt{P^{-1}}$.
+\end{theorem}
+
+\end{document}	
