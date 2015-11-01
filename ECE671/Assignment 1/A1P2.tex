@@ -1,4 +1,7 @@
-\section*{Problem 2a: Single Open Stub Tuner}
+\section*{Problem 2: Different Tuning Methods}
+\addtocounter{section}{1}
+\setcounter{equation}{0}
+\subsection*{Problem 2a: Single Open Stub Tuner}
 
 The goal is to match a load impedance to a transmission line by placing a stub
 of a certain length $l_s$ a certain distance $l_l$ away from a load. To be
@@ -102,8 +105,7 @@ These can be immediately reduced to:
 %TODO: Make a plot of these for alpha = 2 (since the load is 100 ohms)
 %TODO: Solve for l_s and l_l
 
-\section*{LC Matching Network}
-
+\section*{Problem 2b: LC Matching Network}
 The goal in constructing a matching network for the load using an LC network is
 going to be similar as that that was performed in the previous section. Namely,
 our goal is going to be to make $Z_{in} = Z_c$ such that $\Re \left( Z_{in}
@@ -111,34 +113,34 @@ our goal is going to be to make $Z_{in} = Z_c$ such that $\Re \left( Z_{in}
 construct the input impedance as 
 
 \[ 
-        Z_{in} = Z_A + Z_B || Z_L 
+        Z_{in} = Z_A + Z_B || Z_l 
 \]
 
 The only knowledge we have, currently, regarding $Z_A$ and $Z_B$ is that both
-impedances are purely imaginary. We know that $Z_L$ is purely real ($
+impedances are purely imaginary. We know that $Z_l$ is purely real ($
 \SI{100}{\ohm}$). Thus, we start by considering $\Re \left( Z_{in} \right)$.
 
 \begin{align*}
-    \Re(Z_{in}) = Z_c &= \Re ( \frac{Z_B Z_L}{Z_B + Z_L} )\\
-                      &= \Re ( \frac{j X_B R_L}{j X_B + R_L} ) \\
-                      &= \frac{ X_B^2 R_L}{X_B^2 + R_L^2}
+    \Re(Z_{in}) = Z_c &= \Re ( \frac{Z_B Z_l}{Z_B + Z_l} )\\
+                      &= \Re ( \frac{j X_B R_l}{j X_B + R_l} ) \\
+                      &= \frac{ X_B^2 R_l}{X_B^2 + R_l^2}
 \end{align*}
 
 Considering the imaginary part of $Z_{in}$
 
 \begin{align}
     \Im \left( Z_{in} \right) = 0 &= \Im \left( j X_A + \frac{j X_B
-    R_L}{j X_B + R_L} \right)	 \\
-    &= \Im \left( j X_A + \frac{j X_B R_L \left( R_L - j X_B \right)}{
-    X_B^2 + R_L^2} \right) \\
-    &= X_A + \frac{ X_B R_L^2}{ X_B^2 + R_L^2}
+    R_l}{j X_B + R_l} \right)	 \\
+    &= \Im \left( j X_A + \frac{j X_B R_l \left( R_l - j X_B \right)}{
+    X_B^2 + R_l^2} \right) \\
+    &= X_A + \frac{ X_B R_l^2}{ X_B^2 + R_l^2}
 \end{align}
 
 The real part of $Z_{in}$ only involves $Z_B$. So, we can easily solve for $Z_B$
 that way. Doing so yields:
 
 \[ 
-    X_B^2 = \frac{R_L^2 Z_c}{R_L-Z_c}
+    X_B^2 = \frac{R_l^2 Z_c}{R_l-Z_c}
 \]
 
 Since we have constrained $X_B$ to be real (so that the impedance $Z_B$ is purely
@@ -150,15 +152,15 @@ resistance.
 Now, $X_A$ is easily determined:
 
 \begin{align*}
-    X_A &= -\frac{X_B R_L^2}{X_B^2 + R_L^2} \\
-        &= - \frac{X_B}{\frac{Z_c}{R_L - Z_c} + 1} \\
-        &= -\frac{X_B \left( R_L - Z_c \right)}{Z_c + R_L - Z_c} \\
-        &= -\frac{X_B \left( R_L - Z_c \right)}{R_L} \\
-        &= -\sqrt{\frac{Z_c}{R_L - Z_c}} \left( R_L - Z_c \right) \\
-        &= -\sqrt{Z_c \left( R_L-Z_c \right)}
+    X_A &= -\frac{X_B R_l^2}{X_B^2 + R_l^2} \\
+        &= - \frac{X_B}{\frac{Z_c}{R_l - Z_c} + 1} \\
+        &= -\frac{X_B \left( R_l - Z_c \right)}{Z_c + R_l - Z_c} \\
+        &= -\frac{X_B \left( R_l - Z_c \right)}{R_l} \\
+        &= -\sqrt{\frac{Z_c}{R_l - Z_c}} \left( R_l - Z_c \right) \\
+        &= -\sqrt{Z_c \left( R_l-Z_c \right)}
 \end{align*}
 
-If one allows, again, $R_L = \alpha Z_c$ then
+If one allows, again, $R_l = \alpha Z_c$ then
 
 \[ 
     X_B^2 = \frac{\alpha^2 Z_c^2}{\alpha - 1} 
@@ -172,9 +174,59 @@ and
 
 %TODO; Determine C and L from the above equations.
 
+Plugging in the relevant values $\alpha = \frac{R_l}{Z_c} = 2$ and $Z_c = 2$
+yields the following $\SI{50}{\ohm}$
+
+\[ 
+        X_A = - Z_c = -\SI{50}{\ohm} \text{\quad and \quad} X_B = 2 Z_c = \SI{100}{\ohm}
+\]
+
+This implies that $Z_A$ is a capacitor of value $Z_A = j X_A = \frac{1}{j\omega
+C_A}$ and $Z_B$ is an inductor of value $Z_B = j X_B = j \omega L_B$. Thus:
+
+\[
+\arraycolsep=20pt
+\begin{array}{cc}
+    C_A = -\frac{1}{\omega X_A} = 
+        \SI[parse-numbers = false]{\frac{1}{50\omega}}{\farad} & 
+    L_B = \frac{X_B}{\omega} = 
+        \SI[parse-numbers = false]{\frac{100}{\omega}}{\henry}
+\end{array}
+\]
+
 The reflection coefficient for the load and the matching network can be found by
 considering $ \Gamma_{in} = \frac{Z_{in} - Z_c}{Z_{in} + Z_c} $. In this case,
-$\Gamma_{in}$ is a function of frequency. Plotting it as a function of frequency
-yields the following:
+$\Gamma_{in}$ is a function of frequency.
+
+\begin{align*}
+    Z_{in} &= Z_A + Z_B||Z_l \\
+           &= j X_A + \frac{j X_B R_l }{jX_B + R_l} \\
+           &= \frac{1}{j \omega \frac{1}{50 \omega_m}}~\Omega + \frac{j \omega
+\frac{100}{\omega_m}R_l}{j \omega \frac{100}{\omega_m} + R_l}~\Omega \\
+&= \frac{50 \omega_m}{j \omega}~\Omega + \frac{j \omega 100 R_l}{j \omega 100 +
+\omega_m R_l}~\Omega
+\end{align*}
+
+In the above, $\omega_m$ is the frequency at which we have chosen to match our
+network. Let's consider a parameter $\gamma = \frac{\omega}{\omega_m}$ which we
+will adjust from $.5\omega_m \rightarrow 1.5\omega_m$. The previous expression
+for $Z_{in}$ can be written, now, as:
+
+\[ 
+        Z_{in} = \frac{50}{j \gamma}~\Omega + \frac{j 100 \gamma R_l}{j 100 \gamma +
+        R_l}~\Omega
+\]
+
+Since 100 bears a nice relationship with $R_l = 100 \Omega $ we can simplify
+$Z_{in}$ even further in this particular case:
+
+\[ 
+        Z_{in} = \frac{50}{j \gamma}~\Omega + \frac{j \gamma }{j \gamma +
+        1}~\Omega
+\]
+
+Plotting the real and imaginary part as a function of frequency yields the
+following:
 
 %TODO: Determine and plot the reflection coefficient as a function of frequency
+\section*{Problem 2c: Double Open Stub Tuner}
