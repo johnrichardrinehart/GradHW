@@ -1,27 +1,151 @@
-\section*{Problem 1}
-\addtocounter{section}{1}
+\section{Power and Waves}
 \subsection{Available Power}
 The maximum power available from the source is determined by the condition where
 the source is conjugately matched to the load (this is when $Z_s = Z_{in}^*$).
-The load impedance is specified as 100~$\Omega$. Thus, a conjugately matched
+Thus, a naive analysis of the power available from the source can be calculated
+as follows.
+
+\subsubsection{Available Power: Naive Approach}
+The source impedance is specified as 100~$\Omega$. Thus, a conjugately matched
 input impedance would be given by (100~$\Omega$)$^*$. This load will divide the
 voltage of the source. Thus, the power available
 from the source is given by:
 \begin{align*}
     P_{avl} &= \Re(V_{in}I_{in}^*) \\
-            &= \Re(\frac{|V_{in}|^2}{Z_{in}^2} \\
-            &= \Re\left(\frac{(\SI{10}{\volt)^2}}{100 \Omega}\right) \\
-            &= \SI{1}{\watt}
+            &= \Re \left(\frac{|V_{in}|^2}{Z_{in}^*}\right) \\
+            &= \left| V_{in} \right|^2 \Re \left( \frac{1}{Z_s} \right) \\
+            &= \frac{\left| V_{in} \right|^2}{|Z_s|^2} \Re \left( Z_s^* \right) \\
+            &= \frac{\left| V_{in} \right|^2}{|Z_s|^2} \Re \left( Z_s \right)
 \end{align*}
-\subsection{Port 1 Waves}
-To calculate the port 1 power waves I will use the following 
-relationships:
+
+But, $V_{in} = V_s \frac{Z_s}{Z_s+Z_{in}}$. Using this:
+
+\begin{align*}
+    P_{avl} &= \frac{\left| V_s \right|^2}{\left| Z_s \right|^2} \frac{\left|
+Z_s\right|^2}{\left| Z_s + Z_{in}\right|} \Re \left( Z_s \right) \\
+&=\frac{\left| V_s \right|^2}{\left| Z_s + Z_{in} \right|^2} \Re \left( Z_s
+\right) \\
+&= \frac{\left| V_s \right|^2}{4 \left( \Re \left( Z_s \right) \right)^2} \Re
+\left( Z_s \right) \\
+&= \frac{\left| V_s^2 \right|}{4 \Re \left( Z_s \right)}
+\end{align*}
+
+Now, this makes sense and we could use this to obtain an expression for the
+power available from the source. Let's consider that and obtain an answer, for
+this problem, for the power available from the source. The derivation above
+assumed that the voltages and currents were specified as RMS quantities. If they
+are provided as peak values (like in this problem) we need to scale both the
+current and voltage by $2^{-1/2}$ placing a $\frac{1}{2}$ in front of the
+previous expression. Given that the source impedance is specified as a real
+\SI{100}{\ohm} we can solve for the power available from the source:
+
+\[ 
+        P_{avl} = \frac{\left| \SI{20}{\volt} \right|^2}{2 \cdot 4 \cdot \SI{100}{\ohm}}
+        = \SI{500}{\milli\watt}
+\]
+
+This is the naive solution. 
+
+\subsubsection{Available Power: Alternative Solution}
+It makes sense. Another way to solve this problem is to consider the voltage
+that would be incident on the network $V_1^+$ and realize that the power
+transmitted from the source down a transmission line of characteristic impedance $Z_{c_1}$ is:
+
+\begin{equation*}
+    P_{trans} = \Re \left( V_1 I_1^* \right) = \Re \left( \left(  V_1^+ + V_1^- \right) \frac{\left( V_1^+ - V_1^-
+        \right)^*}{Z_{c_1}^*} \right) 
+\end{equation*}
+
+Then, realizing that the wave reflected off of the interface between the source
+impedance, $Z_s$, and the input impedance $Z_{in}$ is
+
+\[ 
+        V_1^- = \Gamma_{in} V_1^+ = \frac{Z_{in} - Z_{s}}{Z_{in} + Z_{s}} V_1^+
+\]
+
+we can rewrite the previous expression:
+
+\begin{equation}
+    P_{trans}= \left| V_1^+ \right|^2 \Re \left( \left( 1  + \Gamma_{in} \right)
+        \frac{\left(1 - \Gamma_{in}^* \right)}{Z_{c_1}^*} \right) = \left| V_1^+
+        \right|^2 \left( 1-\left| \Gamma_{in} \right|^2 \right) \frac{\Re \left(
+    Z_{c_1} \right)}{\left| Z_{c_1} \right|^2}
+\end{equation}
+
+If we can find an expression for $V_1^+(V_s)$ then we have something with which
+to compare our naive solution. This is not too hard. The voltage across the
+input of the network can be expressed through a voltage divider as:
+
+\[ 
+        V_{in} = V_1^+ + V_1^- = V_1^+ (1 + \Gamma_{in}) = V_s \frac{Z_{in}}{Z_s
+        + Z_{in} }
+\]
+
+Thus,
+
+\[ 
+        V_1^+ = V_s\frac{1}{1+ \Gamma_{in}} \frac{Z_{in}}{Z_s + Z_{in}}
+\]
+
+Finally, we can write that the power delivered, in general, from a source with
+complex impedance $Z_c$ to a network with impedance $Z_{in}$ is:
+
+\[ 
+        P_{del} = \left| V_s \right|^2 
+        \frac{\left| Z_{in}\right|^2}{\left| Z_s + Z_{in} \right|^2} 
+        \frac{ 1 - \left| \Gamma_{in} \right|^2}{\left| 1+\Gamma_{in} \right|^2}
+        \frac{\Re \left( Z_{c_1} \right)}{\left| Z_{c_1} \right|^2}
+\]
+
+The case in which the maximum amount of power is delivered to the network is
+when the network is conjugately matched to the source $Z_{in} = Z_s^*$. This
+constrains $\Gamma_{in} = 0$ (for real $Z_{in}$ and $Z_c$). Since, in this
+problem, $Z_{in} \in \mathds{R}$. Then we can write the following for the
+$P_{avl}$, the maximum amount of deliverable power to the network:
+
+\begin{align*}
+        P_{avl} = P_{del}|_{Z_s = Z_{in}^*} =  
+        P_{del} &= \left| V_s \right|^2 
+        \frac{Z_s^2}{\left( 2 \Re \left( Z_s \right) \right)^2} 
+        \frac{ 1 - \left| 0 \right|^2}{\left| 1 + 0 \right|^2}
+        \frac{\Re \left( Z_s \right)}{\left| Z_{s} \right|^2} \\
+        &= \left| V_s \right|^2 \frac{1}{4 \Re \left( Z_s \right)}
+\end{align*}
+
+Again, if the voltage is given in peak values and not in RMS quantities then a
+factor of $\frac{1}{2}$ will have to be inserted to account for this. Note that
+this solution is the same as the naive solution presented earlier. It has the
+distinct advantage of presenting us with the forward and reverse travelling
+waves which we will need later.
+\subsection{Calculating Port Waves and Powers (Try \#1: $Z_c$-less)}
+\subsubsection{Port 1 Waves}
+I will now proceed to calculate the port 1 power waves. Please note that the
+assumptions made in this problem set are different than the assumptions made in
+most reference texts regarding this material. The most significant departure in
+this solution set is the assumption that the input reflection coefficient is not
+referenced to a characteristic impedance but to the source impedance. The reason
+for this is because the problem does not explicitly state that a transmission
+line connects the source to the two port network and there is no reason to
+assume that there is one. The two port network scattering parameters could, if
+desired, be referred back to the source impedance such as to allow for the
+following analysis to be perfectly justified. So, to calculate the port 1 power
+waves I will use the following relationships:
 \begin{align}
     \sqrt{Z_c}\left( a_1 + b_1 \right) &= V_s \frac{Z_{in}}{Z_{in}+Z_s}
     \label{eq1} \\
     b_1 &= \Gamma_{in}a_1 \label{eq2} \\
-    \Gamma_{in} &=\frac{Z_{in}-Z_c}{Z_{in}+Z_c} \label{eq3}
+    \Gamma_{in} &=\frac{Z_{in}-Z_s}{Z_{in}+Z_s} \label{eq3}
 \end{align}
+
+Note that \ref{eq3} differs from the typical definition of $\Gamma_{in}$ because
+I have assumed that the input impedance has been referred back to the reference
+plane at the source impedance. That is, there is no explicit transmission line
+that connects the source impedance to the two port network. Thus, the two port
+network is ``directly connected'' to the source and this is the first reflection
+plane in the signal propagation from the source. $Z_c$ in \ref{eq1} refers to
+some choice of a ``reference impedance'' for the system under consideration. It
+does not change the voltage values under consideration. This arbitrary choice
+of a reference impedance just affects the normalization of these voltages.
 Combining (\ref{eq1}) and (\ref{eq2}) yields:
 
 \begin{equation}
@@ -29,23 +153,30 @@ Combining (\ref{eq1}) and (\ref{eq2}) yields:
     \frac{Z_{in}}{Z_{in}+Z_s} \label{prea1}
 \end{equation}
 
-Rearranging (\ref{eq3}) for $Z_{in}$ produces $Z_{in} = Z_c
-\frac{1+\Gamma_{ in }}{1-\Gamma_{ in }}$. Substituting this into (\ref{prea1}) yields:
+Rearranging (\ref{eq3}) for $Z_{in}$ produces $Z_{in} = Z_s \frac{1+\Gamma_{ in
+}}{1-\Gamma_{ in }}$. Substituting this into (\ref{prea1}) yields:
 
 \begin{align}
-    a_1 &= \frac{V_s}{\sqrt{Z_c}( 1+\Gamma_{in} )} \frac{Z_c \frac{1+\Gamma_{ in }}{1-\Gamma_{
-    in }}}{Z_c \frac{1+\Gamma_{ in }}{1-\Gamma_{ in }} + Z_s} \nonumber \\
-    &= \frac{V_s}{\sqrt{Z_c}( 1+\Gamma_{in} )} \frac{Z_c \left( 1+\Gamma_{in}
-    \right)}{Z_c \left( 1+ \Gamma_{in} \right) + Z_s \left( 1 - \Gamma_{in}
+    a_1 &= \frac{V_s}{\sqrt{Z_c}( 1+\Gamma_{in} )} \frac{Z_s \frac{1+\Gamma_{ in }}{1-\Gamma_{
+    in }}}{Z_s \frac{1+\Gamma_{ in }}{1-\Gamma_{ in }} + Z_s} \nonumber \\
+    &= \frac{V_s}{\sqrt{Z_c}( 1+\Gamma_{in} )} \frac{Z_s \left( 1+\Gamma_{in}
+    \right)}{Z_s \left( 1+ \Gamma_{in} \right) + Z_s \left( 1 - \Gamma_{in}
     \right)} \nonumber \\
-    &= V_s \frac{\sqrt{Z_c}}{Z_c \left( 1+\Gamma_{in} \right) + Z_s \left( 1 -
-\Gamma_{in} \right) } \label{a1}
+    &= \frac{V_s}{2 \sqrt{Z_c}} \label{a1}
 \end{align}
 
-$b_1$ is easily obtained from this using (\ref{eq2}). 
+This result is surprising to anyone who studies microwave circuits. The result
+for the incident wave usually relies on the characteristic impedance of the
+transmission line and the source impedance. However, because the input impedance
+has been referred back to the plane of the source impedance the dependence on
+the transmission line drops out. It is surprising (even to the author) that
+there exists no dependence on the source impedance. But, this is what the math
+dictates. The reflected wave (and, thus, the total voltage across the input network)
+definitely does depend on the relationship between the source and the input
+impedance. The reflected wave $b_1$ is easily obtained from this using
+(\ref{eq2}). 
 \begin{equation}        
-b_1 = V_s \frac{\sqrt{Z_c}\Gamma_{in}}{Z_c \left( 1+\Gamma_{in} \right) +
-Z_s(1-\Gamma_{in})} \label{b1}
+    b_1 = \frac{V_s \Gamma_{in}}{2 \sqrt{Z_c}} \label{b1}
 \end{equation}
 
 Notice that if $\Gamma_{in} = 1$ (an open) that 
@@ -53,31 +184,32 @@ $a_1 = \frac{V_s}{2 \sqrt{Z_c}}$
 and 
 $b_1 = \frac{V_s}{2 \sqrt{Z_c}}$ such
 that 
-$V_{load} = \sqrt{Z_c} (a_1+b_1) = V_s$ (reflects completely in phase).
+$V_{load} = \sqrt{Z_c} (a_1+b_1) = V_s$ (reflects completely in phase). This
+makes sense; $\Gamma_{in} = 1$ corresponds to $Z_{in}$ being an open. This would
+mean no current flows through the circuit and $V_{in} = V_s$.
 
 If $\Gamma_{in} = -1$ (a short)
 \begin{gather*}
-    a_1 = \frac{V_s \sqrt{Z_c}}{2 Z_s} \\
-    b_1 = -\frac{V_s\sqrt{Z_c}}{2Z_s} \\
+    a_1 = \frac{V_s }{2\sqrt{Z_c}} \\
+    b_1 = -\frac{V_s}{2\sqrt{Z_c}} \\
     V_{load} = 0
 \end{gather*}
 
 If $\Gamma_{in} = 0$ (a matched load)
 \begin{gather*}
     b_1 = 0 \\
-    a_1 = \frac{V_s \sqrt{Z_c}}{Z_c + Z_s} \\
-    V_{load} = \frac{V_s Z_c}{Z_c + Z_s}
+    a_1 = \frac{V_s}{2 \sqrt{Z_c}} \\
+    V_{load} = \frac{V_s }{2}
 \end{gather*}
 
-But, of course, in matched conditions $Z_c = Z_L$.
-\subsection*{Port 2 Waves}
+Thus, this recovers the well-known results in the limiting cases.
+\subsubsection{Port 2 Waves}
 Calculating the port 2 power waves I will use the following relationships:
 
 \begin{align}
     b_2 &= S_{21}a_1 + S_{22}a_2 \label{eq1a}\\
     a_2 &= \Gamma_l b_2 \label{eq2a} \\
-    a_1 &= V_s \frac{\sqrt{Z_c}}{Z_c \left( 1+\Gamma_{in} \right) + Z_s \left( 1 -
-\Gamma_{in} \right)} \label{eq3a}
+    a_1 &= \frac{V_s}{2 \sqrt{Z_c}} \label{eq3a}
 \end{align}
 
 Combining (\ref{eq1a}) and (\ref{eq2a}) yield:
@@ -89,41 +221,135 @@ b_2 = \frac{S_{21}a_1}{1-S_{22}\Gamma_l} \label{eq4a}
 Combining (\ref{eq4a}) and (\ref{eq3a}) yields:
 
 \begin{equation}
-    b_2 =  \frac{V_s \sqrt{Z_c}}{Z_c \left( 1 + \Gamma_{in} \right) +
-    Z_s(1-\Gamma_{in})}\frac{S_{21}}{1-S_{22}\Gamma_l} \label{b2}
+    b_2 =  \frac{V_s}{2 \sqrt{Z_c}}\frac{S_{21}}{1-S_{22}\Gamma_l} \label{b2}
 \end{equation}
 
-Obtaining $a_2$ from (\ref{eq2a}) and (\ref{eq5a}) is trivial:
+Obtaining $a_2$ from (\ref{eq2a}) and (\ref{b2}) is trivial:
 
 \begin{equation}
-    a_2 = \frac{V_s \sqrt{Z_c}}{Z_c \left( 1+\Gamma_{in} \right) +
-    Z_s(1-\Gamma_{in})}\frac{S_{21}\Gamma_l}{1-S_{22}\Gamma_l} \label{a2}
+    a_2 = \frac{V_s}{2 \sqrt{Z_c}}\frac{S_{21}\Gamma_l}{1-S_{22}\Gamma_l} \label{a2}
 \end{equation}
-%TODO: DEFINE AND GAMMA_IN
-\subsection*{Power to the Load}
+
+Note that $\Gamma_l$ is usually defined as $\Gamma_l = \frac{Z_l - Z_c}{Z_l +
+Z_c}$ and requires some notion of a
+characteristic impedance. Why can we not do the same thing we did with the input
+impedance and refer the impedance of the load to port 2 of the two-port
+network. We could! In fact, this is usually what is done. Based on the output
+impedance of the two-port network and the impedance of the load we could
+determine this reflection coefficient. Thus, instead of defining the reflection
+coefficient of the load in this way, we will consider looking back from the load
+to determine the output impedance of the network, $Z_{out}$. Then, we will
+calculate the reflection coefficient at the interface between the two-port
+network and the load as $\Gamma_l = \frac{Z_l - Z_{out}}{Z_l + Z_{out}}$. Note that
+$\Gamma_{out} = -\Gamma_l = \frac{Z_{out} - Z_l}{Z_{out} + Z_l}$ (because we're
+looking the other way). To determine what $\Gamma_{out}$ is in terms of the
+parameters of the problem consider that:
+
+\[ 
+        \frac{b_2}{a_2} = \Gamma_{out} = S_{21}\frac{a_1}{a_2} + S_{22}
+\]
+
+by \ref{eq1a}. We get a relationship between $a_1$ and $a_2$ by considering the
+following three things:
+
+\begin{align*}
+    b_1 = a_1 S_{11} + a_2 S_{12} \\
+    a_1 = \Gamma_s b_1 \\
+    \Gamma_s = \frac{Z_s-Z_{in}}{Z_s+Z_{in}}
+\end{align*}
+
+Substituting the second of the above two equations into the first and solving
+for $\frac{a_1}{a_2}$ yields:
+
+\[ 
+        \frac{a_1}{a_2} = \frac{S_{12} \Gamma_l}{1-\Gamma_s S_{11}} 
+\]
+
+so that:
+
+\[ 
+        \Gamma_{out} = S_{22} + \frac{S_{12}S_{21} \Gamma_s}{1-S_{11}\Gamma_s} 
+\]
+
+This implies (and it can be shown that)
+
+\[ 
+        \Gamma_{in} = S_{11} + \frac{S_{12}S_{21} \Gamma_l}{1-S_{22}\Gamma_l} 
+\]
+
+Note that we don't have an expression that allows us to calculate $\Gamma_{out}$
+or $\Gamma_{in}$, yet. $\Gamma_{out} = -\Gamma_l$ depends on $\Gamma_s = -\Gamma_{in}$ but
+$\Gamma_{in}$ depends on $\Gamma_l$. Thus, substituting our expression for
+$\Gamma_s = -\Gamma_l$ in to $\Gamma_{in}$ will allow us to solve for
+$\Gamma_{in}$ in terms of everything else. This turns out to be very difficult
+to solve by hand (as I've experienced). Using Mathematica to help with
+generating the algebraic solution yields not one but two solutions for both
+$\Gamma_{in}$ and $\Gamma_{out}$ which are as follows:
+
+\[ 
+        \begin{array}{|c|c|}
+            \hline & \\ \text{Quantity} & \text{Expression}\\[.3cm]
+            \hline & \\ \Gamma_{in_1} & -\frac{-S_{12}^2 S_{21}^2+2 S_{11}
+                    S_{12} S_{22} S_{21}-\sqrt{4 \left(S_{12} S_{21} S_{22}-S_{11}
+                    \left(S_{22}^2+1\right)\right){}^2+\left(-\left(S_{22}^2+1\right)
+                    S_{11}^2+2 S_{12} S_{21} S_{22} S_{11}-S_{12}^2
+                    S_{21}^2+S_{22}^2+1\right){}^2}-\left(S_{11}^2-1\right)
+                    \left(S_{22}^2+1\right)}{2 \left(S_{11} \left(S_{22}^2+1\right)-S_{12}
+                    S_{21} S_{22}\right)} \\[.5cm]
+            \hline & \\ \Gamma_{in_2} &-\frac{-S_{12}^2 S_{21}^2+2 S_{11} S_{12}
+                    S_{22} S_{21}+\sqrt{4 \left(S_{12} S_{21} S_{22}-S_{11}
+                    \left(S_{22}^2+1\right)\right){}^2+\left(-\left(S_{22}^2+1\right)
+                    S_{11}^2+2 S_{12} S_{21} S_{22} S_{11}-S_{12}^2
+                    S_{21}^2+S_{22}^2+1\right){}^2}-\left(S_{11}^2-1\right)
+                    \left(S_{22}^2+1\right)}{2 \left(S_{11} \left(S_{22}^2+1\right)-S_{12}
+                    S_{21} S_{22}\right)} \\[.5cm]
+            \hline & \\ \Gamma_{out_1} & \frac{S_{12}^2 S_{21}^2-2
+                    S_{11} S_{12} S_{22} S_{21}+\sqrt{4 \left(S_{12} S_{21}
+                    S_{22}-S_{11}
+                    \left(S_{22}^2+1\right)\right){}^2+\left(-\left(S_{22}^2+1\right) S_{11}^2+2
+                    S_{12} S_{21} S_{22} S_{11}-S_{12}^2
+                    S_{21}^2+S_{22}^2+1\right){}^2}+\left(S_{11}^2+1\right)
+                    \left(S_{22}^2-1\right)}{2 \left(S_{11}^2+1\right) S_{22}-2 S_{11} S_{12}
+                    S_{21}} \\[.5cm]
+            \hline & \\ \Gamma_{out_2} & \frac{S_{12}^2 S_{21}^2-2 S_{11} S_{12} S_{22}
+                    S_{21}-\sqrt{4 \left(S_{12} S_{21} S_{22}-S_{11}
+                    \left(S_{22}^2+1\right)\right){}^2+\left(-\left(S_{22}^2+1\right)
+                    S_{11}^2+2 S_{12} S_{21} S_{22} S_{11}-S_{12}^2
+                    S_{21}^2+S_{22}^2+1\right){}^2}+\left(S_{11}^2+1\right)
+                    \left(S_{22}^2-1\right)}{2 \left(S_{11}^2+1\right) S_{22}-2 S_{11} S_{12}
+                    S_{21}} \\[.5cm] \hline
+        \end{array}
+\]
+
+Although these expressions are extremely complicated you can see that the main
+difference between the two solutions for $\Gamma_{in}$ and $\Gamma_{out}$ is 
+the sign in front of the radical. These are the two roots of a quadratic
+solution. In the event that the two solutions are different, numerically, the
+proper $\Gamma_{in}$ and $\Gamma_{out}$ must be chosen in such a way that
+problem still makes sense. For passive circuits, it must be the case that
+$\left| \Gamma_{in} \right| \le 1$ and $ \left| \Gamma_{out} \right| \le 1$. 
+\subsubsection{Power to the Load}
 To determine the power delivered to the load we begin with the definition of
-real power
+real power (note that I assume, immediately, that the voltages and currents are
+provided as peak quantities):
 
 \[ 
         P_{load} =  \frac{1}{2}\Re\left( V_{load}I^*_{load} \right) 
 \]
 
-In this case, $V_{load} = \sqrt{Z_c} \left( a_2 + b_2 \right) $ and $I_{load} =
-\frac{b_2-a_2}{\sqrt{Z_c}}$. But, $a_2 = b_2 \Gamma_l$ so $P_{load}$ can be
-rewritten as follows:
+In this case, $V_{load} = \sqrt{Z_c} \left( a_2 + b_2 \right) $ and $I_{load}
+=\sqrt{Z_c} \frac{b_2+a_2}{\sqrt{Z_l}}$. So $P_{load}$ can be rewritten as
+follows:
 
 \begin{align*}
-    P_{load} &= \frac{1}{2}\Re\Big( \left( a_2+b_2 \right)\left( b_2^*-a_2^*
-    \right)\Big) \\
-    &= \frac{1}{2}\Re\Big( \left( b_2 \left( 1+\Gamma_l \right) \right)\left(
-    b_2^* \left( 1-\Gamma_l^* \right) \right)\Big) \\
-    &= \frac{\left| b_2 \right|^2 }{2}\Re \left( 1- \left| \Gamma_l \right|^2 + 2j
-\Im(\Gamma_l) \right) \\ 
-    &= \frac{\left| b_2 \right|^2 }{2} \left( 1- \left| \Gamma_l \right|^2 \right)
+    P_{load} &= \frac{1}{2}\Re\Big(Z_c \left( a_2+b_2 \right)\frac{\left( b_2^*+a_2^*
+    \right)}{Z_l}\Big) \\
 \end{align*}
 
+We have expressions for both $b_2$ and $a_2$ so we're done.
+
 To calculate the power reflected to the source I need to take the incident power
-and subtract the amount that is delivered to the load and the 2-port network.
+and subtract the amount that is delivered to the input network.
 
 \[ 
         P_{source} = \frac{1}{2}\Re \left( V_{source}I^*_{source} \right) 
@@ -142,25 +368,41 @@ Substituting these two expressions into $P_{source}$ yields:
 &= \frac{\left| V_s \right|^2}{2 \left| Z_s + Z_{in} \right|^2} \Re(Z_s)
 \end{align*}
 
-We will now plug the following numbers into equations (\ref{a1}, \ref{b1}, \ref{b2},\ref{a2}
-) to obtain $a_1$, $b_1$, $b_2$ and $a_2$, respectively.
+Note that in a similar way I could determine the amount of power delivered to
+the input network and, also, to the circuit as a whole.
+
+\begin{align*}
+    P_{network} &= \frac{1}{2} \Re \left( \left( V_s \frac{Z_{in}}{Z_{in}+Z_s}
+    \right) \left( \frac{V_s}{Z_{in}+Z_s} \right)^*  \right) \\
+    P_{del} = P_{network} + P_{source} &= \frac{1}{2} \Re \left( V_s \left(
+\frac{\left(a_1 + b_1  \right)\sqrt{Z_c}}{Z_{in}} \right)^*  \right)
+\end{align*}
+
+\subsubsection{Plugging in Numbers}
+
+We will now plug the following numbers into equations \ref{a1}, \ref{b1}, \ref{b2}, \ref{a2}
+ to obtain $a_1$, $b_1$, $b_2$ and $a_2$, respectively.
 
 \[
         \def\arraystretch{1.5}
         \begin{array}{|c|c|}
             \hline  \text{\quad Variable \quad}  & \text{\quad Value \quad } \\
-            \hline \hline Z_{l} = Z_c & \SI{50}{\ohm} \\
+            \hline \hline Z_{l} = Z_c \text{(by choice)} & \SI{50}{\ohm} \\
             \hline Z_{s} & \SI{100}{\ohm} \\
-            \hline \Gamma_s = \frac{Z_s - Z_c}{Z_s+Z_c} & \frac{1}{3} \\
-            \hline \Gamma_l = \frac{Z_l-Z_c}{Z_l+Z_c}  & 0 \\
-            \hline S_{11} & .1 \phase{-30 \degree} \\
-            \hline S_{12} & .4 \phase{-75 \degree} \\
+            \hline \Gamma_{in} = -\Gamma_{s} = \frac{Z_s - Z_{in}}{Z_s+Z_{in}} &
+            \Gamma_{in_1} \approx -8.79 + j 458\cdot 10^{-3} \text{\enskip
+            (invalid) \quad or \quad} \Gamma_{in_2} \approx 114\cdot10^{-3} +j
+            5.92 \cdot 10^{-3} \\
+            \hline \Gamma_{out} = -\Gamma_{l} = \frac{Z_l-Z_{out}}{Z_l+Z_{out}}  &
+            \Gamma_{out_1} \approx -5.96 + j 433 \cdot 10^{-3} \text{\enskip (invalid) \quad or \quad}
+            \Gamma_{out_2} \approx 167\cdot 10^{-3} + j 12.1 \cdot 10^{-3} \\
+            \hline S_{11} & .1 \phase{- 30 \degree} \\
+            \hline S_{12} & .4 \phase{- 75 \degree} \\
             \hline S_{21} & .95 \phase{- 45 \degree} \\
-            \hline S_{22} & .15 \phase{-10 \degree} \\
+            \hline S_{22} & .15 \phase{- 10 \degree} \\
             \hline V_{s} & \SI{20}{\volt}\phase{0 \degree} \\
-            \hline Z_{in} = Z_c \frac{1+\Gamma_{in}}{1 - \Gamma_{in}} &  \approx
-            \SI{56.3}{\ohm} \\
-            \hline \Gamma_{in} & \approx 59.2\cdot 10^{-3} \\ \hline
+            \hline Z_{in} = Z_s \frac{1+\Gamma_{in}}{1 - \Gamma_{in}} &  \approx
+            \SI{126 + j 1.51}{\ohm} \\ \hline
         \end{array}
 \]
 
@@ -169,12 +411,138 @@ Plugging these numbers in yields:
 \[
         \def\arraystretch{1.5}
         \begin{array}{|c|c|}
-            \hline \text{ \quad Voltage \quad } & \text{ \quad Voltage \quad }
+            \hline \text{ \quad Quantity \quad } & \text{ \quad Value \quad }
             \\
-            \hline \hline a_1 & \approx \SI{961}{\milli\volt\per\sqrt{\ohm}} \\
-            \hline b_1 & \approx \SI{57.0}{\milli\volt\per\sqrt{\ohm}} \\
-            \hline a_2 & \SI{0.0}{\milli\volt\per\sqrt{\ohm}} \text{\quad
+            \hline \hline a_1 &
+            \SI[parse-numbers=false]{\sqrt{2}}{\volt\per\sqrt{\ohm}}
+            \text{\quad (exactly)} \\
+            \hline b_1 & \approx \SI[parse-numbers=false]{160 + j 8.37}{\milli\volt\per\sqrt{\ohm}} \\
+            \hline a_2 & \approx \SI[parse-numbers=false]{-166+j 143}{\milli\volt\per\sqrt{\ohm}} \text{\quad
         (exactly)} \\
-            \hline b_2 & \approx \SI{417}{\milli\volt\per\sqrt{\ohm}} \\ \hline
+        \hline b_2 & \approx \SI[parse-numbers=false]{929 -j 924}{\milli\volt\per\sqrt{\ohm}} \\ 
+        \hline P_{load} & \approx \SI{596}{\milli\watt} \\
+        \hline P_{source} & \approx \SI{393}{\milli\watt} \\
+        \hline P_{network} & \approx \SI{493}{\milli\watt} \\ 
+        \hline P_{del} & \approx \SI{886}{\milli\watt} \\ \hline
         \end{array}
 \]
+
+Note that more the source produced $\approx \SI{946}{\milli\watt}$ of power.
+Note that for $Z_{in} = \SI{126}{\ohm}$ and $Z_s = \SI{100}{\ohm}$ that
+$P_{src} = \SI{885}{\milli\watt}$. Looking at the table above this is also the
+sum of the amount of reflected power, $P_{ref}$, and the power delivered to the
+network, $P_{network}$ (as it should be). However, the amount of power delivered
+to the load is greater than that delivered to the input network. This implies
+that the two-port network was supplying power to the load. This can not be. I
+don't know why this is happening. I have checked my formulae multiple times. Any
+assistance that could be shed on this matter would be greatly appreciated. 
+
+\subsection{Calculating Port Waves and Powers ``Properly'' (Try \#2: With $Z_c$)}
+
+The approach we will take, now, will follow the more traditional paths that are
+taken to solve these problems. We will begin by calculating each of the\ incident
+and reflected waves.
+\subsubsection{Port 1 Waves}
+$V_1 = (a_1 + b_1)\sqrt{Z_c} = V_s \frac{Z_{in}}{Z_s + Z_{in}}$. $b_1 =
+\Gamma_{in} a_1$.
+
+\[ 
+        a_1 = \frac{V_s}{\sqrt{Z_c}} \frac{Z_{in}}{Z_s + Z_{in}} \frac{1}{1+\Gamma_{in}} 
+\]
+
+Now,
+
+\[ 
+        b_1 = \Gamma_{in} a_1 = \frac{V_s}{\sqrt{Z_c}} \frac{Z_{in}}{Z_s +
+        Z_{in}} \frac{\Gamma_{in}}{1+ \Gamma_{in}} 
+\]
+
+Note that the expressions given for $\Gamma_{in}$ provided earlier in terms of
+the scattering parameters and $\Gamma_l$ are still valid. But, we must change
+$\Gamma_{in}$ to refer to an characteristic impedance $Z_{c_1}$ at the input and we must
+change $\Gamma_l$ to refer to a characteristic impedance $Z_{c_2}$ at the
+output. These may be the same, but in general they do not have to be.
+
+\[ 
+        \Gamma_{in} = \frac{Z_{in}-Z_{c_1}}{Z_{in}+Z_{c_1}} \text{\quad and
+        \enskip} \Gamma_{l} = \frac{Z_{l}-Z_{c_2}}{Z_{l}+Z_{c_2}} 
+\]
+
+\subsubsection{Port 2 Waves}
+Now, $a_1$ and $b_1$ are completely defined and are able to be calculated. The
+reference impedance $Z_c$ defined in both of them should be taken with respect
+to the characteristic impedance at the input side, $Z_{c_1}$. $b_2$ can be
+calculated in a similar manner as before:
+
+\[ 
+        b_2 = a_1 S_{21} + a_2 S_{22}
+\]
+
+But, $a_2 = \Gamma_l b_2$.
+
+\[ 
+        b_2 = a_1 \frac{S_{21}}{1-\Gamma_l S_{22}}  = \frac{V_s}{\sqrt{Z_{c_2}}}
+        \frac{Z_{in}}{Z_s + Z_{in}} \frac{1}{1+\Gamma_{in}}
+    \frac{S_{21}}{1-\Gamma_l S_{22}}
+\]
+
+\[ 
+        a_2 = \Gamma_l b_2 = a_1\frac{S_{21}\Gamma_l}{1-\Gamma_l S{22}}  =  \frac{V_s}{\sqrt{Z_{c_2}}}
+        \frac{Z_{in}}{Z_s + Z_{in}} \frac{\Gamma_l}{1+\Gamma_{in}}
+    \frac{S_{21}}{1-\Gamma_l S_{22}}
+\]
+
+\subsubsection{Plugging in Numbers (These Actually Work)}
+
+Performing a similar thing as before, I will fill the table below with known
+quantities. Below that I will supply the calculated quantities.
+
+
+\[
+        \def\arraystretch{1.5}
+        \begin{array}{|c|c|}
+            \hline  \text{\quad Variable \quad}  & \text{\quad Value \quad } \\
+            \hline \hline Z_{l} = Z_{c_1} \text{(by choice)} & \SI{50}{\ohm} \\
+            \hline Z_{s} & \SI{100}{\ohm} \\
+            \hline \Gamma_{in} & 86.6 \cdot 10^{-3} - j 50 \cdot 10^{-3} \\
+            \hline S_{11} & .1 \phase{- 30 \degree} \\
+            \hline S_{12} & .4 \phase{- 75 \degree} \\
+            \hline S_{21} & .95 \phase{- 45 \degree} \\
+            \hline S_{22} & .15 \phase{- 10 \degree} \\
+            \hline V_{s} & \SI{20}{\volt}\phase{0 \degree} \\
+            \hline Z_{in} = Z_{c_1} \frac{1+\Gamma_{in}}{1 - \Gamma_{in}} &  \approx
+            \SI{118 - j 12.0}{\ohm} \\ \hline
+        \end{array}
+\]
+
+Plugging these numbers (see Mathematica in appendix) in yields:
+
+\[
+        \def\arraystretch{1.5}
+        \begin{array}{|c|c|}
+            \hline \text{ \quad Quantity \quad } & \text{ \quad Value \quad }
+            \\
+           \hline \hline a_1 &
+            \SI[parse-numbers=false]{1}{\volt\per\sqrt{\ohm}} \\
+            \hline b_1 & \approx \SI[parse-numbers=false]{86.6 - j 50.0}{\milli\volt\per\sqrt{\ohm}} \\
+            \hline a_2 & \approx \SI[parse-numbers=false]{0 +j 0}{\milli\volt\per\sqrt{\ohm}} \text{\quad
+        (exactly)} \\
+        \hline b_2 & \approx \SI[parse-numbers=false]{672 -j 672}{\milli\volt\per\sqrt{\ohm}} \\ 
+        \hline & \\ P_{load} & \frac{1}{2} \Re \left( \sqrt{Z_{c_2}} \left( a_2 + b_2
+        \right) \left( \sqrt{Z_{c_2}}\frac{a_2 + b_2}{Z_l} \right)^*
+    \right)\approx \SI{451}{\milli\watt} \\ & \\
+        \hline & \\ P_{source} & \frac{1}{2} \Re \left( \left( \frac{V_s Z_{s}}{Z_{in}
+        + Z_s} \right) \left( \frac{V_s}{Z_{in}+Z_s} \right)^* \right)\approx
+        \SI{418}{\milli\watt} \\ & \\ 
+        \hline & \\ P_{network} & \frac{1}{2} \Re\left( \left( V_s
+\frac{Z_{in}}{Z_{in}+Z_s} \right) \left( \frac{V_s}{Z_{in}+Z_s} \right)^*
+\right) \approx \SI{495}{\milli\watt} \\ & \\
+\hline & \\ P_{del} & \approx \frac{1}{2}\Re \left( V_s \left( \frac{V_s}{Z_{in}
++ Z_s} \right)^* \right) \approx \SI{913}{\milli\watt} \\ & \\ \hline
+        \end{array}
+\]
+
+Note that, now, $P_{source} + P_{network}$ (the power delivered to the source
+plus that delivered to the load and the two port network) is equal to the
+delivered power, as it should be, \textbf{and $P_{load} < P_{network}$}, as it
+should be.

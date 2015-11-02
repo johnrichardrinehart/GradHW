@@ -1,7 +1,7 @@
-\section*{Problem 2: Different Tuning Methods}
+\section{Different Tuning Circuits}
 \addtocounter{section}{1}
 \setcounter{equation}{0}
-\subsection*{Problem 2a: Single Open Stub Tuner}
+\subsection{Type 1: Single Open Stub Tuner}
 
 The goal is to match a load impedance to a transmission line by placing a stub
 of a certain length $l_s$ a certain distance $l_l$ away from a load. To be
@@ -41,7 +41,7 @@ for $Y_{stub}$. However, $Y_{stub}$ is just a infinite impedance (zero
 admittance) load. Thus, we can use the same equation as before before:
 
 \begin{align*}
-    Y'_l(l_s) &= Y_c \frac{Y_s + j Y_c\tan\beta l_s}{Y_c + j Y_s \tan \beta
+    Y_{stub}(l_s) &= Y_c \frac{Y_s + j Y_c\tan\beta l_s}{Y_c + j Y_s \tan \beta
        l_s}  \\
        &= Y_c \frac{0 + jY_c\tan\beta l_s}{Y_c + j0\tan\beta l_s} \\
        &= j Y_c \tan \beta l_s
@@ -54,58 +54,31 @@ the input admittance is:
     l_l} + j \tan \beta l_s \right)
 \end{align*}
 
-In accordance with our specifications given earlier we have the following two
-equations by considering the imaginary and real parts of $Y_{in}$ separately.
+From this, we can consider the following two equations:
 
 \begin{align*}
-    \Im \left( Y_{in}  \right) &= 0 \\
-                               & = \Im \left( \left( Y_l + j Y_c \tan \beta l_l
-\right) \left( Y_c - j Y_l \tan \beta l_l \right) + j \tan \beta l_s \left(
-Y_c^2 + Y_l^2\tan^2\beta l_l \right)\right) \\
-\intertext{This yields the following equation: } 
-0 &= Y_c^2\tan\beta l_l - Y_l^2 \tan \beta l_l + \tan \beta l_s \left( Y_c^2 +
-Y_l^2 \tan^2\beta l_l \right)
-\end{align*}
-
-Considering, separately the real part of the input admittance.
-\begin{align*}
-    \Re \left( Y_{in} \right) = Y_c &= \Re \left( Y_c \left( \frac{Y_l + j
-    Y_c\tan\beta l_l}{Y_c + j Y_l \tan \beta l_l} + j \tan \beta l_s \right)
-\right) 
-    \intertext{Re-arranged and simplified a bit:} 
-    1 &= \Re \left( \frac{ \left( Y_l + jY_c\tan\beta l_l \right)\left( Y_c - j
-    Y_l \tan \beta l_l \right) }{Y_c^2 + Y_l^2\tan^2\beta l_l} + j \tan \beta
-    l_s \right) \\
-    \intertext{Taking the real part:} 
-    1 &= \frac{Y_l Y_c + Y_l Y_c \tan^2\beta l_l}{Y_c^2 + Y_l^2 \tan^2\beta l_l}
+    1 = \Re \left( Y_{in} \right) \\
+    0 = \Im \left( Y_{in} \right)
 \end{align*}
 
 These two equations can be solved simultaneously for pairs of $l_l$ and $l_s$
 that satisfy them. Given the transcendental nature of these two solutions it is
-not, in general, possible to find an analytic solution. However, we can reduce
-the complexity of these two equations, somewhat, if we rewrite $Y_l = \alpha
-Y_c$ and, instead, for known $\alpha$ solve the two equations for $l_l$ and
-$l_s$. Rewriting these two equations in terms of $Y_l = \alpha Y_c$ yields:
+not, in general, possible to find an analytic solution. However, computers are
+more than capable, these days, of determining the roots of such equations with
+much ease. Mathematica was employed to find the following roots:
 
-\begin{align*}
-    0 &= Y_c^2 \tan \beta l_l - \alpha^2 Y_c^2 \tan \beta l_l + \tan\beta l_s
-    \left( Y_c^2 + \alpha^2 Y_c^2 \tan^2 \beta l_l \right) \\
-    1 &= \frac{\alpha Y_c^2 + \alpha Y_c^2 \tan^2 \beta l_l}{Y_c^2 + \alpha^2
-Y_c^2 \tan^2\beta l_l}
-\end{align*}
+\[ 
+        \beta_{l_l} \approx .955~\text{radians \quad} \beta_{l_s} \approx
+        2.53~\text{radians}
+\]
 
-These can be immediately reduced to:
-
-\begin{align*}
-    0 &= \tan \beta l_l \left( 1-\alpha^2 \right) + \tan \beta l_s \left( 1 +
-\alpha^2 \tan^2\beta l_l \right) \\
-1&= \frac{\alpha \left( 1+\tan^2\beta l_l \right)}{1+\alpha^2 \tan^2\beta l_l}
-\end{align*}
+These values were used in ADS to simulate the frequency response of the single
+stub tuner.
 
 %TODO: Make a plot of these for alpha = 2 (since the load is 100 ohms)
 %TODO: Solve for l_s and l_l
 
-\section*{Problem 2b: LC Matching Network}
+\subsection{Type 2: LC Matching Network}
 The goal in constructing a matching network for the load using an LC network is
 going to be similar as that that was performed in the previous section. Namely,
 our goal is going to be to make $Z_{in} = Z_c$ such that $\Re \left( Z_{in}
@@ -225,8 +198,73 @@ $Z_{in}$ even further in this particular case:
         1}~\Omega
 \]
 
-Plotting the real and imaginary part as a function of frequency yields the
-following:
+Let's assume an operation frequency of \SI{1}{\giga\hertz} as an example. This
+determines a capacitance of \SI[parse-numbers=false]{\frac{1}{50\cdot 2\cdot \pi
+\cdot 1 \cdot 10^{9}}}{\farad} $ \approx $ \SI{3.18}{\pico\farad} and an
+inductance of \SI[parse-numbers=false]{\frac{100}{2\pi\cdot 10^{9}}}{\ohm}
+$\approx$ \SI{15.9}{\nano\henry}.
 
-%TODO: Determine and plot the reflection coefficient as a function of frequency
-\section*{Problem 2c: Double Open Stub Tuner}
+These values were used in ADS to simulate the reflection coefficient as a
+function of frequency. 
+\subsection{Type 3: Double Open Stub Tuner}
+
+This problem is very similar to Problem 2a with the single stub tuner. The only
+difference, now is that we have two stubs instead of one. We will follow a very
+similar path as we did for problem 2a to solve for the matching network.
+
+\begin{align}
+    Y_{in} = Y_{stub_2} + Y_{stub_1}' + Y_l'
+\end{align}
+
+Where, here, $Y'_{stub_1}$ is the impedance of the stub 1 transformed from the
+end of stub 1 to the start of stub 2. Like before:
+
+\begin{align*}
+    Y_l'(l_{l_1}) &= Y_c \frac{Y_l + j Y_c \tan \beta l_{l_1}}{Y_c + j Y_l \tan
+    \beta l_{l_1}} \\
+\end{align*}
+
+Where, unlike before, we have to transform the impedance of stub 1 (which is
+$l_{s_1}$ long) and the load a length of $l_{l_1}$ along the line. $Y_{stub_1}(l_{s_1}) = j Y_c
+\tan \beta l_{s_1}$. Right at the first stub, though, the admittance of both the
+first stub and the load is:
+
+\[ 
+        Y_1 = j Y_c \tan \beta l_{s_1} + Y_c \frac{Y_l + j Y_c \tan \beta
+        l_{l_1}}{Y_c + j Y_l \tan \beta l_{l_1}}
+\]
+
+
+
+Thus, the total admittance at the 2nd stub (closer to the source, farther from
+the load) is:
+
+\begin{align*}
+    Y_2 =  Y_c \frac{Y_1(l_{s_1},l_{l_1}) + j Y_c \tan \beta l_{l_2}}{Y_c + j
+        Y_1(l_{s_1},l_{l_1}) \tan \beta{l_{l_2}}}
+\end{align*}
+
+
+This admittance must relate to the admittance of stub 2 in the following way:
+
+\begin{align*}
+    \Re \left( Y_2 \right) &= Y_c \\
+    \Im \left( Y_2 \right) &= -\Im \left( Y_{stub_2} \right) = - \Im \left( j
+Y_c \tan \beta l_{s_2} \right)
+\end{align*}
+There are four unknowns in the above equation for the admittance: $l_{s_1}, l_{s_2},
+l_{l_1} \text{and~} l_{l_2}$. We have been given, in addition to the problem
+statement, the information that $l_{l_2} = l_{l_1} = \frac{\lambda}{8}$. I'm
+going to assume that both stubs are the same length and allow the distance from
+stub 1 to the load to vary. Using Mathematica, again, to solve for these roots
+yields:
+
+\[ 
+        \beta l_{s_2} \approx 65.8 \degree \text{\quad and } \beta l_{s_1}
+        \approx 54.1 \degree
+\]
+
+\subsection{Comparison of Different Matching Networks}
+
+It seems that based on the bandwidths of the reflection coefficients alone, the
+LC matching network is the best option.

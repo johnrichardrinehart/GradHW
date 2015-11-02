@@ -1,6 +1,7 @@
-\section*{Problem 3: Lossy LC matching network}
+\section{Lossy Matching Networks}
 \addtocounter{section}{1}
 \setcounter{equation}{0}
+
 The first thing to do is to find the amount of loss in the matching network.
 This loss will be due to two non-ideal conditions for the circuit elements
 \begin{enumerate}
@@ -23,11 +24,11 @@ The power delivered to the series resistor is now
 \]
 
 The power delivered to the parallel resistor is a bit more tricky. We can
-consider the voltage across the parallel branch (with $R_p$, $R_L$ and $Z_C$).
+consider the voltage across the parallel branch (with $R_p$, $R_l$ and $Z_C$).
 The voltage across that branch is 
 
 \[ 
-        V_p = V_{in} \frac{Z_c||R_L||R_p}{Z_{in}}
+        V_p = V_{in} \frac{Z_c||R_l||R_p}{Z_{in}}
 \]
 
 The current through $R_p$, $I_p$, is:
@@ -46,13 +47,97 @@ And the total power delivered to these two circuits elements is just
 \begin{align}
     P_s + P_p = \frac{1}{2} \frac{\left| V_{in} \right|^2 R_s}{\left| Z_{in}
     \right|^2} + \frac{1}{2} \frac{\left| V_{in} \right|^2 \Big|
-Z_c||R_L||R_p \Big|^2}{R_p\left| Z_{in} \right|^2}
+Z_c||R_l||R_p \Big|^2}{R_p\left| Z_{in} \right|^2} \label{power}
 \end{align}
 
-%TODO: Keep expanding the expression for total loss and express this in terms of
-%a ratio n = R_l / R_s. Show that the loss increases as n grows. 
+This is exact. However, if we consider the case where we are close to the
+matching frequency then $Z_A \approx - Z_B$ and most of the energy is dissipated
+in the resistors (not reflected or stored in the inductor and capacitor). Also,
+if the inductors and capacitors are any good, it should be the case that $ 
+ R_p >> R_l >> R_s$ (a large shunt resistor on the capacitor implies that it's
+ very good). This means that if we write an expression for the power
+lost near the matching frequency it would look like:
 
-%TODO:To find the insertion loss, calculate the amount of power received by the
-%load and subtract that from the power delivered by the source. This is, find
-%Z_{in}(f) and calculate V_{source}^2/(Z_{in}) and subtract 
-%from V_source^2/{Z_{in}+Z_{source})
+\[ 
+        P_{lost} = \left( V_s \frac{R_s}{R_s + R_p||R_l} \right)^2 \frac{1}{R_s}
+        + \left( V_s \frac{R_p || R_l}{R_s + R_p ||R_l} \right)^2 \frac{1}{R_p}
+\]
+
+But, because $R_p >> R_l$ then $R_p || R_l \approx R_l$.
+
+\[ 
+        P_{lost} \approx V_s^2 \left( \frac{R_s}{R_l + R_s} \right)^2
+        \frac{1}{R_s} + V_s^2 \left( \frac{R_l}{R_s+R_l} \right)^2
+        \frac{1}{R_p} = V_s^2 / \left( R_s +R_l \right)
+\]
+
+Expressing this in terms of the transformation ratio $ \eta = R_l/R_{in}$ (where $R_{in}
+\approx R_s + R_l$) yields:
+\[ 
+        P_{lost} \approx V_s^2 \frac{1}{R_{in}} = V_s^2 \frac{\eta}{R_l} 
+\]
+
+Notice that as the transformation ratio increases, the loss increases.
+
+We know the value of $R_l$ is \SI{50}{\ohm} since this type of matching network
+is designed to lower the impedance of the load. Now, we get to pick the sign of
+the susceptance. We will select it to be positive such as to maintain the
+geometry of the capacitor shunting the load. Realizing that $Z_c =
+\SI{10}{\ohm}$ and $R_l = \SI{50}{\ohm}$ we have
+
+\[ 
+        B =\frac{1}{50} \sqrt{5-1} = \frac{2}{50}~\text{S}
+\]
+
+At 3 GHz this corresponds to a capacitor of value: $\frac{B}{\omega} = C$:
+
+\[ 
+        C = \frac{\frac{2~\text{S}}{50}}{2\pi \cdot 3~\text{GHz}} \approx
+        \SI{2.12}{\pico\farad}
+\]
+
+Using Pozar's 5.3b to find X, the series impedance of the matching network
+yields:
+
+\begin{align*}
+    X &= \frac{1}{B} + \frac{X_l Z_c}{R_l} - \frac{Z_0}{B R_l} \\
+    &= \frac{1}{B} - \frac{Z_c}{B R_l} \\
+    &= \SI{25}{\ohm} - \frac{10~\Omega}{\frac{2S}{50}50~\Omega} \\
+    &= \SI{20}{\ohm}
+\end{align*}
+
+This is an inductor of value $L = \frac{X}{\omega}$:
+\[ 
+        L = \frac{20~\Omega}{2\pi \cdot 3 \text{~GHz}} \approx
+        \SI{1.06}{\nano\henry}
+\]
+
+If the Q factors of the inductor and capacitor are 15 and 30, respectively, this
+implies a value of $R_s = \frac{X_l}{Q} = \frac{20~\Omega}{15} =
+\frac{4~\Omega}{3}$ and $R_p = Q_c X_c = 20 \cdot 25~\Omega = 500~\Omega$. 
+
+Plugging in the values I have, the power delivered to the load is:
+
+\[ 
+        P_{load} = \frac{1}{2}\left( |V_s|^2 \frac{\Big| Z_{c}||R_l||R_p \Big|^2
+                }{\Big| Z_{in} \Big|^2} \right) \frac{1}{R_l} 
+\]
+
+Dividing this by the power delivered to the whole network:
+
+\[ 
+        P_{del} = \frac{V_s^2}{2} \Re \left( \frac{1}{Z_{in}^*} \right)
+\]
+
+Calculating the following on Mathematica I obtain:
+
+\[ 
+        \text{Insertion Loss~} =-10 \log_{10} \frac{P_{load}}{P_{del}} \approx .93~\text{dB}
+\]
+
+This aligns well with the simulated value $-20 \log_{10}\left| S_{21} \right|$
+which (apart from ignoring reflection) demonstrates the same idea. At the matching
+frequency, the amount of reflection is very small ($< 20 \text{~dB}$). The
+amount of forward gain reported by ADS is $-.968 \text{~dB}$, i.e. a loss of
+$.968 \text{~db}$. Apart from the reflection, these values are consistent with
+one another.
