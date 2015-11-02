@@ -1,0 +1,310 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.3' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      9794,        301]
+NotebookOptionsPosition[      8779,        260]
+NotebookOutlinePosition[      9122,        275]
+CellTagsIndexPosition[      9079,        272]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   SubscriptBox["R", "l"], "=", 
+   RowBox[{"50", 
+    TemplateBox[{
+     InterpretationBox["\[InvisibleSpace]", 1],"\"\[CapitalOmega]\"","ohms",
+      "\"Ohms\""},
+     "Quantity"]}]}], ";", " ", 
+  RowBox[{
+   SubscriptBox["Z", "c"], "=", 
+   RowBox[{"10", 
+    TemplateBox[{
+     InterpretationBox["\[InvisibleSpace]", 1],"\"\[CapitalOmega]\"","ohms",
+      "\"Ohms\""},
+     "Quantity"]}]}], ";", " ", 
+  RowBox[{"\[Omega]", " ", "=", " ", 
+   RowBox[{"2", " ", "Pi", " ", "3", 
+    TemplateBox[{
+     InterpretationBox["\[InvisibleSpace]", 1],"\"GHz\"","gigahertz",
+      "\"Gigahertz\""},
+     "Quantity"]}]}], ";", 
+  RowBox[{"Cap", " ", "=", 
+   FractionBox[
+    RowBox[{"(", " ", 
+     FractionBox[
+      RowBox[{"2", " ", 
+       TemplateBox[{
+        InterpretationBox["\[InvisibleSpace]", 1],"\"S\"","siemens",
+         "\"Siemens\""},
+        "Quantity"]}], "50"], " ", ")"}], "\[Omega]"]}], ";", " ", 
+  RowBox[{"L", " ", "=", " ", 
+   FractionBox[
+    RowBox[{"20", 
+     TemplateBox[{
+      InterpretationBox["\[InvisibleSpace]", 1],"\"\[CapitalOmega]\"","ohms",
+       "\"Ohms\""},
+      "Quantity"]}], "\[Omega]"]}], ";", 
+  RowBox[{
+   SubscriptBox["R", "s"], "=", 
+   RowBox[{"4", 
+    RowBox[{
+     TemplateBox[{
+      InterpretationBox["\[InvisibleSpace]", 1],"\"\[CapitalOmega]\"","ohms",
+       "\"Ohms\""},
+      "Quantity"], "/", "3"}]}]}], ";", " ", 
+  RowBox[{
+   SubscriptBox["R", "p"], "=", 
+   RowBox[{"500", " ", 
+    TemplateBox[{
+     InterpretationBox["\[InvisibleSpace]", 1],"\"\[CapitalOmega]\"","ohms",
+      "\"Ohms\""},
+     "Quantity"]}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.65546074200892*^9, 3.655460768607442*^9}, {
+  3.655460800531267*^9, 3.65546097103502*^9}, {3.655461055104828*^9, 
+  3.655461081519339*^9}, {3.6554611885264597`*^9, 3.6554612464707737`*^9}, {
+  3.655461288630185*^9, 3.6554614175945616`*^9}, {3.655461455594735*^9, 
+  3.6554614651522818`*^9}, {3.6554642132284627`*^9, 3.6554642414860787`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"ParallelImpedance", "=", 
+  RowBox[{"UnitConvert", "[", 
+   RowBox[{
+    RowBox[{"1", "/", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{"I", " ", "\[Omega]", " ", "Cap"}], " ", "+", " ", 
+       RowBox[{"1", "/", 
+        SubscriptBox["R", "l"]}], "+", 
+       RowBox[{"1", "/", 
+        SubscriptBox["R", "p"]}]}], ")"}]}], ",", "\"\<Ohms\>\""}], 
+   "]"}]}]], "Input",
+ CellChangeTimes->{{3.65546090933049*^9, 3.6554609262214565`*^9}, {
+  3.655460994760377*^9, 3.655461058422018*^9}, {3.655461090366845*^9, 
+  3.655461096418191*^9}}],
+
+Cell[BoxData[
+ TemplateBox[{RowBox[{"(", 
+     RowBox[{
+       FractionBox["5500", "521"], "-", 
+       FractionBox[
+        RowBox[{"10000", " ", "\[ImaginaryI]"}], "521"]}], ")"}],
+   "\"\[CapitalOmega]\"","ohms","\"Ohms\""},
+  "Quantity"]], "Output",
+ CellChangeTimes->{{3.6554610480544252`*^9, 3.655461097062228*^9}, 
+   3.6554611549715405`*^9, {3.6554611935277452`*^9, 3.6554612500169764`*^9}, {
+   3.6554613723779755`*^9, 3.6554614205317297`*^9}, 3.6554616538540745`*^9, 
+   3.655461935103161*^9, 3.655464179208517*^9, {3.6554642208458986`*^9, 
+   3.655464245302297*^9}, 3.655464354750557*^9, 3.6554645265143814`*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"InputImpedance", " ", "=", 
+  RowBox[{"N", "[", " ", 
+   RowBox[{
+    SubscriptBox["R", "s"], "+", 
+    RowBox[{"I", " ", "\[Omega]", " ", "L"}], " ", "+", " ", 
+    "ParallelImpedance"}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.655461113591173*^9, 3.6554611370155134`*^9}, {
+  3.6554613775402703`*^9, 3.655461381950523*^9}}],
+
+Cell[BoxData[
+ TemplateBox[{RowBox[{"(", 
+     RowBox[{
+       RowBox[{"11.889955214331414`", "\[VeryThinSpace]"}], "+", 
+       RowBox[{"0.8061420345489443`", " ", "\[ImaginaryI]"}]}], ")"}],
+   "\"\[CapitalOmega]\"","ohms","\"Ohms\""},
+  "Quantity"]], "Output",
+ CellChangeTimes->{{3.655461138446595*^9, 3.655461155006542*^9}, {
+   3.6554611935817485`*^9, 3.655461250055979*^9}, {3.6554613724219775`*^9, 
+   3.655461420559731*^9}, 3.6554616538760757`*^9, 3.655461935151164*^9, 
+   3.6554641792375183`*^9, {3.6554642208679*^9, 3.655464245331299*^9}, 
+   3.6554643547975597`*^9, 3.6554645265403833`*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  SubscriptBox["P", "load"], "=", 
+  RowBox[{
+   FractionBox[
+    SuperscriptBox[
+     SubscriptBox["V", "s"], "2"], "2"], 
+   RowBox[{"Re", "[", 
+    RowBox[{
+     FractionBox["ParallelImpedance", "InputImpedance"], 
+     RowBox[{"Conjugate", "[", 
+      RowBox[{
+       FractionBox["ParallelImpedance", "InputImpedance"], 
+       FractionBox["1", 
+        SubscriptBox["R", "l"]]}], "]"}]}], "]"}]}]}]], "Input",
+ CellChangeTimes->{
+  3.655461387869861*^9, {3.65546142683809*^9, 3.655461430468298*^9}, {
+   3.655461467439412*^9, 3.6554615064036407`*^9}, {3.6554644036243525`*^9, 
+   3.655464521041068*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(", 
+   TemplateBox[{
+    "0.03378703058552174`",
+     RowBox[{"\"/\"", "\[InvisibleSpace]", "\"\[CapitalOmega]\""}],
+     "reciprocal ohms",FractionBox["1", "\"Ohms\""]},
+    "QuantityPostfix"], ")"}], " ", 
+  SubsuperscriptBox["V", "s", "2"]}]], "Output",
+ CellChangeTimes->{{3.6554613948002577`*^9, 3.655461420586733*^9}, 
+   3.6554615085427637`*^9, 3.655461653912078*^9, 3.655461935204167*^9, 
+   3.655464179284521*^9, {3.6554642209139023`*^9, 3.6554642453783016`*^9}, 
+   3.6554643548965654`*^9, {3.655464502206991*^9, 3.655464526608387*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  SubscriptBox["P", "in"], "=", 
+  RowBox[{
+   FractionBox[
+    SuperscriptBox[
+     SubscriptBox["V", "s"], "2"], "2"], 
+   RowBox[{"Re", "[", 
+    RowBox[{"1", "/", 
+     RowBox[{"Conjugate", "[", "InputImpedance", "]"}]}], "]"}]}]}]], "Input",
+ CellChangeTimes->{{3.655461513460045*^9, 3.655461648299757*^9}, {
+  3.6554617258691936`*^9, 3.6554617773371377`*^9}, {3.6554618542015343`*^9, 
+  3.6554619303718905`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(", 
+   TemplateBox[{
+    "0.041859878426755724`",
+     RowBox[{"\"/\"", "\[InvisibleSpace]", "\"\[CapitalOmega]\""}],
+     "reciprocal ohms",FractionBox["1", "\"Ohms\""]},
+    "QuantityPostfix"], ")"}], " ", 
+  SubsuperscriptBox["V", "s", "2"]}]], "Output",
+ CellChangeTimes->{
+  3.6554616539940825`*^9, 3.655461778323194*^9, 3.6554618831191883`*^9, {
+   3.6554619311349344`*^9, 3.6554619352301683`*^9}, 3.6554641793145227`*^9, {
+   3.6554642209359035`*^9, 3.655464245407303*^9}, 3.6554643550905766`*^9, 
+   3.6554645266383886`*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"10", 
+  RowBox[{"Log10", "[", 
+   RowBox[{"(", 
+    RowBox[{
+     SubscriptBox["P", "load"], "/", 
+     SubscriptBox["P", "in"]}], ")"}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.655461656673236*^9, 3.6554616713510756`*^9}, {
+  3.655461704562975*^9, 3.655461705679039*^9}, {3.655461798300337*^9, 
+  3.655461811721104*^9}, {3.655461947244856*^9, 3.6554619483979216`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"-", "0.9304793773649768`"}]], "Output",
+ CellChangeTimes->{
+  3.655461672529143*^9, {3.6554617826664424`*^9, 3.655461812358141*^9}, 
+   3.655461891738681*^9, {3.655461935277171*^9, 3.6554619491639657`*^9}, 
+   3.6554641793585253`*^9, {3.6554642209789057`*^9, 3.655464245452306*^9}, 
+   3.65546435514758*^9, 3.6554645266873913`*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"UnitConvert", "[", 
+  RowBox[{
+   RowBox[{"N", "[", "Cap", "]"}], ",", "\"\<Farads\>\""}], "]"}]], "Input",
+ CellChangeTimes->{{3.655464257012967*^9, 3.6554642793672457`*^9}}],
+
+Cell[BoxData[
+ TemplateBox[{"2.122065907891938`*^-12","\"F\"","farads","\"Farads\""},
+  "Quantity"]], "Output",
+ CellChangeTimes->{{3.6554642575409975`*^9, 3.655464279930278*^9}, 
+   3.6554643551765814`*^9, 3.655464526716393*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"UnitConvert", "[", 
+  RowBox[{
+   RowBox[{"N", "[", "L", "]"}], ",", "\"\<Henries\>\""}], "]"}]], "Input",
+ CellChangeTimes->{{3.655464289568829*^9, 3.655464305010712*^9}}],
+
+Cell[BoxData[
+ TemplateBox[{"1.061032953945969`*^-9","\"H\"","henries","\"Henries\""},
+  "Quantity"]], "Output",
+ CellChangeTimes->{3.655464305914764*^9, 3.6554643552035832`*^9, 
+  3.655464526743395*^9}]
+}, Open  ]]
+},
+WindowSize->{941, 1022},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+FrontEndVersion->"10.3 for Microsoft Windows (64-bit) (October 9, 2015)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 1997, 57, 72, "Input"],
+Cell[CellGroupData[{
+Cell[2580, 81, 564, 15, 31, "Input"],
+Cell[3147, 98, 623, 12, 59, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[3807, 115, 350, 8, 31, "Input"],
+Cell[4160, 125, 603, 11, 40, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[4800, 141, 632, 18, 51, "Input"],
+Cell[5435, 161, 582, 12, 38, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[6054, 178, 442, 12, 49, "Input"],
+Cell[6499, 192, 568, 13, 38, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[7104, 210, 394, 9, 31, "Input"],
+Cell[7501, 221, 355, 6, 31, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[7893, 232, 199, 4, 31, "Input"],
+Cell[8095, 238, 229, 4, 42, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[8361, 247, 196, 4, 31, "Input"],
+Cell[8560, 253, 203, 4, 42, "Output"]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)
