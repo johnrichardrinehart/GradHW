@@ -1,0 +1,250 @@
+\documentclass{article}
+\usepackage[]{amsmath}
+\usepackage[]{dsfont}
+%\usepackage[]{bbmath}
+\newtheorem{theorem}{Theorem}
+\begin{document}
+\section{Entanglement}
+
+We define entanglement in terms of what it is not. We will only discuss
+bipartite entanglement. Consider two registers X and Y. We will define an
+operator $ P \in Pos(\mathcal{X} \otimes \mathcal{Y}) $  is separable (or not
+entangled if and only if there exists a collection of positive integer m and
+collections $\{Q_1, \ldots, Q_m\} \subset Pos(\mathcal{X})$ and
+$\{R_1,\cdots,R_m\} \subset Pos(\mathcal{Y})$ such that 
+\[ 
+        P = \sum_{k=1}^m Q_k \otimes R_k 
+\]
+
+Introducing some notation: Sep($\mathcal{X}:\mathcal{Y}$) denotes
+the set of all such operators, and $SepD(\mathcal{X}:\mathcal{Y}) =
+Sep(\mathcal{X}:\mathcal{Y} \cap D(\mathcal{X} \otimes \mathcal{Y}$.
+
+Suppose $\rho \in Sep D(\mathcal{X}:\mathcal{Y})$. It must
+be possible, then, to write 
+\[ 
+        \rho = \sum_{k=1}^m p(k) \sigma_k \otimes \xi_k 
+\]
+
+for p a probability vector and 
+\begin{align*}
+    \{\sigma_1,\ldots,\sigma_m\} \subseteq D(\mathcal{X}) \\
+    \{\xi_1,\cdots,\xi_m \} \subseteq D(\mathcal{Y})
+\end{align*}
+
+We could write $\rho \in SepD(\mathcal{X}:\mathcal{Y})$ as 
+\[ 
+        \rho = \sum_{k=1}^N q(k) x_k x_k^* \otimes y_k y_k^* 
+\]
+
+for q a probability vector and 
+\begin{align*}
+    x_1,\ldots,x_N \in S(\mathcal{X}) \\
+    y_1,\cdots,y_N \in S(\mathcal{Y})
+\end{align*}
+
+In other words we could write 
+\[
+        SepD(\mathcal{X}:\mathcal{Y}) = conv\{ x x^* \otimes y y^*: x \in
+        S(\mathcal{X}), y \in S(\mathcal{Y}) \}
+\]
+
+In general, an expression of the form $\rho = \sum_{k=1}^N q(k) x_k x_k^*
+\otimes y_k y_k^*$ will always exist for $N \le
+dim(L(\mathcal{X}\otimes\mathcal{Y})) = dim(\mathcal{X})^2dim(\mathcal{Y})^2$
+
+This follows from Carathedory's theorem. In general, we cann take $N \le
+dim(\mathcal{X} \otimes \mathcal{Y})$.
+
+There are some nice properties for $SepD(\mathcal{X}:\mathcal{Y})$
+\begin{enumerate}
+    \item convex
+    \item compact
+\end{enumerate}
+
+The set $Sep(\mathcal{X}:\mathcal{Y})$ also has some nice properties:
+\begin{enumerate}
+    \item It's a convex cone (I can multiple it by any real number and it will
+        still be separable.
+    \item It's closed. 
+\end{enumerate}
+
+We will now address a basic fact from convex analysis: The Horodecki criterion.
+
+\subsection{The Horodecki Criterion}
+Consider some $ K \subseteq Herm(\mathcal{X}) $ is a closed, convex cone and $A
+\in Herm(\mathcal{X)}$ such that $A \notin K$. From this we can conclude that
+there must exist some Hermitian operator $H \in Herm(\mathcal{X})$ such that
+\begin{enumerate}
+    \item $\langle H , X \rangle \ge 0 \quad \forall X \in K$
+    \item $\langle H , A \rangle < 0$
+\end{enumerate}
+
+This is as an example of a separating hyperplane theorem.
+
+\begin{theorem}[Horodecki Criterion]
+$\mathcal{X}$ and $\mathcal{Y}$ are complex Euclidean spaces 
+        $P \in Pos(\mathcal{X} \otimes \mathcal{Y})$. It holds that $P \in
+    Sep(\mathcal{X}:\mathcal{Y})$ if and only if:
+    \[ 
+            (\Phi \otimes \mathds{1}_{L(\mathcal{Y})}(P) \in Pos(\mathcal{Y}
+                \otimes \mathcal{Y}) 
+    \]
+    for all positive and unital maps $\Phi \in T(\mathcal{X},\mathcal{Y})$.
+
+    Proof: Suppose that $P \in Sep(\mathcal{X}:\mathcal{Y})$ so that 
+    \[ 
+            P = \sum_{k=1}^m Q_k \otimes R_k 
+    \]
+    
+    for $Q_1, \ldots, Q_m \in Pos(\mathcal{X})$ and $R_1,\ldots,R_m \in
+    Pos(\mathcal{Y})$. If $\Phi \in T(\mathcal{X},\mathcal{Y})$ is positive then
+    \[ 
+            \Phi \otimes \mathds{1}_{L(\mathcal{Y})}(P) = \sum_{k=1}^m \Phi(Q_k)
+            \otimes R_k \in Sep(\mathcal{Y}:\mathcal{Y}) \subseteq
+            Pos(\mathcal{Y}:\mathcal{Y}) 
+    \]
+    
+    It must be the case that $\Phi(Q_k)$ is positive semidefinite.
+
+    Now let us prove the other implication. We will prove this using the
+    contrapositive form:
+
+    If
+    \[ 
+            P\notin Sep(\mathcal{X}:\mathcal{Y}) \text{then} (\Phi \otimes
+                \mathds{1}_{L(\mathcal{Y})}(P) \notin Pos(\mathcal{Y}\otimes
+                \mathcal{Y}) 
+    \]
+
+    for at least one choice of a positive unital map $\Phi$.
+    
+    For now, let's forget about the unital condition.
+
+    Assume $P \notin Sep(\mathcal{X}:\mathcal{Y})$. There must exist $H \in
+    Herm(\mathcal{X}\otimes \mathcal{Y})$ such that:
+
+    \begin{enumerate}
+        \item $\langle H , P \rangle < 0$
+        \item $\langle H , Q \otimes R \rangle \ge 0 \quad \forall Q\in
+            Pos(\mathcal{X}) , R \in Pos(\mathcal{Y})$
+    \end{enumerate}
+    
+    Let $\Phi \in T(\mathcal{Y},\mathcal{X})$ be the map for which:
+    \[ 
+            J(\Phi) = H 
+    \]
+    
+    Assume, $Q, R \ge 0$.
+
+    \begin{align*}
+        0 & \le \langle H , Q \otimes R \rangle \\
+          &= \langle J(\Phi) , Q \otimes R \rangle \\
+          &= \langle \left( \Phi \otimes \mathds{1}_{L(\mathcal{Y})} \right)
+        \left( vec(\mathds{1}_{\mathcal{Y}} vec(\mathds{1}_{\mathcal{Y}})^*
+            \right) , Q \otimes R \rangle \\
+            &= \langle vec(\mathds{1}_{\mathcal{Y}}
+            vec(\mathds{1}_{\mathcal{Y}})^* , \Phi^*(Q) \otimes R \rangle  \\
+            &= vec(\mathds{1}_{\mathcal{Y}}^* \left( \Phi^*(Q) \otimes R \right)
+            vec(\mathds{1}) \\
+            = Tr \left( \Phi^*(Q) R^T \right) &= \langle \overline{R} , \Phi^*(Q) \rangle 
+    \end{align*}
+    
+    Thus, $\Phi^*(Q)$ is positive semidefinite (for every $Q \in
+        Pos(\mathcal{X})$ and $\Phi^*$ is positive.
+
+        Now consider
+        \[ 
+                (\Phi^* \otimes \mathds{1}_{L(\mathcal{Y})}(P) 
+        \]
+        
+        Hopefully this is not positive semidefinite. It suffices to find $u \in
+        \mathcal{Y} \otimes \mathcal{Y}$ such that 
+        \[ 
+                u^* \left( \Phi^* \otimes \mathds{1}_{L(\mathcal{Y})}(P) u < 0 \right) 
+        \]
+
+        Take $u = vec(\mathds{1})$.
+
+        \begin{align*}
+            &vec(\mathds{1}) \left( \Phi^* \otimes
+            \mathds{1}_{L(\mathcal{Y})}(P) vec(\mathds{1}) \right) \\
+            &= \langle vec(\mathds{1})vec(\mathds{1})^* , \left( \Phi* \otimes
+        \mathds{1}_{L(\mathcal{Y})} \right)(P) \rangle \\
+        &= \langle J(\Phi) , P \rangle \\
+        &= \langle H , P \rangle \
+        < 0
+        \end{align*}
+        And, we're done. For the unital condition see the book or notes.
+\end{theorem}
+        \subsection{Useful things this theorem}
+        Let's now consider a separable ball around identity.
+        \[ 
+                \omega = \mathds{1}_{\mathcal{X}}/n \otimes
+                \mathds{1}_{\mathcal{Y}}/m 
+        \]
+
+        There exists a ball around $\omega$ where everything is separable.
+
+        Lemma: Let $\mathcal{X}$ and $ \mathcal{Y} = \mathds{C}^\Sigma$ be
+        complex Euclidean spaces. Let
+        \[ 
+                A = \sum_{a,b \in \Sigma} A_{a,b} \otimes E_{a,b} \in
+                L(\mathcal{X},\mathcal{Y}) 
+        \]
+        
+        be any operator. It holds that $\left| \left| A \right| \right|^2 \le
+        \sum_{a,b} \left| \left| A_{a,b} \right| \right|^2$.
+
+        Another lemma (Russo-Dye):
+
+        Let $\Phi \in T(\mathcal{X},\mathcal{Y})$ be a positive and unital map.
+        It holds that 
+        \[\left| \left| \Phi(X) \right| \right| \le \left| \left| X
+        \right| \right| \quad \forall X \in L(\mathcal{X})\] 
+
+        Consider another theorem: $A \in Herm(\mathcal{X} \otimes \mathcal{Y})$
+        where $\left| \left| A \right| \right|_2 \le 1$. It holds that 
+        \[ 
+                \mathds{1}_{\mathcal{X}} \otimes \mathds{1}_{\mathcal{X}} - A
+                \in Sep(\mathcal{X}:\mathcal{Y}) 
+        \]
+        
+        Let $\Phi \in T(\mathcal{X},\mathcal{Y})$ be any positive and unital
+        map. We can write
+        \[ 
+                A = \sum_{a,b} A_{a,b} \otimes E_{a,b} 
+        \]
+        
+        so that
+
+        \[ 
+                \left( \Phi \otimes \mathds{1} \right)(A) = \sum_{a,b}
+                \Phi(A_{a,b}) \otimes E_{a,b}
+        \]
+        
+        We know that 
+        \[ 
+                \left| \left| \left(\Phi \otimes \mathds{1}\right)(A) \right|
+                \right| ^2 \le \sum_{a,b} \left| \left| \Phi(A_{a,b}) \right|
+            \right|^2
+        \]
+        
+        by the first lemma. So this last expression bears the following
+        relationships with the next expressions:
+
+        \begin{align*}
+            & \le \left| \left| A_{a,b} \right| \right|^2 \\
+            & \le \left| \left| A_{a,b} \right| \right|^2_2 \\
+            & = \left| \left| A \right| \right|^2
+            & \le 1
+        \end{align*}
+        So, finaly,
+
+        \[ 
+                \left( \Phi \otimes \mathds{1} \right) (A) \le \mathds{1}
+                \otimes \mathds{1}
+        \]
+        
+        
+\end{document}

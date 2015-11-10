@@ -1,0 +1,285 @@
+\documentclass{article}
+\usepackage[]{amsmath,amssymb,dsfont,amsthm}
+\newtheorem{theorem}{Theorem} 
+\begin{document}
+\section*{Nielsen's Theorem}
+Nielsen's theorem tells us when we can take a pure state $ uu^* $  and use an LOCC to turn
+it into $vv^*$.
+
+\begin{theorem}
+    Let $\mathcal{X}$ and $ \mathcal{Y} $ be complex Euclidean spaces ancd let $
+    u,v \in \mathcal{X}\otimes \mathcal{Y}$  be unit vectors. The following
+    statements are equivalent.
+    \begin{enumerate}
+        \item There exists an alphabet $\Sigma$ and 2 collections of operators:
+            \begin{enumerate}
+                \item $ \{A_a: a \in \Sigma \} \subset L(\mathcal{X}) $ such that
+                    $ \sum_{a\in\Sigma} A_a^* A_a = \mathds{1}_{\mathcal{X}} $
+                \item $ \{V_a: a\in \Sigma\} \subset U(\mathcal{Y}) $  
+            \end{enumerate}
+            such that $vv^* = \sum_{a\in\Sigma} (A_a \otimes V_a) u u^* (A_a
+            \otimes V_a)^*$
+        \item Similar to number 1, there exist collections:
+            \begin{enumerate}
+                \item $ \{B_a: a \in \Sigma\} \subset L(\mathcal{Y})$ such that $
+                    \sum_{a\in\Sigma} B^*_a B_a = \mathds{1}_{\mathcal{Y}} $
+                \item $ \{U_a : a \in \Sigma \} \subset U(\mathcal{X}) $ 
+            \end{enumerate}
+            such that $ vv^* = \sum_{a\in\Sigma} \left( U_a \otimes B_a
+            \right)u u^* \left( U_a \otimes B_a \right)^* $
+        \item There exists a separable channel 
+            \[ 
+                \Phi \in SepC(\mathcal{X}:\mathcal{Y}) \equiv
+                SepC(\mathcal{X},\mathcal{X}:\mathcal{Y},\mathcal{Y}) 
+            \]
+            such that 
+            \[ 
+                v v^* = \Phi(uu^*) 
+            \]
+        \item   $ Tr_{\mathcal{Y}} \left( u u^* \right) \prec Tr_{\mathcal{Y}}(vv^*) $
+            \\ (equivalent to $ Tr_{\mathcal{X}}\left( uu^* \right) \prec
+            Tr_{\mathcal{X}}\left( vv^* \right) $ )
+    \end{enumerate}
+
+
+\end{theorem}
+    1 implies 3 is trivial. 2 implies 3 is trivial. 4 implies 1 and 4
+    implies 2 are equivalent by symmetry. We will just prove 4 implies 2, first,
+    and 3 implies 4, second.
+
+    Proving that $4 \rightarrow 2$:
+\begin{proof}
+
+    First, let $X,Y \in L(\mathcal{Y},\mathcal{X})$ be the uniquely defined
+    operators for which
+    \[ 
+        u = vec(X) \quad , \quad v = vec(Y) 
+    \]
+    
+    we have 
+
+    \[ 
+        Tr_{\mathcal{X}} \left( uu^* \right) = X X^* \quad , \quad
+        Tr_{\mathcal{Y}} \left( vv^* \right) = Y Y^*
+    \]
+
+    Singular value decomposition of $X: X = \sum_{k=1}^r s_k x_k y_k^*$.
+
+    Now to show $4 \rightarrow 2$:
+
+    Statement 4 is equivalent to:
+
+    \[ 
+        XX^* \prec YY^* 
+    \]
+    
+    This means there must exist a mixed-unitary channel mapping $YY^*$ to $ XX^* $ 
+
+    \[ 
+        \sum_{a\in\Sigma} p(a)W_a YY^*W_a^* = XX^*
+    \]
+    
+    for $ p \in P(\Sigma), \{W_a, a\in\Sigma\} \subset U(\mathcal{X})$. Let $ Z
+    = \mathcal{C}^{\Sigma}$ and define $ M \in L(\mathcal{Y}\otimes \mathcal{Z},
+    \mathcal{X})$ as:
+
+    \[ 
+        M = \sum_{a\in\Sigma} \sqrt{p(a)} W_a Y \otimes e_a^* 
+    \]
+    
+    It's not obvious that we should define some operator M in this way. This is
+    the trick we're using to make it all work. This is the creative part of the
+    proof. We're looking at something we care about (the expression involving
+    $p(a)W_a YY^*$ and we're defining something that's like the square root of
+    that expression. One way to see why $M$ is nice is to look at $MM^*$:
+
+    \[ 
+        MM^* = \left( \sum_a \sqrt{p(a)} W_a Y \otimes e_a^* \right)
+        \left( \sum_a \sqrt{p(a)} Y^* W_a^* \otimes e_a \right) 
+    \]
+    
+    We have no cross terms because of orthogonality, so this gives us:
+
+    \[ 
+        \sum_{a\in\Sigma} p(a) W_a YY^* W_a = XX^* 
+    \]
+    
+    Since $MM^* = XX^*$ we are motivated to think about a singular value
+    decomposition of X. M must have singular value decomposition:
+
+\[ 
+    M = \sum_{k=1}^r s_k x_k w_k^* 
+\]
+
+for some orthonormal set $\{ w_1,\ldots,w_r\} \subset \mathcal{Y}\otimes
+\mathcal{Z}$. Since the $w$s are in a larger space than the $y$s used in the
+spectral decomposition of X we know there must exist some isometry that maps $X$
+to $M$. Thus, we'll consider some isometry $V \in
+U(\mathcal{Y},\mathcal{Y}\otimes \mathcal{Z})$ such that 
+\[ 
+    V y_k = w_k \quad, \enskip \text{for } k=1,\ldots,r 
+\]
+
+Note $ XV^* = M $. Now, we'll define:
+
+\[ 
+    U_a = W_a^* \quad,\quad B_a = \left( \mathds{1}_{\mathcal{Y}}\otimes e_a^*
+    \right) \overline{V} 
+\]
+
+for each $a \in \Sigma$.
+
+Let us verify that these choices work (i.e. they satisfy statement 2).
+
+\begin{align*}
+    \sum_{a\in\Sigma} B_a^* B_a &= \sum_{a\in\Sigma} V^T \left(
+    \mathds{1}_{\mathcal{Y}} \otimes e_a \right) \left( \mathds{1}_{\mathcal{Y}}
+\otimes e_a^*\right)\overline{V} \\
+&= V^T \left( \mathds{1}_{\mathcal{Y}} \otimes   \mathds{1}_{\mathcal{X}}
+\right) \overline{V} \\
+&= V^T \overline{V} \\
+&= \mathds{1} \quad \text{Because V is an isometry}
+\end{align*}
+
+
+Note that:
+
+\begin{align*}
+    W_a^* X B_a^T &= W_a^* XV^* \left( \mathds{1} \otimes e_a \right) \\
+                  &= W_a^* M \left( \mathds{1}\otimes e_a \right)\\
+                  &= \sqrt{p(a)} W_a^* W_a Y \\
+                  &= \sqrt{p(a) Y}
+\end{align*}
+
+\begin{align*}
+    \sum_{a \in \sigma} \left( U_a \otimes B_a \right) u u^* \left( U_a \otimes
+    B_a\right)^* &= \sum_{a\in\Sigma} \left( W_a^* \otimes B_a \right) vec(X)
+        vec(X)^* \left( W_a^* \otimes B_a \right)^* \\
+        &= \sum_{a\in\Sigma} vec \left( W_a^* X B_a^T \right) vec(W_a^* X
+        B_a^T)^* \\
+        &= \sum_a p(a) vec(Y) vec(Y)^* \\
+        &= vv^*
+\end{align*}
+
+and we're done.
+\end{proof}
+
+Now we'll prove that $3 \rightarrow 4$.
+
+\begin{proof}
+
+    Let the separable map $ \Phi $ be written:
+
+    \[ 
+        \Phi(Z) = \sum_{a \in \Sigma} \left( A_a \otimes B_a \right) Z \left(
+        A_a \otimes B_a \right)^*  \quad,\quad \forall z\in L(\mathcal{X}\otimes
+        \mathcal{Y})
+    \]
+
+    We assume that:
+
+    \[ 
+        vec(Y)vec(Y^*) = \Phi(vec(X)vec(X^*)) 
+    \]
+    
+    We can expand this to mean:
+
+    \begin{align*}
+        vec(Y)vec(Y^*) &= \sum_{a\in\Sigma} \left( A_a \otimes B_a \right)
+        vec(X)vec(X^*) \left( A_a \otimes B_a \right)^* \\
+        &= \sum_{a\in\Sigma} vec(A_a X B_a^T) vec(A_a X B_a^T)^*
+    \end{align*}
+
+    it must be the case that $vec(A_a X X_a^T) = \alpha_a Y$ for some
+    choice of $\{ \alpha_a : a \in \Sigma\} \subset \mathbb{C}$.
+
+    So suppose that we have 
+    \[ 
+        w w^* = \sum_{k=1}^N z_k z_k^* 
+    \]
+    
+    it must be that $ Z_k = a_k w \enskip,\enskip \forall k $.
+
+    To understand why this must be the case consider:
+
+    \[ 
+        u w w^* u^* = \left| \langle w , u \rangle \right|^2
+    \]
+    
+    We could substitute $ ww^* = \sum_{k=1}^N z_k z_k^*$:
+
+    \begin{align*}
+        u \sum_{k=1}^N z_k z_k^* u^* &= \sum_{k=1}^N \left| \langle u , z_k
+    \rangle \right|^2	
+    \end{align*}
+    
+    If $ u $ is perpendicular to $w$ then it must be the case that $\langle w ,
+    u \rangle = 0$. Thus, $ \langle u , z_k \rangle = 0$ for all $z_k$. Thus,
+    $z_k = \alpha w$ for all $k$.
+
+    Returning to the proof, we want to show that $XX^* \prec YY^*$ which is
+    equivalent to:
+    \[ 
+        \sum_{k=1}^m \lambda_k \left( YY^* \right) \ge \sum_{k=1}^m \lambda_k
+        \left( X X^* \right)
+    \]
+    
+    or:
+
+    \[ 
+        \sum_{k=m}^n \lambda_k(YY^*) \le \sum_{k=m}^n \lambda_k \left( XX^* \right) 
+    \]
+    
+    for $1 \le m \le n = dim(\mathcal{X})$.
+
+    Introducing some notation:
+
+    \[ 
+        X_m = \sum_{k=m}^r s_k x_k y_k^* 
+    \]
+    
+    When $m>r$ the sum is identically zero.
+
+    Now:
+
+    \begin{align*}
+        \sum_{k=m}^n \lambda_k(YY^*) &= \sum_{k=m}^n \sum_{a\in\Sigma} p(a)
+        \lambda_k \left( YY^* \right) \\
+        &= \sum_{k=m}^n \sum^{}_{a\in\Sigma} \lambda_k \left( p(a) YY^* \right)
+        \\
+        &= \sum^{}_{a\in\Sigma} \sum^{n}_{k=m}  \lambda_k \left( A_a X B_a^T
+    \overline{B_a} X^* A_a^* \right)
+    \end{align*}
+
+    Now, we're summing the $n-m+1$ smallest eigenvalues of the operator. This
+    can be any smaller than:
+    \[ 
+        \sum^{}_{a\in\Sigma} \langle \Pi_{a,m}, A_a X B_a^T \overline{B_a} X^* A_a^* \rangle 
+    \]
+
+    for any choice of $\{\Pi_{a,m}\}$ with $rank \left( \Pi_{a,m} \right) \ge
+    n-m+1$.
+
+    Because we know this is true for any $\Pi$ with at least that rank then we
+    can choose any $\Pi$ which is good for us. Let's take $\Pi_{a,m}$ to be the
+    projection onto the orthogonal complement of:
+    
+    \[ 
+        span\{A_a x_1, \ldots, A_a x_{m-1} \} 
+    \]
+    
+    So, we have:
+
+    \begin{align*}
+        \langle \Pi_{a,m}, A_a X B_a^T \overline{B_a} X^* A_a^* \rangle &=
+        \langle \Pi_{a,m}, A_a X_m B_a^T \overline{B_a} X_m^* A_a^* \rangle \\
+        &\le Tr \left( A_a X_m B_a^T \overline{B_a} X_m^* A_a^* \right) \\
+        &= Tr \left( \Phi \left( vec(X_m) vec(X_m)^* \right) \right) \\
+        &= Tr \left( vec(X_m) vec(X_m)^* \right) \\
+        &= Tr \left( X_m X_m^* \right) \\
+        &= \sum_{k=m}^n s_k^2 \\
+        &= \sum^{n}_{k=m} \lambda_k \left( X X^* \right)
+    \end{align*}
+\end{proof}
+    
+\end{document}

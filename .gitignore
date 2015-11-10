@@ -143,7 +143,6 @@ Quantum\ Photonics/
 HomeworkTemplate.pdf
 Phys706Kycia/HW3
 QIC750ImplementationsChris
-QIC820
 QIC880NanoElectronicsLupascu
 QIC885Majedi
 QIP870Cleve
@@ -151,3 +150,5 @@ TA/
 ECE671/Lecture1.tex
 ECE671/Lectures*pdf
 *.zip
+QIC820/*.pdf
+ECE671/FinalProject/*.pdf

@@ -1,0 +1,358 @@
+\documentclass{article}
+\usepackage[]{amsmath,dsfont,amssymb}
+\begin{document}
+Last time we considered the concept of separability. We did this for states
+and now we'd like to do something similar for channels.
+
+Imagine an abstract scenario where Alice has access to a register X that she
+uses to configure a register Z and Bob has a register Y that he uses to
+configure register W. Then, imagine that Alice and Bob can communicate
+classically. We call an operation that would work in this way an ``LOCC''
+paradigm (``LOCC`` = Local Operations with Classical Communication). It's
+also called the ``distant labs'' paradigm.
+
+We'll have to work our way up to LOCC. Although it addresses a lot of
+interesting scenarios, it's really complicated to analyze. One reason for
+this is that there is no bound on the amount of communication that Alice and
+Bob can have. So, we'll establish a simpler notion: A separable channel (and
+maps, more generally).
+
+\section*{Separability Extended to Maps}
+A completely positive map:
+\[ 
+        \Xi \in CP(\mathcal{X}\otimes \mathcal{Y},\mathcal{Z} \otimes
+        \mathcal{W} )
+\]
+
+is separable if it can be written:
+
+\[ 
+        \Xi = \sum_{k=1}^m \Phi_k \otimes \Psi_k 
+\]
+
+are completely positive maps $\Phi_1, \ldots, \Phi_m \in
+CP(\mathcal{X},\mathcal{Z})$ and $\Psi_1, \ldots, \Psi_m \in
+CP(\mathcal{Y},\mathcal{W})$.
+
+Notation: $SepCP(\mathcal{X},\mathcal{Z}:\mathcal{Y},\mathcal{W})$.
+
+So we will denote separable channels as
+$SepC(\mathcal{X},\mathcal{Z}:\mathcal{Y},\mathcal{W}) \equiv
+SepCP(\mathcal{X},\mathcal{Z}:\mathcal{Y},\mathcal{W}) \cap
+C(\mathcal{X}\otimes\mathcal{Y},\mathcal{Z}\otimes \mathcal{W})$.
+
+Simple observations:
+
+\begin{enumerate}
+    \item If $\Xi \in Sep(\mathcal{X},\mathcal{Z}:\mathcal{Y},\mathcal{W})$
+        then $\Xi$ has a Kraus representation given by
+        \[ 
+                \Xi(X) = \sum_{k=1}^m (A_k \otimes B_k) X (A_k \otimes
+                B_k)^* 
+        \]
+
+        for some choice of 
+        \begin{align*}
+            &A_1, \ldots, A_m \in L(\mathcal{X},\mathcal{Z}) \\
+            &B_1, \ldots, B_m \in L(\mathcal{Y},\mathcal{W})
+        \end{align*}
+    \item \textbf{Not} every separable channel $\Xi$ looks like:
+        \[ 
+                \Xi = \sum_{k=1}^m p_k \Phi_k \otimes \Psi_k 
+        \]
+
+        for $(p_1,\ldots,p_m)$ a probability vector and
+        \begin{align*}
+            \Phi_1, \ldots, \Phi_m \in C(\mathcal{X},\mathcal{Z}) \\
+            \Psi_1, \ldots, \Psi_m \in C(\mathcal{Y},\mathcal{W})
+        \end{align*}
+
+        This would be too strong of a constraint on $\Xi$. 
+        The form of $\Xi$ above represents local operations with shared
+        randomness (LOSR channels).
+    \item   $SepC(\mathcal{X},\mathcal{Z}:\mathcal{Y},\mathcal{W})$ is a convex
+        and compact set.
+    \item   $SepCP(\mathcal{X},\mathcal{Z}:\mathcal{Y},\mathcal{W})$ is closed
+        and convex.
+\end{enumerate}
+
+Let's define an isometry 
+
+\[ 
+V = U(\mathcal{Z}\otimes \mathcal{W} \otimes
+    \mathcal{X} \otimes \mathcal{Y}, \mathcal{Z} \otimes \mathcal{X} \otimes
+\mathcal{W} \otimes \mathcal{Y})
+\]
+
+as
+
+\[ 
+        V(\mathcal{z}\otimes \mathcal{w} \otimes \mathcal{x} \otimes
+        \mathcal{y}) = \mathcal{z} \otimes \mathcal{x} \otimes \mathcal{w}
+        \otimes \mathcal{y} \quad \forall x \in \mathcal{X}, y \in \mathcal{Y},
+        z \in \mathcal{Z}, w \in \mathcal{W}
+\]
+
+Note:
+
+\[ 
+        V vec(A \otimes B) = vec(A) \otimes vec(B) \quad \forall A \in
+        L(\mathcal{X},\mathcal{Z}), B \in L(\mathcal{Y},\mathcal{W})
+\]
+
+Now consider the following proposition:
+
+\[ 
+        \Xi \in CP(\mathcal{X}\otimes \mathcal{Y}, \mathcal{Z}\otimes
+        \mathcal{W})
+\]
+
+it holds that 
+
+\[ 
+        \Xi \in SepCP(\mathcal{X},\mathcal{Z}:\mathcal{Y},\mathcal{W}) 
+\]
+
+if and only if
+
+\[
+        V J(\Xi) V^* \in Sep(\mathcal{Z}\otimes \mathcal{X}: \mathcal{W}\otimes
+\mathcal{Y})
+\]
+
+Proof sketch: The following are equivalent:
+
+\begin{enumerate}
+    \item The channel $\Xi$ is  separable ($\Xi \in SepCP$)
+    \item The Kraus representation of $\Xi$ has the special form:
+
+        \[ 
+                \Xi(X) = \sum_{k=1}^m \left( A_k \otimes B_k \right) X \left(
+                A_k \otimes B_k \right)^* 
+        \]
+        
+        for some choice of $A_1,\ldots,A_m, B_1,\ldots, B_m$.
+
+    \item $J(\Xi) = \sum_{k=1}^m vec(A_k \otimes B_k)vec(A_k \otimes B_k)^*$
+    \item $V J(\Xi) V^* = \sum_{k=1}^m vec(A_k)vec(A_k)^* \otimes
+        vec(B_k)vec(B_k)^*$
+    \item $V J(\Xi) V^* \in Sep(\mathcal{Z}\otimes \mathcal{X}:
+        \mathcal{W}\otimes \mathcal{Y})$
+\end{enumerate}
+
+We can draw a simple corollary from this. Imagine we had the following mapping:
+
+\[ 
+        \Omega \in C(\mathcal{X}\otimes \mathcal{Y}, \mathcal{Z} \otimes
+        \mathcal{W})
+\]
+
+\[ 
+        \Omega(X) = Tr(X) \frac{\mathds{1}_{\mathcal{Z}}}{n} \otimes
+            \frac{\mathds{1}_{\mathcal{W}}}{m}
+\]
+
+for $n = dim(\mathcal{Z})$ and $m=dim(\mathcal{W})$. All channels ``sufficiently
+close'' to $\Omega$ must be separable.
+
+Imagine there was no entanglement between registers X and Y and we want to do
+some complicated protocol and generate entanglement. This can not happen with
+only the exchange of classical information! We can not create entanglement
+``over the telephone''. To prove this we will need to introduce some measure of
+entanglement that we can use to quantify how much entanglement exists between
+states.
+
+\section*{Entanglement Rank (a.k.a. Schmidt Number)}
+
+Suppose that 
+\[ 
+        P \in Sep(\mathcal{X}:\mathcal{Y}) 
+\]
+
+We can write
+
+\[ 
+        P = \sum_{k=1}^m x_k x_k^* \otimes y_k y_k^* 
+\]
+
+for normalization of $x_1,\ldots,x_m \in \mathcal{X}$ and $y_1,\ldots,y_m \in
+\mathcal{Y}$ being absorbed into the vectors (not necessarily normalized). 
+
+We would like to think about P as having ``entanglement rank equal to 1''. More
+specifically, this terminology makes sense if we define:
+
+\[ 
+        X_k = x_k y_k^T \quad \text{(for each k)}
+\]
+
+and we observe the following:
+
+\[ 
+        P = \sum_{k=1}^m vec(X_k)vec(X_k)^* 
+\]
+
+and we know that the rank of these vectors is at most 1: $rank(X_k) \le 1$ for
+each k.
+
+More generally, $P \in Pos(\mathcal{X}\otimes \mathcal{Y})$ has entanglement
+with rank at most r if we can write:
+
+\[ 
+        P = \sum_{k=1}^m vec(X_k)vec(X_k)^* 
+\]
+
+for $ X_1,ldots,X_m \in L(\mathcal{Y},\mathcal{X}) $ and $rank(X_k) \le r \quad
+\text(for all k)$. There are a lot of ways you could construct the $X_k$s so
+that's why we say ``at most rank of whatever''. We can define the entanglement
+rank as the minimum r for which this is possible.
+
+Also, we'll define:
+
+\[ 
+        Ent_r(\mathcal{X}:\mathcal{Y}) \subseteq Pos(\mathcal{X}\otimes
+        \mathcal{Y})
+\]
+
+to be the set of all P having entanglement rank at most r. We'll define this to
+be the set having entanglement rank at most r because we want the set to be
+convex. Note that the set is a cone because we can scale P by any positive real
+number and it doesn't change the rank. To be convex we can show it's a cone and
+that it's closed under addition. We know it's a cone because when we add two
+guys who's rank is at most r and we add another guy whose rank is at most r then
+we get a result whose rank is at most r.
+
+We'll introduce the following fact:
+
+\[ 
+        Sep(\mathcal{X}:\mathcal{Y}) \subsetneq Ent_2(\mathcal{X}:\mathcal{Y})
+        \subsetneq \cdots \subsetneq Ent_n (\mathcal{X}:\mathcal{Y}) = Pos
+        \left( \mathcal{X} \otimes \mathcal{Y} \right)
+\]
+
+where $n = min\{dim(\mathcal{X}), dim \left( \mathcal{Y} \right) \}$
+
+Theorem: If $P \in Ent_r \left( \mathcal{X}:\mathcal{Y} \right)$  and $\Xi \in
+SepCP \left( \mathcal{X},\mathcal{Z}:\mathcal{Y},\mathcal{W} \right)$, then
+$\Xi(P) \in Ent_r \left( \mathcal{Z}:\mathcal{W} \right)$.
+
+Proof:
+\begin{align*}
+    A &\in L(\mathcal{X},\mathcal{Z}) \\
+    B &\in L \left( \mathcal{Y},\mathcal{W} \right) \rightarrow \left( A \otimes
+B\right)vec(X) = vec(AXB^T) \\
+X &\in L(\mathcal{Y},\mathcal{X})
+\end{align*}
+
+where $rank(AXB^T) \le rank(X)$
+
+So, if 
+\[ 
+        \Phi(P) = \sum_k \left( A_k \otimes B_k \right) P \left( A_k \otimes B_k
+        \right)^*
+\]
+
+and 
+
+\[ 
+        P = \sum_j vec(X_j) vec \left( X_j \right)^* 
+\]
+
+then
+
+\[ 
+        \Phi(P) = \sum_{j,k} vec(A_k X_j B_k^T) vec \left( A_k X_j B_k^T
+        \right)^*
+\]
+
+If $rank(x_j) \le r$ for all $j$ then $rank \left( A_k x_j B_k^T \le r \right)
+\quad \forall j,k$. Thus:
+
+\[ 
+        \Phi(P) \in Ent_r \left( \mathcal{Z}:\mathcal{W} \right) 
+\]
+
+Corollary:
+\begin{align*}
+    P &\in Sep(\mathcal{X}:\mathcal{Y}) \\
+    \Phi &\in SepCP \left( \mathcal{X}:\mathcal{Z}:\mathcal{Y},\mathcal{W} \right)
+\quad \Rightarrow \quad Phi(P) \in Sep(\mathcal{Z}:\mathcal{W})
+\end{align*}
+
+Proposition:
+\begin{align*}
+    \Phi \in SepCP \left( \mathcal{X}, \mathcal{U}:\mathcal{Y},\mathcal{V}
+    \right) \\
+    \Psi \in SepCP \left( \mathcal{U},\mathcal{Z}:\mathcal{V},\mathcal{W}
+    \right) \\
+    \Rightarrow \Psi\Phi \in
+    SepCP(\mathcal{X},\mathcal{Z}:\mathcal{Y},\mathcal{W})
+\end{align*}
+
+Proof: Easy.
+
+\section*{Definition of an LOCC Map}
+
+Consider some channel $\Xi \in C(\mathcal{X} \otimes \mathcal{Y} , \mathcal{Z}
+\otimes \mathcal{W})$.
+
+\begin{enumerate}
+    \item $\Xi$ is a one-way right (from Alice to Bob) LOCC channel if it's
+        possible to write:
+
+        \[ 
+                \Xi = \sum_{a \in \Sigma} \Phi_a \otimes \Psi_a 
+        \]
+        
+        for an alphabet $\Sigma$, $\{\Phi_a, a \in \Sigma\} \subset
+        CP(\mathcal{X},\mathcal{Z})$ satisfying
+
+        \[ 
+                \sum_a \Phi_a \in C(\mathcal{X},\mathcal{Z}) 
+        \]
+        
+        (i.e., $\{ \Phi_a : a \in \Sigma \}$ is an ``instrument'') and 
+
+        \[ 
+                \{ \Psi_a : a \in \Sigma \} \subseteq
+                C(\mathcal{Y},\mathcal{W}) 
+        \]
+        
+    \item $\Xi$ is a one-way left (from Bob to Alice) LOCC channel if it's
+        possible to write:
+
+        \[ 
+                \Xi = \sum_{a \in \Sigma} \Phi_a \otimes \Psi_a 
+        \]
+        
+        for an alphabet $\Sigma$, $\{\Psi_a, a \in \Sigma\} \subset
+        CP(\mathcal{Y},\mathcal{W})$ satisfying
+
+        \[ 
+                \sum_a \Psi_a \in C(\mathcal{Y},\mathcal{W}) 
+        \]
+        
+        (i.e., $\{ \Psi_a : a \in \Sigma \}$ is an ``instrument'') and 
+
+        \[ 
+                \{ \Phi_a : a \in \Sigma \} \subseteq
+                C(\mathcal{X},\mathcal{Z}) 
+        \]
+
+    \item $\Xi$ is an LOCC channel:
+
+        \[ 
+                \Xi \in LOCC(\mathcal{X},\mathcal{Z}:\mathcal{Y},\mathcal{W}) 
+        \]
+        
+        if 
+        
+        \[ 
+            \Xi = \Xi_n \cdots \Xi 
+        \]
+        
+        for one-way LOCC channels $\Xi_1, \ldots, \Xi_n$ (any $n \in
+        \mathds{N}$)
+
+\end{enumerate}
+
+\end{document}
