@@ -1,3 +1,0 @@
-INCLUDE $HPEESOF_DIR/oalibs/analog_rf.defs
-DEFINE Assignment_2_lib Assignment_2_lib
-ASSIGN Assignment_2_lib libMode shared
