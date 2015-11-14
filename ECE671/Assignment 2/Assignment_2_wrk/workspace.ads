@@ -1,0 +1,41 @@
+<ADSWorkspace Revision="3" Version="100">
+    <Workspace Name="">
+        <Library Name="ads_standard_layers" />
+        <Library Name="adstechlib" />
+        <Library Name="ads_schematic_layers" />
+        <Library Name="empro_standard_layers" />
+        <Library Name="ads_standard_layers_ic" />
+        <Library Name="ads_schematic_layers_ic" />
+        <Library Name="ads_schematic_ports_ic" />
+        <Library Name="ads_rflib" />
+        <Library Name="ads_sources" />
+        <Library Name="ads_simulation" />
+        <Library Name="ads_tlines" />
+        <Library Name="ads_bondwires" />
+        <Library Name="ads_datacmps" />
+        <Library Name="ads_behavioral" />
+        <Library Name="ads_textfonts" />
+        <Library Name="ads_common_cmps" />
+        <Library Name="ads_designs" />
+        <Library Name="ads_verification_test_bench" />
+        <Library Name="Assignment_2_lib" />
+        <Cell Name="Assignment_2_lib:1aIdealBiasing" />
+        <Cell Name="Assignment_2_lib:1aPhysicalBias" />
+        <Cell Name="Assignment_2_lib:ATF34143" />
+        <Data_Display Name="1aIdealBiasing.dds" />
+        <Data_Display Name="1aPhysicalBias.dds" />
+        <Dataset Name="_1a.ds" />
+        <Dataset Name="_1aIdealBiasing.ds" />
+        <Dataset Name="_1aPhysicalBias.ds" />
+        <Dataset Name="__simdata112450.ds" />
+        <Log Name="conversion_results.log" />
+        <Log Name="netlist.log" />
+        <Log Name="search_history.log" />
+        <Preferences Name="layout.prf" />
+        <Preferences Name="schematic.prf" />
+        <LibraryDefs Name="lib.defs" />
+        <ConfigFile Name="dds.cfg" />
+        <ConfigFile Name="de_sim.cfg" />
+        <ConfigFile Name="hpeesofsim.cfg" />
+    </Workspace>
+</ADSWorkspace>
