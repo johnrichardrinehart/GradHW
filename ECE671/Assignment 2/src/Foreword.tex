@@ -1,0 +1,35 @@
+\section{Foreword: A Designer's Note}
+\label{sec:Foreword}
+The design process is an iterative one. Sometimes the entire foundation of the
+design (and, by extension, the design itself) must be completely re-worked when
+it is realized that the initial conditions lead to a final design that does not
+satisfy all design criteria. Thus, no justification will be given as to how the
+final designs that are recorded here were obtained. Instead, they will stand on
+their own as results that are provided to the reader. No analytic resources will
+be provided that help a future designer improve the current design.
+
+Although, the specific designs will (and maybe can not) be rationalized, I will
+briefly describe the recommended workflow for a project such as this. These
+designs were not made by adhering to this recommended workflow.
+
+It should be noted that if bias points of a transistor are chosen using ideal
+components, first, to meet specified design criteria it may make it impossible,
+later, to find non-ideal components that provide satisfactory performance. The
+act of replacing ideal components with real components (capacitors, transmission
+lines, inductors, resistors) will affect every measurable amplifier parameter:
+noise figure, stability, gain, insertion loss, return loss, etc. If the
+non-ideal components differ significantly from the ideal components used to
+establish the original bias conditions then it may, for example, make it
+impossible to stabilize the transistor without introducing resistors that will
+increase the noise figure to an unacceptable level. Continuing this example: It
+may, then, be necessary to return to adjust the biasing conditions until a
+satisfactory noise figure is obtained given the transistor is to remain stable.
+
+In short, the design should be constructed first! That is, the topology of the
+design should be established (components in place, values being variable). Then,
+the various parameters of the layout can be adjusted until the required design
+specifications can be met as well as possible. It may even be possible to add
+more parameters than might otherwise be used (a shunt resistor at the output and
+a series resistor at the output, for stability) to improve the performance of
+the design beyond what could be possible by using a restricted layout (only a
+shunt resistor at the output).
