@@ -14,10 +14,62 @@ the load such that $Z_{in} = Z_l$.
 
 \subsubsection{High Gain Amplifier}
 
+\includepdf[scale=.9,pages=-,clip,trim=0cm 3cm 0cm 0cm]{../res/DesignA2P1.pdf}
+
 \subsubsection{Low Noise Amplifier}
+
+\includepdf[scale=.9,pages=-,clip,trim=0cm 3cm 0cm 0cm]{../res/DesignA2P2.pdf}
 
 \subsection{MATLAB Scattering Parameter Analysis}
 
+The scattering parameter analysis was really interesting. Unfortunately, I do
+not have as much time as I would like to get into the details of the analysis.
+Essentially, though, the DC sources can be treated as shorts over the entire
+bandwidth of consideration (since DC sources provide no AC voltage/current it
+can be shown that, by superposition, they are shorts at AC). This puts the
+coupling transmission lines to the ground at AC and, since the source is
+grounded, it puts the transmission line sections in parallel with the
+transistor. If there was a shunt resistor at the output of the transistor it was
+also in parallel with the drain-source transmission line. The series resistor
+and the two ``DC block`` capacitors were in series with the two port network.
+
+Thus, the problem can be treated as simply as converting the scattering
+parameters of the amplifier into Y parameters and adding the Y parameters of the
+transmission lines (and possible the shunt resistor) to the Y parameters of the
+transmission line in the following manner:
+
+\[ 
+    Y_{int}^{\text{transistor + external elements}} = \begin{pmatrix}
+        Y_{11}^{\text{transistor}} + Y^{\text{input transmission line}} &
+        Y_{12}^{\text{transistor}} \\
+        Y_{21}^{\text{transistor}} & Y_{11}^{\text{transistor}} +
+        Y_{22}^{\text{output transmission line ( + shunt resistor)}}
+    \end{pmatrix} 
+\]
+
+Then, adding on the series stabilizing resistors and the capacitors I can add
+the Z parameters of the external resistors and capacitors to the ``new'' 2-port
+network once I convert the $Y_{int}$ parameters to their $Z_{int}$ parameters.
+
+:
+
+\[ 
+    Z_{final}^{\text{transistor + external elements}} = \begin{pmatrix}
+        Z_{11}^{\text{int}} + Z^{\text{input capacitor + series resistor}} &
+        Z_{12}^{\text{transistor}} \\
+        Z_{21}^{\text{transistor}} & Z_{11}^{\text{int}} +
+        Z_{22}^{\text{output capacitor}}
+    \end{pmatrix} 
+\]
+
+These are the final 2 port parameters that can be converted back to $S_{final}$
+scattering parameters. Thus, the chain of conversions goes something like $S
+\rightarrow Y \rightarrow Z \rightarrow S$.
+
 \subsubsection{High Gain Amplifier}
 
+\includepdf[scale=.9,pages=-,clip,trim=0cm 0cm 0cm 0cm]{../res/DesignA2P1MATLAB.pdf} 
+
 \subsubsection{Low Noise Amplifier}
+
+\includepdf[scale=.9,pages=-,clip,trim=0cm 0cm 0cm 0cm]{../res/DesignA2P2MATLAB.pdf} 
