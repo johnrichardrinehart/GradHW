@@ -1,6 +1,6 @@
 clear;
 w = 2 * pi * 2e9;
-%%Input side
+%%% Input side
 % Resistor
 Rin = 111.2e-3;
 % Capacitor
@@ -11,7 +11,8 @@ ZCin = 1/YCin;
 Zc1 = 150;
 l1=10;
 YTLin = -1i*Zc1^-1*cotd(l1);
-%% Output side
+
+%%% Output side
 % Resistor
 Rs=50.5949;
 % Capacitor
@@ -22,11 +23,12 @@ YCout = 1i*w*Cout;
 Zc2=5.46274;
 l2=10;
 YTLout = -1i*Zc2^-1*cotd(l2);
-%Za,Zb Calculations
+
+%%% Za,Zb Calculations
 Za = Rin + ZCin;
 Zb = 1/YCout;
 
-% 2PN Transformation
+%%% 2PN Transformation
 S11 = .731702*exp(1i*-146.389*pi/180);
 S12 = .062647*exp(1i*60.507*pi/180);
 S21 = 5.70075*exp(1i*85.4898*pi/180);
