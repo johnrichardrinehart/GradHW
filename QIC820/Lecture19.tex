@@ -1,0 +1,323 @@
+\documentclass{article}
+\usepackage[]{amsmath,dsfont,braket,amsthm}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{corollary}{Corollary}[theorem]
+\begin{document}
+\section*{Channel Discrimination}
+Let's imagine a situation where we have two channels $\Phi_0, \Phi_1 \in
+C(\mathcal{X},\mathcal{Y})$. Suppose we are tasked with distinguishing between
+$\Phi_0$ and $\Phi_1$. We are only allowed \textbf{one use} of $\Phi_a$ (for $a
+\in \{0,1\}$) and we want to determine a.
+
+Recall the Holevo-Holstrom theorem for states. If we were given two states
+$\rho_0,\rho_1 \in D(\mathcal{X}), \lambda \in [0,1]$:
+
+\[ 
+    \max_{\mu : \{0,1\} \rightarrow Pos(\mathcal{X})} \left( \lambda \langle \mu(0) , \rho_0 \rangle + \left( 1-\lambda
+\right) \langle \mu(1) , \rho_1 \rangle  \right) = \frac{1}{2} \left( 1 + \left|
+\left| \lambda \rho_0 + \left( 1-\lambda \right) \rho_1 \right|\right| \right) 
+\]
+
+The question is: Is there a similar relationship between channels? To discover
+this, we need to consider first using the channel once with some state $\sigma
+\in D(\mathcal{X})$ obtaining either $\Phi_0(\sigma)$ or $\Phi_1(\sigma)$ after
+applying the channel once. Now, we can use the Holevo-Holtrom theorem to
+distinguish between $\Phi_0(\sigma) = \rho_0$ and $ \Phi_1(\sigma) = \rho_1 $.
+Thus, the problem is reduced to:
+
+\[ 
+    \max_{\sigma \in D(\mathcal{X})} \left\{ \frac{1}{2} \left( 1 + \left| \left|
+    \lambda \Phi_0(\sigma) - (1-\lambda) \Phi_1(\sigma) \right| \right| \right) \right\} 
+\]
+
+Another way to attack this problem would be to choose to apply to the channel
+some state $\rho$ which is entangled with the environment such that $\rho \in
+D(\mathcal{X}) \otimes D(\mathcal{Z})$ is piped into $\Phi_a \in D(\mathcal{X})$
+so that what comes out is $ \left( \Phi_a \otimes \mathds{1}_{L(\mathcal{Z})}
+\right) (\rho) $. We could consider this setup for any choice of $\mathcal{Z}$
+and $\rho \in D(\mathcal{X} \otimes \mathcal{Z})$.
+
+So, consider the following examples where $n \ge 2$.
+
+\[
+    \Phi_0(X)= \frac{1}{n+1} \left( Tr(\mathcal{X})\mathds{1} + X^T \right)
+\]
+
+\[ 
+    \Phi_1(X) = \frac{1}{n-1} \left( Tr(X)\mathds{1} - X^T \right)
+\]
+
+These are known as the Werner-Holevo channels. You can show that these are
+completely positive and trace preserving.
+
+\[ 
+    J(\Phi_0) = \frac{1}{n+1} \left( \mathds{1}\otimes \mathds{1} + W \right) =
+    \frac{2}{n+1}\Pi_0
+\]
+
+\[ 
+    J(\Phi_1) = \frac{1}{n-1} \left( \mathds{1}\otimes \mathds{1} - W \right) =
+    \frac{2}{n-1}\Pi_1
+\]
+
+where $\Pi_0$ and $\Pi_1$ are the projections onto the symmetric and the
+antisymmetric subspaces, respectively.
+
+Suppose we evaluate $ \Phi_0 $ and $ \Phi_1 $ on:
+
+\begin{align*}
+    \tau =& \frac{1}{n} vec(\mathds{1}) vec(\mathds{1})^*  \\
+    =& \frac{1}{n} \sum_{a,b} E_{a,b} \otimes E_{a,b}
+\end{align*}
+
+Now:
+
+\begin{align*}
+    \left( \Phi_0 \otimes \mathds{1}_{L(\mathcal{X})}\right)(\tau) =& \frac{2}{n(n+1)}
+\Pi_0   \\
+\left( \Phi_1 \otimes \mathds{1}_{L(\mathcal{X})}\right)(\tau) =&
+\frac{2}{n(n-1)} \Pi_1
+\end{align*}
+
+These can be distinguished perfectly because of the projection onto orthogonal
+subspaces. The states are orthogonal because of the projection so by
+Holevo-Holstrom the states can be distinguished perfectly.
+
+On the other hand, using the naive strategy:
+
+\[ 
+    \Phi_0(\sigma) - \Phi_1(\sigma) = \frac{-2}{n^2-1} \mathds{1} +
+    \frac{2n}{n^2-1} \sigma^T
+\]
+
+Now, 
+
+\[ 
+    \left| \left| \Phi_0(\sigma) - \Phi_1(\sigma) \right| \right|_1 \le
+    \frac{4}{n+1} 
+\]
+
+Note that for very large N it becomes almost impossible to distinguish the
+states.  So, this example demonstrates that you really should use the auxiliary
+system $\mathcal{Z}$ in order to distinguish the channels really well.
+
+\section*{Completely Bounded Trace Norm (Diamond Norm)}
+
+We will begin by defining a norm that isn't exactly the norm we want to consider
+(the diamond norm). Consider the induced trace norm: Imagine you have some map
+(not necessarily a channel) $\Phi \in T(\mathcal{X},\mathcal{Y})$.
+
+\[
+    \left| \left| \Phi  \right| \right|_1 = \max \{ \left| \left| \Phi(X) \right|
+            \right|_1 : X \in L(\mathcal{X}), \left| \left| X \right| \right|_1
+    \le 1 \}
+\]
+
+This norm has a few basic properties:
+
+\begin{enumerate}
+    \item The norm is submultiplicative:
+        \[
+            \left| \left| \Psi \Phi \right| \right|_1 \le \left| \left| \Psi
+            \right| \right|_1 \left| \left| \Phi \right| \right|_1
+        \]
+    \item By convexity, we have:
+        \[ 
+            \left| \left| \Phi \right| \right|_1 = \max \{\left| \left|
+            \Phi(uv^*) \right| \right|_1 : u,v \in S(\mathcal{X}) \}
+        \]
+    \item $ \left| \left| \Phi(X) \right| \right|_1 \le \left| \left| \Phi
+        \right| \right|_1 \left| \left| X \right| \right| $ 
+\end{enumerate}
+
+So, this norm doesn't look bad but it is bad (it's terrible). One reason it's
+particularly bad is that it does not ``get along well''/respect tensor products.
+
+For example, consider the transpose mapping $T(X)=X^T$ for $T \in
+T(\mathcal{X})$.
+
+\[ 
+    \left| \left| T \right| \right|_1 = 1 
+\]
+
+Consider $\mathds{1}_{L(\mathcal{X})} \in T(\mathcal{X})$.
+
+\[ 
+    \left| \left| \mathds{1}_{L(\mathcal{X})} \right| \right|_1 = 1 
+\]
+
+Now, consider $\left| \left| T \otimes \mathds{1}_{L(\mathcal{X})} \right|
+\right|_1 = dim(\mathcal{X})$. Demonstrating this:
+
+\begin{align*}
+    \left| \left| \left( T \otimes \mathds{1}_{L(\mathcal{X})} (\tau) \right)
+    \right| \right|_1 =& \enskip \left| \left| \frac{1}{n} W \right| \right|_1 \\
+            =& \enskip \frac{1}{n} n^2 \\
+            =& \enskip n
+\end{align*}
+
+Another reason this is a bad norm is that, in general, calculating the norm is
+NP-hard (John acknowledges that he doesn't have a reference for this, he
+believes that it is).
+
+The completely bounded trace norm is a ``stabilized'' version of the induce
+trace norm.
+
+Definition: $\Phi \in T(\mathcal{X},\mathcal{Y})$ is:
+
+\[ 
+    \left| \left| \left| \Phi \right| \right| \right|_1 \equiv \left| \left|
+    \Phi \otimes \mathds{1}_{L(\mathcal{X})} \right| \right|_1 
+\]
+
+where the identity lives in the input space of $ \Phi $. It's not clear why the
+identity is only on the input space of $\Phi$ and not on multiple copies of this
+space or something else. We will show that this now works well with the tensor
+product and is easy to compute and has almost every property that you can ask of
+a norm. This is also called the ``diamond norm'' leading to the alternative
+notation: $ \left| \left| \Phi \right| \right|_\diamond $.
+
+\begin{lemma}
+Consider the following lemma: Consider the following operator and the following
+space $\Phi \in T(\mathcal{X},\mathcal{Y}),
+\mathcal{Z}$. For any choice of unit vectors:
+
+\[ 
+    u, v \in \mathcal{X} \otimes \mathcal{Z} 
+\]
+
+there exist unit vectors
+
+\[ 
+    x,y \in \mathcal{X} \otimes \mathcal{X} 
+\]
+
+such that
+
+\[ 
+    \left| \left| \left( \Phi \otimes \mathds{1}_{L(\mathcal{Z})} (uv)^* \right)
+    \right| \right|_1 = \left| \left| \Phi \otimes \mathds{1}_{L(\mathcal{X})}
+    (xy^*) \right| \right|_1
+\]
+
+If $u=v$ we may take $x=y$.
+\end{lemma}
+
+\begin{proof}
+    Consider Schmidt decompositions of $u$ and $v$.
+
+    \[ 
+    u = \sum_{a\in\Sigma} \sqrt{p(a)} x_a \otimes z_a 
+    \]
+    
+    \[ 
+    v = \sum_{a\in\Sigma} \sqrt{q(a)} y_a \otimes w_a 
+    \]
+
+    Take:
+
+    \[ 
+        x = \sum_{a \in \Sigma} \sqrt{p(a)} x_a \otimes x_a 
+    \]
+    
+    \[ 
+        y = \sum_{a \in \Sigma} \sqrt{q(a)} y_a \otimes y_a 
+    \]
+ 
+    We can now consider:
+
+    \[ 
+        \sum_{a,b} \sqrt{p(a)q(b)} \Phi(x_a y_b^*) \otimes z_a w_b^* 
+    \]
+    
+    
+    \[ 
+        \sum_{a,b} \sqrt{p(a)q(b)} \Phi(x_a y_b^*) \otimes x_a y_b^* 
+    \]
+
+    But, these are the same up to an isometry so the trace norms must be the
+    same. Thus, the fact that the lemma is true has been proven.
+\end{proof}
+
+\begin{theorem}
+    For any $\Phi \in T(\mathcal{X},\mathcal{Y})$ and $\mathcal{Z}$ with
+    $dim(\mathcal{Z}) \ge dim(\mathcal{X})$ we have
+
+    \[
+        \Phi \otimes \mathds{1}_{L(\mathcal{Z})} = \left| \left| \left| \Phi
+        \right| \right| \right|_1
+    \]
+\end{theorem}
+
+\begin{corollary}
+    Consider some $\Phi_0 \in T(\mathcal{X}_0,\mathcal{Y}_0)$ and $\Phi_1 \in
+    T(\mathcal{X}_1,\mathcal{Y}_1)$. Then,
+    $ \left| \left| \left| \Phi_0 \otimes \Phi_1 \right| \right| \right| =
+    \left| \left| \left| \Phi_0 \right| \right|\right|_1 \left| \left| \left|
+    \Phi_1 \right| \right| \right|_1 $.
+\end{corollary}
+
+\begin{proof}
+    Choose $X_0 \in L(\mathcal{X}_0 \otimes \mathcal{Z}_0)$, $ X_1 \in
+    L(\mathcal{X}_1,\mathcal{Z}_1) $ so that
+
+    \[ 
+        \left| \left| X_0 \right| \right|_1 = 1 = \left| \left| X_1 \right|
+        \right|_1 
+    \]
+    
+    and
+
+    \[ 
+        \left| \left| \left| \Phi_0 \right| \right| \right|_1 = \left| \left|
+        \left( \Phi_0 \otimes \mathds{1}_{L(\mathcal{Z}_0)}\right) (X_0) 
+\right| \right|_1
+    \]
+    
+    
+    \[ 
+        \left| \left| \left| \Phi_1 \right| \right| \right|_1 = \left| \left|
+        \left( \Phi_1 \otimes \mathds{1}_{L(\mathcal{Z}_1)}\right) (X_1) 
+\right| \right|_1
+    \]
+
+    Now, we have:
+
+    \begin{align*}
+        \left| \left| \left| \Phi_0 \otimes \Phi_1 \right| \right| \right|_1
+        \ge& \left| \left| \Phi_0 \otimes \Phi_1 \otimes
+\mathds{1}_{L(\mathcal{Z}_0 \otimes \mathcal{Z}_1)} \right| \right|_1 \\
+=& \left| \left| \Phi_0 \otimes \mathds{1}_{L(\mathcal{Z}_0)} \otimes \Phi_1
+\otimes \mathds{1}_{L(\mathcal{Z}_1)} \right| \right|_1 \\
+\ge& \left| \left| \left( \Phi_0 \otimes \mathds{1}_{L(\mathcal{Z}_0)} (X_0)
+\otimes \left( \Phi_1 \otimes \mathds{1}_{L(\mathcal{Z}_1)}(X_1) \right)\right)
+\right| \right|_1 \\
+=& \left| \left| \left( \Phi_0 \otimes \mathds{1}_{L(\mathcal{Z}_0)} \right)
+(X_0) \right| \right|_1 \cdot \left| \left| \left( \Phi_1 \otimes
+\mathds{1}_{L(\mathcal{Z}_1)} \right) (X_1) \right| \right|_1 \\
+=& \left| \left| \left| \Phi_0 \right| \right| \right|_1 \cdot \left| \left|
+\left| \Phi_1 \right| \right| \right|_1
+    \end{align*}
+   
+    Going the other way: 
+    \begin{align*}
+        \left| \left| \left| \Phi_0 \otimes \Phi_1 \right|
+                \right| \right|_1 =& \left| \left| \Phi_0 \otimes \Phi_1 \otimes
+            \mathds{1}_{L(\mathcal{X}_0)} \otimes \mathds{1}_{L(\mathcal{X}_1)} \right|
+        \right|_1 \\
+        =& \left| \left| \left( \Phi_0 \otimes \mathds{1}_{L(\mathcal{Y}_1)} \otimes
+    \mathds{1}_{L(\mathcal{X}_0)} \otimes \mathds{1}_{L(\mathcal{X}_1)} \right)
+    \left( \mathds{1}_{L(\mathcal{X}_0)} \otimes \Phi_1 \otimes
+    \mathds{1}_{L(\mathcal{X}_0)} \otimes \mathds{1}_{L(\mathcal{X}_1)} \right)
+\right| \right|_1 \\
+\le& \left| \left| \Phi_0 \otimes \mathds{1}_{L(\mathcal{Y}_1)} \otimes
+\mathds{1}_{L(\mathcal{X}_0)} \otimes \mathds{1}_{L(\mathcal{X}_1)}\right|
+\right|_1 \cdot \left| \left| \mathds{1}_{L(\mathcal{X}_0)} \otimes \Phi_1
+    \otimes \mathds{1}_{L(\mathcal{X}_0)} \otimes \mathds{1}_{L(\mathcal{X}_1)}
+\right| \right|_1 \\
+\le& \left| \left| \left| \Phi_0 \right| \right| \right|_1 \cdot \left| \left|
+\left| \Phi_1 \right| \right| \right|
+    \end{align*}
+\end{proof}
+\end{document}

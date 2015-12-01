@@ -3,8 +3,8 @@
 
 \subsection{Ideal Biasing Network}
 In accordance with the text delivered in the \hyperref[sec:Foreword]{Foreword}
-the ideal design is given below. I have simulated the scattering parameters
-according the schematic (biasing) shown in figure
+the ideal biasing of the high gain amplifier is given below. I have simulated
+the scattering parameters according the schematic (biasing) shown in figure
 \ref{fig:A2P1IdealSchematic}.
 
 \begin{figure}[H]
@@ -16,7 +16,7 @@ according the schematic (biasing) shown in figure
 
 The results of simulating this biasing network are given in figure
 \ref{fig:A2P1IdealBiasingResults}. Note that the transistor is stable in that $K
->1$ and $|\Delta < 1$. Hand calculations that confirm this are given in the
+>1$ and $|\Delta| < 1$. Hand calculations that confirm this are given in the
 appendix (Mathematica).
 
 \begin{figure}[H]
@@ -45,13 +45,14 @@ with the following values I obtain the following schematic and results:
     \label{fig:A2P1PhysicalBiasingResults}
 \end{figure}
 
-Note that while $G_{T_{max}}$ is included, here, in the simulated data
-$\Gamma_{ms}$ and $\Gamma_{ml}$ have not been simulated. Instead, hand
-calculations have been done to determine these quantities. The calculated values
-can be found in the Mathematica code in the appendix.
+Note that while $G_{T_{max}}$ is included, here, in the simulated data, the
+optimal matching reflection coefficients, $\Gamma_{ms}$ and $\Gamma_{ml}$, have
+not been simulated. Instead, hand calculations have been done to determine these
+quantities. The calculated values can be found in the Mathematica code in the
+appendix. Note that $G_{T_{max}}$ has been calculated by hand as well.
 
 In the appendix I also relate the physical network to the ideal network. There,
-I also include the MATTLAB code that I have used to relate the scattering parameters
+I also include the MATLAB code that I have used to relate the scattering parameters
 obtained by simulating the ideal biasing to that of the network comprising the
 physical components. Note that while it is known that short transmission lines
 of low impedance behave like inductors, the transmission lines used to couple
