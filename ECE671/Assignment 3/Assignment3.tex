@@ -2,7 +2,36 @@
 \usepackage[]{amsmath}
 \usepackage[]{fullpage}
 \usepackage[]{siunitx}
+\usepackage[]{hyperref}
+\usepackage[]{gensymb}
+\usepackage{chngcntr}
+\usepackage{xcolor}
+\usepackage[]{graphicx}
+\usepackage[]{float}
+\hypersetup{
+    colorlinks,
+    linkcolor={blue!50!black},
+    citecolor={blue!50!black}
+}
+\numberwithin{equation}{section}
+\renewcommand{\thesection}{}
+\renewcommand{\thesubsection}{}
+\renewcommand{\thesubsubsection}{}
+\renewcommand{\theequation}{\thesection\arabic{equation}}
+\makeatletter
+\def\@seccntformat#1{\csname #1ignore\expandafter\endcsname\csname the#1\endcsname\quad}
+\let\sectionignore\@gobbletwo
+\let\latex@numberline\numberline
+\def\numberline#1{\if\relax#1\relax\else\latex@numberline{#1}\fi}
+\makeatother
+
+\input{TitlePage}
+
 \begin{document}
+\maketitle
+\tableofcontents
 \input{A3P1}
 \input{A3P2}
+\input{A3P3}
+\input{A3P4}
 \end{document}

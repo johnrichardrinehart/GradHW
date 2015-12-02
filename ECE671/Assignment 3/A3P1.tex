@@ -1,21 +1,62 @@
 \section*{Problem 1: Low Pass Filter Design}
+\addcontentsline{toc}{section}{Problem 1: Low Pass Filter Design}
 
-The first step in the design process is to select the appropriate
-``g-values'' based on the tables relevant to the filter at hand. The filter
-chosen for the design is a Butterworth/Maximally flat filter design. The
-cut-off (\SI{3}{\deci\bel}) frequency is specified as $ \omega_c =
-\SI{8}{\giga\hertz}$ and the design reference impedance is selected as
-\SI{50}{\ohm} . The required required attenuation at $ \omega =
-\SI{13.6}{\giga\hertz}$ is \SI{16}{\deci\bel} ( $ \omega/\omega_c = 1.7 $ ).
-Based on tables that determine the attenuation of different order filters
-over frequency, I will select a filter of order 5. It's worth noting that a
-fourth order filter should suffice in the case of an ideal lumped element
-design. However, in case there are problems with the implementation or in
-case microstrip lines do not provide as much attenuation with varying
-topologies I will opt to design a fifth order filter. The g-values
-associated with this filter design are as follows:
+The filter designs used in this problem set follow the so-called ``insertion
+loss'' design scheme. The first step in the design process is to determine the
+relevant low-pass model for the filter. This low-pass model/prototype will then be used to
+synthesize the appropriate filter according to some transformation rules. The
+frequency may need to be transformed (since the low-pass prototype design
+frequency is, by default, $\SI{1}{\radian\per\sec} $). The impedances may also
+need to be transformed (since, the low-pass prototype design impedance is, by
+default, $\SI{1}{\ohm}$).  
 
-\begin{table}[h]
+The process of selecting the low-pass prototype component values and the
+low-pass prototype topology is determined by the design constraints imposed on
+the designer. Typically, a pass-band is specified and an attenuation slope or
+nominal attenuation at some specified frequency is chosen. This is enough to
+determine the order of a particular type of filter. However, the shape of the
+pass-band determines the type of filter that will, eventually, be synthesized
+(equal-ripple/Chebysev or maximally flat/Butterworth). 
+
+If the pass-band behavior and the attenuation are specified then the filter's
+minimum order is specified. The choice of one of two topologies is at the hands
+of the designer. The first is as shunt-first design where, in the low-pass
+prototype, a capacitor shunts the generator resistance as the first reactive
+element in the design. Alternatively, one can choose to place a series inductor
+as the first design element in the network. As far as the low-pass prototype is
+concerned, both choices are identical. It may be the case, however, that once
+the impedance and frequency transformation have been completed that the
+component values required would be too lossy or hard to manufacture. In this
+case the alternative prototype may be selected. It is worth noting that one
+prototype requires a current source and the other requires a voltage source.
+This may be a design consideration as well.
+
+Once the topology and the order are both selected it is time to select the
+appropriate ``g-values'' based on the tables relevant to the filter at hand.
+These g-values are the immittances (impedance or impedance or admittance) of the
+corresponding low-pass prototype design. Once the topology is determined the
+g-values are assigned to the capacitances and the inductances. 
+
+The filter type specified for this design is a Butterworth/Maximally flat filter
+design. The filter is to be a low-pass filter and the cut-off
+(\SI{3}{\deci\bel}) frequency is specified as $ \omega_c = \SI{8}{\giga\hertz}$
+and the design reference impedance is selected as \SI{50}{\ohm} . The required
+required attenuation at $ \omega = \SI{13.6}{\giga\hertz}$ is \SI{16}{\deci\bel}
+( $ \omega/\omega_c = 1.7 $ ). Based on tables that determine the attenuation of
+different order Buttervorth filters over frequency, I will select a filter of
+order five.  It's worth noting that a fourth order filter should suffice in the
+case of an ideal lumped element design (it provides $\approx
+\SI{18}{\deci\bel}$).  However, in case there are problems
+with the implementation or in case microstrip lines do not provide as much
+attenuation with varying topologies I will opt to design a fifth order filter.
+The fifth order filter also has a design advantage in that the component values
+are symmetrical about the middle shunt capacitor. This makes the design as
+simple as designing a third order filter. But, the primary motivation is to
+increase the amount of attenuation at \SI{13.6}{\giga\hertz}.
+
+The g-values associated with this filter design are as follows:
+
+\begin{table}[H]
     \centering
     \caption{g values}
     \label{tab:1a_g_value_table}
@@ -27,22 +68,28 @@ associated with this filter design are as follows:
     \end{tabular}
 \end{table}
 
-I will choose low-pass prototype beginning with a shunt element. Based on
-the order of the filter and the design topology $g_{1}, g_{3}, g_{5}$ are
-the low-pass prototype values for capacitors and $g_{2}, g_{4}$ are those
-for inductors. $g_{6}$ is the low-pass prototype of the 50 ohm load
-(termination). The following transformation relationships will aid in taking
-the g-values to their appropriate component values.
+Before designing a microstrip filter, it is always good to ensure that at each
+stage of the design process everything is consistent with the ideal case. So, I
+will first design a lumped element filter with frequency and impedance scaling.
+Assuming these values are right, I will design the microstrip model next.
+
+In terms of the filter topology, I will choose a low-pass prototype that leads
+with a shunt element (a capacitor). Based on the order of the filter and the
+design topology $g_{1}, g_{3}, g_{5}$ are the low-pass prototype values for
+capacitors and $g_{2}, g_{4}$ are those for inductors. $g_{6}$ is the low-pass
+prototype of the 50 ohm load (termination). The following transformation
+relationships will aid in taking the g-values to their appropriate component
+values.
 
 \begin{equation}
 g_{N+1} Z_c \rightarrow Z_{load} \quad \quad \quad \quad
     \frac{Z_c g_n}{\omega_c} \rightarrow L \quad \quad \quad \quad
-\frac{g_n}{Z_C \omega_c } \rightarrow C
+\frac{g_n}{Z_C \omega_c } \rightarrow C \nonumber
     \end{equation}
 
     Plugging in the appropriate values I obtain the following component values:
 
-    \begin{table}[h]
+    \begin{table}[H]
         \centering
         \caption{Component Values}
         \label{tab:1a_comp_values}
@@ -57,20 +104,38 @@ g_{N+1} Z_c \rightarrow Z_{load} \quad \quad \quad \quad
         \end{tabular}
     \end{table}
 
+    where N is the order of the filter (five, in this case).
     To verify the design a lumped-element model was simulated initially. The
+    results and schematic are shown below. The
     attenuation was found to be $\approx \SI{-23}{\deci\bel}$ of attenuation at
     \SI{13.6}{\giga\hertz} which far exceeds the \SI{16}{\deci\bel} requirement.
-    Note that the component names $C_1, L_2, C_3$ differ from those on the
-    schematic. The names are immaterial. The component values are what matter.
+
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.8\linewidth]{img/Problem1/LumpedElementSchematic.PNG}
+        \caption{Schematic for Lumped Element Low-Pass Protytpe}
+        \label{fig:1a:LumpedElementSchematic}
+    \end{figure}
+
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.8\linewidth]{img/Problem1/LumpedElementResults.PNG}
+        \caption{Results of Simulating the Design in
+        figure~\ref{fig:1a:LumpedElementSchematic}}
+        \label{fig:imgLumpedElementResults}
+    \end{figure}
 
     \subsection*{Problem 1a: Shunt Stub Design}
-    To realize a shunt stub design I will first convert the capacitors into
-    shunt stubs, directly, and use Kuroda's identity to use unit
-    elements ($\lambda/8$ lengths of transmission line) to convert the
-    series inductors into shunt stubs. Note that by virtue of microstrip,
-    the stubs are required to be open. Note, also, that the transmission
-    line impedance will need to be different from \SI{50}{\ohm}, in general,
-    in order to accommodate Kuroda's identity.
+    \addcontentsline{toc}{subsection}{Problem 1a: Shunt Stub Design}
+
+    To realize a shunt stub design I will first convert the lumped element
+    capacitors into shunt stubs, directly, and use Kuroda's identity to use unit
+    elements ($\lambda/8$ lengths of transmission line) to convert the series
+    inductors into shunt stubs. Note that by virtue of microstrip (as well as
+    the problem statement) the stubs are required to be open. Note, also, that
+    the transmission line impedances needed to synthesize the open stubs will
+    need to be different from \SI{50}{\ohm}, in general, in order to accommodate
+    Kuroda's identity.
 
     In order to use Kuroda's identity I need to know the impedance of the
     various reactive elements at the design frequency. It can be shown that
@@ -84,7 +149,7 @@ g_{N+1} Z_c \rightarrow Z_{load} \quad \quad \quad \quad
     frequency for which we will select our transmission line stub
     impedances. Thus, constructing a table as before:
 
-    \begin{table}[h]
+    \begin{table}[H]
         \centering
         \caption{Component Values}
         \label{tab:1a_comp_ractances}
@@ -107,12 +172,20 @@ g_{N+1} Z_c \rightarrow Z_{load} \quad \quad \quad \quad
     to convert the inside inductors into capacitors. Finally, the remaining unit
     elements at the beginning and the end of the network need to turn the newly-
     fashioned inductors into capacitors. Then, the design will be completed with
-    the following topology: capacitor, unit element, capacitor, unit element,
-    capacitor, unit element, capacitor, unit element, capacitor. 
-   
-    Doing all of this yields the following design:
+    the following lumped-element topology: capacitor, unit element, capacitor,
+    unit element, capacitor, unit element, capacitor, unit element, capacitor.
+    To determine the appropriate microstrip transmission line impedance we need
+    to convert those capacitor values to their impedance at the design
+    frequency. Open stubs of length $\lambda/8$ will look like capacitors with
+    impedance $Z_c$ (characteristic impedance of the transmission line used to
+    synthesize the capacitor) at the design frequency, only (but sufficiently
+    close to the proper capacitance over a narrow band to be useful in filter
+    design).
 
-    \begin{table}[h]
+    Doing all of this yields the following design impedances (see the appendix
+    for detailed calculations):
+
+    \begin{table}[H]
         \centering
         \caption{Open Stub Implementation}
         \label{tab:1a_open_stub_ideal}
@@ -120,22 +193,22 @@ g_{N+1} Z_c \rightarrow Z_{load} \quad \quad \quad \quad
             \hline $ \text{Stub}_1 $ & $ \text{Series TL}_2 $  & $ \text{Stub}_3
             $ & $ \text{Series TL}_4 $ & $ \text{Stub}_5 $ & 
             $ \text{Series TL}_6 $ & $ \text{Stub}_7 $  & $ \text{Series TL}_8 $
-            & $ \text{Stub}_9 $  \\
+                                   & $ \text{Stub}_9 $  \\
             \hline \SI{181}{\ohm} & \SI{69.7}{\ohm} & \SI{42.7}{\ohm} &
             \SI{111.8}{\ohm} & \SI{25}{\ohm} & \SI{111.8}{\ohm} &
             \SI{42.7}{\ohm} & \SI{69.4}{\ohm} & \SI{181}{\ohm} \\
             \hline
         \end{tabular}
     \end{table}
-
-    The next thing to do is to implement this in microstrip. Based on the design
+    
+    Based on the design
     parameters (material and dimensions) the widths of the conductors to achieve
     these impedances are constrained. Instead of hand-calculating the impedances
     I will use line calculator tool ``LineCalc'' (bundled with ADS) to design my
     widths. In the table below I enumerate the chosen widths and lengths for the necessary
     impedance and electrical length:
 
-    \begin{table}[h]
+    \begin{table}[H]
         \centering
         \caption{Lengths and Widths of Microstrip Sections}
         \label{tab:1a_microstrip_dimensions}
@@ -151,17 +224,61 @@ g_{N+1} Z_c \rightarrow Z_{load} \quad \quad \quad \quad
     \end{table}
 
     Note that the electrical length does no change significantly with the
-    characteristic impedance. This is to be expected. Note, also, that the
-    larger impedance lines require much smaller widths than likely can be
-    manufactured ($\sim \SI{80}{\micro\meter} $). This would be undesirable from
-    a manufacturing standpoint. However, this design does not need to be
-    feasible. So, it is given.
+    characteristic impedance. This is to be expected. $\lambda/8$ at
+    \SI{8}{\giga\hertz} can be found as:
+    
+    \[ 
+        l = \frac{\lambda}{8}  = \frac{1}{8} \frac{c}{f\sqrt{\epsilon_{eff}}}
+        \approx \frac{\SI{3e8}{\meter\per\second} }{8\cdot
+        \SI{8e9}{\hertz}\cdot\sqrt{1.6} } \approx \SI{3.71}{mm} 
+    \]
+    
+    where $\epsilon_{eff}$ is the effective dielectric constant which can
+    usually be approximated as $\frac{\epsilon_r + 1}{2}$ for microstrip
+    surrounded by air. The difference in lengths can be explained by ADS
+    (LineCalc) accounting for the fringing of the different line widths and
+    possibly the difference between the odd and even mode impedance for the
+    different line widths. It is interesting to note that the effective length
+    is smaller than would be dictated by the back-of-the-napkin calculation
+    given above.
+
+    Note also, that the larger impedance lines require much smaller widths than
+    likely can be manufactured ($\sim \SI{80}{\micro\meter} $). This would be
+    undesirable from a manufacturing standpoint. However, this design does not
+    need to be feasible. So, it is given. The schematic and the obtained results
+    follow. Noteworthy is the finiteness of the stop-band. The ideal lumped
+    element model was not periodic in its response. However, transmission line
+    segments have the disadvantage of having periodic frequency-domain
+    responses. This is the reason for the drop in insertion loss $\approx 
+    \SI{16}{\giga\hertz}$. The insertion loss can be seen to climb again
+    $\approx \SI{40}{\giga\hertz}$. Note that the attenuation at
+    \SI{13.6}{\giga\hertz} has climbed significantly relative to the
+    lumped-element model. Apparently the stubs exhibit more rejection outside of
+    the design frequency relative to the lumped elements. This is reasonable to
+    expect.
+
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.8\linewidth]{img/Problem1/MicrostripStubsSchematic.PNG}
+        \caption{Schematic for the Microstrip Stub Design}
+        \label{fig:img/Problem1/MicrostripStubsSchematic}
+    \end{figure}
+
+
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.8\linewidth]{img/Problem1/MicroStripStubsResults.PNG}
+        \caption{Results of Simulating the Design Shown in
+        Figure~\ref{fig:img/Problem1/MicrostripStubsSchematic}}
+        \label{fig:img/Problem1/MicroStripStubsResults}
+    \end{figure}
 
     \subsection*{Problem 1b: Stepped Impedance Design}
+    \addcontentsline{toc}{subsection}{Problem 1b: Stepped Impedance Design}
 
-    The stepped impedance design is not as elegant of a design. To design a
-    stepped impedance filter I begin using the component values that I had
-    designed my lumped element filter for. Then, I take advantage of the fact
+    The stepped impedance design is not as elegant as the previous design. To design a
+    stepped impedance filter I begin using the component values for which I had
+    designed my lumped element filterr. Then, I take advantage of the fact
     that short high impedance transmission line sections look like inductors and
     short section low impedance transmission line sections look like inductors.
     ``Short'' here means a small fraction of a wavelength (typically, $ < 10\%$
@@ -172,20 +289,20 @@ g_{N+1} Z_c \rightarrow Z_{load} \quad \quad \quad \quad
     \[ 
         C = \frac{T}{Z_c} 
     \]
-    
+
     where $Z_c$ is the characteristic impedance of the line. For inductors,
 
     \[ 
         L =Z_c T
     \]
-    
+
     These can be understood by realizing that the speed of propagation down the
     line is:
 
     \[ 
         v_p = \frac{1}{\sqrt{lc}} = \frac{Z_c}{l}
     \]
-    
+
     Where $l$ and $c$ are the inductance and capacitance of the transmission
     line per unit length, respectively.  The propagation delay time T is related
     to $v_p$ by the distance travelled down the line $d$ as follows:
@@ -193,7 +310,7 @@ g_{N+1} Z_c \rightarrow Z_{load} \quad \quad \quad \quad
     \[ 
         T = \frac{d}{v_p} = \frac{l d}{Z_c} = \frac{L}{Z_c}
     \]
-    
+
     The last inequality holds since $l d$ is just $L$, the lumped element
     equivalent inductance. Thus, to a reasonable approximation, the delay is
     expressed in terms of the characteristic impedance as given above. I have
@@ -205,11 +322,11 @@ g_{N+1} Z_c \rightarrow Z_{load} \quad \quad \quad \quad
     \[
         \SI{10}{\ohm} \le Z_c = \frac{T}{C} \le \SI{130}{\ohm} 
     \]
-   
+
     \[ 
         \SI{10}{\ohm} \le Z_c = \frac{L}{T} \le \SI{130}{\ohm}  
     \]
-    
+
     Thus, for a fixed delay, the largest capacitance will lower bound
     characteristic impedance and the largest inductance will upper bound the
     impedance, for examples. However, knowing how long the lines can be
@@ -222,7 +339,7 @@ g_{N+1} Z_c \rightarrow Z_{load} \quad \quad \quad \quad
         T = \frac{\lambda/10}{v_p} = \frac{\lambda/10}{\lambda f} = 
         \frac{1}{10 f}
     \]
-    
+
     For, this problem, then, $T = \SI{12.5}{\pico\second} $, since $ f =
     \SI{8}{\giga\hertz} $. Plugging this into the above expression for $C$ and
     $L$ we find the bound on $C$ and $L$ to be:
@@ -230,11 +347,11 @@ g_{N+1} Z_c \rightarrow Z_{load} \quad \quad \quad \quad
     \[ 
         \SI{96.2}{\femto\farad} \le C \le \SI{1.25}{\pico\farad} 
     \]
-    
+
     \[ 
         \SI{125}{\pico\henry} \le L \le \SI{1.63}{\nano\henry}  
     \]
-    
+
     Note that we meet the design requirement by the skin of our teeth. Our
     capacitances ($ C_{max} = \SI{.79}{\pico\farad} $, $ C_{min} =
     \SI{.25}{\pico\farad}  $) are well within the specification. However, the
@@ -253,7 +370,7 @@ g_{N+1} Z_c \rightarrow Z_{load} \quad \quad \quad \quad
     LineCalc's values for the lengths as well. The table below enumerates the
     impedances of the lines, calculated using the above formulae:
 
-    \begin{table}[h]
+    \begin{table}[H]
         \centering
         \caption{Line Impedance Corresponding to Lumped Elements}
         \label{tab:1b_line_impedance_of_lumped_elements}
@@ -272,7 +389,7 @@ g_{N+1} Z_c \rightarrow Z_{load} \quad \quad \quad \quad
         \end{tabular}
     \end{table}
 
-    \begin{table}[h]
+    \begin{table}[H]
         \centering
         \caption{Dimensions of Stepped Impedances}
         \label{tab:1b_stepped_impedance_dimensions}
@@ -295,9 +412,71 @@ g_{N+1} Z_c \rightarrow Z_{load} \quad \quad \quad \quad
     length of the lines can be constructed as smaller fractions of the
     wavelength. If the $\SI{3}{\deci\bel}$ frequency approaches the designed
     cut-off frequency then this must be the problem.
+    
+    The results of simulating this design follow in
+    figures \ref{fig:img/Problem1/MicrostripSteppedImpedanceSchematic.PNG} and
+    \ref{fig:img/Problem1/MicrostripSteppedImpedanceResults}. Note that this frequency
+    response is inferior to that of the previous design.
+
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.8\linewidth]{img/Problem1/MicrostripSteppedImpedanceSchematic.PNG}
+        \caption{Schematic for the Stepped Impedance Microstrip Design}
+        \label{fig:img/Problem1/MicrostripSteppedImpedanceSchematic.PNG}
+    \end{figure}
+
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.8\linewidth]{img/Problem1/MicrostripSteppedImpedanceResults.PNG}
+        \caption{Results for the Stepped Impedance Microstrip Design}
+        \label{fig:img/Problem1/MicrostripSteppedImpedanceResults}
+    \end{figure}
 
     \subsection*{Problem 1c: 1a and 1b with Steps and T-Junctions}
+    \addcontentsline{toc}{subsection}{Problem 1c: 1a and 1b with Steps and T-Junctions}
 
     The last thing to do is to insert the transmission line tees into the open
     stub filter and insert the steps into the stepped impedance transmission
-    line.
+    line. There is nothing to change with regards to the design so I will
+    include my results below in figures
+    \ref{fig:img/Problem1/MicrostripStubsWithTeesSchematic} to
+    \ref{fig:img/Problem1/MicrostripSteppedImpedanceWithStepsResults}. It is
+    noteworthy how much different the frequency response of the stepped
+    impedance differs, here, from the previous case. There are some large
+    transitions in width (\SI{2.31}{mm} to \SI{.318}{mm}). Each of these
+    discontinuities introduces a reflection plane that increases the amount of
+    insertion loss. The fact that the insertion loss increased is not
+    surprising. But, it is surprising that the insertion loss increased by as
+    much as it did. Also noteworthy is how smoothed the frequency response of
+    the stubs is. The maximum value of the insertion loss is much lower than it
+    was before. Note that the insertion loss increased (as it did with the
+    stepped impedance case) for the same reasons as given before (reflection
+    plane).
+
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.8\linewidth]{img/Problem1/MicrostripStubsWithTeesSchematic.PNG}
+        \caption{Schematic of Open-Stub Microstrip Design (with Tees)}
+        \label{fig:img/Problem1/MicrostripStubsWithTeesSchematic}
+    \end{figure}
+
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.8\linewidth]{img/Problem1/MicrostripStubsWithTeesResults.PNG}
+        \caption{Results of Open-Stub Microstrip Design (with Tees)}
+        \label{fig:img/Problem1/MicrostripStubsWithTeesResults}
+    \end{figure}
+
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.8\linewidth]{img/Problem1/MicrostripSteppedImpedanceWithStepsSchematic.PNG}
+        \caption{Schematic of Stepped-Impedance Microstrip (with Steps)}
+        \label{fig:img/Problem1/MicrostripSteppedImpedanceWithStepsSchematic}
+    \end{figure}
+
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.8\linewidth]{img/Problem1/MicrostripSteppedImpedanceWithStepsResults.PNG}
+        \caption{Results of Stepped-Impedance Microstrip (with Steps)}
+        \label{fig:img/Problem1/MicrostripSteppedImpedanceWithStepsResults}
+    \end{figure}
