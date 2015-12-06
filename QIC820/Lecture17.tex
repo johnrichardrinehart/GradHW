@@ -1,0 +1,337 @@
+\documentclass{article}
+\usepackage[]{amsmath,amssymb,dsfont,amsthm,braket}
+\newtheorem{theorem}{Theorem} 
+\begin{document}
+\section{PPT Operators (positive partial transpose)}
+We will define $\mathcal{X},\mathcal{Y}$ as complex Euclidean space.
+
+\[ 
+    PPT(\mathcal{X}:\mathcal{Y}) = \{ P \in Pos(\mathcal{X}\otimes \mathcal{Y})
+            : \left( T \otimes \mathds{1}_{L(\mathcal{Y})} \right) (P) \in
+            Pos(\mathcal{X}\otimes \mathcal{Y})
+\]
+
+Consider $ T \in T(\mathcal{X}), T(X) = X^T$. $T_{\mathcal{X}}, T_{\mathcal{Y}}$
+denotes the partial transpose over $\mathcal{x}$ or $\mathcal{Y}$.
+
+Now, 
+
+\begin{align*}
+    T_{\mathcal{X}}(P) \ge 0 &\leftrightarrow T_{\mathcal{X}\otimes \mathcal{Y}}
+    \left( T_{\mathcal{X}} \left( P \right)\right) \ge 0 \\
+    &\leftrightarrow T_{\mathcal{Y}} \left(
+        P\right) \ge 0.
+\end{align*}
+
+Note these facts:
+
+\begin{enumerate}
+    \item If $P \in Sep(\mathcal{X}:\mathcal{Y})$, then $P \in
+        PPT(\mathcal{X}:\mathcal{Y})$. 
+        \begin{align*}
+            P = \sum_{k=1}^m Q_k \otimes R_k \quad,\enskip &Q_1,\ldots,Q_m \in
+            Pos(\mathcal{X}) \\
+            & R_1, \ldots, R_m \in Pos(\mathcal{Y})
+        \end{align*}
+        
+        \begin{align*}
+            \left( T \otimes \mathds{1}_{L \left( \mathcal{Y} \right)}  \right)
+            \left( P \right) = \sum_{k=1}^m Q_k^T \otimes R_k \ge 0
+        \end{align*}
+        
+    \item If $P \in Pos(\mathcal{X}\otimes \mathcal{Y}$ is \textbf{not}
+        separable, then it might be the case that $P \notin
+        PPT(\mathcal{X}:\mathcal{Y})$.
+
+        \[ 
+            u = \frac{1}{\sqrt{2}} \left( e_0 \otimes e_0 + e_1 \otimes e_1 \right)
+        \]
+
+        \[ 
+            \tau = u u^* = \frac{1}{2} \begin{pmatrix}
+                1 & 0 & 0 & 1 \\ 0 & 0 & 0 & 0 \\
+                0 & 0 & 0 & 0 \\ 1 & 0 & 0 & 1 
+            \end{pmatrix} 
+        \]
+        
+        \[ 
+            \left( T \otimes \mathds{1}_{L \left( \mathcal{Y} \right)} \right)
+            \left( \tau \right) = \frac{1}{2} \begin{pmatrix}
+                1 & 0 & 0 & 0 \\ 0 & 0 & 1 & 0 \\
+                0 & 1 & 0 & 0 \\ 0 & 0 & 0 & 1 
+            \end{pmatrix} \ngeq 0
+        \]
+        
+    \item   There do exist non-separable PPT states
+        
+        \[ 
+            SepD(\mathcal{X}:\mathcal{Y}) \subset PPT(\mathcal{X}:\mathcal{Y})
+            \cap D(\mathcal{X}\otimes \mathcal{Y}) \subset
+            D(\mathcal{X}:\mathcal{Y})
+        \]
+\end{enumerate}
+
+For item 3, consider the following example: Allow $ \mathcal{X} =
+\mathbb{C}^\mathbb{Z}_3 = \mathcal{Y} $ 
+
+\begin{align*}
+    \intertext{Define $u_1,\ldots,u_5 \in \mathcal{X}\otimes \mathcal{Y}$ unit
+    vectors as: }
+    u_1 &= \ket{0} \otimes \left( \ket{0} - \ket{1} \right) / \sqrt{2} \\
+    u_2 &= \ket{2} \otimes \left( \frac{\ket{1}-\ket{2}}{\sqrt{2}} \right) \\
+    u_3 &= \left( \frac{\ket{0}-\ket{1}}{\sqrt{2}} \right) \otimes \ket{2} \\
+    u_4 &= \left( \frac{\ket{1}-\ket{2}}{\sqrt{2}} \right) \otimes \ket{0} \\
+    u_5 &= \left( \frac{\ket{0}+\ket{1}+\ket{2}}{\sqrt{3}} \right) \otimes
+    \left( \frac{\ket{0} + \ket{1} + \ket{2}}{\sqrt{3}} \right)
+\end{align*}
+
+We can make the following observations:
+
+\begin{enumerate}
+    \item $\{u_1,\ldots,u_5\}$ is an orthonormal set.
+    \item Each of $u_1,\ldots,u_5 \}$ is a product vector:
+
+        \[ 
+            u_k = x_k \otimes y_k 
+        \]
+        
+    \item There does \textbf{not} exist a nonzero vector $k \in x \otimes y$
+        that is both a product vector and orthogonal to $\{u_1, \ldots, u_5 \}$.
+        Imagine 
+        \[ 
+            \langle v\otimes w , u_k \rangle \quad,\enskip k=1,\ldots,5 
+        \]
+
+        This implies either that $v=0$ or that $w=0$.
+
+        So, $\{u_1,\ldots,u_5\}$ is an unextendable product set (UPB).
+\end{enumerate}
+
+Now define:
+
+\[ 
+    P = \mathds{1} \otimes \mathds{1} - \sum_{k=1}^5 u_k u_k^* 
+\]
+
+(i.e., P is the projection onto the space orthogonal to $ \{u_1,\ldots,u_5\} $).
+
+Let us show that 
+
+\begin{enumerate}
+    \item $P \notin Sep(\mathcal{X}:\mathcal{Y})$
+    \item $P \in PPT(\mathcal{X}:\mathcal{Y})$
+\end{enumerate}
+
+The claim is that $P \in PPT(\mathcal{X}:\mathcal{Y})$
+
+\begin{align*}
+    \left( T \otimes \mathds{1}_{L(\mathcal{Y})} \right) \left( P \right)
+    &= \left( T \otimes \mathds{1}_{L(\mathcal{Y})} \right) \left( \mathds{1}
+\otimes \mathds{1} \right) - \sum_{k=1}^5 T(x_k x_k^*) \otimes y_k y_k^* \\
+&= \mathds{1} \otimes \mathds{1} - \sum_{k=1}^5 T(x_k x_k^*) \otimes y_k y_k^*
+\\
+&= P \in Pos(\mathcal{X}:\mathcal{Y})
+\end{align*}
+
+Thus, $P \in PPT(\mathcal{X}:\mathcal{Y})$.
+
+Now, let's claim $ P \in Sep(\mathcal{X}:\mathcal{Y})$, By contradiction, we'll
+assume that $P$ \textbf{is} separable.
+
+\[ 
+    P = \sum_{k=1}^N v_k v_k^* \otimes w_k w_k^* 
+\]
+
+for any choice of $v_1,\ldots,v_N \in \mathcal{X}$, $w_1,\ldots,w_N \in
+\mathcal{Y}$ (not necessarily unit vectors).
+
+It holds that
+
+\[ 
+    0 = u_j^* P u_j = \sum_{k=1}^N \left| \langle u_j , v_k \otimes w_k \rangle
+    \right|^2 
+\]
+
+Thus,
+
+\[ 
+    \langle u_j , v_k \otimes w_k \rangle  = 0 \quad,\enskip \forall
+    j=1,\ldots,5 \enskip,\enskip k=1,\ldots,N 
+\]
+
+Finally,
+
+\[ 
+v_k \otimes w_k = 0 \quad,\enskip \text{for}\enskip k=1,\ldots,N \quad
+\rightarrow \quad P = 0 
+\]
+
+But, this contradicts our original premise that P is separable. Thus, P is not
+separable.
+
+Consider that X and Y are registers and that $\rho \in
+PPT(\mathcal{X}:\mathcal{Y}) \cap D(\mathcal{X}\otimes \mathcal{Y})$ . Then, we
+can conclude from this that
+
+\[ 
+    E_D(X:Y)_\rho = 0 
+\]
+
+
+We know that $SepD(\mathcal{X}:\mathcal{Y}) \subset PPT(\mathcal{X}:\mathcal{Y})
+\subset D(\mathcal{X}:\mathcal{Y})$. But, we can also conclude that $E_D
+(\mathcal{X}:\mathcal{Y}) \supset PPT(\mathcal{X}:\mathcal{Y})$. We will show
+this. PPT states can be entangled. But, we can show that this entanglement is
+useless for certain things, like teleportation. You can't use these to even
+approximate a maximally entangled state. For this reason, people sometimes call
+the states that exist in $\left( E_D (\mathcal{X}:\mathcal{Y}) \cup
+PPT(\mathcal{X}:\mathcal{Y}) \right) \cap SepD(\mathcal{X}:\mathcal{Y})$ ``bound
+entangled'' states. It is an open question if $E_D(\mathcal{X}:\mathcal{Y}) =
+PPT(\mathcal{X}:\mathcal{Y})$. Don't attempt solving this. You (John) will waste
+all of your time.
+
+Let's consider some theorems:
+
+\begin{theorem}
+    \[P \in PPT(\mathcal{X}:\mathcal{Y})\]
+
+    \[ 
+        \Phi \in SepCP(\mathcal{X},\mathcal{Z}:\mathcal{Y},\mathcal{W})
+    \]
+    
+    Then $\Phi(P) \in PPT(\mathcal{Z}:\mathcal{W})$
+\end{theorem}
+
+\begin{proof}
+    \[
+        \left( T_{\mathcal{Z}} \otimes \mathds{1}_{L(\mathcal{W})} \right) \left(
+        \left( A \otimes B\right) X \left( A \otimes B \right)^* \right)
+        \quad,\enskip A \in L(\mathcal{X},\mathcal{Z}) \enskip \text{and} \enskip
+        B \in L(\mathcal{Y},\mathcal{W})
+    \]
+
+    \[ 
+        = \left( \overline{A} \otimes B \right) \left( \left( T_{\mathcal{X}}
+        \otimes \mathds{1}_{L(\mathcal{Y})} \right)\left( X \right) \right) 
+        \left( \overline{A} \otimes B \right)^*
+    \]
+
+    $\Phi(P) \in PPT(\mathcal{Z}:\mathcal{W})$ follows \dots.
+    
+\end{proof}
+
+To see the above more clearly consider the following case:
+
+\begin{align*}
+    \left( T \otimes \mathds{1} \right) \left( \left( A \otimes B \right) \left(
+    Y \otimes Z\right) \left( A \otimes B \right)^* \right)
+    &= \left( T \otimes \mathds{1} \right) \left( A Y A^* \otimes B Z B^* \right)\\
+    &= \left( AYA^* \right)^T \otimes BZB^* \\
+    &= \overline{A} Y^T \left( \overline{A} \right)^* \otimes B Z B^* \\
+    &= \left( \overline{A} \otimes B \right) \left( Y^T \otimes Z \right) \left(
+\overline{A} \otimes B\right)^*
+\end{align*}
+
+This extends to all X by linearity.
+
+Consider the following proposition
+
+\begin{theorem}
+    Let $\mathcal{Z} = \mathbb{C}^\Sigma$ and $ W = \mathbb{C}^\Sigma $.
+    Assume $\rho \in PPT(\mathcal{Z}: \mathcal{W}) \cap D(\mathcal{Z}\otimes
+    \mathcal{W})$. Also, define
+    \[
+        \tau = \frac{1}{\left| \Sigma \right|} \sum_{a,b \in \Sigma} E_{a,b}
+        \otimes E_{a,b}
+    \]
+
+    It holds that $\langle \tau , \rho \rangle \le \frac{1}{\left| \Sigma
+    \right|}$.
+\end{theorem}
+
+\begin{proof}
+    Observe that
+
+    \[ 
+        T_{\mathcal{X}}(\tau) = \frac{1}{\left| \Sigma \right|} \sum_{a,b \in \Sigma}
+        E_{b,a} \otimes E_{a,b} = \frac{1}{\left| \Sigma \right|} W
+    \]
+    
+    $W \in U(\mathcal{X} \otimes \mathcal{Y})$ is the swap operator. Now:
+
+    \[ 
+        |\langle \tau , \rho \rangle|= |\langle T_{\mathcal{X}} (\tau) ,
+        T_{\mathcal{X}} (\rho) \rangle |= |\frac{1}{\left| \Sigma \right|} \langle
+        W, T_{\mathcal{X}} (\rho) \rangle | \le \frac{1}{\left| \Sigma \right|}
+        \left| \left| T_{\mathcal{X}} (\rho) \right| \right| = \frac{1}{\left|
+        \Sigma \right|}
+    \]
+    
+    The last equality holds because $T_{\mathcal{X}}(\rho)$ is a density operator.
+\end{proof} 
+
+\begin{theorem}
+    Consider X,Y as registers and allow $\rho \in D(\mathcal{X} \otimes
+\mathcal{Y}) \cap PPT(\mathcal{X}:\mathcal{Y})$. It can be shown that $E_D (X:Y)_\rho = 0$.
+\end{theorem}
+
+\begin{proof}
+    Allow $\mathcal{Z} = \mathbb{C}^{\mathbb{Z}_2} = W$, $\tau = u$, $u =
+    \frac{1}{\sqrt{2}} \left( e_0 \otimes e_0 + e_1 \otimes e_1 \right)$.
+
+    We have that $\rho \in PPT(\mathcal{X}: \mathcal{Y})$ so that 
+
+    \[ 
+        \rho^{\otimes n} \in PPT(\mathcal{X}^{\otimes n} : \mathcal{Y}^{\otimes
+        n} )
+    \]
+    
+    Considering some $\Phi \in LOCC(\mathcal{X}^{\otimes n}, \mathcal{Z}:
+    \mathcal{Y}^{\otimes n}, W)$.
+
+    \[ 
+        \Phi(\rho^{\otimes n}) \in PPT( \mathcal{Z}:\mathcal{W}) \cap
+        D(\mathcal{Z} \otimes \mathcal{W})
+    \]
+    
+    So,
+
+    \[ 
+        \langle \tau , \Phi(\rho^{\otimes n} \rangle \le \frac{1}{2}
+    \]
+    
+    Thus, Alice and Bob can't distill even a single qubit.
+\end{proof}
+
+Below is an alternative construction to PPT states.
+
+We will define four spaces :
+
+\begin{align*}
+    \mathcal{X}_2 &= \mathbb{C}^{\mathbb{Z}_2} \\
+    \mathcal{Y}_2 &= \mathbb{C}^{\mathbb{Z}_2} \\
+    \mathcal{X}_3 &= \mathbb{C}^{\mathbb{Z}_3} \\
+    \mathcal{Y}_3 &= \mathbb{C}^{\mathbb{Z}_3} \\
+    \tau_2 &= D(\mathcal{X}_2 \otimes \mathcal{Y}_2) \\
+    \tau_3 &= D(\mathcal{X}_3 \otimes \mathcal{X}_3)
+\end{align*}
+
+The $\tau$s are maximally mixed states. Now, consider some:
+
+\[ 
+    P(\alpha) = \left( \mathds{1}_{\mathcal{X}_2} \otimes
+    \mathds{1}_{\mathcal{Y}_2} - \tau_2 \right) \otimes \left(
+\mathds{1}_{\mathcal{X}_3} \otimes \mathds{1}_{\mathcal{Y}_3} - \tau_3 \right) +
+\alpha \tau_2 \otimes \tau_3
+\]
+
+Now:
+
+\begin{align*}
+    P(\alpha) & \notin Sep(\mathcal{X}_2 \otimes \mathcal{X}_3: \mathcal{Y}_2
+    \otimes \mathcal{Y}_3) \quad,\enskip \forall \alpha > 0 \\
+    P(\alpha) & \in PPT(\mathcal{X}_2 \otimes \mathcal{X}_3: \mathcal{Y}_2
+    \otimes \mathcal{Y}_3) \quad,\enskip \forall \alpha \in [0,4]
+\end{align*}
+
+\end{document}

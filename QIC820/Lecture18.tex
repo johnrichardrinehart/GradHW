@@ -1,0 +1,264 @@
+\documentclass{article}
+\usepackage[]{amsmath,dsfont,braket,amsthm}
+\newtheorem{theorem}{Theorem} 
+\newtheorem{corollary}{Corollary}[theorem]
+\begin{document}
+\section*{LOCC and Separable Measurements}
+A measurement $ \mu: \Sigma \rightarrow Pos(\mathcal{X} \otimes \mathcal{Y}) $
+is LOCC if and only if the channel $\Phi \in C(\mathcal{X} \otimes \mathcal{Y},
+\mathcal{Z} \otimes \mathcal{W})$ defined as:
+
+\[ 
+    \Phi(\rho) = \sum_{a\in \Sigma} \langle \mu(a) , \rho \rangle E_{a,a}
+    \otimes E_{a,a}
+\]
+
+for $\mathcal{Z} = \mathds{C}^\Sigma = \mathcal{W}$, is an LOCC channel.
+Thinking of a measurement as a special type of channel and requiring that to be
+LOCC is another way of thinking of an LOCC measurement.
+
+There is an analogous definition of separable measurements. That is, we can just
+use the previous definition replacing the word ``LOCC'' with ``separable''. There is
+a bit nicer way, though, that we can state what a separable measurement is.
+We'll do that now: A measurement is known (or defined) to be separable if and
+only if every measurement operator is itself separable.
+
+Definitely, every LOCC measurement is separable. LOCC channels must be separable
+channels. The converse, however, doesn't hold. There exist separable
+measurements that are not LOCC. Consider $\mathcal{X} = \mathds{C}^\Sigma =
+\mathcal{Y}$. Consider the following basis of $\mathcal{X} \otimes \mathcal{Y}$:
+\[
+    \begin{array}{ccc}
+        \ket{1}\ket{1} & \ket{0}\ket{0+1} &
+        \ket{2}\ket{1+2} \\
+        \ket{0+1}\ket{2} & \ket{0}\ket{0-1} &
+        \ket{2}\ket{1-2}  \\
+        \ket{1+2}{0} & \ket{0-1}\ket{2} & \ket{1-2}\ket{0}
+    \end{array}
+\]
+where, above, we have used the following convention:
+
+\begin{align*}
+    \ket{a+b} &= \frac{1}{\sqrt{2}} \left( \ket{a} + \ket{b} \right) \\
+    \ket{a-b} &= \frac{2}{\sqrt{2}} \left( \ket{a} - \ket{b} \right)
+\end{align*}
+
+If these vectors are plotted on a coordinate system
+($(\ket{0},\ket{1},\ket{2})\otimes (\ket{0},\ket{1},\ket{2})$) then these states
+have a very natural interpretation.
+
+This basis is special in that measuring with respect to this basis is a
+separable measurement. However, measurement with respect to this basis is
+\textbf{not} an LOCC measurement.
+
+Imagine Bob measures first
+
+\[ 
+    \{B_a : a \in \Gamma \} \subset L(\mathcal{X}, \mathcal{Z}) 
+\]
+
+Consider the $\sum_a B_a B_a^*$.
+
+\[ 
+    \left( \mathds{1} \otimes B_a \right) \left( u_k u_k^* \otimes v_k v_k^*
+    \right) \left( \mathds{1} \otimes B_a \right) ^*
+\]
+
+This can be written as:
+
+\[ 
+    \left( u_j \otimes v_j \right)^* \left( \mathds{1}\otimes B_a^* B_a \right)
+    \left( u_k \otimes v_k \right) = 0 \quad,\enskip \forall a \in \Gamma
+    \enskip \text{and all} \enskip j \ne k
+\]
+
+Thus, $B_a^* B_a$ is diagonal in the basis B.
+
+In other words:
+
+\[ 
+    \mathds{1} \otimes B_a* B_a = \sum_{k=1}^a \lambda_k u_k u_k^* \otimes v_k
+    v_k^* \quad,\enskip \forall a \in \Gamma 
+\]
+
+Now, if we consider some 
+\begin{align*}
+    \alpha &= u_1 u_1^* \otimes v_1 v_1^* \\
+    \beta_1 &= u_2 u_2^* \otimes v_2 v_2^* \\
+    \gamma_1 &= u_3 u_3^* \otimes v_3 v_3^*
+\end{align*}
+
+If we consider what $\mathds{1} \otimes B_a^* B_a$ must be represented by (in
+terms of a matrix) you can put constraints on $\gamma$s and $\beta$s.
+
+For example, we know that we have $\mathds{1}\otimes B_a^* B_a$. Identity tensored with
+something is going to be block diagonal. So, the off-block-diagonal elements
+must be zero.
+
+We can actually show that $\mathds{1}\otimes B_a^* B_a = \delta
+\mathds{1}\otimes \mathds{1}$. This means that Bob can not get information about
+Alice's state and, by symmetry, Alice can't get information about Bob's state.
+Thus, this set is not LOCC. There are, now, measurements that are separable but
+not LOCC. There are also channels that are separable but not LOCC.
+
+If it's LOCC then it's not just both parties acting in unison but each party
+taking turns. That puts a constraint on the information and on how much of that
+information can be gained about the state of the other. By trying to determine
+the other state they will introduce a disturbance in the state which will
+possibly cause confusion in the state. If they can somehow avoid this by
+choosing particular states that won't cause confusion, then you can show that
+the measurement of these states is not LOCC.
+
+\section*{Maximally Entangled States}
+
+Consider $\mathcal{X}$ and $ \mathcal{Y} $ be complex Euclidean spaces, both
+having dimension n. What is a maximally entangled state? Well, we mean that it's
+a pure state such that if I throw away some of the state I can obtain identity
+in the reduced space. That is:
+
+\[ 
+    u = \frac{1}{\sqrt{n}} vec(u) \quad,\enskip \text{for} \enskip u \in
+    U(\mathcal{Y},\mathcal{X})
+\]
+
+Suppose we have k maximally entangled states:
+
+\begin{align*}
+    u_1=& \frac{1}{\sqrt{n}} vec(u_1) \\ 
+    \vdots& \\
+    u_k =& \frac{1}{\sqrt{n}} vec(u_k)
+\end{align*}
+
+for $u_1,\ldots,u_k \in U(\mathcal{Y}, \mathcal{X})$. We have the following
+proposition:
+
+If $\mu:\{1,\ldots,k\} \rightarrow Pos(\mathcal{X}\otimes \mathcal{Y})$ is a
+\textbf{separable} measurement, then:
+
+\[ 
+    \frac{1}{k} \sum^{k}_{j=1}\langle \mu(j) , u_j u_j^* \rangle  \le \frac{n}{k}
+\]
+
+\begin{proof}
+    Assume that $\mu(j) = \sum_l P_l^j \otimes Q_l^j \quad \text{for each}
+    \enskip j$
+
+    Consider the probability that we get the jth guy as an output with
+    probability j:
+
+    \begin{align*}
+        \langle \mu(j) , u_j u_j^* \rangle =& \frac{1}{n} vec(U_j)^* \left(
+    \sum_l P_l^j \otimes Q_l^j \right) vec(U_j) \\
+    =& \frac{1}{n} \sum_l Tr \left( U_j^* P_l^j U_j \left( Q_l^j \right)^T
+\right) \\
+\intertext{Note that $U_j^* P_l^j U_j$ is positive semidefinite so we can use
+    $Tr(PQ) \le Tr(P)Tr(Q)$. This is a crude, heavy-handed inequality \dots But it's
+    all we need so we'll use it. You can show this by considering that $\left|
+        \langle P, Q \rangle  \right| \le \left| \left| P \right| \right| \left| \left|
+        Q\right| \right|_1 \le \left| \left| P \right| \right|_1 \left| \left| Q \right|
+\right|_1 = Tr(P)Tr(Q)$}
+\le& \sum_l \frac{1}{n} Tr(P_l^j) Tr(Q_l^j) \\
+=& \frac{1}{n} \sum_l Tr(P_l^j) Tr(Q_l^j) \\
+=& \frac{1}{n} Tr \left( \sum_l P_l^j \otimes Q_l^j \right) \\
+=& \frac{1}{n} Tr(\mu(j))
+\end{align*}
+
+Now, we can write:
+
+\begin{align*}
+    \frac{1}{k} \sum_{j=1}^k \langle \mu(j) , \mu_j \mu_j^* \rangle \le &
+    \frac{1}{k} \sum_{j=1}^k \frac{1}{n} Tr( \mu(j)) \\
+    =& \frac{1}{kn} Tr( \sum_{j=1}^k \mu(j)) \\
+    =& \frac{1}{kn} Tr( \mathds{1} \otimes \mathds{1}) \\
+    =& \frac{n}{k}
+\end{align*}
+\end{proof}
+
+We'll now show that if you want to distinguish two pure states you can always do
+this with an LOCC measurement. Suppose, then, that $x_0, x_1 \in \mathcal{X}
+\otimes \mathcal{Y}$ are orthogonal unit vectors. We will show that there exists
+an LOCC measurement ($\mu:\{0,1\} \rightarrow Pos(\mathcal{X}\otimes
+\mathcal{Y})$) such that:
+
+\[ 
+    \langle \mu(0) , x_0 x_0^* \rangle = 1
+\]
+
+and that
+
+\[ 
+    \langle \mu(1) , x_1 x_1^* \rangle = 1
+\]
+
+That is, the two states can be distinguished perfectly with these two
+measurements.
+
+To prove this, consider we have some operator $A \in L(\mathcal{X})$ which is
+not necessarily normal. We consider a set called the ``numerical range'' of A
+is:
+
+\[ 
+    \mathcal{N}(A) = \{u^*Au : u \in S(\mathcal{X}) \}
+\]
+
+\[ 
+    S(\mathcal{X}) = \{u \in \mathcal{X}: \left| \left| \mu \right| \right| = 1
+    \}
+\]
+
+If A is indeed normal then $\mathcal{N}$ is the convex hull of the eigenvalues.
+If A is not normal then you can have more interesting numerical ranges. For
+example, let $A = \begin{pmatrix} 1 & 1 \\ 0 & 1 \end{pmatrix}$. The numerical
+range of A can be drawn on the real axis as a circle centered at 1 with radius
+1/2. We have a famous theorem that tells us something about the numerical range:
+
+\begin{theorem}{Toeplitz-Hausdorff Theorem}
+    For every $A \in L(\mathcal{X})$, the numerical range of $\mathcal{N}(A)$ is
+    \underline{convex and compact}
+\end{theorem}
+\begin{corollary}
+    Suppose $A\in L(\mathcal{X})$ and $Tr(A) = 0$. There exists an orthonormal
+    basis
+
+    \[ 
+        \{u_1,\ldots,u_n\} \subset X 
+    \]
+
+    of $\mathcal{X}$ such that
+
+    \[ 
+        u_k^* A u_k = 0 \quad,\enskip \forall k=1,\ldots,n 
+    \]
+
+\end{corollary}
+We will now use these two facts to show how Alice and Bob can distinguish
+between any two pure states. We will now proof that there exists a pair of LOCC
+measurements that I can use to distinguish any two orthogonal states.
+
+\begin{proof}
+    Let $X_0, X_1 \in L(\mathcal{Y},\mathcal{X})$ such that $x_0 = vec(X_0)$ and
+    $x_1 = vec(X_1)$. Orthogonality of $x_0,x_1$ implies that $Tr(X_1^* X_0) =
+    0$. But, $X_1^* X_0 \in L(\mathcal{Y})$. So, there exists an orthonormal
+    basis $\{u_1,\ldots,u_n\} \subset \mathcal{Y}$ such that:
+
+        \[ 
+            u_k^* X_1^* X_0 u_k = 0  \quad,\enskip \text{for} \enskip
+            k=1,\ldots,n
+        \]
+        
+        Now, Bob measures with respect to $\{u_1,\ldots,u_n \}$ and tells Alice
+        the result. Conditioned on outcome $k$, Alice holds either
+
+        \begin{align*}
+            \left( \mathds{1} \otimes \overline{u_k} \right)^* x_0 \left(
+            \mathds{1} \otimes \overline{u_k} \right) =& \left( \mathds{1}
+            \otimes u_k^* \right) vec(X_0) vec(X_0)^* \left( \mathds{1} \otimes
+        \overline{u_k} \right) \\
+        =& vec(X_0 u_k) vec(X_0 u_k)^* \\
+        =& X_0 u_k u_k^* X_0^* \\
+        \enskip \text{or} \enskip & X_1 u_k u_k^* X_1^* 
+        \end{align*}
+       
+        These states are orthogonal, so Alice can distinguish them perfectly!
+\end{proof}
+\end{document}

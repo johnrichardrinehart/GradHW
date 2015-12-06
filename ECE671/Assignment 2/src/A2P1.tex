@@ -3,8 +3,8 @@
 
 \subsection{Ideal Biasing Network}
 In accordance with the text delivered in the \hyperref[sec:Foreword]{Foreword}
-the ideal design is given below. I have simulated the scattering parameters
-according the schematic (biasing) shown in figure
+the ideal biasing of the high gain amplifier is given below. I have simulated
+the scattering parameters according the schematic (biasing) shown in figure
 \ref{fig:A2P1IdealSchematic}.
 
 \begin{figure}[H]
@@ -15,7 +15,9 @@ according the schematic (biasing) shown in figure
 \end{figure}
 
 The results of simulating this biasing network are given in figure
-\ref{fig:A2P1IdealBiasingResults}.
+\ref{fig:A2P1IdealBiasingResults}. Note that the transistor is stable in that $K
+>1$ and $|\Delta| < 1$. Hand calculations that confirm this are given in the
+appendix (Mathematica).
 
 \begin{figure}[H]
     \centering
@@ -43,16 +45,22 @@ with the following values I obtain the following schematic and results:
     \label{fig:A2P1PhysicalBiasingResults}
 \end{figure}
 
-In the appendix I derive the relationship between the physical network and the
-ideal network. There, I also include the code that I have used to relate the scattering
-parameters obtained by simulating the ideal biasing to that of the network
-comprising the physical components. Note that while it is known that short
-transmission lines of low impedance behave like inductors, the transmission
-lines used to couple $V_{gs}$ and $V_{ds}$ to the amplifier suffice even though
-they are not sufficiently short or sufficiently low in impedance to qualify as
-inductors. This was a design choice. Below, I include a table for easy
-comparison that relates the values of $S_{11}, S_{12}, S_{21}, S_{22}$ obtained
-using a simulation with the values obtained using MATLAB.
+Note that while $G_{T_{max}}$ is included, here, in the simulated data, the
+optimal matching reflection coefficients, $\Gamma_{ms}$ and $\Gamma_{ml}$, have
+not been simulated. Instead, hand calculations have been done to determine these
+quantities. The calculated values can be found in the Mathematica code in the
+appendix. Note that $G_{T_{max}}$ has been calculated by hand as well.
+
+In the appendix I also relate the physical network to the ideal network. There,
+I also include the MATLAB code that I have used to relate the scattering parameters
+obtained by simulating the ideal biasing to that of the network comprising the
+physical components. Note that while it is known that short transmission lines
+of low impedance behave like inductors, the transmission lines used to couple
+$V_{gs}$ and $V_{ds}$ to the amplifier suffice even though they are not
+sufficiently short or sufficiently low in impedance to qualify as inductors.
+This was a design choice. Below, I include a table for easy comparison that
+relates the values of $S_{11}, S_{12}, S_{21}, S_{22}$ obtained using a
+simulation with the values obtained using MATLAB.
 
 \begin{center}
     \begin{tabular}{|c|c|c|}
@@ -82,14 +90,14 @@ and $|\Delta|<1$) no shunting resistor will be used to stabilize the device.
 The last thing to do is insert a matching network that accomplishes the goal of
 the design: To deliver more power to the load. According to the design
 requirements, the matching network must be such that $G_{T_{max}} - G_t \le 1$.
-A feature that the customer is requiring the lowest noise figure as is possible
-given a particular transducer gain, $G_t$. No lower bound is placed on the
-values of $G_{T_{max}}$, so given that there is typically a trade-off between
-transducer gain and noise figure it makes sense to reduce the noise figure to
-something sufficiently low while keeping the gain sufficiently high. Granted,
-the \SI{6}{\deci\bel} of transducer gain provided by this design is not great.
-However, the noise figure is very low ($< \SI{1}{\deci\bel}$) which was
-prioritized over the forward gain.
+A bonus feature that the customer is requiring is the lowest noise figure as is possible
+given some transducer gain, $G_t > G_{T_{max}} -1$. However, no lower bound is placed on the
+values of $G_{T_{max}}$. So, given that there is always a trade-off in amplifier
+design between transducer gain and noise figure it makes sense to reduce the
+noise figure to something sufficiently low while keeping the gain
+``sufficiently'' high. Granted, the \SI{6}{\deci\bel} of transducer gain
+provided by this design is not great.  However, the noise figure is very low ($<
+\SI{1}{\deci\bel}$) which was prioritized over the forward gain.
 
 The design of the amplifier is given below in figure
 \ref{fig:A2P1AmplifierSchematic}. The results are given below in figures
@@ -132,8 +140,9 @@ return loss (pink) and noise figure (blue)}
 A few notes regarding the design of the amplifier. It has already been noted
 that the gain is not as high as could be attained with this transistor ($\approx
 \SI{18}{\deci\bel}$) but noise figure was prioritized. Furthermore, you may
-notice that terminal 1 is not matched to the rest of the amplifier circuit. This
-was intentional. Introducing mismatch allowed the gain to be reduced which
-reduced the noise figure even more than it had been. Note that the gain is still
-within the specified distance from $G_{t_{max}}$ in that $G_{T_{max}} - G_T
-\approx \SI{.993}{\deci\bel}$.
+notice that terminal 1 is not matched to the rest of the amplifier circuit
+($\Gamma_{ms} \approx .45 \phase{63 \degree} \ne 0$). This was intentional.
+Introducing mismatch allowed the noise figure to be reduced even more than it
+had been while sacrificing some performance in gain ($ G_T \ne G_{T_{max}}$).
+Note that the gain is still within the specified distance from $G_{t_{max}}$ in
+that $G_{T_{max}} - G_T \approx \SI{.993}{\deci\bel}$.

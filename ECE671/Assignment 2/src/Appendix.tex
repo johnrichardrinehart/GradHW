@@ -6,19 +6,39 @@ Mathematica code that was used to generate the ideal match. Note that this ideal
 match was not always used. In the case of the high-gain amplifier it was chosen
 to reduce the gain from the maximum gain by almost as much as was possible
 ($\approx \SI{1}{\deci\bel}$) to ensure the lowest noise figure as was possible.
-However, the results given are for those of an ideal match. To be clear, a table
-is provided at the end of the section that enumerates which length of stub must
-be used and what length of line (after the stub) must be used. The length of
-line between the load and the stub is immaterial since the line is matched to
-the load such that $Z_{in} = Z_l$.
+However, the results given, here, in the code, are for those of an ideal match.
+To be clear, a table is provided at the end of the section that enumerates which
+length of stub must be used and what length of line (after the stub) must be
+used. The length of line between the load and the stub is immaterial since the
+line is matched to the load such that $Z_{in} = Z_l = Z_0$, (where $Z_0$ is the
+characteristic impedance of the transmission line).
 
-\subsubsection{High Gain Amplifier}
+% High Gain Amplifier Mathematica
+\includepdf[scale=.8,pages=1,clip,trim=0cm 3cm 0cm
+2cm,pagecommand=\subsubsection{High Gain Amplifier}]{../res/DesignA2P1Mathematica.pdf}
+\includepdf[scale=.8,pages=2-,clip,trim=0cm 3cm 0cm
+2cm,pagecommand={}]{../res/DesignA2P1Mathematica.pdf}
 
-\includepdf[scale=.9,pages=-,clip,trim=0cm 3cm 0cm 0cm]{../res/DesignA2P1.pdf}
+\begin{tabular}{|c|c|c|c|}
+    \hline & Optimum Reflection Coefficient & Stub Length (\degree) & Series
+    Line length (\degree) \\
+    \hline Load & .551 \phase{-134.1 \degree} & 52.8 & 5.3 \\
+    \hline Source & .811 \phase{162.0 \degree} & 70.2 & 26.9 \\ \hline
+\end{tabular}
 
-\subsubsection{Low Noise Amplifier}
+% Low Noise Amplifier Mathematica
+\includepdf[scale=.8,pages=1,clip,trim=0cm 3cm 0cm
+2cm,pagecommand=\subsubsection{Low Noise Amplifier}]{../res/DesignA2P2Mathematica.pdf}
 
-\includepdf[scale=.9,pages=-,clip,trim=0cm 3cm 0cm 0cm]{../res/DesignA2P2.pdf}
+\includepdf[scale=.8,pages=2-,clip,trim=0cm 3cm 0cm
+2cm]{../res/DesignA2P2Mathematica.pdf}
+
+\begin{tabular}{|c|c|c|c|}
+    \hline & Optimum Reflection Coefficient & Stub Length (\degree) & Series
+    Line length (\degree) \\
+    \hline Load & .998 \phase{-178.1 \degree} & 88 & 181 \\
+    \hline Source & .811 \phase{162.0 \degree} & 51.3  & 101 \\ \hline
+\end{tabular}
 
 \subsection{MATLAB Scattering Parameter Analysis}
 
@@ -66,10 +86,16 @@ These are the final 2 port parameters that can be converted back to $S_{final}$
 scattering parameters. Thus, the chain of conversions goes something like $S
 \rightarrow Y \rightarrow Z \rightarrow S$.
 
-\subsubsection{High Gain Amplifier}
+% MATLAB High Gain Amplifier below
+\includepdf[scale=.8,pages=1,clip,trim=0cm 2cm 0cm
+0cm,pagecommand=\subsubsection{High Gain Amplifier}]{../res/DesignA2P1.pdf} 
 
-\includepdf[scale=.9,pages=-,clip,trim=0cm 0cm 0cm 0cm]{../res/DesignA2P1MATLAB.pdf} 
+\includepdf[scale=.8,pages=2-,clip,trim=0cm 2cm 0cm
+0cm,pagecommand={}]{../res/DesignA2P1.pdf} 
 
-\subsubsection{Low Noise Amplifier}
+% MATLAB LNA below
+\includepdf[scale=.8,pages=1,clip,trim=0cm 2cm 0cm
+0cm,pagecommand=\subsubsection{Low Noise Amplifier}]{../res/DesignA2P2.pdf}
 
-\includepdf[scale=.9,pages=-,clip,trim=0cm 0cm 0cm 0cm]{../res/DesignA2P2MATLAB.pdf} 
+\includepdf[scale=.8,pages=2-,clip,trim=0cm 2cm 0cm
+0cm,pagecommand={}]{../res/DesignA2P2.pdf}
