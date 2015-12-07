@@ -1,19 +1,3 @@
-% function R = RsFromDs(optim_freqs,Ds,R0)
-% R = zeros(1,length(Ds)+1);
-% R(1) = R0;
-% for i = 1:length(Ds)
-%     R(i+1) = R(i) + Ds(i);
-% end
-% end
-
-function R = RsFromDs(break_freqs, function_freqs, Ds, R0)
-R = R0*ones(length(function_freqs),1);
-a = AsFromBreakFreqs(break_freqs,function_freqs);
-for i = 1:length(Ds)
-    R = R + Ds(i)*a{i,1}(:);
-end
-end
-
 function a = AsFromBreakFreqs(break_freqs,function_freqs)
 a = cell(length(break_freqs)-1,1);
 for i = 1:length(break_freqs)-1
