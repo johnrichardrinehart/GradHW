@@ -1,0 +1,226 @@
+\section*{Theory}
+\addcontentsline{toc}{section}{Theory}
+
+The theory behind the SRFT is simple and relies on 4 basic ideas:
+
+\begin{enumerate}
+    \item Optimization of Transducer Gain
+    \item Kramers-Kronig Relations
+    \item The Gewertz Method
+    \item Darlington Synthesis (Pole Extraction at Infinity)
+\end{enumerate}
+
+\subsection*{Optimization of Transducer Gain}
+\addcontentsline{toc}{subsection}{Optimization of Transducer Gain}
+
+The concept of transducer gain optimization is simple: Consider the source and
+the load and allow the introduction of some network that maximizes the power
+transfer from the source to the lead. This power transfer will be maximum when
+the source and the load are conjugately matched. Thus, the problem can be stated
+as follows:
+
+\[
+\min_{\text{networks}} \left| \left| T_{\text{goal}}(\omega) -
+T_{\text{network}}(\omega) \right| \right|
+\]
+
+The idea, stated above, is to declare some goal transducer gain function (that may be
+physically impossible based on gain-bandwidth considerations). Then, considering
+all possible networks, we minimize over the norm of the difference between the
+two transducer gain functions. However, we need some way in which to perform
+this minimization. So, we next express the transducer gain of the network in
+terms of the impedance of the network and the load:
+
+\[ 
+T(\omega) = \frac{4 r R}{(x + X)^2 + (r + R)^2} 
+\]
+
+Where, above, lower case $r$ and $x$ indicate load quantities and $R$ and $X$
+represent network quantities. It should be clear from this description that the
+frequency dependence is captured by all of the four circuit quantities: $r, R,
+x, X$. It is precisely this frequency dependence that determines the transducer
+gain. It should also be noted that the gain appears to be maximized when the
+reactance of the load is cancelled by the reactance of the introduced network.
+This is a restatement of the conjugate matching principle stated earlier. Now,
+for the purposes of this report, the load will always be considered fixed. The
+network is introduce in the context of the load and the transducer gain is
+maximized.
+
+They way in which SRFT attempts to determine the optimum resistance
+characteristic is determined by the relationship between the resistance and
+reactance characteristic and will be discussed subsequently.
+
+\subsection*{Kramers-Kronig Relations}
+\addcontentsline{toc}{subsection}{Kramers-Kronig Relations}
+
+A really interesting side-effect of having access to a linear, causal system is
+that the real and imaginary parts of the transfer function of such a system are
+not independent. It can be shown that the relationship between the real and
+imaginary parts of a circuit network $R$ and $X$ are as follows (see \cite{wcd}):
+
+
+\begin{align*}
+    R(\omega) &= - \frac{2}{\pi} \int_{0}^{\infty} \frac{\Omega~X(\Omega)}{\Omega^2 -
+\omega^2} d\Omega \\
+    X(\omega) &= \frac{2\omega}{\pi} \int_{0}^{\infty}
+\frac{R(\Omega)}{\Omega^2-\omega^2} d \Omega
+\end{align*}
+
+These are known as the Kramers-Kronig relations. It is at this point that the
+numerical optimization procedure is introduced.  Imagine that the resistance as
+a function of frequency is broken up into many piecewise segments. Then, for
+each break frequency $\omega_k$ there exists some resistance $R_k$ at that break
+frequency. $R(\omega)$ can now be expressed as:
+
+\[ 
+R(\omega) = R_0 + \sum^{n}_{k=1} D_k a_k(\omega) 
+\]
+
+where 
+
+\begin{align*}
+    a_k(\omega) =&
+    \begin{cases}
+        1 & \omega \ge \omega_k \\
+        \frac{\omega - \omega_{k-1}}{\omega_k - \omega_{k-1}} &\omega_{k-1} \le
+        \omega \le \omega_k \\
+        0 &\omega < \omega_{k-1}
+    \end{cases}
+\end{align*}
+
+It is clear from this, then, that $D_k$ represents the slope of the kth break
+frequency and, as such:
+
+\[ 
+D_k = R_k - R_{k-1} 
+\]
+
+If this is the form of $R(\omega)$ that is assumed for the SRFT then it can be
+shown that the reactance must be related to $R(\omega)$ by:
+
+\[
+X(\omega) = \sum^{n}_{k=1} D_k b_k(\omega)
+\]
+
+where
+\begin{align*}
+    b_k(\omega) = (\pi \left( \omega - \omega_{k-1} \right))^{-1} \big(
+&\left( \omega + \omega_k \right) \ln \left| \omega + \omega_k \right| +
+\\
+&\left( \omega - \omega_k \right) \ln \left| \omega - \omega_k \right| - \\
+&\left(\omega + \omega_{k-1} \right) \ln \left| \omega + \omega_{k-1} \right| - 
+\\
+&\left( \omega - \omega_{k-1} \right) \ln \left| \omega - \omega_{k-1} \right| 
+\big)
+\end{align*}
+
+This expression for $X(\omega)$ is nothing more than the previous expressions
+relating $R(\omega)$ to $X(\omega)$ assuming that $R(\omega)$ has a piecewise
+linear form. This piecewise linearity makes it easy to calculate the reactance
+on a computer. Since the goal is to reduce the difference between the goal gain
+function and the network gain function, the algorithm will perform the
+following: It will adjust the $D_k$s using some scheme (gradient ascent, random,
+etc.) and will attempt to produce a set of $D_k$s that makes the difference
+between $T_{network}$ and $T_{goal}$ a minimum. Those $D_k$s will correspond to
+some $R(\omega)$ and some $X(\omega)$. Thus, it would seem that the $D_k$
+correspond to some network. It is this point that we have to introduce the way
+in which the network is deduced from $R(\omega)$ and $X(\omega)$.
+
+\subsection*{The Gewertz Method}
+\addcontentsline{toc}{subsection}{The Gewertz Method}
+
+In order to determine a network from the obtained piecewise linear $R(\omega)$,
+I can perform the following. It can be shown that the impedance of the network
+and the resistance of the network are related:
+
+\[ 
+R(-s^2) = \frac{1}{2} \left( Z(s) + Z(-s) \right) 
+\]
+
+where $s = j\omega$. The reason for expression $R$ as a function of $s^2$ is
+that the resistance function must be even about $\omega = 0$, by physical
+considerations. So, now, consider that the piecewise linear $R(\omega)$ is
+approximated by some rational function fit $\tilde{R}(-s^2) =
+\frac{p(-s^2)}{q(-s^2)}$.  Now, consider $Z(s) = \frac{n(s)}{d(s)}$, where $n$
+and $d$ are the numerator and denominator polynomials of $Z(s)$, respectively.
+It can be shown, then, that by relating the coefficients of $p(-s^2)$ with those
+of $d(s)$ and $n(s)$ that the following holds (note that $d(s)d(-s) = q(-s^2)$):
+
+\[ 
+    \begin{pmatrix} p_0 \\ p_2 \\ \vdots \\ p_{2m} \end{pmatrix} = 
+        \begin{pmatrix}
+            d_0 & 0    & \ldots & 0 & 0      \\
+            d_2 & -d_1 & \ldots & 0 & 0      \\
+            \vdots & \vdots & \vdots & \vdots & \vdots \\
+            0   &   0  & \ldots & -d_{m-1} & d_{m-2} \\
+            0   &   0  & \ldots & 0 & d_{m} 
+        \end{pmatrix}
+        \begin{pmatrix}
+            n_0 \\ n_1 \\ \vdots \\ n_{m-1} \\ n_{m}
+        \end{pmatrix}
+\]
+
+Above, it is assumed that $p(s) = \sum^{2m-2}_{i=1} p_i s^i$ and similarly with
+the other polynomials.
+
+Now, our goal is to solve for $Z(s) = \frac{n(s)}{d(s)}$. We can obtain the
+coefficients of $d(s)$ from those of $q(s)$ (we have $q(-s^2)$ from our fit of
+$R(-s^2)$) by using spectral factorization. According to \cite{wcd}, any
+real non-negative function $A(-s^2)$ can be written as a product, $a_0^2
+a(s)a(-s)$, where $a_0$ is real and $a(s)$ is a real monic polynomial. Thus, we
+know the coefficients $d_0, d_1, d_2,\ldots, d_{2m}$ which form $d(s)$ since we
+know $q(-s^2)$ from having had fit $R(s)$ to a rational function.
+
+We can then invert the above equation to find the numerator polynomial
+coefficients. Once we have $n(s)$ from the aforementioned procedure, we form
+$Z(s) = \frac{n(s)}{d(s)}$. This is the Gewertz method.
+
+What we need now is a way in which to obtain the network (resistors, inductors,
+capacitors) from $Z(s)$. This is what Darlington synthesis enables us to do.
+
+\subsection*{Darlington Synthesis}
+\addcontentsline{toc}{subsection}{Darlington Sythesis}
+
+It is shown in reference \cite{wcd} that any realizable impedance function can
+be realized as a lossless LC ladder network terminated on a resistor. The proof
+will not be given here but a demonstration of the technique will be described.
+Assuming that $Z(s)$ is expressed as a rational function (which can always be
+done to at least some approximation), then the network can be constructed as
+follows:
+
+\[ 
+Z(s) = \frac{n_0 + n_1 s + n_2 s^2 + \ldots + n_m s^m}{d_0 + d_1 s + d_2 s^2 +
+\ldots + d_m s^m} 
+\]
+
+Then, by iterative division, $Z(s)$ can be expressed as a continued fraction:
+
+\[ 
+Z(s) = \frac{1}{\frac{d_0 + d_1 s + d_2 s^2 +
+\ldots + d_m s^m}{n_0 + n_1 s + n_2 s^2 + \ldots + n_m s^m}} 
+\]
+
+Then, using long division, this can be expressed in the form:
+
+\[
+Z(s) = \frac{1}{c_0(s) + \frac{1}{c_1(s) + \frac{1}{c_2(s) + \ldots}}}
+\]
+
+Now, this is exactly the form of an LC ladder network input impedance. By
+construction, $c_0(s)$ is at most a first order polynomial in $s$. This holds
+true for other $c_i(s)$ also. Consider the case, for example, when $c_0(s) =
+.5s$. This is exactly a capactive admittance of value
+\SI[parse-numbers=false]{.5s}{\siemens} which corresponds to a capacitance of
+\SI{.5}{\farad}. Thus, the first element in the network would be a shunt
+capacitance (since it's an admittance) of \SI{.5}{\farad}. So, apparently,
+expressing the impedance in this form by repeating iterative long division is a
+way in which the components of the network are made easily visible.
+
+Once the components are identified, all that remains is to simulate the network
+determined by the algorithm to ensure that it, indeed, satisfies the properties
+desired by the designer; that is, that it approximates well the optimal
+gain-bandwidth characteristic.
+
+Now that the theory has been established, a practical example of a filter will
+be undertaken and the network will by synthesized and simulated. The
+shortcomings of the current implementation will be discussed subsequently.

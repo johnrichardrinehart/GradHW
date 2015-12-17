@@ -1,0 +1,26 @@
+\section*{Introduction}
+\addcontentsline{toc}{section}{Motivation}
+Filters are an important part of the RF/Microwave signal chain. They can be used
+to prevent aliasing of signals used with nonlinear devices (like mixers) and
+also to prevent interference from signals with proximal frequency components.
+Ever filter is qualified by a number of metrics: insertion loss, rejection,
+selectivity, group delay, etc. The topology, number and quality of components
+determines the filter's behavior and, as such, must be chosen very carefully.
+
+To add to the filter designer's struggles, it can be shown that it is not
+possible to design a filter with arbitrarily large bandwidth and arbitrarily high
+gain. The derivation of the gain-bandwidth theorem can be found in reference
+\cite{wcd}. Thus, it is up to the designer to push the gain-bandwidth
+limits to the limit. This requires high-fidelity components and an optimal
+design scheme. Material science and component design is under active research.
+This will improve the reliability and performance of the components, themselves.
+
+What is needed, then, is to consider a methodology with which the proper
+components for an optimal filter design can be considered. The simplified real
+frequency technique (SRFT), devised in 1982 by Herbert Carlin and Binboga Yarman
+addresses this problem \cite{srft}. Essentially, the SRFT achieves an optimal
+filter design by using computer-aided optimization. This report will describe
+SRFT and a MATLAB\textsuperscript{\textregistered} implementation of the SRFT
+currently under development. The goal of this report is to demonstrate the
+efficacy of the SRFT and a particular microwave design which was implement using
+the aformentioned MATLAB\textsuperscript{\textregistered} implementation.

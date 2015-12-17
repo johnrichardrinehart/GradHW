@@ -1,0 +1,38 @@
+\section*{Future Work}
+\addcontentsline{toc}{section}{Future Work}
+
+There are a number of problems with the code base that was used to replicate the
+circuit studied in reference \cite{opt} (this circuit was also used as an example
+in \cite{wcd}). The first main problem with the code is the reliance on fmincon
+, a MATLAB\textsuperscript{\textregistered} function that is able to solve
+nonlinear optimization problems with applied constraints. In this case, the
+constraint of decreasing resistance with increasing frequency was applied.
+
+However, nonlinear optimization is subject to the unfortunate problem that
+solutions can arise that are not, in general, the best solution. The
+optimization procedures, in general, work by determining the best way in which
+to ``tweak''/adjust the variables under consideration such as to minimize the
+function at hand. The solution relies, then, heavily on the initial conditions
+given to the solver. A large improvement to the algorithm would be to express
+the problem as that of a linear optimization problem. Then, the sensitivity to
+initial conditions is gone and a global minimum is guaranteed.
+
+Next, the Gewertz method that is used in conjunction with Darlington Synthesis
+is undesirable. The amount of steps that are undertaken to obtain $Z(s)$ from
+$R(-s^2)$ are so many that the chance for numerical or implementation error are
+great. A better way to approach the problem would be to obtain $X(s)$ directly
+from the piecewise $\tilde{R}(s)$ obtained from the optimization procedure.
+Then, once $X(s)$ is known it is easy to construct $Z(s) = R(s) + X(s)$.
+Then, a rational function fit of $Z(s)$ can be obtained (to arbitrary numerator
+and denominator precision).
+
+Furthermore, this tool, right now, does not accommodate the ``double matching``
+problem where both the source and the load are fixed and the best network is to
+be obtained. In this tool, the load is fixed and the rest of the network is
+allowed to vary.
+
+Finally, a great edition to this tool would be to increase the level of
+interactivity and usability. Right now, the script Example9\_2\_1.m uses the
+supplied functions in a very particular way that make it easy to adjust the
+load, the number of breakpoints, etc. However, it should be possible to ship the
+entire SRFT library without the dependence on such a particular script.
