@@ -1,0 +1,560 @@
+\documentclass{article}
+\usepackage[]{amsmath}
+\usepackage[]{braket}
+\begin{document}
+Jerry Knight 
+Loudon.
+Ulf Leonhardt
+Garrison and Chow
+
+\section{Quantization of EM Field}
+\begin{align}
+    \nabla \cdot E = 0
+    \nabla \cdot V = 0
+    \nabla \times E = - \frac{\partial B}{\partial t}
+    \nabla \times B = \mu_0 \epsilon_0 \frac{\partial E}{\partial t}
+\end{align}
+\[ 
+    c = \frac{1}{\sqrt{\mu_0 \epsilon_0}} 
+\]
+
+We can introduce potentials $\phi, \vec{A}$ such that $\vec{B} = \nabla \times
+\vec{A}$ and $\vec{E} - \nabla \phi - \frac{\partial\vec{A}}{\partial t}$ . We
+can choose some gauge that preserves these fields. 
+
+\[ 
+\vec{A} \rightarrow \vec{A} + \nabla \Gamma(r,t)
+\phi \rightarrow \phi - \frac{\partial \Gamma}{\partial t}
+\]
+
+We typically elect to choose
+the Coulumb gauge:
+
+\[ 
+    \nabla \cdot A = 0 
+\]
+
+None of the physical description changes. We can consider the wave equation:
+
+\[ 
+    \nabla \times B = \frac{1}{c^2} \frac{\partial E}{\partial t} 
+\]
+
+By taking the curl of both sides we can write
+
+\[ 
+    \nabla \cdot \nabla A = \frac{1}{c^2} \frac{\partial }{\partial t} \left(
+    -\frac{\partial A}{\partial t} \right) \quad(\phi = 0~\text{indicates absence of
+    charge})
+\]
+
+using
+
+\[ 
+    \nabla \times \nabla \times A = \nabla \left( \nabla \cdot F \right) -
+    \nabla^2 F
+\]
+
+and realizing that $\nabla(\nabla \cdot A)$ is zero by the choice of gauge. So,
+now,
+
+\[ 
+    \nabla^2 A = \frac{1}{c^2}\frac{\partial^2 E}{\partial t^2}
+\]
+
+We are going to try and solve the above expression in terms of plane waves
+(because the solution is much nicer). We will use a ``mode expansion'' to solve
+for A.
+
+\[ 
+    A(r,t) = \sum_k A_k(t)e^{i \vec{k}\cdot \vec{r}} + A_k^*(t)*e^{-i \vec{k}
+    \cdot \vec{r}} 
+\]
+
+
+So, we're going to select some cubic volume of space (where each side is of
+length L). This volume is a tool we're going to use to establish boundary
+conditions in order to solve the wave equation. We will use periodic boundary
+conditions. For the other common convention (perfectly reflecting walls), this
+is covered in Loudon. The Casimir effect, for example, utilizes boundary
+conditions that are perfectly reflecting. But, we will mostly use periodic
+boundary conditions in Quantum Optics.
+
+Note that for A to be singular-valued we need to place some restrictions on
+$\vec{k}$.
+
+\[ 
+    k_{k,y,z} = \frac{2\pi n_{x,y,z}}{L} \quad,n_{x,y,z} \in \{0,1,2,ldots,\}
+\]
+
+Our gauge condition is satisfied as long as $\vec{k} \cdot A = 0$. There are two
+free directions for $\vec{A}(t)$ for any given k. These correspond to the
+polarizations of light. We can substitute our mode expansion into the wave
+equation.
+
+\[ 
+    \nabla^2 \left(\sum_k A_k(t)e^{i \vec{k}\cdot \vec{r}} + A_k^*(t)*e^{-i
+    \vec{k} \cdot \vec{r}} \right) 
+    = 
+    \frac{1}{c^2} \frac{\partial^2}{\partial t^2} \left( \sum_k A_k(t)e^{i
+    \vec{k}\cdot \vec{r}} + A_k^*(t)*e^{-i \vec{k} \cdot \vec{r}} \right) 
+\]
+
+For this to be satisfied, for all r,t we require it to be satisfied for each
+$A_k$. We can solve this wave equation one mode at a time.
+
+\[ 
+    \nabla^2 A_k(t) e^{ i vec{k} \cdot \vec{r} } = \frac{1}{c^2}
+    \frac{\partial^2}{\partial t^2} A_k(t) e^{ i \vec{k}\cdot \vec{r} } 
+\]
+
+This has the solution:
+
+\[ 
+    A_k(t) = A_k e^{-i \omega_k t} \quad, \omega = c |\vec{k}|
+\]
+
+We obtained the above expression using $\lambda \nu = c$ and realizing that
+$2\pi\nu = \frac{2\pi c}{\lambda} = kc$. 
+
+\[
+    A(r,t) = \sum_k A_k e^{ -i \omega_k t + i \vec{k} \cdot \vec{r} } +
+    \text{c.c.}
+\]
+
+(c.c denotes ``complex conjugate). From this solution, we can write the electric
+and magnetic fields. These fields involve the time derivative and spatial derivative
+of A, respectively.
+
+\begin{align*}
+    E_k &= -\frac{\partial }{\partial t} \left( A_k e^{-i \omega_k t + i
+    \vec{k}
+\cdot \vec{r}} + \text{c.c.} \right) \\
+    &= i \omega_k \left( A_k e^{-i \omega_k t + i \vec{k}
+    \cdot \vec{r}} + \text{c.c.} \right)
+\end{align*}
+
+\begin{align*} 
+    B_k &= \nabla \times \left( A_k e^{-i \omega_k t + i \vec{k}
+\cdot \vec{r}} + \text{c.c.} \right)  \\
+&=  i \vec{k} \left( A_k e^{-i \omega_k t + i \vec{k} \cdot \vec{r}} +
+    \text{c.c.} \right)
+\end{align*}
+
+If we consider the energy of a single mode:
+
+\[ 
+    H_k = \frac{1}{2}\int_{V} dV \left( \epsilon_0 E_k^2 + \mu_0^{-1} B_k^2 \right) 
+\]
+
+Using our boundary conditions:
+
+\[ 
+    \int_0^L e^{\pm i k_x x} dx  = 
+    \begin{cases} 
+        L if k_x = 0 \\ 
+        0 if k_x \ne 0
+    \end{cases}
+\]
+
+Using
+\[ 
+    \int dV e^{\pm i \left( \vec{a} - \vec{a}' \right)\cdot \vec{r}} = V
+    \delta_{a,a'}
+\]
+
+So, now, considering our expressions for E and B that we obtained earlier:
+
+\[
+    \frac{1}{2}\int_V dV \epsilon_0 E_k^2 = \epsilon_0 V \omega_k^2 A_k \cdot
+    A_k^*
+\]
+
+and 
+
+\[ 
+    \frac{1}{2} \int_V \mu_0^-1 B_k^2 = \epsilon_0 V \omega_k^2 A_k \cdot A_k^* 
+\]
+
+where we have to use $\left( A \times B \right)\cdot \left( C \times D \right) =
+\left( A\cdot C \right)\left( B\cdot D \right) - \left( A \cdot D \right) \left( B
+\cdot C\right)$. So, our energy in a single mode is, now:
+
+\[ 
+    H_k = 2 \epsilon_0 V \omega_k^2 A_k  A_k^* 
+\]
+
+These amplitudes (or mode variables) can be written in terms of a mode position
+and a mode momentum.
+
+\[ 
+    A_k = \frac{1}{4\epsilon_0 V \omega_k^2} \left( \omega_k X_k + i P_k
+    \right)\hat{\epsilon_k} 
+\]
+
+Where $\hat{\epsilon_k}$ is a unit vector (the polarization of the mode). Of
+course,
+
+
+\[ 
+    A_k^* = \frac{1}{4\epsilon_0 V \omega_k^2} \left( \omega_k X_k - i P_k
+    \right)\hat{\epsilon_k} 
+\]
+
+The normalization constant has been used in $A_k$ and $A_k^*$ so that when we
+express the energy of the mode in terms of these quantities:
+
+\[ 
+    H_k = \frac{1}{2} \left( P_k^2 + \omega_k^2 X_k^2 \right) 
+\]
+
+This is the form of a harmonic oscillator. So, we have shown that the energy in
+each mode is that of a harmonic oscillator. To obtain the energy of the field
+(that stored in all of the modes):
+
+\[ 
+    H = \sum_k H_k 
+\]
+
+To take this classical discussion into the realm of quantum mechanics we need to
+express the classical harmonic oscillator in terms of the quantum harmonic
+oscillator.
+
+In quantum mechanics,
+
+\[ 
+    \hat{H} = \frac{1}{2m} \left( \hat{p}^2 + m^2\omega^2 \hat{x}^2 \right)
+\]
+
+where the commutation relation between $\hat{x}$ and $\hat{p}$ is $[x,p] =
+i\hbar$. We now introduce two new operators:
+
+\[
+    \alpha = \frac{1}{\sqrt{2\hbar m \omega}} \left( i \hat{p} + m \omega
+    \hat{x} \right)
+    \alpha^\dagger = \frac{1}{\sqrt{2 \hbar m \omega}} \left( -i \hat{p} + m
+    \omega \hat{x} \right)
+\]
+
+where, $[a,a^\dagger] = 1$. Now, we can write:
+
+\[ 
+    H = \hbar \omega \left( a^\dagger a + 1/2 \right) 
+\]
+
+Now, if we know any eigenstate of $H$ ($H\ket{\Psi_n} = E_n \ket{\Psi_n}$). It
+can be shown that $a\ket{\Psi_n}$ and $a^\dagger \ket{\Psi_n}$ are also
+eigenstates of $H$.
+
+\[ 
+    H(a\ket{Psi_n}) = (E_n - \hbar \omega) a \ket{\Psi_n} 
+\]
+
+and
+
+\[ 
+    H(a^\dagger \ket{Psi_n}) = (E_n + \hbar \omega) a^\dagger \ket{\Psi_n} 
+\]
+
+So, once we know one energy eigenstate we can derive a whole ladder of states.
+One problem we can run into is that if we apply the lowering operator too many
+times, the energy of the system will become negative. But, our Hamiltonian looks
+like the sum of squares of two operators. We know that by orthonormality of
+states $\braket{\phi_x} \ge 0$ so $\bra{\phi} x^2 \ket{\phi} \ge 0$ (the same
+holds for $\hat{p}$.
+
+To fix this issue we constrain the lowest energy state $\ket{\Psi_0}$ such that
+$a \ket{\Psi_0} = 0$. What is the energy associated with $\ket{\Psi_0}$?
+
+\[ 
+    H \ket{\Psi_0} = \hbar \omega \left( a^\dagger a + \frac{1}{2} \right)
+    \ket{\Psi_0} = \frac{\hbar \omega}{2} \ket{\Psi_0} 
+\]
+
+We can apply $a^\dagger$ as many times as we want.
+
+\[ 
+    H \ket{\Psi_n} = \hbar \omega \left( n + 1/2 \right) \ket{\Psi_n}
+\]
+
+We can now introduce a new operator $\hat{n} \equiv a^\dagger a$ which will
+index our states. The only other piece of information that we need is how these
+operators affect the normalization of states. Consider some state $\ket{\Psi_n}$
+is normalized. We know that $a \ket{\Psi_n}$ and $a^\dagger \ket{\Psi_n}$ are
+eigenstates but we are ignorant of the resulting normalization.
+
+\begin{align*}
+    a \ket{\Psi_n} =& c_n \ket{\Psi_{n-1}} \\
+    \bra{\Psi_n} a^\dagger a \ket{\Psi_n} =& \left| c_n \right|^2 \\
+    \intertext{So, $n = c_n^2$ and $c_n = \sqrt{n}$}
+    a \ket{n} = \sqrt{n} \ket{n-1}
+\end{align*}
+
+Similarly,
+
+\begin{align*}
+    a^\dagger \ket{\Psi_n} =& d_n \ket{\Psi_{n+1}} \\
+    \bra{\Psi_n} a a^\dagger \ket{\Psi_n} =& \left| d_n \right|^2 \\
+    \intertext{Using the commutation relation: $a a^\dagger = a^\dagger a + 1$.}
+    a^\dagger \ket{n} = \sqrt{n+1}\ket{n+1}
+\end{align*}
+
+Now, we can write an numbers state as $\ket{n} = \frac{(a^\dagger)^n}{\sqrt{n!}}
+\ket{0}$. If we wanted a wave function, we could write the ground state in terms
+of the position representation and solve a differential equation obtaining
+Hermite polynomials times Gaussian functions as solutions.
+
+The quantum harmonic oscillator is really simplified using the operator
+approach. The other thing that's really nice about the operator approach is that
+it make calculating expectation values really easy. Consider
+
+\begin{align*}
+    \hat{a} &= \frac{1}{2\hbar m \omega} \left( i \hat{p} + m \omega \hat{x} \right)	
+    \hat{a^\dagger} &= \frac{1}{2\hbar m \omega} \left( -i \hat{p} + m \omega \hat{x} \right)	
+\end{align*}
+
+We can take linear combinations of these operators to form $\hat{x}$:
+
+\[ 
+    \hat{x} = \sqrt{\frac{\hbar}{2 m \omega}} \left( a + a^\dagger \right)
+\]
+
+and
+
+\[ 
+    \hat{p} =  i \sqrt{\frac{\hbar m \omega}{2}} \left( a + a^\dagger \right)
+\]
+
+In order to make our classical expression for the energy look like the quantum
+harmonic oscillator we will make substitutions of operators in place of
+variables. We could write $A_k = \frac{1}{\sqrt{4 \epsilon_0 V \omega_k}} \left(
+\omega_k X_k + i P_k\right) \hat{\epsilon_k}$. To quantize $A_k$ we replace X and P
+with their quantum mechanical operator equivalents:
+
+\[ 
+    \frac{1}{\sqrt{4 \epsilon_0 V \omega_k}} \left( \omega_k \hat{x}_k + i
+    \hat{p}_k \right) \hat{\epsilon_k} = \sqrt{\frac{\hbar}{2 \epsilon_0
+    V \omega_k}} a_k \hat{\epsilon_k}
+\]
+
+and, similarly, for $A_k^*$
+
+\[ 
+    \frac{1}{\sqrt{4 \epsilon_0 V \omega_k}} \left( \omega_k \hat{x}_k - i
+    \hat{p}_k \right) \hat{\epsilon_k} = \sqrt{\frac{\hbar}{2 \epsilon_0
+    V \omega_k}} a_k^\dagger \hat{\epsilon_k}
+\]
+
+The commutation properties for the field operators arise from the commutation
+properties of position and momentum operators in different systems. Because, the
+separate modes really indicate a separate configuration of the system. So,
+
+\[
+    [x_k, x_k'] = 0 = [p_k, p_k']
+    [x,y] = 0
+    [x_k , p_k'] = i \hbar \delta_{k,k'}
+\]
+
+From these relations we can discover:
+
+\[ 
+    [a_k, a_k' ] = 0 =[a_k^\dagger, a_{k'}^\dagger]
+    [a_k, a_{k'}^\dagger] = \delta_{k,k'}
+\]
+
+Our vector potential operator $A = \sum_k \sqrt{\frac{\hbar}{2\epsilon_0 V
+\omega_k}} \hat{\epsilon_k} \left( a_k e^{-i \omega_k t + i \vec{k}\cdot
+\vec{r}} + a_k^\dagger e^{i \omega_k t - i \vec{k} \cdot \vec{r}} \right)$. Note
+that A is time dependent. Thus, A is expressed in terms of the Heisenberg
+picture. We will, at some times during this course, express A in terms of the
+Schrodinger picture (but, not usually).
+
+\[ 
+    \hat{E_k} = i \sqrt{\frac{\hbar \omega_k}{2 \epsilon_0 V}} \hat{\epsilon_k}
+    \left(a_k e^{-i \omega_k t + i \vec{k}\cdot
+\vec{r}} + a_k^\dagger e^{i \omega_k t - i \vec{k} \cdot \vec{r}} \right)
+\]
+
+and
+
+\[ 
+    \hat{B_k} = i \sqrt{\frac{\hbar }{2 \epsilon_0 V \omega_k}}
+    \left(\hat{k} \times \hat{\epsilon_k} \right)
+    \left(a_k e^{-i \omega_k t + i \vec{k}\cdot
+\vec{r}} + a_k^\dagger e^{i \omega_k t - i \vec{k} \cdot \vec{r}} \right)
+\]
+
+To demonstrate that this formalism is valid, we can consider the energy of a
+single mode:
+
+\begin{align*}
+    H_k =& \frac{1}{2} \int_V dV \left( \epsilon_0 \hat{E_k}^2 + \mu_0^-1
+\hat{B_k}^2 \right) \\
+=& \hbar \omega_k \left( a_k^\dagger a_k + 1/2 \right) ,\quad \text(steps not
+shown in lecture)
+\end{align*}
+
+The hamiltonian for the entire system will just be the sum of the hamiltonians
+for the various modes.
+
+Now, we have related the energy of a free electromagnetic mode to that of a
+quantum harmonic oscillator. The excitations of this oscillator are what we
+call photons.
+
+The next thing that we will need are what are called ``quadrature operators''.
+These are directly analogous to position and momentum in the one-dimensional
+harmonic oscillator. The quadrature operators $\hat{q}$ and $\hat{p}$ are given
+by:
+
+\[ 
+    \hat{q} = \frac{1}{\sqrt{2}} \left( a + a^\dagger \right) \quad,\quad
+    \hat{p} = \frac{i}{\sqrt{2}} \left( a^\dagger - a \right)
+\]
+
+and
+
+\[ 
+    [\hat{q},\hat{p}] = i 
+\]
+
+Based on Roberton's uncertainty relation: $\Delta q \Delta p \ge \frac{1}{2}$.
+Now, we define quadrature eigenstates:
+
+\[ 
+    \hat{q}\ket{q} = q \ket{q} \quad,\quad \hat{p} \ket{p} =p \ket{p}
+\]
+
+\[ 
+    \braket{q}{q'} = \delta(q-q') \quad,\quad \braket{p}{p'} = \delta(p-p') 
+\]
+
+And, furthermore, $\ket{q}$ and $\ket{p}$ are related through a Fourier
+transform.
+
+\[ 
+    \ket{p} = \frac{1}{\sqrt{2\pi}} \int e^{i p q} \ket{q} dq 
+\]
+
+This allows us to write:
+
+\begin{align*} 
+    \hat{E_k} =& i \sqrt{\frac{\hbar \omega_k}{2 \epsilon_0 V}} \hat{\epsilon_k}
+    \left(a_k e^{-i \omega_k t + i \vec{k}\cdot
+\vec{r}} + a_k^\dagger e^{i \omega_k t - i \vec{k} \cdot \vec{r}} \right) \\
+=& \sqrt{2} \sqrt{\frac{\hbar \omega_k}{2 \epsilon_0 V}} \left( q \sin(\omega_k
+t - \vec{k}\cdot \vec{r}) - p \cos(\omega_k t - \vec{k} \cdot \vec{r}) \right)
+\end{align*}
+
+So, these quadrature operators describe the amplitude of E. Let's introduce a
+phase shift operator.
+
+\[ 
+    U(\theta) = e^{i \theta \hat{n}} 
+\]
+
+This is the exponentiated hamiltonian of the mode (excepting the constant factor
+of 1/2). That is, it describes the free (unitary) evolution of the field. One
+identity that we will need fairly often is the Baker-Campbell-Haussdorff (BCH) lemma:
+
+\[
+    e^A B E^-A = B + [A,B] + 1/2 [A,[A,B]] + \frac{1}{3!} [A,[A,[A,B]]] + ...
+\]
+
+This comes up a lot when we want to calculate expectation values. Consider some
+ket $\ket{Psi_\theta} = U(\theta) \ket{\Psi}$. The position expectation of this
+state would require the use of the BCH lemma.
+
+Consider $U^\dagger a U$. We can show that this reduces to $a e^{-i \theta}$.
+Similarly, $U^\dagger a^\dagger U = a^\dagger e^{i \theta}$. If we, instead,
+apply U to the quadrature operators we can consider $q_\theta = U^\dagger q U =
+q \cos(\theta) + p \sin(\theta)$. Similarly $p_\theta = U^\dagger p U = -q
+\sin(\theta) + p\cos(\theta)$. This rotation of q and p is reminiscent of the
+classical phase space depiction of a harmonic oscillator (a circle).
+
+We will now introduce a phase operators. This is an operator that will attempt
+to describe the phase of the electromagnetic field. In classical
+electromagnetism we can write the field for a plane wave as an amplitude and
+complex exponential as follows: $E = \frac{1}{2} \left( e^{-i \omega t + i
+    \vec{k} \cdot \vec{r} + i \phi} + e^{i \omega t - i \vec{k} \cdot \vec{r} - i
+\phi} \right)$. Here $\phi$ is the phase of the electromagnetic wave. This looks
+similar to our Q operator:
+
+\[ 
+    E_k = i \sqrt{\frac{\hbar \omega}{2 \epsilon_0 V}} \hat{\epsilon_k} \left(
+    a_k e^{-i \omega_k t + i k \cdot r} - 
+    a_k^\dagger e^{i \omega t - i k \cdot l }\right)
+\]
+
+if $a_k$ was written in polar form the we could retrieve the phase $\phi$. This
+is what Dirac did. $a = e^{i \phi} \sqrt{\hat{n}}$ and $a^\dagger =
+\sqrt{\hat{n}} e^{-i \phi}$. So, now we consider:
+
+\[ 
+    a a^\dagger - a^\dagger a = 1 = e^{i \phi} \sqrt{n}\sqrt{n} e^{-i \phi} -
+    \sqrt{n}e^{-i \phi} e^{i \phi} \sqrt{n} = e^{i \phi} n e^{-i \phi} - n  
+\]
+
+Multiplying by $e^{i\phi}$  from the right yields:
+
+\[
+    e^{i \phi} n - n e^{i\phi} = e^{i \phi}
+\]
+
+we can expand these exponentials and compare term-by-term.
+
+\begin{align*}
+    [1 + i \phi + \frac{(i\phi)^2}{2}+\ldots]n -n[1+i \phi + \frac{\left( i\phi
+    \right)^2}{2} + \ldots] =& 1 + i \phi + \frac{\left( i\phi \right)^2}{2} +
+        \ldots \\
+        \intertext{ The zero order term is zero and the first order term is just
+        $i \phi n - n i \phi = 1$ such that $[n,\phi] = i$. We obtain the exact
+        same expression at third order.}
+    \end{align*}
+
+Using the Robertson uncertainty relation we can write $\sigma_n \sigma_\phi \ge
+\frac{1}{2}$. There is a problem with this and we will address this later. So,
+this is more of a ``rule of thumb'' than it is a hard and fast rule.
+
+A state with an exactly determined number of photons has no phase. In order to
+have a phase we need to not have an exactly determined number of photons. In
+order to elevate this from a rule of thumb to a hard rule we need $\hat{\phi}$
+to be hermitian such that $e^{i\hat{\phi}}$ is unitary.
+
+\[ 
+    e^{i \hat{\phi}} = a n^{-1/2} 
+\]
+
+\[ 
+    e^{i \hat{\phi}} = a n^{-1/2} \ket{n} = \ket{n-1} 
+\]
+
+This operator should not operate on the ground state or else it will annihilate
+the state and normalization will not be preserved by this unitary operator.
+
+He writes a lot of braket algebra and realizes that $e^{i\hat{\phi}} \ket{0} =
+0$. Thus, $\bra{0} ((e^{i\phi})^\dagger e^{i \phi} \ket{0} = 0$ so $e^{i\phi}$ is
+not unitary and $\phi$ is not hermitian. Other attempts have been made to
+determine a phase operator (Barnett-Pegg, Susskind-Glogower,
+Noh-Fougeres-Mandel) but they fail for different reasons. We don't have a good
+notion of a phase operator, yet.
+
+\section*{Important Quantum States of Light}
+The Fock states (number states) are eigenstates of the mode Hamliltonian with
+energy $\hbar \omega \left( n + 1/2 \right)$. These states are not eigenstates
+of $H = \sum_k H_k$:
+
+\[ 
+    \bra{n} E \ket{n} = i \sqrt{\frac{\hbar \omega}{2 \epsilon_0 V}} \bra{n}
+    a e^{-i \omega t + i \ket{k}\cdot \ket{r}} - c.c. \ket{n} = 0
+\]
+
+\[ 
+    \bra{n} E^2 \ket{n} = \frac{- \hbar \omega}{2 \epsilon_0 V} \bra{n} -a
+    a^\dagger - a^\dagger a \ket{n} = \frac{\hbar \omega}{\epsilon_0 V} \left( n
+    + 1/2 \right)
+\]
+
+uncertainty in E: $\Delta E = \sqrt{<E^2> - <E>^2} = \sqrt{\frac{\hbar
+\omega}{\epsilon_0 V} \left( n+1/2 \right)}$. The uncertainty in E grows with
+more photons. Note that even the vacuums state has nonzero uncertainty.
+\end{document} 
