@@ -1,0 +1,150 @@
+\section{Problem 4: 4-port Scattering Problem}
+\setcounter{equation}{0}
+\addtocounter{section}{1}
+The scattering matrix provided, along with the knowledge of how ports 3 and 4
+are associated yields the following relationships (note that we assume a matched
+load for simplicity):
+\begin{align}
+    V_1^- &= S_{11}V_1^+ + S_{14}V_4^+ \label{4.1} \\
+    V_2^- &= S_{22}V_2^+ + S_{23}V_3^+ \label{4.2} \\
+    V_3^- &= S_{32}V_2^+ + S_{33}V_3^+ \label{4.3} \\
+    V_4^- &= S_{41}V_1^+ + S_{44}V_4^+ \label{4.4} \\
+    V_4^- &= e^{-j \beta l} V_3^+ \label{4.5}\\
+    V_3^- &= e^{-j \beta l} V_4^+ \label{4.6} \\
+    V_2^+ &= 0  \label{4.7}
+\end{align}
+
+Equations \ref{4.1} to \ref{4.4} come from the scattering matrix provided and
+the definition of scattering parameters. Equations \ref{4.5} to \ref{4.6} are
+given by the fact that the output of port 3 is connected to the input of port 4
+and that the output of port 4 is connected to the input of port 4. Note that
+after a travelling a length $l$ down the line, the forward voltage wave picks up
+a phase of $e^{-j \beta l}$.
+
+\[ 
+        V^+(l) = e^{-j \beta l} V^+(0)
+\]
+
+Equation \ref{4.7} comes from the fact that we're using a matched load at the
+output so that there is no reflection back to the 2-port network.
+
+What we want to know is $\frac{V_2}{V_1} = \frac{V_2^-}{V_1^+(1+\Gamma_{in})}$.
+To determine $\Gamma_{in}$ we will first divide \ref{4.1} by $V_1^+$.
+
+\[ 
+        \Gamma_{in} = \frac{V_1^-}{V_1^+} = S_{11} + S_{14}\frac{V_4^+}{V_1^+}
+\]
+
+Now, all that is needed is a relationship between $V_4^+(V_1^+,V_1^-)$ and we've
+solved $\Gamma_{in}$. We will find this by first applying \ref{4.7} to the
+\ref{4.2} and \ref{4.3} yielding the following reduced equations:
+
+\begin{align}
+    V_2^- = S_{23} V_3^+ \\
+    V_3^- = S_{33} V_3^+ \label{v3rel}
+\end{align}
+
+Using \ref{v3rel} with \ref{4.5} and \ref{4.6} yields the fellowing:
+
+\begin{equation}
+    V_4^+ = S_{33} e^{2 j \beta l} V_4^- \label{v4rel}
+\end{equation} 
+
+Substituting this back into \ref{4.4}:
+
+\[ 
+        V_4^- = S_{41} V_1^+ + S_{44}(S_{33}e^{2 j \beta l} V_4^-)
+\]
+
+Now, we have an expression for $V_4^-(V_1^+)$ which is close to what we want.
+
+\[
+        V_4^- = \frac{S_{41}V_1^+}{1-S_{33}S_{44}e^{2j\beta l}} 
+\]
+
+However, we know from \ref{v4rel} that we can finally write:
+
+\[ 
+        V_4^+ = \frac{S_{33}S_{41}e^{2j\beta l}V_1^+}{1-S_{33}S_{44}e^{2j\beta l}} 
+\]
+
+Finally, we have:
+
+\begin{equation}
+    \Gamma_{in} = S_{11} + \frac{S_{33}S_{41}e^{2j\beta
+    l}}{1-S_{33}S_{44}e^{2j\beta l}} \label{gamma_in}
+\end{equation}
+
+We're almost done! We just need $V_2 = V_2^-$. But, $V_2 = S_{23} V_3^+$ by
+\ref{4.2} and $V_3^+ = e^{j \beta l} V_4^-$ by \ref{4.5}. This allows us to
+write:
+
+\[ 
+        V_2 = V_2^- = S_{23}V_3^+ = S_{23}e^{j\beta l}V_4^- =
+        \frac{S_{23}S_{41}e^{j\beta l}V_1^+}{1-S_{33}S_{44}e^{2j\beta l}} 
+\]
+
+And since $V_1 = V_1^+ + V_1^- = V_1^+ (1+\Gamma_{in})$ we can write
+$\frac{V_2}{V_1} = \frac{f(V_1^+)}{V_1^+(1+\Gamma_{in})}$.
+
+\[ 
+        \frac{V_2}{V_1} = \frac{S_{23}S_{41}e^{j\beta l}}{\left( 1+ \Gamma_{in}
+        \right) \left( 1-S_{33}S_{44}e^{2j\beta l} \right)}
+\]
+
+$\beta l$ was given as $45 \degree =  \frac{\pi}{4}~\text{radians}$. Plugging in
+the following values for the scattering parameters and $\beta l$ yields
+$\Gamma_{in}$ and $\frac{V_2}{V_1} = \text{Gain}$.
+
+%TODO: Add values!!!
+
+\[ 
+        \frac{V_2}{V_1} \approx 42.4 \cdot 10^{-3} \phase{152.2 \degree}
+\]
+
+The phase delay can be determined immediately. The phase difference between the
+input and the output is $167.7 \degree$.
+
+The insertion loss is a little bit harder to determine. Let's consider insertion
+loss as a logarithmic quantity that relates the power delivered to the device
+after the insertion of the 2-port network as compared to before it was inserted.
+
+Before the device is inserted it received $\Re({V_l I_l^*})$ amount of power
+(assuming the voltages and currents are given as RMS quantities). $V_l = V_1^+$
+since the load is matched to the transmission line. $I_l = \frac{V_1^+}{Z_c}$
+since $V_l^- = 0$. Thus, the power that used to be delivered to the load is:
+
+\[ 
+        P_{before} = \frac{|V_1^+|^2}{Z_c} 
+\]
+
+After the two-port device is inserted it receives $V_l = \text{Gain} \cdot V_1^+$ incident voltage
+(still there is no reflected voltage). Thus, the amount of power delivered to
+the device after the two-port is inserted is:
+
+\[ 
+        P_{after} = \frac{\left| V_1^+ \right|^2 \left| \text{Gain} \right|^2}{Z_c} 
+\]
+
+The insertion loss will be defined as follows:
+
+\[ 
+        IL_{dB} = 10\log_{10}(\frac{P_{before}}{P_{after}})
+\]
+
+Note that this definition will be dictate that $IL_{dB}$ is a positive quantity
+since $P_{before}$ (for passive devices) will be greater than $P_{after}$. Thus,
+there is no ``wonkiness'' with signs in determining the insertion loss. Plugging
+in our expressions for $P_{before}$ and $P_{after}$ yields:
+
+\[
+        IL_{dB} = -20 \cdot \log_{10}(\left| \text{Gain} \right|)
+\]
+
+Plugging in the magnitude of the gain ($\sim 42.4\cdot 10^{-3}$) we obtain an
+insertion loss of 
+
+\[ 
+        IL_{dB} \approx 27.5~\text{dB}
+\]
+

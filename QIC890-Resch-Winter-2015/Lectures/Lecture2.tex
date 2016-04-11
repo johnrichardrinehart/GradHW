@@ -1,0 +1,520 @@
+\documentclass{article}
+\usepackage[]{amsmath}
+\usepackage[]{braket}
+\usepackage{commath}
+\begin{document}
+Last time we had addressed some important states of light: Namely, the Fock
+(number) states. So, we had introduced the operator
+\[
+   \hat{n} \Ket{n} = n \Ket{n}
+\]
+
+We had showed that this operator does not commute with the phase operator $
+\hat{\phi} $.
+
+\[
+   [ \hat{n} , \hat{\phi} ] = i
+\]
+
+We had showed that for all Fock states $ \Braket{n | E | n } = 0 $ and $
+\Braket{n | E^2 | n } \ne 0 $. These relationships express a lack of
+correspondence with classical physics.
+
+\section{Coherent States}
+\label{sec:coherent_states}
+
+Another important class of states are the coherent states. These were introduced
+by Glauber in the 1960s. These states are characterized by being eigenstates of
+the lowering/annihilation operator:
+
+\[
+   \hat{a} \Ket{\alpha} = \alpha \Ket{\alpha}
+\]
+
+$ \alpha $ is not necessarily real and $ \hat{a} $ is not hermitian.
+Additionally, two different coherent states are not necessarily orthogonal:
+
+\[
+   \Ket{\alpha} \hat{a}^\dagger = \Ket{\alpha} \alpha^*
+\]
+
+Thus, we can consider the matrix elements of $ \hat{E} $ in terms of these
+coherent states:
+
+\[
+   \Braket{\alpha | E | \alpha} = i \sqrt{\frac{\hbar \omega}{2 \epsilon_0 V}}
+   \Braket{\alpha | a e^{-i \omega t + i k \cdot r} - a^\dagger e^{i \omega t -i
+   k \cdot r} | \alpha  } = 2 \sqrt{\frac{\hbar \omega}{2 \epsilon_0 V}} |\alpha|
+   \sin(\omega t - k \cdot r - \theta)
+\]
+
+We can calculate the variance of E:
+
+\[
+   \Braket{\alpha | E^2 | \alpha} = \frac{\hbar \omega}{2 \epsilon_0 V} \left( 2
+   |\alpha| \sin(\omega t - k \cdot r - \theta) \right)^2 + \frac{\hbar \omega}{2
+   \epsilon_0 V}
+\]
+
+Thus, we have$ \Delta E = \sqrt{ \Braket{E^2} - \Braket{E}^2 } =
+\sqrt{\frac{\hbar \omega}{2 \epsilon_0 V}}$. This allows us to understand the
+classical result in terms of the results obtained quantum mechanically. Note
+that this expression is time independent.
+
+\begin{align*}
+   \Ket{\alpha} =& \sum_n c_n \Ket{n} \\
+   a \Ket{\alpha} =& \sum_n c_n a \Ket{n} \\
+   =& \sum_{n=0}^\infty c_n \sqrt{n} \Ket{n-1} \\
+   =& \sum_{n=-1}^\infty c_{n+1} \sqrt{n+1} \Ket{n} \\
+   a \Ket{\alpha} =& \sum_{n=0}^\infty c_n \alpha \Ket{n}
+\end{align*}
+
+This allows us to solve for the $ c_{n=1} $ values in terms of the coherent
+states:
+
+\[
+   c_{n+1} = \frac{\alpha^n}{\sqrt{n!}} c_0
+\]
+
+Depending on normalization $ c_0 = \exp( -\alpha^2/2 ) $. Thus, we can express a
+coherent state as:
+
+\[
+   \Ket{\alpha} = e^{-\left| \alpha \right|^2 / 2} \sum_{n=0}^\infty
+   \frac{\alpha^n}{\sqrt{n!}} \Ket{n}
+\]
+
+This is a useful expression if we want to know things like the probability of
+finding n photons given a coherent state $ \Ket{\alpha} $. This can be found to
+be:
+
+\[
+   p_n = \frac{\left( \left| \alpha \right|^2 \right)^n e^{-\left| \alpha
+   \right|^2} }{n!}
+\]
+
+This is the well-known Poisson distribution. Suppose we want to calculate the
+expectation value of the number of photons: $ \Braket{n} $:
+
+\begin{align*}
+   \overline{n} = \Braket{n} =& \sum_n n p_n \\
+   =& \sum_n n \frac{\left( \left| \alpha \right|^2 \right)^n e^{-\left|
+\alpha \right|^2} }{n!} \\
+=& \left| \alpha \right|^2
+\end{align*}
+
+So, $ \Braket{\alpha | a^\dagger a | \alpha} = \left| \alpha \right|^2 $. So,
+we can re-express the distribution as:
+
+\[
+   p_n = \frac{\overline{n}^n e^{-\overline{n}} }{n!}
+\]
+
+!! Insert histogram of Poisson distribution !!
+
+We can consider the width of the probability distribution:
+
+\[
+   \Braket{n^2} = \sum_n n^2 p_n = \left| \alpha \right|^2 + \left| \alpha
+   \right|^4
+\]
+
+and $ \Delta n = \sqrt{\Braket{n^2}-\Braket{n}^2} = \sqrt{\left| \alpha
+\right|^2} = \sqrt{\overline{n}} $. Thus, the fractional uncertainty: $
+\frac{\Delta n}{n} \rightarrow 0 $ for large $ n $. Let's now consider the
+quadrature operators:
+
+\[
+   \Braket{q} = \Braket{\alpha | \frac{1}{\sqrt{2}} \left( a + a^\dagger \right)
+   | \alpha} = \frac{1}{\sqrt{2}} \left( a + a^\dagger \right)
+\]
+
+\[
+   \Braket{q^2} = \frac{1}{2}\left( \alpha^2 + {a^*}^2 + 2 \left| \alpha
+      \right|^2 + 1 \right)
+\]
+
+This implies that $ \Delta q = \frac{1}{\sqrt{2}} $ and $ \Delta p =
+\frac{1}{\sqrt{2}} $. Recall that $ \Delta p \Delta q \ge \frac{1}{2} $. Thus,
+coherent states are minimum uncertainty states. We can express the free-time
+evolution of the annihilation operator as:
+
+\[
+a \rightarrow a e^{-i \omega t}  
+\]
+
+such that
+
+\[
+   a(t) \Ket{\alpha} = \alpha e^{-i \omega t} \Ket{\alpha} 
+\]
+
+\section{Poisson Distribution}
+
+This distribution arises out of a study of the following scenario. Consider the
+following conditions that will construct the scenario:
+
+\begin{itemize}
+   \item The probability of an event in some time $ \dif t$ is $\lambda \dif t$
+   \item The probability of two events in the same time is negligible
+   \item The events are independent
+\end{itemize}
+
+Such a problem has the following result:
+
+\[
+   p_n (t+dt) = p_n(t) \left( 1 - \lambda dt \right) + p_{n-1}(t) \lambda dt
+\]
+
+This can be understood by realizing that there are two ways in which $n$ events
+can occur in time $ t $. They can all happen before time $ t $ or $ n-1 $ can happen
+before time $ t $ and 1 can happen in the time $ \dif t $ . 
+
+Above, $ p_n $ indicates the probability of n events occurring. Rearranging the
+terms in this expression:
+
+\[
+   p_n(t+dt) - p_n(t) = \lambda \left[ - p_n(t) + p_{n-1}(t) \right] dt
+\]
+
+\[
+   \od{p_n}{t} = \lambda \left[ p_{n-1}(t) - p_n(t) \right]
+\]
+
+This is recursive set of differential equations. The number of events that
+occurs is non-negative. This yields the following initial conditions:
+
+\[
+   p_0(0) = 1 \quad \text{and} \quad p_n(0) = 0 \quad \text{and} \quad p_{-1}(t) = 0
+\]
+
+Solving this recurrence relation for $ p_n(t) $ yields:
+
+\[
+   p_n(t) = \frac{\left( \lambda t \right)^n}{n!} e^{-\lambda t}  
+\]
+
+This agrees with the previous expression for the Poisson distribution if
+$\overline{n} = \lambda t$. So, if you're counting events and they don't happen
+very often, then the count statistics that you can expect to obtain will be
+Poissonian.
+
+We can start to develop mathematical tools for working with these states.
+
+\section{The Displacement Operator}
+
+Consider some operator $ D $ defined in the following way $ D(\alpha) =
+\exp(\alpha a^\dagger - \alpha^* a) $. To facilitate future math we will now
+introduce Glauber's identity (disentangling theorem).
+
+\subsection{Glauber's Identity (Disentangling Theorem)}
+\[
+   e^{\frac{1}{2}[A,B]} e^{A+B} = e^A e^B 
+\]
+
+This is true under the condition that $ [A,[A,B]] = 0 = [B,[A,B]] $. The proof
+follows:
+
+\[
+   f(x) = e^{Ax} e^{Bx} \quad \text{$ A $ and $ B $ are operators}
+\]
+
+Consider $ \od{f}{x} = A e^{Ax} e^{Bx} + e^{Ax} B e^{Bx} $. By inserting
+identity in the form $ e^{-Ax} e^{Ax} $ we can write:
+
+\begin{align*}
+   \od{f}{x} =& A e^{Ax} e^{Bx} + e^{Ax} B e^{-Ax} e^{Ax} B \\
+   =& \left( A + e^{Ax} B e^{-Ax} \right) f(x) \\
+   =&  \left( A + B + [A,B]x \right) f(x) \\
+   =& \left( \alpha + \beta x \right) f(x)
+\end{align*}
+
+Now, we are assuming that $ [A,[A,B]] = [B,[A,B]] = 0 $ so we have:
+
+\[
+   f = e^{\left( A+B \right)x} e^{\frac{1}{2} [A,B]x^2}   
+\]
+
+When $ x = 1 $  we have $ e^{A}e^{B} = e^{A+B}e^{\frac{1}{2}[A,B]} $.
+
+We can use this identity to write the displacement operator in a different way:
+
+\[
+   D(\alpha) = e^{-\frac{1}{2}\left| \alpha \right|^2} e^{\alpha a^\dagger} e^{-
+   \alpha^* a} 
+\]
+
+This is in the so-called normal ordering form where all of the lower operators
+are on the right and the raising operators are on the left.
+
+The coherent states can be expressed in terms of this operator as:
+
+\[
+   \Ket{\alpha} = D(\alpha) \Ket{0}
+\]
+
+So,
+
+\begin{align*}
+   D(\alpha) =& e^{-\frac{1}{2} \left| \alpha \right|^2} e^{\alpha a^\dagger}
+   \sum_n \frac{- { \alpha^* }^n }{n!} a^n \Ket{0}  \\
+   =& e^{-\frac{1}{2} \left| \alpha \right|^2} \sum_n \frac{\alpha^n}{n!}
+   {a^\dagger}^n \Ket{0} \\
+   =& \Ket{\alpha}
+\end{align*}
+
+This displacement operator has some nice properties:
+
+\begin{itemize}
+   \item $ D^\dagger(\alpha) D(\alpha) = D(\alpha) D^\dagger(\alpha) = 1 $
+   \item $ D^\dagger (\alpha) = D^{-1} (\alpha) = D(-\alpha) $ 
+   \item $ D^\dagger(a) a D(\alpha) = a + \alpha \enskip \text{( BCH )} $ 
+   \item $D^\dagger(\alpha) a^\dagger D(\alpha) = a^\dagger + a^*$
+\end{itemize}
+
+We can use these identities in some nice ways. Consider the following:
+
+\begin{align*}
+   \Braket{\alpha | {a^\dagger}^2 a^2 | \alpha} =& \Braket{0 | D^\dagger(\alpha)
+   a^\dagger_n a^\dagger_n a_n a_n D(\alpha) | 0} \\
+   =& {\alpha^*}^2 \alpha^2 = \left| \alpha \right|^4
+\end{align*}
+
+Let's now consider the effect of cascading multiple displacement operators:
+
+\[
+   D(\alpha)D(\beta) = e^{i \Im{(\alpha\beta^*)} } D(\alpha+\beta)
+\]
+
+The coherent states are not necessarily orthogonal so they are kind of awkward
+to use as a basis.
+
+\begin{align*}
+   \Braket{\beta | \alpha} =& \Braket{0 | D^\dagger(\beta) D(\alpha) | 0} \\
+   =& e^{i \Im{(-\beta \alpha^*)}} \Braket{0 | D(-\beta \alpha) | 0} \\
+   =& e^{i \Im{\left( -\beta \alpha \right)}} e^{-\frac{\left| \alpha - \beta
+\right|^2}{2}} \\
+=& e^{-\left( \left| \alpha \right|^2 + \left| \beta \right|^2 \right)/2 +
+\alpha\beta^*}  
+\end{align*}
+
+If $\left| \alpha - \beta \right| $ is large then the overlap will be small.
+Analogous to $ \sum_n \ket{n} \bra{n} = 1 $ for coherent states is:
+
+\[
+   \int_{-\infty}^\infty \int_{-\infty}^\infty \dif \Im{(\alpha)} \dif
+   \Re{(\alpha)} \Ket{\alpha}\Bra{\alpha} = \pi 1
+\]
+
+One consequence of all of this is that any operator $ X $ is completely
+specified by all of the terms of the form :
+
+\[
+   \Braket{\alpha | X | \alpha}
+\]
+
+Note that this isn't typically the case. We normally need off-diagonal matrix
+elements in addition to all of the diagonal elements. This can be seen by
+considering:
+
+\begin{align*}
+   \Braket{\alpha | X | \alpha} =& e^{- \left| \alpha \right|^2} \sum_n \sum_m
+   \frac{{\alpha^*}^m {\alpha^n}}{\sqrt{m!n!}} \Braket{m | X | n}  \\
+   \intertext{Now, for two operators $ Y $ and $ Z $ that have the property that
+   $ \Braket{\alpha | Y | \alpha } = \Braket{\alpha | Z | \alpha} $ consider $ X
+   = Y - Z $.  Then, }
+   \sum_n \sum_m \frac{{\alpha^*}^m \alpha^n}{\sqrt{m!n!}} \Braket{m | X | n} =
+   0 \\
+   \intertext{This is the form of a Taylor series where all of the coefficients
+   are zero (such that the right hand side of the above expression is zero).}
+   F(\alpha,\alpha^*) = \sum_n \sum_m \frac{{\alpha^*}^m \alpha^n}{\sqrt{m!n!}}
+   \Braket{m | X | n}
+\end{align*}
+
+Now, we know that all of the matrix elements are zero, so, $X = Y-Z$ is zero
+everywhere. Thus, $Y$ and $Z$ were specified completely just by their diagonal
+elements (since $X$ was only formulated in terms of the diagonal elements of $Y$
+and $Z$).
+
+\section{Thermal States}
+\label{sec:thermal_states}
+
+\begin{itemize}
+   \item Thermal states have no time evolution : $ \rho = \sum_n = p_n
+      \Ket{n}\Bra{n} $ 
+   \item Thermal light is the state of maximum entropy for a fixed amount of
+      energy
+\end{itemize}
+
+The second property above can be shown by considering the Von-Neumann entropy of
+a thermal state $\rho$:
+
+\[
+   S = -k_B \sum_n p_n \ln(p_n) - a (\sum_n p_n - 1) - b ( \sum_n p_n E_n -E )
+\]
+
+where $ a $ and $ b $ are Lagrange multipliers and $ E $ is the total energy.
+The first term is used to normalize the expression of Von-Neumann entropy and
+the second term is used to conserve energy. If we maximize this:
+
+\[
+   \pd{S}{p_n} = 0 = -k_b \left( \ln p_n + 1 \right) - a - b E_n \rightarrow 
+   p_n = \frac{1}{e^{a/k_B + 1}}e^{\frac{-b E_n}{k_B}}
+\]
+
+We can recognize $ b = 1/\text{Temperature} $. So, now,
+
+\[
+   p_n = \exp(-\frac{E_n}{k_B T}) / \sum_n \exp(\frac{-E_n}{k_B T})
+\]
+
+For a harmonic oscillator $ E_n = \hbar \omega \left( n + \frac{1}{2} \right) $.
+Using this we can express $ p_n $ as:
+
+\[
+   p_n = \frac{\overline{n}^n}{\left( \overline{n} + 1 \right)^{n+1}}
+\]
+
+This is the probability distribution for a thermal state. We can observe that:
+
+\[
+   p_{n+1} = \frac{\overline{n}}{\overline{n} +1 } p_{n-1}
+\]
+
+such that $p_n$ is monotonically decreasing function of n.
+!! Insert histogram of $ p_n $ !!
+
+
+We can calculate the uncertainty in $ n $:
+
+\[
+   \Braket{n^2} = \sum_n n^2 p_n = \overline{n} + 2 \overline{n}^2
+\]
+
+So, $ \Delta n = \sqrt{\Braket{n^2} - \Braket{n}^2} = \sqrt{ \overline{n}^2 +
+\overline{n}}$ 
+
+\section{Thermal Operator}
+\label{sec:thermal_operator}
+The goal of this operator is going to be to create thermal states out of the
+vacuum state. But, it needs to create mixed states. So, it will act in a larger
+Hilbert space. Then, we'll have to trace out some of the space. We will
+introduce an ancillary mode $\tilde{a}$.
+
+Defining the thermal operator:
+
+\[
+   T(\theta) = \exp(\theta(a^\dagger \tilde{a}^\dagger - a \tilde{a}))
+\]
+
+This is in the form of a two-mode squeezing operator. With coherent states we
+could use Glauber's theorem because the two operators in the exponential
+commuted with their commutator. Here, we don't have that. But, it still is
+possible to write this operator in normal form:
+
+\[
+   T(\theta) = sech(\theta) \exp(a^\dagger \tilde{a}^\dagger \tanh(\theta))
+   \exp((a^\dagger a + \tilde{a}^\dagger \tilde{a})\ln(sech(\theta))) \exp(-a
+   \tilde{a} \tanh(\theta))
+\]
+
+We only have to consider the effect of the first two parts of this operator when
+acting on the ground state. The last terms kill any ground state term.
+
+\begin{align*}
+   T(\theta) =& \Ket{0,0} \\
+   =& sech(\theta) \exp(a^\dagger \tilde{a}^\dagger \tanh(\theta)) \Ket{0,0} \\
+   =& sech(\theta) \sum_n \tanh^n(\theta) \Ket{n,n} = \rho \\
+   Tr_{\tilde{a}}(\rho) =& sech^2(\theta)\tanh^{2n}(\theta) = \left( 1-
+\tanh^2(\theta) \right) \left( \tanh^2(\theta) \right)^n \\
+\end{align*}
+
+This is in the form of a thermal distribution where $ \tanh^2(\theta) =
+\exp(-\frac{\hbar \omega}{k_B T}$). The strength of the thermal operator is related
+to the temperature of the system.
+
+If we consider the following combination of operators $ T^\dagger(\theta) a
+T(\theta) $ .
+
+\begin{align*}
+   T^\dagger(\theta) a T(\theta) =& a + \left[ \theta \left( a \tilde{a} -
+   a^\dagger \tilde{a}^\dagger \right), a \right] + \frac{\theta^2}{2} \left[
+\ldots \right] \\
+=& a \left( 1 + \frac{\theta^2}{2} + \frac{\theta^4}{4!} + \ldots \right) +
+\tilde{a}^\dagger \left( \theta + \frac{\theta^3}{3!} + \frac{\theta^5}{5!} +
+\ldots \right) \\
+=& cosh(\theta)a + sinh(\theta) \tilde{a}^\dagger
+\end{align*}
+
+Likewise,
+
+\[
+   T^\dagger(\theta) a^\dagger T(\theta) = cosh(\theta) a^\dagger +
+   sinh(\theta) \tilde{a}
+\]
+
+These are the Bogoliubov transformations. They can describe the mode
+transformations seen in Hawking radiation and the Unruh effect. If we want to
+calculate the number of expected photons in a number state:
+
+\begin{align*}
+   \Braket{n}_{thermal} =& \Braket{0,0 | T^\dagger(\theta) a^\dagger a T(\theta)
+   | 0,0} \\
+   =& \Braket{0,0| T^\dagger a^\dagger T T^\dagger a T | 0,0} \\
+   \intertext{The above holds because $T$ is formed from exponentiated hermitian
+   operators and, as such, is unitary.}
+   =& \Braket{0 | \left( cosh(\theta) a^\dagger + sinh(\theta) \tilde{a} \right)
+   \left( cosh(\theta)a + sinh(\theta) \tilde{a}^\dagger \right) | 0,0}\\
+   =& \Braket{0,0| cosh^2(\theta) a^\dagger a + sinh^2(\theta) \tilde{a}
+   \tilde{a}^\dagger| 0,0} + \text{crossterms}\\
+   =& sinh^2(\theta)
+\end{align*}
+
+Thermal state generation and analysis is difficult, so typically
+experimentalists will use ``pseudothermal'' states. These states are generated
+by emitting a monochromatic coherent light source at a piece of rotating ground
+glass. The ground class is pitted and each pit emits coherent light. Some
+distance away from these emitters is placed a collimator that transmits a sum of
+all of coherent states. You can show that the probability of obtaining $\alpha$
+out of that collimator is:
+
+\[
+   P(\alpha) = \frac{1}{\pi \overline{n}} \exp(-\frac{\left| \alpha
+   \right|^2}{\overline{n}})
+\]
+
+Since we know the probability for every $ \alpha $ then we know everything (we
+have already shown that an operator is uniquely defined if only the diagonal
+matrix elements are given when using the coherent state basis). The effective
+state, then, is
+
+\[
+   \rho = \int \dif^2 \alpha p(\alpha) \Ket{\alpha}\Bra{\alpha}
+\]
+
+If we now allow $ \alpha = r e^{i \theta} $ then we can write:
+
+\[
+   \rho = \frac{1}{\pi \overline{n}} \int_0^\infty \int_0^{2\pi} r \dif r \dif
+   \theta e^{-r^2/\overline{n}}\sum_n e^{-r^2/2}\frac{r^n e^{i n \theta}
+   }{\sqrt{n!}}\Ket{n} \sum_m e^{-r^2/2} \frac{r^m e^{-i m \theta} }{\sqrt{m!}} \Bra{m}  
+\]
+
+This can be re-expressed as:
+
+\[
+   \rho = \frac{1}{\pi \overline{n}} \sum_n \sum_m \int_0^\infty \dif r e^{-r^2 \left(
+   \frac{1}{\overline{n}} +1 \right)}
+   \frac{r^{n+m+1}}{\sqrt{n!m!}}\Ket{n}\Bra{m} \int_0^{2\pi} \dif \theta e^{i
+   \left( n-m \right)\theta}  
+\]
+
+and, finally:
+
+\[
+   \rho = \frac{2}{\overline{n}} \sum_n \int_0^\infty \dif r e^{-r^2 \left(
+   \frac{1}{\overline{n}} + 1 \right)} \frac{r^{2n+1}}{n!} \Ket{n}\Bra{n}
+\]
+
+
+\end{document}

@@ -1,0 +1,45 @@
+\documentclass{article}
+\usepackage{fullpage}
+\usepackage[]{amsmath}
+\usepackage[]{siunitx}
+\usepackage[]{gensymb}
+\usepackage[]{steinmetz}
+\usepackage[]{chngcntr}
+\usepackage[]{dsfont}
+\usepackage[]{hyperref}
+\usepackage[]{xcolor}
+\usepackage[]{float}
+\usepackage[final]{pdfpages}
+\hypersetup{
+    colorlinks,
+    linkcolor={blue!50!black},
+    citecolor={blue!50!black}
+}
+\numberwithin{equation}{section}
+\renewcommand{\thesection}{}
+\renewcommand{\thesubsection}{}
+\renewcommand{\thesubsubsection}{}
+\renewcommand{\theequation}{\thesection\arabic{equation}}
+\makeatletter
+\def\@seccntformat#1{\csname #1ignore\expandafter\endcsname\csname the#1\endcsname\quad}
+\let\sectionignore\@gobbletwo
+\let\latex@numberline\numberline
+\def\numberline#1{\if\relax#1\relax\else\latex@numberline{#1}\fi}
+\makeatother
+\input{TitlePage}
+\begin{document}
+\maketitle
+\tableofcontents
+\input{Foreword}
+\input{A1P1}
+\input{A1P2}
+\input{A1P3}
+\input{A1P4}
+\input{A1P5}
+\input{A1P6}
+\input{A1A1}
+\input{A1A2}
+\input{A1A3}
+\input{A1A4}
+\input{A1A5}
+\end{document}

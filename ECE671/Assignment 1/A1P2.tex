@@ -1,0 +1,270 @@
+\section{Different Tuning Circuits}
+\addtocounter{section}{1}
+\setcounter{equation}{0}
+\subsection{Type 1: Single Open Stub Tuner}
+
+The goal is to match a load impedance to a transmission line by placing a stub
+of a certain length $l_s$ a certain distance $l_l$ away from a load. To be
+matched means that the input impedance looks like the characteristic impedance
+$Z_c$. To the source, the two paths (the stub and the load) will seem to be
+connected in parallel. Thus, quite generally:
+
+\[ 
+        Z_{in} = Z_{stub} || Z'_l
+\]
+
+where $Z'_l$ is the impedance of the load transformed by a certain length
+$l_{l}$ down the line. A load of impedance $Z_l$ looks the following
+impedance when we're a length ``l'' down the line:
+
+\[ 
+        Z'_l(l) = Z_c \frac{Z_l + j Z_c \tan \beta l}{Z_c + j Z_l \tan \beta l} 
+\]
+
+However, because we are combining parallel impedances it will be easier to deal
+with admittances:
+
+\[ 
+        Y_{in} = Y_{stub} + Y'_l 
+\]
+
+where
+
+\[ 
+        Y'_l(l_l) = Y_c \frac{Y_l + j Y_c\tan\beta l_l}{Y_c + j Y_l \tan \beta
+        l_l}
+\]
+
+Our goal is to make $\Re \left( Y_{in} \right) = Z_c$ and $ \Im \left( Y_{in}
+\right) = 0$. We have an expression for $Y'_l$ already. We'd like an expression
+for $Y_{stub}$. However, $Y_{stub}$ is just a infinite impedance (zero
+admittance) load. Thus, we can use the same equation as before before:
+
+\begin{align*}
+    Y_{stub}(l_s) &= Y_c \frac{Y_s + j Y_c\tan\beta l_s}{Y_c + j Y_s \tan \beta
+       l_s}  \\
+       &= Y_c \frac{0 + jY_c\tan\beta l_s}{Y_c + j0\tan\beta l_s} \\
+       &= j Y_c \tan \beta l_s
+\end{align*}
+
+Unfortunately, the load can not, in general, be simplified any further. Thus,
+the input admittance is:
+\begin{align*}
+    Y_{in} = Y_c \left( \frac{Y_l + j Y_c\tan\beta l_l}{Y_c + j Y_l \tan \beta
+    l_l} + j \tan \beta l_s \right)
+\end{align*}
+
+From this, we can consider the following two equations:
+
+\begin{align*}
+    1 = \Re \left( Y_{in} \right) \\
+    0 = \Im \left( Y_{in} \right)
+\end{align*}
+
+These two equations can be solved simultaneously for pairs of $l_l$ and $l_s$
+that satisfy them. Given the transcendental nature of these two solutions it is
+not, in general, possible to find an analytic solution. However, computers are
+more than capable, these days, of determining the roots of such equations with
+much ease. Mathematica was employed to find the following roots:
+
+\[ 
+        \beta_{l_l} \approx .955~\text{radians \quad} \beta_{l_s} \approx
+        2.53~\text{radians}
+\]
+
+These values were used in ADS to simulate the frequency response of the single
+stub tuner.
+
+%TODO: Make a plot of these for alpha = 2 (since the load is 100 ohms)
+%TODO: Solve for l_s and l_l
+
+\subsection{Type 2: LC Matching Network}
+The goal in constructing a matching network for the load using an LC network is
+going to be similar as that that was performed in the previous section. Namely,
+our goal is going to be to make $Z_{in} = Z_c$ such that $\Re \left( Z_{in}
+\right) = Z_c$ and $\Im \left( Z_{in} \right) = 0$. It is easy, in this case to
+construct the input impedance as 
+
+\[ 
+        Z_{in} = Z_A + Z_B || Z_l 
+\]
+
+The only knowledge we have, currently, regarding $Z_A$ and $Z_B$ is that both
+impedances are purely imaginary. We know that $Z_l$ is purely real ($
+\SI{100}{\ohm}$). Thus, we start by considering $\Re \left( Z_{in} \right)$.
+
+\begin{align*}
+    \Re(Z_{in}) = Z_c &= \Re ( \frac{Z_B Z_l}{Z_B + Z_l} )\\
+                      &= \Re ( \frac{j X_B R_l}{j X_B + R_l} ) \\
+                      &= \frac{ X_B^2 R_l}{X_B^2 + R_l^2}
+\end{align*}
+
+Considering the imaginary part of $Z_{in}$
+
+\begin{align}
+    \Im \left( Z_{in} \right) = 0 &= \Im \left( j X_A + \frac{j X_B
+    R_l}{j X_B + R_l} \right)	 \\
+    &= \Im \left( j X_A + \frac{j X_B R_l \left( R_l - j X_B \right)}{
+    X_B^2 + R_l^2} \right) \\
+    &= X_A + \frac{ X_B R_l^2}{ X_B^2 + R_l^2}
+\end{align}
+
+The real part of $Z_{in}$ only involves $Z_B$. So, we can easily solve for $Z_B$
+that way. Doing so yields:
+
+\[ 
+    X_B^2 = \frac{R_l^2 Z_c}{R_l-Z_c}
+\]
+
+Since we have constrained $X_B$ to be real (so that the impedance $Z_B$ is purely
+reactive) we know that we must take the positive root. We also know that this
+only works if $R > Z_c$. If the load is smaller than the characteristic
+impedance than an LC matching network will not work. You must add some
+resistance.
+
+Now, $X_A$ is easily determined:
+
+\begin{align*}
+    X_A &= -\frac{X_B R_l^2}{X_B^2 + R_l^2} \\
+        &= - \frac{X_B}{\frac{Z_c}{R_l - Z_c} + 1} \\
+        &= -\frac{X_B \left( R_l - Z_c \right)}{Z_c + R_l - Z_c} \\
+        &= -\frac{X_B \left( R_l - Z_c \right)}{R_l} \\
+        &= -\sqrt{\frac{Z_c}{R_l - Z_c}} \left( R_l - Z_c \right) \\
+        &= -\sqrt{Z_c \left( R_l-Z_c \right)}
+\end{align*}
+
+If one allows, again, $R_l = \alpha Z_c$ then
+
+\[ 
+    X_B^2 = \frac{\alpha^2 Z_c^2}{\alpha - 1} 
+\]
+
+and 
+
+\[ 
+        X_A = -Z_c\sqrt{\alpha - 1}
+\]
+
+%TODO; Determine C and L from the above equations.
+
+Plugging in the relevant values $\alpha = \frac{R_l}{Z_c} = 2$ and $Z_c = 2$
+yields the following $\SI{50}{\ohm}$
+
+\[ 
+        X_A = - Z_c = -\SI{50}{\ohm} \text{\quad and \quad} X_B = 2 Z_c = \SI{100}{\ohm}
+\]
+
+This implies that $Z_A$ is a capacitor of value $Z_A = j X_A = \frac{1}{j\omega
+C_A}$ and $Z_B$ is an inductor of value $Z_B = j X_B = j \omega L_B$. Thus:
+
+\[
+\arraycolsep=20pt
+\begin{array}{cc}
+    C_A = -\frac{1}{\omega X_A} = 
+        \SI[parse-numbers = false]{\frac{1}{50\omega}}{\farad} & 
+    L_B = \frac{X_B}{\omega} = 
+        \SI[parse-numbers = false]{\frac{100}{\omega}}{\henry}
+\end{array}
+\]
+
+The reflection coefficient for the load and the matching network can be found by
+considering $ \Gamma_{in} = \frac{Z_{in} - Z_c}{Z_{in} + Z_c} $. In this case,
+$\Gamma_{in}$ is a function of frequency.
+
+\begin{align*}
+    Z_{in} &= Z_A + Z_B||Z_l \\
+           &= j X_A + \frac{j X_B R_l }{jX_B + R_l} \\
+           &= \frac{1}{j \omega \frac{1}{50 \omega_m}}~\Omega + \frac{j \omega
+\frac{100}{\omega_m}R_l}{j \omega \frac{100}{\omega_m} + R_l}~\Omega \\
+&= \frac{50 \omega_m}{j \omega}~\Omega + \frac{j \omega 100 R_l}{j \omega 100 +
+\omega_m R_l}~\Omega
+\end{align*}
+
+In the above, $\omega_m$ is the frequency at which we have chosen to match our
+network. Let's consider a parameter $\gamma = \frac{\omega}{\omega_m}$ which we
+will adjust from $.5\omega_m \rightarrow 1.5\omega_m$. The previous expression
+for $Z_{in}$ can be written, now, as:
+
+\[ 
+        Z_{in} = \frac{50}{j \gamma}~\Omega + \frac{j 100 \gamma R_l}{j 100 \gamma +
+        R_l}~\Omega
+\]
+
+Since 100 bears a nice relationship with $R_l = 100 \Omega $ we can simplify
+$Z_{in}$ even further in this particular case:
+
+\[ 
+        Z_{in} = \frac{50}{j \gamma}~\Omega + \frac{j \gamma }{j \gamma +
+        1}~\Omega
+\]
+
+Let's assume an operation frequency of \SI{1}{\giga\hertz} as an example. This
+determines a capacitance of \SI[parse-numbers=false]{\frac{1}{50\cdot 2\cdot \pi
+\cdot 1 \cdot 10^{9}}}{\farad} $ \approx $ \SI{3.18}{\pico\farad} and an
+inductance of \SI[parse-numbers=false]{\frac{100}{2\pi\cdot 10^{9}}}{\ohm}
+$\approx$ \SI{15.9}{\nano\henry}.
+
+These values were used in ADS to simulate the reflection coefficient as a
+function of frequency. 
+\subsection{Type 3: Double Open Stub Tuner}
+
+This problem is very similar to Problem 2a with the single stub tuner. The only
+difference, now is that we have two stubs instead of one. We will follow a very
+similar path as we did for problem 2a to solve for the matching network.
+
+\begin{align}
+    Y_{in} = Y_{stub_2} + Y_{stub_1}' + Y_l'
+\end{align}
+
+Where, here, $Y'_{stub_1}$ is the impedance of the stub 1 transformed from the
+end of stub 1 to the start of stub 2. Like before:
+
+\begin{align*}
+    Y_l'(l_{l_1}) &= Y_c \frac{Y_l + j Y_c \tan \beta l_{l_1}}{Y_c + j Y_l \tan
+    \beta l_{l_1}} \\
+\end{align*}
+
+Where, unlike before, we have to transform the impedance of stub 1 (which is
+$l_{s_1}$ long) and the load a length of $l_{l_1}$ along the line. $Y_{stub_1}(l_{s_1}) = j Y_c
+\tan \beta l_{s_1}$. Right at the first stub, though, the admittance of both the
+first stub and the load is:
+
+\[ 
+        Y_1 = j Y_c \tan \beta l_{s_1} + Y_c \frac{Y_l + j Y_c \tan \beta
+        l_{l_1}}{Y_c + j Y_l \tan \beta l_{l_1}}
+\]
+
+
+
+Thus, the total admittance at the 2nd stub (closer to the source, farther from
+the load) is:
+
+\begin{align*}
+    Y_2 =  Y_c \frac{Y_1(l_{s_1},l_{l_1}) + j Y_c \tan \beta l_{l_2}}{Y_c + j
+        Y_1(l_{s_1},l_{l_1}) \tan \beta{l_{l_2}}}
+\end{align*}
+
+
+This admittance must relate to the admittance of stub 2 in the following way:
+
+\begin{align*}
+    \Re \left( Y_2 \right) &= Y_c \\
+    \Im \left( Y_2 \right) &= -\Im \left( Y_{stub_2} \right) = - \Im \left( j
+Y_c \tan \beta l_{s_2} \right)
+\end{align*}
+There are four unknowns in the above equation for the admittance: $l_{s_1}, l_{s_2},
+l_{l_1} \text{and~} l_{l_2}$. We have been given, in addition to the problem
+statement, the information that $l_{l_2} = l_{l_1} = \frac{\lambda}{8}$. I'm
+going to assume that both stubs are the same length and allow the distance from
+stub 1 to the load to vary. Using Mathematica, again, to solve for these roots
+yields:
+
+\[ 
+        \beta l_{s_2} \approx 65.8 \degree \text{\quad and } \beta l_{s_1}
+        \approx 54.1 \degree
+\]
+
+\subsection{Comparison of Different Matching Networks}
+
+It seems that based on the bandwidths of the reflection coefficients alone, the
+LC matching network is the best option.

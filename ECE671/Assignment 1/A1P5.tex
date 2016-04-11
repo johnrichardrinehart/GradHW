@@ -1,0 +1,104 @@
+\section{Series-Connected Two-Port Networks}
+\setcounter{equation}{0}
+\addtocounter{section}{1}
+
+What's important to realize in this problem is that the same current that flows
+out of the transistor's emitter flows into the inductor. Thus, the inductor (a
+2-port device) is connected in series with the transistor (a 2-port device). A
+nice way to solve for the `black box'' that represents series-connected two port
+devices is to use the impedance matrix. The relationship between the impedance
+matrix and the voltages and currents of the two port is:
+
+\[ 
+    \begin{pmatrix} V_1 \\ V_2 \end{pmatrix} =
+    \begin{pmatrix} Z_{11} & Z_{12} \\ Z_{21} & Z_{22} \end{pmatrix} 
+    \begin{pmatrix} I_1 \\ I_2 \end{pmatrix}
+\]
+
+So, if we consider two two-port networks given by two impedance matrices $Z_a$
+and $Z_b$ respectively and we know that $I_{1_a} = I_{1_b}$ and that $I_{2_a} =
+I_{2_b}$
+then we can say that
+
+\[ 
+    \begin{pmatrix} V_{1} \\ V_{2} \end{pmatrix} =  \\
+    \begin{pmatrix} V_{1_a} \\ V_{2_a} \end{pmatrix} + \begin{pmatrix} V_{1_b} \\
+    V_{2_b} \end{pmatrix} =
+    Z_a \begin{pmatrix} I_{1_a} \\ I_{2_a} \end{pmatrix} + Z_b \begin{pmatrix}
+    I_{1_b} \\ I_{2_b} \end{pmatrix} =
+    \left( Z_a+Z_b \right) \begin{pmatrix} I_{1} \\ I_{2} \end{pmatrix}
+\]
+
+We are given scattering parameters for the transistor and we don't know the
+scattering parameters or the impedance parameters for the inductor so we might
+seem stuck. However, as shown in the appendix it is possible to transform
+%TODO: Type up tho S -> Z Derivation
+between scattering parameters and impedance parameters. So, if we transform the
+transistor parameters to impedance parameters and then add the to-be-determined
+inductor impedance parameters we can add these two impedance matrices together
+and go back to scattering parameters.
+
+Determining the impedance parameters of the inductor is not too hard. To
+determine the diagonal entries we need to drive one port of the inductor while
+leaving the other port open. The voltage with which we drive the inductor will
+determine a current through the inductor. The voltage we choose at port one divided by the
+current we measure through port one determines $Z_{11}$ and likewise for
+$Z_{22}$. By inspection it is easy to determine that $Z_{11}$ and $Z_{22}$ are
+both $j \omega L$. For the off diagonal terms we need to drive one port with
+current and measure the voltage built up across the other port when it is open.
+However, again, any current, $I_1$ with which we drive port 1 will determine a
+voltage across port 2 that is $j \omega L I_1$. So, $Z_{21} = Z_{12} = Z_{11} =
+Z_{22} = j \omega L$.
+
+\[ 
+    Z_I = \begin{pmatrix} j \omega L & j \omega L \\ j \omega L & j \omega L
+    \end{pmatrix} 
+\]
+
+$Z_I$ is the impedance matrix of the inductor. To obtain the impedance
+parameters for the transistor we consider the following equations:
+
+\begin{align}
+    Z_{11} &= Z_c \frac{\left( 1+S_{11} \right)\left( 1-S_{22}
+        \right)+S_{12}S_{21}}{\left( 1-S_{11} \right)\left( 1-S_{22}
+\right)-S_{12}S_{21}} \\
+    Z_{12} &= Z_c\frac{2 S_{12}}{\left( 1-S_{11}
+\right)\left( 1-S_{22} \right)-S_{12}S_{21}} \\
+    Z_{21} &= Z_c \frac{2S_{21}}{\left( 1-S_{11} \right)\left( 1-S_{22}
+\right)-S_{12}S_{21}} \\
+Z_{22} &= Z_c \frac{\left( 1-S_{11} \right)\left( 1+S_{22}
+\right)+S_{12}S_{21}}{\left( 1-S_{11} \right)\left( 1-S_{22}
+\right)-S_{12}S_{21}}
+\end{align}
+
+Plugging in the numbers that were given for the transistor yields:
+
+\[ 
+        Z_T \approx \begin{pmatrix}
+            26.6 \phase{-60.4\degree} & 0 \\ 0 & 98.6 \phase{-79.7 \degree}
+        \end{pmatrix} 
+\]
+
+If the inductor is a \SI{100}{\pico\henry} inductor then it has an impedance of
+$j (2\pi \cdot 10*10^{9}).1 \cdot 10^{-9} = 2\pi$~$\Omega$ at 10 GHz. Adding the
+impedance matrix of the inductor, $Z_I$ to that of the transistor, $Z_T$,
+yields:
+
+\[ 
+    Z_T + Z_I \approx \begin{pmatrix}
+        20.8\phase{-62.1 \degree} & j2\pi \\
+        j2\pi & 92.8 \phase{-68.3 \degree}
+    \end{pmatrix} 
+\]
+
+Using the following relationships to convert these impedance parameters to
+scattering parameters yields:
+
+\[ 
+        S_{I+T} \approx \begin{pmatrix}
+            .717 \phase{-138\degree} & .083 \phase{153\degree} \\
+            .083 \phase{153\degree} & .723 \phase{-55.0 \degree}
+    \end{pmatrix} 
+\]
+
+

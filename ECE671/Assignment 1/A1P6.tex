@@ -1,0 +1,68 @@
+\section{Scattering Parameters of an Ideal Transformer}
+\setcounter{equation}{0}
+\addtocounter{section}{1}
+
+The thing to understand about a transformer with an 1:n turns ratio is that the
+relationship between port 2's voltage and port 1's voltage is:
+
+\[ 
+    \frac{V_2}{V_1} = n 
+\]
+
+Similarly, the currents through both ports are related in the following way:
+\[ 
+    \frac{I_1}{I_2} = n 
+\]
+
+Now, in order to find the scattering parameters I will need to use these
+relationships in addition to the following idea: When I drive port 1, there will
+be no incident voltage on port 2, because it's matched. Likewise, when I drive
+port 2, there will be no incident voltage wave on port 1, because it's matched.
+To start, we will find $S_{11}$ and $S_{21}$. When we do this we will drive port
+1. This implies that $V_2^+ = 0$ so that we can write the following for the
+transformer relationships:
+
+\begin{align}
+    n(V_1^+ + V_1^-) = V_2^- \text{\quad Voltage Relationship} \label{port1voltage} \\
+    V_1^- - V_1^+ = n V_2^- \text{\quad Current Relationship}
+    \label{port1current}
+\end{align}
+
+
+\[ 
+        S_{11} = \frac{V_1^-}{V_1^+} = \frac{1+n^2}{1-n^2}
+\]
+
+\[ 
+        S_{21} = \frac{V_2^-}{V_1^+} = \frac{n \left( V_1^+ + V_1^-
+        \right)}{V_1^+} = n \left( 1+S_{11} \right) = \frac{2n}{1-n^2}
+\]
+
+To find $S_{22}$ and $S_{12}$ I will drive port 2 which implies that $V_1^+ =
+0$. This gives me the following transformer relationships:
+
+\begin{align}
+    nV_1^- = V_2^- + V_2^+ \text{\quad Voltage Relationship} \label{port1voltage} \\
+    V_1^- = n \left( V_2^- -  V_2^+ \right) \text{\quad Current Relationship}
+    \label{port1current}
+\end{align}
+
+\[ 
+        S_{22} = \frac{V_2^-}{V_2^+} = \frac{n^2+1}{n^2-1}
+\]
+
+\[ 
+        S_{12} = \frac{V_1^-}{V_2^+} = \frac{n \left( V_2^- - V_2^+
+        \right)}{V_2^+} = n \left(  S_{22} - 1 \right) = \frac{2n}{n^2-1}
+\]
+
+Thus, finally,
+
+\[ 
+        S_{\text{Transformer}} = \begin{pmatrix}
+            \frac{1+n^2}{1-n^2} & \frac{2n}{1-n^2} \\ \frac{2n}{n^2-1} &
+            \frac{n^2+1}{n^2-1}
+        \end{pmatrix} 
+\]
+
+

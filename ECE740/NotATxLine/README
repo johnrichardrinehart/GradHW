@@ -1,0 +1,8 @@
+File name | Description
+Schematic.png | Screen capture of the schematic as simulated in LT SPICE IV
+Schematic.net | SPICE Netlist for the schematic
+Schematic.asc | LT SPICE Schematic file (import directly into LT SPICE IV)
+README | A file that describes the contents of the other files inside the compressed archive named "NotATxLine.zip" (without the quotes)
+Plot.txt | A whitespace delimited file that yields the points plotted in the simulation.
+Plot.png | A screen caputer of the simulation results
+Parameters.xlsx | A spreadsheet that performs design calculations and indicates the design values used for the simulation
