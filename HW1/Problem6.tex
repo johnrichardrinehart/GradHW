@@ -1,0 +1,16 @@
+\begin{homeworkProblem}
+
+\textbf{Prove that $\nabla \big( \frac{1}{|\vec{x}-\vec{y}|}\big) = \frac{\vec{x}-\vec{y}}{|\vec{x}-\vec{y}|^3}$. Use this to prove that $\nabla x \vec{E} = 0$ and why we can define scalar potential as: $\vec{E} = \nabla V$.}
+
+Considering $\nabla \big( \frac{1}{|\vec{x}-\vec{y}|}\big)$.
+
+\begin{align}
+\nabla \big( \frac{1}{|\vec{x}-\vec{y}|}\big) &= \nabla( \frac{1}{\sqrt{(x_1^2-y_1^2)^2+(x_2^2-y_2^2)+(x_3^3-y_3^2)}} ) \nonumber \\
+&= \pds{x_1}  \frac{1}{\sqrt{(x_1^2-y_1^2)^2+(x_2^2-y_2^2)+(x_3^3-y_3^2)}}\hat{x_1} \nonumber \\ & + \pds{x_2}\frac{1}{\sqrt{(x_1^2-y_1^2)^2+(x_2^2-y_2^2)+(x_3^3-y_3^2)}}\hat{x_2} \nonumber \\ &+ \pds{x_3}  \frac{1}{\sqrt{(x_1^2-y_1^2)^2+(x_2^2-y_2^2)+(x_3^3-y_3^2)}}\hat{x_3} \nonumber \\
+&= \frac{(x_1 - y_1)\hat{x_1} + (x_2 - y_2) \hat{x_2} + (x_3 - y_3) \hat{x_3}}{\big((x_1^2-y_1^2)^2+(x_2^2-y_2^2)+(x_3^3-y_3^2)\big)^{1.5}} \nonumber \\
+&= \frac{\vec{x}-\vec{y}}{|\vec{x}-\vec{y}|^3} \nonumber
+\end{align}
+
+Considering the integral formulation of $\vec{E} = k \int \frac{\rho(x')}{|\vec{x}-\vec{x'}|^3}(\vec{x}-\vec{x'})d\tau'$. This can be rewritten using the identity derived earlier: $\vec{E} = k \nabla \int \rho(\vec{x'})\frac{1}{|\vec{x}-\vec{x'}|} d\tau'$. Thus, the electric field has been expressed as the gradient of a scalar function (the result of the integral). However, a well-known (and easy to prove) vector identity claims that $\nabla \times \nabla f = 0$ for any scalar function f. Thus, the $\nabla \times \vec{E} = 0$.
+
+\end{homeworkProblem}
