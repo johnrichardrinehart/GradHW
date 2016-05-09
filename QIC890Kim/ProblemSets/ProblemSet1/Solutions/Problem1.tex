@@ -3,7 +3,10 @@
    An example of a statistically stationary process follows. Imagine a box
    populated with finitely many balls of different colors, according to some
    distribution. The process involving sampling a ball uniformly randomly from
-   the box and replacing it would be a statistically stationary process.
+   the box and replacing it would be a statistically stationary process. The
+   distribution of balls stays constant in time throughout the entire sampling
+   process. So, the mean, the variance, the kurtosis, the skew, the
+   autocorrelation, all of it stays constant throughout the process.
 
    Contrarily, a statistically non-stationary process would be the above
    process, but in the case without replacement. For, if the balls are not
@@ -14,21 +17,22 @@
    \subsection{Problem 1b} It is not possible, in general, to ``transform'' a
    non-stationary process into a process which is stationary in some moment. For
    example, consider the transformation of a non-stationary process into one
-   which is only stationary in the mean; this is the simplest case. In
-   order to make this process stationary in the mean, the autocorrelation must
-   be dependent only on the time difference/lag used to compute the
-   autocorrelation and the ensemble average must be independent of time. Consider
-   the ensemble average of a non-stationary process $ x(t) $ calculated as $
-   \langle x(t) \rangle  $. Imagine, also, that the autocorrelation of $ x(t) $ is
-   calculated as $ \langle x(t_1) x(t_2) \rangle  $. Then, the process corresponding to $ x(t) $ which is
-   time-invariant in the mean is
+   which is only stationary in the mean; this is the simplest case. In order to
+   make this process stationary in the mean, the autocorrelation must be
+   dependent only on, at most, the time difference/lag used to compute the
+   autocorrelation, $ \tau $, and the ensemble average must be independent of
+   time. Consider the ensemble average of a non-stationary process $ x(t) $
+   calculated as $ \langle x(t) \rangle  $. Imagine, also, that the
+   autocorrelation of $ x(t) $ is calculated as $ \langle x(t_1) x(t_2) \rangle
+   $. Then, the process corresponding to $ x(t) $ which is time-invariant in the
+   mean \textbf{and} the autocorrelation is:
    \[
       \tilde{x}(t) = x(t) - \langle x(t) \rangle -
       \langle x(t_1) x(t_2) \rangle
    \]
    However, if the autocorrelation of $ x(t) -
    \langle x(t) \rangle $ is nonzero and/or if the mean of the autocorrelation
-   is nonzero, then $ \tilde{x}(t) $ will still not be a stationary process.
+   is, itself, time-varying, then $ \tilde{x}(t) $ will still not be a stationary process.
 
    So, while for particular processes it could be possible to transform a
    stationary process into a non-stationary process, it is not generally
@@ -68,7 +72,7 @@
       integral is 2 ($ \int_{-\pi/2}^{\pi/2} \cos(x) dx $). However, the
       normalization factor $ 1/T $ causes the limit to converge to $ 0 $. Thus,
       \[
-         \overline{x(t)} = 0 + 0 = 0
+         \overline{x^{(i)}(t)} = 0 + 0 = 0,\quad \forall i
       \]
       Now, consider the ensemble average $ \langle x(t) \rangle $.
       \begin{align}
@@ -112,9 +116,11 @@
    second integral vanishes.}
    &= \frac{\cos(\omega \tau)}{2}
       \end{align*}
-      Thus, the time-associated autocorrelation does not depend on $ \tau $, only on the
-      particular sample process selected from the ensemble. Now, considering the
-      ensemble autocorrelation.
+      Thus, the time-associated autocorrelation does not depend on $ \tau $,
+      only on the particular sample process selected from the ensemble. So, at
+      this point the process can be considered stationary. This means that it is
+      potentially ergodic. If the process was not stationary then it could not
+      be ergodic. Now, considering the ensemble autocorrelation.
       \begin{align*}
          \langle x(t_1) x(t_2) \rangle &= \lim_{N \to \infty} \frac{1}{N}
          \sum^{N}_{i=1} \sin(\omega t_{1} + \phi^{(i)})

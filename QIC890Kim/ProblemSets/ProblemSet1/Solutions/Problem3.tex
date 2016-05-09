@@ -40,9 +40,8 @@
       \int_{-\infty}^{\infty}X_{1}(i\omega')
       \delta(\omega'-\omega'') d\omega' d\omega'' \\
       &= \frac{1}{2\pi}
-      \int_{-\infty}^{\infty} X_{1}(i\omega') X_{2}^{*}(i\omega') d\omega' \\
+      \int_{-\infty}^{\infty} X_{1}(i\omega') X_{2}^{*}(i\omega') d\omega'
    \end{align*}
-
    Except for a relabeling of $ \omega' $ to $ \omega $ this is the same
    expression that we were trying to prove.
 
@@ -64,7 +63,7 @@
       X_T(i\omega'')\exp(i\omega'' t) dt \Bigr) d\omega' d\omega'' \\
       &= \frac{1}{\left( 2\pi \right)^2}
       \int_{-\infty}^{\infty}\int_{-\infty}^{\infty} \Bigl(
-         \int_{-\infty}^{\infty}X_T(i\omega')\exp(i\omega' t)\exp(i\omega\tau)
+         \int_{-\infty}^{\infty}X_T(i\omega')\exp(i\omega' t)\exp(i\omega'\tau)
       X_T(i\omega'')\exp(i\omega'' t) dt \Bigr) d\omega' d\omega'' \\
       &= \frac{1}{\left( 2\pi \right)^2}
       \int_{-\infty}^{\infty}X_{T}(i\omega'')\int_{-\infty}^{\infty}
@@ -86,9 +85,8 @@
       In this case, the above expression can be rewritten as:}
       &= \frac{1}{ 2\pi }
       \int_{-\infty}^{\infty}|X_{T}(i\omega')|^2 \exp(i\omega'\tau)
-      d\omega'\\
+      d\omega'
    \end{align*}
-
    Except for a relabeling of $ \omega' $ to $ \omega $ this is the same
    expression that we were trying to prove.
 
