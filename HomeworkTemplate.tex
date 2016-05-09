@@ -1,10 +1,31 @@
- \documentclass{article}
+%---Packages------------------------------------------------------------------
+ %------------------------------------------------------
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[english]{babel}
+\usepackage[utf8,latin1]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[usenames,dvipsnames]{pstricks}
+\usepackage{epsfig}
+\usepackage{pst-grad} % For gradients \usepackage{pst-plot} % For axes
+\usepackage{pifont}
+\graphicspath{{IMG/}}
+\usepackage[absolute,overlay]{textpos}
+\usepackage{hyperref}
+\usepackage{tikz}
+\usepackage{xcolor}
+\usepackage{calc}
+\usepackage{chngcntr}
+\usepackage{microtype}
+\usepackage[parfill]{parskip}
 \usepackage{fancyhdr} % Required for custom headers
 \usepackage{lastpage} % Required to determine the last page for the footer
 \usepackage{extramarks} % Required for headers and footers
 \usepackage{graphicx} % Required to insert images
 \usepackage{lipsum} % Used for inserting dummy 'Lorem ipsum' text into the template
-\usepackage{amsmath,amsthm,amsxtra}
+\usepackage{amsmath,amsthm,amsxtra,amsfonts}
+\usepackage[]{dsfont}
+\usepackage[toc,page]{appendix}
 
 % Margins
 \topmargin=-0.45in
@@ -12,7 +33,7 @@
 \oddsidemargin=0in
 \textwidth=6.5in
 \textheight=9.0in
-\headsep=0.25in 
+\headsep=0.25in
 
 \linespread{1.1} % Line spacing
 
@@ -71,23 +92,7 @@
 \enterProblemHeader{\homeworkProblemName} % Header and footer after the environment
 }
 
-%----------------------------------------------------------------------------------------
-%	NAME \longmapstoAND CLASS SECTION
-%----------------------------------------------------------------------------------------
-
-\newcommand{\hmwkTitle}{Assignment 2} % Assignment title
-\newcommand{\hmwkDueDate}{Wendesday,\ January\ 30,\ 2013} % Due date
-\newcommand{\courseTitle}{Physics 760} % Course/class
-\newcommand{\hmwkClassInstructor}{Dr. Stefan Kycia} % Teacher/lecturer
-\newcommand{\hmwkAuthorName}{John Rinehart} % Your name
-\newcommand{\sudentNumber}{20503440} % Your name
-\newcommand{\position}{PhD student at ECE departent}
-
-%----------------------------------------------------------------------------------------
-%%-----------------------------------------------------------------------------------------
-
 %%%%%%%%%%
-\newcommand{\red}[1]{\textcolor[rgb]{1,0,0}{#1}}
 \newcommand{\blu}[1]{\textcolor[rgb]{0,0,1}{#1}}
 \newcommand{\bs}[1]{\boldsymbol{#1}}
 %\newcommand{\V}[1]{\bm{#1}}
@@ -154,28 +159,6 @@
 
 %%%%%%%%%%%%%%%
 
-%---Packeges------------------------------------------------------------------
- %------------------------------------------------------
-\usepackage{pdfsync}
-\usepackage[T1]{fontenc}
-\usepackage{lmodern}
-\usepackage[english]{babel}
-\usepackage[utf8,latin1]{inputenc}
-\usepackage[T1]{fontenc}
-\usepackage[usenames,dvipsnames]{pstricks}
-\usepackage{epsfig}
-\usepackage{pst-grad} % For gradients \usepackage{pst-plot} % For axes
-\usepackage{pifont}
-\usepackage{amsfonts}
-\graphicspath{{IMG/}}
- \usepackage[absolute,overlay]{textpos}
- \usepackage{graphicx}
- \usepackage[bookmarks=false,pdffitwindow]{hyperref}
- \usepackage{tikz}
- \usepackage{xcolor}
- \usepackage{calc}
-\usepackage{chngcntr}
-\usepackage{microtype}
 
 % Matlab code section obtained from StackExchange: http://tex.stackexchange.com/questions/75116/what-can-i-use-to-typeset-matlab-code-in-my-document
 \usepackage{listings}
@@ -197,7 +180,7 @@
     numberstyle={\tiny \color{black}},% size of the numbers
     numbersep=9pt, % this defines how far the numbers are from the text
     emph=[1]{for,end,break},emphstyle=[1]\color{red}, %some words to emphasise
-    %emph=[2]{word1,word2}, emphstyle=[2]{style},    
+    %emph=[2]{word1,word2}, emphstyle=[2]{style},
 }
 
 %----------------------------------------------------------------
@@ -216,42 +199,4 @@
 \vspace{0.5in}\large{{\hmwkClassInstructor}}
 \vspace{3in}
 }
-\author{\textbf{\hmwkAuthorName}\\ 
-}
-
-\date{February 6, 2015} % Insert date here if you want it to appear below your nam
-
-%----------------------------------------------------------------------------------------
-\begin{document}
-
-\maketitle
-
-
-\newpage
-\tableofcontents
-\newpage
-
-%----Problems-------
-\input{Problem1}
-\setcounter{equation}{0}
----------------------
-%\input{Problem2}
-%\setcounter{equation}{0}
-%--------------------- 
-%\input{Problem3}
-%\setcounter{equation}{0}
-%----------------------
-%%% ... %%%
-%$\input{Problem4}
-%\setcounter{equation}{0}
-
-%\input{Problem5}
-%\setcounter{equation}{0}
-\newpage
-\input{Appendix}
-%%%\newpage
-%%%\input{Mybib}
-
-
-%----------------------------------------
-\end{document}
+\author{\textbf{\hmwkAuthorName}\\ }

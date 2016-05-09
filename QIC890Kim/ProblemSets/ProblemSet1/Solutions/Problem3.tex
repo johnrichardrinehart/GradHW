@@ -1,0 +1,95 @@
+\begin{homeworkProblem}
+   \subsection{Problem 3a}
+   To prove the equality, I will try to cast the left side of the equation
+   into the right side.
+
+   \begin{align*}
+      \int_{-\infty}^{\infty} x_{1}(t)x_{2}^{*}(t) dt
+      &= \int_{-\infty}^{\infty}
+      \Bigl(\frac{1}{2\pi}\int_{-\infty}^{\infty} X_{1}(i\omega) \exp(i \omega
+      t)d\omega\Bigr)
+      \Bigl(\frac{1}{2\pi}\int_{-\infty}^{\infty} X_{2}^{*}(i\omega) \exp(-i \omega
+      t)d\omega\Bigr)dt \\
+      &= \frac{1}{(2\pi)^2}\int_{-\infty}^{\infty}
+      \Bigl(\int_{-\infty}^{\infty} X_{1}(i\omega) \exp(i \omega
+      t)d\omega\Bigr)
+      \Bigl(\int_{-\infty}^{\infty} X_{2}^{*}(i\omega) \exp(-i \omega
+      t)d\omega\Bigr)dt
+      \intertext{Now, what I'd like to do is change the order of integration, so
+      that I can integrate over $ t $ and leave just the $ \omega $ integral.
+      However, the integral in the first term of the product is over some
+      particular $ \omega $.  This is generally, different than that for the second
+      integral. I'll label the first one $ \omega' $ and the second $ \omega'' $.}
+      &= \frac{1}{(2\pi)^2}\int_{-\infty}^{\infty}
+      \Bigl(\int_{-\infty}^{\infty} X_{1}(i\omega') \exp(i \omega'
+      t)d\omega'\Bigr)
+      \Bigl(\int_{-\infty}^{\infty} X_{2}^{*}(i\omega'') \exp(-i \omega''
+      t)d\omega''\Bigr)dt \\
+      &= \frac{1}{(2\pi)^2}\int_{-\infty}^{\infty}\int_{-\infty}^{\infty}
+      \Bigl(\int_{-\infty}^{\infty} X_{1}(i\omega') \exp(i \omega' t)
+      X_{2}^{*}(i\omega'') \exp(-i \omega'' t)dt\Bigr) d\omega' d\omega'' \\
+      &= \frac{1}{(2\pi)^2}
+      \int_{-\infty}^{\infty}X_{2}^{*}(i\omega'')
+      \int_{-\infty}^{\infty}X_{1}(i\omega')
+      \Bigl(\int_{-\infty}^{\infty} \exp(i \omega' t)
+      \exp(-i \omega'' t)dt\Bigr) d\omega' d\omega'' \\
+      \intertext{Now, the inner integral looks like $ \int \exp(i \alpha t) dt $,
+      which, as derived in the appendix, is $ 2\pi\delta(\alpha) $.}
+      &= \frac{1}{2\pi}
+      \int_{-\infty}^{\infty}X_{2}^{*}(i\omega'')
+      \int_{-\infty}^{\infty}X_{1}(i\omega')
+      \delta(\omega'-\omega'') d\omega' d\omega'' \\
+      &= \frac{1}{2\pi}
+      \int_{-\infty}^{\infty} X_{1}(i\omega') X_{2}^{*}(i\omega') d\omega' \\
+   \end{align*}
+
+   Except for a relabeling of $ \omega' $ to $ \omega $ this is the same
+   expression that we were trying to prove.
+
+   \subsection{Problem 3b}
+   To prove the equality, I will try to cast the left side of the equation
+   into the right side.
+
+   \begin{align*}
+      \int_{-\infty}^{\infty}x_T(t+\tau)x_T(t) dt
+      &= \frac{1}{\left( 2\pi \right)^2}
+      \int_{-\infty}^{\infty}
+      \Bigl( \int_{-\infty}^{\infty}X_T(i\omega)\exp(i\omega (t+\tau)) d\omega \Bigr)
+      \Bigl( \int_{-\infty}^{\infty}X_T(i\omega)\exp(i\omega t) d\omega \Bigr)
+      dt
+      \intertext{Doing something similar as before:}
+      &= \frac{1}{\left( 2\pi \right)^2}
+      \int_{-\infty}^{\infty}\int_{-\infty}^{\infty} \Bigl(
+         \int_{-\infty}^{\infty}X_T(i\omega')\exp(i\omega' (t+\tau))
+      X_T(i\omega'')\exp(i\omega'' t) dt \Bigr) d\omega' d\omega'' \\
+      &= \frac{1}{\left( 2\pi \right)^2}
+      \int_{-\infty}^{\infty}\int_{-\infty}^{\infty} \Bigl(
+         \int_{-\infty}^{\infty}X_T(i\omega')\exp(i\omega' t)\exp(i\omega\tau)
+      X_T(i\omega'')\exp(i\omega'' t) dt \Bigr) d\omega' d\omega'' \\
+      &= \frac{1}{\left( 2\pi \right)^2}
+      \int_{-\infty}^{\infty}X_{T}(i\omega'')\int_{-\infty}^{\infty}
+      X_{T}(i\omega')\exp(i\omega'\tau) \Bigl(
+         \int_{-\infty}^{\infty}\exp(i\omega' t)
+      \exp(i\omega'' t) dt \Bigr) d\omega' d\omega'' \\
+      \intertext{Now, at this point, the math looks very similar to that in the
+   previous part of this problem. However, there was no conjugation done on the
+   time-domain signal. Thus, the Dirac delta distribution takes on the following
+   form $ 2 \pi \delta(\omega'+\omega'') $. So, now, $ \omega'' \to -\omega' $
+   instead of $ \omega' $. Using this identity as before to collapse the integral yields }
+      &= \frac{1}{ 2\pi }
+      \int_{-\infty}^{\infty}X_{T}(i\omega') X_{T}(-i\omega')\exp(i\omega'\tau)
+      d\omega'\\
+      \intertext{Now, this is all that can be said about $
+      \int_{-\infty}^{\infty}x_T(t+\tau)x_T(t) dt $ in general. However, if it
+      is know that $ x(t) \in \mathds{R} $, then $ X(i\omega) $ is conjugate
+      symmetric about $ \omega = 0 $. That is, $ X(-i\omega) = X^{*}(i\omega) $.
+      In this case, the above expression can be rewritten as:}
+      &= \frac{1}{ 2\pi }
+      \int_{-\infty}^{\infty}|X_{T}(i\omega')|^2 \exp(i\omega'\tau)
+      d\omega'\\
+   \end{align*}
+
+   Except for a relabeling of $ \omega' $ to $ \omega $ this is the same
+   expression that we were trying to prove.
+
+\end{homeworkProblem}

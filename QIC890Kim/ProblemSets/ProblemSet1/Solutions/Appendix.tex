@@ -1,0 +1,48 @@
+\clearpage
+\begin{appendices}
+   \subsection{Appendix A}
+Why does $ \int_{-\infty}^\infty \exp(i\omega t) d\omega = 2\pi \delta(t)$? I think I have a
+decent explanation. Consider the following:
+
+\begin{align*}
+   & \lim_{a \rightarrow 0} \biggl( \int_{-\infty}^{0} \exp(a \omega) \exp(i \omega t)
+   d\omega + \int_{0}^{\infty} \exp(-a \omega) \exp(i \omega t) d\omega \biggr)
+   \\
+   =& \lim_{a \rightarrow 0}\biggl( \frac{\exp(\left(a+it\right)\omega)}{a+ it}\bigg|_{-\infty}^{0}
+   + \frac{\exp(\left(-a+it \right)\omega)}{-a+it} \bigg|_{0}^{\infty}\biggr)
+   &\intertext{Now, the first and second integrals vanish at $ -\infty $ and $
+   \infty $, respectively, because in the limit as $ a \rightarrow 0 $ the lower
+   bound and upper bound force the result to 0.}
+   &= \lim_{a \rightarrow 0} \biggl( \frac{\exp((a+it)\omega) \left( a-it
+   \right)}{a^2+t^2} \bigg|^{\omega=0}+
+   \frac{\exp((-a+it)\omega) \left( -a-it \right)}{a^2+t^2}\bigg|_{\omega=0} \biggr)
+   &\intertext{Throughout this entire process, the limit is very sensitive to
+   where it's evaluated. It must be evaluated after the integral. Let's evaluate
+   the $ \omega = 0 $ bounds on the two integrals, now.}
+   &= \lim_{a \rightarrow 0} \biggl(\frac{a-it}{a^2+t^2} + \frac{a+it}{a^2+t^2}
+   \biggr) = \lim_{a \rightarrow 0}\frac{2a}{a^2+t^2}
+\end{align*}
+
+   Note that in the first equality above, the sign of $ -a - it $ has flipped
+   because the lower bound at $ w=0 $ was evaluated for the second integral.
+   Now, let's consider the properties of this function. I will demonstrate that
+   it is one representation of a (scaled) Dirac delta distribution. Let's
+   consider the integral of this function over all $ t $.
+
+   \begin{align}
+      \int_{-\infty}^\infty \frac{2a}{a^2+t^2} dt = 2 \arctan(t/a)
+      \bigg|_{-\infty}^{\infty} = 2 \left( \frac{\pi}{2} + \frac{\pi}{2}
+   \right) = 2\pi
+   \end{align}
+
+   So, $ 2a / (a^2+t^2) $ has the property that it's integral does not depend on
+   $ a $ and is always a constant $ 2\pi $. Furthermore, in the limit as $ a
+   \rightarrow 0 $ we have the fact that for all $ t \ne 0 $ the function is
+   identically 0. These are the only two properties that we need to verify in
+   order that a function be considered a valid representation of a Dirac delta
+   distribution.
+
+   Thus, $ \int_{-\infty}^{\infty}\exp( i \omega t) d\omega = 2 \pi
+   \delta(t)$. Note that, by symmetry,
+   $ \int_{-\infty}^{\infty}\exp(i \omega t) dt = 2 \pi \delta(\omega)$.
+\end{appendices}

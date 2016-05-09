@@ -1,0 +1,179 @@
+\begin{homeworkProblem}
+   \subsection{Problem 1a}
+   An example of a statistically stationary process follows. Imagine a box
+   populated with finitely many balls of different colors, according to some
+   distribution. The process involving sampling a ball uniformly randomly from
+   the box and replacing it would be a statistically stationary process.
+
+   Contrarily, a statistically non-stationary process would be the above
+   process, but in the case without replacement. For, if the balls are not
+   replaced, the distribution of balls will change over time. Thus, the mean,
+   the mean-square and any higher-order moments will be, in general,
+   time-varying quantities.
+
+   \subsection{Problem 1b} It is not possible, in general, to ``transform'' a
+   non-stationary process into a process which is stationary in some moment. For
+   example, consider the transformation of a non-stationary process into one
+   which is only stationary in the mean; this is the simplest case. In
+   order to make this process stationary in the mean, the autocorrelation must
+   be dependent only on the time difference/lag used to compute the
+   autocorrelation and the ensemble average must be independent of time. Consider
+   the ensemble average of a non-stationary process $ x(t) $ calculated as $
+   \langle x(t) \rangle  $. Imagine, also, that the autocorrelation of $ x(t) $ is
+   calculated as $ \langle x(t_1) x(t_2) \rangle  $. Then, the process corresponding to $ x(t) $ which is
+   time-invariant in the mean is
+   \[
+      \tilde{x}(t) = x(t) - \langle x(t) \rangle -
+      \langle x(t_1) x(t_2) \rangle
+   \]
+   However, if the autocorrelation of $ x(t) -
+   \langle x(t) \rangle $ is nonzero and/or if the mean of the autocorrelation
+   is nonzero, then $ \tilde{x}(t) $ will still not be a stationary process.
+
+   So, while for particular processes it could be possible to transform a
+   stationary process into a non-stationary process, it is not generally
+   possible.
+
+   \subsection{Problem 1c}
+   For $ x(t) $ to be ergodic in the mean requires that
+   \[
+      \overline{x^{(i)}(t)} = \lim_{T \to \infty} \frac{1}{T}
+      \int_{-T/2}^{T/2} x^{(i)}(t) dt =
+      \lim_{N \to \infty} \frac{1}{N} \sum^{N}_{i=1} x^{(i)}(t_{1}) =
+      \langle x(t_{1}) \rangle
+      ,\quad\forall t_{1} \in \mathds{R} \enskip\text{and} \enskip\forall i.
+   \]
+   $ x(t) = \sin(\omega t + \theta) $, with $ \theta $ a random variable
+   uniformly distributed between $ [0,2\pi) $. Let us first determine the time
+   average of this expression. Using an identity to rewrite $ \sin(a+b) $,
+   \[
+      \sin(\omega t + \theta) = \sin(\omega t )\cos(\theta) +
+      \cos(\omega t)\sin(\theta)
+   \]
+   Now,
+   \begin{align*}
+      \overline{x^{(i)}(t)} &=
+      \lim_{T \to \infty} \frac{1}{T} \int_{-T/2}^{T/2} \sin(\omega t)
+      \cos(\theta^{(i)}) dt +
+      \lim_{T \to \infty} \frac{1}{T} \int_{-T/2}^{T/2} \cos(\omega t)
+      \sin(\theta^{(i)}) dt \\
+      &= \cos(\theta^{(i)})\lim_{T \to \infty} \frac{1}{T} \int_{-T/2}^{T/2}
+      \sin(\omega t) dt +
+      \sin(\theta^{(i)}) \lim_{T \to \infty} \frac{1}{T} \int_{-T/2}^{T/2} \cos(\omega t)
+      dt
+   \end{align*}
+      Now, $ \sin(\omega t) $ is odd about $ t = 0 $. So, the first
+      integral is identically zero. Now, considering the second integral, for
+      any finite $ T $, the largest value of the
+      integral is 2 ($ \int_{-\pi/2}^{\pi/2} \cos(x) dx $). However, the
+      normalization factor $ 1/T $ causes the limit to converge to $ 0 $. Thus,
+      \[
+         \overline{x(t)} = 0 + 0 = 0
+      \]
+      Now, consider the ensemble average $ \langle x(t) \rangle $.
+      \begin{align}
+         \langle x(t_{1}) \rangle
+         &= \lim_{N \to \infty} \frac{1}{N} \sum^{N}_{i=1}
+         x^{(i)}(t_{1}) \\
+         &= \lim_{N \to \infty} \frac{1}{N} \bigl(
+         \sin(\omega t_1 + \theta^{(1)}) +
+         \sin(\omega t_1 + \theta^{(2)}) +
+      \ldots + \sin(\omega t_1 + \theta^{(N)}) \bigr)
+      \end{align}
+      Now, since the $ \theta^{(i)} $s are selected uniformly at random, there are,
+      on average, just as many $ \theta^{(j)} $s as $ \theta^{(k)} $s where $
+      \theta^{(k)} -
+      \theta^{(j)} = \pi$. Since, $ \sin(\omega t + \theta^{(i)}) + \sin(\omega t +
+      \theta^{(i)} + \pi) = 0 $ then it must be the case that the ensemble average
+      is, also, zero. Thus, $ x(t) $ is ergodic in the mean.
+
+      Now, we must determine if $ x(t) $ is ergodic in the autocorrelation.
+      Mathematically,
+      \[
+         \phi_{x}^{(i)}(\tau) \equiv \overline{x^{(i)}(t)x^{(i)}(t+\tau)} =
+         \lim_{T \to \infty} \frac{1}{T}
+         \int_{-T/2}^{T/2}x^{(i)}(t)x^{(i)}(t+\tau) dt = \lim_{N \to \infty}
+         \frac{1}{N} \sum^{i=1}_{N} x^{(i)}(t_{1})x^{(i)}(t_{2}) = \langle
+         x(t_1) x(t_2) \rangle
+      \]
+      where, above, $ t_{2} > t_{1} $ and $ \tau = t_{2} - t_{1} $. Consider,
+      first, the time-associated autocorrelation.
+      \begin{align*}
+         \phi_{x}^{(i)}(\tau)
+         &= \lim_{T \to \infty} \frac{1}{T} \int_{-T/2}^{T/2}\sin(\omega t +
+      \theta^{(i)}) \sin(\omega t + \omega \tau + \theta^{(i)}) dt
+      \intertext{Now, I can use the following identity to rewrite the above
+      integral: $ \sin(a+c)\sin(a+b+c) = \frac{1}{2}\left( \cos(b) - \cos(2a
+         + b +2c \right)$ to rewrite the above integral.}
+         &= \frac{1}{2} \Bigl( \lim_{T \to \infty} \frac{\cos(\omega \tau)}{T}
+      \int_{-T/2}^{T/2}dt - \lim_{T \to \infty} \frac{1}{T}
+   \int_{-T/2}^{T/2}\cos(2\omega t + \omega \tau + 2\theta^{(i)} ) dt \Bigr)
+   \intertext{Based on the argument presented earlier, the
+   second integral vanishes.}
+   &= \frac{\cos(\omega \tau)}{2}
+      \end{align*}
+      Thus, the time-associated autocorrelation does not depend on $ \tau $, only on the
+      particular sample process selected from the ensemble. Now, considering the
+      ensemble autocorrelation.
+      \begin{align*}
+         \langle x(t_1) x(t_2) \rangle &= \lim_{N \to \infty} \frac{1}{N}
+         \sum^{N}_{i=1} \sin(\omega t_{1} + \phi^{(i)})
+         \sin(\omega t_{2} + \phi^{(i)})
+         \intertext{I will now use the identity $ \sin(a+b)\sin(c+b) =
+         \frac{1}{2} (\cos(a-c)-\cos(a+2b+c))$.}
+         &=\frac{1}{2}\lim_{N \to \infty} \frac{1}{N}
+         \sum^{N}_{i=1} \Bigl(\cos(\omega (t_{2} - t_{1})) -
+         \cos(\omega (t_{1} + t_{2}) + 2 \theta^{(i)})\Bigr)
+         \end{align*}
+         Now, in the above sum, the first cosine does not depend on $ i $ and
+         so, will contribute $ N $ times to the sum. The second term depends on
+         $ i $. However, the second term sums to zero in the limit of
+         sufficiently large N. The reason it goes to zero is because, again, the
+         $ \theta^{(i)} $s are selected uniformly at random. Thus, there are as
+         many $ \theta^{(j)} $s as $ \theta^{(k)} $s, where $ \theta^{(k)} -
+         \theta^{(j)} = \pi $. Since $ \cos(a) + \cos(a + \pi) = 0 $, then the
+         above term must evaluate to zero in the sum. Thus,
+         \[
+            \langle x(t_1) x(t_2) \rangle =
+            \frac{1}{2} \cos(\omega \left( t_{2} - t_{1} \right) ) =
+            \frac{\cos(\omega \tau)}{2}
+         \]
+         and $ x(t) $ is ergodic in the autocorrelation.
+
+         I just realized that there is a better way to evaluate the
+         autocorrelation using the integral form with the probability density
+         function. I will use that, now, to confirm my results.
+
+         \begin{align*}
+            \langle x^{(1)}(t_1) \rangle &=
+            \int_{-\infty}^{\infty} x(t_{1}) p_{1}(x,t_{1}) dx \\
+            &= \int_{0}^{2\pi} \sin(\omega t_{1} + \theta^{(1)}) \frac{1}{2 \pi}
+            d \theta \\
+            &= 0
+         \end{align*}
+         So far, so good.
+         \begin{align*}
+            \langle x(t_1) x(t_2) \rangle &=
+            \int_{0}^{2\pi}
+            x(\theta_1; t_{1}) x(\theta_2; t_{2}) p_{2}(\theta_1,\theta_2;t_1,t_2)
+            d\theta_{1} d\theta_{2} \\
+            &= \frac{1}{(2 \pi)^2} \int_{0}^{2\pi}
+            \sin(\omega t_{1} + \theta^{(1)}) \sin(\omega t_{2} + \theta^{(2)})
+            p_{2}(\theta_1,\theta_2;t_1,t_2)
+            d\theta_1 d\theta_2 \\
+            \intertext{Now, the joint probability function can be determined as
+            follows. The probability that $ \theta^{(1)} $ takes on a particular
+            value at some time $ t_{1} $ is $ \frac{1}{2 \pi} $. The same is
+            true for $\theta^{(2)}$ at time $ t_{2} $. Since these are independent
+            variables, the probability that $ \theta^{(1)} $ takes on some value
+            at time $ t_{1} $ \textbf{and} $ \theta^{(2)} $ takes on its own value
+            at time $ t_{2} $ is the product of their individual probabilities,
+            or $ \frac{1}{(2 \pi)^2} $.}
+            &= \frac{1}{(2\pi)^2}
+            \int_{0}^{2\pi}
+            \sin(\omega t_{1} + \theta_1) d\theta_1
+            \int_{0}^{2\pi}
+            \sin(\omega t_{2} + \theta_2) d\theta_2 \\
+            &= 0
+         \end{align*}
+\end{homeworkProblem}
