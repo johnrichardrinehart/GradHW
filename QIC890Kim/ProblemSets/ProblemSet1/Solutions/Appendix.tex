@@ -1,5 +1,6 @@
 \clearpage
 \begin{appendices}
+   \enterProblemHeader{Appendices}
    \subsection{Appendix A}
 Why does $ \int_{-\infty}^\infty \exp(i\omega t) d\omega = 2\pi \delta(t)$? I think I have a
 decent explanation. Consider applying a convergence term of $ \exp(a \omega) $
@@ -45,4 +46,87 @@ have the following:
    Thus, $ \int_{-\infty}^{\infty}\exp( i \omega t) d\omega = 2 \pi
    \delta(t)$. Note that, by symmetry,
    $ \int_{-\infty}^{\infty}\exp(i \omega t) dt = 2 \pi \delta(\omega)$.
+
+   \clearpage
+   \subsection{Appendix B}
+   \exitProblemHeader{Appendices}
+   Consider the stochastic process which depends on one random variables $
+   \theta^{(1)} $. We can describe the probability that $ \theta^{(1)} $ is
+   between $ \theta_{a}^{(1)} $ and $ \theta_{(a)}^{(1)} + d\theta^{(1)} $
+   (denoted as $ P(\theta^{(1)}_{a} $). The
+   way in which we will calculate the probability that $ \theta^{(1)} $ is
+   between some particular value $ \theta_{(a)}^{(1)} $ and $ \theta_{(a)}^{(1)}
+   + d\theta^{(1)}$ will be to perform the following operation:
+   \[
+      \int_{\theta_{a}^{(1)}}^{\theta_{a}^{(1)}+d\theta^{(1)}}P(\theta^{(1)})d\theta^{(1)}
+      = P(\theta_{a}^{(1)}).
+   \]
+   Now, if the
+   possible values of $ \theta^{(1)} $ are real numbers along a continuous
+   portion of the real number line (say, between $ [m,n] $), then we can say $
+   \theta_{(a)}^{(1)} \in [m,n] $ and that it must be the case that
+   \[
+      \int_{m}^{n}P(\theta^{(1)})d\theta^{(1)} = 1.
+   \]
+   Now, let's consider that there exists some other random variable $
+   \theta^{(2)} $ which is statistically independent of $ \theta^{(1)} $ and can
+   take on the exact same values as $ \theta^{(1)} $. That is, both random
+   variables can take on any real number in the range $ [m,n] $. If this is the
+   case then we can talk about the joint probability $
+   p_{2}(\theta^{(1)},\theta^{(2)}) $. The joint probability function $ p_{2} $
+   describes the probability that $ \theta^{(1)} $ is between some value $
+   \theta_{a}^{(1)} $ and $ \theta_{(a)}^{(1)} + d\theta^{(1)} $ and that $
+   \theta^{(2)} $ is between some value $ \theta_{b}^{(2)} $ and $
+   \theta_{(b)}^{(2)} + d\theta^{(2)} $. The way we could calculate this in the
+   general case where $ \theta^{(1)} $ and $ \theta^{(2)} $ are dependent would
+   be to perform the following operation:
+   \[
+      \int_{\theta_{b}^{(2)}}^{\theta_{b}^{(2)}+d\theta^{(2)}}
+      \int_{\theta_{a}^{(1)}}^{\theta_{a}^{(1)}+d\theta^{(1)}}
+      P(\theta^{(1)},\theta^{(2)})d\theta^{(1)}d\theta^{(2)}
+   \]
+   . Where the above is subject to the below constraint:
+   \[
+      1 = \int_{m}^{n} \int_{m}^{n}
+      P(\theta^{(1)},\theta^{(2)})
+      d\theta^{(1)}d\theta^{(2)}
+   \]
+   Now, in the case where $ \theta^{(1)} $ is independent of $ \theta^{(2)} $ we
+   can construct a joint probability function $ P(\theta^{(1)},\theta^{(2)}) $
+   in terms of the lone probability function $ P(\theta^{(1)} $ in the
+   following way:
+   \begin{align*}
+      P(\theta_{(a)}^{(1)}) &=
+      \int_{m}^{n}
+      \int_{\theta_{a}^{(1)}}^{\theta_{a}^{(1)}+d\theta^{(1)}}
+      P(\theta^{(1)},\theta^{(2)})d\theta^{(1)}d\theta^{(2)}
+      \intertext{Now, I've been able to write the integral over all of $
+      \theta^{(2)} $ since I know that $ \theta^{(1)} $ is independent of $
+      \theta^{(1)}$.}
+      &=
+      \int_{m}^{n}
+      \int_{\theta_{a}^{(1)}}^{\theta_{a}^{(1)}+d\theta^{(1)}}
+      P(\theta^{(1)})\delta(\theta^{(2)}-\theta^{(1)})
+      d\theta^{(1)}d\theta^{(2)}
+      \intertext{Now, I'm going to rearrange the integral.}
+      &= \int_{\theta_{a}^{(1)}}^{\theta_{a}^{(1)}+d\theta^{(1)}}
+      P(\theta^{(1)})
+      d\theta^{(1)}
+      \int_{m}^{n}
+      \delta(\theta^{(2)}-\theta^{(1)})
+      d\theta^{(2)}
+      \intertext{Now, $ \int_{-a}^{b}\delta(x-c) dx $ for positive, real $ a,b,c
+      $ is 1 if $ -a \le c \le b $, but 0 if $ c < -a $ or $ c > b $. In this
+      case, by construction, $ \theta^{(1)} \in [m,n] $, so the second integral
+      evaluates to 1.}
+      &= \int_{\theta_{a}^{(1)}}^{\theta_{a}^{(1)}+d\theta^{(1)}}
+      P(\theta^{(1)})
+      d\theta^{(1)}
+   \end{align*}
+   But, the above expression is exactly what we had earlier for the lone
+   distribution $ P(\theta^{(1)}) $. So, we have definitely accomplished our
+   goal. Thus, the joint probability distribution $ P(\theta^{(1)},\theta^{(2)})
+   $ can be written as $ P(\theta^{(1)})\delta(\theta^{(2)}-\theta^{(1)}) $ when
+   $ \theta^{(1)} $ is independent of $ \theta^{(2)} $ and both random variables
+   share the same domain.
 \end{appendices}

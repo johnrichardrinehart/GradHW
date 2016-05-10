@@ -26,7 +26,7 @@
 \usepackage{amsmath,amsthm,amsxtra,amsfonts}
 \usepackage[]{dsfont}
 \usepackage[toc,page]{appendix}
-
+\usepackage[framemethod=TikZ]{mdframed}
 % Margins
 \topmargin=-0.45in
 \evensidemargin=0in
@@ -55,6 +55,16 @@
 %	Skip this unless you know what you're doing
 %----------------------------------------------------------------------------------------
 
+% Defines the problem answer command with thecontent as the only argument
+\newcommand{\problemStatement}[1]{
+\noindent
+\begin{mdframed}[roundcorner=3pt]{
+\begin{minipage}{0.98\columnwidth}
+\begin{flushleft}#1\end{flushleft}
+\end{minipage}}
+\end{mdframed}
+}
+
 % Header and footer for when a page split occurs within a problem environment
 \newcommand{\enterProblemHeader}[1]{
 \nobreak\extramarks{#1}{#1 continued on next page\ldots}\nobreak
@@ -74,9 +84,9 @@
 \stepcounter{homeworkProblemCounter} % Increase counter for number of problems
 \renewcommand{\homeworkProblemName}{#1} % Assign \homeworkProblemName the name of the problem
 \section{\homeworkProblemName} % Make a section in the document with the custom problem count
-\enterProblemHeader{\homeworkProblemName} % Header and footer within the environment
+\enterProblemHeader{Problem \arabic{homeworkProblemCounter}} % Header and footer within the environment
 }{
-\exitProblemHeader{\homeworkProblemName} % Header and footer after the environment
+\exitProblemHeader{Problem \arabic{homeworkProblemCounter}} % Header and footer after the environment
 }
 
 \newcommand{\problemAnswer}[1]{ % Defines the problem answer command with the content as the only argument

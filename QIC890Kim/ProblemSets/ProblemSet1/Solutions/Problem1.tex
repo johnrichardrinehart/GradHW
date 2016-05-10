@@ -1,5 +1,17 @@
-\begin{homeworkProblem}
+\begin{homeworkProblem}[Problem 1: Stationary vs. Non-Stationary Processes]
+   \problemStatement{In class, we discussed stationarity. If $ \langle x(t_{1})
+      \rangle$ and $ \langle x(t_{1})^2 \rangle $ are independent of the time $
+      t_{1}$ and if $ \langle x(t_{1}x(t_{2}) \rangle $ is independent of
+      absolute times $ t_{1} $ and $ t_{2} $ but dependent only on, at most, the
+      time difference $ \tau = t_{2} - t_{1} $, such a process is called a
+   ``statistically stationary process''. The ``statistically-nonstationary''
+process does not hold the aforementioned conditions. Hence, the concept of
+ensemble averaging is valid, whereas the concept of time averaging fails.}
+
    \subsection{Problem 1a}
+   \problemStatement{Please show an example of a statistically stationary and a
+   statistically non-stationary process.}
+
    An example of a statistically stationary process follows. Imagine a box
    populated with finitely many balls of different colors, according to some
    distribution. The process involving sampling a ball uniformly randomly from
@@ -14,31 +26,40 @@
    the mean-square and any higher-order moments will be, in general,
    time-varying quantities.
 
-   \subsection{Problem 1b} It is not possible, in general, to ``transform'' a
-   non-stationary process into a process which is stationary in some moment. For
-   example, consider the transformation of a non-stationary process into one
-   which is only stationary in the mean; this is the simplest case. In order to
-   make this process stationary in the mean, the autocorrelation must be
-   dependent only on, at most, the time difference/lag used to compute the
-   autocorrelation, $ \tau $, and the ensemble average must be independent of
-   time. Consider the ensemble average of a non-stationary process $ x(t) $
-   calculated as $ \langle x(t) \rangle  $. Imagine, also, that the
-   autocorrelation of $ x(t) $ is calculated as $ \langle x(t_1) x(t_2) \rangle
-   $. Then, the process corresponding to $ x(t) $ which is time-invariant in the
-   mean \textbf{and} the autocorrelation is:
+   \subsection{Problem 1b}
+   \problemStatement{Can you transform/convert a statistically non-stationary
+   process into a statistically stationary process? If yes, how? If no, why?}
+
+   It is not possible, in general, to ``transform'' a non-stationary process
+   into a process which is stationary in some moment. For example, consider the
+   transformation of a non-stationary process into one which is stationary in
+   only both the mean and the autocorrelation. If this can not hold in general
+   for a non-stationary process, then stationarity can not hold in general for a
+   non-stationary process. Then, the process corresponding to $ x(t) $ which is
+   time-invariant in the mean \textbf{and} the autocorrelation is:
    \[
-      \tilde{x}(t) = x(t) - \langle x(t) \rangle -
-      \langle x(t_1) x(t_2) \rangle
+      \tilde{x}(t) = x(t) - \overline{x(t)} - \phi_{x}(t)
    \]
-   However, if the autocorrelation of $ x(t) -
-   \langle x(t) \rangle $ is nonzero and/or if the mean of the autocorrelation
-   is, itself, time-varying, then $ \tilde{x}(t) $ will still not be a stationary process.
+However, if the autocorrelation of $ x(t) - \overline{x(t)} $ depends
+   on $ t $ and/or if the mean of the autocorrelation is, itself, dependent on $
+   t $ then $ \tilde{x}(t) $ will still not be a stationary process. There is no
+   way to guarantee, in general, that the mean of the autocorrelation and the
+   autocorrelation of $ x(t) - \overline{x(t)} $ is time independent. In
+   fact, if the autocorrelation is time-dependent then it can be seen by
+   inspection that the autocorrelation of $ x(t) - \overline{x(t)} $ will
+   be time dependent.
 
    So, while for particular processes it could be possible to transform a
    stationary process into a non-stationary process, it is not generally
    possible.
 
    \subsection{Problem 1c}
+   \problemStatement{Here is a member function $ x(t) = \sin(\omega t + \theta) $ from a
+      stochastic process specified by a transformation of variables. $ \theta $ is a
+      random variable with uniform distribution over the internal $ 0 < \theta <
+      2 \pi$, expressed as $ P(\theta) = (2\pi)^{-1} $ . Is $x(t)$ ergodic in the mean?  Is $x(t)$
+   ergodic in the auto-correlation? Please justify your answers.}
+
    For $ x(t) $ to be ergodic in the mean requires that
    \[
       \overline{x^{(i)}(t)} = \lim_{T \to \infty} \frac{1}{T}
@@ -120,7 +141,7 @@
       only on the particular sample process selected from the ensemble. So, at
       this point the process can be considered stationary. This means that it is
       potentially ergodic. If the process was not stationary then it could not
-      be ergodic. Now, considering the ensemble autocorrelation.
+      be ergodic. Now, considering the ensemble-associated covariance.
       \begin{align*}
          \langle x(t_1) x(t_2) \rangle &= \lim_{N \to \infty} \frac{1}{N}
          \sum^{N}_{i=1} \sin(\omega t_{1} + \phi^{(i)})
@@ -147,8 +168,9 @@
          and $ x(t) $ is ergodic in the autocorrelation.
 
          I just realized that there is a better way to evaluate the
-         autocorrelation using the integral form with the probability density
-         function. I will use that, now, to confirm my results.
+         ensemble-associated covariance using the integral form with the
+         probability density function. I will use that, now, to confirm my
+         results.
 
          \begin{align*}
             \langle x^{(1)}(t_1) \rangle &=
@@ -160,26 +182,47 @@
          So far, so good.
          \begin{align*}
             \langle x(t_1) x(t_2) \rangle &=
-            \int_{0}^{2\pi}
-            x(\theta_1; t_{1}) x(\theta_2; t_{2}) p_{2}(\theta_1,\theta_2;t_1,t_2)
-            d\theta_{1} d\theta_{2} \\
-            &= \frac{1}{(2 \pi)^2} \int_{0}^{2\pi}
-            \sin(\omega t_{1} + \theta^{(1)}) \sin(\omega t_{2} + \theta^{(2)})
-            p_{2}(\theta_1,\theta_2;t_1,t_2)
-            d\theta_1 d\theta_2 \\
+            \int_{0}^{2\pi} \int_{0}^{2\pi}
+            x(\theta^{(1)}; t_{1}) x(\theta^{(2)}; t_{2}) p_{2}(\theta^{(1)},\theta^{(2)};t_1,t_2)
+            d\theta^{(1)} d\theta^{(2)} \\
+            &= \int_{0}^{2\pi} \int_{0}^{2\pi}
+            \sin(\omega t_{1} + \theta^{(1)}) \sin(\omega t_{2} + \theta^{(1)})
+            p_{2}(\theta^{(1)},\theta^{(2)};t_1,t_2)
+            d\theta^{(1)} d\theta^{(2)} \\
             \intertext{Now, the joint probability function can be determined as
             follows. The probability that $ \theta^{(1)} $ takes on a particular
-            value at some time $ t_{1} $ is $ \frac{1}{2 \pi} $. The same is
-            true for $\theta^{(2)}$ at time $ t_{2} $. Since these are independent
-            variables, the probability that $ \theta^{(1)} $ takes on some value
-            at time $ t_{1} $ \textbf{and} $ \theta^{(2)} $ takes on its own value
-            at time $ t_{2} $ is the product of their individual probabilities,
-            or $ \frac{1}{(2 \pi)^2} $.}
-            &= \frac{1}{(2\pi)^2}
-            \int_{0}^{2\pi}
-            \sin(\omega t_{1} + \theta_1) d\theta_1
-            \int_{0}^{2\pi}
-            \sin(\omega t_{2} + \theta_2) d\theta_2 \\
-            &= 0
+            value at some time $ t_{1} $ is $ \frac{1}{2 \pi} $. There is
+            absolutely no dependence on $ \theta^{(2)}$. Writing this
+            mathematically:}
+            1 &= \int_{0}^{2\pi} \int_{0}^{2\pi}
+            p_{2}(\theta^{(1)},\theta^{(2)};t_{1},t_{2})d\theta^{(1)}d\theta^{(2)}
+            \\
+            &= \int_{0}^{2\pi} \int_{0}^{2\pi}
+            \frac{\delta(\theta^{(1)}-\theta^{(2)})}{2\pi} d\theta^{(1)}d\theta^{(2)} \\
+            \intertext{A proof for why this is a valid mathematical
+            interpretation of
+            $p_{2}(\theta^{(1)},\theta^{(2)};t_{1},t_{2})d\theta^{(1)}d\theta^{(2)}$
+            is provided in the appendix. However, now, we can solve the
+            integral.}
+            &= \int_{0}^{2\pi} \int_{0}^{2\pi}
+            \sin(\omega t_{1} + \theta^{(1)}) \sin(\omega t_{2} + \theta^{(1)})
+            \frac{\delta(\theta^{(1)}-\theta^{(2)})}{2\pi} d\theta^{(1)}d\theta^{(2)} \\
+            &= \frac{1}{2\pi} \int_{0}^{2\pi}
+            \sin(\omega t_{1} + \theta^{(1)}) \sin(\omega t_{2} + \theta^{(1)})
+            d\theta^{(1)}
+            \intertext{Now, I can use the same identity as I had before: $
+            \sin(a+b)\sin(c+b) = \frac{1}{2} (\cos(a-c)-\cos(a+2b+c)) $.}
+            &= \frac{1}{2} \frac{1}{2\pi}\int_{0}^{2\pi}
+            \cos(\omega (t_{2} - t_{1})) d\theta^{(1)}
+            - \frac{1}{2} \frac{1}{2\pi} \int_{0}^{2\pi}
+            \cos(\omega t_{1} + 2 \theta^{(1)} + \omega t_{2})
+            d\theta^{(1)}
+            \intertext{The second integrand is perodic in $ \theta^{(1)}$ over
+            the interval $[0, \pi)$. Integrating it over two periods is
+            identically zero. The first integral does not depend on $
+            \theta^{(1)} $, so its integral is $ 2\pi $. Thus:}
+            &= \frac{\cos\left(\omega \left( t_{2} - t_{1} \right)\right)}{2} =
+            \frac{\cos(\omega \tau)}{2}
          \end{align*}
+         This is exactly what was obtained earlier.
 \end{homeworkProblem}

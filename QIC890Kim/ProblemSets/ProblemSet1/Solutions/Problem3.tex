@@ -1,5 +1,15 @@
-\begin{homeworkProblem}
+\begin{homeworkProblem}[Problem 3: Parseval's Theorem]
    \subsection{Problem 3a}
+   \problemStatement{If $ x_{1}(t) $ and $ x_{2}(t) $ have Fourier transform $
+   X_{1}(i\omega) $ and $ X_{2}(i\omega) $, prove the equality
+   of the equation:
+   \newline
+   \[
+      \int_{-\infty}^{\infty} x_{1}(t)x_{2}^{*}(t) dt = \frac{1}{2\pi}
+      \int_{-\infty}^{\infty} X_{1}(i\omega) X_{2}^{*}(i\omega) d\omega
+   \]
+   }
+
    To prove the equality, I will try to cast the left side of the equation
    into the right side.
 
@@ -18,8 +28,9 @@
       \intertext{Now, what I'd like to do is change the order of integration, so
       that I can integrate over $ t $ and leave just the $ \omega $ integral.
       However, the integral in the first term of the product is over some
-      particular $ \omega $.  This is generally, different than that for the second
-      integral. I'll label the first one $ \omega' $ and the second $ \omega'' $.}
+      particular $ \omega $.  However, this $ \omega $ is different than the one
+      considered in the second integral. I'll label the first one $ \omega' $
+      and the second $ \omega'' $.}
       &= \frac{1}{(2\pi)^2}\int_{-\infty}^{\infty}
       \Bigl(\int_{-\infty}^{\infty} X_{1}(i\omega') \exp(i \omega'
       t)d\omega'\Bigr)
@@ -46,6 +57,18 @@
    expression that we were trying to prove.
 
    \subsection{Problem 3b}
+   \problemStatement{
+   Suppose $ x_{1}(t) = x_{T}(t+\tau) $ and $ x_{2}(t) = x_{T}(t) $. The
+   notation $ x_{T}(t) $ implies $x(t)$ if $|t| \le T/2$ and 0 if $|t| > T/2$,
+   where T is a finite-valued measurement time interval.
+Show that
+\[
+      \int_{-\infty}^{\infty}x_T(t+\tau)x_T(t) dt = \frac{1}{ 2\pi }
+      \int_{-\infty}^{\infty}|X_{T}(i\omega)|^2 \exp(i\omega\tau) d\omega
+\]
+
+
+}
    To prove the equality, I will try to cast the left side of the equation
    into the right side.
 
@@ -80,7 +103,7 @@
       d\omega'\\
       \intertext{Now, this is all that can be said about $
       \int_{-\infty}^{\infty}x_T(t+\tau)x_T(t) dt $ in general. However, if it
-      is know that $ x(t) \in \mathds{R} $, then $ X(i\omega) $ is conjugate
+      is know that $ x(t) \in \mathds{R},\enskip \forall t $, then $ X(i\omega) $ is conjugate
       symmetric about $ \omega = 0 $. That is, $ X(-i\omega) = X^{*}(i\omega) $.
       In this case, the above expression can be rewritten as:}
       &= \frac{1}{ 2\pi }
