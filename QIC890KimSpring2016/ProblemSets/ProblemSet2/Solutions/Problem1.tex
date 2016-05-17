@@ -1,0 +1,182 @@
+\begin{homeworkProblem}[Problem 1: Wiener-Khintchine Theorem]
+   \problemStatement{
+      The average power of a noisy function $ x_{T}(t) $ is defined by
+      \[
+         \lim_{T \to \infty} \frac{1}{T} \int_{-\infty}^{\infty} \left[ x_{T}(t)
+         \right]^2 dt = \lim_{T \to \infty} \frac{1}{2\pi} \int_{0}^{\infty}
+         \frac{2 |X_{T}(i\omega)|^2}{T} d\omega
+      \]
+      where $ x_{T}(t) $ a gated function is defined by
+      \[
+         x_{T}(t) = \begin{cases}
+            x(t), &\text{ if } |t| < T/2; \\
+            0 &\text{ if otherwise.}
+         \end{cases}
+      \]
+   $ T $ is a measurement time interval and $ X_{T}(i\omega) $ is the Fourier
+   transform of $ x_{T}(t) $.
+   }
+   % Problem 1.1
+   \subsection{Stationary Process}
+   \label{sub:stationary_process}
+   \problemStatement{
+      If $ x_{T}(t) $ is a statistically stationary process, show that the average
+      power of a noisy function is independent of $ T $ and is a constant universal
+      quantity.
+   }
+   I don't have a good answer for this question. I have thought a lot about it.
+   Ultimately, the answer to this question boils down to the following logic: If
+   $ x_{T}(t) $ is a stationary process, then, by definition, the process has
+   the property that all statistical quantities related to this process are time
+   independent. So, by virtue of being stationary, the process satisfies the
+   requirement that the average power of a noisy function, as defined above, is
+   independent of $ T $ and is a constant universal quantity.
+   % Problem 1.2
+   \subsection{Nonstationary Process}
+   \label{sub:nonstationary_process}
+   \problemStatement{
+      If $ x_{T}(t) $ is as statistically stationary process, show that the average
+      power is dependent on $ T $.
+
+      For the statistically nonstationary process, we are not allowed to take the
+      limit of $ T \to \infty $. In this case, we introduce ensemble averaging which is taken
+      first for many identical gated functions $ x_{T}(t) $. Then, the order of $
+      \lim_{T \to \infty} $ and $ \int_{0}^{\infty} d\omega $ can
+      be interchanged. Now, we can define the unilateral power spectral density $
+      S_{x}(\omega) $
+      \[
+         S_{x}(\omega) = \lim_{T \to \infty} \frac{2 \langle |X_{T}(i\omega)|^2
+         \rangle}{T}
+      \]
+   }
+   My answer to this question is very similar to the previous question. To be a
+   statistically non-stationary process, it means that we can not take the limit
+   of statistical quantities as $ T \to \infty $. This procedure of taking
+   the limit doesn't make sense for non-stationary processes. The limit doesn't
+   exist because the statistical quantities related to the stochastic process
+   change as a function of $ t $. Thus, the average power is dependent on $ T $.
+   \clearpage
+   % Problem 1.3
+   \subsection{Autocorrelation in Terms of Spectral Density}
+   \label{sub:autocorrelation_in_terms_of_spectral_density}
+   \problemStatement{
+   Recall the formula in Problem Set 1, 3(2)
+   \begin{equation}
+      \int_{-\infty}^{\infty}x_{T}(t+\tau)x_{T}(t) dt =
+      \frac{1}{2\pi} \int_{-\infty}^{\infty} |X_{T}(i\omega)|^2 \exp(i \omega
+      \tau) d \omega \label{eq:autocorr_spectrum}
+   \end{equation}
+   Suppose $ \tau \ne 0 $. One can also divide both sides of
+   Eq.~\ref{eq:autocorr_spectrum} by $ T $, take an ensemble average, and take a
+   limit of $ T \to \infty $. Show your steps to reach the following relation,
+   \begin{equation}
+      \lim_{T \to \infty} \frac{1}{T} \int_{-\infty}^{\infty}
+      \langle x_{T}(t+\tau)x_{T}(t) \rangle dt =
+      \lim_{T \to \infty} \frac{1}{2\pi} \int_{-\infty}^{\infty}
+       |X_{T}(i\omega)|^{2} \cos(\omega \tau) d\omega \label{eq:autocorr_limit}
+   \end{equation}
+   }
+   Let's do as the problem statement indicates and, first, divide the left hand
+   side of Eq.~\ref{eq:autocorr_spectrum} by $ T $ and then take the limit as $
+   T \to \infty$. Doing so, yields
+   \begin{align*}
+      \lim_{T \to \infty} \frac{1}{T} \int_{-\infty}^{\infty}
+      \langle x_{T}(t+\tau)x_{T}(t) \rangle dt &=
+      \lim_{T \to \infty} \frac{1}{2\pi T} \int_{-\infty}^{\infty}
+       |X_{T}(i\omega)|^{2} \exp(i \omega \tau) d\omega \label{eq:autocorr_limit}
+       \intertext{Now, this can be split into two terms.}
+       &= \lim_{T \to \infty} \frac{1}{2\pi T} \int_{-\infty}^{\infty}
+       |X_{T}(i\omega)|^{2} \cos(\omega \tau) d\omega
+       + i \lim_{T \to \infty} \frac{1}{2\pi T} \int_{-\infty}^{\infty}
+       |X_{T}(i\omega)|^{2} \sin(\omega \tau) d\omega
+       \intertext{Now, in general, the second integral can not be said to go to
+       zero. However, if the process is purely real ($ x_{T}(t) \in \mathds{R}
+       ,\enskip \forall t$) then the imaginary part is identically zero.
+       Additionally, if the bounds are chosen to be symmetric about $ \omega $
+       then, since $ |X_{T}(i\omega)|^2 $ is even about $ \omega = 0 $ (shown
+       in next problem), then that integral can be made to disappear. Thus, we
+       can say, for either or both of these two cases:}
+       &= \lim_{T \to \infty} \frac{1}{2\pi} \int_{-\infty}^{\infty}
+       \frac{|X_{T}(i\omega)|^2}{T} \cos(\omega \tau) d\omega
+       \intertext{Note that due to the evenness of $ |X_{T}(i \omega)|^2 $ we
+       can re-express the above integral.}
+       &= \lim_{T \to \infty} \frac{1}{2\pi} \int_{0}^{\infty}
+       \frac{2|X_{T}(i\omega)|^2}{T} \cos(\omega \tau) d\omega
+   \end{align*}
+   The last step to yield Eq.~\ref{eq:autocorr_limit} would be to take an
+   ensemble average of both sides. This would yield:
+   \[
+      \lim_{T \to \infty} \frac{1}{T} \int_{-\infty}^{\infty}
+      \langle x_{T}(t+\tau)x_{T}(t) \rangle dt =
+      \lim_{T \to \infty} \frac{1}{2\pi} \int_{-\infty}^{\infty}
+       \langle |X_{T}(i\omega)|^{2} \rangle \cos(\omega \tau) d\omega
+   \]
+   Note that no assumptions needed to be made about the stationarity/ergodicity
+   of the process in order to take the ensemble average.
+   There is one other way we can prove the above. By breaking the integral up
+   into that over negative frequencies and positive frequencies we can change $
+   t \to -t$ in the integral over negative frequencies, use the property that $
+   |X_{t}(i\omega)|^2$ is an even function of frequency and recombine the
+   integrands to negate the sine term. However, this amounts to the same
+   argument as given previously, since it assumes symmetric bounds and the
+   evenness of $ |X_{T}(i\omega)|^2 $.
+   \clearpage
+   % Problem 1.4
+   \subsection{Spectral Density in Terms of Autocorrelation}
+   \label{sub:spectral_density_in_terms_of_autocorrelation}
+   \problemStatement{We know that the left-hand side of
+      Eq.~\ref{eq:autocorr_limit} is the ensemble averaged autocorrelation
+      function $ \phi_{x}(\tau) $. Now we obtain the relation of
+      the ensemble averaged autocorrelation $\phi_{x}(\tau)$ and
+      the unilateral power spectral density $ S_{x}(\omega) $,
+ \begin{equation}
+    \phi_{x}(\tau) = \frac{1}{2\pi} \int_{0}^{\infty}S_{x}(\omega)
+       \cos(\omega \tau) d\omega \label{eq:unilateral_psd}.
+ \end{equation}
+ Show that the inverse relation of Eq.~\ref{eq:unilateral_psd} is written as
+ \begin{equation}
+    S_{x}(\omega) = 4 \int_{0}^{\infty}  \phi_{x}(\tau)
+    \cos(\omega \tau) d\tau \label{eq:autocorr}.
+ \end{equation}
+ Equations \ref{eq:unilateral_psd} and \ref{eq:autocorr} are known as the
+ Wiener-Khintchine theorem.}
+The solution to this problem is similar to that of a Fourier transform. To
+establish the desired equality I will integrate the autocorrelation function
+over all non-negative frequencies.
+\begin{align*}
+\int_{0}^{\infty}  \phi_{x}(\tau)  \cos(\omega \tau) d\tau
+&= \frac{1}{2\pi} \int_{0}^{\infty} \left( \int_{0}^{\infty}S_{x}(\omega')
+\cos(\omega' \tau) d\omega' \right) \cos(\omega \tau) d \tau
+\intertext{Assuming $ S_{x}(\omega') $ is mathematically well-behaved, I
+exchange the order of integration.}
+&= \frac{1}{2\pi} \int_{0}^{\infty} S_{x}(\omega') d\omega'\left( \int_{0}^{\infty}
+\cos(\omega' \tau) \cos(\omega \tau) d \tau \right)
+\intertext{As shown in the appendix, the integral over $ \tau $ results in
+$\frac{\pi}{2} \delta(\omega'-\omega) + \frac{\pi}{2}\delta(\omega+\omega')$.}
+&= \frac{1}{4} \int_{0}^{\infty} S_{x}(\omega')\left(
+\delta(\omega'-\omega) + \delta(\omega+\omega') \right) d\omega'
+\intertext{Now, because we are only integrating over non-negative frequencies,
+one of the delta distributions will not be integrated over. The other one will
+be integrated over. Thus, only one contributes. Without loss of generality,
+assume that $ w > 0 $. Then, the answer to the integral is}
+&=\frac{S_{x}(\omega)}{4}
+\intertext{Note, that in the case that $ \omega < 0 $, the answer would be}
+&= \frac{S_{x}(-\omega)}{4}
+\end{align*}
+But, by construction, $ S_{x}(\omega) $ is an even function of $
+\omega$. Observe the following for proof that $ S_{x}(\omega) $ is even in $
+\omega $ about $ \omega = 0 $.
+\begin{align*}
+S_{x}(\omega) &=
+   \lim_{T \to \infty} \frac{2 \langle |X_{T}(i\omega)|^2 \rangle}{T} = \lim_{T
+   \to \infty} \frac{2 \langle |X_{T}(i\omega)|^2 \rangle}{T} \\
+   &= \lim_{T \to \infty}\frac{2 \langle X_{T}(i\omega) X_{T}(- i \omega)
+   \rangle }{T}
+\end{align*}
+   Since this function has the property that $ f(-a) = f(a) $ then it is even.
+   So, $ S_{x}(\omega) = S_{x}(-\omega) $ and the result is that
+\[
+    S_{x}(\omega) = 4 \int_{0}^{\infty}  \phi_{x}(\tau)
+    \cos(\omega \tau) d\tau
+\]
+ \end{homeworkProblem}

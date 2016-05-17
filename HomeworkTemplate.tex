@@ -3,7 +3,7 @@
 \usepackage[T1]{fontenc}
 \usepackage{lmodern}
 \usepackage[english]{babel}
-\usepackage[utf8,latin1]{inputenc}
+%\usepackage[utf8,latin1]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage[usenames,dvipsnames]{pstricks}
 \usepackage{epsfig}
@@ -12,7 +12,6 @@
 \graphicspath{{IMG/}}
 \usepackage[absolute,overlay]{textpos}
 \usepackage{hyperref}
-\usepackage{tikz}
 \usepackage{xcolor}
 \usepackage{calc}
 \usepackage{chngcntr}
@@ -27,6 +26,9 @@
 \usepackage[]{dsfont}
 \usepackage[toc,page]{appendix}
 \usepackage[framemethod=TikZ]{mdframed}
+%\usepackage{tikz}
+%\usetikzlibrary[]{external}
+%\tikzexternalize{prefix=tikz/}
 % Margins
 \topmargin=-0.45in
 \evensidemargin=0in
@@ -209,4 +211,5 @@
 \vspace{0.5in}\large{{\hmwkClassInstructor}}
 \vspace{3in}
 }
-\author{\textbf{\hmwkAuthorName}\\ }
+\author{\textbf{\hmwkAuthorName}\\
+\date{\hmwkDueDate}}

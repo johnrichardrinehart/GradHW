@@ -1,0 +1,290 @@
+\documentclass{article}
+\usepackage[]{amsmath}
+\usepackage[]{hyperref}
+\begin{document}
+\section{Week 2 Notes}
+\subsection{Review of Last Week}
+\begin{enumerate}
+   \item Time-average vs. ensemble average
+   \item Ergodicity
+   \item Stationarity
+   \item Fourier analysis
+   \item Wiener-Khintchine theorem
+\end{enumerate}
+
+\subsection{Stationarity Expanded}
+Expanding on last week's definition of stationarity (to be more rigorous).
+
+``Stationarity`` is a statistical attribute that means the
+statistics are invariant in time. That is, all moments of the process are fixed
+in time.
+
+Additionally, a stochastic process is stationary of order $ k $ if the $ k $th
+order joint probability density function satisfies
+\[
+   P_{k}(\alpha_{1},\alpha_{2},\ldots,\alpha_{k};t_{1},t_{2},\ldots,t_{k}) =
+   P_{k}(\alpha_{1},\alpha_{2},\ldots,\alpha_{k};t_{1}+\epsilon,t_{2}+\epsilon,\ldots,t_{k}+\epsilon),\quad
+   \forall \epsilon
+\]
+Considering a simple case, for $ k=1 $,
+\[
+   P_{1}(x;t_{1}) = P_{1}(x;t_{1}+\epsilon),\quad \forall \epsilon
+\]
+For $ k=2 $,
+\[
+   P_{2}(x_{1},x_{2};t_{1},t_{2}) =
+   P_{2}(x_{1},x_{2};t_{1}+\epsilon,t_{2}+\epsilon)
+   ,\quad \forall \epsilon
+\]
+In this light, we can define a ``strict stationary process'' as one which has
+the property that it's stationary for any order $ k $.
+
+However, in practice, and for the purposes of this course, if a process is
+stationary for $ k=1 $, $ k=2 $ and in the auto-correlation we can say that the
+process is ``weakly'' or ``wide-sense'' stationary if the mean-value is
+time-independent and if the auto-correlation is time-independent (depends only
+on $ \tau = t_{2}-t_{1}$).
+
+\subsection{Ergodicity}
+When is ergodicity needed? Well, suppose you are in a lab and only have access
+to one sample function (1 element of the ensemble). If the process is ergodic,
+then you can generalize the measurements of this one process in order to
+describe the behavior of the ensemble.
+
+In the lab, it is typical to measure first and second order joint probability
+density function. However, it is becoming more common to use non-linear
+processes to measure third, fourth, fifth, etc. joint probability density
+functions.
+
+\subsection{Resistor Example: Stationary becomes Non-Stationary}
+Let's consider a practical example. Consider some resistor which is in a closed
+electrical circuit. The resistor is at finite temperature. The temperature of
+the resistor causes fluctuations of the position of electrons. The motion of
+these electrons can generate a current $ i(t) $, a thermal noise current.
+
+Imagine that we plot $ i(t) $ with $ t $ as the abscissa. Electric currents can
+be related to the velocity of the electrons, $ v(t) $, and the number and charge of the
+electrons as $ ne v(t) $. This process would be statistically stationary at a
+fixed temperature, since the $ v(t) $ is determined by the temperature of the
+electrons.
+
+Continuing with this example, if we consider the charge in the circuit as a
+function of time, we can obtain this from the current as:
+\[
+   q(t) = \int i(t) dt = \int \overline{n e v(t)} dt \propto t
+\]
+Thus, the electron undergoes a random walk. This is known as the ``Wiener-Levy
+Process''. So, even though the original process $ i(t) $ is stationary, the
+charge is dependent on time. This is an example of a diffusion process.
+
+\subsection{Applying the Wiener-Khintchine Theorem}
+Introducing some notation.
+\begin{itemize}
+   \item Energy is often considered the average of the $ \textrm{signal}^2 $.
+   \item $ x(t) $ is the noisy signal waveform
+   \item $ x^{2}(t) $ is the instantaneous power in the signal $ x(t) $
+   \item The average power of a real and statistically stationary process $ x(t) $ is
+      \[
+         \lim_{T \to \infty} \frac{1}{T} \int_{-\infty}^{\infty} x^{2}(t) dt
+         \Leftrightarrow
+         \lim_{T\rightarrow \infty} \frac{1}{2\pi} \int_{0}^{\infty} \frac{2
+         |X(i\omega)|^2}{T}d\omega
+      \]
+\end{itemize}
+If the process is not stationary, however, the above really doesn't make sense.
+For different values of $T$ and over different placements of the window, the
+limits won't converge. So, to ameliorate this problem, we introduce the concept
+of ensemble averaging. We, thus, modify the above to reference the ensemble
+average,
+\[
+   \lim_{T \to \infty} \frac{1}{2\pi} \int_{0}^{\infty} \frac{2 \langle|
+   X_{T}(i\omega)|^2\rangle}{T} d\omega =
+   \frac{1}{2\pi} \int_{0}^{\infty} \lim_{T \to \infty} \frac{2 \langle |
+   X_{T}(i\omega)|^2 \rangle}{T}d\omega \equiv S_{x}(\omega)
+\]
+, where $ S_{x}(\omega) $ is the unilateral power spectral density.
+
+The unilateral power spectral density is an ensemble-averaged quantity and, in
+the previously defined manner, can be related to the autocorrelation.
+
+The Wiener-Khintchine theorem is a relation between the ``ensemble-averaged''
+autocorrelation function and ``ensemble-averaged'' power spectral density.
+
+In the statistically stationary case,
+\[
+   \langle \phi_{x}(\tau) \rangle = \frac{1}{2\pi}\int_{0}^{\infty} \lim_{T\to \infty}
+   \frac{ 2\langle
+   |X(i\omega)|^2\rangle}{T}\cos(\omega \tau) d\omega
+   \equiv
+   \frac{1}{2\pi} \int_{0}^{\infty}S_{x}(\omega) \cos(\omega \tau) d\omega
+\]
+This allows us to introduce Fourier transform pairs:
+\[
+   2 \langle \phi_{x}(t) \rangle \leftrightarrow S_{x}(\omega)
+\]
+and
+\[
+   S_{x}(\omega) = 4 \int_{0}^{\infty} \langle \phi_{x}(\tau) \rangle
+   \cos(\omega \tau) d\tau
+\]
+
+Consider now, an example which will use the above. Allow $ x(t) $ to be a
+wide-sense stationary process. It has the following autocorrelation:
+\[
+   \phi_{x}(\tau) = \phi_{x}(0)\exp(-|\tau|/\tau_{1})
+\]
+Physically, now, $ \tau_{1} $ is some relaxation time and $ \phi_{x}(0) =
+\langle x^{2}(0) \rangle $ (the autocorrelation at $ \tau=0 $ is the
+mean-square, which is the same as the variance in this case).
+
+Aside, note the variance of a process is defined as $ \langle x^2 \rangle -
+\langle x \rangle^2 $. The mean-square of a process is the first term, $ \langle
+x^2 \rangle$.
+
+Now, the question is: What is $ S_{x}(\omega) $, the unilateral power
+spectral density?
+\begin{align*}
+   S_{x}(\omega) &= 4 \int_{0}^{\infty} \phi_{x}(0)
+   \exp(-|\tau|/\tau_1)\cos(\omega\tau) d\tau \\
+   &= \frac{4\phi_{x}(0)\tau_{1}}{1+\left( \omega \tau_{1} \right)^2}
+\end{align*}
+Note that the result is a Lorentzian, or, equivalently, it can be said that the
+result is in ``Lorentzian form''.
+Now, consider the following two questions: What if $ t_1 - t_2 = \tau \gg
+\tau_{1} $? Considering the other domain, what if $ \omega \ll \frac{1}{\tau_1} $.
+
+Well, for large $ \tau $, the autocorrelation is small. Thus, given a sequence
+of measurements started at time $ t_{1} $ one can not predict the behavior of
+the process at a much later time $ t_{2} $. Similarly, if $ \tau $ is large,
+given some sequence of measurements started at time $ t_{1} $ one must wait a
+long time $ t_{2} $ in order that that sequence be independent of the prior
+sequence recorded at $ t_{1} $.
+
+For small $ \omega $, the noise is relatively independent of $ \omega $. Thus,
+the noise looks white in this region. In fact, as $ \tau_{1} $ gets smaller, the
+noise looks increasingly whiter.
+
+We'll now return to the previous resistor case. In that case, $ x(t) $ was
+stationary but $ y(t) = \int x(t')dt' $ was not stationary. In that example, it
+can be shown that $ x(t) $ has an autocorrelation with an infinitesimally short
+time $ \tau_{1} \to 0 $. We can defined a gated version
+\[
+y(t) = \begin{cases}
+   \int_{0}^{t}x(t')dt', &\text{ if } 0 \le t \le T \\
+   0, \text{otherwise}
+\end{cases}
+\]
+We can express the autocorrelation as
+\[
+   \langle y(t) y(t+ \tau) = \int_{0}^{t} \int_{0}^{t+\tau} \langle x(t')x(t'')
+         \rangle dt' dt''
+\]
+In the above, we required that $ x(t) $ is ergodic in order to use the
+autocorrelation. Using this, we can write
+\[
+   \langle y(t) y(t+\tau) = \int_{0}^{t}\int_{0}^{t+\tau}\phi_{x}(t,\tau)dt'dt''
+\]
+where $ \phi_{x}(t,\tau) = \lim_{T \to \infty} \int_{-T/2}^{T/2} x(t+\tau)x(t)dt
+$. Now, using the Wiener-Khintchine theorem:
+\begin{align*}
+   \langle y(t)y(t+\tau) &=
+      \int_{0}^{t} \int_{0}^{t+\tau} \left( \frac{1}{2\pi}
+      \int_{-\infty}^{\infty}S_{x}(\omega) \cos(\omega \tau) d\omega \right) dt'
+      dt'' \\
+      &= \frac{1}{2\pi}
+      \int_{-\infty}^{\infty}S_{x}(\omega) \frac{1}{\omega^2} \left[ 1 +
+      \cos(\omega\tau) - \cos(\omega\tau) - \cos(\omega(t+\tau)) \right]
+      d\omega
+      \intertext{If $ \tau = 0 $}
+      \langle y(t)^2 \rangle &= \frac{1}{\pi} \int_{0}^{\infty} S_{x}(\omega)
+      \frac{1}{\omega^2} \left[ 1 - \cos(\omega t) \right] d\omega
+      \intertext{If $ \tau_{1} $, the memory constant, is very small ($\sim$ 0), then $
+S_{x}(\omega) $ is independent of $ \omega $. \textbf{Why is the previous
+statment true?}. Using this, we can simplify the previous expression.}
+&= \frac{1}{\pi}S_{x}(\omega) \int_{0}^{\infty} \frac{1}{\omega^2} \left[
+1-\cos(\omega t \right] d\omega \\
+&= \frac{S_{x}(0)}{2}t
+\end{align*}
+
+\subsection{Cross-Correlations and Multi-Process Analysis}
+Consider two noisy processes $ x(t) $, $ y(t) $. We define the cross-correlation
+as
+\[
+   \langle \phi_{xy}(\tau) \rangle = \lim_{T \to \infty} \frac{1}{T} \int_{-T/2}^{T/2}
+   \langle x(t+\tau) y(t) \rangle dt
+\]
+We can also define the cross-spectral density as
+\[
+   S_{xy}(\omega) = \lim_{T \to \infty} \frac{2 \langle X(i\omega) Y^{*}(i\omega) \rangle}{T}
+   = S_{yx}^{*}(\omega).
+\]
+We can use Parseval's theorem to write
+\[
+   \langle \phi_{xy}(\tau) \rangle = \frac{1}{4\pi}
+   \int_{-\infty}^{\infty}S_{xy}(\omega) \exp(i\omega \tau) d\omega
+\]
+and
+\[
+   S_{xy}(\omega) = 2 \int_{-\infty}^{\infty} \phi_{xy}(\tau)\exp(-i\omega \tau)
+   d\tau.
+\]
+This is a sort of generalized Wiener-Khintchine theorem.
+We can also introduce something called a coherence function. This function seeks
+to be a measure of the degree of cross-correlation between $ x(t) $ and $ y(t)
+$. We define it as
+\[
+   \Gamma_{xy}(\omega) =
+   \frac{S_{xy}(\omega)}{\sqrt{S_{xx}(\omega)S_{yy}(\omega)}}
+\]
+In optics, people use the notation
+\[
+   g^{(1)}(t) = \frac{\langle \vec{E}^*(t) \vec{E}(t+\tau)\rangle}{\langle |
+         \vec{E}(t) |^2 \rangle} = \frac{\langle \vec{E}^*(\vec{r}_{1},t_{1})
+         \vec{E}(\vec{r}_{2},t_{2}) \rangle}{\sqrt{\langle | \vec{E}(\vec{r}_{1},t_{1})
+            \rangle \langle
+         |\vec{E}(\vec{r_2},t_2)| \rangle}}
+\]
+\subsection{Basic Stochastic Processes}
+Consider a noisy wavefunction $ x(t) $. We can model this as a series of pulse
+functions with randomly different amplitudes and, in general, different widths in
+time. However, given fixed width pulse functions, we can write
+\[
+   x(t) = \sum^{K}_{k=1} a_{k}f(t-t_{k})
+\]
+where $ a_k $ is the amplitude of the $ k $th pulse and $ t_{k} $ the time at
+which the $ k $th pulse occurs.
+
+We now introduce a probability density/mass function. Probability density
+function will be used for continuous random variables. Probability mass functions
+will be used for discrete random variables.
+
+Given a discrete random variable $ X $ we can define the probability mass
+function $ P_{x}^{T}(z) $ in terms of the z-transform (a moment-generating transform)
+\[
+   P_{x}^{T}(z) = \sum^{\infty}_{x=0} Z^{x}P(x).
+\]
+Thus, the mean can be written as
+\[
+   \langle x \rangle = \frac{d}{dz} P_{x}^{T}(z)|_{Z=1}
+\]
+The mean-square can be written as:
+\[
+   \langle x^2 \rangle = \frac{d^2}{dz^2}P_{x}^T(z)|_{z=1} +
+   \frac{d}{dz}P_{x}^T(z)|_{z=1}
+\]
+In the case of a continuous random variable $ x $ we can write the probability
+density function in terms of an ``s-transform'' (Laplace transform) as
+\[
+   f_{x}^T(s) = \int_{-\infty}^{\infty}\exp(-s x) f(x) dx.
+\]
+Now, the mean (first moment) can be expressed as
+\[
+   \langle x \rangle = -\frac{d}{ds} f_{x}^{T}(s)|_{s=0}
+\]
+and the mean-square (second moment) can be expressed as
+\[
+   \langle x^2 \rangle = -\frac{d^2}{ds^2} f_{x}^{T}(s)|_{s=0}
+\]
+
+
+\end{document}
