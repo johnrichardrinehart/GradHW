@@ -1,0 +1,74 @@
+% Problem 1.2
+\begin{homeworkProblem}
+
+\textbf{Problem Description.}
+
+\begin{homeworkSection}{}
+   \begin{align}
+      [a, D(\alpha)] &= \alpha D(\alpha) \\
+                     &=
+      \left[
+         a, \exp\left(\frac{-\left| \alpha \right|^{2}}{2}\right)
+         e^{\alpha a^{\dagger}}
+         e^{-\bar{\alpha}a}
+      \right] \\
+      &=
+       \exp\left(\frac{-\left| \alpha \right|^{2}}{2}\right)
+       \left[
+         a,
+         e^{\alpha a^{\dagger}}
+         e^{-\bar{\alpha}a}
+      \right]
+      \intertext{Identifying $ B = e^{\alpha a^{\dagger}} $ and $ C =
+      e^{-\bar{\alpha}a} $}
+      &=
+       \exp\left(\frac{-\left| \alpha \right|^{2}}{2}\right)
+       \left[ a, B C \right] \\
+       &= \exp\left(\frac{-\left| \alpha \right|^{2}}{2}\right)
+       \left(\left[ a,B \right]C + B[a,C]\right) \\
+       &= \exp\left(\frac{-\left| \alpha \right|^{2}}{2}\right)
+       \left(\left[ a,e^{\alpha a^{\dagger}} \right] e^{-\bar{\alpha}a} +
+       \left[ a, e^{-\bar{\alpha}a}\right] e^{\alpha a^{\dagger}}\right)
+       \intertext{The first commutator can be evaluated by expanding the
+       exponential into in an infinite series and considering the infinite
+    series of commutators. The second commutator evaluates to zero trivially.}
+       &= \exp\left(\frac{-\left| \alpha \right|^{2}}{2}\right)
+    \left[ a,e^{\alpha a^{\dagger}} \right] e^{-\bar{\alpha}a} \text{\quad where
+    $ b = \alpha a^{\dagger} $} \\
+\end{align}
+
+\begin{align}
+   \left[ a, e^{\alpha a^{\dagger}} \right] &= \left[ a, 1 + b +
+   \frac{b^{2}}{2!} + \frac{b^{3}}{3!} + \ldots \right] \\
+    &= [a,b] + [a,\frac{b^{2}}{2!}] + [a,\frac{b^{3}}{3!}] + \ldots \\
+    &= \sum^{\infty}_{i=0}  \frac{\alpha^{i} [a,(a^{\dagger})^{i}]}{i!} \\
+    %TODO: Prove the identity used here
+    &= \sum^{\infty}_{i=1}  \frac{\alpha^{i} i (a^{\dagger})^{i-1}}{i!} \\
+    &= \sum^{\infty}_{i=1}  \frac{\alpha^{i} (a^{\dagger})^{i-1}}{(i-1)!} \\
+    &=  \alpha \sum^{\infty}_{i=1} \frac{\alpha^{i-1} (a^{\dagger})^{i-1}}{(i-1)!} \\
+    &= \alpha \sum^{\infty}_{j=0} \frac{\alpha^{j} (a^{\dagger})^{j}}{j!} \\
+    &= \alpha \sum^{\infty}_{j=0} \frac{\alpha^{j} (a^{\dagger})^{j}}{j!} \\
+    &= \alpha \sum^{\infty}_{j=0} \frac{(\alpha a^{\dagger})^{j}}{j!} \\
+    &= \alpha e^{\alpha a^{\dagger}}
+\end{align}
+
+Thus,
+\[
+   [a, D(\alpha)] =
+   \alpha
+   \exp\left(\frac{-\left| \alpha \right|^{2}}{2}\right)
+   e^{\alpha a^{\dagger}}
+   e^{-\bar{\alpha}a} =
+   \alpha D(\alpha)
+\]
+
+Now, $ \left[ a, D(\alpha) \right] \ket{0} = \alpha \left( D(\alpha)
+\ket{0} \right) $ from the above. However, $ \left[ a, D(\alpha) \right]
+\ket{0} = (a D(\alpha) - D(\alpha) a) \ket{0}$, by definition of the
+commutator. Since $ \alpha \ket{0} = 0 $ this expression reduces to $ \left[
+a, D(\alpha) \right] = a D(\alpha) \ket{0} $. Thus, $ a D(\alpha) \ket{0} =
+\alpha D(\alpha) \ket{0} $ and $ D(\alpha) \ket{0} $ is an eigenstate of $ a $
+with eigenvalue $ \alpha $. This is exactly what we mean by the coherent state $
+\ket{\alpha} $.
+\end{homeworkSection}
+\end{homeworkProblem}
