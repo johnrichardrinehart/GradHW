@@ -1,0 +1,267 @@
+\documentclass{article}
+\usepackage[]{amsmath}
+\begin{document}
+\section{Carson's Theorem}
+\label{sec:carson_s_theorem}
+Imagine you have a random pulse train characterized by the following stochastic
+process
+\[
+   x(t) = \sum^{K}_{k=1} a_{k}f(t-t_{k}) \enskip.
+\]
+By considering the power spectral density $ S_{x}(\omega) = \lim_{T \to \infty}
+\frac{2 \langle |X(i \omega) |^2 \rangle}{T}$ and the Fourier transform $
+X(i\omega) = \mathcal{F}(x(t)) $ we can show that
+\[
+   S_{x}(\omega) =2 \nu \langle a^{2} \rangle \langle |F(i\omega)|^{2} \rangle +
+   4 \pi \left( \nu \langle a \rangle \int_{-\infty}^{\infty} f(t) dt
+   \right)^{2} \delta(\omega) \enskip.
+\]
+Above, $ \langle a^{2} \rangle = \frac{1}{K} \langle \sum^{K}_{k=1}  a_{k}^{2}
+   \rangle $ and $ \nu = \frac{K}{T} $, $ T $ being introduced in the spectral
+   density and $ K $ being the number of pulses. Thus, $ \nu $ represents the
+   average rate of pulses. The above expression for $ S_{x}(\omega) $ is
+   Carson's theorem.
+
+\section{Shot Noise}
+\label{sec:shot_noise}
+Consider the case of a vacuum diode. Note that shot noise is not intrinsic noise
+and it's not equilibrium noise. It arises due to independent electron emission
+fluctuations.
+
+Consider a simple circuit consisting of an ideal voltage source in series with a
+source resistance in series with a diode (which possesses a cathode and anode).
+This circuit can be made to operate in two modes: One mode, constant voltage
+mode, keeps the voltage constant in time, but allows the current to vary. The
+other mode keeps the current constant allowing the current to vary.
+
+Establishing a voltage across the diode establishes an electric field which
+draws charge from anode to cathode. If the cathode and anode are separated by a
+distance $ d $, then we can write the current as
+\[
+   i(t) = \frac{q}{t} = \frac{q}{\frac{d}{v(t)}} = \frac{q}{d} v(t) \enskip,
+\]
+where, $ v(t) $ is the velocity of the charge carriers as determined by the
+strength of the applied voltage. We can thus consider two time scales for this
+problem. The first is the transit time $ \tau_{t} = \frac{d}{v(t)} $. The other
+is the relaxation time associated with the external circuit. Imagining the
+cathode and anode to form some capacitor, we can write the circuit time scale as
+$ \tau_{c} = R_{s}C $. These two times scales yield three possible relationships
+we need to consider
+\begin{equation*}
+\begin{cases}
+   \tau_{t} \ll \tau_{c} \enskip,\text{$ v(t) $ is constant} \\
+   \tau_{t} \ll \tau_{c} \enskip,\text{$ v(t) $ is accelerating by electric
+   field.} \\
+   \tau_{t} \gg \tau_{c} \enskip,\text{impulse events}
+\end{cases}
+\end{equation*}
+
+\subsection{Case 1}
+\label{sub:case_1}
+
+
+Let's determine the dynamics for case 1. First, we should find the surface
+charge on these plates. Initially, $ V $ is generated across the cathode and
+anode. The charge
+built up on the cathode would then be $ Q_{c} = -CV $. The charge built up on
+the anode would be $ Q_{a} = +CV $. The current then would be
+\[
+   i(t) = \begin{cases}
+      \frac{qv}{d}, & 0 < t < \frac{d}{v}  \\
+      0, &\text{otherwise}
+   \end{cases}
+\]
+
+We can write the charge on the cathode as a function of time as
+\[
+   Q_{c}(t) =
+   \begin{cases}
+       -CV + q - \int_{0}^{t} i(t') dt' & \enskip, 0 < t <
+      \frac{d}{v} \\
+      -CV & \enskip,\text{otherwise}
+   \end{cases} .
+\]
+Considering the anode's charge as a function of time, we have
+\[
+   Q_{a}(t) =
+   \begin{cases}
+       +CV + \int_{0}^{t} i(t') dt' & \enskip, 0 < t <
+      \frac{d}{v} \\
+      +CV & \enskip,\text{otherwise}
+   \end{cases} .
+\]
+\subsection{Case 2}
+\label{sub:case_2}
+Considering the case where the charge is accelerating due to the electric field
+we have
+\[
+   i(t) = \begin{cases}
+      \frac{q}{d}v(t) &\enskip, 0 < t < \frac{d}{v(t)} \\
+      0 &\enskip, \text{otherwise} \\
+   \end{cases}.
+\]
+If we consider integrating along the length of the diode, we have
+\[
+   \int_{0}^{d} dx = \int_{0}^{\tau_{t}} dt' v(t') = \int_{0}^{\tau_{t}}dt'
+   \frac{qV}{md} t' = \frac{qV}{md}\tau_{t}^{2} = d \enskip.
+\]
+We used the fact that the velocity of the electrons is $ v(t) =
+\int_{-\infty}^{t}a(t') dt' = \frac{qE}{m}t = \frac{qV}{md}t $. This allows us
+to write the transit time as $ \tau_{t} = \sqrt{\frac{m d^{2}}{qV}} $. Now, we
+can write the charge built up on the cathode as
+\[
+   Q_{c}(t) =
+   \begin{cases}
+      -CV + q - \int_{0}^{t} \frac{q^{2} V}{m d^{2}} t' dt' &\enskip, 0 < t <
+      \frac{d}{v(t)} \\
+      0 &\enskip, \text{otherwise}
+   \end{cases}
+\]
+
+\subsection{Case 3}
+\label{sub:case_3}
+In the case where $ \tau_{c} \gg \tau_{t} $ the charge motion is an impulse
+event. We can write, then, the charge on the anode as
+\[
+   Q_{a}(t) = \begin{cases}
+      CV - q e^{-\frac{t}{R_{s}C}}, & t > 0 \\
+      CV , & \text{otherwise}
+   \end{cases}.
+\]
+The cathode charge is $ Q_{c}(t) = -Q_{a}(t) $.
+
+\section{Current Noise}
+\label{sec:current_noise}
+
+\subsection{Case 1 Noise}
+\label{sub:case_1_noise}
+
+
+Now, we're going to consider the current noise associated with case 1. In case
+1, the current is a pulse train. We want to use Carson's theorem, so we first
+discover
+\[
+   F(i\omega) = \int_{-\infty}^{\infty} f(t) \exp(-i \omega t) dt = q
+   \frac{e^{-\frac{i \omega d}{2 v}}}{\frac{\omega d}{2 v}} \sin(\frac{\omega
+   d}{2 v}).
+\]
+Then, we need
+\[
+   \int_{-\infty}^{\infty} f(t) dt = \int_{0}^{d/v} \frac{qv}{d} dt = q.
+\]
+Then,
+\[
+   S_{I}(\omega) = 2q \langle I \rangle \frac{\sin^2(\frac{\omega d }{2
+      v})}{\left( \frac{\omega d}{2 v} \right)^2} + 4 \pi \langle I
+      \rangle^{2}\delta(\omega)
+\]
+
+\subsection{Case 2 Noise}
+\label{sub:case_2_noise}
+
+In case 2, the current isn't constant in time, so the pulse train $ f(t-t_{k}) $
+is defined as
+\[
+   f(t) = \begin{cases}
+      t-t_{k}, & 0 < t < d/v \\
+      0, & \text{otherwise}
+   \end{cases}.
+\]
+Now, the spectral density is
+\[
+   S_{I}(\omega) = 2 \nu \left( \frac{q^{2}V}{md^2} \right)^2 \langle
+   |F(i\omega)|^2 \rangle + 4 \pi \nu^{2}q^{2} \delta(\omega).
+\]
+Determining $ F(i\omega) $,
+\[
+   F(i\omega) = \int_{0}^{d/v}t e^{-i \omega t} dt =  \frac{1 - e^{-i \omega
+   \frac{d}{v}}}{\omega^{2}}.
+\]
+So, $ \langle | F(i\omega)|^{2} \rangle $ is now
+\[
+   \langle | F(i\omega)|^{2} \rangle  = \frac{1}{\omega^{4}} \left( 2 +
+      \omega^{2} (\frac{d}{v})^{2} - 2 \omega \frac{d}{v}\sin(\omega
+   \frac{d}{v}) - 2 \cos(\omega \frac{d}{v}) \right).
+\]
+We can now write $ S_{I}(\omega) $ as
+\[
+   S_{I}(\omega) = 2 \nu \left( \frac{q^{2}V}{m d^{2}} \frac{1}{\omega^{4}} \right)
+\left( 2 +
+      \omega^{2} (\frac{d}{v})^{2} - 2 \omega \frac{d}{v}\sin(\omega
+      \frac{d}{v}) - 2 \cos(\omega \frac{d}{v}) \right) + 4 \pi
+      \nu^{2}q^{2}\delta(\omega).
+\]
+
+The low frequency limit yields that $ S_{I}(\omega \approx 0) = 2 q \langle I
+\rangle $.
+
+\subsection{Case 3 Noise}
+\label{sub:case_3_noise}
+Now, we have a different form for our impulse train.
+\[
+   f(t-t_{k}) = \begin{cases}
+      \frac{q}{R_{s}C} e^{-\frac{t-t_{k}}{R_{s}C}}, & t > 0 \\
+      0, & \text{otherwise}
+   \end{cases}.
+\]
+The spectral density $ S_{I}(\omega) $ can now be written as
+\[
+   S_{I}(\omega) = 2 q \langle I \rangle \frac{1}{1 + \omega^{2} R_{s}C} + 4 \pi
+   \langle I \rangle^{2} \delta(\omega).
+\]
+Again, the low frequency limit yields $ S_{I}(\omega) = 2 q \langle I \rangle $.
+
+\section{Discussion of Shot Noise}
+The origin of shot noise in a vacuum diode is that the electrons are emitted as
+independent events of a random pulse train. However, in reality there exists
+some dependence between emissions. This results in some ``negative'' feedback
+occurring in the electron process. This gives rise to the space-charge effect,
+that pushes the likelihood of the system to exist in the $ \tau_{t} \gg \tau_{c}
+$ limit. It also gives rise to a memory effect in the external circuit, namely
+that $ \tau_{c} \gg \tau_{t} $ which results in ``slow voltage recovery''. This
+results in sub-shot noise in the case of constant current operation.
+
+\section{Partition Noise - Mesoscopic Conductors}
+In the mesoscopic limit, the charge carriers exist in a state where we must
+consider both their wave and particle nature, simultaneously, unfortunately. In
+the case where charge carriers are traveling through a mesoscopic conductor they
+have some probability of overcoming some potential barrier or, alternatively,
+reflecting off of the potential barrier. In this case, the power spectral
+density is
+\[
+   S_{I}(\omega \to 0) = 2q \langle I \rangle \left( 1 - P_{T} \right)
+\]
+
+\section{$\frac{1}{f}$/Pink/Flicker}
+\label{sec:1_f_pink_flicker}
+This noise can arise from some defect at an interface which traps and releases
+charge carriers randomly. We will begin by establishing the relationship between
+$ 1/f $ noise and a random telegraph signal. We will posit that $ 1/f $ noise is
+the result of an ensemble of random telegraph signals.
+
+What are the characteristics of $ 1/f $ noise?
+\begin{enumerate}
+   \item It should be scale invariant. To illustrate this, consider $
+      S_{f}(\omega) = \frac{c}{\omega} $. Considering $ P(\omega_{1},\omega_{2})
+      = \int_{\omega_{1}}^{\omega_{2}} S_{f}(\omega) d\omega = C
+      \ln(\omega_{2}/\omega_{1}) $. Note that the power only depends on the
+      ratio of $ \omega_{2} $ and $ \omega_{1} $.
+   \item Considering its stationarity:
+      \[
+         S_{f}(\omega) = \begin{cases}
+            c/\omega, & \omega_{1} \le \omega \le \omega_{2} \\
+            0, & \text{otherwise}.
+         \end{cases}
+      \]
+      Using the Wiener-Khintchine theorem, we can compute the autocorrelation
+      function as
+      \[
+         \phi_{f}(\tau) = \frac{c}{2 \pi} \int_{\omega_{1}}^{\omega_{2}}
+         \frac{\cos(\omega \tau)}{\omega} d\omega = \frac{c}{2 \pi}
+      \bigl(\mathcal{C}(\omega_{2}\tau) - \mathcal{C}(\omega_{1}\tau)\bigr).
+      \]
+      This result, however, only results from the nature of our filter function
+      (the bandpass filter). So, we can't guarantee stationarity in general.
+\end{enumerate}
+
+\end{document}

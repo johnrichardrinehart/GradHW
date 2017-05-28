@@ -1,0 +1,177 @@
+\begin{homeworkProblem}[Fluctuation-Dissipation Theorem]
+   \problemStatement{
+      \begin{equation}
+         m \frac{dv(t)}{dt} = \mathcal{F}(t) + F(t) \label{eq:eq_of_motion}
+      \end{equation}
+   }
+
+   % Problem 2.1
+   \subsection{Integration}
+   \label{sub:integration}
+%   \problemStatement{
+%   }
+
+   I'll start by writing the integral of Eq.~\ref{eq:eq_of_motion}.
+
+   \begin{align*}
+      \int_{t'}^{t'+\tau} m \frac{dv(t)}{dt} dt &= \int_{t'}^{t'+\tau}
+      \bigl(\mathcal{F}(t) + F(t)\bigr) dt \\
+      m \int_{t'}^{t'+\tau} \frac{dv(t)}{dt} dt &= \int_{t'}^{t'+\tau}
+      \bigl(\mathcal{F}(t) + F(t)\bigr) dt
+      \intertext{Then, by the second fundamental theorem of calculus, the left
+      hand side of the above can be expressed as $ v(t) $ evaluated at the
+      bounds of the integral.}
+      m \Bigl(v(t'+\tau) - v(t')\Bigr)&= \int_{t'}^{t'+\tau}
+      \bigl(\mathcal{F}(t) + F(t)\bigr) dt
+      \intertext{Now, over a macroscopic (large) time interval $ \tau $, the
+      external force $ \mathcal{F}(t) $ does not vary appreciably; we will
+      assume that it does not change at all over this time scale. Thus, $
+      \mathcal{F}(t) $ can be pulled out of the integral. However, we can not do
+      the same with $ F(t) $, only because it is assumed to be fluctuating much
+      over $ \tau $. Thus, we obtain the desired form, below.}
+      m \Bigl(v(t'+\tau) - v(t')\Bigr) &= \mathcal{F}(t')\tau + \int_{t'}^{t'+\tau} F(t) dt
+   \end{align*}
+
+   % Problem 2.2
+   \subsection{Decomposition of \texorpdfstring{$F(t)$}{F(t)}}
+   \label{sub:decomposition_of_f_t}
+%   \problemStatement{
+%   }
+
+   The component that will make the particle ultimately return to the
+   equilibrium value of the velocity is $ f(t) $. It must be negative such that
+   the velocity at some later time is less than that of some earlier time.
+   Consider the recently derived expression in the context of an absent external
+   force.
+
+   \begin{align*}
+      m \Bigl(v(t'+\tau) - v(t')\Bigr) &= \mathcal{F}(t')\tau + \int_{t'}^{t'+\tau} F(t) dt
+      \\
+      &= \int_{t'}^{t'+\tau} \Bigl( \langle F(t) \rangle + f(t) \Bigr) dt
+      \intertext{But, $ \langle F(t) \rangle $ is $ 0 $, by construction.}
+      &= \int_{t'}^{t'+\tau} f(t) dt
+   \end{align*}
+   The particles must slow down since there is no external force
+   supplying energy to the system of particles. In order that the particles
+   slow down, they must have acceleration that is oppositely signed relative
+   to their velocity. Another way to say this is that the velocity at some
+   greater time must be less than that at some later time so that $ v(t'+\tau) -
+   v(t') < 0 $. Without loss of generality, we can assume that the
+   velocity is in the positive direction. Then, the right hand side must be
+   negative, which means that $ f(t) $ must be somewhere (if not everywhere)
+   negative over $ t' $ to $ t' + \tau $. If one breaks $ f(t) $ into a slowly
+   varying component and a quickly varying component, the slowly varying
+   component would carry the information that returns the particles to the
+   equilibrium velocity.
+
+   % Problem 2.3
+   \subsection{Restoring force Description \texorpdfstring{$F(t)$}{F(t)}}
+   \label{sub:restoring_force_description_$f(t)$_f_t_}
+%   \problemStatement{
+%   }
+   The typical form a restoring force is one which is negatively signed with
+   respect to the coordinate of the thing that is moving. For example, in the
+   case of a spring, the restoring force has the following form
+   \[
+      F_{\textrm{spring}} = - k x
+   \]
+   , where k represents the stiffness of the spring and $ x $ represents the
+   position of the end of the spring relative to its unstretched position
+   (stretched being in the positive direction and compressed being in the
+   negative direction). In this case, however, it is not the position of the
+   spring that we are considering but the velocity of a particle. Thus, the
+   force would have the following velocity dependence,
+   \[
+      F(v) = -a v
+   \]
+   for some non-zero, positive $a$. The size of $ a $ determines the rate at
+   which the particle returns to its equilibrium velocity (like the spring
+   constant determines the rate at which the spring returns to its equilibrium
+   position).
+
+   % Problem 2.4
+   \subsection{Ensemble-averaged Force - (I)}
+   \label{sub:ensemble_averaged_force_i_}
+%   \problemStatement{
+%   }
+
+   We have
+   \[
+      \langle F(t)  \rangle = \sum^{}_{r} P_{r}(t+\tau') F_{r}\enskip.
+   \]
+   But, we can write $ P_{r}(t+\tau') = P_{r}(t) \exp(\beta \Delta E) $. So,
+   now,
+   \[
+      \langle F(t)  \rangle = \sum^{}_{r} P_{r}(t) \exp(\beta \Delta E) F_{r}\enskip.
+   \]
+   But, $ \exp(x) = 1 + x + x^{2} + x^{3} + \mathcal{O}(x^{4}) $. So, finally,
+   to first order in $ \beta \Delta E $,
+   \[
+      \langle F(t)  \rangle \approx \sum^{}_{r} P_{r}(t) \Bigl( 1 + \beta \Delta
+      E \Bigr) F_{r}\enskip.
+   \]
+   As mentioned in the problem statement $ \sum^{}_{r} P_{r}(t+\tau')F_{r} = 0
+   $. So,
+   \[
+      \langle F(t)  \rangle \approx \sum^{}_{r} P_{r}(t) \beta \Delta E
+      F_{r}\enskip.
+   \]
+
+   % Problem 2.5
+   \subsection{Ensemble-averaged Force - (II)}
+   \label{sub:ensemble_averaged_force_ii_}
+%   \problemStatement{
+%   }
+
+   The integral is a function of $ t'' $. So, $ t \to t - t' $ and $ t' \to 0 $.
+   Also, $ dt'' \to ds'' $. Thus the integral should be written as
+   \[
+      -\beta \langle v(t) \rangle \int_{t-t'}^{0} \langle F(t') F(t'+s) \rangle ds''
+   \]
+
+   % Problem 2.6
+   \subsection{Fluctuation-Dissipation Theorem}
+   \label{sub:fluctuation_dissipation_theorem}
+%   \problemStatement{
+%   }
+
+   The argument that the double integral can be approximated by the single
+   integral above is somewhat complicated. First, the limits of the integral
+   form a domain that is integrated over. Remembering that $ s $ is a function
+   of $ t' $, one can discover that the lower limit of the $ s $ integral is
+   over a line through the $ st' $ plane: $ s(t') = t - t' $. The upper bound is
+   the line $ s = 0 $. The domain of integration over $ s $ is between these two
+   lines. The lower limit of the $ t' $ integral is $ t $ (which corresponds to
+   $ s(t) = 0 $, for the lower bound of the $ s $ integral) and the upper limit
+   of the $ t' $ integral is $ t+\tau $ (which corresponds to $ s(t+\tau) = -
+      \tau $, for the lower bound of the $ s $ integral). Thus, the region of
+      integration over the $ st' $ plane is a triangle with points $ (0,t) $, $
+      (0,t+\tau)$ and $ (t+\tau,-\tau) $.
+
+      Realizing that $ \langle F(t') F(t'+s) \rangle_{0} $ is not dependent on $
+      t'$, but only on $ s $, it would be great to integrate over $ t' $ first
+      and then over $ s $. So, we exchange the order of integration. Taking the
+      above result and casting the points into the $ t's $ plane instead of the
+      $ st' $ plane yields
+      \[
+         \int_{-\tau}^{0} \langle F(t') F(t'+s) \rangle_{0} ds
+         \int_{t-s}^{t+\tau} dt'
+         = \int_{-\tau}^{0} \langle F(t') F(t'+s) \left( \tau + s \right) ds
+            \enskip.
+      \]
+      Now, it's important to consider the scale of the quantities in the
+      problem. $ \tau $ is the macroscopic time scale, which is very large. The
+      correlation function drops off very quickly for large $ s $. This means
+      that the integrand contributes very little when $ |s| \ge \tau $. However,
+      when $ |s| \le \tau $, it can be ignored in comparison to $ \tau $ itself.
+      So, it's now reasonable to turn $ \tau + s $ into $ \tau $ in the previous
+      integral. Since the correlation function drops off very quickly for large
+      $ s $ beyond $ \tau $ it is reasonable, also, to allow the lower limit to
+      extend to $ -\infty $. Finally, since the correlation function is even, we
+      can extend the integral to $ + \infty $ if we take half of that integral.
+      So, we have
+      \[
+         \frac{\tau}{2} \int_{-\infty}^{\infty} \langle F(t') F(t'+s) \rangle ds
+      \]
+
+ \end{homeworkProblem}

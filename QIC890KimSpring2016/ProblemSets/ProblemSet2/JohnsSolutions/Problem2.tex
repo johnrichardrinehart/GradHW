@@ -1,0 +1,44 @@
+% Problem 2
+\begin{homeworkProblem}[Problem 2: Unilateral Power Spectral Density]
+   \problemStatement{
+In class, we examined one example with a noisy waveform $x(t)$, which is a
+wide-sense statistically stationary. The autocorrelation function $
+\phi_{x}(\tau) $ has a form of
+\[
+   \phi_{x}(\tau) = \phi_{x}(0)\exp(- \frac{|\tau|}{\tau_1})
+\]
+where $ \tau_1 $ is a relaxation time constant.  Compute the unilateral power
+spectral density $ S_{x}(\omega) $ using the Wiener-Khintchine theorem.}
+
+Using the Wiener-Khintchine theorem, we have:
+\begin{align*}
+   S_{x}(\omega) &= 4 \int_0^{\infty} \phi_{x}(0) \exp(-\frac{|\tau|}{\tau_1}) \cos(\omega
+\tau) d \tau \\
+&= 4 \phi_{x}(0) \int_{0}^{\infty} \exp(-\frac{|\tau|}{\tau_1}) \cos(\omega
+\tau) d \tau
+\intertext{Now, substituting $ \cos(\omega \tau) = .5 \left( \exp(i \omega \tau)
++ \exp(-i \omega \tau)\right) $.}
+&= 2\phi_{x}(0) \int_{0}^{\infty} \exp(-\frac{|\tau|}{\tau_1}) \left( \exp(i \omega \tau)
++ \exp(-i \omega \tau)\right) d \tau \\
+&= 2\phi_{x}(0) \int_{0}^{\infty} \exp(-\frac{|\tau|}{\tau_1}) \exp(i \omega \tau) d \tau +
+2\phi_{x}(0) \int_{0}^{\infty} \exp(-\frac{|\tau|}{\tau_1}) \exp(-i \omega \tau)
+d \tau \\
+\intertext{Because the integral bounds are only over positive $ \tau $, the
+absolute values signs are redundant. They will now be dropped.}
+&= 2\phi_{x}(0) \int_{0}^{\infty} \exp(\frac{-\tau}{\tau_1}+i \omega \tau) d \tau +
+2\phi_{x}(0) \int_{0}^{\infty} \exp(-\frac{\tau}{\tau_1}-i \omega \tau)
+d \tau \\
+&= 2\phi_{x}(0) \frac{\exp(\frac{-\tau}{\tau_1}+i \omega
+\tau)}{\frac{-1}{\tau_1} + i\omega}\bigg|_{\tau=0}^{\infty} +
+2\phi_{x}(0) \frac{\exp(\frac{-\tau}{\tau_1}-i \omega
+\tau)}{\frac{-1}{\tau_1} - i\omega}\bigg|_{\tau=0}^{\infty} \\
+\intertext{The upper bounds for both integrals clearly yields $ 0 $. All that
+remains is the lower bound.}
+&= 2\phi_{x}(0) \frac{\tau_{1}}{1-i \omega \tau_{1}} +
+2\phi_{x}(0) \frac{\tau_{1}}{1 + i \omega \tau_{1}} \\
+&= 2\phi_{x}(0) \frac{\tau_{1}\left( 1+ i \omega \tau_{1} \right) +
+\tau_{1}\left( 1-i\omega\tau_{1}  \right)}{1+\omega^2 \tau_{1}^{2}} \\
+&= 4\phi_{x}(0) \frac{\tau_{1}}{1+\omega^2 \tau_{1}^{2}}
+\end{align*}
+This is a Lorentzian-type function of $ \tau_1 $.
+\end{homeworkProblem}

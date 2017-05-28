@@ -1,0 +1,102 @@
+\begin{homeworkProblem}[Two Important Theorems of the Fourier Transform]
+%   \problemStatement{
+%   }
+   % Problem 1.1
+   \subsection{Differentiation Theorem}
+   \label{sub:differentiation_theorem}
+%   \problemStatement{
+%   }
+
+   Explicitly, the Fourier transform of the derivative of a function is
+   \[
+      \int_{-\infty}^{\infty} \frac{dx(t)}{dt} \exp(- i \omega t) dt \enskip.
+   \]
+   Integrating this by parts yields
+   \[
+      \int_{-\infty}^{\infty} \frac{dx(t)}{dt} \exp(- i \omega t) dt =
+      x(t) \exp(- i \omega t) \bigg|_{-\infty}^{\infty} + i \omega
+      \int_{-\infty}^{\infty} x(t) \exp(-i\omega t) dt \enskip.
+   \]
+   Now, the second integral is clearly $ X(\omega) $, the Fourier transform of $
+   x(t) $. The first term, however, must be zero in order that $ x(t) $ possess
+   a valid Fourier transform (that is, it's in $ L^{2} $). So, finally,
+   \[
+      \int_{-\infty}^{\infty} \frac{dx(t)}{dt} \exp(- i \omega t) dt =
+      i \omega X(\omega) \enskip.
+   \]
+   This is not the desired result. However, if I change the lower bound to $ 0 $
+   instead of $ -\infty $ I would obtain the desired result.
+
+   However, the problem does not state that $ x(t < 0) = 0 $. It merely says
+   that $ x(t) $ is related to some function $ y(t) $ in that $ y(t_{0}) $ is
+   related to $ x(t) $ only for $ t \le t_{0} $. This does not impose that $
+   x(t<0) =0 $.
+   % Problem 1.2
+   \subsection{Integration Theorem}
+   \label{sub:integration_theorem}
+%   \problemStatement{
+%   }
+
+   The previous result can be expressed in the following way,
+   \[
+      \mathcal{F}(d x(t) dt) = i \omega \mathcal{F}(x(t)) \enskip.
+   \]
+   Allow, $ y(t) = \frac{dx(t)}{dt} $ such that $ x(t) = \int_{-\infty}^{t} y(t')
+   dt'$. Then,
+   \[
+      \mathcal{F}(y(t)) = i \omega
+      \mathcal{F}\Bigl(\int_{-\infty}^{t}y(t')dt' + C \Bigr) \enskip.
+   \]
+   C, above, is some constant that's included to account for the fact that if we
+   consider two ``versions'' of $ x(t) $, $ x_{1}(t) $ and $ x_{2}(t) $, which
+   only differ in that $ x_{2}(t) - x_{1}(t) = k $, $k$ being some constant, their
+   derivatives would be equal, $ \frac{dx_{1}(t)}{dt} = \frac{dx_{2}(t)}{dt} $.
+   The value of the integration constant is $ C = x(t) -
+   \int_{-\infty}^{t}y(t')dt' $. By linearity of the Fourier transform, however,
+   we can break the above up into two parts and rearrange for what we want:
+   \[
+      \mathcal{F}\bigl(\int_{-\infty}^{t}y(t') dt'\bigr) =
+      \frac{\mathcal{F}(y(t))}{i\omega} - \mathcal{F}(C) \enskip.
+   \]
+   But, we know that the Fourier transform of a constant C is just $ 2 \pi
+   \delta(\omega) C $. So, the end result is that
+   \[
+      \mathcal{F}\left(\int_{-\infty}^{t}y(t')dt'\right) = \frac{\mathcal{F}(y(t))}{i\omega}
+         - 2 \pi \delta(\omega)C \enskip.
+   \]
+
+   I'm not sure how to relate the constant of integration to $ X(0) $.
+   Hopefully, that will be something the official solutions will teach me.
+%   \subsection{Integration Theorem (Integration by Parts Method)}
+%   \label{sub:integration_theorem_integration_by_parts_method_}
+%   The integral to solve is
+%   \[
+%      \int_{-\infty}^{\infty} \int_{0}^{t}x(t')dt' \exp(-i\omega t) dt \enskip.
+%   \]
+%   We can break this into two separate terms using integration by parts. To
+%   facilitate this, we will call $ \int_{0}^{t}x(t')dt' = y(t) $. Using the form
+%   \[
+%      \int uv' = uv - \int u'v \enskip,
+%   \]
+%   with $ u = y(t) $ and $ v = \exp(-i \omega t) $ :
+%   \[
+%      \int_{-\infty}^{\infty} y(t) \exp(-i\omega t) dt  =
+%      \frac{1}{-i \omega} \lim_{t \to \infty} y(t) \exp(-i\omega t) -
+%      \frac{1}{-i \omega} \lim_{t \to -\infty} y(t) \exp(-i\omega t) -
+%      \int_{-\infty}^{\infty} x(t) \exp(-i \omega t) dt \enskip.
+%   \]
+%   Evaluating this limit explicitly yields
+%   \[
+%      \frac{1}{-i \omega} \lim_{t \to \infty} \int_{0}^{t} x(t') dt' \exp(-i\omega t) -
+%      \frac{1}{-i \omega} \lim_{t \to -\infty} \int_{0}^{t} x(t') dt' \exp(-i\omega t) -
+%      \int_{-\infty}^{\infty} x(t) \exp(-i \omega t) dt
+%   \]
+%   There is no added simplifications that can be made to this expression since $
+%   \lim_{t \to \infty} \exp(-i \omega t) $ doesn't exist. All we can do is
+%   recognize the third term as $ X(\omega) $.
+%   \[
+%      \frac{1}{-i \omega} \lim_{t \to \infty} \int_{0}^{t} x(t') dt' \exp(-i\omega t) -
+%      \frac{1}{-i \omega} \lim_{t \to -\infty} \int_{0}^{t} x(t') dt' \exp(-i\omega t) -
+%      X(\omega).
+%   \]
+\end{homeworkProblem}

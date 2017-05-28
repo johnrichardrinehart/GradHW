@@ -1,0 +1,28 @@
+\documentclass{article}
+\begin{document}
+\section{Proposal}
+\label{sec:proposal}
+
+Our lab (Digital Quantum Matter Laboratory) uses a dilution refrigerator to
+perform cryogenic circuit measurements. These refrigerators use multiple
+temperature stages which are thermally anchored to different temperatures. The
+coaxial cabling that we use to interface with the electronics in the dilution
+refrigerator is constructed using a series of coaxial cable segments anchored to
+each stage, sequentially. These cables are anchored to attenuators at each stage
+and transmit thermal noise to the lowest temperature stage (which is cooled to $
+\approx 10$~mK). My goal is to construct a model for the noise induced at the
+mixing chamber stage by the coaxial cabling. I will use the heat diffusion
+equation, knowing the material properties of the cables, and the
+fluctuation-dissipation theorem (Johnson-Nyquist noise) to determine the amount
+of thermal noise present at the mixing chamber stage. A rough outline for my
+project will be to:
+\begin{enumerate}
+   \item Determine the temperature gradient of each cable at each stage of the
+      fridge.
+   \item Discretize the cable into many series resistors.
+   \item Determine the amount of noise generate by the series connections of
+      resistors.
+   \item Time/Knowledge allowing: Determine how the thermal noise interacts with
+      and affects a two-level quantum system (qubit).
+\end{enumerate}
+\end{document}

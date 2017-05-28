@@ -1,0 +1,241 @@
+\documentclass{article}
+\usepackage[]{hyperref}
+\usepackage[]{amsmath}
+\begin{document}
+
+\section{Lecture 4: }
+Syllabus is being revised. The revised schedule is below.
+
+Week 4: Linear response theory, Fluctuation-Dissipation Theorem,
+   thermal noise/Johnson-Nyquist noise (microscopic and macroscopic description)
+
+Week 5: Shot/Partition noise
+
+Week 6: 1/f noise
+
+Week 7: Quantum Statistics/Quantum Noise ($ \propto f $)
+
+Week 8: p-n junction (macroscopic an mesoscopic)
+
+Week 9: Optical devices (lasers, photodetectors)
+
+Week 10: Buffer week (rehearse old topics or finish current
+
+Week 11 and 12: Measurement, Control, ``Coherenence/Decoherence''
+\label{sec:lecture_4_}
+
+\subsection{Last Week's Information}
+\label{sub:last_week_s_information}
+
+Last week, we covered linear response theory through the study of simple RC and
+LR circuits. We had modelled
+\[
+   Z(\omega) = \frac{1}{\frac{1}{R}+ \omega C}
+\]
+and $ V_{n}(\omega) = Z(\omega) I_{n}(\omega) $. We had stated that there is the
+following duality
+\[
+   V_{n}(\omega) = Z_{}(\omega) I_{n}(\omega) \Leftrightarrow
+   v_{n}(t) = z(t) * i_{n}(t)
+\]
+
+We can, in general, for a linear system, discuss the properties of the system in
+terms of a transfer function, which relates the output to the input. The
+transfer function could be complex, to account for magnitude and phase changes.
+
+Using this information, you could generate the output signal spectrum. In
+general,
+\[
+   X_{o}(\omega) = H(\omega)X_{i}(\omega).
+\]
+In the time domain, this can be computed as
+\[
+   x_{o}(t) = \int_{-\infty}^{\infty}h(t-\tau)x_{i}(\tau) d \tau.
+\]
+We assume that the signal is causal such that
+\[
+   x_{i}(\tau) = 0 \quad \text{for } t-\tau > 0.
+\]
+
+\subsection{Linear Response Theory}
+\label{sub:linear_response_theory}
+
+From last week, we know that we can write our output signal as
+\[
+   x_{o}(t) = \int_{-\infty}^{\infty} h(t-t')x_{i}(t') dt' +
+   \int_{-\infty}^{\infty} f(\tau,t') x^{2}_{i}(t') dt' +
+   \int_{-\infty}^{\infty} g(\tau,t') x^{3}_{i}(t') dt' + \ldots
+\]
+However, if the system is known or assumed to be linear, then all but the first
+integral can be neglected without loss of generality. Consider, now, an example
+RC circuit, which consists of a series RC circuit connected to a current source.
+The output can then be written as
+\[
+   v(t) = R i(t) + \frac{1}{C} \int_{-\infty}^{t}i(t')dt',
+\]
+where the second integral is exactly the linear transform given above with $
+h(t-t') = 1 $. We know,
+then, that we can write the output signal as
+\[
+   V(\omega) = R I(\omega) + \text{something}.
+\]
+To figure out what ``something'' is, we consider the following ``integration
+theorem'':
+\[
+   \mathcal{F}\left( \int_{0}^{t} x(t') dt' \right)
+   = \frac{1}{i\omega}X(\omega) + \frac{X(\omega)}{2} \delta(\omega).
+\]
+This follows immediately from the knowledge of the Fourier transform of a step
+function. A related theorem is the ``differentiation theorem'',
+\[
+   \mathcal{F}(\frac{d x(t)}{dt}) = i\omega X(\omega) - x(0).
+\]
+This follows immediately from the study of the integral
+\[
+   X(\omega) = \int_{-\infty}^{\infty}x(t) \exp(-i \omega t) dt
+   = \int_{0}^{\infty} x(t) \exp(-i \omega t) dt,
+\]
+solving the above by integration of parts.
+
+Applying these results to the above problem of the RC circuit, we can, then,
+write the output in the frequency domain as
+\[
+   V(\omega) = R I(\omega) + \frac{1}{i \omega C} I(\omega) =
+   \left( R + \frac{1}{i \omega C} \right) I(\omega) = Z(\omega) I(\omega)
+\]
+If we, now, consider an RC parallel circuit, instead of an RC series circuit,
+with the current source replaced by a voltage source we can write
+\[
+   i_{n}(t)
+   = \frac{v(t)}{R} + \frac{d}{dt}\Bigl( C v(t) \Bigr)
+   = Y(\omega) V(\omega).
+\]
+$ Y(\omega) $ is denote the ``admittance'' of the network. $ Z(\omega) $ is
+denoted the ``impedance'' of the network.
+
+We will be studying linear systems in this course. Linear systems impose some
+constraints on our system. They also raise some elementary questions with
+regards to how our system behaves.
+
+Question: How does the system in equilibrium respond at its
+equilibrium if the state is disturbed?
+
+To resolve this question, we will make two assumptions.
+\begin{enumerate}
+   \item The external stimulation is weak enough so that it can be treated as a
+      perturbation. So, mathematically, the Taylor series expansion of the
+      function can be used to approximate the response of the system.
+   \item The perturbation has a rapidly converging Taylor expansion. Then, we
+      only need to consider the first few terms  of the perturbation to obtain
+      sufficiently high accuracy.
+\end{enumerate}
+Now, linear response theory can be treated in the context of systems in
+equilibrium.
+
+As an example, consider a system whose Hamiltonian is $ H_{o} $. There is a weak
+time-dependent disturbing field applied to the system. The field will be denoted
+as $ F(t) $ at time $ t $. The entire disturbance will be denoted as $A(t)F(t)$.
+$ A(t) $ is a time-dependent amplitude. Now, we can write
+\[
+   H(t) = H_{o} + A(t) F(t), \quad t > t_{o}.
+\]
+\[
+   \langle A(t) \rangle = \langle A(t) \rangle_{0} + \int_{-\infty}^{t} dt'
+   X(t-t') F(t') + \text{nonlinear integrals}
+\]
+
+\subsection{Fluctuation-Dissipation Theorem}
+\label{sub:fluctuation_dissipation_theorem}
+
+This is one approach to systems that are disturbed from equilibrium. Equilibrium
+or steady-state conditions exist when the system does not exhibit any ``net
+motion'' with regards to any of its degrees of freedom. Good references for this
+topic can be found in
+
+``Bernard and Callen'' Rev. Mod. Phys. 31. 1017 (1959)
+
+``Kubo'' The Fluctuation-Dissipation Theorem (Google)
+
+Reif's Statistical Mechanics textboox (Chapter 15).
+
+The Fluctuation-Dissipation Theorem can be applied when there are known
+equilibrium properties. It  is a basic formula to derive known properties by
+examining fluctuations.
+
+\subsubsection{Brownian Motion in 1D}
+\label{sub:brownian_motion_in_1d}
+
+Consider the example of Brownian motion in 1D.
+
+There is some random motion for a collection of particles arranged along a line.
+Then, allowing the velocity to be some random variable, we can consider the
+stochastic process $ F(t) = m \frac{d v(t)}{dt} $. Let's also allow for the
+system to be defined according to some ``temperature'' $ \Theta_{\text{temp}}$
+which is governed by $ \beta = \left( k_{B} \Theta_{\text{temp}} \right)^{-1} $.
+Allow for some slowly-varying external force $ \mathcal{F}(t) $ and an internal
+interaction force $ F(t) $.  Often times, $ F(t) $ will be more rapidly varying
+than $ \mathcal{F}(t) $.  Let's consider that our measurement step time $ \tau $
+is much greater than the time between particle interactions $ \tau^{*} $. So, we
+assume $ \tau \gg \tau^{*} $. Now, we can say
+\[
+   \frac{m \left( v(t+\tau) - v(t) \right)}{\tau}
+   = \int_{t}^{t+\tau} \left[ \mathcal{F}(t') + F(t') \right] dt'
+   = \mathcal{F}(\tau) + \int_{t}^{t+\tau}F(t')dt'
+\]
+If we consider the ensemble average of the above expression we have
+\[
+   m \langle v(t+\tau) - v(t) \rangle
+   = \langle \mathcal{F}(t)\tau \rangle + \int_{t}^{t+\tau} \langle F(t')
+   \rangle dt'.
+\]
+We can use  work-energy theorem allows us to interpret the above expression in a
+new light: $ \Delta E = -\int_{t}^{t'}dt'' v(t'')F(t'') $. Using this, we can
+write $ \langle F(t) \rangle = \beta \langle F(t) \Delta E \rangle_0 $.
+\textbf{Where does that come from?}. Assuming that we have the previous
+expression, then,
+\[
+   \langle F(t') \rangle
+   = -\beta \langle F(t) v(t) \int_{t}^{t'}dt'' F(t'') \rangle_{0}.
+   = -\beta \langle v(t) \rangle \int_{t}^{t'}dt'' \langle F(t) F(t'')
+   \rangle_{0}.
+\]
+It is then possible to write
+\[
+   m \left[ v(t+\tau) - v(t) \right]
+   = \mathcal{F}(t)\tau - \beta \langle v(t) \rangle \int_{t}^{t+\tau}dt'
+   \int_{t-t'}^{0} dt''' \langle F(t')F(t+t''') \rangle_{0}
+   = \mathcal{F}(t)\tau - \alpha \langle v(t) \rangle \tau
+\]
+where $ \alpha = \frac{1}{2 k_{B}T } \int_{0}^{\infty} \langle F(0) F(t)
+\rangle_{0} dt$. $ \alpha $ is known as the dissipation constant or the friction
+force.
+
+We can use this study case, to consider a sourceless LR circuit, now. Allow $ \tau $ to be
+the time constant for a macroscopic quantity of the circuit to change.
+$\tau_{m}$ will be the time constant for a change in electron's
+velocity/momentum. $ \tau^{*} $ will be the mean-free time between electron
+collisions with the lattice. We claim that $ \tau \gg \tau_{m} \gg \tau^{*} $.
+We can write,
+\[
+   L \frac{dI(t)}{dt} = V(t) + v(t)
+\]
+where $ V(t) $ is slowly varying over $ \tau $ and $ v(t) $ is rapidly-varying
+with $ \tau^{*} $. We can write the current as $ I(t) = I_{0}(t) + i(t) $, with
+$ I_{0}(t) $ being the mean value of the noise current and $ i(t) $ being the
+rapidly varying current. Over a time scale $ \tau_{m} $,
+\[
+   L \frac{d}{dt} \left( I_{0}(t) + i(t) \right) = L \frac{d}{dt}I_{0}(t) = -R
+   I_{0}(t) + v(t).
+\]
+Now,
+\[
+   \frac{d I_{0}(t)}{dt} + \frac{R}{L} I_{0}(t) = \frac{v(t)}{L}.
+\]
+Next week, we'll discover that through a similar analysis as the 1D particle
+case
+\[
+   R = \frac{1}{2 k_{B}T}\int_{-\infty}^{\infty} \langle v(0) v(t) \rangle dt.
+\]
+We will then show that we can express the power spectral density as $ S_{v}(\omega)
+= 4 k_{B} \Theta R $ through the use of the fluctuation-dissipation theorem.
+\end{document}

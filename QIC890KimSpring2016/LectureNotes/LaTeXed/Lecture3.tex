@@ -1,0 +1,221 @@
+\documentclass{article}
+\usepackage[]{hyperref}
+\usepackage[]{amsmath}
+\begin{document}
+\section{Various Probability Functions and the Moment Generating Function}
+\subsection{Random Pulse Train}
+We could have a random pulse train be some stochastic process. We would
+characterize this by some ``time slot'' $ \tau $ and some total measurement time
+= $ N \tau $, where $ N $ is the number of acquired sample points. This process
+is characterized by (assumed to have the properties of)
+\begin{enumerate}
+   \item $\tau \gg \tau_{m} $, the ``memory time'' of the process.
+This memory time could be the relaxation time of some system or the transit time
+of charge.
+\item Probability of more than 1 pulse in time $ \tau $ is negligible.
+\end{enumerate}
+We can model this process mathematically, as
+\[
+   x(t) = \sum^{N}_{k=1} a_{k}f(t-t_{k})
+\]
+$ f(t) $ can have any specified shape. An example of $ f(t) $ could be $
+\delta(t) $. This process is characterized by random variables $ a_{k}, t_{k} $.
+
+\subsection{Bernoulli Process}
+
+The Bernoulli process is simple in that in only involves a single random
+variable and is discrete in time. It is also defined for only one event, one
+outcome of the random variable. The random variable, also, only takes on two
+possible values; that is, the process, at any time $ t $ only takes on values $
+0 $ or $ 1 $, for example.
+
+As a concrete example, we could be measuring the output of a random pulse
+generator. If at some sample time $ t_{1} $ we measure a pulse, then we might
+assign the outcome of the process as a 1 at time $ t_{1} $. By contrast, if we
+don't measure a pulse at time $ t_{2} $ then we might assign the outcome of the
+process as a 0 at time $ t_{2} $.
+
+It may be the case that the probability of a ``success'' is different from that
+of a ``failure''. So, in general, we can assign a PDF to the random variable
+describing the Bernoulli stochastic process as
+\[
+   P_{x}(x_{0}) = \begin{cases}
+      1-p, &\text{ in the case of a failure} ,x_{0} = 0,\\
+      p, & \text{ in the case of success} ,x_{0} = 1,\\
+      0, & \text{ otherwise}.
+   \end{cases}
+\]
+We can use a z-transform to write the moment-generating function as:
+\begin{align*}
+   P_{x}^{T}(z) &= \sum^{\infty}_{x_{i}=0} z^{x_{i}}P_{x}(x_{i}) \\
+   &= z^{0} P_{x}(0) + z^{1}P_{x}(1) \\
+   &= 1 \left( 1-p \right) + z p
+\end{align*}
+We can use this moment generating function to calculate statistical quantities,
+now.
+\begin{align*}
+   \langle x \rangle &= \frac{d}{dz}P_{x}^{T}(z)|_{z=1} = p \\
+   \langle x^2 \rangle &= \frac{d^2}{dz^2} P_{x}^{T}(z)|_{z=1} +
+   \frac{d}{dz}P_{x}^{T}(z)|_{z=1} = p \\
+   \sigma^{2} &= \langle x^2 \rangle - \left( \langle x \rangle \right)^2
+   = p - p^2 = p \left( 1-p \right)
+\end{align*}
+\subsection{Binomial Distribution}
+\label{sub:binomial_distribution}
+A binomial distribution is characterized by a series of independent Bernoulli
+processes.
+
+Suppose that we have $ n $ trials of a Bernoulli processes and $ k $ successes
+over those $ n $ trials. Now, $ k $ is the random variable. If $ k = 0 $ then we
+didn't measure any pulse in $ n $ trials. In fact, $ k $ can be any natural
+number between $ 0 $ and $ n $, inclusive. We can use the result of the
+Bernoulli process to determine the PDF of the binomial distribution.
+\begin{align*}
+   \left[ P^{T}(z) \right]^n &= \left[ 1 - p + z p  \right]^n =
+   \sum^{n}_{k=0} \begin{pmatrix}
+      n \\ k
+   \end{pmatrix}
+   (z p)^k \left( 1-p \right)^{n-k}
+\end{align*}
+From this point it is easy to calculate the various moments of the binomial
+distribution.
+\begin{align*}
+   \langle x \rangle &= n p \\
+   \langle x^2 \rangle &= n\left( n - 1 \right)p^2 + n p \\
+   \sigma^{2} &= n p \left( 1 - p \right) = n p q
+\end{align*}
+
+\subsection{Geometric Process}
+\label{sub:geometric_process}
+
+Consider $ l_{k} $ as a random variable which is a discrete random variable. It
+is the ``kth-order interarrival in time''. $ l_{k} $ describes the numbers of
+failed Bernoulli trials prior to the kth successful trial.
+\[
+   P_{l_{1}}(l) = p \left( 1 - p \right)^{l-1}
+\]
+When $ l_{1} = 1 $, then this means that a success occurs upon the
+first measurement of the Bernoulli process. When we consider $ l_{k} $ then we
+can write
+\[
+   P_{l_{k}}(l) = p \left( 1-p \right)^{l-1} P_{l_{k} - 1}(l')
+\]
+We can show that the moment-generating function in the case of $ k = 1 $ for $
+l_k $ (that is $ l_{1} $):
+\[
+   P_{l_{1}}^{T}(z) = \frac{z p}{1 - z \left( 1-p \right)}
+\]
+
+\subsection{Poisson Process}
+\label{sub:poisson_process}
+
+The Poisson process is also one that is defined for discrete times. The Poisson
+process is a probabilistic description of the behavior of arrivals of successes
+at points on a continuous line.
+
+Said a different way, considering measuring a
+sequence of independent Bernoulli processes succeeding with probability $ p =
+\lambda \Delta t $, the Poisson process is the process obtained when considering
+$\lim_{\Delta t \to 0}$.
+
+Now, suppose that we consider the case that exactly $ k $ successes occur during
+any interval of duration $ t $. $ P(k,t) $, the probability of having $ k $
+successes within time $ t $ has the following properties:
+\begin{enumerate}
+   \item $ \sum^{\infty}_{k=0} P(k,t) = 1 $
+   \item All events are defined on ``non-overlapping time intervals'' which are
+      mutually independent
+   \item If $ \Delta t \to 0 $, $ P(k, \Delta t) = \begin{cases}
+      1 - \lambda \Delta t, &\text{ if } k = 0 \\
+      \lambda \Delta t, &\text{ if } k = 1 \\
+      0, &\text{ if } k \ge 1.
+   \end{cases} $
+\end{enumerate}
+We can show, further, that
+\begin{align*}
+   P(k,t+\Delta t) &= P(k,t)P(0,\Delta t) + P(k-1, t)P(1,\Delta t) = \\
+   &= P(k,t)(1- \lambda \Delta t) + P(k-1,t) \lambda \Delta t
+   \intertext{Dividing both sides by $ \Delta t $ and rearranging allows us to
+   express this equation as a differential equation.}
+   &= \frac{d}{dt}P(k,t) + \lambda P(k,t) = \lambda P(k-1,t) \\
+   &= p(k,t) = \frac{\left( \lambda t \right)^k \exp(-\lambda t)}{k!}
+\end{align*}
+This is the probability mass function of $ P(k,t) $. The moment generating
+function $ P_{k}^{T}(z) $ can be found as
+\begin{align*}
+   P_{k}^{T}(z) &= \sum^{\infty}_{x_{0}=0} z^{x_{0}} P_{k}(x_{0}) \\
+   &= \exp(- \lambda t) \sum^{\infty}_{x_{0}=0} = \exp(\lambda t \left( z-1
+\right))
+\end{align*}
+From, this, we can generate the first and second moments and calculate the
+variance.
+\begin{align*}
+   \langle k \rangle &= \frac{d}{dz}\exp(\lambda t \left( z-1 \right))|_{z=1} \\
+   &= \lambda t \exp(\lambda t \left( z-1 \right))|_{z=1} \\
+   &= \lambda t \\
+   \langle k^2 \rangle &= \frac{d^2}{dz^2} \exp(\lambda t \left( z-1
+   \right))|_{z=1} + \frac{d}{dz} \exp(\lambda t \left( z-1 \right))|_{z=1} \\
+   &= \left( \lambda t \right)^2 + \lambda t \\
+   \sigma_{k}^2 &= \langle k^2 \rangle - \left( \langle k \rangle \right)^2 =
+   \lambda t
+\end{align*}
+
+Consider a process $ \omega = x + y $ that is the sum of a Poisson process $ x $ and
+another Poisson process $ y $. What is $ P_{\omega}(\omega_{0}) $? I can
+discover this by writing
+\begin{align*}
+   P_{x}^{T}(z) &= \exp(\langle x \rangle \left( z-1 \right))
+   \quad\text{and}\quad
+   P_{y}^{T}(z) = \exp(\langle y \rangle \left( z-1 \right))
+    \\
+   P_{x}^{T}(z) P_{y}^{T}(z) &= \exp(\langle x \rangle \left( z-1
+   \right))\exp(\langle y \rangle \left( z-1 \right)) \\
+   &= \exp((\langle y \rangle + \langle x \rangle) \left( z-1 \right)) \\
+   &= P_{\omega}^{T}(z)
+\end{align*}
+\textbf{How do we know that the second to last line equals the most recent
+line?}
+
+Let's imagine we have a process $ x $ which is subjected to random deletion of
+data.
+
+\subsection{RC Circuit Example}
+\label{sub:rc_circuit_example}
+
+Consider a lumped element model of an RC circuit. Assume that we have a
+resistance $ R $ and capacitance $ C $ at temperature $ \theta $.
+
+We know that $ v_{n}(t) = i_{n}(t) * Z(t)$ (where $ * $ is a convolution).
+Through a Fourier transform we can write $ V_{n}(\omega) =
+I_{n}(\omega)Z(\omega) = \frac{R}{1 + i \omega C R }I_{n}(\omega) $. To
+calculate the power spectral density $ S_{x}(\omega) $ of this circuit, we need
+to calculate $ \left| V_{n}(\omega) \right|^2 $.
+\begin{align*}
+   V_{n}(\omega) &= \frac{R}{1+ i\omega C R}I_{n}(\omega) \\
+   |V_{n}(\omega)|^2 &= \frac{R^{2}}{1 + \left( \omega C R \right)^2}
+   |I_{n}(\omega)|^2 \\
+   S_{v}(\omega) &= \frac{R^2}{1 + \left( \omega C R \right)^2} S_{I}(\omega)
+\end{align*}
+This is the power spectral density of the voltage.
+
+\subsection{RL Circuit Example}
+\label{sub:rl_circuit_example}
+
+If this circuit is at fixed temperature $ \theta $, then we can express $
+v_{n}(t) = i_{n}(t) * Z(T) $. Now, $ Z(\omega) = R + i \omega L $. Substituting
+these things to obtain the power spectral density:
+\begin{align*}
+   V_{n}(\omega) &= I_{n}(\omega) Z(\omega) \\
+   &= \left( R + i \omega L \right)I_{n}(\omega) \\
+   \left| V_{n}(\omega) \right|^2 &= \left( R^2 + \left( \omega L \right)^2
+   \right) |I_{n}(\omega)|^2
+\end{align*}
+
+Next, we will discuss
+\begin{itemize}
+   \item Thermal noise (white noise)
+   \item Shot noise (white noise)
+   \item $ \frac{1}{f} $ noise \& quantum noise.
+   \item Telegraph/Popcorn/burst noise
+\end{itemize}
+\end{document}

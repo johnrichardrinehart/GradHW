@@ -1,0 +1,174 @@
+\documentclass{article}
+\usepackage[]{amsmath}
+\usepackage[]{dsfont}
+\begin{document}
+I missed the first 1.5 hours of class.
+
+Statistically stationary processes vs. ergodic processes
+
+Ergodic speaks to the qualities of a particular sample. Stationary processes
+refer to ensemble properties.
+
+Let's first distinguish the time average from the ensemble average.
+
+\begin{equation}
+   \overline{x^{(i)}(t)} = \lim_{t \rightarrow \infty} \int_{-T/2}^{T/2}
+   x^{(i)}(t) dt
+\end{equation}
+This is the time average.
+
+The ensemble average
+\begin{equation}
+   \langle x(t_1) \rangle = \lim_{N \rightarrow \infty}\frac{1}{N} \sum_{i=1}^N
+   x^{(i)}(t_1)
+\end{equation}
+
+Now, let's introduce the definition of auto-correlation.
+
+\[
+   \phi_{x}(\tau) = x^{(i)}(t) x^{(i)}(t+\tau) = \lim_{T \rightarrow \infty}
+   \frac{1}{T} \int_{-T/2}^{T/2} x^{(i)}(t) x^{(i)}(t+\tau) dt
+\]
+
+Note that $ \phi_{x}(0) $ is identically the second-order time average
+(mean-square).
+
+\subsection{Ergodicity in the auto-correlation}
+\label{sub:ergodicity_in_the_auto_correlation}
+
+For a distribution  $ x $ to be ergodic in the autocorrelation it must be the
+case that
+
+\[
+   \phi_{x}(\tau) = \overline{x(t)x(t+\tau)} = \lim_{T \rightarrow \infty}
+   \frac{1}{T}\int_{-T/2}^{T/2} x(t) x(t+\tau) dt = \langle x(t)x(t+\tau) \rangle
+\]
+
+A statistically stationary process is one whose ensemble average  $ \langle
+   x(t_{1} \rangle $ and mean square (second-order ensemble average) $ \langle
+   x^{2}(t_1) \rangle $ is independent of  $ t_1 $.
+
+   \textbf{Understand the difference between ergodic and stationary}
+
+   \subsection{Fourier Analysis}
+   \label{sub:fourier_analysis}
+
+   When  $ x(t) $ is absolutely integrable then $ x \in L^2 $; specifically,
+
+   \[
+      \int_{-\infty}^{\infty}|x(t)| dt < \infty ,
+   \]
+
+   then the Fourier transform of  $ x(t) $ exists. The Fourier transform of a
+   process  $ x(t) $ is expressed as,
+
+   \[
+      X(i\omega) = \int_{-\infty}^{\infty} x(t) exp(-i \omega t) dt
+   \]
+
+   The inverse relationship can be expressed as:
+
+   \[
+      x(t) = \frac{1}{2\pi}\int_{-\infty}^{\infty} X(i\omega) \exp(i \omega t) dt
+   \]
+
+   Question: Does the Fourier transform of a statistically-stationary process
+   exist?
+
+   Answer: It's possible.
+
+   Suppose that $ x(t) \in \mathds{R} $. Then,  $ \Re(X(i\omega)) $ is even and
+   $ \Im(X(i\omega)) $ is odd. Then, consider the following windowing:
+
+   \begin{equation}
+      x_{T}(t) =
+      \begin{cases}
+         x(t), &\text{ if } |t| \le T/2 \\
+         0, &\text{ if } |t| \ge T/2
+      \end{cases}
+   \end{equation}
+   Then, the Fourier transform of $ x_{T}(t) $ is obtainable.
+
+   \subsubsection{Parseval's Theorem}
+   
+   Parseval's theorem states that for two processes  $ x_1(t) $ and $x_{2}(t)$
+   which are both in  $ L^2 $ (that is, their Fourier transform exists). Then,
+   considering the two processes and their duals,  $ X_{1}(i\omega) $ and  $
+X_{2}(i\omega) $ then
+
+\[
+   \int_{-\infty}^{\infty} x_{1}(t)x_{2}^*(t) dt = \frac{1}{2\pi}
+   \int_{-\infty}^{\infty} X_{1}(i\omega)X_{2}(i\omega) d\omega
+\]
+
+Consider the autocorrelation,  $ x_{1}(t) = x(t) $ and  $ x_{2}(t) = x(t+\tau)
+$, then the autocorrelation can be expressed as:
+
+\[
+   \int_{-\infty}^{\infty}x_{T}(t)x_{T}(t+\tau) dt = \frac{1}{2\pi}
+   \int_{-\infty}^{\infty} | X_T(i\omega) |^2 \exp(i\omega \tau) d\omega
+\]
+
+Note that for  $ \tau = 0 $ we have the energy theorem.
+
+\subsubsection{Energy Theorem}
+
+For  $ \tau = 0 $ in the above expression, we have
+
+\[
+   \int_{-\infty}^{\infty} x_T(t)^2 dt = \frac{1}{2\pi}
+   \int_{-\infty}^{\infty}|X_T(i\omega)|^{2}d\omega
+\]
+
+\subsubsection{Wiener-Khintchine Theorem}
+
+Consider ensemble-averaged auto-correlation functions. Within this class of
+functions, we can consider the two sub-classes which are the statistically
+stationary and statistically non-stationary processes.
+
+For the statistically stationary processes
+
+\begin{align}
+   & \lim_{T \rightarrow \infty} \frac{1}{T} \int_{-\infty}^{\infty} \langle
+      x_T(t)X_T(t+\tau) \rangle dt
+       = \lim_{T \rightarrow \infty} \frac{1}{2\pi} \int_{0}^{\infty} \frac{2
+      \langle |X_{T}(i\omega)|^2 \rangle}{T} \cos(\omega\tau)d\omega
+\end{align}
+
+
+Considering non-stationary processes
+\begin{align}
+   & \lim_{T \rightarrow \infty} \frac{1}{T} \int_{-\infty}^{\infty} \langle
+      x_T(t)X_T(t+\tau) \rangle dt
+       = \lim_{T \rightarrow \infty} \frac{1}{2\pi} \int_{0}^{\infty} \frac{2
+      \langle |X(i\omega)|^2 \rangle}{T} \cos(\omega\tau)d\omega
+\end{align}
+
+The above are the two forms of the Wiener-Khintchine theorem. With regards to
+the above, consider the power spectral density of  $ x(t) $ which is defined as
+
+\[
+   S_{x}(\omega) = \lim_{T \rightarrow \infty} \frac{2 \langle |X(i \omega)|
+   \rangle ^2}{T}
+\]
+
+We can write the autocorrelation for  $ x(t)$ as
+
+\begin{align}
+   \langle \phi_x(\tau) \rangle &= \frac{1}{2\pi} \int_{0}^{\infty}
+   S_{x}(\omega) \cos(\omega \tau) d \omega \\
+   S_{x}(\omega) &= 4 \int_{0}^{\infty}\langle \phi_{x}(\tau) \rangle \cos(\omega
+   \tau) d\omega
+\end{align}
+
+for the case of a stationary process  $ x(t) $. For the case of a non-stationary
+process:
+
+\begin{align}
+   \langle \phi_x(\tau,T) \rangle &= \frac{1}{2\pi} \int_{0}^{\infty}
+   S_{x}(\omega,T) \cos(\omega \tau) d \omega \\
+   S_{x}(\omega,T) &= 4 \int_{0}^{\infty}\langle \phi_{x}(\tau,T) \rangle \cos(\omega
+   \tau) d\omega
+\end{align}
+\end{document}
+
