@@ -1,0 +1,64 @@
+% Problem 1.4
+\begin{homeworkProblem}
+
+\textbf{Problem Description.}
+
+The general form a two-mode squeezed state in the number basis is
+\[
+   S_{2}(\xi)\ket{0,0} = \frac{1}{\cosh(r)}
+   \sum^{\infty}_{n=0} (-1)^{n} e^{i n \theta} \tanh^{n}r \ket{n,n}
+\]
+
+The density matrix representation of this state is
+\[
+   \rho_{\xi} = \frac{1}{\cosh^{2}(r)} \sum^{\infty}_{m=0} \sum^{\infty}_{n=0}
+   (-1)^{n+m}e^{i (n-m) \theta} \tanh^{n}(r) \tanh^{m}(r) \ket{n,n}\bra{m,m}
+\]
+
+Now, I'll trace over the space of the second mode.
+
+\begin{align}
+   \rho_{\xi}^{1} &= \sum^{\infty}_{k = 0} \mathds{1} \otimes \bra{k}
+   \left(
+   \frac{1}{\cosh^{2}(r)} \sum^{\infty}_{m=0} \sum^{\infty}_{n=0}
+   (-1)^{n+m}e^{i (n-m) \theta} \tanh^{n}(r) \tanh^{m}(r) \ket{n,n}\bra{m,m}
+   \right)
+   \mathds{1} \otimes \ket{k} \\
+   &=
+   \left(
+   \frac{1}{\cosh^{2}(r)} \sum^{\infty}_{n=0} \tanh^{2n}(r) \ket{n}\bra{n}
+   \right)
+\end{align}
+
+Now, this is a diagonal matrix. So, the logarithm of that matrix is just a
+diagonal matrix populated with the logarithm of the corresponding entries of the
+parent matrix. Since $ \rho_{\xi}^{1} $ is diagonal, then $ \rho_{\xi}^{1}
+\log_{2}(\rho_{\xi}^{1}) $ will also be diagonal, with diagonal entries that are
+the products of the corresponding diagonal entries from each of the parent
+matrices. Thus, the entropy of entanglement of the two-mode squeezed state is
+
+\[
+   S(\rho_{\xi}^{1}) = \sum^{\infty}_{m=0} \frac{\tanh^{2n}(r)}{\cosh^{2}(r)}
+   \log_{2}\left(\frac{\tanh^{2n}(r)}{\cosh^{2}(r)}\right)
+\]
+
+% TODO: Include plot
+
+To determine the entropy of the bell state, we must perform similar operations.
+
+\begin{align}
+   \rho_{\phi^{+}}^{1} &= \frac{1}{2} \sum^{1}_{k=0}
+   (\mathds{1} \otimes \bra{k})
+   \left( \ket{00}\bra{00} + \ket{00}\bra{11} +
+   \ket{11}\bra{00} + \ket{11}\bra{11} \right)
+   (\mathds{1} \otimes \ket{k}) \\
+   &= \frac{\ket{00}\bra{00} + \ket{11}\bra{11}}{2}
+\end{align}
+
+Since $ \log_{2}(.5) = -1 $ the entropy of a bell state is, then
+
+\[
+   S(\rho_{\phi}^{1}) = - \sum^{1}_{i=2} (\frac{1}{2})(-1) = 1
+\]
+
+\end{homeworkProblem}
