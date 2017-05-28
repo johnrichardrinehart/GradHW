@@ -26,6 +26,11 @@
 \usepackage[]{dsfont}
 \usepackage[toc,page]{appendix}
 \usepackage[framemethod=TikZ]{mdframed}
+\usepackage[]{siunitx}
+\usepackage{circuitikz}
+\usepackage{caption}
+\usepackage[]{natbib}
+\usetikzlibrary{arrows}
 %\usepackage{tikz}
 %\usetikzlibrary[]{external}
 %\tikzexternalize{prefix=tikz/}
@@ -42,8 +47,8 @@
 % Set up the header and footer
 \pagestyle{fancy}
 \lhead{\hmwkAuthorName} % Top left header
-\chead{\courseTitle\ : \hmwkTitle} % Top center header
-\rhead{\firstxmark} % Top right header
+\rhead{\courseTitle\ : \hmwkTitle} % Top center header
+%\rhead{\firstxmark} % Top right header
 \lfoot{\lastxmark} % Bottom left footer
 \cfoot{} % Bottom center footer
 \rfoot{Page\ \thepage\ of\ \pageref{LastPage}} % Bottom right footer
@@ -79,7 +84,7 @@
 \nobreak\extramarks{#1}{}\nobreak
 }
 
-\setcounter{secnumdepth}{0} % Removes default section numbers
+%\setcounter{secnumdepth}{0} % Removes default section numbers
 \newcounter{homeworkProblemCounter} % Creates a counter to keep track of the number of problems
 \newcommand{\homeworkProblemName}{}
 \newenvironment{homeworkProblem}[1][Problem \arabic{homeworkProblemCounter}]{ % Makes a new environment called homeworkProblem which takes 1 argument (custom name) but the default is "Problem #"
@@ -146,6 +151,8 @@
 \newcommand{\bracket}[2]{\langle#1|#2\rangle }
 \newcommand*{\myalign}[2]{\multicolumn{1}{#1}{#2}}
 
+\DeclareMathOperator{\Tr}{Tr}
+
 % New definition of square root:
 % it renames \sqrt as \oldsqrt
 \let\oldsqrt\sqrt
@@ -197,6 +204,7 @@
 
 %----------------------------------------------------------------
 \numberwithin{equation}{section}
+%\numberwithin{equation}{chapter}
 \renewcommand{\theequation}{\arabic{equation}}
 
 
