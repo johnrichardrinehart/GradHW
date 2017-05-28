@@ -1,10 +1,10 @@
 \begin{homeworkProblem}
 
-\textbf{Two point charges (each of charge Q) are positioned at z=R and z=-R on the z-axis. 
-A circular ring of radius R is: centered at the origin, sits on the x-y plane and has a total 
+\textbf{Two point charges (each of charge Q) are positioned at z=R and z=-R on the z-axis.
+A circular ring of radius R is: centered at the origin, sits on the x-y plane and has a total
 charge of -2Q uniformly distributed on its circumference. }
 
-\begin{homeworkSection}{(a)} 
+\begin{homeworkSection}{(a)}
 
 \textbf{Determine the potential along the z-axis (for $r>R$).}
 
@@ -29,8 +29,8 @@ E_{z_{ring}}(z>R) = 2\pi k \frac{\lambda R}{(z^2+R^2)^{1.5}}z \nonumber \\
 \par
 Thus, the total electric field in the z-direction is $\vec{E_z} = \vec{E}_{z_{ring}} + \vec{E}_{z_{pc}}$ which can be written as $\vec{E_z}(z>R,z<-R) = (-k \frac{2Q}{(z^2+R^2)^{1.5}}z + k \frac{Q}{(z-R)^2} + k \frac{Q}{(z+R)^2} ) \hat{z} (\theta(z+R)-1)$. Here, $\theta (z)$ is a Heaviside step function in z. That is, the function returns 1 when the argument is non-negative and 0 when the argument is negative. This toggles the unit vector symbol correctly. Note that this field expression is only valid (as stated) when z lies above R or below -R. The field in the region along the z axis where $z>-R$ and $z<R$ has not been determined. It has not been requested.
 \\ \par
-By convention, the electric potential is zero at infinity. Also, by convention, the electric potential is defined in terms of the electric field as $V(x_1,x_2,x_3) = -\int_\infty^{x_1} \int_\infty^{x_2} \int_\infty^{x_3} \vec{E}(x'_1,x'_2,x'_3) \cdot dl \hat{dl}$. Here, $\vec{dl}$ is an infinitesimal displacement in the direction of the path that takes me from $(\infty,\infty,\infty)$ to $(x_1,x_2,x_3)$. Such an integral is called a ``path integral''. Let's consider a path integral along the z-axis to some position where $z>R$. I will integrate the electric field along that line and determine the electric potential along the z axis for all points where $z > R$. 
-\\ \par 
+By convention, the electric potential is zero at infinity. Also, by convention, the electric potential is defined in terms of the electric field as $V(x_1,x_2,x_3) = -\int_\infty^{x_1} \int_\infty^{x_2} \int_\infty^{x_3} \vec{E}(x'_1,x'_2,x'_3) \cdot dl \hat{dl}$. Here, $\vec{dl}$ is an infinitesimal displacement in the direction of the path that takes me from $(\infty,\infty,\infty)$ to $(x_1,x_2,x_3)$. Such an integral is called a ``path integral''. Let's consider a path integral along the z-axis to some position where $z>R$. I will integrate the electric field along that line and determine the electric potential along the z axis for all points where $z > R$.
+\\ \par
 
 \begin{align}
 V(z_0>R)&\int_\infty^{z_0>R} (k \frac{-2Q}{(z^2+R^2)^{1.5}}z + k \frac{Q}{(z-R)^2}+ k \frac{Q}{(z+R)^2} ) \hat{z} \cdot dz (-\hat{z}) \nonumber \\
@@ -54,8 +54,8 @@ Thus, $V(z>R) = V(z<-R) = -\frac{2kQ}{(z^2+R^2)^{1.5}} + k\frac{Q}{z-R} + k\frac
 \end{homeworkSection}
 
 \begin{homeworkSection}{(c)}
-\textbf{In the case that $z>>R$ (but not infinity), what is a good approximation for the Electric 
-Potential along the x-axis? (it's not zero, write the potential as an expansion and keep 
+\textbf{In the case that $z>>R$ (but not infinity), what is a good approximation for the Electric
+Potential along the x-axis? (it's not zero, write the potential as an expansion and keep
 the first non-zero term).}
 \\ \par
 This problem requires that I expand the potential. I will consider a fixed z. I will then consider expanding about small R/z. I will expand about $R/z = 0$. I will then keep the lowest order terms. To make my life a little easier, though, I will utilize the following property of Maclaurin series expansions. Consider $h(\alpha) = f(\alpha) + g(\alpha)$. The expansion of $h(\alpha)$ about $\alpha = 0$ is $\sum_n \frac{d^n h}{d^n \alpha}|_{\alpha = 0} \alpha^n = \sum_n \frac{d^n (f+g)}{d^n \alpha}|_{\alpha = 0} \alpha^n = \sum_n \frac{d^n f}{d^n \alpha} \alpha^n + \sum_n \frac{d^n g}{d^n \alpha}|_{\alpha = 0} \alpha^n$. The last expression is simply the sum of the two expansions, though.
