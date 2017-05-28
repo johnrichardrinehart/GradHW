@@ -84,7 +84,16 @@
 \nobreak\extramarks{#1}{}\nobreak
 }
 
-%\setcounter{secnumdepth}{0} % Removes default section numbers
+%\renewcommand{\thesection}{}
+%\renewcommand{\thesubsection}{\arabic{section}.\arabic{subsection}}
+%\makeatletter
+%\def\@seccntformat#1{\csname #1ignore\expandafter\endcsname\csname the#1\endcsname\quad}
+%\let\sectionignore\@gobbletwo
+%\let\latex@numberline\numberline
+%\def\numberline#1{\if\relax#1\relax\else\latex@numberline{#1}\fi}
+%\makeatother
+
+\setcounter{secnumdepth}{0} % Removes default section numbers
 \newcounter{homeworkProblemCounter} % Creates a counter to keep track of the number of problems
 \newcommand{\homeworkProblemName}{}
 \newenvironment{homeworkProblem}[1][Problem \arabic{homeworkProblemCounter}]{ % Makes a new environment called homeworkProblem which takes 1 argument (custom name) but the default is "Problem #"
