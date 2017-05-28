@@ -1,0 +1,31 @@
+% Problem 1.4
+\begin{homeworkProblem}
+
+\textbf{Problem Description.}
+\begin{align}
+   \int d^{2}\alpha \ket{\alpha}\bra{\alpha} &=
+   \int d^{2}\alpha 
+   \left( e^{\frac{-|\alpha|^{2}}{2}} \sum^{\infty}_{n=0}
+   \frac{\alpha^{n}}{\sqrt{n!}} \ket{n} \right)
+   \left( e^{\frac{-|\alpha|^{2}}{2}} \sum^{\infty}_{m=0}
+   \frac{\bar{\alpha}^{m}}{\sqrt{m!}} \bra{m} \right)
+   \intertext{Making the substition that $ \alpha \to r e^{i \theta} $ we can
+   rewrite $ d^{2}\alpha $ as $ r dr d\theta $.}
+   &= \int_{0}^{2\pi} \int_{0}^{\infty}
+   r dr d\theta
+   \left( e^{-\frac{-r^{2}}{2}} \sum^{\infty}_{n=0}
+   \frac{r^{n}e^{i n \theta}}{\sqrt{n!}} \ket{n} \right)
+   \left( e^{-\frac{-r^{2}}{2}} \sum^{\infty}_{m=0}
+   \frac{r^{m}e^{-i m \theta}}{\sqrt{m!}} \bra{m} \right) \\
+   &= \sum^{\infty}_{n=0} \sum^{\infty}_{m=0} \frac{\ket{n}\bra{m}}{\sqrt{n!}\sqrt{m!}}
+   \int_{0}^{\infty} r r^{n+m} e^{-r^{2}} dr
+   \int_{0}^{2\pi} e^{i\theta (n-m)} d\theta
+   \intertext{But, the last integral is given by the following $ \int_{0}^{2\pi}
+   e^{ia\theta} d\theta = 2\pi \delta_{a,0}$}
+   &= 2 \pi \sum^{\infty}_{n=0} \frac{\ket{n}\bra{n}}{n!}
+   \int_{0}^{\infty} r r^{2n} e^{-r^{2}} dr
+   \intertext{Now, $ \int_{0}^{\infty} \frac{r^{2n+1} e^{-r^{2}} }{n!} dr  =
+   \frac{1}{2}$. So, finally:}
+   &= \pi \sum^{\infty}_{n=0} \ket{n}\bra{n}
+\end{align}
+\end{homeworkProblem}
