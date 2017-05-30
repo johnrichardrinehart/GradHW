@@ -1,0 +1,15 @@
+% Problem 1.7
+\begin{homeworkProblem}[Problem 8]
+\begin{align}
+   \ket{\psi} &= \int_{C} d \alpha b(\alpha) \exp({\left| \alpha \right|^{2}}/2)
+   \ket{\alpha} \\
+   &= \int_{C} d \alpha \frac{1}{2 \pi i \alpha} \exp({\left| \alpha \right|^{2}}/2)
+   \ket{\alpha} \\
+   &= \frac{1}{2 \pi i}\int_{C} d \alpha
+   \frac{\exp({\left| \alpha \right|^{2}}/2)}{\alpha - 0} \ket{\alpha}
+   \intertext{By the residue theorem: }
+   &= \frac{1}{2 \pi i} \lim_{\alpha \to 0}
+   2 \pi i \exp({\left| \alpha \right|^{2}}/2) \ket{\alpha} \\
+   &= \ket{0}
+\end{align}
+\end{homeworkProblem}

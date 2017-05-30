@@ -1,0 +1,210 @@
+% Problem 1.9
+\begin{homeworkProblem}[Problem 9]
+   \begin{homeworkSection}{a)}
+      To show this, we'll determine the matrix elements of $ E $ in the number
+      basis.
+      \begin{align}
+         E &\equiv (n+1)^{-1/2}a \label{eq:Ecreation}\\
+         E_{i,j} &= \bra{i} (n+1)^{-1/2} a \ket{j} \\
+                 &= \bra{i} (n+1)^{-1/2} \sqrt{j} \ket{j-1}
+         \intertext{By expanding $ (n+1)^{-1/2} $ into a power series of $ n $ it can
+         be shown that $ (\hat{n}+1)^{-1/2}\ket{m} = (m+1)^{-1/2} \ket{m} $.}
+         &= \bra{i} \frac{\sqrt{j}}{\sqrt{j}} \ket{j-1} \\
+         &= \bra{i} \ket{j-1}
+      \end{align}
+      So, the $ i $,$ j $th element is only non-zero for those values of $ j = i+1 $.
+      The eigenvalue associated with the $ \ket{n} $ Fock state of the $ E $ operator
+      is 1 for all $ n $. So, this operator can be written as
+      \[
+         E = \sum_{n=0}^{\infty} \ket{n}\bra{n+1}
+      \]
+      since this operator has the same action on the (complete) basis of Fock states
+      as that given in Eq.~\ref{eq:Ecreation}.
+   \end{homeworkSection}
+   \begin{homeworkSection}{b)}
+      \begin{align}
+         E \ket{\phi} &= \sum_{n=0}^{\infty} \ket{n}\bra{n+1} \sum_{m}^{\infty}
+         e^{i m \phi} \ket{m} \\
+         &= \sum_{n=0}^{\infty} e^{i (n+1) \phi} \ket{n} \\
+         &= e^{i \phi} \sum_{n=0}^{\infty} e^{i n \phi} \ket{n} \\
+         &= e^{i \phi} \ket{\phi}
+      \end{align}
+      \begin{align}
+         \braket{\phi_{1} | \phi_{2}} &= \sum^{\infty}_{m=0} e^{-i m \phi_1}
+         \bra{m} \sum^{\infty}_{n=0} e^{i n \phi_{2}} \ket{\phi_{n}} \\
+         &= \sum^{\infty}_{m = 0} e^{i m \left( \phi_2 - \phi_1 \right)}
+         \braket{m | m} \\
+         &= \sum^{\infty}_{m = 0} e^{i m \left( \phi_2 - \phi_1 \right)} \\
+      \end{align}
+      So, for $ \theta_2 = \theta_1 $ this sum diverges. For $ \theta_2 \ne
+      \theta_1 $ this is not zero. So, these states are neither orthogonal nor
+      normalizable.
+   \end{homeworkSection}
+   \begin{homeworkSection}{c)}
+      \begin{align}
+         P(\phi) &= \frac{1}{2 \pi} \braket{\phi | \rho_{\ket{n}} | \phi} \\
+                 &= \frac{1}{2 \pi}
+         \left(\sum^{\infty}_{i=0} e^{-i n \phi} \bra{i}\right)
+         \ket{n} \bra{n}
+         \left(\sum^{\infty}_{j=0} e^{j n \phi} \ket{j}\right) \\
+         &= \frac{1}{2 \pi}
+      \end{align}
+      %The uncertainty of the phase can be calculated as $ \sqrt{\braket{\phi^{2}} -
+      %\braket{\phi}^{2}} $.
+      %\begin{align}
+      %\braket{\phi} &= \braket{n | \phi | n } \\
+      %&= \braket{n | \sum^{\infty}_{j=0} \ket{j} \bra{j+1} | n} \\
+      %&= 0
+      %\end{align}
+      %\begin{align}
+      %\braket{\phi^{2}} &= \braket{n | \phi^{2} | n } \\
+      %\end{align}
+      The uncertainty (variance) of the phase can be calculated as $ \left(\int_{0}^{2
+            \pi} P(\phi) \phi^{2} d \phi - \left( \int_{0}^{2 \pi} P(\phi) d \phi
+      \right)^{2}\right)^{1/2}$. Since $ P(\phi) = \frac{1}{2\pi}$ both integrals are easy
+      to calculate.
+      \[
+         \int_{0}^{2 \pi} P(\phi) \phi^{2} d \phi  =
+         \frac{1}{2\pi}\frac{(2\pi)^3}{3} = \frac{(2\pi)^2}{3}
+      \]
+      and
+      \[
+         \int_{0}^{2 \pi} P(\phi) \phi d \phi  =
+         \frac{1}{2\pi}\frac{(2\pi)^2}{2} = \pi \enskip.
+      \]
+      So, the variance is
+      \[
+         \sigma_{\phi}^{2} = \frac{(2\pi)^2}{3} - \pi^2 = \frac{\pi^2}{3} \enskip.
+      \]
+      This is the same variance as that of a uniform distribution for some random
+      variable X uniformly distributed over $ [a,b] $ which is $ \sigma^2_{X}(b-a)^2/12 $.
+
+      This, and the fact that the probability distribution over $ \phi $ has no
+      dependence on $ \phi $ indicates that the uncertainty of the phase for a Fock
+      state is uniform over the phase (it's completely uncertain).
+
+      To calculate the same uncertainty for the coherent states I can repeat the
+      above approach where $ P(\phi) $ is now given by the corresponding expression
+      for coherent states.
+      %\begin{align}
+      %P_{\alpha}(\phi) &= \frac{1}{2 \pi} \braket{\phi | \alpha | \phi}  \\
+      %=&
+      %\frac{1}{2 \pi}
+      %\left(\sum^{\infty}_{n=0} e^{-i n \phi} \bra{n}\right)
+      %\left(\sum^{\infty}_{k=0} e^{{-r^2}/2} \frac{r^k e^{i k \theta}}{\sqrt{k!}}
+      %\ket{k}\right)
+      %\left(\sum^{\infty}_{l=0} e^{{-r^2}/2} \frac{r^l e^{-i l \theta}}{\sqrt{l!}}
+      %\bra{l}\right)
+      %\left(\sum^{\infty}_{m=0} e^{i m \phi} \ket{m}\right) \\
+      %&=
+      %\frac{1}{2 \pi}
+      %\left(\sum^{\infty}_{n=0} e^{-i n \phi}
+      %e^{{-r^2}/2} \frac{r^n e^{i n \theta}}{\sqrt{n!}}
+      %\right)
+      %\left(\sum^{\infty}_{m=0} e^{{-r^2}/2} \frac{r^m e^{-i m \theta}}{\sqrt{m!}}
+      %e^{i m \phi}\right) \\
+      %&=
+      %\frac{1}{2 \pi}
+      %e^{-r^{2}}
+      %\left(\sum^{\infty}_{n=0} \frac{r^n e^{i n (\theta- \phi)}}{\sqrt{n!}} \right)
+      %\left(\sum^{\infty}_{m=0} \frac{r^m e^{-i m (\theta- \phi)}}{\sqrt{m!}} \right)
+      %\intertext{This product can be split into two separate sums, one in which
+      %$ n=m $ and another in which $ n\ne m $.}
+      %&=
+      %\frac{e^{-r^{2}}}{\pi}
+      %\left(\sum^{\infty}_{n=0} \cos\left(n\left(\theta-\phi\right)\right) \frac{r^{2n}}{n!} \right) +
+      %\frac{e^{-r^{2}}}{2 \pi}
+      %\left(\sum^{\infty}_{n=0} \sum^{\infty}_{m=0, m \ne n}
+      %\frac{r^{m+n}}{\sqrt{m!n!}}
+      %\left( e^{i n \left( \theta- \phi \right)} + e^{-i m \left( \theta- \phi \right)} \right)
+      %\right)
+      %\end{align}
+      \begin{align}
+         P_{\alpha}(\phi) &= \frac{1}{2 \pi} \braket{\phi \ket{\alpha} \bra{\alpha}
+         \phi} \\
+         & \propto | \braket{\alpha | \phi} |^2 \\
+         &= | \sum^{\infty}_{n=0}  \braket{\alpha \ket{n} \bra{n} \phi} |^2 \\
+         &= | e^{{-r^{2}}/2} \sum^{\infty}_{n=0}
+         \frac{r^{n}e^{-i n \theta}}{\sqrt{n!}} e^{i n \phi}|^2 \\
+         &=
+         \left(
+            e^{{-r^{2}}/2} \sum^{\infty}_{n=0}
+            \frac{r^{n}e^{-i n \theta}}{\sqrt{n!}} e^{i n \phi}
+         \right)
+         \left(
+            e^{{-r^{2}}/2} \sum^{\infty}_{m=0}
+            \frac{r^{m}e^{i m \theta}}{\sqrt{m!}} e^{-i m \phi}
+         \right) \\
+         &= e^{{-r^2}} \sum^{\infty}_{n=0} \sum^{\infty}_{m=0}
+         \frac{r^{n+m} (e^{i n (\phi- \theta)}e^{-i m (\phi- \theta)})}{\sqrt{n!}\sqrt{m!}}
+         \intertext{This can be broken into two sums, one in which $ n=m $ and one
+         in which $ n \ne m $.}
+         &= e^{{-r^2}} \sum^{\infty}_{n=0} \frac{r^{2n} 2 \cos(\theta - \phi) }{n!}
+         +  e^{{-r^2}} \sum^{\infty}_{n=0} \sum^{\infty}_{m=0, m \ne n}
+         \frac{r^{n+m} (e^{i n (\phi- \theta)}e^{-i m (\phi-
+         \theta)})}{\sqrt{n!}\sqrt{m!}} \\
+         &= 2 \cos(\theta - \phi)
+         +  e^{{-r^2}} \sum^{\infty}_{n=0} \sum^{\infty}_{m=0, m \ne n}
+         \frac{r^{n+m} (e^{i n (\phi- \theta)}e^{-i m (\phi- \theta)})}{\sqrt{n!}\sqrt{m!}}
+         \intertext{Back-substituting the factor of $ 1/{2 \pi} $:}
+         &= \frac{\cos(\theta - \phi)}{\pi}
+         +  \frac{e^{{-r^2}}}{2\pi} \sum^{\infty}_{n=0} \sum^{\infty}_{m=0, m \ne n}
+         \frac{r^{n+m} (e^{i n (\phi- \theta)}e^{-i m (\phi-
+         \theta)})}{\sqrt{n!}\sqrt{m!}} \\
+      \end{align}
+      The variance associated with the phase is calculated as
+      $ \int_{0}^{2\pi} P(\phi) \phi^{2} d\phi - (\int_{0}^{2\pi} P(\phi) \phi
+      d\phi)^2 $. Calculating the first term:
+      \begin{align}
+         &\int_{0}^{2\pi} \frac{\cos(\theta - \phi)}{\pi} \phi^{2} d \phi +
+         \frac{e^{{-r^2}}}{2\pi} \sum^{\infty}_{n=0} \sum^{\infty}_{m=0, m \ne n}
+         \frac{r^{n+m}}{\sqrt{n!}\sqrt{m!}}
+         \int_{0}^{2\pi}
+         e^{i (n-m) (\phi- \theta)} \phi^{2} d\phi \\
+         &= 4 (\cos(\theta) - \pi \sin(\theta)) +
+         \frac{e^{{-r^2}}}{2\pi} \sum^{\infty}_{n=0} \sum^{\infty}_{m=0, m \ne n}
+         \frac{r^{n+m}}{\sqrt{n!}\sqrt{m!}} e^{-i(n-m)\theta}
+         \int_{0}^{2\pi}
+         e^{i (n-m) \phi} \phi^{2} d\phi \\
+         &= 4 (\cos(\theta) - \pi \sin(\theta)) +
+         \frac{e^{{-r^2}}}{2\pi} \sum^{\infty}_{n=0} \sum^{\infty}_{m=0, m \ne n}
+         \frac{r^{n+m}}{\sqrt{n!}\sqrt{m!}} e^{-i(n-m)\theta}
+         4 \pi \frac{-i \pi (n-m) + 1}{(n-m)^2} \\
+         &= 4 (\cos(\theta) - \pi \sin(\theta)) +
+         2 e^{{-r^2}} \sum^{\infty}_{n=0} \sum^{\infty}_{m=0, m \ne n}
+         \frac{r^{n+m}}{\sqrt{n!}\sqrt{m!}} e^{-i(n-m)\theta}
+         \frac{-i \pi (n-m) + 1}{(n-m)^2}
+         \intertext{This sum can be simplified a bit further by rewriting the double
+         sum as a single sum over just the values of m that are greater than n.}
+         &= 4 (\cos(\theta) - \pi \sin(\theta)) +
+         4 e^{{-r^2}} \sum^{\infty}_{n=0} \sum^{\infty}_{m=0, m > n}
+         \frac{r^{n+m}}{\sqrt{n!}\sqrt{m!}} \frac{\cos((n-m)\theta)}{(n-m)^2}
+      \end{align}
+      Calculating the second term (just the integral which we'll square, later):
+      \begin{align}
+         &\int_{0}^{2\pi} \frac{\cos(\theta - \phi)}{\pi} \phi d \phi +
+         \frac{e^{{-r^2}}}{2\pi} \sum^{\infty}_{n=0} \sum^{\infty}_{m=0, m \ne n}
+         \frac{r^{n+m}}{\sqrt{n!}\sqrt{m!}}
+         \int_{0}^{2\pi} e^{i (n-m) (\phi- \theta)} \phi d\phi \\
+         &= -2 \sin(\theta) +
+         \frac{e^{{-r^2}}}{2\pi} \sum^{\infty}_{n=0} \sum^{\infty}_{m=0, m \ne n}
+         \frac{r^{n+m}}{\sqrt{n!}\sqrt{m!}} e^{-i(n-m)\theta}
+         \int_{0}^{2\pi} e^{i (n-m) \phi} \phi d\phi \\
+         &= -2 \sin(\theta) +
+         \frac{e^{{-r^2}}}{2\pi} \sum^{\infty}_{n=0} \sum^{\infty}_{m=0, m \ne n}
+         \frac{r^{n+m}}{\sqrt{n!}\sqrt{m!}} e^{-i(n-m)\theta}
+         \frac{-2\pi i (n-m) }{(n-m)^2}\\
+         &= -2 \sin(\theta) -
+         e^{-r^2} \sum^{\infty}_{n=0} \sum^{\infty}_{m=0, m \ne n}
+         \frac{r^{n+m}}{\sqrt{n!}\sqrt{m!}}
+         \frac{e^{-i(n-m)\theta}}{(n-m)}\\
+         &= -2 \sin(\theta) -
+         2 e^{-r^2} \sum^{\infty}_{n=0} \sum^{\infty}_{m=0, m > n}
+         \frac{r^{n+m}}{\sqrt{n!}\sqrt{m!}}
+         \frac{\cos((n-m)\theta)}{(n-m)}\\
+      \end{align}
+      Squaring this term and subtracting it from the first term calculated for the
+      variance will result in a lot of ugliness. However, we can see, immediately,
+      that the 
+   \end{homeworkSection}
+\end{homeworkProblem}
