@@ -125,86 +125,70 @@
          & \propto | \braket{\alpha | \phi} |^2 \\
          &= | \sum^{\infty}_{n=0}  \braket{\alpha \ket{n} \bra{n} \phi} |^2 \\
          &= | e^{{-r^{2}}/2} \sum^{\infty}_{n=0}
-         \frac{r^{n}e^{-i n \theta}}{\sqrt{n!}} e^{i n \phi}|^2 \\
-         &=
-         \left(
-            e^{{-r^{2}}/2} \sum^{\infty}_{n=0}
-            \frac{r^{n}e^{-i n \theta}}{\sqrt{n!}} e^{i n \phi}
-         \right)
-         \left(
-            e^{{-r^{2}}/2} \sum^{\infty}_{m=0}
-            \frac{r^{m}e^{i m \theta}}{\sqrt{m!}} e^{-i m \phi}
-         \right) \\
-         &= e^{{-r^2}} \sum^{\infty}_{n=0} \sum^{\infty}_{m=0}
-         \frac{r^{n+m} (e^{i n (\phi- \theta)}e^{-i m (\phi- \theta)})}{\sqrt{n!}\sqrt{m!}}
-         \intertext{This can be broken into two sums, one in which $ n=m $ and one
-         in which $ n \ne m $.}
-         &= e^{{-r^2}} \sum^{\infty}_{n=0} \frac{r^{2n} 2 \cos(\theta - \phi) }{n!}
-         +  e^{{-r^2}} \sum^{\infty}_{n=0} \sum^{\infty}_{m=0, m \ne n}
-         \frac{r^{n+m} (e^{i n (\phi- \theta)}e^{-i m (\phi-
-         \theta)})}{\sqrt{n!}\sqrt{m!}} \\
-         &= 2 \cos(\theta - \phi)
-         +  e^{{-r^2}} \sum^{\infty}_{n=0} \sum^{\infty}_{m=0, m \ne n}
-         \frac{r^{n+m} (e^{i n (\phi- \theta)}e^{-i m (\phi- \theta)})}{\sqrt{n!}\sqrt{m!}}
-         \intertext{Back-substituting the factor of $ 1/{2 \pi} $:}
-         &= \frac{\cos(\theta - \phi)}{\pi}
-         +  \frac{e^{{-r^2}}}{2\pi} \sum^{\infty}_{n=0} \sum^{\infty}_{m=0, m \ne n}
-         \frac{r^{n+m} (e^{i n (\phi- \theta)}e^{-i m (\phi-
-         \theta)})}{\sqrt{n!}\sqrt{m!}} \\
+         \frac{r^{n}e^{-i n \theta}}{\sqrt{n!}} e^{i n \phi}|^2
+         \quad,\text{where $ \alpha = r e^{i \theta} $.} \\
       \end{align}
-      The variance associated with the phase is calculated as
-      $ \int_{0}^{2\pi} P(\phi) \phi^{2} d\phi - (\int_{0}^{2\pi} P(\phi) \phi
-      d\phi)^2 $. Calculating the first term:
+      This sum does not have a closed form. However, we can consider this sum in
+      the limit of large $ r $. For this, we first must realize that the sum
+      resembles a Poisson distribution over $ r $. However, for Poisson
+      distributions for which the value of $ r $ is large this distribution
+      (which is defined over discrete values of $ n $) is well-approximated by a
+      Gaussian distribution\footnote{One can refer to any textbook on statistics
+      for this transformation. A particular reference is
+   \url{http://www.roe.ac.uk/japwww/teaching/astrostats/astrostats2012_part2.pdf}}
+   (which is defined over continuous values of $ x $)
+      as
+      \[
+         P(n) \propto \frac{\lambda^{n} e^{- \lambda}}{n!} \approx \frac{1}{\sqrt{2
+         \pi \lambda}} \exp(-\frac{(x- \lambda)^2}{2 \lambda}) \enskip.
+      \]
+      We can now substitute the sum for an integral and the summand by the
+      square root of the Gaussian distribution. It's important to note that for
+      large values of $ r $ not only is the distribution well-approximated by a
+      Gaussian distribution but the bounds can extend over all x (from $ -
+      \infty \to \infty$) since the mean of the Gaussian is given by $ r^{2} $, the
+      distribution narrows as $ 1/r^{2} $ and the tails converge to zero within a
+      few standard deviations from the mean. Thus, the integrand will be
+      negligibly small for values of $ x $ close to zero. Performing the
+      integral and computing the norm square of the result gives the uncertainty
+      distribution over $ \phi $.
       \begin{align}
-         &\int_{0}^{2\pi} \frac{\cos(\theta - \phi)}{\pi} \phi^{2} d \phi +
-         \frac{e^{{-r^2}}}{2\pi} \sum^{\infty}_{n=0} \sum^{\infty}_{m=0, m \ne n}
-         \frac{r^{n+m}}{\sqrt{n!}\sqrt{m!}}
-         \int_{0}^{2\pi}
-         e^{i (n-m) (\phi- \theta)} \phi^{2} d\phi \\
-         &= 4 (\cos(\theta) - \pi \sin(\theta)) +
-         \frac{e^{{-r^2}}}{2\pi} \sum^{\infty}_{n=0} \sum^{\infty}_{m=0, m \ne n}
-         \frac{r^{n+m}}{\sqrt{n!}\sqrt{m!}} e^{-i(n-m)\theta}
-         \int_{0}^{2\pi}
-         e^{i (n-m) \phi} \phi^{2} d\phi \\
-         &= 4 (\cos(\theta) - \pi \sin(\theta)) +
-         \frac{e^{{-r^2}}}{2\pi} \sum^{\infty}_{n=0} \sum^{\infty}_{m=0, m \ne n}
-         \frac{r^{n+m}}{\sqrt{n!}\sqrt{m!}} e^{-i(n-m)\theta}
-         4 \pi \frac{-i \pi (n-m) + 1}{(n-m)^2} \\
-         &= 4 (\cos(\theta) - \pi \sin(\theta)) +
-         2 e^{{-r^2}} \sum^{\infty}_{n=0} \sum^{\infty}_{m=0, m \ne n}
-         \frac{r^{n+m}}{\sqrt{n!}\sqrt{m!}} e^{-i(n-m)\theta}
-         \frac{-i \pi (n-m) + 1}{(n-m)^2}
-         \intertext{This sum can be simplified a bit further by rewriting the double
-         sum as a single sum over just the values of m that are greater than n.}
-         &= 4 (\cos(\theta) - \pi \sin(\theta)) +
-         4 e^{{-r^2}} \sum^{\infty}_{n=0} \sum^{\infty}_{m=0, m > n}
-         \frac{r^{n+m}}{\sqrt{n!}\sqrt{m!}} \frac{\cos((n-m)\theta)}{(n-m)^2}
+         P(\phi) &\propto \left| \int_{-\infty}^{\infty} \frac{1}{(2 \pi r^{2})^{.25}}
+         e^{- \frac{\left( x - r^2 \right)^2}{4 \lambda}} e^{i x (\phi
+         -\theta)} dx \right|^2
+         \intertext{Solving this integral using a computer algebra system
+         (stressed for time) yields}
+         &=  2 \sqrt{2 \pi } r e^{-2 r^2 (\theta -\phi )^2} \label{eq:gaussian}
       \end{align}
-      Calculating the second term (just the integral which we'll square, later):
-      \begin{align}
-         &\int_{0}^{2\pi} \frac{\cos(\theta - \phi)}{\pi} \phi d \phi +
-         \frac{e^{{-r^2}}}{2\pi} \sum^{\infty}_{n=0} \sum^{\infty}_{m=0, m \ne n}
-         \frac{r^{n+m}}{\sqrt{n!}\sqrt{m!}}
-         \int_{0}^{2\pi} e^{i (n-m) (\phi- \theta)} \phi d\phi \\
-         &= -2 \sin(\theta) +
-         \frac{e^{{-r^2}}}{2\pi} \sum^{\infty}_{n=0} \sum^{\infty}_{m=0, m \ne n}
-         \frac{r^{n+m}}{\sqrt{n!}\sqrt{m!}} e^{-i(n-m)\theta}
-         \int_{0}^{2\pi} e^{i (n-m) \phi} \phi d\phi \\
-         &= -2 \sin(\theta) +
-         \frac{e^{{-r^2}}}{2\pi} \sum^{\infty}_{n=0} \sum^{\infty}_{m=0, m \ne n}
-         \frac{r^{n+m}}{\sqrt{n!}\sqrt{m!}} e^{-i(n-m)\theta}
-         \frac{-2\pi i (n-m) }{(n-m)^2}\\
-         &= -2 \sin(\theta) -
-         e^{-r^2} \sum^{\infty}_{n=0} \sum^{\infty}_{m=0, m \ne n}
-         \frac{r^{n+m}}{\sqrt{n!}\sqrt{m!}}
-         \frac{e^{-i(n-m)\theta}}{(n-m)}\\
-         &= -2 \sin(\theta) -
-         2 e^{-r^2} \sum^{\infty}_{n=0} \sum^{\infty}_{m=0, m > n}
-         \frac{r^{n+m}}{\sqrt{n!}\sqrt{m!}}
-         \frac{\cos((n-m)\theta)}{(n-m)}\\
-      \end{align}
-      Squaring this term and subtracting it from the first term calculated for the
-      variance will result in a lot of ugliness. However, we can see, immediately,
-      that the 
+      The code which computed this result is:
+      \begin{listing}
+         \caption{Gaussian Fourier Transform}
+         \begin{minted}[bgcolor=bg,escapeinside=||]{mathematica}
+a = Power[2 |$\pi$| r^2, -1/4]
+   Integrate[Exp[-(x - r^2)^2/(4*r^2)] Exp[ I x (|$\theta$| - |$\phi$|)], {x, -Infinity, Infinity}];
+Simplify[a*Conjugate[a], Assumptions -> {|$\theta$|, |$\phi$|, r} |$\in$| Reals && r > 0]
+         \end{minted}
+      \end{listing}
+      Now, to determine the uncertainty associated with the phase we need to
+      compute the following quantity:
+      \[
+         \int_{0}^{2 \pi} P(\phi) (\phi^{2}) d \phi -
+         \left(\int_{0}^{2 \pi} P(\phi) \phi d \phi\right)^2
+      \].
+      I tried using Mathematica to calculate this quantity. However, the
+      expression is so ugly that I don't think it's worth showing it, here.
+      Another way to think about the variance of this distribution is to realize
+      that this distribution over phase is centered at $ \theta $ and has a
+      width of $ \frac{1}{4 r^2} $. This can be seen immediately by rewriting $
+      P(\phi)$ by inserting all constants and refactoring.
+      \begin{equation}
+         P(\phi) = \frac{1}{2 \pi} 2 \sqrt{2 \pi } r e^{-2 r^2 (\theta -\phi
+         )^2}  \sqrt{\frac{1}{2 \pi \frac{1}{4 r^2}}} e^{-\frac{(\theta -
+      \phi)^2}{2 \frac{1}{4 r^2}}}
+      \end{equation}
+      This is clearly a Gaussian with variance $ \frac{1}{4 r^2} $ and mean $ \theta $.
+      Now, $ r^2 $ is the squared magnitude of $ \alpha $. That is, it's the
+      mean number of photons associated with a state $ \ket{\alpha} $. So, the
+      uncertainty in the phase decreases with increasing $n$ as $ \frac{1}{4 n} $.
    \end{homeworkSection}
 \end{homeworkProblem}

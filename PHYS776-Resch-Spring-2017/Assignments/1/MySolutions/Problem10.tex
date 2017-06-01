@@ -1,6 +1,9 @@
 % Problem 1.10
 \begin{homeworkProblem}[Problem 10]
    \begin{homeworkSection}{a)}
+      This derivation is documented online in a number of sources (e.g.
+      \cite{schrodinger}. This work is my best attempt to reproduce my
+      understanding of those s
    \end{homeworkSection}
    \begin{homeworkSection}{b)}
       Schrodinger's relation can be written in terms of expectation values of
@@ -116,7 +119,7 @@ So, the problem has been reduced to calculating $ \braket{qp} $, $
       states which satisfy equality in Robertson's relation. Thus, we need to
       calculate
       \begin{align}
-         \Delta q^2 \Delta p^2 \ge \left( \frac{1}{2i} \braket{[p,q]}
+         \Delta q^2 \Delta p^2 \ge \left( \frac{1}{2i} \braket{[q,p]}
          \right)^2 \enskip.
       \end{align}
       But, $ [p,q] = i $. So, we just need to calculate
@@ -149,6 +152,7 @@ So, the problem has been reduced to calculating $ \braket{qp} $, $
       \begin{align}
          \frac{1}{4} &= \frac{1}{4} \left( \cosh^{2}(2r)
          -\sinh^2(2r)\cos^2(\theta) \right)
+         \label{eq:robertson}
          \intertext{or}
          1 &= \left( \cosh^{2}(2r) -\sinh^2(2r)\cos^2(\theta) \right) \\
          \cosh^{2}(2r) - 1 &= \sinh^{2}(2r)\cos^2(\theta) \\
@@ -169,18 +173,18 @@ Schr\"{o}dinger equation is the same as the left-hand side of the Robertson
 relation.
 \begin{align}
    \frac{1}{4} \left( \cosh^{2}(2r) -\sinh^2(2r)\cos^2(\theta) \right) &\ge
-   \left( \frac{1}{2} \left( 2 \braket{pq} + i \right) -
+   \left( \frac{1}{2} \left( 2 \braket{qp} - i \right) -
    \braket{q}\braket{p} \right)^2 + \left( \frac{i}{2i} \right)^2 \\
-   &= \left( \frac{1}{2} \left( 2 \braket{pq} + i \right) -
+   &= \left( \frac{1}{2} \left( 2 \braket{qp} - i \right) -
 \braket{q}\braket{p} \right)^2 + \left( \frac{i}{2i} \right)^2 \\
-&= \frac{1}{4} \left( 2 \braket{pq} + i \right)^2 + \frac{1}{4} \\
-&= \frac{1}{4} \left( 4 \braket{pq}^2 + 4i \braket{pq} - 1 \right)
+&= \frac{1}{4} \left( 2 \braket{qp} - i \right)^2 + \frac{1}{4} \\
+&= \frac{1}{4} \left( 4 \braket{qp}^2 - 4i \braket{qp} - 1 \right)
 + \frac{1}{4} \\
-&= \left( \braket{pq}^2 + i \braket{pq}  \right) \\
+&= \braket{qp}^2 - i \braket{qp} \\
 \end{align}
-Solving for $ \braket{pq} $:
+Solving for $ \braket{qp} $:
 \begin{align}
-   \braket{pq} &= \braket{0 | S^{\dagger} pq S | 0} \\
+   \braket{qp} &= \braket{0 | S^{\dagger} qp S | 0} \\
                &= \braket{0 | S^{\dagger} p S S^{\dagger} q S | 0} \quad\text{by
 inserting $ SS^{\dagger} = \mathds{1} $.} \\
 \end{align}
@@ -223,9 +227,9 @@ S^{\dagger} a S
 - \mathbf{a a^\dagger \sinh^2(r)} \bigg)
 \end{align}
 Now, only the bolded terms survive an inner product like
-$ \braket{n | S^{\dagger} pq S | n } $. So, we evaluate that expression, now:
+$ \braket{n | S^{\dagger} qp S | n } $. So, we evaluate that expression, now:
 \begin{align}
-   \braket{ 0 | S^{\dagger} pq S | )}
+   \braket{ 0 | S^{\dagger} qp S | )}
    &=
    \frac{i}{2}
    \braket{0 |
@@ -248,18 +252,37 @@ $ \braket{n | S^{\dagger} pq S | n } $. So, we evaluate that expression, now:
    \intertext{Only the terms acting first with a creation operator survive.}
    &=
    \frac{i}{2}
-   \braket{0 | a a^{\dagger} \cosh^2(r) | 0}
-   +
-   \frac{i}{2}
-   \braket{0 | a a^\dagger e^{i \theta} \sinh(r) \cosh(r) | 0} \\
+   \braket{0 | a a^{\dagger} \cosh^2(r) | 0} \\
    &-
    \frac{i}{2}
-   \braket{0 | a a^\dagger e^{-i \theta} \sinh(r) \cosh(r) | 0}
-   -
-   \frac{i}{2} \braket{0 | a a^\dagger \sinh^2(r) | 0} \\
+   \braket{0 | a a^\dagger e^{i \theta} \sinh(r) \cosh(r) | 0} \\
+   &+
+   \frac{i}{2}
+   \braket{0 | a a^\dagger e^{-i \theta} \sinh(r) \cosh(r) | 0} \\
+   &-
+   \frac{i}{2}
+   \braket{0 | a a^\dagger \sinh^2(r) | 0} \\
    &= \frac{i}{2} \left( \cosh^2(r) - \sinh^2(r) \right)
-   + \frac{i}{2} \left( 2i \sinh(r) \cosh(r) \sin(\theta) \right) \\
-   &= \frac{i}{2} - \frac{\sinh(2r) \sin(\theta)}{2}
+   - \frac{i}{2} \left( 2 i \sinh(r) \cosh(r) \sin(\theta) \right) \\
+   &= \frac{i}{2} + \frac{1}{2}\sinh(2\theta) \sin(\theta)
 \end{align}
+So, evaluating the right-hand side of Schr\"{o}dinger's inequality, now:
+\begin{align}
+   \braket{qp}^2 - i \braket{qp} &=
+   \left( - \frac{1}{4} + \frac{i}{2} \sinh(2\theta) \sin(\theta) +
+   \frac{1}{4} \sinh^2(2\theta)\sin^2(\theta) + \frac{1}{2} - \frac{i}{2} \sinh(2\theta)\sin(\theta) \right)
+   \\
+   &= \frac{1}{4} \left( \sinh^2(2\theta) \sin^2(\theta) + 1 \right) \\
+   &= \frac{1}{4} \left( \sinh^2(2\theta) \left( 1 - \cos^2(\theta) \right) + 1
+\right) \\
+   &= \frac{1}{4} \left( \left( \sinh^2(2\theta) - \sinh^2(2\theta)
+   \cos^2(\theta) \right) + 1 \right) \\
+   &= \frac{1}{4} \left( \cosh^2(2\theta) - \sinh^2(2\theta) \cos^2(\theta) \right)
+\end{align}
+This last expression is the exact same as the left-hand side of Robertson's
+relation in Eq.~\ref{eq:robertson} (the right-hand side of
+Eq.~\ref{eq:robertson} is the left-hand side of Robertson's relation). This is
+the same as the left-hand side of Schr\"{o}dinger's relation. So, the squeezed
+states are minimum uncertainty states for all $ \xi $.
 \end{homeworkSection}
 \end{homeworkProblem}

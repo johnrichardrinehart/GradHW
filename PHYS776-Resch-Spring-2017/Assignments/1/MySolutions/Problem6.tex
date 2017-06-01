@@ -1,30 +1,29 @@
 % Problem 1.5
 \begin{homeworkProblem}[Problem 6]
-   \begin{homeworkSection}{}
-      If the state has \SI{10}{\deci\bel} of squeezing then that means the ratio
-      of the variance in the $ q $ quadrant of the squeezed state to that of the
-      vacuum is
-      \[
-         10 = -10 \log_{10}\left(\frac{\Delta q^{2}}{\Delta q_{0}^{2}}\right) \enskip.
-      \]
-      \begin{align}
-         -1 &= \log_{10} \left( \frac{\Delta q^{2}}{\Delta {q_0}^{2}}
-         \right) \\
-         10^{-1} &= \frac{\Delta q^2}{\Delta q_{0}^{2}}
-         \intertext{Now, from the notes, $ \braket{q} = 0 $ and $ \braket{q^2} =
-            \frac{1}{2}\left( \cosh(2r) - \sinh(2r) \cos(\theta) \right)$ for
+   If the state has \SI{10}{\deci\bel} of squeezing then that means the ratio
+   of the variance in the $ q $ quadrant of the squeezed state to that of the
+   vacuum is
+   \[
+      10 = -10 \log_{10}\left(\frac{\Delta q^{2}}{\Delta q_{0}^{2}}\right) \enskip.
+   \]
+   \begin{align}
+      -1 &= \log_{10} \left( \frac{\Delta q^{2}}{\Delta {q_0}^{2}}
+      \right) \\
+      10^{-1} &= \frac{\Delta q^2}{\Delta q_{0}^{2}}
+      \intertext{Now, from the notes, $ \braket{q} = 0 $ and $ \braket{q^2} =
+         \frac{1}{2}\left( \cosh(2r) - \sinh(2r) \cos(\theta) \right)$ for
          squeezed states (where the squeezing parameter $ \xi = r e^{i \theta}
-      $). The vacuum state can be considered a squeezed state with squeezing
-   parameter $ \xi = 0 $.}
-   &= \frac{\Delta q^2}{\frac{1}{2}} \\
-   &= \cosh(2r) - \sinh(2r) \cos(\theta)
+         $). The vacuum state can be considered a squeezed state with squeezing
+      parameter $ \xi = 0 $.}
+      &= \frac{\Delta q^2}{\frac{1}{2}} \\
+      &= \cosh(2r) - \sinh(2r) \cos(\theta)
    \end{align}
    Now, this expression depends on both $ r $ and $ \theta $. That is, it
    depends on $ \xi $, not just its magnitude or phase. We want to consider how
    many photons are in this state. That is, we want to determine
    \[
-    \braket{n} = \braket{0 | S^{\dagger}(\xi) a^{\dagger} a S(\xi) | 0}
-    \enskip.
+      \braket{n} = \braket{0 | S^{\dagger}(\xi) a^{\dagger} a S(\xi) | 0}
+      \enskip.
    \]
    In order to maximize the squeezing in the $ q $ quadrant $ \theta = 0 $.
    Assuming that the experimentalists wanted to determine just how much
@@ -55,5 +54,4 @@ creation operator survives.}
    \end{align}
    So, the number of photons in the squeezed state is $ \sinh^2(r) = \sinh^2(.5
    \ln(10) \approx 2.025 $. Haha, no, I would not describe this as bright.
-   \end{homeworkSection}
 \end{homeworkProblem}

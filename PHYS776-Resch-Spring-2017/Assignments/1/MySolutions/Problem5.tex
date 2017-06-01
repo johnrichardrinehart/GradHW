@@ -38,7 +38,7 @@ the products of the corresponding diagonal entries from each of the parent
 matrices. Thus, the entropy of entanglement of the two-mode squeezed state is
 
 \[
-   S(\rho_{\xi}^{1}) = \sum^{\infty}_{m=0} \frac{\tanh^{2n}(r)}{\cosh^{2}(r)}
+   S(\rho_{\xi}^{1}) = -\sum^{\infty}_{n=0} \frac{\tanh^{2n}(r)}{\cosh^{2}(r)}
    \log_{2}\left(\frac{\tanh^{2n}(r)}{\cosh^{2}(r)}\right)
 \]
 
@@ -61,4 +61,42 @@ Since $ \log_{2}(.5) = -1 $ the entropy of a bell state is, then
    S(\rho_{\phi}^{1}) = - \sum^{1}_{i=2} (\frac{1}{2})(-1) = 1
 \]
 
+We are interested in the value of $ r $ for which the entanglement entropy
+exceeds that of a Bell pair. It is necessary, then, to evaluate the sum that is
+the entropy of entanglement. We can rewrite the sum as follows:
+\begin{align}
+   - \sum^{\infty}_{n=0} \frac{\tanh^{2n}(r)}{\cosh^{2}(r)} \log_{2} \left(
+   \frac{\tanh^{2n}(r)}{\cosh^{2}(r)} \right) &=
+   - \frac{1}{\cosh^{2}(r)}
+   \sum^{\infty}_{n=0} \tanh^{2n}(r) \left(n \log_{2}(\tanh^{2}(r)) - \log_{2}
+   \cosh^2(r)\right) \\
+   &=
+   - \frac{1}{\cosh^{2}(r)}
+   \sum^{\infty}_{n=0} x^{n} \left(n \log_{2}(x) - \log_{2} \cosh^2(r)\right)
+   \quad,\text{$ x \equiv \tanh^2(r) $}
+   \\
+   &=
+   - \frac{ \log_{2}(x)}{\cosh^{2}(r)} \sum^{\infty}_{n=0} x^{n} n +
+   \frac{\log_2\cosh^2(r)}{\cosh^2(r)}\sum^{\infty}_{n=0} x^{n}
+   \intertext{The first sum can be shown to be $ \frac{x}{(1-x)^2} $. The second
+      sum is $ \frac{1}{1-x} $. Thus, finally, we have:}
+      &=
+      - \frac{\log_{2}(\tanh^2(r))}{\cosh^{2}(r)} \frac{\tanh^{2}(r)}{(1-\tanh^2(r))^2} +
+      \frac{\log_2\cosh^2(r)}{\cosh^2(r)} \frac{1}{1-\tanh^2(r)} \\
+      &=
+      - \frac{\log_{2}(\tanh^2(r))}{\cosh^{2}(r)} \tanh^2(r) \cosh^4(r) +
+      \frac{\log_2\cosh^2(r)}{\cosh^2(r)} \frac{1}{1-\tanh^2(r)} \\
+      &=
+      - \log_{2}(\tanh^2(r)) \sinh^2(r) + \log_2\cosh^2(r)
+   \end{align}
+   \begin{figure}[h]
+      \centering
+      \input{Problem5_plot}
+      \caption{}
+      \label{fig:}
+   \end{figure}
+   Solving for the intersection numerically yields a value of $ r \approx .5185
+   $. I'm not sure what the significance of this number is (besides making the
+   entangled entropy of a two-mode squeezed state greater than that of the
+   entangled entropy of a bell pair). But, there it is.
 \end{homeworkProblem}
