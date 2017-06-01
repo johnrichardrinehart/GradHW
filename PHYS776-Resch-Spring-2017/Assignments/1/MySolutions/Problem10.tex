@@ -2,9 +2,63 @@
 \begin{homeworkProblem}[Problem 10]
    \begin{homeworkSection}{a)}
       This derivation is documented online in a number of sources (e.g.
-      \cite{schrodinger}. This work is my best attempt to reproduce my
-      understanding of those s
+      \cite{schrodinger}). This work is a best attempt at reproducing my
+      understanding of those sources. The goal is to determine a bound on the
+      uncertainty of two operators $ A $ and $ B $.
+      \begin{align}
+         \Delta A^2 \Delta B^2
+         &=
+         \braket{\Psi | \left( A - \braket{A} \right)^2 | \Psi}
+         \braket{\Psi | \left( B - \braket{B} \right)^2 | \Psi} \\
+         &=
+         \left(\braket{\Psi | \left( A^\dagger - \braket{A^\dagger} \right)\left( A - \braket{A} \right) | \Psi}\right)
+         \left(\braket{\Psi | \left( B^\dagger - \braket{B^\dagger} \right)\left( B - \braket{B} \right) | \Psi}\right)
+         \intertext{We can understand the first and second inner products as
+         just the magnitude two complex numbers.}
+         &= \braket{a|a}\braket{b|b} \\
+         &\ge \left| \braket{a|b} \right|^2 \quad,\text{by the triangle
+         inequality.} \\
+         \intertext{Understanding that the previous expression is the magnitude
+         square of a complex number we obtain:}
+         &= \left( \frac{\braket{a|b} + \braket{b|a}}{2} \right)^2 +
+         \left( \frac{\braket{a|b} - \braket{b|a}}{2i} \right)^2
+         \intertext{Now, we interlude, briefly, to evaluate $ \braket{a|b} =
+         \bar{\braket{b|a}}$.}
+         \braket{a|b} &= \braket{\Psi| (A^{\dagger} - \braket{A^{\dagger}})(B -
+         \braket{B}) | \Psi} \\
+         &=
+         \braket{\Psi | A^{\dagger} B | \Psi} -
+         \braket{\Psi | A^{\dagger} \braket{B} | \Psi} -
+         \braket{\Psi | B \braket{A^\dagger} | \Psi} +
+         \braket{\Psi | \braket{A^\dagger} \braket{B} | \Psi} \\
+         &=
+         \braket{\Psi | A^{\dagger} B | \Psi} -
+         \braket{A^\dagger} \braket{B} -
+         \braket{B} \braket{A^\dagger}  +
+         \braket{A^\dagger} \braket{B} \\
+         &=
+         \braket{\Psi | A^{\dagger} B | \Psi} - \braket{A^\dagger} \braket{B} \\
+         \braket{b|a}
+         &=
+         \braket{\Psi | B^\dagger A| \Psi} - \braket{A} \braket{B^\dagger}
+         \intertext{Now, assuming $ A = A^\dagger$ and $ B = B^\dagger$ (that
+         is, they are Hermitian, possibly representing observables):}
+         \Delta A^2 \Delta B^2 &= 
+         \left(
+            \frac{\braket{\Psi| A B|\Psi}
+            + \braket{\Psi| B A|\Psi} - 2 \braket{A}\braket{B} }{2}
+         \right)^2
+         +
+         \left(
+            \frac{\braket{\Psi| A B|\Psi} - \braket{\Psi| B A|\Psi}}{2i}
+         \right)^2 \\
+         &=
+         \left( \frac{\braket{\{A,B\}} - 2 \braket{A}\braket{B} }{2} \right)^2
+         +
+         \left( \frac{\braket{[A,B]}}{2i} \right)^2 \\
+      \end{align}
    \end{homeworkSection}
+   I did it and I understand it!
    \begin{homeworkSection}{b)}
       Schrodinger's relation can be written in terms of expectation values of
       the various operators (over a coherent state $ \ket{\alpha} $) as follows:
