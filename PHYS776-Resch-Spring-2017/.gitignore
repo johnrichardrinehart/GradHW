@@ -173,3 +173,4 @@ Assignments/*/MySolutions/*.pdf
 **//auto/*
 # expex forward references with \gathertags
 **/*-tags.tex
+Assignments/*/MySolutions/*plot.tex
