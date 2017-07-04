@@ -1,0 +1,41 @@
+% Problem 4
+\begin{homeworkProblem}
+    To derive the Wigner function in the momentum basis we re-express the
+    characteristic function in terms of of a trace over the momentum basis.
+
+    \begin{align}
+        \tilde{W}(u,v) = \Tr(\rho e^{- i u q - i v p}
+                       &= \int \bra{p} \rho e^{i u q - i v p} \ket{p} \\
+                       &= \int \bra{p} \rho e^{i u v / 2} e^{-i v p} e^{-i u q}
+        \ket{p} dp
+        \intertext{Now, $ e^{-i u q} \ket{p} = e^{-i u \hat{q}} \frac{1}{\sqrt{2\pi}} \int
+            e^{i q p} \ket{q} dq = \frac{1}{\sqrt{2 \pi}} \int e^{i q p} e^{-i u
+                q} dq \ket{q} = \frac{1}{\sqrt{2\pi}} \int e^{i q (p-u)}
+            \ket{q} dq = \ket{p-u}$.}
+            &= \int \bra{p} \rho e^{i u v / 2} e^{-i v p} \ket{p-u} dp \\
+            &= \int \bra{p} \rho e^{i u v / 2} e^{-i v (p-u)} \ket{p-u} dp \\
+            &= e^{i u v /2} \int e^{-i v (p-u)} \bra{p} \rho \ket{p-u} dp
+            \intertext{Now, allow $ p = y+u/2 $.}
+            &= e^{i u v /2} \int e^{-i v (y+u/2)} \bra{y+u/2} \rho \ket{y-u/2}
+            dy \\
+            &= \int e^{-i v y} \braket{y+u/2|\rho|y-u/2} dy
+    \end{align}
+    So, now we can express the Wigner function as
+    \[
+        W(q,p) = \frac{1}{(2\pi)^2} \int\int \tilde{W}(u,v) e^{iuq + ivp} du dv
+        \enskip.
+    \]
+    \begin{align}
+        W(q,p) &= \frac{1}{(2\pi)^2} \int\int\int e^{-i v y} \braket{y+u/2|\rho|y-u/2} dy e^{iuq + ivp} du dv \\
+               &= \frac{1}{(2\pi)^2} \int\int\int \braket{y+u/2|\rho|y-u/2} dy
+        e^{iuq + ivp - ivy} du dv \\
+        &= \frac{1}{(2\pi)^2} \int\int \braket{y+u/2|\rho|y-u/2}
+        e^{iuq}du dy \left( \int e^{-iv(y-p)} dv \right) \\
+        &= \frac{1}{(2\pi)^2} \int\int \braket{y+u/2|\rho|y-u/2}
+        e^{iuq}du dy \left(2 \pi \delta(y-p)\right) \\
+        &= \frac{1}{2 \pi} \int \braket{p+u/2|\rho|p-u/2} e^{iuq} du
+        \intertext{Relabelling $ u \to y $:}
+        &= \frac{1}{2 \pi} \int \braket{p+y/2|\rho|p-y/2} e^{iyq} dy
+    \end{align}
+This is the Wigner function expressed in the momentum basis.
+\end{homeworkProblem}
