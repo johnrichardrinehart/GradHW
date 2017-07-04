@@ -1,0 +1,62 @@
+% Problem 5
+\begin{homeworkProblem}
+To calculate the Wigner function of the state we need to first calculate the
+characteristic function $ \tilde{W}(\eta) = \Tr(\rho e^{\eta a^\dagger -\eta^* a}) $.
+\begin{align}
+    \tilde{W}(\eta) &= e^{-\left| \eta \right|^2/2} \Tr(\rho e^{\eta a^\dagger} e^{-\eta^* a}) \\
+                    &= e^{-\left| \eta \right|^2/2} \bra{\psi} e^{\eta
+a^\dagger} e^{-\eta^* a}) \ket{\psi}
+\intertext{$ \ket{\psi} \propto \ket{\beta} + \ket{-\beta} $.}
+                    &= e^{-\left| \eta \right|^2/2} \bra{\psi} e^{\eta
+a^\dagger} e^{-\eta^* a}) \ket{\psi} \\
+&\propto e^{-\left| \eta \right|^2/2} \left( \bra{\beta} e^{\eta \beta^*} + \bra{-\beta} e^{- \eta \beta^*} \right)
+\left( \ket{\beta} e^{-\eta^* \beta} + \ket{-\beta} e^{\eta* \beta} \right) \\
+&= e^{-\left| \eta \right|^2/2} \left( e^{\eta \beta^* - \eta^* \beta} + e^{\eta
+\beta^* + \eta^* \beta} e^{-2 \left| \beta \right|^2} + e^{-\left( \eta \beta^*
++ \eta^* \beta \right)} e^{-2 \left| \beta \right|^2} + e^{- \eta \beta^* +
+\eta^* \beta} \right) \\
+&= 2 e^{- \left| \eta \right|^2/2} \left( \cos(2 \Im(\eta \beta^*)) + \cosh(2
+\Re(\eta^* \beta)) e^{-2 \left| \beta \right|^2} \right)
+\end{align}
+Now, the Wigner function can be calculated in terms of the characteristic
+function as
+\begin{align}
+    W(\alpha) &= \frac{1}{\pi^2} \int d^2\eta e^{\eta^*\alpha-\eta\alpha^*}
+    \tilde{W}(\eta) \\
+    &= \frac{1}{\pi^2} \int d^2\eta e^{2i \Im(\eta^*\alpha)} 2 e^{-\left| \eta
+\right|^2/2} \bigg( \cos(2 \Im(\eta \beta^*) ) + \cosh(2
+\Re(\eta^* \beta)) e^{-2 \left| \beta \right|^2} \bigg)
+    \tilde{W}(\eta)
+    \intertext{Now, representing $ \eta \equiv x + iy $ and $ \alpha = a+ib $
+    and $ \beta \equiv \beta_r + i \beta_i $.}
+    &= \frac{1}{\pi^2} \int dx dy e^{2i (bx-ay)} 2 e^{-(x^2+y^2)/2} \bigg(
+\cos(2 \left( \beta_r y - \beta_i x \right)) + \cosh(2 \left( x \beta_r + y
+\beta_i \right)) e^{-2 \left| \beta \right|^2} \bigg) \tilde{W}(\eta)
+\intertext{Now, assuming that $ \beta \in \mathds{R} $ we can simplify this
+expression and use Mathematica to evaluate the integral (we also substitute the
+state normalization constant $ \frac{1}{\sqrt{2}^2} $).}
+&= \frac{1}{\pi} \left( 2 e^{-2 \left( a^2+b^2 \right)}\cos(4 b\beta) +
+e^{-2 \left( \left( a+\beta \right)^2 + b^2 \right)}\left( 1+e^{8 a \beta} \right)\right)
+\end{align}
+
+\begin{figure}[ht]
+    \centering
+    \input{Problem5a.tex}
+    \caption{Wigner function for the cat state $ \ket{\psi} = \frac{1}{\sqrt{2}}
+    \left( \ket{\beta} + \ket{-\beta} \right)$.}
+    \label{fig:Problem5b}
+\end{figure}
+
+The Wigner function for a mixture of coherent states is a simplification of the
+superposition and the Wigner function of $\ket{\beta}\bra{\beta}$
+is $ W(\alpha) = \frac{2}{\pi} e^{-2 \left| \alpha - \beta \right|^2} $.
+In Fig.~\ref{fig:Problem5b} we show the Wigner function for the state $ \rho =
+\frac{2}{\pi} e^{-2 \left| \alpha - \beta \right|^2} + \frac{2}{\pi} e^{-2 \left| \alpha + \beta \right|^2} $
+\begin{figure}[ht]
+    \centering
+    \input{Problem5b.tex}
+    \caption{Wigner function for the mixed state $ \rho = \frac{1}{2}
+    \left( \ket{\beta}\bra{\beta} + \ket{-\beta}\bra{-\beta} \right)$.}
+    \label{fig:Problem5b}
+\end{figure}
+\end{homeworkProblem}
