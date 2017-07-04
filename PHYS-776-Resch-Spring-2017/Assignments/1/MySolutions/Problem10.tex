@@ -1,0 +1,342 @@
+% Problem 1.10
+\begin{homeworkProblem}[Problem 10]
+   \begin{homeworkSection}{a)}
+      This derivation is documented online in a number of sources (e.g.
+      \cite{schrodinger}). This work is a best attempt at reproducing my
+      understanding of those sources. The goal is to determine a bound on the
+      uncertainty of two operators $ A $ and $ B $.
+      \begin{align}
+         \Delta A^2 \Delta B^2
+         &=
+         \braket{\Psi | \left( A - \braket{A} \right)^2 | \Psi}
+         \braket{\Psi | \left( B - \braket{B} \right)^2 | \Psi} \\
+         &=
+         \left(\braket{\Psi | \left( A^\dagger - \braket{A^\dagger} \right)\left( A - \braket{A} \right) | \Psi}\right)
+         \left(\braket{\Psi | \left( B^\dagger - \braket{B^\dagger} \right)\left( B - \braket{B} \right) | \Psi}\right)
+         \intertext{We can understand the first and second inner products as
+         just the magnitude two complex numbers.}
+         &= \braket{a|a}\braket{b|b} \\
+         &\ge \left| \braket{a|b} \right|^2 \quad,\text{by the triangle
+         inequality.} \\
+         \intertext{Understanding that the previous expression is the magnitude
+         square of a complex number we obtain:}
+         &= \left( \frac{\braket{a|b} + \braket{b|a}}{2} \right)^2 +
+         \left( \frac{\braket{a|b} - \braket{b|a}}{2i} \right)^2
+         \intertext{Now, we interlude, briefly, to evaluate $ \braket{a|b} =
+         \bar{\braket{b|a}}$.}
+         \braket{a|b} &= \braket{\Psi| (A^{\dagger} - \braket{A^{\dagger}})(B -
+         \braket{B}) | \Psi} \\
+         &=
+         \braket{\Psi | A^{\dagger} B | \Psi} -
+         \braket{\Psi | A^{\dagger} \braket{B} | \Psi} -
+         \braket{\Psi | B \braket{A^\dagger} | \Psi} +
+         \braket{\Psi | \braket{A^\dagger} \braket{B} | \Psi} \\
+         &=
+         \braket{\Psi | A^{\dagger} B | \Psi} -
+         \braket{A^\dagger} \braket{B} -
+         \braket{B} \braket{A^\dagger}  +
+         \braket{A^\dagger} \braket{B} \\
+         &=
+         \braket{\Psi | A^{\dagger} B | \Psi} - \braket{A^\dagger} \braket{B} \\
+         \braket{b|a}
+         &=
+         \braket{\Psi | B^\dagger A| \Psi} - \braket{A} \braket{B^\dagger}
+         \intertext{Now, assuming $ A = A^\dagger$ and $ B = B^\dagger$ (that
+         is, they are Hermitian, possibly representing observables):}
+         \Delta A^2 \Delta B^2 &= 
+         \left(
+            \frac{\braket{\Psi| A B|\Psi}
+            + \braket{\Psi| B A|\Psi} - 2 \braket{A}\braket{B} }{2}
+         \right)^2
+         +
+         \left(
+            \frac{\braket{\Psi| A B|\Psi} - \braket{\Psi| B A|\Psi}}{2i}
+         \right)^2 \\
+         &=
+         \left( \frac{\braket{\{A,B\}} - 2 \braket{A}\braket{B} }{2} \right)^2
+         +
+         \left( \frac{\braket{[A,B]}}{2i} \right)^2 \\
+      \end{align}
+   \end{homeworkSection}
+   I did it and I understand it!
+   \begin{homeworkSection}{b)}
+      Schrodinger's relation can be written in terms of expectation values of
+      the various operators (over a coherent state $ \ket{\alpha} $) as follows:
+      \begin{align}
+         \Delta A^{2} \Delta B^{2} &=
+         \left( \braket{q^2} - \braket{q}^2 \right)
+         \left( \braket{p^2} - \braket{p}^2 \right) \\
+         &\ge \left( \frac{1}{2} \braket{qp + pq} - \braket{q} \braket{p}
+      \right)^2
+      + \left( \frac{1}{2i} \braket{[q,p]} \right)^2
+      \intertext{But, $ [q,p] = i $ and $ qp + pq = qp + (qp + [q,p])
+      = i + 2qp$.}
+      &=
+      \left( \frac{1}{2} \braket{2qp + i } - \braket{q} \braket{p}
+      \right)^2
+      + \left( \frac{1}{2} \right)^2 \\
+      &= \left(
+   \braket{qp} + \frac{i}{2} - \braket{q} \braket{p} \right)^2 +
+   \left( \frac{1}{2} \right)^2 \\
+\end{align}
+So, the problem has been reduced to calculating $ \braket{qp} $, $
+\braket{q^2} $, $ \braket{p^2} $, $ \braket{q} $, and $ \braket{p} $.
+\begin{align}
+   % <qp>
+   \braket{qp}_{\alpha} &= \braket{\alpha | qp | \alpha} \\
+                        &=
+   \braket{\alpha | \left(\frac{i(a+a^{\dagger})(a^{\dagger}-a)}{2} \right) |
+   \alpha} \\
+   &= \frac{i}{2} \braket{\alpha | a a^{\dagger} - a^{2} +
+(a^{\dagger})^{2} - a^{\dagger}a | \alpha} \\
+&= \frac{i}{2} \left( |\alpha|^2 - \alpha^{2} + \bar{\alpha}^2 - |\alpha|^{2}
+\right) \\
+&= \frac{i}{2} \left( -r^{2}e^{2 i \theta} + r^{2} e^{-2 i \theta} \right)
+\text{\quad where $\alpha = r e^{i \theta}$ } \\
+&= \frac{i}{2} \left( -2 i r^2 \sin(2\theta) \right) \\
+&= r^{2} \sin(2\theta)
+\end{align}
+\begin{align}
+   % <q^2>
+   \braket{q^2} &= \frac{1}{2}
+   \braket{\alpha |
+   a^{2} + a^{\dagger}a + aa^{\dagger} + (a^{\dagger})^{2} | \alpha } \\
+   &= \frac{1}{2}(\alpha^{2} + 2 \left| \alpha \right|^{2} + \bar{\alpha}^2 )\\
+   &= r^{2} \cos(2\theta) + r^{2} \\
+   &= r^{2} \left( 1 + \cos(2\theta) \right) \\
+   &= 2 r^{2} \cos^{2}(\theta) \\ \nonumber \\
+   % <p^2>
+   \braket{p^2}
+   &= \frac{-1}{2}
+   \braket{\alpha |
+   (a^\dagger)^{2} - a^{\dagger}a - aa^{\dagger} + a^{2} | \alpha } \\
+   &= \frac{-1}{2}( \bar{\alpha}^2 - 2 \left| \alpha \right|^{2} + \alpha^{2}) \\
+   &= r^{2} \left( 1 - \cos(2\theta) \right) \\
+   &= 2 r^{2} \sin^{2}(\theta)
+\end{align}
+\begin{align} % <q>
+   \braket{q}_{\alpha} &= \braket{\alpha | q | \alpha} \\
+                       &= \braket{\alpha |
+   \left(\frac{(a+a^{\dagger})}{\sqrt{2}} \right)
+| \alpha} \\
+&= \frac{1}{\sqrt{2}} \left( r e^{i \theta} + r e^{- i \theta} \right)
+\text{\quad where $\alpha = r e^{i \theta}$ } \\
+&= \frac{1}{\sqrt{2}} \left( 2 r \cos(\theta) \right) \\
+&= \sqrt{2} r  \cos(\theta) \\ \nonumber \\
+% <p>
+\braket{p}_{\alpha} &= \braket{\alpha | q | \alpha} \\
+                    &= \braket{\alpha |
+\left(i\frac{(a^{\dagger}-a)}{\sqrt{2}} \right) | \alpha} \\
+&= \frac{i}{\sqrt{2}} \left( r e^{-i \theta} - r e^{i \theta} \right)
+\text{\quad where $\alpha = r e^{i \theta}$ } \\
+&= \frac{i}{2} \left( - 2 i r \sin(\theta) \right) \\
+&= \sqrt{2} r  \sin(\theta) \\ \nonumber \\
+   \end{align}
+   We are in a position, now, to evaluate the left-hand side of Schrcodinger's
+   relation.
+   \begin{align}
+      \left( \braket{q^2} - \braket{q}^2 \right)
+      \left( \braket{p^2} - \braket{p}^2 \right)  &=
+      0
+%      \left(
+%         2 r^{2} \cos^{2}(\theta) - \left(\sqrt{2} r  \cos(\theta) \right)^2
+%      \right)
+%      \left(
+%         2r^{2}\sin^{2}(\theta) - \left(\frac{r \sin(\theta)}{\sqrt{2}}\right)^2
+%      \right) \\
+%      &= r^4 \left(
+%      4 \cos^{2}(\theta) \sin^{2}(\theta) -
+%      \cos^{2}(\theta) \sin^{2}(\theta) -
+%      \cos^{2}(\theta) \sin^{2}(\theta) -
+%      \frac{\sin^{2}(\theta)\cos^{2}(\theta)}{4}
+%   \right) \\
+%   &= \frac{7r^{4}\sin^2(\theta)\cos^2(\theta)}{4}
+   \end{align}
+   Evaluating the right-hand side now:
+   \begin{align}
+      \left(
+      \braket{qp} + \frac{i}{2} - \braket{q} \braket{p} \right)^2 +
+      \left( \frac{1}{2} \right)^2  &=
+      \left( r^{2} \sin(2\theta) + \frac{i}{2} - \sqrt{2}r \cos(\theta) \sqrt{2} r
+      \sin(\theta) \right)^2 + \left( \frac{1}{2} \right)^{2} \\
+      &= \left( r^{2}\left(\sin(2\theta) - 2 \cos(\theta)\sin(\theta)\right) +
+   \frac{i}{2} \right)^2 + \left(\frac{1}{2}\right)^2 \\
+   &= 0
+   \end{align}
+   So, the uncertainty (the left-hand side of the above expression) is zero and,
+   as such, is minimum (the uncertainty is as strictly non-negative quantity.
+   Additionally, equality of the Schr\"{o}dinger inequality is satisified implying these states are the
+   states of minimum uncertainty.
+   \begin{homeworkSection}{c)}
+      To determine which single mode squeezed states are minimum in their
+      uncertainties of $ p \text{and} q $ it is necessary to calculate those
+      states which satisfy equality in Robertson's relation. Thus, we need to
+      calculate
+      \begin{align}
+         \Delta q^2 \Delta p^2 \ge \left( \frac{1}{2i} \braket{[q,p]}
+         \right)^2 \enskip.
+      \end{align}
+      But, $ [p,q] = i $. So, we just need to calculate
+      \begin{align}
+         \frac{1}{4} &=
+         \left( \braket{q^2} - \braket{q}^2 \right)
+         \left( \braket{p^2} - \braket{p}^2 \right) \\
+         &= \left( \braket{0|S^{\dagger}(\xi)q^{2}S(\xi)|0} -
+      \braket{0|S^{\dagger}(\xi)qS(\xi)|0} \right)
+      \left( \braket{0|S^{\dagger}(\xi)p^{2}S(\xi)|0} -
+         \braket{0|S^{\dagger}(\xi)pS(\xi)|0}
+         \right) \enskip.
+      \end{align}
+      Now, calculating each of these terms involves much more algebra. It's
+      possible (not difficult) to do, but it takes some time to write.
+      Therefore, these results will be taken directly from the course notes. The
+      results are listed below.
+      \begin{align}
+         \braket{q} &= \braket{0| S^{\dagger}(\xi) q S(\xi) | 0} = 0 \\
+         \braket{p} &= \braket{0| S^{\dagger}(\xi) p S(\xi) | 0} = 0 \\
+         \braket{q^2} &= \braket{0| S^{\dagger}(\xi) q^2 S(\xi) | 0} \\
+                      &= \frac{1}{2}
+         \left( \cosh(2r) - \sinh(2r)\cos(\theta) \right) \text{where $\xi
+         \equiv r e^{i \theta}$}\\
+         \braket{p^2} &= \braket{0| S^{\dagger} p^2 S | 0} \\
+                      &= \frac{1}{2}
+         \left( \cosh(2r) + \sinh(2r)\cos(\theta) \right)
+      \end{align}
+      So, the condition of interest can be written, now, as
+      \begin{align}
+         \frac{1}{4} &= \frac{1}{4} \left( \cosh^{2}(2r)
+         -\sinh^2(2r)\cos^2(\theta) \right)
+         \label{eq:robertson}
+         \intertext{or}
+         1 &= \left( \cosh^{2}(2r) -\sinh^2(2r)\cos^2(\theta) \right) \\
+         \cosh^{2}(2r) - 1 &= \sinh^{2}(2r)\cos^2(\theta) \\
+         \intertext{But, $ \cosh^2(2r) - 1 = \sinh^2(2r) $}
+         \sinh^2(2r) &= \sinh^2(2r)\cos^2(\theta)
+      \end{align}
+      So, $ \theta = n \pi \enskip, n \in \mathcal{Z}$
+   \end{homeworkSection}
+   Thus, the squeezed states are of minimum uncertainty as long as the phase of
+   the squeezing parameter is a multiple of $ \pi $. We can understand this as
+   squeezing the state completely into the $ q $ (for $ \theta = 2 \pi n $) or $
+   p $ (for $\theta = (2n+1) \pi$) quadrants.
+\end{homeworkSection}
+\begin{homeworkSection}{d)}
+This problem strongly represents the most recently performed algebra. We can take
+advantage of that to avoid some more work. The left-hand side of the
+Schr\"{o}dinger equation is the same as the left-hand side of the Robertson
+relation.
+\begin{align}
+   \frac{1}{4} \left( \cosh^{2}(2r) -\sinh^2(2r)\cos^2(\theta) \right) &\ge
+   \left( \frac{1}{2} \left( 2 \braket{qp} - i \right) -
+   \braket{q}\braket{p} \right)^2 + \left( \frac{i}{2i} \right)^2 \\
+   &= \left( \frac{1}{2} \left( 2 \braket{qp} - i \right) -
+\braket{q}\braket{p} \right)^2 + \left( \frac{i}{2i} \right)^2 \\
+&= \frac{1}{4} \left( 2 \braket{qp} - i \right)^2 + \frac{1}{4} \\
+&= \frac{1}{4} \left( 4 \braket{qp}^2 - 4i \braket{qp} - 1 \right)
++ \frac{1}{4} \\
+&= \braket{qp}^2 - i \braket{qp} \\
+\end{align}
+Solving for $ \braket{qp} $:
+\begin{align}
+   \braket{qp} &= \braket{0 | S^{\dagger} qp S | 0} \\
+               &= \braket{0 | S^{\dagger} p S S^{\dagger} q S | 0} \quad\text{by
+inserting $ SS^{\dagger} = \mathds{1} $.} \\
+\end{align}
+Now, it will be important to evaluate $ S^{\dagger} p q S $.
+\newcommand{\aTransformed}{a\cosh(r) - a^{\dagger} e^{i \theta}\sinh(r)}
+\newcommand{\aDaggerTransformed}{a^{\dagger}\cosh(r) - a e^{-i \theta}\sinh(r)}
+\begin{align}
+   S^{\dagger}p q S &= S^{\dagger} \left( \frac{a + a^{\dagger}}{\sqrt{2}} \right)
+   \left( \frac{i \left( a^{\dagger} - a \right)}{\sqrt{2}} \right) S \\
+   &= \frac{i}{2}
+   \left(
+      S^{\dagger} \left(a a^{\dagger} - a^{2} + (a^{\dagger})^2 - a^{\dagger}a\right) S
+   \right) \\
+   &= \frac{i}{2}
+   \left(
+   S^{\dagger} a S S^{\dagger} a^{\dagger} S - S^{\dagger} a S S^{\dagger} a S +
+S^{\dagger}a^{\dagger} S S^{\dagger} a^{\dagger} S - S^{\dagger} a^{\dagger} S
+S^{\dagger} a S
+   \right)
+   \intertext{Using the results from the notes, again (3.121 and 3.122):}
+   = \frac{i}{2} (
+   &\left(\aTransformed\right)\left(\aDaggerTransformed\right) - \\
+   &\left(\aTransformed\right)\left(\aTransformed\right) + \\
+   &\left(\aDaggerTransformed\right)\left(\aDaggerTransformed\right) - \\
+   &\left(\aDaggerTransformed\right)\left(\aTransformed\right)
+   )\\
+   &= \frac{i}{2}
+   \bigg(\mathbf{a a^{\dagger} \cosh^{2}(r)} - a^{2} e^{-i \theta} \sinh(r) \cosh(r)
+   - \left( a^{\dagger} \right)^{2} e^{i\theta} \sinh(r) \cosh(r)
+   + \mathbf{a^{\dagger} a \sinh^2(r)} \\
+   & - a^{2} \cosh^2(r) + \mathbf{a a^{\dagger} e^{i \theta} \sinh(r) \cosh(r)}
+   + \mathbf{a^{\dagger} a e^{i\theta} \sinh(r) \cosh(r)}
+   - (a^{\dagger})^2 e^{2 i \theta} \sinh^2(r) \\
+   & + (a^{\dagger})^2 \cosh^2(r)
+   - \mathbf{a^\dagger a e^{-i \theta} \cosh(r)\sinh(r)}
+   - \mathbf{a a^{\dagger} e^{-i \theta} \sinh(r) \cosh(r)} + a^2 e^{-2 i \theta}
+   \sinh^2(r) \\
+   & - \mathbf{a^\dagger a \cosh^2(r)} + \left( a^{\dagger} \right)^2 e^{i \theta}
+   \sinh(r) \cosh(r) + a^{2} e^{-i \theta} \sinh(r) \cosh(r)
+- \mathbf{a a^\dagger \sinh^2(r)} \bigg)
+\end{align}
+Now, only the bolded terms survive an inner product like
+$ \braket{n | S^{\dagger} qp S | n } $. So, we evaluate that expression, now:
+\begin{align}
+   \braket{ 0 | S^{\dagger} qp S | )}
+   &=
+   \frac{i}{2}
+   \braket{0 |
+      a a^{\dagger} \cosh^2(r) + a^\dagger a \sinh^2(r)
+   | 0} \\
+   &+
+   \frac{i}{2}
+   \braket{0 |
+      a a^\dagger e^{i \theta} \sinh(r) \cosh(r)
+      + a^{\dagger} a e^{i \theta} \sinh(r) \cosh(r)
+   | 0} \\
+   &-
+   \frac{i}{2}
+   \braket{0 | a^\dagger a e^{-i \theta} \cosh(r) \sinh(r)
+      + a a^\dagger e^{-i \theta} \sinh(r) \cosh(r)
+   | 0} \\
+   &-
+   \frac{i}{2}
+   \braket{0 | a^\dagger a \cosh^2(r) + a a^\dagger \sinh^2(r) | 0}
+   \intertext{Only the terms acting first with a creation operator survive.}
+   &=
+   \frac{i}{2}
+   \braket{0 | a a^{\dagger} \cosh^2(r) | 0} \\
+   &-
+   \frac{i}{2}
+   \braket{0 | a a^\dagger e^{i \theta} \sinh(r) \cosh(r) | 0} \\
+   &+
+   \frac{i}{2}
+   \braket{0 | a a^\dagger e^{-i \theta} \sinh(r) \cosh(r) | 0} \\
+   &-
+   \frac{i}{2}
+   \braket{0 | a a^\dagger \sinh^2(r) | 0} \\
+   &= \frac{i}{2} \left( \cosh^2(r) - \sinh^2(r) \right)
+   - \frac{i}{2} \left( 2 i \sinh(r) \cosh(r) \sin(\theta) \right) \\
+   &= \frac{i}{2} + \frac{1}{2}\sinh(2\theta) \sin(\theta)
+\end{align}
+So, evaluating the right-hand side of Schr\"{o}dinger's inequality, now:
+\begin{align}
+   \braket{qp}^2 - i \braket{qp} &=
+   \left( - \frac{1}{4} + \frac{i}{2} \sinh(2\theta) \sin(\theta) +
+   \frac{1}{4} \sinh^2(2\theta)\sin^2(\theta) + \frac{1}{2} - \frac{i}{2} \sinh(2\theta)\sin(\theta) \right)
+   \\
+   &= \frac{1}{4} \left( \sinh^2(2\theta) \sin^2(\theta) + 1 \right) \\
+   &= \frac{1}{4} \left( \sinh^2(2\theta) \left( 1 - \cos^2(\theta) \right) + 1
+\right) \\
+   &= \frac{1}{4} \left( \left( \sinh^2(2\theta) - \sinh^2(2\theta)
+   \cos^2(\theta) \right) + 1 \right) \\
+   &= \frac{1}{4} \left( \cosh^2(2\theta) - \sinh^2(2\theta) \cos^2(\theta) \right)
+\end{align}
+This last expression is the exact same as the left-hand side of Robertson's
+relation in Eq.~\ref{eq:robertson} (the right-hand side of
+Eq.~\ref{eq:robertson} is the left-hand side of Robertson's relation). This is
+the same as the left-hand side of Schr\"{o}dinger's relation. So, the squeezed
+states are minimum uncertainty states for all $ \xi $.
+\end{homeworkSection}
+\end{homeworkProblem}
