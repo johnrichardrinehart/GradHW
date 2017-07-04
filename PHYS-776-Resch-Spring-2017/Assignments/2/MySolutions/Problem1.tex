@@ -1,0 +1,118 @@
+% Problem 1
+\begin{homeworkProblem}
+    The Michelson visibility of a source, as a function of the delay $ \tau $
+    has been expressed as
+    \[
+        V(\tau) =
+        \frac{I_{\textrm{max}}(\tau) -
+        I_{\textrm{min}}(\tau)}{I_{\textrm{max}}(\tau) + I_{\textrm{min}}(\tau)}
+        \enskip.
+    \]
+    Now, this expression is not a good expression. We will demonstrate why in
+    this problem and offer a superior expression at the end. The visibility
+    attempts to quantify the degree of variation in the signal intensity as the
+    delay changes over small values of $ \tau $. In most experiments with
+    Michelson interferometry, Increasing the delay by large amounts tends to, on
+    average, reduce the intensity. However, increasing the delay by small
+    amounts has the potential to swing the intensity by much larger amounts than
+    would happen (on the average) with large increases in the delay. In other
+    words. $ V(\tau) $ tends to have a quickly oscillating function of $ \tau $
+    and a slow decaying function of $ \tau $. When describing the visibility we
+    are interested in the variation of the oscillatory function according to the
+    slow envelope which guides its decay. In order to get our hands on these
+    envelope and oscillatory functions we should calculated $ I(\tau) $, the
+    intensity as a function of delay.
+
+    \begin{align}
+        I(\tau) &= \epsilon_{0} c |t r|^2 E_{0}^{2} \left( 1 + \Re(g^{(1)}(\tau) \right)
+    \end{align}
+    We are interested in a source which has been Doppler-broadened. The
+    first-order coherence of this source is given in Eq.~4.34 of the course
+    notes and is
+    \[
+        g^{(1)}(\tau) = e^{-i \omega_{0} \tau - \frac{1}{2}\tau^{2} \sigma^{2}}
+        \enskip.
+    \]
+    Thus, $ I(\tau) = \epsilon_{0} c |t r|^2 E_{0}^{2} \left( 1 +
+    e^{-\frac{1}{2}\tau^2 \sigma^2}\cos(\omega_{0}\tau) \right) $. Now, $
+    \sigma^{2} = \omega_{0}^{2} \frac{k T}{m c^2} $. Assuming a room-temperature
+    source (\SI{25}{\celsius}), a HeNe gas laser (weighted mass of $ \approx
+    \SI{1.07e-26}{\kilo\gram} $, wavelength of \SI{632.8}{\nano\meter}), and $
+    \epsilon_{0} c |tr|^2 E_{0}^2 = 1 $ we can plot the visibility of this
+    source as a function of delay.
+
+    \begin{figure}[ht]
+        \centering
+        \input{Problem1a.tex}
+        \caption{Intensity as a function of delay time (x axis normalized to $
+            \omega_0 \approx \SI{2.98}{\tera\radian\per\second}) (f_0 \approx
+        \SI{474}{\tera\hertz})$.}
+        \label{fig:Figure1a}
+    \end{figure}
+
+    Quite clearly, the visibility appears to be 1 for very small $ \tau $ (since
+    the maximum value is close to 2 and the minimum value is close to 0).
+    However, there should be a Gaussian envelope guiding the intensity function.
+    This is not visible because of the time scale of this decay.
+
+    In order for a detector to be able to reproduce the theoretical expectation
+    of $ I(\tau) $ a detector would need to be able to measure/average the
+    intensity over an average of $ \approx \SI{.1}{\femto\second} $. This is
+    entirely impractical given the bandwidth/response times of contemporary
+    photodiodes (e.g. Thorlabs FDS100 has a \SI{35}{\pico\second} rise time). In
+    fact, it would be nearly impossible for the detector to average the measured
+    intensity over any length of time that is significant relative to $ \omega_0
+    $.
+
+    Now, we want to quantify how the local extrema (maxima and minima) vary as a
+    function of $ \tau $. Since the oscillations jjkk at such a short time
+    scale relative to the envelope, we can consider the oscillations of any one
+    period as being of fixed amplitude. Then, we can take the maximum as the
+    maximum of the $\cos$ function in $ 1 + e^{-\frac{1}{2}\tau^2
+    \sigma^2}\cos(\omega_{0}\tau) $. The minimum, correspondingly, can be given
+    by $ 1 - e^{-\frac{1}{2}\tau^2 \sigma^2} $. Thus, the visibility, according
+    to the above expression would be
+    \[
+        V(\tau) = \frac{\left( 1 + e^{-\frac{1}{2}\tau^2 \sigma^2}\right) -
+        \left( 1 - e^{-\frac{1}{2}\tau^2 \sigma^2}\right)}
+        {\left( 1 + e^{-\frac{1}{2}\tau^2 \sigma^2}\right) + \left( 1 -
+        e^{-\frac{1}{2}\tau^2 \sigma^2}\right)}
+        =
+        \frac{2 e^{-\frac{1}{2}\tau^2 \sigma^2}}{2}
+        =
+        e^{-\frac{1}{2}\tau^2 \sigma^2}
+    \]
+    Note that by using the positive envelope and the negative envelope and
+    the average of $ I(\tau) $ we can write the visibility, for this case,
+    equivalently as
+    \[
+        V(\tau) = (I_{\textrm{+env}}(\tau) - I_{\textrm{-env}}(\tau)) /
+        2 \overline{I} \enskip,
+    \]
+    where $ I_{\textrm{+/-env}} $ is the positive/negative envelope function of
+    the intensity and $ \overline{I} $ is the mean of $ I(\tau) $ over all $
+    \tau $. Calculating the visibility trivially reproduces the same result as
+    the first expression. In fact, if the visibility function is symmetric about
+    the mean, then the positive envelope will be related to the negative
+    envelope: $ I_{\textrm{-env}} = 2 \overline{I} - I_{\textrm{+env}} $. Thus,
+    the visibility function can, once again, be rewritten as
+    \[
+        V(\tau) = (2 I_{\textrm{+env}}(\tau) - 2 \overline{I}) /
+        (2 \overline{I})
+        = \frac{I_{\textrm{+env}}(\tau)}{\overline{I}} - 1
+    \]
+
+    The advantage of an expression like this one is two-fold: 1) Most intensity
+    correlations ($ I(\tau) $) will be symmetric about the mean and 2) it's
+    practically measurable. A plot of the two envelopes of the intensity
+    functions and the mean is shown in Fig.~\ref{fig:Figure1b}.
+
+    \begin{figure}[ht]
+        \centering
+        \input{Problem1b.tex}
+        \caption{Envelopes and mean of the intensity function (x axis normalized to $
+            \omega_0 \approx \SI{2.98}{\tera\radian\per\second}) (f_0 \approx
+        \SI{474}{\tera\hertz})$.}
+        \label{fig:Figure1b}
+    \end{figure}
+\end{homeworkProblem}
