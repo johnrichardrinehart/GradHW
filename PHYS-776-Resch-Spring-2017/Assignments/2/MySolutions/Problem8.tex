@@ -1,0 +1,39 @@
+% Problem 7
+\begin{homeworkProblem}
+    A quantum state in terms of the P function (Glauber-Sudarshan P
+    representation) is
+    \[
+        \rho = \int d^2\alpha P(\alpha) \ket{\alpha}\bra{\alpha} \enskip.
+    \]
+    If the state exhibits sub-Poissonian statistics then the function
+    \[
+        Q = \frac{\braket{{a^\dagger}^2 a^2}-\braket{a^\dagger
+        a}^2}{\braket{a^\dagger a}}
+    \]
+    will be negative. However,
+    \[
+        \braket{{a^\dagger}^2 a^2} = \Tr(\int d^2\alpha P(\alpha) \ket{\alpha}
+        \bra{\alpha} a^\dagger a^\dagger a a) = \int d^2\alpha P(\alpha)
+        \bra{\alpha} {a^\dagger}^2 a^2 \ket{\alpha} = \int d^2\alpha P(\alpha)
+        \left| \alpha \right|^4
+    \]
+    and
+    \[
+        \braket{a^\dagger a} = \int d^2\alpha P(\alpha) \bra{\alpha} a^\dagger
+        a \ket{\alpha} = \int d^2\alpha P(\alpha) \left| \alpha \right|^2
+        \enskip.
+    \]
+    This doesn't seem to prove anything until one realizes that
+    \[
+        \braket{{a^\dagger}^2 a^2} - {\braket{a^\dagger a}}^2 = \int d^2\alpha P(\alpha)
+        \left| \alpha \right|^4 - \left( \int d^2\alpha P(\alpha) \left| \alpha
+        \right|^2 \right)^2
+    \]
+    is nothing more than the variance of $ \left| \alpha \right|^2 $. This can
+    never be negative. An alternative proof can be constructed in terms of the
+    Cauchy-Schwarz inequality. But, that proof relies on the fact that $
+    P(\alpha) \left| \alpha \right|^4 \in \mathcal{L}^2 $. Even though $ \int
+    P(\alpha) = 1 $, in order that it be a probability distribution over $
+    \alpha $, it's not guaranteed that $ \int P(\alpha) \left| \alpha \right|^4
+    $ is bounded.
+\end{homeworkProblem}
