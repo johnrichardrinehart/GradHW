@@ -1,0 +1,44 @@
+% Problem 3
+\begin{homeworkProblem}
+    \begin{homeworkSection}{a)}
+        Understanding a Poissonian photon distribution to mean a coherent state,
+        we can express the state after an application of a linear loss channel
+        as
+        \[
+            e^{-\frac{\left| \alpha \right|^2}{2}} e^{\alpha a_1^\dagger } \otimes
+            \mathds{1}_2
+            \ket{0}_{1} \ket{0}_{2}
+            \to e^{-\frac{\left| \alpha \right|^2}{2}} e^{\alpha \left(
+                    \sqrt{T} a^\dagger_3 \otimes \tilde{\mathds{1}}_4 +
+                    \sqrt{1-T} \left( \mathds{1}_3
+                \otimes \tilde{a}^\dagger_4 \right) \right)} \ket{0}_3 \otimes
+                \ket{0}_4 \enskip.
+        \]
+        Above, we have used the beamsplitter mode transformations and loss model
+        provided in the course notes (Eq.~4.156 and Sec.~4.15). Applying the
+        operators to the states yields
+        \[
+            e^{-\frac{\left| \alpha \right|^2}{2}} e^{\alpha \sqrt{T}
+            a^\dagger_3 \otimes \tilde{\mathds{1}}_4} \ket{0}_3
+            \otimes
+            e^{\alpha \sqrt{1-T} \mathds{1}_3 \otimes \tilde{a}^\dagger_4 }
+            \ket{0}_4 = \ket{\alpha \sqrt{T}} \otimes \ket{\alpha \sqrt{1-T}} \enskip.
+        \]
+    \end{homeworkSection}
+    \begin{homeworkSection}
+        A single-mode coherent state incident upon a beamsplitter can be
+        expressed in terms of a combined input state incident upon both input
+        beams of the beamsplitter as
+        \[
+            \ket{\psi} = \ket{\alpha}_1 \otimes \ket{0}_2 \enskip.
+        \]
+        Using the beamsplitter mode transformations provided in the course notes
+        we can express the output state as
+        \[
+            \ket{\alpha}_1 \otimes \ket{0}_2 = (D(\alpha)_1 \otimes \mathds{1}_2) \ket{0}_1 \otimes
+            \ket{0}_2 \to e^{-\left| \alpha \right|^2/2} e^{\alpha \left( t a_2
+            + r a_4 \right)} \ket{0}_3 \otimes \ket{0}_4
+            = \ket{\alpha t}_3 \otimes \ket{\alpha r}_4
+        \]
+    \end{homeworkSection}
+\end{homeworkProblem}
