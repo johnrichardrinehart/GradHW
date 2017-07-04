@@ -1,0 +1,171 @@
+% Problem 7
+\begin{homeworkProblem}
+    Calculating the Wigner function for the state $ \frac{1}{\sqrt{2}} \left(
+    \ket{0} + \ket{3} \right) $ involves first calculating the characteristic
+    function.
+    \begin{align}
+        \tilde{W}(\eta) &= \Tr(\rho e^{\eta a^\dagger - \eta^* a}) \\
+                        &= e^{- \left| \eta \right|^2/2} \Tr(e^{-\eta^* a} \rho
+        e^{\eta a^\dagger}) \\
+        &= e^{-\left| \eta \right|^2/2} \left( \bra{0} e^{\eta a^\dagger} e^{-
+    \eta^* a} \ket{0} + \bra{0} e^{\eta a^\dagger} e^{- \eta^* a} \ket{n} +
+    \bra{n} e^{\eta a^\dagger} e^{- \eta^* a} \ket{0} +
+    \bra{n} e^{\eta a^\dagger} e^{- \eta^* a} \ket{n}
+\right)
+    \end{align}
+    Now, each of these terms can be considered in the following general form.
+    \begin{align}
+        \bra{l} e^{\eta a^\dagger}e^{-\eta^*a} \ket{m} &=
+        \bra{l} e^{\eta a^\dagger} \sum_{k=0}^m \frac{(-1)^k
+        (\eta^*)^k \sqrt{m!}}{k!\sqrt{(m-k)!}} \ket{m-k} \\
+        &= \bra{l}
+        \sum_{j=0}^\infty \sum_{k=0}^m \frac{(-1)^k (\eta^*)^k \sqrt{m!}}{k!
+            \sqrt{(m-k)!}} \frac{(\eta)^j \sqrt{(m-k+j)!}}{j! \sqrt{(m-k)!}}
+            \ket{m-k+j}
+    \end{align}
+    So,
+    \[
+        \bra{0}e^{\eta a^\dagger}e^{-\eta^* a} \ket{0} = 1
+    \]
+    since $ m=0 $ (so $ k=0 $) and since $ l=0 $.
+    \[
+        \bra{0}e^{\eta a^\dagger}e^{-\eta^* a} \ket{n} =  \frac{(-1)^n
+        (\eta^*)^n}{\sqrt{n!}}
+    \]
+    since $ m=n $ and $ l=0 $.
+    \[
+        \bra{n}e^{\eta a^\dagger}e^{-\eta^* a} \ket{0} =  \frac{
+        (\eta)^n}{\sqrt{n!}}
+    \]
+    since $ m=0 $ (so $ k=0 $) and $ l=n $.
+    \[
+        \bra{n}e^{\eta a^\dagger}e^{-\eta^* a} \ket{n} =
+        \sum_{i=0}^{n} \frac{(-1)^i (\eta^*)^i \eta^i n!}{j!^2 (n-j)!}
+        = \sum_{i=0}^{n} \binom{n}{j} \frac{(-1)^i (\eta^*)^i \eta^i}{j!}
+        = \sum_{i=0}^{n} \binom{n}{j} \frac{(-1)^i |\eta|^{2i}}{j!}
+    \]
+    Now,
+    \[
+        \tilde{W}(\eta) = e^{- \left| \eta \right|^2/2} \left( 1 +
+            \frac{(\eta)^n + (-\eta^*)^n}{\sqrt{n!}} + \sum_{j=0}^n \binom{n}{j} \frac{(-1)^j
+    \left| \eta \right|^{2j}}{j!} \right)
+    \]
+    where $ n=3 $ for the state in this problem. The Wigner function is
+    \begin{align}
+        W(\alpha) &= \frac{1}{\pi^2} \int d^2\eta e^{\eta^* \alpha - \eta
+        \alpha^*} \tilde{W}(\eta)
+        \intertext{Given the nature of the characteristic function it would
+            probably be a good idea to express this integral in polar form.
+            Expressing $ \eta \equiv r e^{i \theta} $ and $ \alpha \equiv a e^{i
+        \phi} $ we can rewrite the integral as:}
+        W(\alpha) &= \frac{1}{\pi^2} \int r dr d\theta e^{2 i a r \sin(\phi-\theta)}
+        e^{-r^2/2}\left(1 + r^n \frac{e^{i \theta n} + (-1)^ne^{-i \theta
+        n}}{\sqrt{n!}} + \sum^{n}_{j=0} \binom{n}{j} \frac{(-1)^j
+r^{2j}}{j!}\right)
+    \intertext{Using Mathematica to evaluate this integral for $ n=3 $ yields:}
+    &= \frac{8}{3 \pi} a^2 e^{-2 a^2} \left(8 a^4-18 a^2+2 \sqrt{6} a \cos (3 \phi )+9\right)
+    \end{align}
+    This Wigner function is plotted below in Fig.~\ref{fig:Problem7a}.
+
+    \begin{figure}[ht]
+        \centering
+        \input{Problem7a.tex}
+        \caption{Wigner plot of $ \ket{\psi} = \frac{1}{\sqrt{2}} (\ket{0} +
+        \ket{3}) $.}
+        \label{fig:Problem7a}
+    \end{figure}
+
+    For fun, I've computed some other star plots. However, there is no
+    analytical solution for general $ n $. I won't include the plots, here. But,
+    for reference, I am including a numerical integration routine that will
+    solve for arbitrary $ n $ and plot it in Julia, a high performance
+    programming language designed for scientific computing. We recommend the
+    reader install and run this script to become familiar with the power of
+    Julia (the ease of MATLAB with the speed of C).
+
+    \begin{minted}{julia}
+import Plots
+import Cubature
+import Interpolations
+import Base.Iterators
+Plots.plotly()
+
+# characteristic(n) returns the Wigner characteristic function for a star state of
+# the form |0>+|n>
+@everywhere function characteristic(n)
+    # x is a vector of [r,theta] values
+    return function f(x)
+        e^(-x[1]^2/2)*
+        (1
+         +
+         ((x[1]*e^(im*x[2]))^n+(-x[1]*e^(-im*x[2]))^n)/sqrt(factorial(n))
+        +
+        sum(j -> (-1)^j*x[1]^(2*j)*binomial(n,j)/factorial(j),0:n)
+        )
+    end
+end
+
+ch = RemoteChannel(1) #ch -> # of solved points in the α grid
+put!(ch,1)
+#init = RemoteChannel(1) # t -> a channel that stores the computing time
+@everywhere init = now()
+#put!(t,now())
+#@everywhere st = now()
+
+# integrand(n,x,y,c,s) takes 5 arguments:
+# n - the n in |0>+|n>
+# x, y - the x,y values of alpha = x+iy
+# c - a channel storing the number of solved points
+@everywhere function integrand(n,x,y,c;print_status=false)
+    if print_status
+        cnt = take!(c)
+        duration = (now()-init).value/1000
+        println("Working on point: (",x,",",y,"). ",
+        round(100*cnt/(length(xs)*length(ys)),1), "%.")
+        if duration > 60
+            println("On point ",cnt," of ", length(xs)*length(ys),
+            " in time ", round(duration/60,1), " minutes.")
+        else
+            println("On point ",cnt," of ", length(xs)*length(ys),
+            " in time ", duration, " seconds.")
+        end
+        put!(c,cnt+1)
+    end
+    function f(X)
+        p = atan2(y,x)
+        a = sqrt(x^2+y^2)
+        return real((1/(pi^2))*X[1]*e^(2*im*a*X[1]*sin(p-X[2]))*characteristic(n)(X))
+    end
+    return f
+end
+
+# solution grid
+@everywhere xs = ys = -5.5:.2:5.5
+
+# the cartesian product of all of the xs and ys
+grid_idxs = Iterators.product(xs,ys)
+# the solution grid (where the results go)
+grid_vals = zeros(size(grid_idxs))
+
+n = 6
+@everywhere integral =
+l -> Cubature.hcubature(integrand(n,l[1],l[2],ch),[0,0],[10,2*pi],abstol=1e-3)[1]
+println("Starting the integrals.\n") # starting the integrals at each alpha = x+iy
+grid_vals = pmap(integral, collect(grid_idxs)) # pmap is a parallel map (uses workers)
+
+# interpolate the solutions to smooth it out.
+itp = Interpolations.interpolate(grid_vals,
+                  Interpolations.BSpline(Interpolations.Cubic(Interpolations.Line())),
+                  Interpolations.OnGrid()
+                 )
+# scale the interpolation according to the actual grid
+sitp = Interpolations.scale(itp, xs, ys)
+# plot the interpolated data
+p = Plots.plot(
+               linspace(xs[1],xs[end],500),
+               linspace(ys[1],ys[end],500),
+               (x,y) -> sitp[x,y],
+               t=:surface
+              )
+    \end{minted}
+\end{homeworkProblem}
