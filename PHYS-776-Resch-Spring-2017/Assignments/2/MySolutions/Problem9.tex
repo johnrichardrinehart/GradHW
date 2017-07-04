@@ -1,0 +1,59 @@
+% Problem 9
+\begin{homeworkProblem}
+    The two-mode squeezed vacuum state can be expressed as
+    \[
+        \ket{\psi} = \frac{1}{\cosh(r)} \sum^{\infty}_{n=0} (-1)^n e^{i n
+        \theta} \tanh^n(r) \ket{n,n} \enskip.
+    \]
+    Now, the two-mode Q/Husimi function is
+    \[
+        Q(\alpha,\beta) = \frac{1}{\pi^2} \bra{\alpha}_1 \bra{\beta}_2 \rho
+        \ket{\alpha}_1 \ket{\beta}_2 \enskip.
+    \]
+    Thus, the Q-function for the two-mode vacuum squeezed state is
+    \begin{align}
+        Q(\alpha,\beta) &= \frac{1}{\pi^2} \bra{\alpha}_1 \bra{\beta}_2
+        \sum^{\infty}_{n=0} \frac{1}{\cosh(r)} (-1)^n e^{i n \theta} \tanh^n(r)
+        \ket{n,n}
+        \sum^{\infty}_{m=0} \frac{1}{\cosh(r)} (-1)^m e^{-i m \theta} \tanh^m(r)
+        \bra{m,m} \ket{\alpha}_1 \ket{\beta}_2 \\
+        &= \frac{1}{\pi^2 \cosh^2(r)}
+        \sum^{\infty}_{n=0} \sum^{\infty}_{m=0}
+        (-1)^{n+m} e^{i (n-m) \theta} \tanh^{n+m}(r)
+        \bra{\alpha}_1 \bra{\beta}_2
+        \ket{n,n} \bra{m,m}
+        \ket{\alpha}_1 \ket{\beta}_2
+        \intertext{Now, $ \braket{n|\alpha} = e^{-\left| \alpha \right|^2/2}
+        \frac{\alpha^{n}}{\sqrt{n!}} $.}
+        &= \frac{1}{\pi^2 \cosh^2(r)} \sum^{\infty}_{n=0} \sum^{\infty}_{m=0}
+        (-1)^{n+m} e^{i (n-m) \theta} \tanh^{n+m}(r)
+        e^{-\left| \alpha \right|^2 - \left| \beta \right|^2}
+        \frac{\alpha^{m} {\alpha^{*}}^{n}}{\sqrt{n!m!}}
+        \frac{\beta^{m} {\beta^{*}}^{n}}{\sqrt{n!m!}}
+        \intertext{Now, the squeezing parameter $ \xi = r e^{i\theta} $ is told
+        to be real. So:}
+        &= \frac{e^{-\left| \alpha \right|^2 - \left| \beta \right|^2}}{\pi^2 \cosh^2(r)}
+        \sum^{\infty}_{n=0} \sum^{\infty}_{m=0}
+        (-1)^{n+m} \tanh^{n+m}(r)
+        \frac{\alpha^{m} {\alpha^{*}}^{n}}{\sqrt{n!m!}}
+        \frac{\beta^{m} {\beta^{*}}^{n}}{\sqrt{n!m!}}
+    \end{align}
+
+    EPR correlations can be seen in any bipartite state whose individual statistics carry
+    more uncertainty than the combined-state statistics. Particularly with the
+    two-mode squeezed states the entanglement of the particles determines
+    a greater uncertainty with the statistics of any one mode than with the
+    combined modes (this effect is exaggerated by increasing the squeezing
+    parameter). However, it has been shown that by calculating the variance of
+    the following two operators, an arbitrarily small variance can be obtained
+    with arbitrarily large squeezing parameter:
+    \[
+        \hat{+} = \frac{\hat{X}_1 + \hat{X}_2}{2}
+    \]
+    and
+    \[
+        \hat{-} = \frac{\hat{P}_1 - \hat{P}_2}{2} \enskip.
+    \]
+    This is shown in greater detail in
+    \url{https://journals.aps.org/prl/pdf/10.1103/PhysRevLett.84.2722}.
+\end{homeworkProblem}
