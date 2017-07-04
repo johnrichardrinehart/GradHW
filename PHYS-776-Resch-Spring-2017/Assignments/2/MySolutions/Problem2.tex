@@ -1,4 +1,121 @@
 % Problem 2
 \begin{homeworkProblem}
-    a
+    The second-order coherence of a quantum state can be calculated as
+    \[
+        g^{(2)}(\tau) =
+        \frac{\braket{a^\dagger a^\dagger a a }}
+        {\braket{a^\dagger a}^2} \enskip.
+    \]
+    The single-mode squeezed vacuum state can be expressed in the Fock basis as
+    \[
+        \ket{\psi} = \frac{1}{\cosh(r)} \sum_{n=0}^{\infty} (-1)^n
+        \frac{\sqrt{(2n)!}}{2^n n!} e^{i n \theta} \tanh^n(r) \ket{2n} \enskip.
+    \]
+    The density matrix representation of this state is given by
+    \begin{align}
+        \rho = \ket{\psi}\bra{\psi} &=
+        \frac{1}{\cosh(r)} \sum_{n=0}^{\infty} (-1)^n
+        \frac{\sqrt{(2n)!}}{2^n n!} e^{i n \theta} \tanh^n(r) \ket{2n}
+        \frac{1}{\cosh(r)} \sum^{\infty}_{m=0}  (-1)^m \frac{\sqrt{(2m)!}}{2^m
+        m!} e^{-i m \theta} \tanh^m(r) \bra{2m} \\
+        \ket{\psi}\bra{\psi} &=
+        \frac{1}{\cosh^2(r)} \sum_{n=0}^{\infty}\sum^{\infty}_{m=0}
+        (-1)^{n+m}
+        \frac{\sqrt{(2n)!(2m)!}}{2^{n+m} n! m!} e^{i (n-m) \theta} \tanh^{n+m}(r)
+        \ket{2n} \bra{2m}
+    \end{align}
+    Calculate the numerator of the second-order coherence by taking the trace
+    over the Fock basis yields
+    \begin{align}
+        \Braket{a^\dagger a^\dagger a a}
+        &= \sum_{k=0}^\infty \bra{k}
+        a^\dagger a^\dagger a a
+        \frac{1}{\cosh^2(r)} \sum_{n=0}^{\infty}\sum^{\infty}_{m=0}
+        (-1)^{n+m}
+        \frac{\sqrt{(2n)!(2m)!}}{2^{n+m} n! m!} e^{i (n-m) \theta} \tanh^{n+m}(r)
+        \ket{2n} \bra{2m}
+        \ket{k}
+        \intertext{Applying the operators to the $ \ket{2n} $ ket:}
+        &= \sum_{k=0}^\infty \bra{k}
+        \frac{1}{\cosh^2(r)} \sum_{n=0}^{\infty}\sum^{\infty}_{m=0}
+        (-1)^{n+m}
+        \frac{\sqrt{(2n)!(2m)!}}{2^{n+m} n! m!} e^{i (n-m) \theta} \tanh^{n+m}(r)
+        2n(2n-1)\ket{2n} \bra{2m}
+        \ket{k} \\
+        &= \frac{1}{\cosh^2(r)}
+        \sum_{\textrm{even $ k $}} (-1)^{k} \frac{\sqrt{k!k!}}{2^{k}
+        \frac{k}{2}! \frac{k}{2}!} e^{i (\frac{k}{2} - \frac{k}{2}) \theta}
+        \tanh^{\frac{k}{2} + \frac{k}{2}}(r)
+        k(k-1)
+        \intertext{Replacing even $ k $ with $ l = \frac{k}{2} $ yields}
+        &= \frac{1}{\cosh^2(r)}
+        \sum_{l=0}^\infty \frac{\sqrt{(2l)!^2}}{2^{2l} l!^2} 2l(2l-1)
+        \tanh^{2l}(r)
+    \end{align}
+    Performing a similar calculation for the denominator yields
+    \begin{align}
+        \Braket{a^\dagger a}
+        &= \sum_{k=0}^\infty \bra{k}
+        a^\dagger a
+        \frac{1}{\cosh^2(r)} \sum_{n=0}^{\infty}\sum^{\infty}_{m=0}
+        (-1)^{n+m}
+        \frac{\sqrt{(2n)!(2m)!}}{2^{n+m} n! m!} e^{i (n-m) \theta} \tanh^{n+m}(r)
+        \ket{2n} \bra{2m}
+        \ket{k} \\
+        &= \sum_{k=0}^\infty
+        \frac{1}{\cosh^2(r)} \sum_{n=0}^{\infty}\sum^{\infty}_{m=0}
+        (-1)^{n+m}
+        \frac{\sqrt{(2n)!(2m)!}}{2^{n+m} n! m!} e^{i (n-m) \theta} \tanh^{n+m}(r)
+        2n \ket{2n} \bra{2m}
+        \ket{k} \\
+        &= \sum_{\textrm{even $ k $}}
+        \frac{1}{\cosh^2(r)}
+        (-1)^{k}
+        \frac{\sqrt{k!^2}}{2^{k} \frac{k}{2}!^2} \tanh^{k}(r)
+        k \\
+        \intertext{Replacing $ l = \frac{k}{2} $:}
+        &= \frac{1}{\cosh^2(r)}
+        \sum_{l=0}^\infty
+        \frac{\sqrt{(2l)!^2}}{2^{2 l} l!^2} 2l \tanh^{2 l}(r) \\
+    \end{align}
+    Now, we are interested in the second-order coherence of this state. In terms
+    of these two expressions we have, now:
+    \begin{align}
+        g^{(2)}(\tau) &= \frac{\frac{1}{\cosh^2(r)}
+            \sum_{l=0}^\infty \frac{\sqrt{(2l)!^2}}{2^{2l} l!^2} 2l(2l-1)
+            \tanh^{2l}(r)}{\frac{1}{\cosh^4(r)}
+            \sum_{l=0}^\infty
+            \sum_{m=0}^\infty
+            \frac{\sqrt{(2l)!^2}}{2^{2 l} l!^2} 2l \tanh^{2 l}(r)
+        \frac{\sqrt{(2m)!^2}}{2^{2 m} m!^2} 2m \tanh^{2 m}(r) } \\
+        \intertext{Calling $ f(l) = \frac{\sqrt{(2l)!^2}}{2^{2l} l!^2} 2l $
+        we can rewrite this expression as}
+        &= \frac{ \cosh^2(r)
+        \sum_{l=0}^\infty f(l) (2l-1)
+            \tanh^{2l}(r)}{
+            \sum_{l=0}^\infty
+            \sum_{m=0}^\infty
+            f(l) \tanh^{2 l}(r) f(m) \tanh^{2 m}(r) } \\
+    \end{align}
+    This has no obvious simplifications. In the limit of small squeezing, $ r
+    \to 0 $, $ \tanh^n(r) \to r^n $ and $ \cosh(r) \to 1 $. However, realizing
+    that small squeezing corresponds to a state that is ``close'' to the vacuum
+    state this brings both the denominator and the numerator to 0 ($ g^{2}(\tau)
+    = \frac{\braket{a^\dagger a^\dagger a a}}{\braket{a^\dagger a}^2} $).
+    Another way to consider the limit of small squeezing is to realize that this
+    state resembles the vacuum state and that the $ g^2(\tau) $ for Fock states
+    is
+    \[
+        g^2(\tau) = 1 - \frac{1}{n}
+    \]
+    This means that $ g^2(\tau) $ for the vacuum state is not only less than 1,
+    it would correspond to $ -\infty $. Indeed, a rigorous analysis of the
+    expression obtained above for the squeeze state yields the same thing when
+    evaluated using L'Hopital's theorem in the case of small $ r $.
+
+    In the limit of large $ r $, however, $ \tanh(r) \to 1 $ and $ \cosh(r) \to
+    \infty $. So, clearly this expression tends to $ \infty $.
+
+    Thus, there most definitely exists region where the classical bounds on $
+    g^2 $ ($ \ge 1 $) are violated by a single mode squeezed state.
 \end{homeworkProblem}
