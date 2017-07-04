@@ -1,0 +1,42 @@
+<!DOCTYPE Technology>
+<Lpp_List>
+  <LPP purpose="drawing" fill="0" mode="0" line="0" protect="0" rgb="13296127" layer="default" visible="1" alpha="255"/>
+  <LPP purpose="drawing" fill="1" mode="1" line="0" protect="0" rgb="15624784" layer="cond" visible="1" alpha="255"/>
+  <LPP purpose="drawing" fill="2" mode="1" line="0" protect="0" rgb="16776960" layer="cond2" visible="1" alpha="255"/>
+  <LPP purpose="drawing" fill="3" mode="1" line="0" protect="0" rgb="65280" layer="resi" visible="1" alpha="255"/>
+  <LPP purpose="drawing" fill="4" mode="1" line="0" protect="0" rgb="65535" layer="diel" visible="1" alpha="255"/>
+  <LPP purpose="drawing" fill="1" mode="1" line="0" protect="0" rgb="7794374" layer="diel2" visible="1" alpha="255"/>
+  <LPP purpose="drawing" fill="5" mode="1" line="0" protect="0" rgb="49151" layer="hole" visible="1" alpha="255"/>
+  <LPP purpose="drawing" fill="6" mode="1" line="0" protect="0" rgb="16758213" layer="bond" visible="1" alpha="255"/>
+  <LPP purpose="drawing" fill="7" mode="1" line="0" protect="0" rgb="16777200" layer="symbol" visible="1" alpha="255"/>
+  <LPP purpose="drawing" fill="0" mode="1" line="0" protect="0" rgb="16777215" layer="text" visible="1" alpha="255"/>
+  <LPP purpose="drawing" fill="8" mode="1" line="0" protect="0" rgb="16769535" layer="leads" visible="1" alpha="255"/>
+  <LPP purpose="drawing" fill="9" mode="1" line="0" protect="0" rgb="15653038" layer="packages" visible="1" alpha="255"/>
+  <LPP purpose="drawing" fill="0" mode="0" line="0" protect="0" rgb="12713921" layer="ports" visible="1" alpha="255"/>
+  <LPP purpose="drawing" fill="13" mode="0" line="5" protect="0" rgb="16759807" layer="bound" visible="1" alpha="255"/>
+  <LPP purpose="drawing" fill="0" mode="1" line="0" protect="0" rgb="16773083" layer="silk_screen" visible="1" alpha="255"/>
+  <LPP purpose="drawing" fill="0" mode="1" line="0" protect="1" rgb="16773083" layer="silk_screen2" visible="0" alpha="255"/>
+  <LPP purpose="drawing" fill="0" mode="1" line="0" protect="0" rgb="15794160" layer="case_dimensions" visible="1" alpha="255"/>
+  <LPP purpose="drawing" fill="13" mode="2" line="5" protect="0" rgb="16759807" layer="pc1" visible="1" alpha="255"/>
+  <LPP purpose="drawing" fill="45" mode="2" line="5" protect="0" rgb="3050327" layer="pc2" visible="1" alpha="255"/>
+  <LPP purpose="drawing" fill="29" mode="2" line="5" protect="0" rgb="9364974" layer="pc3" visible="1" alpha="255"/>
+  <LPP purpose="drawing" fill="51" mode="2" line="5" protect="0" rgb="65407" layer="pc4" visible="1" alpha="255"/>
+  <LPP purpose="drawing" fill="30" mode="2" line="5" protect="0" rgb="13303664" layer="pc5" visible="1" alpha="255"/>
+  <LPP purpose="drawing" fill="39" mode="2" line="5" protect="0" rgb="15628610" layer="pc6" visible="1" alpha="255"/>
+  <LPP purpose="drawing" fill="47" mode="2" line="5" protect="0" rgb="16711935" layer="pc7" visible="1" alpha="255"/>
+  <LPP purpose="drawing" fill="67" mode="2" line="5" protect="0" rgb="65280" layer="pc8" visible="1" alpha="255"/>
+  <LPP purpose="drawing" fill="71" mode="2" line="0" protect="0" rgb="12713921" layer="pcvia1" visible="1" alpha="255"/>
+  <LPP purpose="drawing" fill="72" mode="2" line="0" protect="0" rgb="16752762" layer="pcvia2" visible="1" alpha="255"/>
+  <LPP purpose="drawing" fill="73" mode="2" line="0" protect="0" rgb="16774799" layer="pcvia3" visible="1" alpha="255"/>
+  <LPP purpose="drawing" fill="74" mode="2" line="0" protect="0" rgb="15653038" layer="pcvia4" visible="1" alpha="255"/>
+  <LPP purpose="drawing" fill="75" mode="2" line="0" protect="0" rgb="15657449" layer="pcvia5" visible="1" alpha="255"/>
+  <LPP purpose="drawing" fill="76" mode="2" line="0" protect="0" rgb="12178414" layer="pcvia6" visible="1" alpha="255"/>
+  <LPP purpose="drawing" fill="77" mode="2" line="0" protect="0" rgb="16769535" layer="pcvia7" visible="1" alpha="255"/>
+  <LPP purpose="drawing" fill="0" mode="2" line="0" protect="0" rgb="16773083" layer="solder_mask" visible="1" alpha="255"/>
+  <LPP purpose="drawing" fill="0" mode="2" line="0" protect="0" rgb="16769535" layer="IC_pin_number" visible="1" alpha="255"/>
+  <LPP purpose="drawing" fill="0" mode="2" line="0" protect="0" rgb="3100495" layer="IC_pin1_marker" visible="1" alpha="255"/>
+  <LPP purpose="drawing" fill="0" mode="2" line="0" protect="1" rgb="16776960" layer="hpeesof_region" visible="1" alpha="255"/>
+  <LPP purpose="drawing" fill="0" mode="2" line="0" protect="0" rgb="16776960" layer="momentum_err" visible="1" alpha="255"/>
+  <LPP purpose="drawing" fill="0" mode="0" line="3" protect="1" rgb="16776960" layer="momentum_box" visible="1" alpha="255"/>
+  <LPP purpose="drawing" fill="0" mode="0" line="0" protect="1" rgb="16777215" layer="momentum_ref_offset" visible="1" alpha="255"/>
+</Lpp_List>

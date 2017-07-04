@@ -1,0 +1,100 @@
+\begin{homeworkProblem}
+ We first prove the following identity:
+ \begin{equation}\label{P4-comut}
+ \comut{A}{BC}=B\comut{A}{C}+\comut{A}{B}C
+ \end{equation}
+Proof:
+If we expand the right hand side of \eqref{P4-comut} we get:
+\begin{equation}
+B\comut{A}{C}+\comut{A}{B}C&=B(AC-CA)+(AB-BA)C=-BCA+ABC=\comut{A}{BC}
+\end{equation}
+We have used the associative axiom of multiplication
+\begin{homeworkSection}{(a)}
+\begin{equation}
+\comut{\A{x}^2}{\A{p}}=\A{x}\comut{\A{x}}{\A{p}}+\comut{\A{x}}{\A{p}}\A{x}=2i\hbar\A{x}
+\end{equation}
+\end{homeworkSection}
+%------b---------------
+\begin{homeworkSection}{(b)}
+We define:
+\begin{equation}
+\mathcal{A}_n=\comut{\A{x}^n}{\A{p}}
+\end{equation}
+Using \eqref{P4-comut}, we can draw a recursive experision for $\mathcal{A}_n$  
+\begin{equation}
+\mathcal{A}_{n}=\comut{\A{x}^n}{\A{p}}=\comut{\A{x}\A{x}^{n-1}}{\A{p}}=\A{x}\comut{\A{x}^{n-1}}{\A{p}}+\comut{\A{x}}{\A{p}}\A{x}^{n-1}=\A{x}\mathcal{A}_{n-1}+i\hbar\A{x}^{n-1}
+\end{equation}
+So:
+\begin{equation}
+\mathcal{A}_n=\A{x}\mathcal{A}_{n-1}+i\hbar\A{x}^{n-1}\qquad , \quad \mathcal{A}_1=i\hbar
+\end{equation}
+We cliam that:
+\begin{equation}\label{P4-110}
+\mathcal{A}_n=in\hbar\A{x}^{n-1}
+\end{equation}
+Proof by induction:
+\begin{enumerate}
+\item
+The theory works for $n=1$:
+$$\mathcal{A}_1=i\hbar\A{x}^0$$
+\item
+Assume \eqref{P4-110} works for $N=n$ ,that is, $\mathcal{A}_n=in\hbar\A{x}^{n-1}$ we show it also works for $N=n+1$
+
+\begin{equation*}
+\mathcal{A}_{n+1}=\A{x}\mathcal{A}_{n}+i\hbar\A{x}^{n}=
+\A{x}in\hbar\A{x}^{n-1}+i\hbar\A{x}^{n}=i(n+1)\hbar\A{x}^{n-1}
+\end{equation*}
+\end{enumerat}
+\end{homeworkSection}
+%---------c---------
+\begin{homeworkSection}{(c)}
+It's assumed that $g(\A{x})$ is a well-defined function of position and we can expand this function as the power series of $\A{x}$ as:
+\begin{equation}
+g(\A{x})=\sum_{n=0}^{\infty}g_n\A{x}^n
+\end{equation}  
+
+As amatter of the fact power series representation is the natural way of  representing any function of an operator. So we obtain:
+\begin{equation}
+\comut{g(\A{x})}{\A{p}}=\comut{\sum_{n=0}^{\infty}g_n\A{x}^n}{\A{p}}=\sum_{n=0}^{\infty}g_n\comut{\A{x}^n}{\A{p}}
+\end{equation} 
+From part (c) we have:
+\begin{equation}
+\comut{g(\A{x})}{\A{p}}=\sum_{n=0}^{\infty}in\hbar g_n\A{x}^{n-1}=i\hbar\left.\frac{dg(\zeta)}{d\zeta}\right|_{\zeta=\A{x}}
+\end{equation}
+\end{homeworkSection}
+%-----d-----------------------
+\begin{homeworkSection}{(d)}
+\begin{equation}\label{P4-220}
+\comut{\A{x}}{H}=\comut{\A{x}}{\frac{\A{p}^2}{2m}+V(\A{x})}=\frac{1}{2m}\comut{\A{x}}{\A{p}^2}+\comut{\A{x}}{V(\A{x})}
+\end{equation}
+$\A{x}$ and $V(\A{x})$ commute and the second term on the right hand side of \eqref{P4-220} vanishes and just the first term remains. Using \eqref{P4-comut} we obtain:
+\begin{equation}
+\comut{\A{x}}{\A{p}^2}=\comut{\A{x}}{\A{p}}\A{p}+\A{p}\comut{\A{x}}{\A{p}}=2i\hbar\A{p}
+\end{equation}
+At the end of the day:
+\begin{equation}
+\comut{\A{x}}{H}=\frac{i\hbar}{m}\A{p}
+\end{equation}
+
+\end{homeworkSection}
+
+%----e---
+\begin{homeworkSection}{(e)}
+\begin{equation}\label{P4-330}
+\comut{\A{p}}{H}=\comut{\A{x}}{\frac{\A{p}^2}{2m}+V(\A{x})}=\frac{1}{2m}\comut{\A{p}}{\A{p}^2}+\comut{\A{p}}{V(\A{x})}
+\end{equation}
+
+$\A{p}$ and $\A{p}^2$ commute and just the second term on the right hand side of \eqref{P4-330} remains. Using the result of part (c) we get:
+\begin{equation}
+\comut{\A{p}}{H}=\comut{\A{p}}{V(\A{x})}=-\comut{V(\A{x})}{\A{p}}=-i\hbar\left.\frac{dV(\zeta)}{d\zeta}\right|_{\lambda=\A{x}}
+\end{equation}
+\end{homeworkSection}
+
+
+
+
+
+
+
+
+\end{homeworkProblem}

@@ -1,0 +1,62 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 9.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[      1370,         52]
+NotebookOptionsPosition[      1020,         35]
+NotebookOutlinePosition[      1363,         50]
+CellTagsIndexPosition[      1320,         47]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Homework 2", "Title",
+ CellChangeTimes->{{3.591120867769023*^9, 3.5911208721692743`*^9}, {
+  3.5911209063502293`*^9, 3.5911209145737*^9}}],
+
+Cell["Problem 1", "Subtitle",
+ CellChangeTimes->{{3.5911209028530293`*^9, 3.5911209041171017`*^9}, 
+   3.59112110881881*^9}],
+
+Cell["Consider a ", "Section",
+ CellChangeTimes->{{3.591120960227311*^9, 3.5911209649715824`*^9}, {
+  3.5911211184283595`*^9, 3.5911211225725965`*^9}}]
+}, Open  ]]
+},
+WindowSize->{1904, 985},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+FrontEndVersion->"9.0 for Microsoft Windows (64-bit) (January 25, 2013)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[579, 22, 144, 2, 101, "Title"],
+Cell[726, 26, 124, 2, 56, "Subtitle"],
+Cell[853, 30, 151, 2, 86, "Section"]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)
+

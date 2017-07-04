@@ -1,0 +1,106 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 9.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[      2806,         97]
+NotebookOptionsPosition[      2342,         76]
+NotebookOutlinePosition[      2836,         96]
+CellTagsIndexPosition[      2793,         93]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"Eq1", "=", 
+   RowBox[{
+    RowBox[{"Sqrt", "[", 
+     RowBox[{"Ec", "*", "Ej"}], "]"}], "-", 
+    RowBox[{"(", 
+     RowBox[{"Ec", "/", "8"}], ")"}]}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Eq2", "=", 
+   RowBox[{
+    RowBox[{"Sqrt", "[", 
+     RowBox[{"Ec", "*", "Ej"}], "]"}], "-", 
+    RowBox[{"(", 
+     RowBox[{"Ec", "/", "4"}], ")"}]}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"planck", "=", 
+   RowBox[{"4.136", "*", 
+    RowBox[{"10", "^", 
+     RowBox[{"-", "15"}]}]}]}], " ", ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"freq1", "=", 
+   RowBox[{"6.5", "*", 
+    RowBox[{"10", "^", "9"}]}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"freq2", "=", 
+   RowBox[{"6.1", "*", 
+    RowBox[{"10", "^", "9"}]}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"NSolve", "[", 
+  RowBox[{
+   RowBox[{
+    RowBox[{
+     RowBox[{"Eq1", "-", 
+      RowBox[{"freq1", "*", "planck"}]}], "\[Equal]", "0"}], "&&", 
+    RowBox[{
+     RowBox[{"Eq2", "-", 
+      RowBox[{"freq2", "*", "planck"}]}], "\[Equal]", "0"}]}], ",", 
+   RowBox[{"{", 
+    RowBox[{"Ec", ",", "Ej"}], "}"}]}], "]"}]}], "Input",
+ CellChangeTimes->{{3.592778977190558*^9, 3.592779119927722*^9}, {
+  3.5927791556037626`*^9, 3.5927791977761745`*^9}, {3.5927792292999783`*^9, 
+  3.592779271384385*^9}, {3.5927793240543976`*^9, 3.592779370675064*^9}, {
+  3.5927794048060164`*^9, 3.5927794118384185`*^9}, {3.5927794646204376`*^9, 
+  3.592779474845022*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"Ec", "\[Rule]", "0.0000132352`"}], ",", 
+    RowBox[{"Ej", "\[Rule]", "0.000061535925`"}]}], "}"}], "}"}]], "Output",
+ CellChangeTimes->{{3.59278291066854*^9, 3.5927829236702843`*^9}}]
+}, Open  ]]
+},
+WindowSize->{1904, 945},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+PrintingCopies->1,
+PrintingPageRange->{32000, 32000},
+PrintingOptions->{"Magnification"->1.,
+"PaperOrientation"->"Portrait",
+"PaperSize"->{612, 792}},
+FrontEndVersion->"9.0 for Microsoft Windows (64-bit) (January 25, 2013)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[579, 22, 1490, 43, 132, "Input"],
+Cell[2072, 67, 254, 6, 31, "Output"]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

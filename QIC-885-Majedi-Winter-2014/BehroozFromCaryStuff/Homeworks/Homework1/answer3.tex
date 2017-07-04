@@ -1,0 +1,48 @@
+\begin{homeworkProblem}
+
+\begin{homeworkSection}{(a)} 
+The rate of change in the total probability in nonequilibrium situation can be readily evaluated using Schr\"oinger's dynamics. by applying time derivative operator on the total probability we obtain:
+
+
+\begin{equation}\label{P3-1}
+\frac{d}{dt}\int\abs{\Psi(\vp{r},t)}^2dv=\int dv\left(\Psi^*\pd{\Psi}{t}+\pd{\Psi^*}{t}\Psi\right)
+\end{equation}
+Using Schr\"odinger equation the right hand side of equation \eqref{P3-1} can be simplified. We first decompose Hamiltonian ($\A{H}$) operator into hermitian ($\A{H}_0$) and anti-hermitian ($\A{H}_a$) parts:
+\begin{align}
+&\A{H}=\A{H}_0+\A{H}_a\\
+&\A{H}_0=-\frac{\hbar^2}{2m}\nabla^2+V_0\\
+&\A{H}_a=-i\Gamma
+\end{align} 
+It's straightforwad to show:
+\begin{equation}\label{P3-10}
+\Psi^*\pd{\Psi}{t}+\pd{\Psi^*}{t}\Psi=\frac{1}{i\hbar}\left\{\Psi^* \A{H}_0\Psi-\Psi\A{H}_0\Psi^*\right\}+\frac{1}{i\hbar}\left\{\Psi^* \A{H}_a\Psi+\Psi\A{H}_a\Psi^*\right\}
+\end{equation}
+Combining \eqref{P3-1} and  \eqref{P3-10} leads to the following equation:
+\begin{equation}\label{P3-3}
+\frac{dP(t)}{dt}=-\frac{2\Gamma}{\hbar}\int\abs{\Psi}^2 dv=-\frac{2\Gamma}{\hbar}P(t)
+\end{equation} 
+Note that the integaration of first term in righ hand side of equation \label{P3-2} vanishes and just the second term remains. The simple algebraic steps are given here:
+\begin{equation}
+\int dv\left\{ \Psi^*\left(-\frac{\hbar^2}{2m}\nabla^2+V\right)\Psi-\Psi\left(-\frac{\hbar^2}{2m}\nabla^2+V\right)\Psi^*\right\} =-\frac{\hbar^2}{2m}\int dv \nabla.\left(\Psi^*\nabla\Psi-\Psi\nabla\Psi^*\right)=0
+\end{equation} 
+
+\end{homeworkSection}
+
+
+
+\begin{homeworkSection}{(b)}
+The solution of  fisrt order differential equation \eqref{P3-3} is simplely an exponential function:
+\begin{equation}
+\frac{dP(t)}{dt}=-\frac{2\Gamma}{\hbar}P(t)\Lrw P(t)=P(0)\exp(-\frac{2\Gamma}{\hbar}t)
+\end{equation}  
+It's evident that the total pobability is constant when $\Gamma=0$.
+\end{homeworkSection}
+
+
+
+\end{homeworkSection}
+
+
+
+
+\end{homeworkProblem}

@@ -1,0 +1,150 @@
+\begin{homeworkProblem}
+\begin{homeworkSection}{(a)}
+It's assumed that a simple harmonic oscilator suddenly displaced from its equilibrium point. We can appoximately model this sudden change as a perturbing potential whose time dependence is simply a step function:
+\begin{equation}
+H=\left\{
+\begin{array}{ll}
+\frac{p^2}{2m}+\frac{1}{2}m\omega^2 x^2 & t<0\\
+\frac{p^2}{2m}+\frac{1}{2}m\omega^2(x-x_0)^2 & t>0
+\end{array}
+\right.
+\end{equation}
+Or:
+\begin{equation}\label{P3-H}
+H=\frac{p^2}{2m}+\frac{1}{2}m\omega^2 x^2 +u(t)\left\{\frac{1}{2}m\omega^2 x_0^2-m\omega x_0x\right\}=H_0+V(t)
+\end{equation}
+
+In \eqref{P3-H} $u(t)$ is the unite step function.
+\end{homeworkSection}
+\begin{homeworkSection}{(b)}
+In Dirac picture (iteraction picture) the state of the wave function is manipulated by the original Hamiltonian as:
+\begin{equation}
+\ket{\Psi_D(t)}=\exp\left(\frac{iH_0t}{\hbar}\right)\ket{\Psi_s(t)}
+\end{equation}
+where $\ket{\Psi_s(t)}$ is the state ket in the Schr\"odinger picture. Evolution of the wavefunctiuon in the interaction picture can be determined by:
+\begin{equation}\label{P3-I}
+i\hbar\pds{t}\ket{\Psi_D(t)}=V_I\ket{\Psi_D(t)}
+\end{equation}
+In this equation $V_I$ designates the purterbing potential in the interaction picture:
+\begin{equation*}
+V_I=\exp\left(\frac{iH_0t}{\hbar}\right)V(t)\exp\left(\frac{-iH_0t}{\hbar}\right)
+\end{equation*}
+$V_I(t)$ can be explicitly calculated through the use of this identity:
+\begin{equation}
+[A,B]=\lambda A\quad\Lrw\quad Ae^{B}=e^{\lambda}e^{B}A
+\end{equation}
+since $[\A{a}_S,H]=\hbar\omega \A{a}_S$ and $[\A{a}_S^\dagger,H]=-\hbar\omega \A{a}_S^\dagger$ we get:
+\begin{equation}
+\left.\begin{array}{l}
+\A{a}_S\exp\left(\frac{-iH_0t}{\hbar}\right)=e^{-i\omega t}\exp\left(\frac{-iH_0t}{\hbar}\right)\A{a}_S\\
+\A{a}_S^\dagger\exp\left(\frac{-iH_0t}{\hbar}\right)=e^{+i\omega t}\exp\left(\frac{-iH_0t}{\hbar}\right)\A{a}_S^\dagger \\
+\end{array}\right\}  
+\quad\Lrw V_I=\frac{1}{2}m\omega^2 x_0^2- x_0\sqrt{\frac{1}{2}m\omega\hbar}\left(e^{-i\omega t}\A{a}_S+e^{+i\omega t}\A{a}_S^\dagger\right)
+\end{equation}
+Now we consider the commutation relation between $V_I(t_1)$ and $V_I(t_2)$:
+\begin{equation}
+[V_I(t_1),V_I(t_2)]=-\frac{1}{2}m\omega\hbar[e^{-i\omega t_1}\A{a}_S+e^{+i\omega t_1}\A{a}_S^\dagger,e^{-i\omega t_2}\A{a}_S+e^{+i\omega t_2}\A{a}_S^\dagger]=
+-im\omega\hbar\sin\omega(t_2-t_1)
+\end{equation}
+This commutation relation shows that we can not find evolution operator in close form and we can just use \textit{Dyson series} or iterative techniques. Evolution of the wave function in the interaction picture can be fomulated as follows. Assume that $\ket{\Psi_D(t)}$ is expanded in terms of the initial Hamiltonian eigenstates as:
+\begin{equation*}
+\ket{\Psi_D(t)}=\sum_{n}c_n(t)\ket{n}
+\end{equation*}
+If we apply the unity operator in \eqref{P3-I} we get:
+\begin{equation}
+i\hbar\pds{t}\bracket{n}{\Psi_D(t)}=\sum_m\bra{n}V_I\ket{m}\bracket{m}{\Psi_D(t)}
+\end{equation}
+This equation can be simplified as:
+\begin{equation}
+i\hbar\frac{dc(t)}{dt}=\sum_n V_I_{nm}c_m(t)
+\end{equation}
+where $V_I_{nm}$ is:
+\begin{equation}
+V_I_{nm}=V_{nm}\exp\left(it\frac{E_m-E_n}{\hbar}\right)=\bra{n}V(t)\ket{m}\exp(i\omega_{nm}t)
+\end{equation}
+Hence:
+\begin{equation}
+i\hbar
+\begin{pmatrix}
+\dot{c}_1\\
+\dot{c}_2\\
+\vdots
+\end{pmatrix}
+=
+\begin{pmatrix}
+V_{11} & V_{12}e^{i\omega_{12}t} & \cdots\\
+V_{21}e^{i\omega_{21}t} & V_{22} & \cdots\\
+\vdots &\vdots & \vdots
+\end{pmatrix}
+\begin{equation}
+\begin{pmatrix}
+c_1\\
+c_2\\
+\vdots
+\end{pmatrix}
+\end{equation}
+ $\A{x}_D$ which is the Dirac picture representation of $\A{x}$ operator is:
+\begin{equation}
+\A{x}_D(t)=\exp\left(\frac{iH_0t}{\hbar}\right)\A{x}_S\exp\left(\frac{-iH_0t}{\hbar}\right)
+\end{equation}
+In above equation index $S$ stands for schr\"odinger picture. Now we can use the ladder operator :
+\begin{equation*}
+\A{a}_S=\sqrt{\frac{m\omega}{2\hbar}}\left(\A{x}_S+\frac{i\A{p}_S}{m\omega}\right)
+\end{equation*}
+Then:
+\begin{align}
+H_0&=\left(\A{a}_S^\dagger \A{a}_S+\frac{1}{2}\right)\hbar\omega\\
+V&=\frac{1}{2}m\omega^2x_0^2-m\omega^2x_0(\A{a}_S+\A{a}_S^\dagger)\sqrt{\frac{\hbar}{2m\omega}}
+\end{align}
+So $\A{x}_D$ can be written as:
+\begin{equation}
+\A{x}_D(t)=\sqrt{\frac{\hbar}{2m\omega}}\exp\left(\frac{iH_0t}{\hbar}\right) (\A{a}_S+\A{a}_S^\dagger)\exp\left(\frac{-iH_0t}{\hbar}\right)
+\end{equation}
+Using the same identity employed in the previous part we have:
+\begin{equation}
+\left.
+\begin{array}{l}
+\A{a}_S\exp\left(\frac{-iH_0t}{\hbar}\right)=e^{-i\omega t}\exp\left(\frac{-iH_0t}{\hbar}\right)\A{a}_S\\
+\A{a}_S^\dagger\exp\left(\frac{-iH_0t}{\hbar}\right)=e^{+i\omega t}\exp\left(\frac{-iH_0t}{\hbar}\right)\A{a}_S^\dagger \\
+\end{array}
+\right\}\Lrw
+\A{x}_D(t)=\sqrt{\frac{\hbar}{2m\omega}}\left(e^{-i\omega t}\A{a}_S+e^{+i\omega t}\A{a}_S^\dagger\right)
+\end{equation}
+So $\A{x}_D(t)$ can be explicitly calculated in terms of $\A{x}_S$ and $\A{p}_S$:
+\begin{equation}\label{P3-Interaction}
+\A{x}_D(t)=\frac{1}{2}\left\{e^{-i\omega t}\left(\A{x}_s+\frac{i\A{p}_S}{m\omega}\right)+e^{+i\omega t}\left(\A{x}_s-\frac{i\A{p}_S}{m\omega}\right)\right\}
+=\A{x}_S\cos \omega t+\frac{\A{p}_S}{m\omega}\sin\omega t
+\end{equation}
+\end{homeworkSection}
+%----c-----
+\begin{homeworkSection}{(c)}
+The equation of motion for position operator in the Heisenberg picture is:
+\begin{equation}\label{P3-E1}
+\frac{d\A{x}_H}{dt}=\frac{1}{i\hbar}[\A{x}_H,H]+\pd{\A{x}_H}{t}=\frac{1}{i\hbar}\left[\A{x}_H,\frac{\A{p}_H^2}{2m}+\frac{1}{2}m\omega^2(\A{x}_H-x_0)^2\right]=\frac{1}{i2m\hbar}[\A{x}_H,\A{p}_H^2]=\frac{\A{p}_H}{m}
+\end{equation}
+similarly for momentum operator we have:
+\begin{multline}\label{P3-E2}
+\frac{d\A{p}_H}{dt}=\frac{1}{i\hbar}[p_H,H]+\pd{\A{p}_{H}}{t}=\frac{1}{i\hbar}\left[\A{p}_H,\frac{\A{p}_H^2}{2m}+\frac{1}{2}m\omega^2(\A{x}_H-x_0)^2\right]=\\
+\frac{m\omega^2}{2i\hbar}\left[\A{p}_H,\A{x}_H^2-2x_0\A{x}_H\right]=-m\omega^2(\A{x}_H-x_0)
+\end{multline}
+\end{homeworkSection}
+%----d--------------
+\begin{homeworkSection}{(d)}
+Two coupled differntial equations \eqref{P3-E1} and \eqref{P3-E2} determines the evolution of the operators in the Heisenberg picture. we can decouple the equations using time differentiation:
+\begin{align}
+&\frac{d^2\A{x}_H}{dt^2}=-\omega^2(\A{x}_H-x_0)\qquad\dot{\A{x}}_H(0)=\frac{\A{p}(0)}{m}\\
+&\frac{d^2\A{p}_H}{dt^2}=-\omega^2\A{p}_H\qquad\dot{\A{p}}_H(0)=-m\omega^2(\A{x}_H(0)-x_0)
+\end{align}
+Ultimately we arrive at:
+\begin{align}
+\A{x}_{H}(t)&=x_0+(\A{x}_H(0)-x_0)\cos\omega_0t+\frac{\A{p}_H(0)}{m\omega}\sin\omega t\label{P3-Heisenberg}\\
+\A{p}_H(t)&=\A{p}_H(0)\cos\omega_0t-m\omega(\A{x}_H(0)-x_0)\sin\omega t
+\end{align}
+\end{homeworkSection}
+%-----------e------------
+\begin{homeworkSection}{(e)}
+Equations \eqref{P3-Interaction} and \eqref{P3-Heisenberg} show how the position operator evolves in Dirac and Heisenberg pictures respectively. Clearly both picture coincide when $x_0=0$. In fact in the Driac picture the opearor is evolved by just the main portion of the Hamiltonian and the state vector evaloves by the perturbing potential. In the Heisenberg picture $\A{x}_H(t)$ oscilates around the equilibrium point $x_0$ launched by the initial momnetum $\A{p}_D(t=0)$. This evolution is the reminiscent  of classical oscilation around the equilibrium point. In the Heisenberg picture states are \textit{frozen} and just the operators evolve. In Dirac picture according to \eqref{P3-Interaction}  opearor $\A{x}_D$ oscilates by the unperubed Hamiltonian and the state vectors are also time varying by the perturbing potential. 
+\end{homeworkSection}
+
+
+\end{homeworkProblem}

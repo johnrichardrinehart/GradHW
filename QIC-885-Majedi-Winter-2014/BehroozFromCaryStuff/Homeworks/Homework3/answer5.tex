@@ -1,0 +1,97 @@
+\begin{homeworkProblem}
+\begin{homeworkSection}{(a)}
+Two linearly coupled quantum-mechanical simple harmonic oscillators, e.g., two masses on springs,
+connected by a third spring, constitute an ideally simple model of quantum/classical coupling. The simplest version of the two-oscillator system consists of two identical oscillators, with equal
+masses, spring constants, and frequencies, plus a connecting spring with its own spring constant. Figure \ref{spring} shows this simple model.
+\begin{figure}[!h]
+\centering
+\input{spring}
+\caption{\small classical interpretation of coupled SHOs}
+\label{spring}
+\end{figure}
+
+
+In this simple classical example total energy of the system is:
+\begin{equation}
+E=\frac{p^2_1}{2m}+\frac{p^2_2}{2m}+\frac{1}{2}k_0^2x_1^2+\frac{1}{2}k_0x_2^2+\frac{1}{2}\xeta(x_2-x_1)^2=
+\frac{p^2_1}{2m}+\frac{p^2_2}{2m}+\frac{1}{2}(k_0+\zeta)x_1^2+\frac{1}{2}(k_0+\zeta)x_2^2-\zeta x_1x_2
+\end{equation}
+The last term is the interaction term reprsenting the coupling between two SHOs. 
+\end{homeworkSection}
+
+\begin{homeworkSection}{(b)}
+The Hamiltonian is simply total energy of the system:
+\begin{equation}
+H=\frac{p_1^2}{2m}+\frac{p_2^2}{2m}+\frac{1}{2}kx_1^2+\frac{1}{2}kx_2^2+\eta x_1x_2
+\end{equation}
+In above equation $k$ is the spring constant in the individual oscilators.
+\end{homeworkSection}
+\begin{homeworkSection}{(c)}
+To find the quantized energy levels we first try to employ a proper canonical transformation two contruct a new \textit{Kamiltonian} which can be treated as two decoupled equivalent SHOs. We use $F=F_2(x_i,P_i,t)$ as the generator of the transformation \cite{goldstein}:
+\begin{equation} 
+F=F_2(x_i,P_i,t)=P_1\frac{x_1+x_2}{\sqrt{2}}+P_2\frac{x_1-x_2}{\sqrt{2}}
+ \end{equation}
+ Please note that $(X_i,P_i)$ are transformed canonical varibles. So we have \cite{goldstein}:
+\begin{align}
+p_1&=\pd{F_2}{x_1}=\frac{P_1+P_2}{\sqrt{2}}\\
+p_2&=\pd{F_2}{x_1}=\frac{P_1-P_2}{\sqrt{2}}\\
+X_1&=\pd{F_2}{P_1}=\frac{x_1+x_2}{\sqrt{2}}\\
+X_2&=\pd{F_2}{P_2}=\frac{x_1-x_2}{\sqrt{2}}\\
+K&=H+\pd{F_2}{t}
+ \end{align}
+Finally we get:
+\begin{align}
+p_1&=\frac{P_1+P_2}{\sqrt{2}}\\
+p_2&=\frac{P_1-P_2}{\sqrt{2}}\\
+x_1&=\frac{X_1+X_2}{\sqrt{2}}\\
+x_2&=\frac{X_1-X_2}{\sqrt{2}}\\
+K&=H_{new}=\frac{P_1^2}{2m}+\frac{P_2^2}{2m}+\frac{1}{2}(k+\eta)X_1^2+\frac{1}{2}(k-\eta)X_2^2
+\end{align}
+Now we can apply Dirac's quantization rules to investigate quantized energy levels. we have:
+\begin{align}
+[\A{X}_j,\A{P}_k]&=i\hbar\delta_{jk}\\
+[\A{X}_j,\A{X}_k]&=0\\
+[\A{P}_j,\A{P}_k]&=0\\
+\end{align}
+The new Hamiltonian is:
+\begin{align}
+&\A{H}_1=\frac{\A{P}_1^2}{2m}+\frac{1}{2}(k+\eta)\A{X}_1^2=\frac{\A{P}_1^2}{2m}+\frac{1}{2}m\Omega_1^2 X_1^2\\
+&\A{H}_2=\frac{\A{P}_2^2}{2m}+\frac{1}{2}(k-\eta)\A{X}_2^2=\frac{\A{P}_2^2}{2m}+\frac{1}{2}m\Omega_2^2 X_2^2\\
+&\A{H}_{new}=\A{H}_1+\A{H}_2
+\end{align}
+In obove equations $\Omega_1$ and $\Omega_2$ are the natural frequencies of two imaginary decoupled SHOs:
+\begin{align}
+&\Omega_1=\sqrt{\frac{k+\eta}{m}}\\
+&\Omega_2=\sqrt{\frac{k-\eta}{m}}
+\end{align}
+Assume the we have solved the eigenvalue problem assocoated with $\A{H}_1$ and $\A{H}_2$ and we represent the energy eigenstates of the first Hamiltonian as $\ket{n_1}$ and for the second Hamiltonian $\ket{n_2}$:
+\begin{align}
+\A{H}_1\ket{n_1}&=\hbar\Omega_1\left(n_1+\frac{1}{2}\right)\ket{n_1}\\
+\A{H}_2\ket{n_2}&=\hbar\Omega_2\left(n_2+\frac{1}{2}\right)\ket{n_1}
+\end{align} 
+Overal state of the whole system can be expressed as the tensor product of the eigenstates of the individual SHOs:
+\begin{equation*}
+\ket{n_1,n_2}=\ket{n_1}\otimes\ket{n_2}
+\end{equation*} 
+And $\A{H}_{new}$ can be more regiriously expressed as:
+\begin{equation*}
+\A{H}_{new}=\A{H}_1\otimes\vp{1}+\vp{1}\otimes\A{H}_2
+\end{equation*} 
+So we energy eigenvalues associated with each state is:
+\begin{equation}
+\A{H}_{new}\ket{n_1,n_2}=\hbar\left\{\Omega_1\left(n_1+\frac{1}{2}\right)+\Omega_2\left(n_2+\frac{1}{2}\right)\right\}\ket{n_1,n_2}
+\end{equation} 
+\end{homeworkSection}
+%-----d----------------------------
+\begin{homeworkSection}{(d)}
+First order energy shift can be calculated based on fisrt order Taylor expansion of $E_{n_1,n_2}$:
+\begin{multline}
+E_{n_1,n_2}=\hbar\left\{\left(n_1+\frac{1}{2}\right)\sqrt{\frac{k}{m}(1+\gamma)}
++\left(n_2+\frac{1}{2}\right)\sqrt{\frac{k}{m}(1-\gamma)}\right\}
+\approx\\
+\hbar\omega_0\left(n_1+\frac{1}{2}\right)\left(1+\frac{\gamma}{2}\right)+\hbar\omega_0\left(n_2+\frac{1}{2}\right)\left(1-\frac{\gamma}{2}\right)=\left(n_1+n_2+1\right)\hbar\omega_0+\frac{1}{2}\left(n_1-n_2\right)\hbar\omega_0\gamma
+\end{multline}
+where $\gamma$ is defined as $\frac{\eta}{k}$ and $\omega_0$ is $\sqrt{k/m}$. 
+\end{homeworkSection}
+
+\end{homeworkProblem}

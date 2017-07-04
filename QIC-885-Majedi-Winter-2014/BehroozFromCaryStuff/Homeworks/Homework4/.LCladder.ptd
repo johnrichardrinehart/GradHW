@@ -1,0 +1,62 @@
+<!1,2013040216:32:48>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN" "http://www.w3.org/TR/REC-html40/strict.dtd">
+<html><head><meta name="qrichtext" content="1" /><meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><style type="text/css">
+p, li { white-space: pre-wrap; }
+</style></head><body>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">% Generated with LaTeXDraw 2.0.8</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">% Wed Mar 27 00:19:07 EDT 2013</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">% \usepackage[usenames,dvipsnames]{pstricks}</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">% \usepackage{epsfig}</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">% \usepackage{pst-grad} % For gradients</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">% \usepackage{pst-plot} % For axes</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">\scalebox{‎0.7‎} % Change this value to rescale the drawing.</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">{</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">\begin{pspicture}(0,-1.3181766)(9.04,1.3581766)</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">\psline[linewidth=0.028222222cm](2.6115136,0.5622687)(3.0240102,0.56396663)</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">\rput{0.23583964}(0.0025073884,-0.013419173){\psarc[linewidth=0.028222222](3.261354,0.60244405){0.2}{0.0}{180.0}}</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">\rput{0.23583964}(0.0025175547,-0.0150656095){\psarc[linewidth=0.028222222](3.6613503,0.6040907){0.2}{0.0}{180.0}}</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">\rput{0.23583964}(0.002527719,-0.016712049){\psarc[linewidth=0.028222222](4.061347,0.6057368){0.2}{0.0}{180.0}}</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">\rput{0.23583964}(0.0024714125,-0.018425787){\psarc[linewidth=0.028222222](4.4776607,0.59120065){0.18375}{0.0}{180.0}}</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">\psline[linewidth=0.028222222cm](4.698996,0.57086104)(5.1114926,0.572559)</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">\psline[linewidth=0.054cm](5.452862,-0.20369518)(4.8195314,-0.20369518)</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">\psline[linewidth=0.054cm](5.452862,-0.42111802)(4.8195314,-0.42111802)</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">\psline[linewidth=0.04cm](5.121117,0.5863017)(5.1361966,-0.16550407)</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">\psline[linewidth=0.04cm](5.166355,-1.2781767)(5.166355,-0.42111802)</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">\psline[linewidth=0.028222222cm](0.071513705,0.5622687)(0.4840102,0.56396663)</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">\rput{0.23583964}(0.0024858708,-0.0029641094){\psarc[linewidth=0.028222222](0.721354,0.60244405){0.2}{0.0}{180.0}}</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">\rput{0.23583964}(0.0024960372,-0.004610547){\psarc[linewidth=0.028222222](1.1213503,0.6040907){0.2}{0.0}{180.0}}</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">\rput{0.23583964}(0.0025062014,-0.006256987){\psarc[linewidth=0.028222222](1.5213472,0.6057368){0.2}{0.0}{180.0}}</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">\rput{0.23583964}(0.002449895,-0.007970724){\psarc[linewidth=0.028222222](1.9376605,0.59120065){0.18375}{0.0}{180.0}}</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">\psline[linewidth=0.028222222cm](2.1589959,0.57086104)(2.5714924,0.572559)</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">\psline[linewidth=0.054cm](2.8928616,-0.22369517)(2.2595313,-0.22369517)</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">\psline[linewidth=0.054cm](2.8928616,-0.44111803)(2.2595313,-0.44111803)</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">\psline[linewidth=0.04cm](2.5611172,0.5663017)(2.5761964,-0.18550408)</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">\psline[linewidth=0.04cm](2.606355,-1.2981766)(2.606355,-0.44111803)</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">\psline[linewidth=0.028222222cm](5.1315136,0.5622687)(5.54401,0.56396663)</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">\rput{0.23583964}(0.0025287364,-0.023791911){\psarc[linewidth=0.028222222](5.781354,0.60244405){0.2}{0.0}{180.0}}</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">\rput{0.23583964}(0.0025389027,-0.02543835){\psarc[linewidth=0.028222222](6.18135,0.6040907){0.2}{0.0}{180.0}}</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">\rput{0.23583964}(0.002549067,-0.027084788){\psarc[linewidth=0.028222222](6.581347,0.6057368){0.2}{0.0}{180.0}}</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">\rput{0.23583964}(0.0024927605,-0.028798526){\psarc[linewidth=0.028222222](6.9976606,0.59120065){0.18375}{0.0}{180.0}}</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">\psline[linewidth=0.028222222cm](7.218996,0.57086104)(7.6314926,0.572559)</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">\psline[linewidth=0.054cm](7.972862,-0.20369518)(7.3395314,-0.20369518)</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">\psline[linewidth=0.054cm](7.972862,-0.42111802)(7.3395314,-0.42111802)</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">\psline[linewidth=0.04cm](7.641117,0.5863017)(7.6561966,-0.16550407)</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">\psline[linewidth=0.04cm](7.686355,-1.2781767)(7.686355,-0.42111802)</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">\psline[linewidth=0.04cm](7.68,-1.2777609)(0.0,-1.2777609)</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">\psline[linewidth=0.04cm,linestyle=dashed,dash=0.16cm 0.16cm](7.74,0.56223917)(8.98,0.56223917)</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">\psline[linewidth=0.04cm,linestyle=dashed,dash=0.16cm 0.16cm](7.78,-1.2577609)(9.02,-1.2577609)</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">\usefont{T1}{ptm}{m}{n}</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">\rput(1.2573438,1.1372391){\large $‎L\Delta x‎$}</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">\usefont{T1}{ptm}{m}{n}</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">\rput(3.9373438,1.1372391){\large $‎L\Delta x‎$}</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">\usefont{T1}{ptm}{m}{n}</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">\rput(6.4973435,1.1372391){\large $‎L\Delta x‎$}</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">\usefont{T1}{ptm}{m}{n}</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">\rput(1.7273438,-0.42276084){\large $‎C\Delta x‎$}</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">\usefont{T1}{ptm}{m}{n}</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">\rput(4.327344,-0.40276086){\large $‎C\Delta x‎$}</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">\usefont{T1}{ptm}{m}{n}</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">\rput(6.847344,-0.40276086){\large $‎C\Delta x‎$}</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">\end{pspicture} </p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">}</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">‎‎</p></body></html>

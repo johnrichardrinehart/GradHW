@@ -1,0 +1,36 @@
+Reading material for lectures 9 and 10:
+-useqipAL.pdf - notes from summer school. Covered slides 6-15, 19-46.
+-Burkard, Koch, DiVincenzo (see ref below), relevant sections: I, II, and III A-B (pages 1-5).
+-lecture 10 notes
+
+
+
+
+
+
+
+@ARTICLE{burkard_2004_1,
+  author = {G. Burkard and R. H. Koch and D. P. DiVincenzo},
+  title = {Multilevel quantum description of decoherence in superconducting
+	qubits },
+  journal = {Phys. Rev. B},
+  year = {2004},
+  volume = {69},
+  pages = {064503},
+  number = {6},
+  month = {February},
+  abstract = {We present a multilevel quantum theory of decoherence for a general
+	circuit realization of a superconducting qubit. Using electrical
+	network graph theory, we derive a Hamiltonian for the circuit. The
+	dissipative circuit elements (external impedances, shunt resistors)
+	are described using the Caldeira-Leggett model. The master equation
+	for the superconducting phases in the Born-Markov approximation is
+	derived and brought into the Bloch-Redfield form in order to describe
+	multilevel dissipative quantum dynamics of the circuit. The model
+	takes into account leakage effects, i.e., transitions from the allowed
+	qubit states to higher excited states of the system. As a special
+	case, we truncate the Hilbert space and derive a two-level (Bloch)
+	theory with characteristic relaxation (T-1) and decoherence (T-2)
+	times. We apply our theory to the class of superconducting flux qubits;
+	however, the formalism can be applied for both superconducting flux
+	and charge qubits. }}

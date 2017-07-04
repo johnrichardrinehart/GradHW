@@ -1,0 +1,81 @@
+\begin{homeworkProblem}
+
+
+
+\begin{homeworkSection}{(a)} 
+From the  Einstein's theory of special relativity total energy of a particle (including rest mass energy) can be expressed as an elliptic  equation:
+
+\begin{equation}\label{P1-energy}
+E^2=m_0^2c^4+\abs{\vp{p}}^2c^2
+\end{equation}
+
+
+According to the basic principles of the quantum mechanics momentum is a generator of space translation and Hamiltonian  is just a generator of time translation \cite{sakurai}. So  we can replace $E$ with $i\hbar\fpds{t}$  and $\vp{p}$ with $-i\hbar\nabla$. Those substitutions lead to the following wave equation:
+\begin{equation}
+-\hbar^2\pdt{\Psi}{t}=m_0^2c^4\Psi-\hbar^2c^2\nabla^2\Psi
+\end{equation}
+
+or simply:
+\begin{equation}
+\left[\frac{1}{c^2}\pdss{t}-\nabla^2+\left(\frac{m_0c}{\hbar}\right)^2\right]\Psi=0
+\end{equation}
+This equation can be expressed in a more fancy way using four-vector formulation:
+
+\begin{equation}\label{P1-waveequation}
+\left[\Box+\left(\frac{m_0c}{\hbar}\right)^2\right]\Psi=0
+\end{equation}
+in above equation
+$\Box=\partial_\mu\partial^{\mu}$. In four-vector formulation we use minkowski metric i.e. 
+$$\partial_\mu\partial^{\mu}=\partial_0^2-\partial_1^2-\partial_2^2-\partial_3^2$$
+wherein $\partial_0 $ represents covariant normalized time derivative and covariante spacal derivatives are $$\partial_{\mu}=\fpds{x^{\mu}}$$ 
+
+Klein-Gordon equation fulfills special relativity but contains two fundamental problems, which have to be taken care of for the equation to be physically meaningful. The first problem associated with this equation originates from possibility of negative energies as the solution of the wave equation. Equation \eqref{P1-energy} has lost the information about the sign of energy. Completeness of the solutions can not be satisfied without considering negative-energy eigenfunctions and consequently there is the problem of physical interpretation of negative energy solutions. Actually the solutions yielding to negative energy are physically connected with antiparticles \cite{greiner-relativistic_QM}. the second problem is discussed in part (b).
+
+\end{homeworkSection}
+\begin{homeworkSection}{(b)}
+In this part we build up a conservative quantity and corresponding flux vector. Continuity equation relates flux vector of an arbitrary conservative fluid to the density of the carriers:
+\begin{equation}\label{P1-flux}
+\nabla.\vp{J}+\fpd{\rho}{t}=0
+\end{equation} 
+In non-relativistic Schr\"odinger's equation the probablity density and the corresponding flux vector are:
+\begin{align}
+&\rho_{sch}=\abs{\Psi}^2\\\
+&\vp{J}_{sch}=-\frac{\hbar}{2mi}\left(\Psi^*\nabla\Psi-\Psi\nabla\Psi^*\right)\label{P1-conserv}
+\end{align}
+It can be readily shown that $\int_{V_{\infty}}\rho_{sch}dv$ is independent of time (conservative) in  Schr\"odinger's dynamic (time evolution governed by Schr\"odinger's equation) and the equation \eqref{P1-conserv} reflects this simple fact. However $\rho_{sch}$ defined in this equation is not conservative in Klein-Gordon equation and consequently we have to define a new density. 
+
+If we follow the four-vector generalization we can define a new flux vector which describes a conservative quantity. Using the wave equation \eqref{P1-waveequation} one obtains:
+
+\begin{equation}
+\Psi^*\Box\Psi-\Psi\Box\Psi^*=-\left(\frac{m_0c}{\hbar}\right)^2\left[\abs{\Psi}^2-\abs{\Psi}^2\right]=0
+\end{equation}
+This equation can be rewritten as below:
+
+\begin{equation}
+\frac{1}{c^2}\left[\Psi^*\pdt{\Psi}{t}-\Psi\pdt{\Psi^*}{t}\right]=\Psi^*\nabla^2\Psi-\Psi\nabla^2\Psi^*
+\end{equation}
+Using the simple divergence identity $$\nabla.\left(\phi\vp{V}\right)=\nabla\phi.\vp{V}+\phi\nabla.\vp{V}$$
+we obtain:
+
+\begin{equation}
+\frac{1}{c^2}\pds{t}\left(\Psi^*\pd{\Psi}{t}-\Psi\pdt{\Psi^*}{t}\right)=\nabla.\left(\Psi^*\nabla\Psi-\Psi\nabla\Psi^*\right)
+\end{equation}
+This equation described a continuity equation. So we can define \textit{probability current density} and \textit{probability density} as below:
+\begin{align}
+&\rho=\frac{\zeta}{c^2}\fpds{t}\left(\Psi^*\pd{\Psi}{t}-\Psi\pd{\Psi^*}{t}\right)\label{P1-prob}\\
+&\vp{J}_{p}=-\zeta\left(\Psi^*\nabla\Psi-\Psi\nabla\Psi^*\right)\label{P1-J}
+\end{align}
+In above equations $\zeta$ is an arbitrary proportionality factor. To make $\vp{J}_{p}$ agree with $\vp{J}_{sch}$ , $\zeta$ is chosen to be $-\frac{\hbar}{2im}$. We may intuitively expect that the probability flux ($\vp{J}_p$) is related to mpmentum. This is indeed the case for $\vp{J}_p$ integarted over all space. In both Schr\"odinger's equation and Klein-Gordon's equation we have:
+\begin{equation}\label{P1-ex}
+\int dv\vp{J}_{p}(\vp{r},t)=\frac{\langle \vp{p}\rangle_t}{m}
+\end{equation}
+where $\langle \vp{p}\rangle_t$ is the expectation value of momentum operator at time $t$. This is one of the reasons why we choose similar expressions for the flux vector in both non-relativistic and relativistic quantum dynamics. 
+
+ The probability density  defined in the equation 
+\eqref{P1-prob} contains the second fundamental problem. Actually $\rho$ can be positive or negative and interpretation of $\rho$ as a probability density would mean that the theory allows the negative probability. This is the problem of indefinite probability \cite{greiner-relativistic_QM}.    
+
+
+
+\end{homeworkSection}
+
+\end{homeworkProblem}

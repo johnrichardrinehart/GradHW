@@ -1,0 +1,138 @@
+\begin{homeworkProblem}
+\begin{homeworkSection}{(a)}
+The Hamiltonian describing time evolution of SHO is:
+\begin{equation}\label{P4-H}
+H=\frac{p^2}{2m}+\frac{1}{2}m\omega^2(t)x^2
+\end{equation}
+Like an ordinary SHO we can define ladder operators as:
+\begin{equation}
+\A{a}=\sqrt{\frac{m\omega(t)}{2\hbar}}\left(x+\frac{ip}{m\omega(t)}\right)\qquad \A{a}^\dagger=\sqrt{\frac{m\omega(t)}{2\hbar}}\left(x-\frac{ip}{m\omega(t)}\right)
+\end{equation}
+In this problem we use Heisenberg picture in which operator evolve with time. The equations of motion for creation and anihilation operators are:
+\begin{eqnarray}
+\frac{d\A{a}}{dt}=\frac{1}{i\hbar}[\A{a},H]+\pd{\A{a}}{t}&=&\frac{\hbar\omega(t)}{i\hbar}\left[\A{a},\A{a}^\dagger \A{a}+\frac{1}{2}\right]+\pd{\A{a}}{t}  \nonumber \\
+&=&-i\omega\A{a}+\frac{\dot{\omega}}{2\omega}\A{a}-\sqrt{\frac{m\omega}{2\hbar}}i\frac{p}{m\omega}\frac{\dot{\omega}}{\omega} \nonumber \\
+&=&-i\omega\A{a}+\frac{\dot{\omega}}{2\omega}\A{a}^\dagger
+\label{P4-E}
+\end{eqnarray}
+The second equation can be simply derived by applying complex conjugate operator on the both sides of \eqref{P4-E}. The coupled equations of motion are:
+\begin{align}
+\dot{\A{a}}&=-i\omega\A{a}+\frac{\dot{\omega}}{2\omega}\A{a}^\dagger\\
+\dot{\A{a}}^\dagger &=+i\omega\A{a}^\dagger+\frac{\dot{\omega}}{2\omega}\A{a}\\
+\end{align}
+\end{homeworkSection}
+\begin{homeworkSection}{(b)}
+\textit{Bogoliubov transformation} relates $\A{a}(t)$ and $\A{a}^\dagger(t)$ to their initial values as:
+\begin{align}
+\A{a}&=e^{-i\alpha(t)}\A{a}(0)\cosh\beta(t)+e^{i\gamma(t)}\A{a}^\dagger(0)\sinh\beta(t)\label{P4-T1}\\
+\A{a}^\dagger &=e^{-i\gamma(t)}\A{a}(0)\sinh\beta(t)+e^{i\alpha(t)}\A{a}^\dagger(0)\cosh\beta(t)\label{P4-T2}
+\end{align}
+The hamiltonian in the parametric SHO is:
+\begin{multline}
+H=\hbar\omega(t)\left(\A{a}^\dagger\A{a}+\frac{1}{2}\right)=\\
+\hbar\omega(t)\left\{\frac{1}{2}+\xi_1(t)\A{a}(0)\A{a}(0)+\xi_2(t)\A{a}(0)\A{a}^\dagger(0)+\xi_3(t)\A{a}^\dagger(0)\A{a}(0)+\xi_4(t)\A{a}^\dagger(0)\A{a}^\dagger(0)\right\}
+\end{multline}
+In above equation $\xi_i(t)$ are simply mutiplication of time dependent mutipliers in Bogoliubov transformation. The expectation value of $H$ in the initial eigenstates is:
+\begin{equation}
+\bra{n}H(t)\ket{n}=\hbar\omega(t)\bra{n}\frac{1}{2}+\xi_1(t)\A{a}(0)\A{a}(0)+\xi_2(t)\A{a}(0)\A{a}^\dagger(0)+\xi_3(t)\A{a}^\dagger(0)\A{a}(0)+\xi_4(t)\A{a}^\dagger(0)\A{a}^\dagger(0)\ket{n}
+\end{equation}
+Since
+\begin{eqnarray}
+\bra{n}\A{a}(0)\A{a}(0)\ket{n}&=&\sqrt{n(n-1)}\bracket{n-2}{n}=0\\
+\bra{n}\A{a}(0)\A{a}^\dagger(0)\ket{n}&=&(n+1)\bracket{n+1}{n+1}=n+1\\
+\bra{n}\A{a}^\dagger(0)\A{a}(0)\ket{n}&=&n\bracket{n-1}{n-1}=n\\
+\bra{n}\A{a}^\dagger(0)\A{a}^\dagger(0)\ket{n}&=&\sqrt{n(n-1)}\bracket{n}{n-2}=0
+\end{eqnarray}
+So we arrive at:
+\begin{equation}
+\bra{n}H(t)\ket{n}=\hbar\omega(t)\left(\frac{1}{2}+(n+1)\xi_2(t)+n\xi_3(t)\right)
+\end{equation}
+where 
+$$\xi_2(t)=\sinh^2\beta(t)$$
+and
+$$\xi_3(t)=\cosh^2\beta(t)=1+\sinh^2\beta(t)$$
+so we get:
+\begin{equation}
+\bra{n}H(t)\ket{n}=\hbar\omega(t)\left(n+\frac{1}{2}\right)(2\sinh^2\beta+1)
+\end{equation}
+Therefore $f(t)$ is:
+\begin{equation}
+f(t)=2\sinh^2\beta(t)+1=\cosh(2\beta)
+\end{equation}
+\end{homeworkSection}
+%------c----------------
+\begin{homeworkSection}{(c)}
+If we substitute $\A{a}$ and $\A{a}^\dagger$ from \eqref{P4-T1} and \eqref{P4-T2} into the coupled differential equations derived in part (a) we get:
+\begin{eqnarray}
+\dot{\A{a}}(t) &=&-i\dot{\alpha}e^{-i\alpha(t)}\A{a}(0)\cosh\beta(t)+\dot{\beta}e^{-i\alpha(t)}\A{a}(0)\sinh\beta(t)+i\dot{\gamma}e^{i\gamma }\A{a}^\dagger(0)\sinh\beta(t)+\dot{\beta}e^{i\gamma(t)}
+\A{a}^\dagger(0)\cosh\beta\nonumber\\
+&=&-i\omega(t)\left\{e^{-i\alpha(t)}\cosh\beta(t)\A{a}(0)+e^{i\gamma(t)}\sinh\beta(t)\A{a}^\dagger(0)\right\}\nonumber\\
+& &+\frac{\dot{\omega}}{2\omega(t)}\left\{e^{-i\gamma(t)}\sinh\beta(t)\A{a}(0)+e^{i\alpha(t)}\cosh\beta(t)\A{a}^\dagger(0)\right\}
+\label{P4-ppp}
+\end{eqnarray}
+This equation may be expressed more neatly by defining two new funcations:
+\begin{align}
+\Gamma_1(\alpha,\dot{\alpha},\beta,\dot{\beta},\gamma,\dot{\gamma},\omega,\dot{\omega})&=-i\dot{\alpha}e^{-i\alpha}\cosh\beta+\dot{\beta}e^{-i\alpha}\sinh\beta+
+i\omega e^{-i\alpha}\cosh\beta-\frac{\dot{\omega}}{2\omega}e^{-i\gamma}\sinh\beta\\
+\Gamma_2(\alpha,\dot{\alpha},\beta,\dot{\beta},\gamma,\dot{\gamma},\omega,\dot{\omega})&=i\dot{\gamma}e^{i\gamma }\sinh\beta+\dot{\beta}e^{i\gamma}\cosh\beta
++i\omega e^{i\gamma}\sinh\beta-\frac{\dot{\omega}}{2\omega}e^{i\alpha}\cosh\beta
+\end{align}
+So two coupled equations of motion in the terms of Bogoliubov transformation parameters are:
+\begin{align}
+&\Gamma_1(\alpha,\dot{\alpha},\beta,\dot{\beta},\gamma,\dot{\gamma},\omega,\dot{\omega})\A{a}(0)+\Gamma_2(\alpha,\dot{\alpha},\beta,\dot{\beta},\gamma,\dot{\gamma},\omega,\dot{\omega})\A{a}^\dagger(0)=0\\
+&\Gamma_2^*(\alpha,\dot{\alpha},\beta,\dot{\beta},\gamma,\dot{\gamma},\omega,\dot{\omega})\A{a}(0)+\Gamma_1^*(\alpha,\dot{\alpha},\beta,\dot{\beta},\gamma,\dot{\gamma},\omega,\dot{\omega})\A{a}^\dagger(0)=0
+\end{align}
+The second equation has been simply derived by applying the conjugate transpose opertor on the both sides of \eqref{P4-ppp}.
+\end{homeworkSection}
+\begin{homeworkSection}{(d)}
+Time-dependent uncertainty for position operator can be calulated through the use of creation and annihilation operators in the Heisenberg picture:
+\begin{equation}
+\A{x}(t)=\sqrt{\frac{\hbar}{2m\omega(t)}}\left(\A{a}(t)+\A{a}^\dagger(t)\right)
+\end{equation}
+Uncertainty in a specific state is defined by:
+\begin{equation}\label{P4-220}
+\left(\Delta x(t)\right)^2=\bra{n}\A{x}^2(t)\ket{n}-\bra{n}\A{x}(t)\ket{n}^2
+\end{equation}
+Using \eqref{P4-T1} and \eqref{P4-T2} we are able to calculate $\A{x}(t)$ in terms of initial ladder operators:
+\begin{equation}
+\A{x}(t)=\Lambda(t)\A{a}(0)+\Lambda^*(t)\A{a}^\dagger(0)
+\end{equation}
+where $\Lambda(t)$ is defined as:
+\begin{equation*}
+\Lambda_1(t)=\sqrt{\frac{\hbar}{2m\omega(t)}}\left[\cosh\beta(t) e^{-i\alpha(t)}+\sinh\beta(t) e^{-i\gamma(t)}\right]
+\end{equation*}
+We obtain:
+\begin{align}
+\bra{n}\A{x}(t)\ket{n}&=\bra{n}\Lambda_1(t)\A{a}(0)+\Lambda_1^*(t)\A{a}^\dagger(0)\ket{n}=\sqrt{n}\Lambda_1(t)\bracket{n}{n-1}+\sqrt{n+1}\Lambda_1^*(t)\bracket{n}{n+1}=0\label{P4-110}\\
+\bra{n}\A{x}^2(t)\ket{n}&=\abs{\Lambda_1(t)}^2\bra{n}\A{a}^\dagger(0)\A{a}(0)\ket{n}+\abs{\Lambda_1(t)}^2\bra{n}\A{a}(0)\A{a}^\dagger(0)\ket{n}=\abs{\Lambda_1(t)}^2(2n+1)\label{P4-111}
+\end{align}
+By inserting \eqref{P4-110} and \eqref{P4-111} into \eqref{P4-220} we arraive at:
+\begin{equation}
+\Delta x_n(t)=\abs{\Lambda_1(t)}\sqrt{2n+1}
+\end{equation}
+Using the same line of reasoning we can evaluate $\Delta p(t)$. We use the following definition:
+\begin{equation*}
+\Lambda_2(t)=\sqrt{\frac{1}{2}m\omega(t)\hbar}\left[\cosh\beta(t) e^{-i\alpha(t)}-\sinh\beta(t) e^{-i\gamma(t)}\right]
+\end{equation*}
+$\A{p}(t)$ may be expanded as 
+\begin{equation}
+\A{p}(t)=-i\left(\Lambda_2(t)\A{a}(0)+\Lambda_2^*(t)\A{a}^\dagger(0)\right)
+\end{equation}
+So time dependent expectation value of $\A{p}(t)$ and $\A{p}^2(t)$ in the eigenstates of the initial Hamiltonian are:
+ \begin{align}
+ \bra{n}\A{p}(t)\ket{n}&=-i\bra{n}\Lambda_2(t)\A{a}(0)+\Lambda_2^*(t)\A{a}^\dagger(0)\ket{n}=\sqrt{n}\Lambda_2(t)\bracket{n}{n-1}+\sqrt{n+1}\Lambda_2^*(t)\bracket{n}{n+1}=0\label{P4-440}\\
+\bra{n}\A{x}^2(t)\ket{n}&=\abs{\Lambda_2(t)}^2\bra{n}\A{a}^\dagger(0)\A{a}(0)\ket{n}+\abs{\Lambda_2(t)}^2\bra{n}\A{a}(0)\A{a}^\dagger(0)\ket{n}=\abs{\Lambda_2(t)}^2(2n+1)\label{P4-441}
+ \end{align}
+ therefore
+ \begin{equation}
+ \Delta p_n(t)=\abs{\Lambda_2(t)}\sqrt{2n+1}
+ \end{equation}
+ and uncertainty in x-p is:
+ \begin{equation}
+ \Delta x_n(t)\Delta p_n(t)=\abs{\Lambda_1(t)\Lambda_2(t)}(2n+1)=\frac{\hbar}{2}(2n+1)\left|\cosh^2\beta e^{-2i\alpha}-\sinh^2\beta e^{-2i\gamma}\right|
+ \end{equation}
+ $x-p$ uncertainty in the parametrix SHO is composed of two parts. One part is similar to an ordinary SHO but the second motulating part is time dependent and it reflects the time varying nature of  the equivalent spring constant.    
+\end{homeworkSection}
+
+
+\end{homeworkProblem}

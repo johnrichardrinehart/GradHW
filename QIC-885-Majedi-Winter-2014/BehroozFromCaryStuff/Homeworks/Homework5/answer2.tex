@@ -1,0 +1,151 @@
+\begin{homeworkProblem}
+\begin{homeworkSection}{(a)}
+Strating with
+\begin{equation*}
+[\A{a},\A{a}^\dagger]=1
+\end{equation*}
+we arrive at:
+\begin{equation}\label{P2-1}
+[\A{N},\A{a}^\dagger]=[\A{a}^\dagger\A{a},\A{a}^\dagger]=\A{a}^\dagger[\A{a},\A{a}^\dagger]+[\A{a}^\dagger,\A{a}^\dagger]\A{a}=\A{a}^\dagger
+\end{equation}
+Note that in \eqref{P2-1} we have used the following identity:
+\begin{equation}\label{P2-i}
+[\A{A}\A{B},\A{C}]=\A{A}[\A{B},\A{C}]+[\A{A},\A{C}]\A{B}
+\end{equation}
+In the same line of reasoning we get:
+\begin{equation}
+[\A{N},\A{a}]=[\A{a}^\dagger\A{a},\A{a}]=\A{a}^\dagger[\A{a},\A{a}]+[\A{a}^\dagger,\A{a}]\A{a}=-\A{a}
+\end{equation}
+\end{homeworkSection}
+\begin{homeworkSection}{(b)}
+In the prsence of nonlinearity the Hamiltonian is:
+\begin{equation}
+\A{H}=\hbar\omega_0\A{a}^\dagger\A{a}-\frac{\hbar\kappa}{2}\A{a}^\dagger\A{a}^\dagger\A{a}\A{a}
+\end{equation}
+hence:
+\begin{equation}
+[\A{N},\A{H}]=[\A{a}^\dagger\A{a},\hbar\omega_0\A{a}^\dagger\A{a}-\frac{\hbar\kappa}{2}\A{a}^\dagger\A{a}^\dagger\A{a}\A{a}]=
+-\frac{\hbar\kappa}{2}[\A{N},\A{a}^\dagger\A{a}^\dagger\A{a}\A{a}]
+\end{equation}
+Successive application of \eqref{P2-i} we can write:
+\begin{align}
+[\A{N},\A{a}^\dagger\A{a}^\dagger\A{a}\A{a}] &=\A{a}^\dagger [\A{N},\A{a}^\dagger\A{a}\A{a}]+[\A{N},\A{a}^\dagger]\A{a}^\dagger\A{a}\A{a}\\
+[\A{N},\A{a}^\dagger\A{a}\A{a}]  &=  \A{a}^\dagger[\A{N},\A{a}\A{a}]+[\A{N},\A{a}^\dagger]\A{a}\A{a}\\
+[\A{N},\A{a}\A{a}] &=\A{a}[\A{N},\A{a}]+[\A{N},\A{a}]\A{a}
+\end{align} 
+So we have:
+\begin{equation}
+[\A{N},\A{a}^\dagger\A{a}^\dagger\A{a}\A{a}]=-2\A{a}^\dagger\A{a}^\dagger\A{a}\A{a}+2\A{a}^\dagger\A{a}^\dagger\A{a}\A{a}=0
+\end{equation}
+combining all we get:
+\begin{equation}\label{P2-NH}
+[\A{N},\A{H}]=0
+\end{equation}
+We can employ a simpler analysis as well. If we write the Hamiltonian in the following form:
+\begin{equation*}
+\A{H}=\hbar\omega_0\A{N}-\frac{\hbar\kappa}{2}\A{a}^\dagger\A{N}\A{a}
+\end{equation*}
+using \eqref{P2-1} we can write:
+\begin{equation}\label{P2-500}
+\A{H}=\hbar\omega_0\A{N}-\frac{\hbar\kappa}{2}\left(\A{N}\A{a}^\dagger-\A{a}^\dagger\right)\A{a}=
+\hbar\omega_0\A{N}-\frac{\hbar\kappa}{2}\left(\A{N}^2-\A{N}\right)
+\end{equation}
+We can readily see that the Hamiltonian is a function number operator and equation \eqref{P2-NH} holds. 
+\end{homeworkSection}
+%----------------------c---------
+\begin{homeworkSection}{(c)}
+Since $\A{N}$ and $\A{H}$ commutate , they can be simultaneously diagonalize. Eigenstates of the number operator are not degenerate so we can use number operator basis function as the eigenstates of the Hamiltonian:
+\begin{equation}
+\A{H}\ket{n}=\hbar\omega_0 n\ket{n}-\frac{\hbar\kappa}{2}\A{a}^\dagger\A{a}^\dagger\A{a}\A{a}\ket{n}
+\end{equation} 
+Using
+\begin{equation*}
+\A{a}\ket{n}=\sqrt{n}\ket{n-1}\qquad\A{a}^\dagger\ket{n}=\sqrt{n+1}\ket{n+1}
+\end{equation*}
+we obtain:
+\begin{equation}
+\A{a}^\dagger\A{a}^\dagger\A{a}\A{a}\ket{n}=\sqrt{n(n-1)(n-1)n}\ket{n}=n(n-1)\ket{n}
+\end{equation}
+So we have:
+\begin{equation}
+\A{H}\ket{n}=\left\{\hbar\omega_0 n-\frac{\hbar\kappa}{2}n(n-1)\right\}\ket{n}
+\end{equation}
+we could also use \eqref{P2-500} which leads to the same result:
+\begin{equation}\label{P2-550}
+\A{H}\ket{n}=\hbar\omega_0\A{N}\ket{n}-\frac{\hbar\kappa}{2}\left(\A{N}^2-\A{N}\right)\ket{n}=
+\left\{\hbar\omega_0 n-\frac{\hbar\kappa}{2}n(n-1)\right\}\ket{n}
+\end{equation}
+\end{homeworkSection}
+%----------d-----------
+\begin{homeworkSection}{(d)}
+We have already proved that $\A{N}$ and $\A{H}$ commute. So we can immediately conclude that the number operator is a constant of motion. The Hesenberg time evolution for number operator is:
+\begin{equation}
+\frac{d\A{N}}{dt}=\frac{1}{i\hbar}[\A{N},\A{H}]=0\quad\Lrw\quad \A{N}=\A{N}(0)
+\end{equation}
+Since $\A{N}$ is a constant motion the number photons inside the cavity remains constant during time evolution.
+\end{homeworkSection}
+\begin{homeworkSection}{(e)}
+The Heisenberg time evolution equation for the annihilation operator is:
+\begin{equation}
+\frac{d\A{a}}{dt}=\frac{1}{i\hbar}[\A{a},\A{H}]=-i[\A{a},\omega\A{N}-\frac{\kappa}{2}\A{a}^\dagger\A{a}^\dagger\A{a}\A{a}]=-i\omega_0\A{a}+\frac{i\kappa}{2}[\A{a},\A{a}^\dagger\A{a}^\dagger\A{a}\A{a}]
+\end{equation}
+Using \eqref{P2-i} identity we obtain:
+\begin{equation}
+[\A{a},\A{a}^\dagger\A{a}^\dagger\A{a}\A{a}]=\A{a}^\dagger\A{a}^\dagger[\A{a},\A{a}\A{a}]+[\A{a},\A{a}^\dagger\A{a}^\dagger]\A{a}\A{a}=2\A{a}^\dagger\A{a}\A{a}=2\A{N}\A{a}
+\end{equation}
+Since $\A{N}$ is a constant of motion we can write:
+\begin{equation}\label{P2-a}
+\frac{d\A{a}(t)}{dt}=-i\omega_0\A{a}(t)+i\kappa\A{N}(0)\A{a}(t)
+\end{equation} 
+To solve this first order differential equation we define am auxiliary operator:
+\begin{equation}
+\A{\zeta}(t)=\A{a}(t)\exp(i\omega_0 t)
+\end{equation}
+Inserting in \eqref{P2-a} we obtain:
+\begin{equation}
+\frac{d\A{\zeta}(t)}{dt}=i\kappa \A{N}(0)\A{\zeta}(t)
+\end{equation}
+So we arrive at:
+\begin{equation}
+\A{\zeta}(t)=e^{i\kappa\A{N}(0)t}\A{\zeta(0)}
+\end{equation}
+finally we get:
+\begin{equation}\label{P2-at}
+\A{a}(t)=\exp\left[-i\omega_0t+i\kappa\A{N}(0)t\right]\A{a}(0)
+\end{equation}
+\end{homeworkSection}
+%-----------------f----------------------------
+\begin{homeworkSection}{(f)}
+Applying transpose conjugate operator on both sides of \eqref{P2-at} we obtain:
+\begin{equation}
+\A{a}^\dagger(t)=\A{a}^\dagger(0)\exp\left[i\omega_0t-i\kappa\A{N}^\dagger(0)t\right]=\A{a}^\dagger(0)\exp\left[i\omega_0t-i\kappa\A{N}(0)t\right]
+\end{equation}
+From operator algebra we know that :
+\begin{equation}
+[A,B]=\lambda A\quad\Lrw\quad Ae^{B}=e^\lambda e^B A
+\end{equation}
+Since $[\A{a}^\dagger(0),\A{N}(0)]=-\A{a}^\dagger(0)$ then:
+\begin{equation}
+\A{a}^\dagger(t)=\exp\left[i\kappa t+i\omega_0t-i\kappa\A{N}(0)t\right]\A{a}^\dagger(0)
+\end{equation}
+\end{homeworkSection}
+%----------------------g------------
+\begin{homeworkSection}{(g)}
+If just one photon is lost from the cavity total energy of the system inside the cacity would change. We can simply calculate the energy difference  in the number state. Before $t=T$ the quantum state of the field is given by $\ket{n}$ and  by photon annihilation the state in the nuumber state would be $\ket{n-1}$ so we have:  
+\begin{equation}
+\hbar\omega_{ph}=\Delta E=E_1-E_2=\bra{n}\A{H}\ket{n}-\bra{n-1}\A{H}\ket{n-1}
+\end{equation}
+Using \eqref{P2-550} we can write:
+\begin{eqnarray}
+\Delta E&=&\left\{\hbar\omega_0 n-\frac{\hbar\kappa}{2}n(n-1)\right\}-\left\{\hbar\omega_0 (n-1)-\frac{\hbar\kappa}{2}(n-1)(n-2)\right\}\nonumber\\
+&=&\hbar\omega_0-\hbar\kappa(n-1)
+\end{eqnarray}
+So the spectrometer measures:
+\begin{equation}
+\omega_{ph}=\frac{\Delta E}{\hbar}=\omega_0-\kappa(n-1)
+\end{equation}
+Note that we can measure the frequency with certainty.
+\end{homeworkSection}
+
+
+\end{homeworkProblem}

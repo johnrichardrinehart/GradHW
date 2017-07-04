@@ -1,0 +1,110 @@
+\begin{verbatim}
+%------Helix-------------
+
+clc
+clear all
+close all
+p=input('p=');
+a=input('a=');
+theta=[0:pi/100:2*pi];
+phi=[0:pi/100:2*pi];
+t=[-6*pi:pi/100:6*pi];
+c=sqrt(a^2+(p/(2*pi)).^2);
+s0=c*12*pi;
+Nx=zeros(length(theta),length(phi));
+Ny=zeros(length(theta),length(phi));
+Nz=zeros(length(theta),length(phi));
+Et=zeros(size(Nx));
+Ep=Et;
+
+for(n=1:length(theta))
+    for(m=1:length(phi))
+        THETA=theta(n);
+        PHI=phi(m);
+Ix=sin(t).*sin(2*pi*(c*abs(t)-s0/2)).*exp(1i*2*pi*a*sin(THETA).*cos(t-PHI)+1i*t*cos(THETA)*p);
+Iy=cos(t).*sin(2*pi*(c*abs(t)-s0/2)).*exp(1i*2*pi*a*sin(THETA).*cos(t-PHI)+1i*t*cos(THETA)*p);
+Iz=sin(2*pi*(c*abs(t)-s0/2)).*exp(1i*2*pi*a*sin(THETA).*cos(t-PHI)+1i*cos(THETA)*p);
+
+Nx(n,m)=-a*trapz(t,Ix);
+Ny(n,m)=a*trapz(t,Iy);
+Nz(n,m)=p*trapz(t,Iz)/(2*pi);
+Et(n,m)=Nx(n,m)*cos(THETA)*cos(PHI)+Ny(n,m)*cos(THETA)*sin(PHI)-Nz(n,m)*sin(THETA);
+Ep(n,m)=-Nx(n,m)*sin(PHI)+Ny(n,m)*cos(PHI);
+
+        
+
+    end
+end
+
+%------------------------------------------------------
+% U=(abs(Et(:,1)).^2+abs(Ep(:,1)).^2);
+% polar(theta',U)
+% title('\phi=0 plane')
+[r ind]=min(abs(theta-pi/2));
+% figure
+% U=abs(Et(ind,:)).^2+abs(Ep(ind,:)).^2;
+% polar(phi,U)
+% title('\theta=\pi/2 plane')
+V=[];
+%----Total radiated Power----------------------------------
+U=abs(Et).^2+abs(Ep).^2;
+I=zeros(size(phi));
+for(n=1:2*ind)
+for(m=1:length(phi))
+        THETA=theta(n);
+        PHI=phi(m);
+I(m)=U(n,m)*sin(THETA);
+
+end
+V=[V trapz(phi,I)];
+end
+
+P=trapz(theta(1:2*ind),V);
+
+%---------------------------------------------------------
+P=P/(8*377);
+m1=1;
+[r m2]=min(abs(phi-pi/4));
+[r m3]=min(abs(phi-pi/2));
+%-----------------------Gain------------------------------
+U=pi*(abs(Et(:,m1)).^2+abs(Ep(:,m1)).^2)/(4*377);
+polar(theta',U/P)
+title('Gain in \phi=0 plane')
+figure
+Ui=10*log10(abs(Et(:,m1)).^2+abs(Ep(:,m1)).^2)+10*log10(377/8);
+h1=plot(theta*180/pi,Ui);
+set(h1,'linewidth',2.5)
+title('Radiation Intensity for \phi=0')
+grid
+Xlabel('\theta')
+Ylabel('U (dB)')
+figure
+U=pi*(abs(Et(:,m2)).^2+abs(Ep(:,m2)).^2)/(4*377);
+polar(theta',U/P)
+title('Gain in \phi=pi/4 plane')
+figure
+Ui=10*log10(abs(Et(:,m2)).^2+abs(Ep(:,m2)).^2)+10*log10(377/8);
+h1=plot(theta*180/pi,Ui);
+set(h1,'linewidth',2.5)
+grid
+Xlabel('\theta')
+Ylabel('U (dB)')
+title('Radiation Intensity for \phi=45')
+
+figure
+U=pi*(abs(Et(:,m3)).^2+abs(Ep(:,m3)).^2)/(4*377);
+polar(theta',U/P)
+title('Gain in \phi=pi/2 plane')
+
+figure
+Ui=10*log10(abs(Et(:,m3)).^2+abs(Ep(:,m3)).^2)+10*log10(377/8);
+h1=plot(theta*180/pi,Ui);
+set(h1,'linewidth',2.5)
+grid
+Xlabel('\theta')
+Ylabel('U (dB)')
+title('Radiation Intensity for \phi=90')
+
+\end{verbatim}
+
+

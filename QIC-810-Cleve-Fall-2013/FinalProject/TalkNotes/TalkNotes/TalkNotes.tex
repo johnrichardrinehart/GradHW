@@ -1,0 +1,228 @@
+%% Based on a TeXnicCenter-Template by Tino Weinkauf.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% HEADER
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[a4paper,twoside,10pt]{report}
+% Alternative Options:
+%	Paper Size: a4paper / a5paper / b5paper / letterpaper / legalpaper / executivepaper
+% Duplex: oneside / twoside
+% Base Font Size: 10pt / 11pt / 12pt
+
+
+%% Language %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage[USenglish]{babel} %francais, polish, spanish, ...
+\usepackage[T1]{fontenc}
+\usepackage[ansinew]{inputenc}
+\usepackage{braket}
+\usepackage{lmodern} %Type1-font for non-english texts and characters
+
+
+%% Packages for Graphics & Figures %%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{graphicx} %%For loading graphic files
+%\usepackage{subfig} %%Subfigures inside a figure
+%\usepackage{pst-all} %%PSTricks - not useable with pdfLaTeX
+
+%% Please note:
+%% Images can be included using \includegraphics{Dateiname}
+%% resp. using the dialog in the Insert menu.
+%% 
+%% The mode "LaTeX => PDF" allows the following formats:
+%%   .jpg  .png  .pdf  .mps
+%% 
+%% The modes "LaTeX => DVI", "LaTeX => PS" und "LaTeX => PS => PDF"
+%% allow the following formats:
+%%   .eps  .ps  .bmp  .pict  .pntg
+
+
+%% Math Packages %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+
+
+%% Line Spacing %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\usepackage{setspace}
+%\singlespacing        %% 1-spacing (default)
+%\onehalfspacing       %% 1,5-spacing
+%\doublespacing        %% 2-spacing
+
+
+%% Other Packages %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\usepackage{a4wide} %%Smaller margins = more text per page.
+%\usepackage{fancyhdr} %%Fancy headings
+%\usepackage{longtable} %%For tables, that exceed one page
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Remarks
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% TODO:
+% 1. Edit the used packages and their options (see above).
+% 2. If you want, add a BibTeX-File to the project
+%    (e.g., 'literature.bib').
+% 3. Happy TeXing!
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Options / Modifications
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\input{options} %You need a file 'options.tex' for this
+%% ==> TeXnicCenter supplies some possible option files
+%% ==> with its templates (File | New from Template...).
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% DOCUMENT
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+
+\pagestyle{empty} %No headings for the first pages.
+
+
+%% Title Page %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% ==> Write your text here or include other files.
+
+%% The simple version:
+\title{QIC 710 Talk Notes}
+\author{John Rinehart}
+%\date{} %%If commented, the current date is used.
+\maketitle
+
+%% The nice version:
+%\input{titlepage} %%You need a file 'titlepage.tex' for this.
+%% ==> TeXnicCenter supplies a possible titlepage file
+%% ==> with its templates (File | New from Template...).
+
+
+%% Inhaltsverzeichnis %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\tableofcontents %Table of contents
+\cleardoublepage %The first chapter should start on an odd page.
+
+\pagestyle{plain} %Now display headings: headings / fancy / ...
+
+
+
+%% Chapters %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% ==> Write your text here or include other files.
+
+%\input{intro} %You need a file 'intro.tex' for this.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% ==> Some hints are following:
+
+\chapter{Classical Information Theory}\label{CIT}
+
+\section{Definitions}\label{def}
+\begin{align}
+C &= \lim_{T\rightarrow\infty} \frac{\log(N(T))}{T} \\ 
+H &= \sum_{i=1}^n p_i\log{p_i} \\
+%% If necessary
+H(x,y) &= -\sum_i\sum_j p(i,j)\log p(i,j)\\
+H_x(y) &= -\sum_i\sum_j p(i,j)\log p(j|i) \\
+H_y(x) &= -\sum_i\sum_j p(i,j)\log p(i|j) 
+\end{align}
+
+\section{Basic Results}
+\begin{proof}
+\begin{align} 
+p &= p_1^{p_1N}p_2^{p_2N}p_3^{p_3N}...p_n^{p_nN} \\
+\log(p) &= N(p_1\log(p_1)+p_2\log(p_2)+p_3\log(p_3)+...+p_n\log(p_n)) \\
+\log(p) &= -NH \\ 
+p &= 2^{-NH}
+\end{align}
+\end{proof}
+
+\begin{proof}
+\begin{align}
+\# &= \frac{N!}{n_1!n_2!n_3!...n_n!} \\ 
+\log(\#) &= N\log(N) - n_1\log(n_1) - n_2\log(n_2) - ... -n_n\log(n_n) \\
+\log(\#) &= N\log(N) - N(\log(N(p_1+p_2+...+p_n))+\sum_i{p_i\log(p_i)}) \\
+\log(\#) &= HN \\
+\# &= 2^{HN}
+\end{align}
+\end{proof}
+
+\begin{proof}
+\begin{align}
+\intertext{\bf Talk about the rate of the channel. Talk about how it reduces to the noiseless case.} \\
+R &= H(x)-H_y(x) \\
+\intertext{\bf Discuss the phenemonon when $p_{fail} = 1\%$. Then move on the the maximum channel capacity.} \\
+C &= \max_x(H(x)-H_y(x))\\
+C_{erasure} &= H(x)-H(X|Y) \intertext{optimal H(x) = 1} \\
+            = 1 - \sum_{i,j}&p(i,j)\log(p(i|j)) \\
+						= 1 - \sum_{i,j}&p(i|j)p(j)\log(p(i|j)) \\
+						= 1 - \bigg(p(0)&\Big(p(0|0)\log p(0|0)+p(1|0)\log p(1|0)\Big)\\ \nonumber
+						&+p(1)\Big(p(0|1)\log p(0|1)+p(1|1)\log p(1|1)\Big)\\ \nonumber
+						&+p(e)\Big(p(0|e)\log p(0|e)+p(1|e)\log p(1|e)\Big)\bigg)\\
+						= 1 - \bigg(\frac{1-p}{2}&1\log 1 + 0 \log 0 \Big) + \frac{1-p}{2}\Big(0\log 0 + 1\log 1 \Big)\\ \nonumber
+						&+p\Big(.5\log .5 + .5 \log .5 \Big)\bigg) \\ 
+						 &= 1 -p 
+\end{align}
+\end{proof}
+
+
+\chapter{Quantum Information Theory}\label{QIT}
+
+\section{Definitions and Properties}
+\begin{align}
+&S(\rho) = -Tr(\rho\log(\rho)) = -\sum_i\lambda_i \log \lambda_i \\
+&S(\ket{\Psi}\bra{\Psi}) = 0 \\
+&\mathcal{E}(\rho)=\sum_k \ket{e_k}U[\rho \otimes \ket{e_0}\bra{e_0}]U^\dagger \ket{e_k} = \sum_k{E_k \rho E_k^\dagger}, E_k \equiv \bra{e_k}U\ket{e_0}
+\end{align}
+
+\section{Quantum Channels}
+\subsection{$C_{1,1}$ Single Use}
+\begin{align}
+C_{1,1} = \max_{\rho_i}\big( H(X:Y) = H(Y)-H(Y|X) = H(X)-H(X|Y) \big)
+\end{align}
+
+\subsection{$C_{1,\infty}$ - Infinite Use}
+\begin{align}
+C_{1,\infty} = \max_{\rho_i}\Big( S(\sum_i p_i \sigma_i) - \sum_i p_i S(\sigma_i)\Big) = \chi \intertext{the Holevo information} \\
+\intertext{This is the well-known Helov-Schumacher-Westmoreland (HSW) theorem}
+\end{align}
+
+\subsection{$C_E$ : Entangelement-Assisted Channels}
+\bf Holds for noiseless channels. Defined over classical information that is sent.
+\begin{align}
+C_E(\mathcal{N}) = \max_{\rho \in \mathcal{H}_{in}} \Big( S(\rho) + S(\mathcal{N}(\rho)) - S((\mathcal{N} \otimes \mathcal{I})(\Phi_\rho)) \Big)
+\end{align}
+$\Phi_\rho$ is an element of $\mathcal{H}_in \otimes \mathcal{H}_R$ such that $Tr_R\Phi_\rho = \rho$.
+
+\section{Proofs}
+\subsection{Holevo's Bound}
+\begin{align}
+&H(X:Y)\le S(\rho)-\sum_x p_x S(\rho_x)\\
+&\rho^{PQM} = \sum_x p_x \ket{x}\bra{x} \otimes \rho_x \otimes \ket{0}\bra{0}\\
+&\mathcal{E}(\sigma \otimes \ket{0}\bra{0}) \equiv \sum_y \sqrt{E_y}\sigma\sqrt{E_y}\otimes \ket{y}\bra{y}\\
+&S(P:Q)=S(P:Q,M) \intertext{since M is initially uncorrelated with P,Q}\\
+&S(P:Q,M)\ge S(P':Q',M') \intertext{applying a quantum operation can't increase mutual information between P and Q,M}\\
+&S(P':Q',M')\ge S(P':M') \intertext{tracing out Q can't increase mutual information} \\
+&S(P':M')\le S(P:Q)\\
+&S(P:Q)=S(P)+S(Q)-S(P,Q)=H(p_x)+S(\rho)-(H(p_x)+\sum_x p_x S(\rho_x)) \\
+&\rho^{P'Q'M'} = \sum_{xy}p_x \ket{x}\bra{x}\otimes\sqrt{E_y}\rho_x\sqrt{E_y}\otimes \ket{y}\bra{y} \\
+\intertext{Note that}
+&p(x,y)=p_x p(y|x)=p_x tr(\sqrt{E_y}\rho_x \sqrt{E_y}) \\
+&\rho^{P'M'}=\sum_{xy}p(x,y)\ket{x}\bra{x}\otimes\ket{y}\bra{y}\\
+&S(\rho^{P'M'})=-Tr{\rho^{P'M'}\log\rho^{P'M'}}=-\sum_{xy}p(x,y)\log p(x,y)=H(X:Y)\\
+\intertext{Thus,}& H(X:Y)\le S(\rho)-\sum_x p_x S(\rho_x)
+\end{align}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% APPENDICES
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\appendix
+%% ==> Write your text here or include other files.
+
+%\input{FileName} %You need a file 'FileName.tex' for this.
+
+
+\end{document}
+

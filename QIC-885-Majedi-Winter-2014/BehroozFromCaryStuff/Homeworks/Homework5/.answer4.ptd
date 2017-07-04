@@ -1,0 +1,82 @@
+<!1,2013041120:08:31>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN" "http://www.w3.org/TR/REC-html40/strict.dtd">
+<html><head><meta name="qrichtext" content="1" /><meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><style type="text/css">
+p, li { white-space: pre-wrap; }
+</style></head><body>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">\begin{homeworkProblem}‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">\begin{homeworkSection}{(a)}‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">‎The ‎expreimental ‎setup ‎has ‎been ‎shown ‎in ‎figure ‎\ref{fig-HBT}. ‎As ‎shown ‎in ‎the ‎figure ‎the ‎original ‎beam ‎splitter ‎accepts ‎two ‎input ‎beams ‎and ‎and ‎produces ‎two ‎other ‎beams ‎which ‎are a‎ ‎linear ‎combination ‎of ‎the inputs.‎‎  </p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">‎%------------------------------</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">\begin{figure}‎[!h]‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">‎\centering‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">\input{HBT}‎‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">\caption{\small HBT experiment}‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">\label{fig-HBT}‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">\end{figure}‎ </p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">‎%-----------------------------‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">According ‎to ‎\cite{fox} ‎the ‎classical ‎EM ‎field ‎in ‎the ‎output ‎braches ‎can ‎be ‎expressed ‎as below:‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">\begin{‎align‎}‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">‎&amp;‎‎\vp{E}'_1=\frac{\vp{E}_1‎-‎\vp{E}_2}{\sqrt{2}}‎\\‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">‎&amp;‎\vp{‎E‎}'_2=‎\frac{\vp{E}_1‎+‎‎\vp{E}_2}{\sqrt{2}‎}‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">\end{‎align‎}‎‎‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">‎‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">These ‎transformtion ‎can ‎be ‎applied ‎to ‎the ‎quantized ‎version ‎of ‎the ‎field. ‎To ‎do ‎this ‎we ‎shoukd ‎just ‎use ‎the ‎same ‎linear ‎combinations ‎for ‎annihilation‎ ‎and ‎creation ‎operators. ‎If ‎we ‎use ‎the ‎same ‎notaions ‎to ‎signify ‎these ‎operators ‎we ‎can ‎write:‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">\begin{align}‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">&amp;‎a'‎_{1}=\frac{a_1-a_2}{\sqrt{2}}‎\la‎bel{P4-100}‎‎\\‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">‎&amp;a'_{2}=\frac{a_1‎+‎a_2}{\sqrt{2}‎}‎\label{P4-101}‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">\end{align}‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">‎the second-order correlation function is then</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">obtained ‎from:‎‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">\begin{equation}‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">g^{(2)}(\tau)=\frac{‎\Ex{n'_1‎(t)n'_2(t+\tau)‎}‎}{\Ex{n'_1‎(t)‎}\Ex{‎n'_2(t+\tau)‎‎‎}}‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">\end{equation}‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">‎Using ‎number ‎operator ‎we ‎can ‎write:‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">\begin{equation}‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">‎g^{(2)}(0)=\frac{\Ex{a'^\dagger_1 a'_1a'^\dagger_2 ‎a'_2‎}}{\Ex{a'^\dagger_1 a'_‎1‎}\Ex{a'^\dagger_‎2‎ a'_‎2‎‎}}</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">\end{equation}‎‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">We ‎can ‎rewrite ‎this ‎equation ‎in ‎terms ‎of ‎unprimed ‎ladde‎r ‎operators‎. Actually we have to use this new representation because we know about the number state of the input braches. It's assumed that there is no photon in one of the inputs and the second one is in ‎$‎\ket{n}‎$ ‎state. ‎If ‎‎$‎\ket{\phi}‎$‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;"> describes the number state of the inputs we can write:‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;"> \begin{equation}‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;"> \ket{\phi}=\ket{n,0}  ‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;"> ‎\end{‎equation}‎‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;"> ‎Using ‎\eqref{P4-100} ‎and ‎\eqref{P4-101} we have:<br /> ‎\begin{equation}‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;"> ‎g^{(2)}(0)=\frac{‎\Ex{‎(a_1^\dagger-a_2^\dagger)(a_1-a_2)(‎a_1^\dagger+a_2^\dagger‎)(‎a_1+a_2‎)‎}‎}‎‎{\Ex{‎(a_1^\dagger-a_2^\dagger)(a_1-a_2‎)‎}‎\Ex{(‎a_1^\dagger+a_2^\dagger‎)(‎a_1+a_2‎)‎}‎}</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;"> \end{equation}‎‎ ‎‎‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;"> ‎‎‎ Using ‎the ‎fact ‎that‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">\begin{equation*}‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">‎a_‎2‎\ket{\phi}=0</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">\end{equation*}‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">‎we can ‎extremely ‎simplify ‎all ‎calculation:‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;"> ‎\begin{‎align‎}‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;"> ‎&amp;‎‎\bra{‎\phi‎}‎{‎(a_1^\dagger-a_2^\dagger)(a_1-a_2‎)‎}\ket{‎\phi‎}=\bra{\phi}a_1^‎\dagger‎ a_‎1\ket{‎\phi‎}‎=\bra{\phi}\A{N}_1\ket{\phi}‎\\‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;"> ‎&amp;‎‎‎\bra{‎\phi‎}‎{‎(a_1^‎\dagger+‎a_2^\dagger)(a_1‎+‎a_2‎)‎}\ket{‎\phi‎}=\bra{\phi}a_1^‎\dagger‎ a_‎1\ket{\phi}‎=\bra{n}\A{N}_1\ket{n}‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;"> \end{align}‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;"> For ‎the ‎third ‎term ‎we ‎have ‎to ‎work ‎more:‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;"> \begin{‎equation‎}‎\label{P4-300}</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">‎‎\bra{‎\phi‎}‎‎{‎(a_1^\dagger-a_2^\dagger)(a_1-a_2)(‎a_1^\dagger+a_2^\dagger‎)(‎a_1+a_2‎)‎}‎}‎‎\ket{‎\phi‎}‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">‎=‎ ‎\bra{\phi}‎‎a_1^‎\dagger‎(a_1-a_2)(‎a_1^\dagger+a_2^‎\dagger)‎a_‎1‎\ket{\phi} </p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;"> \end{‎equation‎}‎‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;"> If ‎we ‎expand ‎the ‎left ‎hand ‎side ‎of ‎\eqref{‎P4-300‎} ‎we ‎will encounter to four ‎terms‎. ‎‎‎‎Using ‎commuation ‎relations ‎we ‎can ‎simplify ‎every ‎term ‎on ‎the ‎right ‎hand ‎side ‎of ‎above ‎equation:‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;"> \begin{align}‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;"> ‎‎‎\bra‎{\phi}‎ ‎‎‎a_1^‎\dagger ‎a_‎1‎‎ a_1^‎\dagger‎ a_‎1‎\ket{‎\phi} ‎&amp;‎=‎\bra‎{\phi}\A{N}_1^2\ket{\phi}‎\\‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">  ‎\bra{\phi}‎‎‎‎‎‎‎a_1^‎\dagger ‎a_1 ‎a_2^‎\dagger‎ a_‎1‎\ket{\phi} ‎&amp;‎=‎‎\bra{‎\phi}‎‎a_2^‎\dagger‎ ‎‎‎‎‎‎‎a_1^‎\dagger ‎a_1 ‎a_‎1‎\ket{‎\phi}‎=0‎\\‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">‎ ‎‎\bra{\phi}‎‎‎a_1^‎\dagger ‎a_2‎ ‎a_1^‎\dagger‎ ‎a_‎1‎\ket{\phi}‎&amp;=‎‎‎\bra{\phi}‎‎‎a_1^‎\dagger  ‎a_1^‎\dagger‎ ‎a_‎1 ‎a_2‎‎‎‎\ket{‎\phi}‎=0\\‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;"> ‎‎\bra{\phi}‎‎‎‎a_1^‎\dagger‎ a_‎2‎ a_2^‎\dagger ‎a_‎1‎\ket{\phi}‎&amp;‎=‎‎\bra{\phi}‎‎‎‎a_1^‎\dagger‎ a_‎2^\dagger‎‎ a_‎2‎‎ ‎a_‎1‎\ket{‎\phi}‎+‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;"> ‎‎\bra{\phi}‎‎‎‎a_1^‎\dagger ‎[‎a_‎2,‎‎ a_‎2^\dagger]‎‎ ‎a_‎1‎\ket{‎\phi}‎‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;"> ‎=‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎-‎‎‎‎‎‎\bra{\phi}‎\A{N}‎_1\ket{\phi}‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;"> ‎‎‎ \end{align}‎‎‎ ‎ ‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">In all expression we have use the fact that ‎‎$‎\A{a}_1$ ‎and ‎‎$‎\A{a}_2$ commute. At the end of the day we arrive at the following equation:‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">‎‎ \begin{equation}‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;"> ‎g^{(2)}(0)=\frac{\Ex{\A{N}_1^2-\A{N}_1}}{\Ex{\A{N_1}}^2}</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;"> \end{equation}</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;"> \end{homeworkSection}‎‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">‎%------b--------------‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">\begin{homeworkSection}{(b)}‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">‎If the input is in photon number state ‎$‎\ket{n}$ we have:‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">\begin{equation}‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">‎ ‎g^{(2)}(0)=\frac{\Ex{\A{N}_1^2-\A{N}_1}}{\Ex{\A{N_1}}^2}</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">=\frac{n^2-n}{n^2}=\frac{n-1}{n}</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">\end{equation}</p>
+<p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;"></p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">‎\end{homeworkSection}</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">\end{homeworkProblem}</p></body></html>

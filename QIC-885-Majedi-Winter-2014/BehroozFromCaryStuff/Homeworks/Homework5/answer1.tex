@@ -1,0 +1,67 @@
+\begin{homeworkProblem}
+\begin{homeworkSection}{(a)}
+A one-dimensional cavity is shown in figure \ref{fig-cavity}. It's assumed that the electrical field is single mode and it's polarized in $x$ direction. So spatial part of the field operator is simply:
+\begin{equation}\label{P1-u}
+u(\vp{r})=\sqrt{\frac{2}{V}}\sin(kz)\qquad k=\frac{m\pi}{L}
+\end{equation}
+The boundary condition at $z=L$ yields the allowed frequencies which are connected to $k_m$ by free space disperssion relation. $V$ in \eqref{P1-u} is the effective volume of the cavity.
+\begin{figure}[!h]
+\centering
+\input{cavity}
+\caption{\small 1D cavity structure}
+\label{fig-cavity}
+\end{figure}
+Using quantization rules in QED electrical field operator is:
+\begin{equation}\label{P1-1}
+\A{E}_x(z,t)=i\sqrt{\frac{\hbar\omega}{2\epsilon_0}}\left[\A{a}(t)-\A{a}^{\dagger}(t)\right]\sqrt{\frac{2}{V}}\sin(kz)
+\end{equation}
+writing down the equation of motion for the ladder operators we can simply conclude that:
+\begin{equation}
+\A{a}(t)=\A{a}(0)\exp(-i\omega t)\qquad  \A{a}^\dagger(t)=\A{a}^\dagger(0)\exp(i\omega t)
+\end{equation}
+To calculate the uncertainty of electric filed we should first consider a specific state. If we choose the photon number state we arrive at:
+\begin{equation}
+\Ex{\A{E}_x(z,t)}=i\sqrt{\frac{\hbar\omega}{\epsilon_0 V}}\bra{n}\A{a}(t)-\A{a}^{\dagger}(t)\ket{n}\sin(kz)=0
+\end{equation}
+\begin{multline}
+\Ex{\A{E}^2_x(z,t)}=\frac{\hbar\omega}{\epsilon_0 V}\bra{n}\A{a}\A{a}^{\dagger}+\A{a}^\dagger\A{a}-\A{a}^2-\A{a}^\dagger^2\ket{n}\sin^2(kz)\\
+=\frac{\hbar\omega}{\epsilon_0 V}\bra{n}2\A{N}+1\ket{n}\sin^2(kz)=\frac{\hbar\omega}{\epsilon_0 V}(2n+1)\sin^2(kz)
+\end{multline}
+where $\A{N}$ is the number operator. Combining everything we obtain:
+\begin{equation}
+\Ex{\Delta  E_x(z,t)}_n=\sqrt{\Ex{E^2_x}-\Ex{E_x}^2}=\sqrt{\frac{\hbar\omega}{\epsilon_0 V}(2n+1)}\sin(kz)
+\end{equation}
+\end{homeworkSection}
+%-------b-------------
+\begin{homeworkSection}{(b)}
+Using creation and annihilation commutation relation we get:
+\begin{align}
+&[{\A{N}},{\A{a}}]=\comut{\A{a}^{\dagger}}{\A{a}}\A{a}=-a\\
+&[{\A{N}},{\A{a}^\dagger}]=\A{a}^{\dagger}\comut{a}{\A{a}^\dagger}=a^\dagger
+\end{align}
+The electric field operator is given in \eqref{P1-1}. We can write:
+\begin{equation}\label{P1-100}
+[\A{E}_x(z,t),\A{N}]=i\sqrt{\frac{\hbar\omega}{V\epsilon_0}}\sin(kz)\left[\A{a}(t)-\A{a}^{\dagger}(t),\A{N}\right]
+=i\sqrt{\frac{\hbar\omega}{V\epsilon_0}}\sin(kz)\left\{\A{a}(t)+\A{a}^{\dagger}(t)\right\}
+\end{equation}
+\end{homeworkSection}
+%---------------c----------------
+\begin{homeworkSection}{(c)}
+Using well-known uncertainty inequality between incompatiible observables we have:
+\begin{equation}
+\Delta E_x\Delta N\geq \frac{1}{2}\abs{\Ex{\comut{\A{E}_x}{\A{N}}}}
+\end{equation}
+Using \eqref{P1-100} we can write:
+\begin{equation}
+\Delta E_x\Delta N\geq \sqrt{\frac{\hbar\omega}{4V\epsilon_0}}\sin(kz)\left\{\Ex{a}+\Ex{a^\dagger}\right\}
+\end{equation}
+Please note that in fock space $\Delta N=0$ and $\Ex{a}=\Ex{a^\dagger}=0$.
+\end{homeworkSection}
+
+
+
+
+
+
+
+\end{homeworkProblem}

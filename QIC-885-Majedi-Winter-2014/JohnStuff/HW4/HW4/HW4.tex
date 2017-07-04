@@ -1,0 +1,404 @@
+%% ****** Start of file apstemplate.tex ****** %
+%%
+%%
+%%   This file is part of the APS files in the REVTeX 4 distribution.
+%%   Version 4.1r of REVTeX, August 2010
+%%
+%%
+%%   Copyright (c) 2001, 2009, 2010 The American Physical Society.
+%%
+%%   See the REVTeX 4 README file for restrictions and more information.
+%%
+%
+% This is a template for producing manuscripts for use with REVTEX 4.0
+% Copy this file to another name and then work on that file.
+% That way, you always have this original template file to use.
+%
+% Group addresses by affiliation; use superscriptaddress for long
+% author lists, or if there are many overlapping affiliations.
+% For Phys. Rev. appearance, change preprint to twocolumn.
+% Choose pra, prb, prc, prd, pre, prl, prstab, prstper, or rmp for journal
+%  Add 'draft' option to mark overfull boxes with black boxes
+%  Add 'showpacs' option to make PACS codes appear
+%  Add 'showkeys' option to make keywords appear
+\documentclass[aps,prl,preprint,groupedaddress]{revtex4-1}
+%\documentclass[aps,prl,preprint,superscriptaddress]{revtex4-1}
+%\documentclass[aps,prl,reprint,groupedaddress]{revtex4-1}
+
+% You should use BibTeX and apsrev.bst for references
+% Choosing a journal automatically selects the correct APS
+% BibTeX style file (bst file), so only uncomment the line
+% below if necessary.
+%\bibliographystyle{apsrev4-1}
+
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{braket}
+
+\begin{document}
+
+% Use the \preprint command to place your local institutional report
+% number in the upper righthand corner of the title page in preprint mode.
+% Multiple \preprint commands are allowed.
+% Use the 'preprintnumbers' class option to override journal defaults
+% to display numbers if necessary
+%\preprint{}
+
+%Title of paper
+\title{QIC 885 - QEP HW4 Solutions}
+
+% repeat the \author .. \affiliation  etc. as needed
+% \email, \thanks, \homepage, \altaffiliation all apply to the current
+% author. Explanatory text should go in the []'s, actual e-mail
+% address or url should go in the {}'s for \email and \homepage.
+% Please use the appropriate macro foreach each type of information
+
+% \affiliation command applies to all authors since the last
+% \affiliation command. The \affiliation command should follow the
+% other information
+% \affiliation can be followed by \email, \homepage, \thanks as well.
+\author{John Rinehart}
+%\email[]{Your e-mail address}
+%\homepage[]{Your web page}
+%\thanks{}
+%\altaffiliation{}
+\affiliation{Institute for Quantum Computing}
+
+%Collaboration name if desired (requires use of superscriptaddress
+%option in \documentclass). \noaffiliation is required (may also be
+%used with the \author command).
+%\collaboration can be followed by \email, \homepage, \thanks as well.
+%\collaboration{}
+%\noaffiliation
+
+\date{\today}
+
+\begin{abstract}
+What follows are my (John Rinehart's) solutions for the fourth problem set assigned as a part of Quantum Electronics and Photonics (course number: QIC 885) taught by Dr. Hamed Majedi in the Winter term of 2014.
+\end{abstract}
+
+% insert suggested PACS numbers in braces on next line
+\pacs{}
+% insert suggested keywords - APS authors don't need to do this
+%\keywords{}
+
+%\maketitle must follow title, authors, abstract, \pacs, and \keywords
+\maketitle
+
+% body of paper here - Use proper section commands
+% References should be done using the \cite, \ref, and \label commands
+
+\section{Problem 1}
+
+Consider an object in a one-dimensional simple harmonic oscillator (SHO) that is subjected to a constant force, F for $t>0$. The object has been initiated in the ground state at $t=0$. Using the the Heisenberg picture:
+
+\begin{itemize}
+\item Find the expectation value of the position of the object.
+\item Find the expectation value of the momentum.
+\end{itemize}
+
+There are a few ways to approach this problem. I have explored some techniques even though I doubt their validity. I will highlight one of these techniques that I believe to be invalid. I will, of course, follow this up with a technique I believe is valid. The first technique will use definitions motivated by classical system responses to constant forces; it will explicitly avoid the use of a Hamiltonian. The second technique will attempt to attain the same results by use of a time-dependent Hamiltonian and the Schrodinger equation. 
+
+Technique One : Consider the force to act on the particle in such a way that the following holds $\frac{d\hat{p}}{dt} = F\hat{\mathbb{I}}$. This implies that $\hat{p}(t)=Ft\mathbb{I}+\hat{C}$, where $\hat{C}$ is the initial momentum operator $\hat{C}=\hat{p}(0)=\hat{p}_0$. Thus, the Heisenberg representation of $\hat{p}(t)=Ft\mathbb{I}+\hat{p}_0$. Assuming the mass of the object is time-independent (only valid for short times in order that the constant force does not bring the particle into a relativistic regime) $\frac{d\hat{x}(t)}{dt} = \frac{\hat{p}(t)}{m}=\frac{Ft\mathbb{I}+\hat{p}_0}{m}$. Now, this implies that $\hat{x}(t)=\frac{Ft^2\mathbb{I}}{2m}+\frac{\hat{p}_0}{m}+\hat{x}_0$. The commutator $[\hat{x}(t),\hat{p}(t)]$ should be $i\hbar$, as usual. Confirming this:
+
+\begin{align}
+&[\frac{Ft^2\mathbb{I}}{m}+\frac{\hat{p}_0}{m}+\hat{x}_0,Ft\mathbb{I}+\hat{p}_0]\\
+=&(\frac{Ft^2\mathbb{I}}{m}+\frac{\hat{p}_0}{m}+\hat{x}_0)(Ft\mathbb{I}+\hat{p}_0)-(Ft\mathbb{I}+\hat{p}_0)(\frac{Ft^2\mathbb{I}}{m}+\frac{\hat{p}_0}{m}+\hat{x}_0)\\
+=&(\frac{F^2t^3\mathbb{I}+Ft^2\hat{p}_0}{m})+(\frac{Ft\hat{p}_0+\hat{p}^2_0}{m})+(Ft\hat{x}_0+\hat{x}_0\hat{p}_0)\\
+&-(\frac{F^2t^3\mathbb{I}+Ft\hat{p}_0}{m}+Ft\hat{x}_0)-(\frac{Ft^2\hat{p}_0+\hat{p}^2_0}{m}+\hat{p}_0\hat{x}_0)\\
+=&\hat{x}_0\hat{p}_0-\hat{p}_0\hat{x}_0\\
+=&[\hat{x}_0,\hat{p}_0]\\
+=&i\hbar
+\end{align}
+
+Now, to determine the expectation value I just stick the (time-dependent) operators between the (initial) state bra and ket:
+
+$\left< \hat{x}(t) \right> =\bra{\psi_0}\hat{x}(t)\ket{\psi_0} = \bra{\psi_0}\frac{Ft^2\mathbb{I}}{2m}+\frac{\hat{p}_0}{m}+\hat{x}_0\ket{\psi_0}=\frac{Ft^2}{2m}+\bra{\psi_0}\frac{\hat{p}_0}{m}\ket{\psi_0}+\bra{\psi_0}\hat{x}_0\ket{\psi_0}$. Now, for all energy eigenstates of the harmonic oscillator, the expected value of the position is zero. A similar case is true for the expectation value of the momentum operator for an energy eigenstate. This can be verified by representing the position and momentum operators in terms of the ladder operators. The ladder operators will generate kets that are orthogonal to the bras. Thus, the inner product will be zero for an energy eigenstate. All this being said,
+
+$\bra{\psi_0}\hat{x}(t)\ket{\psi_0} = \frac{Ft^2}{2m}$, in accordance with classical expectation (Ehrenfest's theorem).
+
+1b) Using the results of previous: $\left< \hat{p}(t) \right>=\bra{\psi_0}\hat{p}(t)\ket{\psi_0} = \bra{\psi_0}Ft\mathbb{I}+\hat{p}_0\ket{\psi_0}=Ft$
+
+Technique Two: Allow the Hamiltonian for the system to be expressed as: $H = \frac{m\omega^2}{2}\hat{x}^2+\frac{1}{2m}\hat{p}^2+F\hat{x}u(t)$, where $u(t)$ indicates a Heaviside step function ($0 \text{ for } t \le 0 \text{ and } 1 \text{ for } t > 0$). I will now use this Hamiltonian to obtain equations of motion for $\hat{x}$ and $\hat{p}$. Note that during the course of generating solutions for this homework set the following work was calculated many times : $[\hat{x}^2,\hat{p}]=2i\hbar\hat{x};[\hat{p}^2,\hat{x}]=-2i\hbar\hat{p}$. These results will not be re-proven here. They are trivially obtained by considering $[\hat{x},\hat{p}]=i\hbar$.
+
+\begin{align*}
+\frac{d\hat{x}}{dt} &= \frac{i}{\hbar}[H,\hat{x}] + \frac{\partial \hat{x}}{\partial t}\\
+\frac{d\hat{x}}{dt} &= \frac{i}{\hbar}[\frac{1}{2m}\hat{p}^2,\hat{x}]+0\\
+\dot{\hat{x}} &= \frac{i}{\hbar 2m}(-i2\hbar \hat{p})\\
+\dot{\hat{x}} &= \frac{1}{m}\hat{p}
+\end{align*}
+
+And, for the momentum operator:
+
+\begin{align*}
+\frac{d\hat{p}}{dt} &= \frac{i}{\hbar}[\frac{m\omega^2}{2}\hat{x}^2,\hat{p}]+\frac{i}{\hbar}[Fu(t)\hat{x},\hat{p}]\\
+\dot{\hat{p}} &= -m\omega^2\hat{x} - F u(t)
+\end{align*}
+
+Combining these two to solve for $\ddot{\hat{x}}$ results in : $\ddot{\hat{x}}=\omega^2\hat{x}-\frac{F}{m}u(t)$. The general solution to this differential equation is $\hat{x}(t)= \hat{A}cos(\omega t)+\hat{B}sin(\omega t)-\frac{F u(t)}{m\omega^2}(1-cos(\omega t))$. Note the similarity to the previous solution (except for this added cosine term). The solutions for $\ddot{\hat{p}}$ yield : $\ddot{\hat{p}}=\omega^2\hat{p}-F\delta(t)$, where $\delta(t)$ is the Dirac-delta distribution (the derivative of the Heaviside step function). The general solution to this differential equation is : $\hat{p}(t)=\hat{A}_p cos(\omega t) +\hat{B}_p sin(\omega t) + \frac{F sin(\omega t) u(t)}{\omega}$.
+
+Thus, the expectation value of position, now, is $\langle \hat{x}\rangle=-\frac{F}{m\omega^2}(1-cos(\omega t))$. The expectation value of momentum, now, is $\langle \hat{p} \rangle=F sin(\omega t) u(t)/\omega$. Note that, now, the expectation values are time dependent. This is a direct reflection of applying a step-function. So, assuming that the problem can be broken in to two time intervals and then merged, later, is a mistake. This last technique is proper.
+
+\section{Problem 2}
+
+Consider a simple harmonic oscillator and a new operator defined as $\hat{G}(t) = m\omega\hat{x}(t)cos(\omega t) - \hat{p}(t)sin(\omega t)$.
+
+a) Can this operator be simultaneously diagonalized with the Hamiltonian? Justify your answer. \\
+b) Find the equation of motion for $\hat{G}(t)$. Can this operator be treated as a constant of the particle's motion?\\
+c) Solve the equation of motion, if the initial position and momentum are both known.
+
+\subsection{Problem 2 Solution}
+
+%To begin solving this problem let me consider what simultaneous diagonalizability means. Consider a set of matrices, M. If for all $m \in M$  there exists some particular matrix P which diagonalizes $m$ then the matrices in M are said to be simultaneously diagonalizable. The diagonal form of some matrix $m_\alpha = P^-1 m_a P$. Thus, the diagonal form of some other matrix $m_\beta = P^-1 m_b P$. Consider the product $m_\alpha m_\beta = P^-1 m_a P P^-1 m_b P = P^-1 m_a m_b P$. Consider $m_\beta m_\alpha = P^-1 m_b P P^-1 m_a P = P^-1 m_b m_a P$. Thus $[m_\alpha,m_\beta]=P^-1 [m_a,m_b] P$. Now, if  
+
+If two matrices are simultaneously diagonalizable then they share a set of eigenvectors. If they share a set of eigenvectors then it is trivially shown that these matrices commute. Thus, if $\hat{G}(t)$ is simultaneously diagonizable with the Hamiltonian then it will commute with the Hamiltonian.
+
+\begin{align*}
+[\hat{G},\hat{H}] = &[f(t)\hat{x}(t)+g(t)\hat{p}(t),\kappa \hat{x}^2 + \gamma \hat{p}^2]\\
+=& \kappa f(t)[\hat{x}(t),\hat{x}^2] + \gamma f(t)[\hat{x}(t),\hat{p}^2] +\kappa g(t)[\hat{p}(t),\hat{x}^2]+\gamma g(t)[\hat{p}(t),\hat{p}^2]
+\end{align*}
+
+Now, though not explicitly stated, $\hat{G}(t)$ has been given in the Heisenberg representation (as have $\hat{x}(t)$ and $\hat{p}(t)$). Thus, take the Hamiltonian operators $\hat{x}^2$ and $\hat{p}^2$ to be given by their Heisenberg representation, also : $\hat{x}^2 \rightarrow \hat{x}(t)^2$ and $\hat{p}^2 \rightarrow \hat{p}(t)^2$.
+
+\begin{align*}
+[\hat{G},\hat{H}]&=\gamma f(t)[\hat{x}(t),\hat{p}(t)^2]+\kappa g(t)[\hat{p}(t),\hat{x}(t)^2]\\
+&=\gamma f(t)(\hat{x}(t)\hat{p}(t)\hat{p}(t)-\hat{p}(t)\hat{p}(t)\hat{x}(t)) \\
+&\hspace{4em} + \kappa g(t) (\hat{p}(t)\hat{x}(t)\hat{x}(t)-\hat{x}(t)\hat{x}(t)\hat{p}(t)) 
+&\intertext{Using the fact that $\hat{x}\hat{p}-\hat{p}\hat{x}=i\hbar$}
+&=\gamma f(t)((i\hbar +\hat{p}(t)\hat{x}(t))\hat{p}(t)-\hat{p}(t)(\hat{x}(t)\hat{p}(t)-i\hbar))\\
+&\hspace{4em}+\kappa g(t)((\hat{x}(t)\hat{p}(t)-i\hbar)\hat{x}(t)-\hat{x}(t)(i\hbar+\hat{p}(t)\hat{x}(t))) \\
+&=\gamma f(t)(2i\hbar\hat{p}(t))+\kappa g(t)(-2i\hbar\hat{x}(t))\\
+&=2i\hbar(\gamma f(t)\hat{p}(t)-\kappa g(t)\hat{x}(t))
+\intertext{Substituting the expressions $f(t)=m\omega\cos(\omega t)$, $g(t)=-sin(\omega t)$, $\gamma = \frac{1}{2m}$, $\kappa = \frac{m\omega^2}{2}$}
+&=i\hbar(\omega cos(\omega t)\hat{p}(t)+m\omega^2sin(\omega t)\hat{x}(t))
+\end{align*}
+
+To determine the status of the last equality it is necessary to determine the time evolution of $\hat{x}(t)$ and $
+\hat{p}(t)$. I will accomplish this by analyzing the Heisenberg equations of motion.
+
+\begin{align*}
+\frac{d\hat{x}(t)}{dt}&=\frac{i}{\hbar}[H,\hat{x}(t)]
+\intertext{Now, according to my notation, $H=\kappa \hat{x}^2+\gamma \hat{p}^2$.}
+[H,\hat{x}(t)]&=[\kappa \hat{x}(t)^2,\hat{x}(t)]+[\gamma \hat{p}(t)^2,\hat{x}(t)]\\
+&= \gamma(\hat{p}(t)*(\hat{p}(t)\hat{x}(t))-(\hat{x}(t)\hat{p}(t))*\hat{p}(t))\\
+&= \gamma(\hat{p}(t)*(\hat{x}(t)\hat{p}(t)-i\hbar)-(i\hbar+\hat{p}(t)\hat{x}(t)))*\hat{p}(t)\\
+&= \gamma(-2i\hbar\hat{p}(t))\\
+\frac{d\hat{x}(t)}{dt}&=2\gamma\hat{p}(t)\\
+\end{align*}
+
+Similarly, it can be shown that \[ [H,\hat{p}(t)] = -\kappa(2i\hbar) \]. This results in a similar equation of motion for $\hat{p}(t)$: \[\frac{d\hat{p}(t)}{dt}=-2\kappa\hat{x}(t)\]
+
+Now, I have two coupled differential equations. These two allow me to solve for $\hat{x}(t)$ and $\hat{p}(t)$.
+
+\begin{alignat*}{3}
+&\frac{d\hat{x}(t)}{dt}=2\gamma\hat{p}(t) &&\hspace{4em} \text{and} &&\hspace{4em} \frac{d\hat{p}(t)}{dt}=-2\kappa\hat{x}(t)\\
+&\ddot{\hat{x}}(t)=-4\gamma\kappa \hat{x}(t) &&\hspace{4em} \text{and} &&\hspace{4em} \ddot{\hat{p}}(t)=-4\gamma\kappa \hat{p}(t) \\
+&\hat{x}(t)=\hat{A}_x \cos(\omega t)+\hat{B}_x \sin(\omega t) &&\hspace{4em} \text{and} &&\hspace{4em} \hat{p}(t)=\hat{A}_p \cos(\omega t)+\hat{B}_p \sin(\omega t)\\
+&\hat{A}_x =\hat{x}_0 &&\hspace{4em} \text{and} &&\hspace{4em}\hat{A}_p=\hat{p}_0\\
+\intertext{Using the first-order derivative relationships above one can show the following}
+&\hat{B}_x=\frac{1}{m\omega}\hat{p}_0 &&\hspace{4em} \text{and} &&\hspace{4em} \hat{B}_p=-m\omega\hat{x}_0\\
+&\hat{x}(t)=\hat{x}_0 cos(\omega t)+\frac{\hat{p}_0}{m\omega}sin(\omega t) &&\hspace{4em} \text{and}  &&\hspace{4em} \hat{p}(t)=\hat{p}_0 cos(\omega t)-m\omega\hat{x}_0 sin(\omega t)
+\end{alignat*}
+
+Now, the name of the game is to substitute the expressions for these time-evolving operators into the commutator relation obtained earlier.
+
+\begin{align*}
+[\hat{G}(t),\hat{H}(t)]&=i\hbar(\omega cos(\omega t)\hat{p}(t)+m\omega^2sin(\omega t)\hat{x}(t))\\
+&=i\hbar(\omega cos(\omega t)(\hat{p}_0 cos(\omega t) - m\omega sin(\omega t)\hat{x}_0) + m\omega^2sin(\omega t)(\hat{x}_0 cos(\omega t) + \frac{\hat{p}_0}{m\omega}sin(\omega t)))\\
+&=i\hbar\hat{p}_0\omega
+\end{align*}
+
+This, time independent form of the commutator makes it apparent that $\hat{G}(t)$ and $\hat{H}$ do not commute. Thus, since $\hat{G}(t)$ does not commute with the Hamiltonian, it is not simultaneously diagonalizable with the Hamiltonian.
+
+2b) The equation of motion of an operator is given by the Schrodinger equation. It can be shown that a valid time transformation (one that preserves inner products/expectation values) is given by a unitary transformation of the following form: $O_H(t)=e^\frac{-i\hat{H}t}{\hbar}O_S(t)e^\frac{i\hat{H}t}{\hbar}$, where $O_H(t)$ and $O_S(t)$, respectively, represent the Heisenberg-picture and Schrodinger picture of the operator. Thus, it must be the case that $\frac{dO_H(t)}{dt}=e^\frac{i\hat{H}t}{\hbar}(\frac{i\hat{H}O_S(t)}{\hbar}+\frac{d O_S(t)}{dt} + \frac{-i\hat{H}O_S(t)}{\hbar})e^\frac{-i\hat{H}t}{\hbar}=e^\frac{i\hat{H}t}{\hbar}(\frac{i}{\hbar}[\hat{H},O_S(t)]+\frac{dO_S(t)}{dt})e^\frac{-i\hat{H}t}{\hbar}=\frac{i}{\hbar}[\hat{H},O_H(t)]+e^{\frac{i\hat{H}t}{\hbar}}\frac{dO_S(t)}{dt}e^{\frac{-i\hat{H}t}{\hbar}}=\frac{i}{\hbar}[\hat{H},O_H(t)]+\frac{\partial O}{\partial t}$. Assuming the operator I have been given is one in the Schrodinger picture (where the state carries the time dependence) and using the results of the previous problem (2a) I have:
+
+\begin{align}
+\frac{d\hat{G}(t)}{dt}&=\frac{i}{\hbar}[H,\hat{G}(t)]+\frac{\partial \hat{G}(t)}{\partial t} \nonumber \\
+\frac{d\hat{G}(t)}{dt}&=\hat{p}_0\omega+(\hat{x}(t)\frac{\partial f(t)}{\partial t}+\hat{p}(t)\frac{\partial g(t)}{\partial t})
+\end{align}
+Now, evaluating the left-hand side of that expression is possible given I know the form of $\hat{G}(t)$
+
+\begin{equation}\frac{d\hat{G}(t)}{dt}=\frac{df(t)}{dt}\hat{x}(t)+f(t)\frac{d\hat{x}(t)}{dt}+\frac{dg(t)}{dt}\hat{p}(t)+g(t)\frac{\hat{p}(t)}{dt}\end{equation}	
+
+Realizing that $\frac{df(t)}{dt}=\frac{\partial f(t)}{dt}$ since f is a sole function of t (similarly with g(t)), Eq's 8 and 9 can be reduced to the following:
+
+\[f(t)\dot{\hat{x}}(t)+g(t)\dot{\hat{p}}(t)=\hat{p}_0 \omega\]
+
+Let's see if this is true by evaluating the above expression explicitly.
+
+\begin{align*}
+&m\omega cos(\omega t)(-\hat{x}_0\omega sin(\omega t) + \frac{\hat{p}_0}{m}cos(\omega t))-sin(\omega t)(-\omega \hat{p}_0 sin(\omega t) - m\omega^2\hat{x}_0 cos(\omega t))\\
+&\hspace{8em}=\hat{p}_0 \omega (cos^2(\omega t)+sin^2(\omega t)) = \hat{p}_0 \omega
+\end{align*}
+
+This is good. Everything is self-consistent. Now, let us go back to the point at which I have $\frac{d\hat{G}(t)}{dt}$ on one side and the algebra on the other.
+
+\begin{align*}
+\frac{d\hat{G}(t)}{dt}&=\hat{p}_0\omega + \frac{\partial f}{\partial t}\hat{x}(t) + \frac{\partial g}{\partial t}\hat{p}(t)\\
+&=\hat{p}_0\omega + -m\omega^2sin(\omega t)(\hat{x}_0cos(\omega t)+\frac{\hat{p}_0}{m\omega}sin(\omega t)) - \omega cos(\omega t)(\hat{p}_0 cos(\omega t) - m \omega sin(\omega t) \hat{x}_0)\\
+&=\hat{p}_0\omega - \hat{p}_0\omega (cos^2(\omega t)+sin^2(\omega t))\\
+&= 0
+\end{align*}
+
+Thus, amazingly enough (or, by construction), the operator $\hat{G}(t)$ is a constant of motion.
+
+2c) To find $\hat{G}(t)$ all that needs to be done is to substitute the expressions for $\hat{x}(t)$ and $\hat{p}(t)$.
+
+\begin{align*}
+\hat{G}(t)=m\omega cos(\omega t)(\hat{x}_0cos(\omega t)+\frac{\hat{p}_0}{m\omega}sin(\omega t))-sin(\omega t)(\hat{p}_0 cos(\omega t) - m \omega sin(\omega t) \hat{x}_0)\\
+=m\omega \hat{x}_0
+\end{align*}
+
+\section{Problem 3}
+Consider a simple harmonic oscillator that is suddenly displaced from its equilibrium point, namely $x = 0$ to $x = x_0$ e.g. much faster than the oscillation period. An example of such system can be an electron in a simple harmonic oscillator subject to a constant electric ﬁeld.
+
+a) Write down the Hamiltonian of the displaced harmonic oscillator.
+
+Taking a guess at what the Hamiltonian should be. It looks like a Hamiltonian with a shifted center position. $\hat{H} = \frac{m\omega^2}{2}(\hat{x}-x_0)^2 + \frac{1}{2m}\hat{p}^2$. Allowing the displacement to happen over a much shorter time scale than an oscillation allows for this form of the Hamiltonian.
+
+b) Use the Dirac picture to find $\ket{\psi_D(t)}$ and position operator $\hat{x}_D(t)$. 
+
+Using the commutation relations from previous, I can find the time evolution of $\hat{x}(t)$ and $\hat{p}(t)$. Let's find these.
+
+\begin{align*}
+\frac{d\hat{x}}{dt} &= \frac{i}{\hbar}[H,x] + \frac{\partial x}{\partial t}\\
+&= \frac{i}{2m\hbar}[\hat{p}^2,x] + 0 \\
+&= \frac{\hat{p}}{m}
+\end{align*}
+
+Now, the equation for $\hat{p}$
+\begin{align*}
+\frac{d\hat{p}}{dt}&=\frac{i}{\hbar}[H,\hat{p}]+\frac{\partial \hat{p}}{\partial t}\\
+&=\frac{i m\omega^2}{2 \hbar}([\hat{x}^2,\hat{p}]-[2x_0\hat{x},\hat{p}])+0\\
+&=\frac{i m\omega^2}{2 \hbar}(2i\hbar(\hat{x}-x_0\mathbb{I}))\\
+&=-m\omega^2(\hat{x}-x_0\mathbb{I})
+\end{align*}
+
+The first equation tells me that $\frac{\dot{\hat{x}}}{m} = \hat{p}$ and the second equation tells me that $\dot{\hat{p}} = -m\omega^2(\hat{x}-x_0\mathbb{I})$. Combining these two yields the following : $\ddot{\hat{x}}=-\omega^2(\hat{x}-x_0\mathbb{I})$. The solution to this differential equation is the following $\hat{x}=\hat{A}cos(\omega t)+\hat{B}sin(\omega t) + x_0\mathbb{I}$. So, this is $\hat{x}(t)$. With initial conditions it is possible to solve for the initial conditions ($\hat{A}$ and $\hat{B}$).
+To solve for $\ket{\psi(t)}$ it is necessary to time evolve the initial state. The generator of time translations is the Hamiltonian. The Schrodinger equation tells me that $\frac{i}{\hbar}\frac{d\psi(t)}{dt}=\hat{H}\psi(t)$.
+
+Thus, the time-evolved state can be expressed as $\ket{\psi(t)}=e^{-\frac{iHt}{\hbar}}\ket{\psi(0)}$. Were I to be given the initial state of the particle then I could solve for the time evolution exactly.
+
+Another way to solve the problem involves the used of a translated coordinate system. Consider the harmonic oscillator Hamiltonian in terms of its creation and annihilation operators $H = \hbar \omega (a^\dagger a + \frac{1}{2})+ F (a + a^\dagger)$. Now, consider introducing a shifted version of these operators : $A = A + \frac{F}{\hbar \omega}$ and its hermitian adjoint. The equations of motion of $A$ and $A^\dagger$ are the same as those of $a$ and $a^\dagger$.
+
+However, I can now rewrite my Hamiltonian as $H = \hbar \omega ((B^\dagger - \frac{F}{\hbar \omega})(B-\frac{F}{\hbar \omega})+\frac{1}{2})-\frac{F}{\hbar^2 \omega}$. This is just the Hamiltonian of a harmonic oscillator with slightly lower energy eigenstates.
+
+Using the following relationship $\dot{\hat{x}}=\frac{i}{\hbar}[H,x]+\frac{\partial \hat{x}}{\partial t}$, $\hat{x}(t)$ can be shown to be $x(t)=\hat{x}_0cos(\omega t) + \frac{p_0}{m\omega}sin(\omega t) - \frac{F}{m\omega^2}$. I.e. The particle oscillates about a new equilibrium position $\frac{F}{m\omega^2}$.
+
+Continuing, briefly, the energy eigenstates can be shown to be : $\ket{n}=\frac{1}{\sqrt{n!}}(A^\dagger)^n\ket{0}$. This approach was motivated by discussion with peers and by the analysis done in A.F.J. Levi's ``Applied Quantum Mechanics''.
+
+\section{Problem 5}
+
+A spinless object is described by the wavefunction $\psi = A(x+y+2z)e^{-\alpha r}$ where A and $\alpha$ are real constant numbers and $r=\sqrt{x^2+y^2+z^2}$. 
+
+\begin{enumerate}
+	\item What is the total angular momentum of the object?
+	
+	Note that the position representation of the angular momentum operators $L_x$, $L_y$ and $L_z$ are $L_x = (-i\hbar) (y\frac{\partial}{\partial z} - z\frac{\partial}{\partial y})$, $L_y = (-i\hbar) (z\frac{\partial}{\partial x} - x\frac{\partial}{\partial z})$ and $L_z = (-i\hbar) (x\frac{\partial}{\partial y} - y\frac{\partial}{\partial x})$. It is reasonable, then to discuss an angular momentum-squared operator that looks like : $L^2=L_x^2+L_y^2+L_z^2 = z^2(p_y^2+p_x^2)+y^2(p_x^2+p_z^2)+x^2(p_y^2+p_z^2)-yp_yp_zz-zp_zp_yy-zp_zp_xx-xp_xp_xz-xp_xp_yy-yp_yp_xx$. I can use a computer algebra system to determine what the effect of this operator acting on $\psi$ is. If the effect of this operator acting on $\psi$ is to multiply $\psi$ by some constants then I know the total angular momentum is the square root of these multiplicative constants. Attached are the computer algebra system results.
+	
+	The result of $L^2$ acting on $\psi$ was to multiply the $\psi$ by 2($\hbar$ being called one, temporarily). Thus, the total angular momentum squared is 2 $\hbar^2$ and the total angular momentum is $\sqrt{2}\hbar$ (see attached Mathematica code and output).
+	
+	\item What is the expectation value of the z-component of the angular momentum?
+	
+	Formally, to calculate the expectation value of the z-component of momentum I would perform the following operation $\iiint_{all space}{\psi(\vec{r})\hat{L_z}\psi(\vec{r})}=-i\hbar\iiint_{all space}{\psi(\vec{r})(\hat{x}\frac{\partial}{\partial y} - y \frac{\partial}{\partial  x})\psi(\vec{r})}$. The result of letting those operators act on the $\psi(\vec(r))$ given above results in the following integrand: $\psi^*(x\frac{\partial}{\partial y} - y \frac{\partial}{\partial x})\psi = A^2e^{-2a\sqrt{x^2+y^2+z^2}}(x-y)(x+y+2z) $ (of course $\psi$ is real, here), which is odd in all terms except the $x^2$ and $y^2$ terms. However, these terms differ in sign. Thus, they will contribute equal and opposite amounts and the integral of this expression over all space is zero. I.e. $\langle \hat{L}_z \rangle = 0$.
+	
+	\item If the z-component of the angular momentum was measured, what is the probability of obtaining + $\hbar$?
+	
+	The total amount of angular momentum stored in the system is $\sqrt{2}\hbar$ which allows for $0 \hbar$, $+1 \hbar$ and $-1 \hbar$ amounts of angular momentum for a measurement of $L_z$. There must be an explicit way to determine this value. However, I will attempt to supply an answer that will not use explicit calculation. With an ensemble measurement of $L_z$ I will get $0 \hbar$, on average (i.e. this is my expecation value). I have three possible values to obtain. Thus, without more information it is only reasonable to assume equal apriori probablities for obtaining $0 \hbar$, $+1 \hbar$ and $-1 \hbar$. So, I believe the probability of receiving $+1 \hbar$, given a measurement of this wave function is 1/3.
+	
+	A more proper result would be obtained if the wave function would be decomposed into its Bessel-components and the amplitudes on each of those basis functions was used to determine the probability of measuring $L_z = +1 \hbar$.
+\end{enumerate}
+
+
+
+% Put \label in argument of \section for cross-referencing
+%\section{\label{}}
+\subsection{}
+\subsubsection{}
+
+% If in two-column mode, this environment will change to single-column
+% format so that long equations can be displayed. Use
+% sparingly.
+%\begin{widetext}
+% put long equation here
+%\end{widetext}
+
+% figures should be put into the text as floats.
+% Use the graphics or graphicx packages (distributed with LaTeX2e)
+% and the \includegraphics macro defined in those packages.
+% See the LaTeX Graphics Companion by Michel Goosens, Sebastian Rahtz,
+% and Frank Mittelbach for instance.
+%
+% Here is an example of the general form of a figure:
+% Fill in the caption in the braces of the \caption{} command. Put the label
+% that you will use with \ref{} command in the braces of the \label{} command.
+% Use the figure* environment if the figure should span across the
+% entire page. There is no need to do explicit centering.
+
+% \begin{figure}
+% \includegraphics{}%
+% \caption{\label{}}
+% \end{figure}
+
+% Surround figure environment with turnpage environment for landscape
+% figure
+% \begin{turnpage}
+% \begin{figure}
+% \includegraphics{}%
+% \caption{\label{}}
+% \end{figure}
+% \end{turnpage}
+
+% tables should appear as floats within the text
+%
+% Here is an example of the general form of a table:
+% Fill in the caption in the braces of the \caption{} command. Put the label
+% that you will use with \ref{} command in the braces of the \label{} command.
+% Insert the column specifiers (l, r, c, d, etc.) in the empty braces of the
+% \begin{tabular}{} command.
+% The ruledtabular enviroment adds doubled rules to table and sets a
+% reasonable default table settings.
+% Use the table* environment to get a full-width table in two-column
+% Add \usepackage{longtable} and the longtable (or longtable*}
+% environment for nicely formatted long tables. Or use the the [H]
+% placement option to break a long table (with less control than 
+% in longtable).
+% \begin{table}%[H] add [H] placement to break table across pages
+% \caption{\label{}}
+% \begin{ruledtabular}
+% \begin{tabular}{}
+% Lines of table here ending with \\
+% \end{tabular}
+% \end{ruledtabular}
+% \end{table}
+
+% Surround table environment with turnpage environment for landscape
+% table
+% \begin{turnpage}
+% \begin{table}
+% \caption{\label{}}
+% \begin{ruledtabular}
+% \begin{tabular}{}
+% \end{tabular}
+% \end{ruledtabular}
+% \end{table}
+% \end{turnpage}
+
+% Specify following sections are appendices. Use \appendix* if there
+% only one appendix.
+%\appendix
+%\section{}
+
+% If you have acknowledgments, this puts in the proper section head.
+%\begin{acknowledgments}
+% put your acknowledgments here.
+%\end{acknowledgments}
+
+% Create the reference section using BibTeX:
+
+%\bibliography{basename of .bib file}
+
+\end{document}
+%
+% ****** End of file apstemplate.tex ******
+

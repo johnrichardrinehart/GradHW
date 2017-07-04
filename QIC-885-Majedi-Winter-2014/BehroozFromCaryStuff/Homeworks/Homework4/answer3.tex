@@ -1,0 +1,99 @@
+\begin{homeworkProblem}
+The spinor part of the Hamiltonian describing time evolution of  an half spin system such as electron inside a uniform but time-varying magnetic filed is:
+\begin{equation}
+H=-\B{\mu}.\vp{B}=-\frac{gq}{2m}\vp{S}.\vp{B}=-\mu_0\B{\sigma}.\vp{B}
+\end{equation}
+ where $g$ is gyromagnetic ration and $\mu_0$ is defined as:
+ \begin{equation}
+ \mu_0=\frac{qg}{2m}
+ \end{equation}
+Explicitly the Hamiltonian is:
+\begin{equation}
+H=-\mu_0B_0
+\begin{pmatrix}
+\cos\theta & \sin\theta\left[\cos\omega t-i\sin\omega t\right]\\
+\sin\theta\left[\cos\omega t+i\sin\omega t\right] & -\cos\theta
+\end{pmatrix}
+\end{equation} 
+For notational convenience we write the Hamiltonian in terms of two new parameters:
+\begin{equation}
+H=-\hbar
+\begin{pmatrix}
+\omega_1              & \gamma e^{-i\omega t}\\
+\gamma e^{i\omega t} & -\omega_1 
+\end{pmatrix}
+\end{equation}
+where:
+\begin{align*}
+\hbar\omega_1 &=\mu_0B_0\cos\theta\\
+ \hbar\gamma &=\mu_0B_0\sin\theta
+\end{align*}
+The Schr\"odinger equation now reads:
+\begin{equation}\label{P3-S}
+i\hbar\frac{d}{dt}
+\begin{pmatrix}
+c_1(t)\\
+c_2(t)
+\end{pmatrix}
+=
+-\hbar\begin{pmatrix}
+\omega_1              & \gamma e^{-i\omega t}\\
+\gamma e^{i\omega t} & -\omega_1 
+\end{pmatrix}
+\begin{pmatrix}
+c_1(t)\\
+c_2(t)
+\end{pmatrix}
+\end{equation}
+In the absense of the time dependent part of the Hamiltonian the solution is simply $c_1(t)=A\exp(i\omega_1 t)$ and $c_2(t)=B\exp(-i\omega_1 t)$. It's reasonable to keep the exponential part for the new Hamiltonian. Two coupled first order differential equations given in \eqref{P3-S} can be extremely simplified by the following change of varibles:
+\begin{equation}
+c_1(t)=A(t)\exp(i\omega_1 t)\qquad  c_2(t)=B(t)\exp(-i\omega_1 t)
+\end{equation}   
+Two new coupled equations are:  
+\begin{equation}
+\left\{
+\begin{array}{l}
+i\frac{dA(t)}{dt}=-\gamma \exp\left[-i(\omega +2\omega_1)t\right]B(t)\\
+i\frac{dB(t)}{dt}=-\gamma \exp\left[+i(\omega +2\omega_1)t\right] A(t)
+\end{array}\right.
+\end{equation}
+If we solve $B(t)$ from the first equation and put it in the second one, we obtain:
+\begin{equation}
+\frac{d^2A}{dt^2}+i\alpha \frac{dA}{dt}+\gamma^2 A=0
+\end{equation}
+where $\alpha$ has been defined for notational convenience:
+\begin{equation}
+\alpha=\omega+2\omega_1
+\end{equation}
+because of symmetry the same equation holds for $B(t)$ we should change the sign of $\alpha$:
+\begin{equation}
+\frac{d^2B}{dt^2}-i\alpha \frac{dB}{dt}+\gamma^2 B=0
+\end{equation}  
+The general solution for two differential equations are simply:
+\begin{align}
+&A(t)=A_{+} \exp(i\Omega_+t)+A_-\exp(i\Omega_-t)\\
+&B(t)=B_+\exp(-i\Omega_+t)+B_-\exp(-i\Omega_-t)
+\end{align}
+where $\Omega_+$ and $\Omega_-$ are defined as:
+\begin{equation}
+\Omega_\pm=-\frac{\alpha}{2}\pm\sqrt{\frac{\alpha^2}{4}+\gamma^2}
+\end{equation}
+The constant coefficients can be writen in terms of $A(0)$ and $B(0)$ :
+\begin{equation}
+\left\{
+\begin{array}{rcl}
+A(0) &=&A_++A_- &\\
+B(0) &=&B_++B_- &\\
+\left.\frac{dA}{dt}\right|_{t=0}=i\gamma B(0)&=&+i\Omega_+A_++i\Omega_-A_-\\
+\left.\frac{dB}{dt}\right|_{t=0}=i\gamma A(0)&=&-i\Omega_+B_+-i\Omega_-B_-
+\end{array}\right.
+\end{equation}
+These eqquation lead to:
+\begin{align}
+A_+&=\frac{\Omega_+ A(0)-\gamma B(0)}{\Omega_+-\Omega_-}\\
+A_-&=-\frac{\Omega_+ A(0)-\gamma B(0)}{\Omega_+-\Omega_-}\\
+B_+&=-\frac{\Omega_- B(0)+\gamma A(0)}{\Omega_+-\Omega_-}\\
+B_-&=\frac{\Omega_+ B(0)+\gamma a(0)}{\Omega_+-\Omega_-}
+\end{align}
+This problem is a general spin procession problem which shows that a time varying magnetic filed which rotates along a prescribed axis changes the spin state by two diferent frequency components. 
+\end{homeworkProblem}

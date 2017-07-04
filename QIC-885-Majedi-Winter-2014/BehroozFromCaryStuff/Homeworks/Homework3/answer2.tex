@@ -1,0 +1,109 @@
+\begin{homeworkProblem}
+\begin{homeworkSection}{(a)}
+The Hamiltonian for a \textit{driven simple harmonic oscilator} is:
+\begin{equation}\label{P2-H}
+H=\frac{p^2}{2m}+\frac{1}{2}m\omega^2 x^2-xF(t)-pG(t)
+\end{equation}
+Canonical equations of motion reads:
+\begin{align}
+\dot{x}&=\pd{H(x,p,t)}{p}=\frac{p}{m}-G(t)\label{P2-1}\\
+\dot{p}&=-\pd{H(x,p,t)}{x}=-m\omega^2 x+F(t)\label{P2-2}
+\end{align} 
+Combining \eqref{P2-1} and \eqref{P2-2} leads to the following differential equation for $x(t)$:
+\begin{equation}
+\ddot{x}=\frac{1}{m}\dot{p}-\frac{dG(t)}{dt}=-\omega^2 x+\frac{F(t)}{m}-\frac{dG(t)}{dt}
+\end{equation}
+\end{homeworkSection}
+%-----b-------------------
+\begin{homeworkSection}{(b)}
+We define ladder operators like an unperturbed SHO:
+\begin{equation}
+a=\sqrt{\frac{m\omega}{2\hbar}}\left(x+\frac{ip}{m\omega}\right)\qquad
+a^\dagger=\sqrt{\frac{m\omega}{2\hbar}}\left(x-\frac{ip}{m\omega}\right)
+\end{equation}
+$x$ and $p$ can be calculated in terms of $a$ and $a^\dagger$:
+\begin{equation}\label{P2-3}
+x=\sqrt{\frac{\hbar}{2m\omega}}\left(a+a^{\dagger}\right)\qquad
+p=-im\omega\sqrt{\frac{\hbar}{2m\omega}}\left(a-a^{\dagger}\right)
+\end{equation}
+The commutation relation between $a$ and $a^\dagger$ is:
+\begin{equation}
+[a,a^\dagger]=\frac{m\omega}{2\hbar}\left[x+\frac{ip}{m\omega},x-\frac{ip}{m\omega}\right]=\frac{1}{i\hbar}[x,p]=1
+\end{equation}
+First two terms in the right hand side of \eqref{P2-H} can be simply replaced by $\hbar\omega(a^\dagger a+1/2)$ and for the other terms we use \eqref{P2-3} so we get:
+\begin{equation}\label{P2-H2}
+H=\hbar\omega\left(a^\dagger a+\frac{1}{2}\right)-\sqrt{\frac{\hbar}{2m\omega}}\left\{F(t)+im\omega G(t)\right\} a-\sqrt{\frac{\hbar}{2m\omega}}\left\{F(t)-im\omega G(t)\right\} a^\dagger
+\end{equation} 
+\end{homeworkSection}
+%--------------------c----------------------------
+\begin{homeworkSection}{(c)} 
+ In the Heisenberg picture operators are time dependent and equations of motion are simply:
+\begin{align}
+\frac{da}{dt}&=\frac{1}{i\hbar}[a,H]+\pd{a}{t}\\
+\frac{da^\dagger}{dt}&=\frac{1}{i\hbar}[a^\dagger,H]+\pd{a^\dagger}{t}
+\end{align}
+By inserting the Hamiltonian from \eqref{P2-H2} and using $a$ and $a^\dagger$  commutation relation we obtain:
+\begin{align}
+\frac{da}{dt}&=-i\omega [a,a^\dagger a+\frac{1}{2}]-\sqrt{\frac{\hbar}{2m\omega}}\left\{F(t)-im\omega G(t)\right\}=-i\omega a-\sqrt{\frac{\hbar}{2m\omega}}\left\{F(t)-im\omega G(t)\right\}\label{P2-400}\\
+\frac{da^\dagger}{dt}&=+i\omega [a^\dagger,a^\dagger a+\frac{1}{2}]-\sqrt{\frac{\hbar}{2m\omega}}\left\{F(t)+im\omega G(t)\right\}=i\omega a -\sqrt{\frac{\hbar}{2m\omega}}\left\{F(t)+im\omega G(t)\right\}\label{P2-401}
+\end{align}
+To solve these differential equations we use a new operator which is defined by:
+\begin{equation}
+Q=a e^{i\omega t}
+\end{equation}
+Using this definition \eqref{P2-400} and \eqref{P2-401} are translated as 
+\begin{align}
+\frac{da}{dt}&=-i\omega Q e^{-i\omega t}+\frac{dQ}{dt}e^{-i\omega t}=-i\omega Q e^{-i\omega t}-\sqrt{\frac{\hbar}{2m\omega}}\left\{F(t)-im\omega G(t)\right\}\\
+\frac{da^\dagger}{dt}&=+i\omega Q^\dagger e^{i\omega t}+\frac{dQ^\dagger}{dt}e^{+i\omega t}=+i\omega Q^\dagger e^{i\omega t}-\sqrt{\frac{\hbar}{2m\omega}}\left\{F(t)+im\omega G(t)\right\}
+\end{align}
+So simply we get:
+\begin{equation}
+Q(t)=Q(0)-\sqrt{\frac{\hbar}{2m\omega}}\int_{t'=0}^t \left\{F(t')-im\omega G(t')\right\}e^{i\omega t'}dt'
+\end{equation}
+therefore
+\begin{align}
+a(t)&=a(0)e^{-i\omega t}-\sqrt{\frac{\hbar}{2m\omega}}e^{-i\omega t}\int_{t'=0}^t \left\{F(t')-im\omega G(t')\right\}e^{i\omega t'}dt'\\
+a^\dagger(t)&=a^\dagger(0)e^{i\omega t}-\sqrt{\frac{\hbar}{2m\omega}}e^{i\omega t}\int_{t'=0}^t \left\{F(t')+im\omega G(t')\right\}e^{-i\omega t'}dt'
+\end{align}
+\end{homeworkSection}
+\begin{homeworkSection}{(d)}
+It's assumed that $F(t)$ and $G(t)$ just act in $0<t<T$ and the initial state is the ground state of the original Hamiltonian. To find the final state at $t=T$ we use Sch\"odinger picture. We try to find time evolution operator which can predict state vector in an arbitary time. From schr\"odinger equation we have:
+\begin{equation}\label{P2-500}
+i\hbar\pd{U(t,0)}{t}=HU(t,0)
+\end{equation}
+In above equation $U(t,0)$ is the time evolution operator statevector at a given time is:
+\begin{equation}
+\ket{\Psi(t)}=U(t,0)\ket{\Psi(t=0)}
+\end{equation} 
+First note that:
+\begin{equation}
+[H(t_1),H(t_2)]=[H_0-xF(t_1)-pG(t_1),H_0-xF(t_2)-pG(t_2)]\neq 0
+\end{equation}
+Since Hamiltonian in two different time are not commuative we can not solve \eqref{P2-500} by direct integartion similar to the analytic function in a simple commutative complex space. Instead we have to use \textit{Dyson series} \cite{sakurai}. In this case time evolution operator is:
+\begin{equation}
+U(t,0)=1+\sum\limits_{n=1}^{\infty}\left(\frac{-i}{\hbar}\right)^n\int_0^{t}dt_1\int_0^{t_1}dt_2\cdots\int_0^{t_{n-1}}dt_nH(t_1)H(t_2)\cdots H(t_n)
+\end{equation}
+The desired quantity is the correlation of the state $\ket{n}$ and the evolved wavefunction at $t=T$. 
+\begin{equation}
+p(n)=\abs{\bracket{n}{\Psi(T)}}^2=\abs{\bracket{n}{\Psi(t)}}^2\qquad\text{for $t>T$} 
+\end{equation} 
+We may calculate $U_{n0}$ to get $p(n)$:
+\begin{equation}
+U_{n0}(T,0)=\delta_{n0}+\sum\limits_{m=1}^{\infty}\left(\frac{-i}{\hbar}\right)^m\int_0^{T}dt_1\int_0^{t_1}dt_2\cdots\int_0^{t_{m-1}}dt_m\bra{n}H(t_1)H(t_2)\cdots H(t_m)\ket{0}
+\end{equation}
+If we insert unity operator between H's we arrive at:
+\begin{multline}\label{P2-bbb}
+U_{n0}(T,0)=\delta_{n0}+\\
+\sum\limits_{m=1}^{\infty}\sum\limits_{k_1,k_2,\cdots}\left(\frac{-i}{\hbar}\right)^m\int_0^{T}dt_1\int_0^{t_1}dt_2\cdots\int_0^{t_{m-1}}dt_m\bra{n}H(t_1)\ket{k_1}\bra{k_1}H(t_2)\ket{k_2}\cdots \bra{k_{m-1}}H(t_m)\ket{0}
+\end{multline}
+Please note that $H$ connects contiguous states , i.e. the Hamiltonian at any instanse of time can just connect  $\ket{i}$ to $\ket{i}$ , $\ket{i-1}$ and $\ket{i+1}$. This statement means that we need at least $n$ H's to get a nonzero corrlation in \eqref{P2-bbb}. So the first n terms in the summation are zero so:
+ \begin{multline}\label{P2-bbb}
+U_{n0}(T,0)=\delta_{n0}+\\
+\sum\limits_{m=n}^{\infty}\sum\limits_{k_1,k_2,\cdots}\left(\frac{-i}{\hbar}\right)^m\int_0^{T}dt_1\int_0^{t_1}dt_2\cdots\int_0^{t_{m-1}}dt_m\bra{n}H(t_1)\ket{k_1}\bra{k_1}H(t_2)\ket{k_2}\cdots \bra{k_{m-1}}H(t_m)\ket{0}
+\end{multline}
+The matrix elements of $H(t)$ can be explicitly calculated through the use of \eqref{P2-H2} :
+\begin{equation}
+\bra{k}H(t)\ket{l}=\hbar\omega\delta{kl}-\sqrt{\frac{l\hbar}{2m\omega}}\left\{F(t)+im\omega G(t)\right\}\delta_{k,l-1}-\sqrt{\frac{(l+1)\hbar}{2m\omega}}\left\{F(t)-im\omega G(t)\right\}\delta_{k,l+1}
+\end{equation}
+\end{homeworkSection}
+\end{homeworkProblem}

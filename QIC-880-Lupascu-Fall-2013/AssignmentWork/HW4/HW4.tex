@@ -1,0 +1,36 @@
+\documentclass[12pt]{article}
+\usepackage[left=2cm,top=1cm,right=3cm,bottom=1cm]{geometry}
+\usepackage{amsmath}
+\usepackage{graphicx}
+
+\begin{document}
+
+
+\begin{align}
+e^{i<\phi(t)>} = e^{-\frac{1}{2}\int_0^\tau d t_1 \int_0^\tau d t_2 \frac{1}{2\pi}\int_{-\infty}^{\infty}e^{-i\omega t} S(\omega)d\omega} \nonumber
+\end{align}
+
+Now, for this problem, considering the pulse sequence, I can break the integrals over time into the sum of two integrals. The first integral is over the first free-precession period and the second integral is over the second free-precession period.
+
+Allow the time origin to be placed at the beginning of the first free-precession period so that the integral from 0 to $\tau$ becomes a sum that resembles the following:
+
+\begin{align}
+e^{-\frac{1}{2}(\int_0^{\tau_1} d t_1 + \int_{\tau_1+t_\pi}^{\tau_1+t_\pi+\tau_2} d t_1) (\int_0^{\tau_1} d t_2 + \int_{\tau_1+t_\pi}^{\tau_1+t_\pi+\tau_2} d t_2) \frac{1}{2\pi}\int_{-\infty}^{\infty}e^{-i\omega t}S(\omega) d\omega}  \nonumber
+\end{align}
+Pulling my time integrals inside the frequency integrals yields the following:
+
+\begin{align}
+e^{-\frac{1}{2}\frac{1}{2\pi}\int_{-\infty}^{\infty}(\int_0^{\tau_1} e^{-i\omega t} dt + \int_{\tau_1+t_\pi}^{\tau_1+t_\pi+\tau_2} e^{-i\omega t} dt )^2 S(\omega) d\omega} \nonumber
+\end{align}
+
+The ''square'' comes from the understanding that the two time integrals will yield the same quantity when integrated from 0 to $\tau$. Thus, the result of performing the integral twice will just be to square the integral evaluated once. Performing the time integral results in the following :
+
+\begin{align}
+&e^{-\frac{1}{2}\frac{1}{2\pi}\int_{-\infty}^{\infty}(\int_0^{\tau_1} e^{-i\omega t} dt + \int_{\tau_1+t_\pi}^{\tau_1+t_\pi+\tau_2} e^{-i\omega t} dt )^2 S(\omega) d\omega} \nonumber \\
+&e^{-\frac{1}{2}\frac{1}{2\pi}\int_{-\infty}^{\infty}(e^{\frac{-i\omega \tau_1}{2}} \tau_1 sinc(\frac{\omega \tau_1}{2}) + e^{-i \omega (\tau_1 +t_\pi + \frac{\tau_2}{2}}) \tau_2 sinc(\frac{\omega \tau_2}{2}))^2 S(\omega) d\omega} \nonumber \\
+&e^{-\frac{1}{2}\frac{1}{2\pi}\int_{-\infty}^{\infty}(e^{-i\omega \tau_1} \tau_1^2 sinc^2(\frac{\omega \tau_1}{2}) + e^{-i \omega (2\tau_1 +2t_\pi + \tau_2)} \tau_2^2 sinc^2(\frac{\omega \tau_2}{2}) + e^{-i \omega (\frac{3\tau_1}{2}+t_\pi+\frac{\tau_2}{2})} \tau_1 \tau_2 sinc(\frac{\omega\tau_1}{2})sinc(\frac{\omega\tau_2}{2})) S(\omega) d\omega} \nonumber
+\end{align}
+
+My questions are these: Is this logic sound (even if the math isn't expressed as formally as possible)? Also, am I allowed to shift my time coordinates for the two integrals in such a way as to avoid having all these complex exponentials float around? I want to make my filter function real so that it's easier to analyze. Am I allowed to change my first integral bounds to $-\tau_1/2$ to $\tau_1/2$ and, likewise, place the second integral's bounds in the middle of the second free precession (eliminating the imaginary exponentials)?
+
+\end{document}

@@ -1,0 +1,155 @@
+<!1,2013031301:30:45>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN" "http://www.w3.org/TR/REC-html40/strict.dtd">
+<html><head><meta name="qrichtext" content="1" /><meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><style type="text/css">
+p, li { white-space: pre-wrap; }
+</style></head><body>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">\begin{homeworkProblem}‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">‎\begin{homeworkSection}‎{(a)}‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">It's ‎assumed ‎that a‎‎ ‎simple ‎harmonic ‎oscilator ‎suddenly ‎displaced ‎from ‎its ‎equilibrium ‎point. ‎We ‎can ‎appoximately ‎model ‎this ‎sudden ‎change ‎as a‎ ‎perturbing ‎potential ‎whose ‎time ‎dependence ‎is ‎simply a‎ ‎step ‎function:‎‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">\begin{‎equation‎}‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">‎H=‎\left\{</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">\begin{array}‎{‎ll‎}‎‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">\frac{p^2}{2m}‎+\frac{1}{2}m\omega^2 ‎x^2 &amp; t&lt;0\\‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">‎\frac{p^2}{2m}+\frac{1}{2}m\omega^2(x-x_0)^2 &amp; t&gt;0</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">\end{array}‎‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">\right.‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">\end{‎equation‎}‎‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">Or‎:‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">\begin{equation}\label{P3-H}‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">‎H=\frac{p^2}{2m}‎+\frac{1}{2}m\omega^2 ‎x^2 ‎+u(t)\left\{\frac{1}{2}m\omega^2 ‎x_0‎^‎2‎-m\omega x_0‎x‎\right\}‎=H_0+V(t)‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">\end{equation}</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">‎‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">In ‎\eqref{‎P3-H‎} ‎‎$‎u(t)‎$ ‎is ‎the ‎unite ‎step ‎function.‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">\end{homeworkSection}‎‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">‎\begin{homeworkSection}{(b)}‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">‎In Dirac picture (iteraction picture) the state of the wave function is manipulated by the original Hamiltonian as:‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">\begin{equation}‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">\ket{\Psi_D(t)}=\exp\left(\frac{iH_0t}{\hbar}\right)\ket{\Psi_s(t)}‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">\end{equation}‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">where ‎‎$‎\ket{\Psi_s(t)}‎$ ‎is‎ the state ket in the Schr\&quot;odinger picture. ‎Evolution of the wavefunctiuon in the interaction picture can be determined by:‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">‎\begin{equation}‎\label{P3-I}‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">‎i\hbar\pds{t}‎\ket{\Psi_D(t)}=V_I\ket{\Psi_D(t)}‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">\end{equation}‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">‎In ‎this ‎equation ‎‎$‎V_I‎$ ‎designates ‎the ‎purterbing ‎potential ‎in ‎the ‎interaction ‎picture:‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">\begin{equation*}‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">V_I=‎\exp\left(\frac{iH_0t}{\hbar}‎\right)V(t)\exp\left(\frac{‎-‎iH_0t}{\hbar}\right)‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">\end{equation*}‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">‎‎$‎V_I(t)$ can be explicitly calculated through the use of this identity:‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">\begin{equation}‎‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">[A,B]=\lambda ‎A\quad\Lrw\quad ‎Ae^{B}=e^{\lambda}e^{B}A‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">\end{equation}</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">since ‎$‎[\A{a}_S,H]=\hbar\omega \A{a}_S$ ‎and ‎$‎[\A{‎a}_S^\dagger‎,H]=‎-‎\hbar\omega ‎\A{a}_S^\dagger‎$ ‎‎we ‎get:‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">\begin{‎equation‎}‎‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">‎\left.‎\begin{array}‎{l}‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">‎\A{‎‎a}_S‎‎‎‎‎\exp\left(\frac{-iH_0t}{\hbar}\right)‎‎‎=e^{-i\omega t}\exp\left(\frac{-iH_0t}{\hbar}\right)‎\A{‎‎a}_S‎\\‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">‎\A{a}_S‎^\dagger‎\exp\left(\frac{-iH_0t}{\hbar}\right)‎‎‎=e^{‎+‎i\omega t}\exp\left(\frac{-iH_0t}{\hbar}\right)\A{‎a}_S‎^\dagger‎ \\‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">\end{array}‎\right\‎}‎  </p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">‎\quad\Lrw V_I=\frac{1}{2}m\omega^2 x_0^2- x_0‎‎‎\sqrt{‎\frac{1‎}{‎2‎}‎m\omega\hbar‎‎}\left(e^{-i\omega t}‎\A{‎‎a}_S‎+e^{+i\omega t}\A{‎a}_S‎^\dagger\right)‎‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">\end{equation}‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">Now ‎we ‎consider ‎the ‎commutation ‎relation ‎between ‎‎$‎V_I(t_1)‎$ ‎and ‎‎$‎V_I(t_2)‎$‎:‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">‎\begin{equation}‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">‎[V_I(t_1),V_I(t_2)]=-‎\frac{1‎}{‎2‎}‎m\omega\hbar[e^{-i\omega ‎t_1‎}‎\A{‎‎a}_S‎+e^{+i\omega ‎t_1‎}\A{‎a}_S‎^\dagger‎‎,e^{-i\omega ‎t_‎2‎‎}‎\A{‎‎a}_S‎+e^{+i\omega ‎t_2‎}\A{‎a}_S‎^\dagger‎‎‎]‎=‎‎‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">-‎im\omega\hbar\sin\omega(t_2-t_1)‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">‎‎\end{equation}‎‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">This ‎commutation ‎relation ‎shows ‎that ‎we ‎can ‎not ‎find evolution ‎operator ‎in ‎close ‎form ‎and ‎we ‎can ‎just ‎use ‎‎\textit{Dyson series} ‎or ‎iterative ‎techniques. ‎Evolution ‎of ‎the ‎wave ‎function ‎in ‎the ‎interaction ‎picture ‎can ‎be ‎fomulated ‎as ‎follows.‎‎ Assume ‎that ‎‎‎$‎\ket{\Psi_‎D‎(t)}‎$ ‎is ‎expand‎ed ‎in ‎terms ‎of ‎t‎he‎ ‎initial ‎Hamiltonian ‎eigenstates ‎as:‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">\begin{equation*}‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">‎‎‎\ket{\Psi_D(t)}=\sum_{n}c_n(t)\ket{n}‎‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">\end{equation*}‎‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">‎If ‎we ‎apply ‎the ‎unity ‎operator ‎in ‎\eqref{P3-I} ‎we ‎get:‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">\begin{equation}‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">i\hbar\pds{t}\bracket{n}{\Psi_D(t)}=\sum_‎m‎\bra{n}V_‎I‎\ket{m}\bracket{m}{\Psi_D(t)}‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">\end{equation}‎‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">This equation can be simplified as:</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">\begin{equation}‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">i\hbar\frac{dc(t)}{dt}=\sum_n ‎V_I‎_{‎nm}‎c_m(t)‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">\end{equation}‎‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">where ‎‎$‎V_I_{nm}‎$ ‎is:‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">\begin{equation}‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">‎V_I_{nm}=V_{nm}‎\exp\left(it\frac{E_m-‎E_‎n}{\hbar}\right)=\bra{n}V(t)\ket{m}\exp(i\omega_‎{‎nm}t)‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">\end{equation}‎‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">Hence:‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">\begin{equation}‎‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">i\hbar‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">\begin{pmatrix}‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">‎\dot{‎c}_1\\‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">\dot{c}_2\\‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">‎\vdots‎‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">\end{pmatrix}‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">=‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">\begin{pmatrix}‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">V_{11} &amp;‎ ‎V_{12}e^{i\omega_{12}t} &amp;‎ ‎\cdots\\‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">V_{21}‎e^{i\omega_{2‎1‎}‎t} &amp;‎ ‎V_{22} &amp; ‎\cdots\\‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">\‎vdots &amp;\vdots &amp; ‎\vdots‎‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">\end{pmatrix}‎‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">\begin{equation}‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">\begin{pmatrix}‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">‎c_1\\‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">c_2\\‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">‎\vdots‎‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">\end{pmatrix}‎‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">\end{equation}‎‎‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;"> ‎$‎\A{x}_D‎$ ‎which ‎is ‎the ‎Dirac ‎picture ‎representation ‎of ‎‎$‎\A{‎x}‎‎$ ‎operator ‎is:‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">\begin{equation}‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">\A{x}_D(t)=\exp\left(\frac{iH_0t}{\hbar}\right)\A{x}_‎S‎\exp\left(\frac{-iH_0t}{\hbar}\right)‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">\end{equation}‎‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">‎In above equation index ‎$‎S‎$ ‎stands for schr\&quot;odinger picture. ‎‎Now we can use the ladder operator :‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">\begin{equation*}‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">‎\A{‎a}_S‎=\sqrt{‎\frac‎{m\omega}{2\hbar}}\left(‎\A{‎x}_S+\frac{i\A{p}_S}{m\omega}\right)‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">\end{equation*}‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">Then:‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">\begin{align}‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">H_0‎&amp;‎=‎\left‎(‎\A{‎a}_S^\dagger \A{‎a}_S+\frac{1}{2}‎\right‎)\hbar\omega\\‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">‎V&amp;=\frac{1}{2}m\omega^2x_0^2‎-m\omega^2x_0(\A{a}_S+\A{a}_S^\dagger)\sqrt{\frac{\hbar}{‎2‎m\omega}}</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">\end{align}‎‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">So ‎‎$‎\A{x}_D‎$ ‎can ‎be ‎written ‎as:‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">\begin{equation}‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">‎\A{x}_D(t)=\sqrt{\frac{\hbar}{‎2‎m\omega}‎}‎‎\exp\left(\frac{iH_0t}{\hbar}\right) ‎(‎\A{‎a}_S+\A{a}_S^\dagger)‎‎‎\exp\left(\frac{-iH_0t}{\hbar}\right)‎‎‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">\end{equation}‎‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">Using the same identity employed in the previous part we have:</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">\begin{‎equation‎}‎‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">\left.‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">\begin{array}‎{l}‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">‎\A{‎‎a}_S‎‎‎‎‎\exp\left(\frac{-iH_0t}{\hbar}\right)‎‎‎=e^{-i\omega t}\exp\left(\frac{-iH_0t}{\hbar}\right)‎\A{‎‎a}_S‎\\‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">‎\A{a}_S‎^\dagger‎\exp\left(\frac{-iH_0t}{\hbar}\right)‎‎‎=e^{‎+‎i\omega t}\exp\left(\frac{-iH_0t}{\hbar}\right)\A{‎a}_S‎^\dagger‎ \\‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">\end{array}</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">‎\right\}‎\Lrw‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">\A{x}_D(t)=‎\sqrt{\frac{\hbar}{‎2‎m\omega}‎}\left(e^{-i\omega t}‎\A{‎‎a}_S‎+e^{+i\omega t}\A{‎a}_S‎^\dagger\right)‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">\end{‎equation‎}‎‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">So ‎‎$‎\A{x}_D(t)‎$ ‎can ‎be ‎explicitly ‎calculated ‎in ‎terms ‎of ‎‎$‎\A{x}_S‎$ ‎and ‎‎$‎\A{p}_S$:‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">\begin{equation}‎\label{P3-Interaction}‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">‎\A{x}_D(t)=‎\frac{1}{2}\left\{e^{-i\omega t}\left(\A{x}_s+\frac{i\A{p}_S}{m\omega}‎\right)‎‎+e^{‎+‎i\omega t}\left(\A{x}_‎s-‎\frac{i\A{p}_S}{‎m\omega}‎‎\right)\right\}‎‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">=\A{x}_S\cos \omega t+\frac{\A{p}_S}{m\omega}\sin\omega ‎t‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">\end{equation}‎‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">‎\end{homeworkSection}‎‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">‎%----‎c-----‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">\begin{homeworkSection}{(c)}‎‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">The ‎equation ‎of ‎motion ‎for ‎position ‎operator ‎in ‎the ‎Heisenberg ‎picture ‎is:‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">\begin{equation}‎\label{P3-E1}‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">\frac{d\A{x}_H}{dt}=\frac{1}{i\hbar}[\A{x}_H,H]+\pd{\A{x}_H}{t}=\frac{1}{i\hbar}‎\left‎[\A{x}_H,\frac{\A{p}_H^2}{2m}+\frac{1}{2}m\omega^2(‎\A{‎x}_H-x_0)^2‎\right‎]‎=\frac{1}{i2m\hbar}[\A{x}_H,\A{p}_H^2]=\frac{\A{p}_H}{m}‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">\end{equation}‎‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">similarly ‎for ‎momentum ‎operator ‎we ‎have:‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">\begin{‎multline‎}‎\label{P3-E2}‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">\frac{d\A{p}_H}{dt}=\frac{1}{i\hbar}[p_H,H]+\pd{\A{p}_{H}}{‎t}‎=‎\frac{1}{i\hbar}‎\left‎[\A{‎p‎}_H,\frac{\A{p}_H^2}{2m}+\frac{1}{2}m\omega^2(‎\A{x}_H‎-x_0)^2‎\right‎]‎‎‎‎‎=‎\\‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">‎‎\frac{m\omega^2}{2i\hbar}\left[\A{p}_H,\A{x}_H^2-2x_0\A{x}_H\right]=-m\omega^2‎(\A{x}_H-x_0)</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">\end{‎multline‎}‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">\end{homeworkSection}‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">‎%----‎d‎--------------‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">\begin{homeworkSection}{(‎d‎)}‎‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">‎Two ‎coupled ‎differntial ‎equations ‎\eqref{P3-E1} ‎and ‎\eqref{P3-E2} ‎determines ‎the ‎evolution ‎of ‎the ‎operators ‎in ‎the ‎Heisenberg ‎picture. ‎we ‎can ‎decouple ‎the ‎equations ‎using ‎time ‎d‎ifferentiation:‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">\begin{‎align‎}‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">‎&amp;‎\frac{d^2\A{x}_H}{dt^2}=-\omega^2(\A{x}_H-x_‎0‎)‎\qquad\dot{\A{x}}_H(0)=\frac{\A{p}(0)}{m}‎\\‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">‎&amp;\frac{d^2\A{p}_H}{dt^2}‎=-\omega^2\A{p}_‎H\qquad\dot{\A{p}}_H(‎0‎)=-m\omega^2(\A{x}_H(0)-x_0)‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">\end{align}‎‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">‎U‎‎ltimately ‎we ‎arrive ‎at:‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">\begin{align}‎‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">\A{x}_{H}(t)‎&amp;‎=x_0+(\A{x}_H(0)-x_0)\cos‎\omega_0t+\frac{\A{p}_H(0)}{m\omega}\sin\omega ‎t\label{P3-Heisenberg}‎\\‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">\A{p}_H(t)‎&amp;‎=\A{p}_H(0)\cos\omega_0t-m\omega(\A{x}_H(0)-x_0)‎\sin\omega ‎t‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">\end{align}‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">\end{homeworkSection}‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">%-----------e------------‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">\begin{homeworkSection}{(e)}‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">‎Equations‎ ‎\eqref{P3-‎Interaction‎} ‎and ‎\eqref{P3-‎Heisenberg‎} ‎show ‎how ‎the ‎position ‎operator ‎evolves ‎in ‎Dirac ‎and ‎Heisenberg ‎picture‎s respectively. Clearly both picture ‎coincide when ‎‎$‎x_0=0‎$‎. In fact in the ‎Driac‎ picture the opearor is evolved by just the main portion of the Hamiltonian ‎and ‎the ‎state ‎vector ‎evaloves ‎by ‎the‎‎ perturbing potential. ‎In ‎the ‎Heisenberg ‎picture ‎‎$‎\A{x}_‎H‎(t)‎$ ‎oscilates ‎around ‎the ‎equilibrium‎ ‎point ‎‎$‎x_0‎$ ‎launched ‎by ‎the ‎initial ‎momnetum ‎‎$‎\A{p}_D(t=0)‎$‎. This evolution ‎is ‎the‎ reminiscent  of classical oscilation around the ‎equilibrium ‎point‎. In the ‎Heisenberg‎ picture states are ‎\textit{frozen} ‎and ‎just ‎the ‎operator‎s evolve. In Dirac picture according to \eqref{P3-‎Interaction‎}  ‎opearor ‎‎$‎\A{x}‎_‎D‎$ ‎oscilates ‎by ‎the unperubed ‎Hamiltonian ‎and ‎the ‎state ‎vectors ‎are‎ ‎also ‎time ‎varying ‎by ‎the ‎pertur‎bing ‎potential.‎ </p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">\end{homeworkSection}‎‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">\end{homeworkProblem}</p></body></html>

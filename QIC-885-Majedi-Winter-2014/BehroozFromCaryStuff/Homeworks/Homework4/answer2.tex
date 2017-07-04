@@ -1,0 +1,122 @@
+\begin{homeworkProblem}
+
+\begin{homeworkSection}{(a)}
+To calculate the average energy of the system composed on $N$ identical SHOs, we can simply use the partition function defined as 
+\begin{equation*}
+Z=\Tr\left(e^{-\beta\A{H}}\right)
+\end{equation*}
+So for a system of identical harmonic oscilators we obtain:
+\begin{equation}
+Z=\sum_{n=0}^{\infty}e^{-\beta (n+1/2)\hbar \omega}=\frac{e^{-\beta \hbar \omega/2}}{1-e^{-\beta \hbar \omega}}
+=\frac{2}{\sinh\frac{\beta\hbar\omega}{2}}
+\end{equation} 
+So the ensemble average of the energy of the system is:
+\begin{equation}
+\langle E\rangle=-\pd{\ln Z}{\beta}=\fpds{\beta}\ln\left(\sinh\frac{\beta\hbar\omega}{2}\right)=\frac{\hbar\omega}{2}\coth\frac{\beta\hbar\omega}{2}
+\end{equation} 
+
+\end{homeworkSection}
+%----b--------
+\begin{homeworkSection}{(b)}
+Assume that $\hbar\omega\gg k_BT$ or equivalently $\hbar\omega\beta\gg 1$ using large argument approximation of cotangent hyperbolic function we obtain:
+\begin{equation}
+\hbar\omega\beta\gg 1\quad\Lrw\quad \coth\left(\frac{\hbar\omega\beta}{2}\right)\approx 1\quad\Lrw\quad \langle E\rangle \approx\frac{\hbar\omega}{2}
+\end{equation} 
+There is an interesting interpretation for the approximate ensemble average of energy for large values of $\hbar\omega$. Every harmonic oscilator has \textit{zero point energy} which is $\hbar\omega/2$, that is in the equilubrium state the energy of every oscillator should be greater than or equal to  $\hbar\omega/2$. Maximization of entropy prohibites arbitary distribution of energy and  and most probable energy levels are smaller than $k_BT$. So when $E_0\gg k_BT$ all energy states have to be in their ground state. So the average of this uniform distribution is approximately $\hbar\omega/2$. This zero point energy is responsible for one the of sources of noise in an electrical resistor.    
+\\
+
+Now lets to think about the second asymptotic case. Assume that $\hbar\omega\ll k_BT$ or $\beta\hbar\omega\ll 1$. Using small argument approximation of cotangent hyperbolic function we get:
+\begin{equation}
+\beta\hbar\omega\ll 1\quad\Lrw\quad\coth\frac{\beta\hbar\omega}{2}\approx\frac{1}{\sinh\frac{\beta\hbar\omega}{2}}\approx \frac{2}{\beta\hbar\omega}
+\end{equation}  
+So we have:
+\begin{equation}\label{P2-Im}
+\hbar\omega\beta\ll 1\quad\Lrw\quad \coth\left(\frac{\hbar\omega\beta}{2}\right)\approx \frac{2}{\beta\hbar\omega}\quad\Lrw\quad \langle E\rangle \approx \frac{1}{\beta}=k_BT
+\end{equation}
+Unlike the fisrt case, here a huge group of microstates are possible and the average energy is so close to $k_BT$.
+\end{homeworkSection}
+\begin{homeworkSection}{(c)}
+The density matrix in the equilibrium can be diagonalized by eigen states of the Hamiltonian:
+\begin{equation}
+\pd{\rho}{t}=0\quad\Lrw\quad i\hbar\pd{\rho}{t}=[\rho ,H]=0
+\end{equation}
+So the density matrix is:
+\begin{equation}
+\rho=\frac{\sum_n\exp(-\beta E_n)\ket{n}\bra{n}}{\sum_n \exp(-\beta E_n)}=2\sinh(\frac{\beta\hbar\omega}{2})\sum_n\exp(-\beta E_n)\ket{n}\bra{n}
+\end{equation}
+where $\ket{n}$ are the eigenstates of the Hamiltonian.
+\end{homeworkSection}
+%-----------d--------------
+\begin{homeworkSection}{(d)}
+From the transmission line theory a resistor can be modeled by a ladder network composed of  an infinite number of  $L$ and $C$ as shown in the figure.
+\begin{figure}[!h] 
+\centering
+\input{LCladder}
+\caption{\small an infinite LC ladder network which models a resistor}
+\end{figure}
+
+
+It can be readily shown that when $\Delta x\to 0$ , the input impedance behaves like a pure resistor. The equivalent input resistance is:
+\begin{equation}
+R=Z_c=\sqrt{\frac{L}{C}}
+\end{equation}
+
+\end{homeworkSection}
+%----------------e---------------
+\begin{homeworkSection}{(e)}
+As discussed in the previous part a resistor can be modeled by a series of coupled LC resonators. Each resonator can be treated quantum mechanicly. However quantization of the problem is complicated: first, because of coupling and secondly because of undetermined value of $\Delta x$. Please note that $L$ and $C$ are the inductance and capacitance per unite length and we have an ambiguous resonance frequency for each single resonator. To overcome these difficulties in the quantization process we can take a look at the problem in the frequency domain.  Assume that the structure is distributed in space ,that is, in each $\Delta x$ length interval we have put one inductor and one capacitor. From the transmission line theory a monochromatic wave propagates in this structure without distortion. This means that for every $\Delta x$ step we have a definite and fixed value for the phase change in frequency domain. This definite value of phase change allows us to write the Hamiltonian as an infinite sum of independent simple harmonic oscillators. Actually in frequency domain, the resistor can be treated as a sea of identical simple harmonic oscillators and we can simply apply the statistics developed the previous parts.    
+\begin{figure}[!h]
+\centering
+\input{LC_dx}
+\caption{The circuit of a discretized transmission line}
+\end{figure}
+As in standard circuit theory, we can analyze the LC oscillator circuit simply by introducing the node voltages. However here it is more convenient to use the node fuxes as coordinates. Since just the final results are important for us we avoid  presenting all mathematical details in our derivations. Assume that the flux in the node $n$ is shown by $\Phi_n$ so Hamiltonian is:
+\begin{equation}
+H=\sum_n\frac{P_n^2}{2C\Delta x}+\frac{(\Phi_n-\Phi_{n-1})^2}{2L \Delta x }\approx\int dx\left\{ \frac{\mathcal{P}^2}{2C}+\frac{1}{2L}\abs{\pd{{\phi}}{x}}^2\right\}
+\end{equation}
+where
+\begin{equation*}
+P_n=C\Delta x C\dot{\Phi}_n
+\end{equation*}
+$\phi(x)$ and $\M{P}(x)$ are continuous versions of $\Phi_n$ and $P_n/\Delta x$. 
+
+As we can see the current continuous version of the Hamiltonian contains $\pd{\phi}{x}$. Now we can reformulate the problem in the Fourier space. From the basic transmission line theory  we have a one to one correspondence between the frequency and  the wave number. Assume that the wave number is reprsented by $k$ which is related to $\omega$ by a simple disperssion equation:
+\begin{equation}
+\omega=\abs{k}v=\abs{k}\frac{1}{\sqrt{LC}}
+\end{equation}   
+Using \textit{Parseval's Theorem}  we can express $H$ as:
+\begin{equation}\label{P2-HH}
+H=\frac{1}{2\pi}\int_{k_1}^{k_2} dk\left\{\frac{\abs{\T{\mathcal{P}}}^2}{2C}+\frac{k^2}{2L}\abs{\T{\phi}}^2\right\}
+\end{equation}
+where $\T{\mathcal{P}}$ and $\T{\phi}$  deisgnate  the Fourier space representation of $\mathcal{P}$ and $\phi$ respectively. $k_1$ and $k_2$ represent lower and upper frequencies:
+\begin{equation}
+k_1=\omega_1\sqrt{LC}\qquad k_2=\omega_2\sqrt{LC}
+\end{equation} 
+As we can see interestingly \eqref{P2-HH} describes an the Hamiltonian in a set of uncoupled simple harmonic oscillators. So we can apply the statistics  developed in the previous parts. The average energy of this sea of SHO's is simply:
+
+\begin{equation}
+\langle E\rangle=\int_{\omega_1}^{\omega_2}\frac{\hbar\omega}{2}\coth\frac{\beta\hbar\omega}{2}
+\end{equation}
+\end{homeworkSection}
+%---------------g-----------------
+\begin{homeworkSection}{(f)}
+Interestingly we have two mian sources of noise in the resistor:
+\begin{enumerate}
+\item
+Zero point energy in the simple harmonic oscillators: every SHO introduces a minimum energy of $\hbar\omega/2$. This minimum energy can be considered as the main source of noise.
+\item
+Thermal distribution: simple harmonic oscillators can be excited in higher energy states as a result of thermal distribution
+\end{enumerate}
+\end{homewor}
+\end{homeworkSection}
+\begin{homeworkSection}{(g)}
+When $\hbar\omega\ll k_BT$ we can use \eqref{P2-Im} approximation. Combining every thing together we arrive at:
+\begin{equation}
+\langle E\rangle=\frac{1}{2}R\langle v_n^2\rangle \approx\int_{B} k_BTd\omega=k_B T B
+\end{equation}
+\end{homeworkSection}
+
+
+
+
+\end{homeworkProblem}

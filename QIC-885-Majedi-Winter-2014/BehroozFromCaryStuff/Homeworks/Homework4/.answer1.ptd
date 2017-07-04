@@ -1,0 +1,143 @@
+<!1,2013032508:31:17>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN" "http://www.w3.org/TR/REC-html40/strict.dtd">
+<html><head><meta name="qrichtext" content="1" /><meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><style type="text/css">
+p, li { white-space: pre-wrap; }
+</style></head><body>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">\begin{homeworkProblem}‎‎‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">In ‎this ‎problem ‎we ‎frequently ‎use ‎two ‎basic ‎properties ‎of ‎the ‎Pauli ‎matrices:‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">\begin{align}‎‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">\{\sigma_i,\sigma_j\}‎&amp;‎=‎\sigma_i\sigma_j+\sigma_j\sigma_i=2\delta_{ij}‎\label{P1-1}‎\\‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">[\sigma_‎k‎‎,\sigma_‎l‎]‎&amp;‎=‎\sigma_‎k‎‎\sigma_‎l-‎‎‎\sigma_‎l‎\sigma_‎k‎‎=‎2‎i\sum_m‎\varepsilon_{‎klm‎}‎\sigma_m \label{P1-2}‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">‎‎‎\‎end{align}‎‎‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">‎where ‎‎$‎\varepsilon_{‎klm}‎‎$ ‎is‎ Levi-Civita ‎symbol.‎‎ </p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">%------------------a---------------------------‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">‎‎‎‎\begin{homeworkSection}‎{(a)}‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">‎This ‎problem ‎can ‎be ‎simply ‎solved ‎using ‎the ‎nice ‎properties ‎of ‎the ‎Pauli ‎matrices. We ‎firs‎t develop a simple instruction to a more general problem. ‎We ‎claim ‎that a ‎‎‎‎$‎2‎\times‎ 2$ ‎matrix ‎‎$‎X‎$ ‎(not necessarily Hermitian, nor unitary) ‎can ‎be ‎written ‎as:‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">\begin{‎equation}‎\label{P1-a}‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">X=\sum_{i}a_i\sigma_i+a_0‎=‎\vp{a}.‎\B‎‎{‎\sigma‎}+a_0‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">\end{equation} ‎‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">‎Actually ‎we ‎are ‎going ‎to‎ ‎show ‎that the ‎Pauli ‎matrices ‎and ‎unity ‎matrix ‎form‎ a‎ ‎complete set ‎of ‎‎independent ‎basis ‎to ‎expand ‎any ‎arbitrary ‎‎$‎2‎\times‎ 2$ matrices ‎defined ‎in complex field (‎$‎\mathbb{C}$). ‎First ‎we ‎prove ‎that ‎they ‎are ‎independent. ‎Assume ‎that ‎they ‎are ‎expanding a‎‎ ‎null ‎matrix,‎ ‎we will ‎show ‎all ‎expansion ‎coefficents ‎are ‎zero:‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">\begin{equation}‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">\sum_i\sigma_i\alpha_i+\alpha_0=0‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">\end{equation}‎     </p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">‎If ‎we ‎calculate ‎the ‎anticommutation ‎of ‎above ‎equation ‎and ‎one ‎of ‎the ‎Pauli ‎matrices ‎and ‎by ‎employ‎ing ‎\eqref{P1-1} ‎we ‎arrive ‎at:‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">\begin{‎equation}‎‎‎‎\label{P1-‎e}‎‎‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">‎\left\‎‎{\sum_i\sigma_i\alpha_i+\alpha_‎0‎,\sigma_‎k\right\‎}=2\alpha_‎k+2\alpha_0\sigma_‎k=0‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">\‎‎end{equation}‎‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">Please ‎note ‎that ‎all ‎Pauli ‎matrices ‎are ‎traceless‎, that is:‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">\begin{equation}‎\label{P1-tr}‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">‎\Tr(‎\sigma_‎i)‎‎=\sum_k\sigma_{kk}=0‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">\end{equation}‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">So we have:‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">\begin{equation}‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">‎\Tr\left(‎‎‎2\alpha_‎k+2\alpha_0\sigma_‎k\right)‎=4‎\alpha_‎k=0‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">\end{equation}‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">So ‎$‎\alpha_‎k‎$‎s‎ ‎are ‎zero ‎and ‎from ‎\eqref{‎P1-e‎} ‎‎$‎\alpha_0‎$ ‎is ‎zero ‎as ‎well. ‎So ‎this ‎set ‎of ‎matrices ‎are ‎independent ‎and ‎consequently ‎all ‎‎$‎a_i$s in \eqref{P1-a} can be uniqely determined. To evaluate the expansion coefficients we use traceless property ‎of the pauli matrices‎. ‎First ‎we ‎have ‎to ‎prove ‎the ‎following ‎identity:‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">\begin{equation}‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">\Tr‎\left(\sigma_i\sigma_j\right)=‎2\delta_{ij}‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">\end{equation}‎‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">Proof:‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">Using \eqref{P1-1} we have:‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">\begin{equation}‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">\Tr\left\{\sigma_i,\sigma_j\right\}‎=‎\Tr\left(‎‎‎\sigma_i\sigma_‎j\right)‎+‎\Tr\left(‎\sigma_‎j‎\sigma_‎i\right)‎=4\delta_{ij}‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">\end{equation}</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">‎The t‎‎race ‎of ‎multiplication ‎of ‎two ‎matrices ‎in ‎independent ‎of ‎the ‎order ‎of ‎multiplication:‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">\begin{equation}‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">‎\Tr\left(‎AB\right‎)=‎\sum_{k}(AB)_{kk}=‎\sum_{k}‎\sum_j ‎‎A_{kj}B_{jk}‎‎=‎‎\sum_{‎j‎}‎\sum_‎k‎ ‎‎B_{‎jk}‎A_{‎kj}‎=‎\sum_{‎j‎}(‎BA‎)_{‎jj}=‎\Tr\left(‎BA\right)‎‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">\end{equation}‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">‎therefore:‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">\begin{equation}‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">\Tr\left\{\sigma_i,\sigma_j\right\}‎=‎2‎\Tr\left(‎‎‎\sigma_i\sigma_‎j\right)‎=‎4\delta_{ij}‎‎\quad\Lrw\quad‎ ‎\Tr\left(‎‎‎\sigma_i\sigma_‎j\right)‎‎=2\delta_{ij}‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">\end{equation}‎‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">Using ‎this ‎important ‎identity ‎we ‎can ‎evaluate ‎‎$‎a_i$‎s‎ in \eqref{‎P1-a‎}. ‎‎‎‎‎By mutiplying the both sides of that equation by ‎$‎\sigma_i$ we get:‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">\begin{align}‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">‎‎‎‎\Tr\left(\sigma_i X\right)‎&amp;‎=‎2‎ ‎a_‎i\label{P1-110}‎\\‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">‎\Tr\left(X\right)‎&amp;‎=‎2a_0‎‎\label{P1-111}</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">\end{align}‎‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">Now ‎we ‎can ‎return ‎back ‎to ‎our ‎main ‎problem. ‎The ‎density ‎matrix ‎as a ‎‎‎‎$‎2\time 2$ ‎matrix ‎(like ‎‎$‎X$) can be writen as:‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">\begin{equation}‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">\rho=\ket{\Psi(t)}\bra{\Psi(t)}=\frac{1}{2}\left(\xi+\sum_‎i ‎\Psi_i\sigma_i\right)‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">\end{equation}‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">Using \eqref{P1-110} and \eqref{P1-111} we have:‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">\begin{equation}‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">\xi=\Tr(‎\rh‎o)=\Tr\left(\ket{\Psi(t)}\bra{\Psi(t)‎}‎\right)‎=\sum_{b}\bracket{‎b‎}{\Psi(t)}\bracket{\Psi(t)}{‎b‎}=\bracket{\Psi(t)‎}{‎\Psi(t)}=1‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">\end{equation}‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">‎In above equation ‎$‎\ket{b}$ are the ‎eigen‎states a given Hermitian operator. ‎‎‎For the other coefficients we obtain:‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">\begin{equation}‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">\Psi_‎i‎=\Tr\left(\sigma_i\rho\right)‎‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">\end{equation}‎‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">Now ‎we ‎can ‎calculate ‎every ‎coefficient ‎explicitly:‎‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">\begin{‎align‎}‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">‎&amp;‎‎\Psi_1=‎\Tr\left[\left(‎\ket{0}\bra{1}+\ket{1}\bra{0}‎\right)‎\ket{‎\‎Psi(t)}\bra{\Psi(t)}‎\right]‎=‎2‎\Re\left\{‎‎\bracket{1}{\Psi(t)}‎\bracket{0}{\Psi(t)}^‎*‎\right\}‎\\‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">‎&amp;\Psi_2=‎i‎‎‎\Tr\left[\left(‎‎\ket{0}\bra{1}‎-‎\ket{1}\bra{0}‎\right)‎\ket{‎\‎Psi(t)}\bra{\Psi(t)}‎\right]‎=‎2‎\Im‎\left\{‎‎\bracket{1}{\Psi(t)}‎\bracket{0}{\Psi(t)}^‎*‎\right\}‎\\‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">‎&amp;‎\Psi_3=‎\Tr\left[\left(‎\ket{‎1‎}\bra{1}‎-‎\ket{‎0‎}\bra{0}‎\right)‎\ket{‎\‎Psi(t)}\bra{\Psi(t)}‎\right]‎=‎‎‎‎\bracket{1}{\Psi(t)}‎‎^2-\bracket{0}{\Psi(t)}^2‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">\end{align}‎‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">So ‎we ‎arrive at:‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">\begin{equation}‎\label{P1-220}‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">\rho=\frac{1}{2}\left(‎1‎+‎‎\vp{‎\Psi}.‎\B{‎\sigma}\right)‎‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">\end{equation}‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">‎‎‎‎‎\end{homeworkSection}</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">‎%------------------‎b‎---------------------------‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">‎\begin{homeworkSection}{(b)}‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">‎The equation of motion for ‎the‎ density matrix is:‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">\begin{equation}‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">‎i\hbar\pd{\rho}{t}‎=[‎\M{H}‎,\rho]</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">\end{equation}‎‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">The ‎Hamiltonian ‎is ‎given ‎by:‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">\begin{equation}‎\label{P1-H}‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">\M{H}=\frac{1}{2}\left(1+\vp{H}.‎\B{‎\sigma}\right)‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">\end{equation}‎‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">By ‎inserting ‎\eqref{P1-H} ‎and ‎\eqref{P1-220} ‎into ‎the ‎equation ‎of ‎motion ‎we ‎obtain:‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">\begin{‎equation‎}‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">‎i\hbar‎\frac{d}{dt}‎\left\{‎\frac{1}{2}\left(‎1‎+‎‎\vp{‎\Psi}‎(t)‎.‎\B{‎\sigma}\right)\right\}=\frac{i\hbar}{2}\frac{d\vp{\Psi}}{dt}.‎\B‎{‎\sig‎ma}=‎\frac{1}{4}‎\left[‎‎1+\vp{H}.‎\B{\sigma},1‎+‎‎\vp{‎\Psi}.\B{‎\sigma}‎‎\right]‎‎‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">\end{‎equation‎}‎‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">therefore:‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">\begin{equation}‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">‎\frac{d\vp{\Psi}}{‎dt}‎.‎\B‎{\sigma}‎=‎\frac{1}{2}\left[\sum_‎k‎ H_i\sigma_‎k‎,\sum_‎l‎\Psi_‎l‎\sigma_‎l‎\right]=‎‎\frac{1}{2}‎\sum_{k,l‎‎}‎‎H_k\Psi_l‎\left[\sigma_k,\sigma_l\right]=‎\frac{i}{i\hbar}‎\sum_{k,‎l,m‎}‎\varepsilon‎_{‎klm}‎H_k\Psi _‎l‎\sigma_m‎‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">\end{equation}‎‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">From ‎elementary ‎vector ‎analysis ‎the Triple ‎product‎ ‎of ‎three‎ vectors is‎‎‎:‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">\begin{equation*}‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">‎‎(\vp{A}‎\times‎\vp{B}).\vp{C}=\sum_{l,m}A_‎k‎B_lC_m‎\varepsilon‎_{‎klm‎}</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">\end{equation*}‎ </p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">‎h‎ence:‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">\begin{equation}‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">‎\B{‎‎\si‎gma}.\frac{d\vp{\Psi}}{dt}=\frac{1}{\hbar}‎\B{\sigma}.(\vp{H}\times\vp{\Psi})‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">\end{equation}‎‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">Since ‎the ‎Pauli ‎matrices ‎are ‎linearly ‎independent ‎we ‎immediately ‎conclude‎:‎‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">‎\begin{equation}‎\label{P1-EM}‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">‎‎‎\frac{d\vp{\Psi}}{dt}=\frac{1}{\hbar}‎(\vp{H}\times\vp{\Psi})‎‎‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">\end{equation}‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">\end{homeworkSection}‎‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">\begin{homeworkSection}{(c)}‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">‎To ‎solve ‎‎\eqref{P1-EM} ‎we ‎simply ‎assume ‎that ‎the ‎coordinate ‎system ‎has ‎been ‎properly ‎rotated ‎so ‎that ‎the‎‎‎\textbf{real} ‎vector ‎‎$‎\vp{H}‎$ ‎has ‎been ‎aligned ‎in ‎the ‎‎$‎\A{z}‎$ ‎direction. ‎This ‎assumption ‎dosn't ‎degrade ‎the ‎solution ‎because ‎the ‎final ‎solution ‎is ‎independent ‎of ‎the ‎coordinate ‎system ‎describing the ‎problem. ‎A‎‎‎ ‎linear ‎transformation ‎‎$‎\M{T}$  exists ‎that ‎produces‎ the desired rotation:</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">‎\be‎gin{equation}‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">‎\vp{H}'=‎\vp{T}^{t}\vp{H}=‎\abs{\vp{H}}‎\A{z}‎‎\qquad\vp{\Psi}'‎=\Psi'_1\A{x}+\Psi'_2\A{y}+\Psi'_3\A{z}‎=‎\vp{T}^{t}\vp{‎\Psi‎}‎‎ </p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">\end{equation}‎‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">From ‎\eqref{P1-EM} ‎we ‎obtain:‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">\begin{equation}‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">\frac{d}{dt}\vp{\Psi}'=\frac{1}{\hbar}‎\abs{\vp{H}}‎\A{z}\times\vp{\Psi'}‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">\end{equation}‎‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">Three ‎coupled ‎equations ‎are:‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">\begin{align}‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">&amp;\frac{d\Psi'_1}{dt}=‎-\frac{1}{\hbar}\abs{\vp{H}}‎‎‎\Psi'_2\\</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">&amp;‎‎\frac{d\Psi'_‎2‎}‎{dt}=‎\frac{1}{\hbar}\abs{\vp{H}}‎‎‎\Psi'_‎1‎\\‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">&amp;‎‎\frac{d\Psi'_‎3‎‎}‎{‎dt}=0‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">\end{align}‎‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">From ‎the ‎fisrt ‎two ‎equations ‎we ‎get:‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">\begin{‎eqnarray‎}‎‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">‎\frac{‎d^2‎\Psi'_1}{‎dt^2‎}‎=‎-‎\omega^2\Psi'_1 ‎&amp;\Lrw ‎&amp; ‎\Psi'_1(t)=‎‎\Psi'_1(‎0‎)\cos\omega ‎t+‎‎\frac{‎1‎}{\omega}‎‎\dot{‎‎\Psi}'‎_1‎(‎0‎)\sin\omega ‎t\\‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">‎\frac{‎d^2‎\Psi'_2}{‎dt^2‎}‎=‎-‎\omega^2\Psi'_2‎‎ ‎&amp;‎\Lrw &amp;\Psi'_‎2‎(t)=‎‎\Psi'_‎2‎(‎0‎)\cos\omega ‎t+‎‎\frac{1}{\omega}‎\dot{‎‎\Psi‎‎}'_2(‎0‎)\sin\omega ‎t‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">\end{‎eqnarray‎}‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">‎where:‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">\begin{‎equation*‎}‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">\omega=\frac{\abs{\vp{H}}}{\hbar}‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">\end{‎equation*‎}‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">‎using ‎the ‎equation ‎of ‎motions ‎we ‎can ‎write:‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">\begin{align}‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">‎&amp;‎‎‎\Psi'_1(t)=‎‎\Psi'_1(‎0‎)\cos\omega ‎t-‎‎\Psi'‎_‎2‎‎(‎0‎)\sin\omega ‎t\\‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">&amp;‎‎‎\Psi'_‎2‎(t)=‎‎\Psi'_‎2‎(‎0‎)\cos\omega ‎t+‎‎‎\Psi'‎_‎1‎‎‎(‎0‎)\sin\omega ‎t‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">\end{align}‎‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">‎‎$‎\Psi'_‎3‎(t)$ ‎is ‎simply a‎ ‎constant ‎function.‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">‎‎‎‎‎ \end{homeworkSection}‎</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">\end{homworkProblem}</p></body></html>

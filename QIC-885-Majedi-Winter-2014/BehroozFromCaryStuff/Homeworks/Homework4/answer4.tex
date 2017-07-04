@@ -1,0 +1,212 @@
+\begin{homeworkProblem}
+\begin{homeworkSection}{(a)}
+The Schr\"odinger equation in the presence of electromagnetic field is:
+\begin{equation}\label{P4-1}
+\frac{1}{2m}\left[-i\hbar\nabla-q\vp{A}\right].\left[-i\hbar\nabla-q\vp{A}\right]\Psi(\vp{r},t)+q\Phi\Psi(\vp{r},t)=i\hbar\pd{\Psi(\vp{r},t)}{t}
+\end{equation} 
+%---------------
+The electrical current desnsity function should describe the follow of the electrical charge so it should be consistent with clssical counterpart. It's reasonable to assume that density of electrical chrage should be $\rho=q\abs{\Psi}^2$ . Moreover current and charge density should satisfy continuity equation:
+\begin{equation}
+\nabla.\vp{J}=-\pd{\rho}{t}=-q\pd{\abs{\Psi(\vp{r},t)}}{t}
+\end{equation}
+Mutiplying \eqref{P4-1} by $\Psi^*(\vp{r},t)$ leads to:
+\begin{equation}
+\Re\left\{\Psi^*\pd{\Psi}{t}\right\}=\frac{1}{2m}\Re\left\{i\hbar\Psi^*\nabla^2\Psi-\frac{i}{\hbar}q^2 \vp{A}^2\abs{\Psi}^2+ q\Psi^*\nabla.(\vp{A}\Psi)+q\Psi^*\vp{A}.\nabla\Psi\right\}
+\end{equation}
+Making use of divercence identity we have:
+\begin{equation}
+\nabla.\left(\vp{A}\abs{\Psi}^2\right)=\Psi^*\nabla.(\vp{A}\Psi)+\Psi^*\vp{A}.\nabla\Psi+\Psi\nabla.(\vp{A}\Psi^*)+\Psi^*\vp{A}.\nabla\Psi^*
+\end{equation}
+therefore:
+\begin{equation}
+\pd{\abs{\Psi}^2}{t}=\Psi^*\pd{\Psi}{t}+\Psi\pd{\Psi^*}{t}=\frac{\hbar}{2mi}\nabla.\left(\Psi^*\nabla\Psi-\Psi\nabla\Psi^*\right)-\frac{q}{m}\nabla.\left(\vp{A}\abs{\Psi}^2\right)
+\end{equation}
+So from the continuty equation the best choice for $\vp{J}$ is:
+\begin{equation}\label{P4-20}
+\vp{J}=\frac{q\hbar}{m}\Im\left\{\Psi^*\nabla\Psi\right\}-\frac{q^2}{m}\vp{A}\abs{\Psi}^2
+\end{equation}
+If the wave function of the system  is given by:
+\begin{equation}
+\Psi(r,t)=\sqrt{n(\vp{r},t)}\exp\left[i\theta(\vp{r},t)\right]
+\end{equation}
+So the gradient of $\Psi$ is:
+\begin{equation}\label{P4-110}
+\nabla\Psi(\vp{r},t)=\frac{\nabla n(\vp{r},t)}{2\sqrt{n(\vp{r},t)}}\exp\left[i\theta(\vp{r},t)\right]+i\nabla\theta(\vp{r},t)\Psi(\vp{r},t)
+\end{equation}
+Inserting \eqref{P4-110} into \eqref{P4-20} leads to the following equality:
+\begin{equation}
+\vp{J}=\frac{q\hbar}{m}\Im\left\{\frac{\nabla n(\vp{r},t)}{2\sqrt{n(\vp{r},t)}}+in(\vp{r},t)\nabla\theta(\vp{r},t)\right\}-\frac{q^2}{m}n(\vp{r},t)\vp{A}
+\end{equation}
+So we arrive at:
+\begin{equation}\label{P4-300}
+\vp{J}=qn(\vp{r},t)\left[\frac{\hbar}{m}\nabla\theta(\vp{r},t)-\frac{q}{m}\vp{A}(\vp{r},t)\right]
+\end{equation}
+\end{homeworkSection}
+%----------------b----------------------
+\begin{homeworkSection}{(b)}
+In fact  we derived  \eqref{P4-300} based on continuty equation , however we can check it here.  If the divergence operator actos on $\vp{J}$ then:
+\begin{equation}\label{P4-J}
+\nabla.\vp{J}=q\nabla n(\vp{r},t).\left[\frac{\hbar}{m}\nabla\theta(\vp{r},t)-\frac{q}{m}\vp{A}(\vp{r},t)\right]+
+q n(\vp{r},t)\left[\frac{\hbar}{m}\nabla^2\theta(\vp{r},t)-\frac{q}{m}\nabla.\vp{A}(\vp{r},t)\right]
+\end{equation}  
+and equivalent chrage density is:
+\begin{equation}\label{P4-505}
+\Im\left\{i\hbar\Psi^*\pd{\Psi}{t}\right\}=
+\frac{1}{2m}\Im\left\{-\hbar^2\Psi^*\nabla^2\Psi+q^2 \vp{A}^2\abs{\Psi}^2+i\hbar q\abs{\Psi}^2\nabla.\vp{A}+2i\hbar q\Psi^*\vp{A}.\nabla\Psi\right\}
+\end{equation}
+$\nabla^2 \Psi$ in terms of $n$ and $\theta$ is:
+\begin{equation}
+\nabla^2\Psi=e^{i\theta}\left[\nabla^2 \sqrt{n}+\frac{i}{\sqrt{n}}\nabla n.\nabla\theta+i\sqrt{n}\nabla^2\theta-\sqrt{n}(\nabla\theta)^2\right]
+\end{equation}
+So the left hand side of \eqref{P4-505} can be simplified as:
+\begin{equation}\label{P4-r}
+\text{LHS}=\frac{\hbar}{2m}\left\{-\hbar(\nabla n.\nabla\theta)+\hbar\nabla^2\theta+q n\nabla.\vp{A}+ q \vp{A}.\nabla n\right\}
+\end{equation}
+From \eqref{P4-J} and \eqref{P4-r} we conclude:
+\begin{equation}
+\nabla.\vp{J}=-2q\Re\left\{\Psi^*\pd{\Psi}{t}\right\}=-\pd{\rho}{t}
+\end{equation}
+\end{homeworkSection}
+%-----------------c--------------------------
+\begin{homeworkSection}{(c)}
+The continuity equation implies that $\abs{\Psi}^2$ reprsents the spatial distribution of the charge. In fact amplitude of the wave function in bohm interpretation of qunatum mechanics represents the relative probabilty to find the particle in spacific location. So this quantity can be consider as a measure of the cloud of the charge distribution.    
+\end{homeworkSection}
+%-----------------e-------------
+\begin{homeworkSection}{(e)}
+In a smaple of superconductor the wave function is 
+\begin{equation}
+\Psi(\vp{r},t)=\sqrt{n^*} e^{i\theta(\vp{r},t)}
+\end{equation}
+where $n^*$ is constant over space and time.
+If we apply the curl operator on \eqref{P4-300}  we arrive at:
+\begin{equation}\label{P4-cc}
+\nabla\times\vp{J}=q^*n^*\left[\frac{\hbar}{m}\nabla\times\nabla\theta(\vp{r},t)-\frac{q^*}{m}\nabla\times \vp{A}\right]
+\end{equation}
+The first term on the right hand side of \eqref{P4-cc} vanishes and just the second term remains. since $\vp{B}=\nabla\times\vp{A}$ we obtain:
+\begin{equation}
+\nabla\times\vp{J}=\frac{q^*^2n^*}{m}\vp{B}
+\end{equation}
+or:
+\begin{equation}\label{P4-2nd}
+\nabla\times(\Lambda\vp{J})=-\vp{B} \qquad \Lambda=\frac{m}{q^*^2 n^*}
+\end{equation}
+\end{homeworkSection}
+%-------------------f--------------
+\begin{homeworkSection}{(f)}
+If we apply time derivaative operator on both sides of \eqref{P4-2nd} we get:
+\begin{equation}
+\nabla\times\left(\pd{(\Lambda\vp{J})}{t}\right)=-\pd{\vp{B}}{t}=\nabla\times \vp{E}
+\end{equation}
+We have employed Faraday's law in the last step. This equation suggets that:
+\begin{equation}
+\nabla\times\left[\pd{(\Lambda\vp{J})}{t}-\vp{E}\right]=0
+\end{equation}
+In equilibrium state total density of free charges is zero and consequently $\nabla.\vp{E}=0$. This allows us to write:
+\begin{equation}
+\nabla.\left[\pd{(\Lambda\vp{J})}{t}-\vp{E}\right]=\Lambda\fpds{t}\nabla.\vp{J}-\nabla.\vp{E}=0
+\end{equation}
+Note that $\nabla.\vp{J}=-q\pd{n^*}{t}=0$. According to the Helmholtz's theorem in vector analysis, a vector in uniquely specified by giving its divergence and its curl within a simply connected region  and its normal component over the boundary. In this simple case we write:
+\begin{equation}
+\fpds{t}(\Lambda\vp{J})=\vp{E}
+\end{equation}
+In the absense of electrical field we have:
+\begin{equation}
+\vp{E}=0\quad\Lrw\quad \fpds{t}(\Lambda\vp{J})=0\quad\Lrw\quad \vp{J}=\vp{C}
+\end{equation}
+So we may have follow of chargem in the absense of electrical field.
+
+\end{homeworkSection}
+%------g----------------
+\begin{homeworkSection}{(g)}
+By integrating \eqref{P4-300} over an arbitrary closed contour we get:
+\begin{equation}
+\Lambda\oint_C\vp{J}.d\vp{l}=\frac{\hbar}{q^*}\oint_C\nabla\theta .d\vp{l}-\oint_C\vp{A}.d\vp{l}=\frac{\hbar}{q^*}(\theta_2-\theta_1)-\int_S\nabla\times\vp{A}.d\vp{s}
+\end{equation} 
+The requirement that the wave function should be single-valued in the space forces us to write:
+\begin{equation}
+\theta_2-\theta_1=2N\pi \qquad \text{$N$ is an integer} 
+\end{equation}
+Since $\vp{B}=\nabla\times\vp{A}$ we obtain:
+\begin{equation}
+\oint_C(\Lambda\vp{J}).d\vp{l}=-\int_S\vp{B}.d\vp{s}+\frac{2N\pi\hbar}{2q^*}
+\end{equation}
+or:
+\begin{equation}
+\oint_C(\Lambda\vp{J}).d\vp{l}+\Phi_S=N\frac{h}{2q^*}=N\Phi_0
+\end{equation}
+\end{homeworkSection}
+%--------------i-----------------------
+\begin{homeworkSection}{(i)}
+Two superconducting smaples are repsented by:
+\begin{align*}
+&\Psi_L=\sqrt{n_L}e^{i\theta_L(\vp{r},t)}\\
+&\Psi_R=\sqrt{n_R}e^{i\theta_R(\vp{r},t)}
+\end{align*}
+\begin{figure}[!h]
+\centering
+\input{junction}
+\caption{\small A simple Josephson junction}
+\end{figure}
+
+Two schr\"odinger equation governing the two superconductors are:
+\begin{align}
+&i\hbar\pd{\Psi_L}{t}=E_L\Psi_L+K\Psi_R\label{P4-200}\\
+&i\hbar\pd{\Psi_R}{t}=E_R\Psi_R+K\Psi_L
+\end{align}
+It's expected that current across the junction represents the rate of change in the equivalent charge  density inside each region. Because of charge conservation we intuitively conclude that:
+\begin{equation}
+{J}_{R\to L}=-{J}_{L\to R}=qL_x\pd{\abs{\Psi_L}^2}{t}=-qL_x\pd{\abs{\Psi_{R}}^2}{t}\right]
+\end{equation}  
+Please note that we have two main assumptions: it's assumed that $n_L$ and $n_R$ remain uniform inside each region during charge transmission between two sides . Moreover the cross section of the junction is large enough. This assumption allows use the treat the current across the junction perpendicular and relatively uniform. Using \eqref{P4-200} we can write:
+\begin{multline}
+\pd{\abs{\Psi_L}^2}{t}=\Psi_L^*\pd{\Psi_L}{t}+\Psi_L\pd{\Psi_L^*}{t}=\\
+\frac{1}{i\hbar}\left[E_L\abs{\Psi_L}^2+K\Psi_L^*\Psi_R\right]-\frac{1}{i\hbar}\left[E_L\abs{\Psi_L}^2+K\Psi_L\Psi_R^*\right]=
+\frac{2K}{\hbar}\Im\left\{\Psi_L^*\Psi_R\right\}
+\end{multline}
+So we arrive at:
+\begin{equation}
+J_{R\to L}=\frac{2KqL_x}{\hbar}\Im\left\{\Psi_L^*\Psi_R\right\}=\frac{2KqL_x}{\hbar}\sqrt{n_R n_L}\sin\left(\theta_R-\theta_L\right)
+\end{equation}
+In the case of two identical conductors we get:
+\begin{equation}\label{P4-Jc}
+J=J_c\sin\theta\qquad J_c=\frac{2KqL_x n^*}{\hbar}\qquad \theta=\theta_R-\theta_L
+\end{equation}
+Now we can calculate time evolution of $\theta$ using two coupled dynamic equations:
+\begin{equation}
+i\hbar\fpds{t}(\Psi_R^*\Psi_L)=i\hbar\pd{\Psi_L}{t}\Psi_R^*+i\hbar\pd{\Psi^*_R}{t}\Psi_L=
+E_L\Psi_R^*\Psi_L+ K\abs{\Psi_R}^2-E_R\Psi_R^*\Psi_L-K\abs{\Psi_L}^2
+\end{equation}
+In the case of identical concuctors we have:
+\begin{equation}
+i\hbar\left[i\fpds{t}(\theta_L-\theta_R)+\pd{n^*}{t}\right]e^{i(\theta_L-\theta_R)}=(E_L-E_R)e^{i(\theta_L-\theta_R)}
+\end{equation}
+therefore:
+\begin{equation}\label{P4-theta}
+\pd{\theta}{t}=\frac{E_L-E_R}{\hbar}=\frac{eV}{\hbar}
+\end{equation}
+\end{homeworkSection}
+%-----------j------------
+\begin{homeworkSection}{(j)}
+If there is no external voltage from \eqref{P4-theta} we conclude that $\thera$ is constant so 
+\begin{equation}
+\pd{\theta}{t}=0\quad\Lrw\quad \theta=c
+\end{equation}
+So from \eqref{P4-Jc} we arrive at:
+\begin{equation}
+J=J_c\sin c
+\end{equation}
+Interestingly $J$ is not zero!!!.
+\end{homeworkSection}
+\begin{homeworkSection}{(k)}
+If the external voltage is constant then:
+\begin{equation}
+\pd{\theta}{t}=\frac{eV_0}{\hbar}\quad\Lrw\quad \theta=\frac{eV_0}{\hbar}t+\alpha
+\end{equation}
+where $\alpha$ is an arbitary constant. So the current density is
+\begin{equation}
+J=J_c\sin\left(\frac{eV_0}{\hbar}t+\alpha\right)
+\end{equation}
+This means that we have a sinusoidal current when the applied voltage is constant!!!!.
+
+\end{homeworkSection}
+\end{homeworkProblem}

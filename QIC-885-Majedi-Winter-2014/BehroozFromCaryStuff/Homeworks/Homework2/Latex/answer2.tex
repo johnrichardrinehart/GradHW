@@ -1,0 +1,230 @@
+\begin{homeworkProblem}
+\begin{homeworkSection}{(a)}
+To find the possible values of energy providing electron bound state  inside the MQW , the conbensional \textit{Transfer Matrix Method} is employed. Figure \ref{fig-MQW} shows eight castcaded quantume well which can be locally treated as a periodic structure. 
+\begin{figure}[h]
+\centering
+\input{fig-MQW}
+\caption {MQW composed of eight castcaded quantum wells}
+\label{fig-MQW}
+\end{figure}
+
+Suppose that the transfer matrix $\vp{M}_t$ relates $A_0$ and $D_0$ to $A_N$ and $D_N$ as:
+\begin{equation}
+\begin{bmatrix}
+A_0\\
+D_0
+\end{bmatrix}
+=
+\begin{bmatrix}
+M_{t}_{11} & M_{t}_{12}\\
+M_{t}_{21}& M_{t}_{22}
+\end{bmatrix}
+\begin{bmatrix}
+A_N\\
+D_N
+\end{bmatrix}
+\end{equation}
+To have bound states $A_0$ and $D_N$ should be zero ,that is, the outgoing part of the wavefunction outside of the MWQ should vanishes. This condition is translated as:
+\begin{equation}\label{P3-1}
+M_{t}_{11}=0
+\end{equation}   
+This equation is actually the characteristic equation which determines possible energies providing bound states inside the structure. To construct $\vp{M}_t$ we should first work on the transfer matrix assocoited with each unit cell. Figure \ref{fig-cell} shows a unite cell of the structure. The transfer matrix assocoited with this unite cell can be calculated by multiplying $\vp{M}_b(L_b/2)$ ,$\vp{M}_{bw}$, $\vp{M}_{w}(L_w)$ and $\vp{M}_{wb}$ as follows:
+\begin{equation}
+\vp{M}_{cell}=
+\begin{bmatrix}\label{M_c}
+m_{11} & m_{12}\\
+m_{21} & m_{22}
+\end{bmatrix}
+=\vp{M}_{b}(L_b/2)\vp{M}_{bw}\vp{M}_{w}(L_w)\vp{M}_{wb}\vp{M}_{b}(L_b/2)
+\end{equation}
+\begin{figure}[h]
+\centering
+\input{fig-cell}
+\caption{a unit cell of the MQW structure}
+\label{fig-cell}
+\end{figure}
+
+
+where
+\begin{equation}\label{P2-M_b}
+\vp{M}_b(L_b/2)=
+\begin{bmatrix}
+\exp(k_bL_b/2) & 0\\
+0 & \exp(k_bL_b/2)
+\end{bmatrix}
+\end{equation}
+
+\begin{equation}
+\vp{M}_{bw}=
+\frac{1}{2}
+\begin{bmatrix}
+1-i\frac{k_w}{k_b}& 1+i\frac{k_w}{k_b}\\
+ 1+i\frac{k_w}{k_b} & 1-i\frac{k_w}{k_b}
+\end{bmatrix}
+\end{equation}
+
+\begin{equation}
+\vp{M}_w(L_w)=
+\begin{bmatrix}
+\exp(-ik_wL_w) & 0\\
+0 & \exp(ik_wL_w)
+\end{bmatrix}
+\end{equation}
+
+\begin{equation}\label{P2-M_wb}
+\vp{M}_{wb}=
+\frac{1}{2}
+\begin{bmatrix}
+1+i\frac{k_b}{k_w}& 1-i\frac{k_b}{k_w}\\
+ 1-i\frac{k_b}{k_w} & 1+i\frac{k_b}{k_w}
+\end{bmatrix}
+\end{equation}
+
+In above equations $k_w$ and $k_b$ are the wavenumber in the wells and the barriers respectively:
+\begin{align*}
+k_w&=\sqrt{\frac{2m_{eff}E}{\hbar^2}}\\
+k_b&=\sqrt{\frac{2m_{eff}(V_0-E)}{\hbar^2}}
+\end{align*}
+ By insering \eqref{P2-M_b}-\eqref{P2-M_wb} into \eqref{M_c} we obtain:
+\begin{align}
+&m_{11}=\exp(k_bL_b)\left[\cos(k_wL_w)-0.5\left(\frac{k_w}{k_b}-\frac{k_b}{k_w}\right)\sin(k_wL_w)\right]\\
+&m_{12}=-0.5\exp(k_bL_b)\left(\frac{k_w}{k_b}+\frac{k2}{k1}\right)\sin(k_wL_w)\\
+&m_{21}=0.5\exp(k_bL_b)\left(\frac{k_w}{k_b}+\frac{k2}{k1}\right)\sin(k_wL_w)\\
+&m_{22}=\exp(-k_bL_b)\left[\cos(k_wL_w)+0.5\left(\frac{k_w}{k_b}-\frac{k_b}{k_w}\right)\sin(k_wL_w)\right]
+\end{align}
+ 
+Now we can calculate $\vp{M}_t$ by mmutiplying a series of transfer matrices of each unite cell:
+\begin{equation}  
+\vp{M}_t=\vp{M}_{cell}^{8}
+\end{equation}
+
+Based on the lecture the possible discrete energy eigenvalues for the bound state can be calculated by considering the possible continous energy bands for the infinite structure. In fact it is shown that the possible solutions satisfy the following condition:
+\begin{equation}
+U=\frac{1}{2}\left(m_{11}+m_{22}\right)\leq 1
+\end{equation}
+By evaluating $U$ as a function of $E$ allowable energy bands can be determined. Figure \ref{fig-P3-band} showes the continous energy bands for the infinite chain of wells.
+\begin{figure}[h]
+\centering
+\includegraphics[scale=0.7]{energyband.eps}
+\caption{continous energy bands for MQW}
+\label{fig-P3-band}
+\end{figure}
+As explained previously to find discrete energy eigenfunctions for the bound sates we should find the solutions of \eqref{P3-1}. However $M_t_{11}$ flactuations are so striking and this makes our job diffcult. In fact  very fine meshes have to be used to find all zeros. To avoid comutational complexity we have used the notion of continous band structures:
+\begin{enumerate}
+\item
+Find continous energy band using coarse meshes.(figure \ref{fig-P3-band})
+\item
+Search for the roots of $M_t_{11}$ inside each continous energy bands. It's expected that 8 zeros (solutions) can be fined inside each band. In this stage we should use more fine meshes.
+\item
+Refine your meshes near each approximate solution to get more precise solutions.
+\end{enumerate} 
+Figure \ref{fig-energysolutions} shows three $M_t_{11}$ inside three allowable energy bands. As it was expected in each region we have 8 solutions (correspond to eight QW).
+\newpage
+\begin{figure}[!h]
+\begin{minipage}[b]{1\linewidth}
+\centering
+\includegraphics[scale=0.5]{M11_1.eps}
+\centerline{\small (a) }
+\end{minipage}
+\begin{minipage}[b]{1\linewidth}
+\centering
+\includegraphics[scale=0.5]{M11_2.eps}
+\centerline{\small (b) }
+\end{minipage}
+\begin{minipage}[b]{1\linewidth}
+\centering
+\includegraphics[scale=0.5]{M11_3.eps}
+\centerline{\small (c) }
+\end{minipage}
+\caption { $M_t_{11}$ in three energy bands (a) fisrt band (b) second band and (c) third bad}
+\label{fig-energysolutions}
+\end{figure}
+ Posible energy eigenvalues are given in table \ref{table}.
+\begin{table}[!h]\centering
+\caption{Energy eigenvalues for three bands (eV)}
+\lr{\begin{tabular}{|c|c|c|c|c|c|c|c|c|}
+\hline  8 &7 & 6 & 5 & 4 & 3 & 2 & 1 & n \\ \hline
+\hline  0.0865 &   0.0864  &  0.0863  &  0.0861  &  0.0858  &  0.0856  &  0.0855  &  0.0854 & 1st band \\
+\hline   0.3399  &  0.3392  &  0.3380  &  0.3366  &   0.3352  &  0.3338  &  0.3327  &  0.3320
+ & 2nd band \\ 
+ \hline   0.7370  &  0.7321  &  0.7250  &  0.7170  &  0.7091  &  0.7021  &  0.6967  &  0.6933 & 3rd band\\ 
+\hline 
+ \end{tabular}}
+\label{table}
+\end{table} 
+ 
+\end{homeworkSection}
+
+\begin{homeworkSection}{(b)}
+As it's shown in figure \ref{fig-P3-band} there are two forbidden energy band inside first seventeen energy eigenvalues. Energy bands are shown in table \ref{table2}
+ \begin{table}[!h]\centering
+\caption{Energy bands (eV)}
+\lr{\begin{tabular}{|c|c|}
+\hline   0.0854-0.0866& 1st band \\
+\hline  0.3318-0.3402 & 2nd band \\ 
+ \hline   0.6922-0.7388 & 3rd band\\ 
+\hline 
+ \end{tabular}}
+\label{table2}
+\end{table} 
+
+\end{homeworkSection}
+
+\begin{homeworkSection}{(c)}
+To find the wave function  for each energy eigenvalue we can utilize transfer matrices given in \eqref{P2-M_b}-\eqref{P2-M_wb}. Form the solution of the Schr\"odinger equation the wave function inside each region is:
+\begin{align}
+&\Psi^{b}_{n}(x)=A^{(b)}_{n}\exp\left[-k_b(x-b_n)\right]+D^{(b)}_n\exp\left[k_b(x-b_n)\right]\\
+&\Psi^{w}_{n}(x)=A^{(w)}_{n}\exp\left[ik_w(x-w_n)\right]+D^{(w)}_n\exp\left[-ik_w(x-w_n)\right]
+\end{align}
+In above equations $\Psi^{b}_{n}(x)$ and $\Psi^{w}_{n}(x)$ are the wavefunction inside the nth barrier and nth well respectively. $b_n$ is the position of the center nth barrier and $w_n$ is the centrer of the nth well. to plot the wave function we follow the steps given below:
+\begin{enumerate}
+\item
+select $A^{(b)}_1=1$ and $D^{(b)}_1=0$.
+\item
+use the transfer matrices to find $A_{n}^{(b)}$  and $D_{n}^{(b)}$  in term of $A_{n}^{(w)}$  and $D_{n}^{(w)}$ :
+\begin{equation*}
+\begin{bmatrix}
+A_{n}^{(w)}\\
+D_{n}^{(w)}
+\end{bmatrix}
+=\vp{M}_{w}(L_w/2)\vp{M}_{bw}\vp{M}_{b}(L_b/2)
+\begin{bmatrix}
+A_{n}^{(b)}\\
+D_{n}^{(b)}
+\end{bmatrix}
+\end{equation*}
+\item
+evaluate $A_{n+1}^{(b)}$  and $D_{n+1}^{(b)}$:
+\begin{equation*}
+\begin{bmatrix}
+A_{n+1}^{(b)}\\
+D_{n+1}^{(b)}
+\end{bmatrix}
+=\vp{M}_{b}(L_b/2)\vp{M}_{bw}\vp{M}_{w}(L_w/2)
+\begin{bmatrix}
+A_{n}^{(b)}\\
+D_{n}^{(b)}
+\end{bmatrix}
+\end{equation*}
+\item
+Normalize the wave function.
+\end{enumerate} 
+
+The wavefunctions for two energy eigenvalues are plotted in figures \ref{fig-psi_8} and \ref{fig-psi_9}. The computer program is given in the appendix.
+\begin{figure}[!h]
+\centering
+\includegraphics[scale=0.7]{psi_8.eps}
+\caption{8th energy eigenfunction }
+\label{fig-psi_8}
+\end{figure}
+\begin{figure}[!h]
+\centering
+\includegraphics[scale=0.7]{psi_9.eps}
+\caption{9th energy eigenfunction }
+\label{fig-psi_9}
+\end{figure}
+
+\end{homeworkSection}
+
+
+\end{homeworkPloblem}

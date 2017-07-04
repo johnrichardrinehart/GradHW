@@ -1,0 +1,204 @@
+ \documentclass[17pt]{article}
+\usepackage{fancyhdr} % Required for custom headers
+\usepackage{lastpage} % Required to determine the last page for the footer
+\usepackage{extramarks} % Required for headers and footers
+\usepackage{graphicx} % Required to insert images
+\usepackage{lipsum} % Used for inserting dummy 'Lorem ipsum' text into the template
+\usepackage{amsmath,amsthm,amsxtra}
+
+% Margins
+\topmargin=-0.45in
+\evensidemargin=0in
+\oddsidemargin=0in
+\textwidth=6.5in
+\textheight=9.0in
+\headsep=0.25in 
+
+\linespread{1.1} % Line spacing
+
+% Set up the header and footer
+\pagestyle{fancy}
+\lhead{\hmwkAuthorName} % Top left header
+\chead{\courseTitle\ : \hmwkTitle} % Top center header
+\rhead{\firstxmark} % Top right header
+\lfoot{\lastxmark} % Bottom left footer
+\cfoot{} % Bottom center footer
+\rfoot{Page\ \thepage\ of\ \pageref{LastPage}} % Bottom right footer
+\renewcommand\headrulewidth{0.4pt} % Size of the header rule
+\renewcommand\footrulewidth{0.4pt} % Size of the footer rule
+
+\setlength\parindent{0pt} % Removes all indentation from paragraphs
+
+%----------------------------------------------------------------------------------------
+%	DOCUMENT STRUCTURE COMMANDS
+%	Skip this unless you know what you're doing
+%----------------------------------------------------------------------------------------
+
+% Header and footer for when a page split occurs within a problem environment
+\newcommand{\enterProblemHeader}[1]{
+\nobreak\extramarks{#1}{#1 continued on next page\ldots}\nobreak
+\nobreak\extramarks{#1 (continued)}{#1 continued on next page\ldots}\nobreak
+}
+
+% Header and footer for when a page split occurs between problem environments
+\newcommand{\exitProblemHeader}[1]{
+\nobreak\extramarks{#1 (continued)}{#1 continued on next page\ldots}\nobreak
+\nobreak\extramarks{#1}{}\nobreak
+}
+
+\setcounter{secnumdepth}{0} % Removes default section numbers
+\newcounter{homeworkProblemCounter} % Creates a counter to keep track of the number of problems
+\newcommand{\homeworkProblemName}{}
+\newenvironment{homeworkProblem}[1][Problem \arabic{homeworkProblemCounter}]{ % Makes a new environment called homeworkProblem which takes 1 argument (custom name) but the default is "Problem #"
+\stepcounter{homeworkProblemCounter} % Increase counter for number of problems
+\renewcommand{\homeworkProblemName}{#1} % Assign \homeworkProblemName the name of the problem
+\section{\homeworkProblemName} % Make a section in the document with the custom problem count
+\enterProblemHeader{\homeworkProblemName} % Header and footer within the environment
+}{
+\exitProblemHeader{\homeworkProblemName} % Header and footer after the environment
+}
+
+\newcommand{\problemAnswer}[1]{ % Defines the problem answer command with the content as the only argument
+\noindent\framebox[\columnwidth][c]{\begin{minipage}{0.98\columnwidth}#1\end{minipage}} % Makes the box around the problem answer and puts the content inside
+}
+
+\newcommand{\homeworkSectionName}{}
+\newenvironment{homeworkSection}[1]{ % New environment for sections within homework problems, takes 1 argument - the name of the section
+\renewcommand{\homeworkSectionName}{#1} % Assign \homeworkSectionName to the name of the section from the environment argument
+\subsection{\homeworkSectionName} % Make a subsection with the custom name of the subsection
+\enterProblemHeader{\homeworkProblemName} % Header and footer within the environment
+}{
+\enterProblemHeader{\homeworkProblemName} % Header and footer after the environment
+}
+
+%----------------------------------------------------------------------------------------
+%	NAME AND CLASS SECTION
+%----------------------------------------------------------------------------------------
+
+\newcommand{\hmwkTitle}{Assignment 4} % Assignment title
+\newcommand{\hmwkDueDate}{Wendesday,\ March 27,\ 2013} % Due date
+\newcommand{\courseTitle}{Quantum Electronics and Photonics} % Course/class
+\newcommand{\hmwkClassInstructor}{Prof. Hamed Majedi} % Teacher/lecturer
+\newcommand{\hmwkAuthorName}{Behrooz Semnani} % Your name
+\newcommand{\sudentNumber}{20490883} % Your name
+\newcommand{\position}{PhD student at ECE departent}
+
+%----------------------------------------------------------------------------------------
+%%-----------------------------------------------------------------------------------------
+
+%%%%%%%%%%
+\newcommand{\red}[1]{\textcolor[rgb]{1,0,0}{#1}}
+\newcommand{\blu}[1]{\textcolor[rgb]{0,0,1}{#1}}
+\newcommand{\bs}[1]{\boldsymbol{#1}}
+%\newcommand{\V}[1]{\bm{#1}}
+\newcommand{\V}[1]{\Vec{#1}}
+\newcommand{\A}[1]{\Hat{#1}}
+\newcommand{\W}[1]{\widehat{#1}}
+\newcommand{\T}[1]{\widetilde{#1}}
+\newcommand{\pd}[2]{\dfrac{\partial #1}{\partial #2}}
+\newcommand{\fpd}[2]{\frac{\partial #1}{\partial #2}}
+\newcommand{\pds}[1]{\dfrac{\partial}{\partial #1}}
+\newcommand{\fpds}[1]{\frac{\partial}{\partial #1}}
+\newcommand{\pdss}[1]{\dfrac{\partial^2}{\partial {#1}^2}}
+\newcommand{\pdsss}[2]{\dfrac{\partial^2}{\partial #1 \partial #2}}
+\newcommand{\pdt}[2]{\dfrac{\partial^2 {#1}}{\partial {#2}^2}}
+\newcommand{\pdtt}[3]{\dfrac{\partial^2 {#1}}{\partial {#2} \partial {#3}}}
+\newcommand{\dif}[2]{\frac{d{#1}}{d{#2}}}
+\newcommand{\vt}[1]{\Vec{\mathcal{#1}}}
+\newcommand{\VP}[1]{\Vec{\mathbf{#1}}}
+\newcommand{\vp}[1]{\mathbf{#1}}
+\newcommand{\phas}[1]{\angle{#1}^{\circ}}
+\newcommand{\er}{\epsilon_{r}}
+\newcommand{\mr}{\mu_{r}}
+\newcommand{\Lrw}{\Longrightarrow}
+\newcommand{\refeq}[1]{(\ref{#1})}
+\newcommand{\abs}[1]{\left| #1\right|}
+\newcommand{\ket}[1]{|#1\rangle}
+\newcommand{\bra}[1]{\langle #1| }
+\newcommand{\bracket}[2]{\langle#1|#2\rangle }
+\newcommand{\comut}[2]{\left[#1,#2\right]}
+\newcommand {\M}[1]{\mathcal{#1}}
+\newcommand{\B}[1]{\boldsymbol{#1}}
+%%%---
+\newcommand\ointint{\begingroup
+\displaystyle \unitlength 1pt
+\int\mkern-7.2mu
+\begin{picture}(0,3)
+\put(0,3){\oval(10,8)}
+\end{picture}
+\mkern-7mu\int\endgroup}
+%%%----
+\providecommand{\abs}[1]{\lvert#1\rvert}
+\providecommand{\norm}[1]{\lVert#1\rVert}
+
+%%%%%%%%%%%%%%%
+
+%---Packeges------------------------------------------------------------------
+ %------------------------------------------------------
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[english]{babel}
+\usepackage[latin1]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{pstricks}
+\usepackage[usenames,dvipsnames]{pstricks}
+\usepackage{epsfig}
+\usepackage{pst-grad} % For gradients \usepackage{pst-plot} % For axes
+\usepackage{pifont}
+\usepackage{amsfonts}
+\graphicspath{{IMG/}}
+\usepackage[utf8]{inputenc}
+ \usepackage[OT1]{fontenc}
+ \usepackage[absolute,overlay]{textpos}
+ \usepackage{graphicx}
+ \usepackage[bookmarks=false,pdffitwindow]{hyperref}
+ \usepackage{tikz}
+ \usepackage{xcolor}
+ \usepackage{calc}
+\usepackage{chngcntr}
+%----------------------------------------------------------------
+\numberwithin{equation}{section}
+\renewcommand{\theequation}{\arabic{equation}}
+\DeclareMathOperator{\Tr}{Tr}
+
+
+%%------------------------------------------------------------------------------------------
+%	TITLE PAGE
+%----------------------------------------------------------------------------------------
+\title{
+\vspace{2in}
+\textmd{\textbf{\courseTitle\\ \vspace{0.5in}\hmwkTitle}}\\
+\vspace{0.5in}\large{{\hmwkClassInstructor}}
+\vspace{3in}
+}
+\author{\textbf{\hmwkAuthorName}\\ 
+}\\
+
+\date{March 27, 2013} % Insert date here if you want it to appear below your name
+
+%----------------------------------------------------------------------------------------
+
+\begin{document}
+
+\maketitle
+
+
+\newpage
+\tableofcontents
+\newpage
+
+
+%----Problems---------
+\input{answer1}
+\setcounter{equation}{0}
+%------------------------
+\input{answer2}
+\setcounter{equation}{0}
+%---------------
+\input{answer3}
+\setcounter{equation}{0}
+%-----------------------
+\input{answer4}
+\setcounter{equation}{0}
+%-----------------------
+\end{document}

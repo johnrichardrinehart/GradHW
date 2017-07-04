@@ -1,0 +1,172 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 9.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[      4810,        163]
+NotebookOptionsPosition[      4273,        140]
+NotebookOutlinePosition[      4616,        155]
+CellTagsIndexPosition[      4573,        152]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[
+ RowBox[{"Simplify", "[", 
+  RowBox[{"DSolve", "[", 
+   RowBox[{
+    RowBox[{
+     RowBox[{
+      RowBox[{"D", "[", 
+       RowBox[{
+        RowBox[{"x", "[", "t", "]"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"t", ",", "2"}], "}"}]}], "]"}], "+", 
+      RowBox[{
+       RowBox[{"w", "^", "2"}], " ", "*", 
+       RowBox[{"x", "[", "t", "]"}]}]}], "\[Equal]", 
+     RowBox[{
+      RowBox[{"w", "^", "2"}], " ", "*", "F", "*", " ", 
+      RowBox[{"HeavisideTheta", "[", "t", "]"}]}]}], ",", 
+    RowBox[{"x", "[", "t", "]"}], ",", "t"}], "]"}], "]"}]], "Input",
+ CellChangeTimes->{{3.6036064195336485`*^9, 3.60360643196836*^9}, {
+  3.603606483316297*^9, 3.6036065587036085`*^9}, {3.6036066115226297`*^9, 
+  3.6036066216212077`*^9}, {3.603606660573436*^9, 3.6036066763423376`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"{", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"x", "[", "t", "]"}], "\[Rule]", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"C", "[", "1", "]"}], " ", 
+       RowBox[{"Cos", "[", 
+        RowBox[{"t", " ", "w"}], "]"}]}], "+", 
+      RowBox[{
+       RowBox[{"(", 
+        RowBox[{"F", "-", 
+         RowBox[{"F", " ", 
+          RowBox[{"Cos", "[", 
+           RowBox[{"t", " ", "w"}], "]"}]}]}], ")"}], " ", 
+       RowBox[{"HeavisideTheta", "[", "t", "]"}]}], "+", 
+      RowBox[{
+       RowBox[{"C", "[", "2", "]"}], " ", 
+       RowBox[{"Sin", "[", 
+        RowBox[{"t", " ", "w"}], "]"}]}]}]}], "}"}], "}"}], 
+  "\[IndentingNewLine]"}]], "Input",
+ CellChangeTimes->{{3.6036073758223457`*^9, 3.6036073758383465`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Simplify", "[", 
+  RowBox[{"DSolve", "[", 
+   RowBox[{
+    RowBox[{
+     RowBox[{
+      RowBox[{"D", "[", 
+       RowBox[{
+        RowBox[{"p", "[", "t", "]"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"t", ",", "2"}], "}"}]}], "]"}], "+", 
+      RowBox[{
+       RowBox[{"w", "^", "2"}], "*", 
+       RowBox[{"p", "[", "t", "]"}]}], "-", 
+      RowBox[{"F", "*", 
+       RowBox[{"DiracDelta", "[", "t", "]"}]}]}], "\[Equal]", "0"}], ",", 
+    RowBox[{"p", "[", "t", "]"}], ",", "t"}], "]"}], "]"}]], "Input",
+ CellChangeTimes->{{3.603607565746208*^9, 3.603607574183691*^9}, {
+  3.603607634970168*^9, 3.6036076352621846`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"p", "[", "t", "]"}], "\[Rule]", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"C", "[", "1", "]"}], " ", 
+      RowBox[{"Cos", "[", 
+       RowBox[{"t", " ", "w"}], "]"}]}], "+", 
+     RowBox[{
+      RowBox[{"C", "[", "2", "]"}], " ", 
+      RowBox[{"Sin", "[", 
+       RowBox[{"t", " ", "w"}], "]"}]}], "+", 
+     FractionBox[
+      RowBox[{"F", " ", 
+       RowBox[{"HeavisideTheta", "[", "t", "]"}], " ", 
+       RowBox[{"Sin", "[", 
+        RowBox[{"t", " ", "w"}], "]"}]}], "w"]}]}], "}"}], "}"}]], "Output",
+ CellChangeTimes->{3.6036075762858114`*^9, 3.603607636356247*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"D", "[", 
+  RowBox[{
+   RowBox[{"HeavisideTheta", "[", "t", "]"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"t", ",", "2"}], "}"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.6036086997500696`*^9, 3.603608706605462*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  SuperscriptBox["DiracDelta", "\[Prime]",
+   MultilineFunction->None], "[", "t", "]"}]], "Output",
+ CellChangeTimes->{3.603608707365505*^9}]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"-", "F"}], "*", "w", "*", 
+   RowBox[{"Sin", "[", 
+    RowBox[{"w", "*", "t"}], "]"}], "*", 
+   RowBox[{
+    RowBox[{"DiracDelta", "'"}], "[", "t", "]"}]}], "+", 
+  RowBox[{"w", "*", "F", "*", 
+   RowBox[{"HeavisideTheta", "[", "t", "]"}]}]}]], "Input",
+ CellChangeTimes->{{3.6036087416184645`*^9, 3.6036087736152945`*^9}}]
+},
+WindowSize->{1592, 813},
+WindowMargins->{{Automatic, 0}, {Automatic, 0}},
+FrontEndVersion->"9.0 for Microsoft Windows (64-bit) (January 25, 2013)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[557, 20, 799, 20, 31, "Input"],
+Cell[1359, 42, 758, 23, 52, "Input"],
+Cell[CellGroupData[{
+Cell[2142, 69, 653, 18, 31, "Input"],
+Cell[2798, 89, 645, 19, 46, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[3480, 113, 236, 6, 31, "Input"],
+Cell[3719, 121, 165, 4, 31, "Output"]
+}, Open  ]],
+Cell[3899, 128, 370, 10, 31, "Input"]
+}
+]
+*)
+
+(* End of internal cache information *)

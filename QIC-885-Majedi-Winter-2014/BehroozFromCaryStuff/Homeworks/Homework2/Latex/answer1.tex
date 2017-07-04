@@ -1,0 +1,149 @@
+\begin{homeworkProblem}
+\begin{homeworkSectiom}{(a)}
+If the the state $\ket{\Psi}$ is a normalized linear combination of two basis as 
+$$\ket{\Psi}=\alpha\ket{0}+\beta\ket{1}$$
+then the normalization condition is translated as:
+\begin{equation}
+\bracket{\Psi}{\Psi}=
+\begin{pmatrix}
+\alpha\\
+\alpha
+\end{pmatrix}^\dagger
+\begin{pmatrix}
+\alpha\\
+\alpha
+\end{pmatrix}
+=\abs{\alpha}^2+\abs{\beta}^2=1
+\end{equation} 
+
+where $\dagger$ is \textit{transpose conjugate} operator. So $\alpha$ and $\beta$ are related to each other by:
+\begin{equation}
+\abs{\alpha}^2+\abs{\beta}^2=1
+\end{equation}
+
+\end{homeworkSection}
+%-----b-----
+\begin{homeworkSection}{(b)}
+The Hamiltonian of the system is represented by the following matrix:
+\begin{equation}
+\A{H}=
+\begin{pmatrix}
+a & b\\
+b & a
+\end{pmatrix}
+\end{equation}
+Time independent Schr\"odinger equation in the abstract space is:
+\begin{equation}
+H\ket{\Psi}=E\ket{\Psi}
+\end{equation}
+This abstract equation can be represented in $\mathbb{C}^2$ space as the following eigenvalue problem:
+\begin{equation}
+\begin{pmatrix}
+a & b\\
+b & a
+\end{pmatrix}
+\begin{pmatrix}
+\alpha\\
+\beta
+\end{pmatrix}
+=E
+\begin{pmatrix}
+\alpha\\
+\beta
+\end{pmatrix}
+\quad\Lrw\quad
+\begin{pmatrix}
+a-E & b\\
+b & a-E
+\end{pmatrix}
+\begin{pmatrix}
+\alpha\\
+\beta
+\end{pmatrix}
+=0
+\end{equation}
+Putting the determinant the matrix of the coefficients equal to zero ensures us to have non-trivial solutions:
+\begin{equation}
+\det
+\begin{pmatrix}
+a-E & b\\
+b & a-E
+\end{pmatrix}
+=0
+\quad\Lrw\quad
+(a-E)^2=b^2\quad\Lrw\quad E=a\pm b
+\end{equation} 
+and the associated eigenvectors are:
+\begin{equation}
+E_1=a+b\quad\Lrw\quad 
+\begin{pmatrix}
+a & b\\
+b & a
+\end{pmatrix}
+\begin{pmatrix}
+\alpha\\
+\beta
+\end{pmatrix}
+=(a+b)
+\begin{pmatrix}
+\alpha\\
+\beta
+\end{pmatrix}
+\quad\Lrw\quad
+\alpha=\beta
+\end{equation}
+\begin{equation}
+E_2=a-b\quad\Lrw\quad 
+\begin{pmatrix}
+a & b\\
+b & a
+\end{pmatrix}
+\begin{pmatrix}
+\alpha\\
+\beta
+\end{pmatrix}
+=(a-b)
+\begin{pmatrix}
+\alpha\\
+\beta
+\end{pmatrix}
+\quad\Lrw\quad
+\alpha=-\beta
+\end{equation}
+So two orthonormal eigenstates are:
+\begin{align}
+&E=a+b\quad\Lrw\quad\ket{\Psi_1}=\frac{1}{\sqrt{2}}\left(\ket{1}+\ket{2}\right)\\
+&E=a-b\quad\Lrw\quad\ket{\Psi_2}=\frac{1}{\sqrt{2}}\left(\ket{1}-\ket{2}\right)
+\end{align}
+
+\end{homeworkSection}
+\begin{homeworkSection}{(c)}
+Time-dependent solution to the schr\"odinger equation can be obtained just by applying the time evolution operator on an arbitrary state:
+\begin{equation} 
+i\hbar\fpds{t}\ket{\Psi}=H\ket{\Psi}\quad\Lrw\quad \ket{\Psi(t)}=\exp\left(\frac{-iHt}{\hbar}\right)\ket{\Psi(t=0)}
+\end{equation}
+By decomposing $\ket{\Psi(t=0)}=\alpha\ket{1}+\beta\ket{2}$ to the energy eigenstates we get:
+\begin{equation}
+\ket{\Psi(t)}=\exp\left(\frac{-iHt}{\hbar}\right)\left\{\sum_{n}\ket{\Psi_n}\bra{\Psi_n}\right\}\ket{\Psi(t=0)}=
+\sum_{n}\exp\left(\frac{-iE_nt}{\hbar}\right)\ket{\Psi_n}\bracket{\Psi_n}{\Psi(t=0)}
+\end{equation}
+Hence:
+\begin{equation}\label{P1-1}
+\ket{\Psi(t)}=\frac{1}{2}(\alpha+\beta)\exp\left(\frac{-i(a+b)t}{\hbar}\right)\left(\ket{1}+\ket{2}\right)
++\frac{1}{2}(\alpha-\beta)\exp\left(\frac{-i(a-b)t}{\hbar}\right)\left(\ket{1}-\ket{2}\right)
+\end{equation}
+
+\end{homeworkSection}
+
+%-----C-----
+\begin{homeworkSection}{(c)}
+If the system starts out at $t=0$ in state $\ket{0}$, the state after time $t$ can be ptredicted by \eqref{P1-1}. By putting $\alpha=1$ and $\beta=0$ we obtain:
+
+\begin{multline}
+\ket{\Psi(t)}=\frac{1}{2}\exp\left(\frac{-iat}{\hbar}\right)\left\{\exp\left(\frac{-ibt}{\hbar}\right)\left(\ket{1}+\ket{2}\right)+\exp\left(\frac{+ibt}{\hbar}\right)\left(\ket{1}-\ket{2}\right)\right\}\\
+=\exp\left(\frac{-iat}{\hbar}\right)\left\{\cos\left(\frac{bt}{\hbar}\right)\ket{1}-i\sin\left(\frac{bt}{\hbar}\right)\ket{2}\right\}
+\end{multline}
+
+\end{homeworkSection}
+
+\end{homeworkProblem}

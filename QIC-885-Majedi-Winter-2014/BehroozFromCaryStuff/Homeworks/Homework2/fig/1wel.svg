@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg"
+    xmlns:latexdraw="http://latexdraw.sourceforge.net/namespaces/latexdraw"
+    version="1.1" baseProfile="full">
+    <defs/>
+    <g>
+        <g latexdraw:type="joinedLines" id="id1256">
+            <polyline
+                points="284.0,179.0 359.0,179.0 359.0,319.0 609.0,319.0 609.0,179.0 684.0,179.0 "
+                stroke-width="2.0" stroke="black" fill="none" latexdraw:rotationAngle="0.0"/>
+        </g>
+        <g latexdraw:type="text" id="id1259"
+            font-family="Times New Roman" fill="black" font-size="22" latexdraw:x="456.0">
+            <text x="456.0" y="294.0"><![CDATA[$L_w$]]></text>
+        </g>
+        <g latexdraw:type="text" id="id1262"
+            font-family="Times New Roman" fill="black" font-size="22" latexdraw:x="588.0">
+            <text x="588.0" y="154.0"><![CDATA[$\frac{L_b}{2}$]]></text>
+        </g>
+        <g latexdraw:type="text" id="id1265"
+            font-family="Times New Roman" fill="black" font-size="22" latexdraw:x="253.0">
+            <text x="253.0" y="153.0"><![CDATA[$\frac{L_b}{2}$]]></text>
+        </g>
+        <g latexdraw:type="text" id="id1268"
+            font-family="Times New Roman" fill="black" font-size="22" latexdraw:x="514.0">
+            <text x="514.0" y="346.0"><![CDATA[$\vp{M}_{b}\left(\frac{L_b}{2}\right)$]]></text>
+        </g>
+        <g latexdraw:type="text" id="id1271"
+            font-family="Times New Roman" fill="black" font-size="22" latexdraw:x="97.0">
+            <text x="97.0" y="346.0"><![CDATA[$\vp{M}_{b}\left(\frac{L_b}{2}\right)$]]></text>
+        </g>
+        <g latexdraw:type="text" id="id1274"
+            font-family="Times New Roman" fill="black" font-size="22" latexdraw:x="527.0">
+            <text x="527.0" y="347.0"><![CDATA[$\vp{M}_{wb}$]]></text>
+        </g>
+        <g latexdraw:type="text" id="id1277"
+            font-family="Times New Roman" fill="black" font-size="22" latexdraw:x="294.0">
+            <text x="294.0" y="347.0"><![CDATA[$\vp{M}_{bw}$]]></text>
+        </g>
+        <g latexdraw:type="text" id="id1280"
+            font-family="Times New Roman" fill="black" font-size="22" latexdraw:x="353.0">
+            <text x="353.0" y="347.0"><![CDATA[$\vp{M}_w\left(L_{w}\right)$]]></text>
+        </g>
+    </g>
+    <metadata>
+        <latexdraw:metadata>
+            <latexdraw:displayBorders>false</latexdraw:displayBorders>
+            <latexdraw:autoAdjust>true</latexdraw:autoAdjust>
+            <latexdraw:ppc>50</latexdraw:ppc>
+            <latexdraw:zoom>1.0</latexdraw:zoom>
+            <latexdraw:unit>cm</latexdraw:unit>
+            <latexdraw:classicGrid>false</latexdraw:classicGrid>
+            <latexdraw:gridGap>10</latexdraw:gridGap>
+            <latexdraw:code>0</latexdraw:code>
+            <latexdraw:displayGrid>true</latexdraw:displayGrid>
+            <latexdraw:magneticGrid>false</latexdraw:magneticGrid>
+            <latexdraw:autoUpdate>true</latexdraw:autoUpdate>
+            <latexdraw:version>2.0.8</latexdraw:version>
+            <latexdraw:size>
+                <latexdraw:width>1300</latexdraw:width>
+                <latexdraw:height>760</latexdraw:height>
+            </latexdraw:size>
+            <latexdraw:position>
+                <latexdraw:x>0</latexdraw:x>
+                <latexdraw:y>0</latexdraw:y>
+            </latexdraw:position>
+            <latexdraw:dividerPosition>0.82</latexdraw:dividerPosition>
+            <latexdraw:displayCodePanel>true</latexdraw:displayCodePanel>
+            <latexdraw:displayXScale>true</latexdraw:displayXScale>
+            <latexdraw:displayYScale>true</latexdraw:displayYScale>
+            <latexdraw:delimitorOpacity>130</latexdraw:delimitorOpacity>
+        </latexdraw:metadata>
+    </metadata>
+</svg>

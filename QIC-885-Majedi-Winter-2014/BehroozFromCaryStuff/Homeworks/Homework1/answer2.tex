@@ -1,0 +1,41 @@
+\begin{homeworkProblem}
+
+ To calculate the expectation value of momentum operator evolving in the light of Schr\"odinger equation, we first prove a simple and important dynamic equation. Assume that observable  $A$ evolves under the dynamics imposed by Hamiltonian $\A{H}$ . From  the Schr\"odinger's equation we can write:
+\begin{equation}\label{P2-SCH}
+i\hbar\pd{\Psi}{t}=\A{H}\Psi
+\end{equation}
+
+The rate of change in the expectation value of observable $A$ can be calculated as below:
+
+\begin{equation}\label{P2-1}
+\frac{d}{dt}\langle A\rangle=\frac{d}{dt}\int dv \Psi^* A \Psi dv=\int dv\Psi^*(\vp{r},t)\pd{A}{t}\Psi+\int dv\left(\Psi^* A\pd{\Psi}{t}+\pd{\Psi^*}{t}A\Psi\right)
+\end{equation}
+Using \eqref{P2-SCH} left hand side of \eqref{P2-1} can be simplified  as below:
+\begin{equation}\label{P2-2}
+ \frac{d}{dt}\langle A\rangle=\langle\pd{A}{t}\rangle+ \frac{1}{i\hbar}\int dv\Psi^*\left (A\A{H}-\A{H}A\right)\Psi 
+\end{equation}
+Please note that Hamiltonian  ($\A{H}$) is a hermitian operator and we have utilized this fact in equation \eqref{P2-2}. this equation can be rewritten in a more convenient form:
+\begin{equation}\label{P2-3}
+\frac{d}{dt}\langle A\rangle=\langle\pd{A}{t}\rangle+ \frac{1}{i\hbar}\int dv\Psi^*\left[A,\A{H}\right]\Psi 
+\end{equation}
+In order to evaluate the rate of change in the expectation value of momentum we can simply substitute momentum operator ($\vp{p}$) for $A$ in equation \eqref{P2-3}. Since there is no explicit time dependent in the momentum operator the first term on the right hand side of equation \eqref{P2-3} will vanish  and :
+\begin{equation}
+\frac{d}{dt}\langle \vp{p}\rangle=\frac{1}{i\hbar}\langle\left[\vp{p},-\frac{\hbar^2}{2m}\vp{p}^2+V(\vp{r})\right]\rangle
+\end{equation} 
+This equation can be simplified more using basic properties of commutators \cite{sakurai}:
+\begin{equation}\label{P2-4}
+\langle \left[\vp{p},-\frac{\hbar^2}{2m}\vp{p}^2+V(\vp{r})\right]\rangle=-\frac{\hbar^2}{2m}\langle\left[\vp{p},\vp{p}^2\right]\rangle+\langle\left[\vp{p},V(\vp{r})\right]\rangle
+\end{equation}
+It's evident that $\vp{p}$ and $\vp{p}^2$ commutate and consequently the first term in the right hand side of equation \eqref{P2-4} vanishes. the second term can be simply calculated by substituating $-i\hbar\nabla$ in $\vp{p}$ :
+
+\begin{equation}\label{P2-5}
+\frac{1}{i\hbar}\langle\left[\vp{p},V(\vp{r})\right]\rangle=-\int dv\left(\Psi^*\nabla \left(V(\vp{r})\Psi\right)- \Psi^* V(\vp{r})\nabla\Psi\right)=\int dv \abs{\Psi}^2\left(-\nabla V\right)=\langle-\nabla V\rangle
+\end{equation} 
+Combining equations \eqref{P2-4} and \eqref{P2-5} the following semi-classical equation will be obtained:
+\begin{equation}
+\frac{d}{dt}\langle\vp{p}\rangle=\langle-\nabla V(\vp{r})\rangle
+\end{equation}
+
+
+\end{homeworkProblem}
+  

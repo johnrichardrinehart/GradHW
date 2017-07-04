@@ -1,0 +1,3877 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 9.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[    119807,       3868]
+NotebookOptionsPosition[    117569,       3795]
+NotebookOutlinePosition[    118099,       3816]
+CellTagsIndexPosition[    118056,       3813]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[TextData[{
+ "Homework 1 - Implementations of Quantum Computing (QIC ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"750", ")"}], TraditionalForm]]]
+}], "Subtitle",
+ CellChangeTimes->{{3.600351845044287*^9, 3.6003518735309167`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ StyleBox["1. Prove the following identities\n", "Text"],
+ StyleBox["a) [A,B] = - [B,A]\nb) [A+B,C] = [A,C] + [B,C]\nc) [A,BC] = [A,B]C \
++ B[A,C]\nd) [A,[B,C]] + [B,[C,A]] + [C,[A,B]] = 0", "Text"],
+ "\n",
+ StyleBox[" ", "Text"]
+}], "Section",
+ CellChangeTimes->{{3.60035198653938*^9, 3.600351995307882*^9}, {
+  3.600353792962702*^9, 3.600353795978874*^9}, {3.600353854145201*^9, 
+  3.600353931312615*^9}}],
+
+Cell["\<\
+1a) [A,B] = AB-BA (by definition of the bracket)
+               = -(BA-AB) (by distribution of scalars over multiplication)
+               = -[B,A] (by definition of the bracket)\
+\>", "Text",
+ CellChangeTimes->{{3.60035224022189*^9, 3.6003523120289974`*^9}}],
+
+Cell[TextData[{
+ "1b) [A+B,C] = (A+B)C - C(A+B)\n                     = AC + BC - CA - CB (by \
+distribution of vector multiplication)\n                     = (AC - CA) + \
+(BC - CB) (rearranging)\n                     = [A,C] + [B,C] (by definition \
+of the ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"bracket", ")"}], TraditionalForm]]]
+}], "Text",
+ CellChangeTimes->{{3.600352314198121*^9, 3.6003524068354197`*^9}}],
+
+Cell["\<\
+1c) [A,BC] = ABC-BCA
+                  = ABC (- BAC +BAC) - BCA (by using the additive zero of the \
+vector space)
+                  = (ABC - BAC) + (BAC - BCA) (by associativity of addition)
+                  = [A,B]C + B[A,C] (by definition of the bracket)\
+\>", "Text",
+ CellChangeTimes->{{3.6003524100636044`*^9, 3.600352520043895*^9}}],
+
+Cell[TextData[{
+ "1d) (this problem walks the reader through a proof of the oft-cited Jacobi \
+Identity useful in ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SuperscriptBox["\[DoubleStruckCapitalR]", "3"], " "}], TraditionalForm]]],
+ "vector analysis (cross-product)\n      ",
+ Cell[BoxData[{
+  StyleBox[
+   RowBox[{
+    RowBox[{"[", 
+     RowBox[{"A", ",", 
+      RowBox[{"[", 
+       RowBox[{"B", ",", "C"}], "]"}]}], "]"}], " ", "+", " ", 
+    RowBox[{"[", 
+     RowBox[{"B", ",", 
+      RowBox[{"[", 
+       RowBox[{"C", ",", "A"}], "]"}]}], "]"}], " ", "+", " ", 
+    RowBox[{"[", 
+     RowBox[{"C", ",", 
+      RowBox[{"[", 
+       RowBox[{"A", ",", "B"}], "]"}]}], "]"}]}], 
+   "Text"], "\[IndentingNewLine]", 
+  StyleBox[
+   RowBox[{"=", 
+    RowBox[{
+     RowBox[{"A", 
+      RowBox[{"(", 
+       RowBox[{"BC", "-", "CB"}], ")"}]}], "-", 
+     RowBox[{
+      RowBox[{"(", 
+       RowBox[{"BC", "-", "CB"}], ")"}], "A"}], "+", 
+     RowBox[{"B", 
+      RowBox[{"(", 
+       RowBox[{"CA", "-", "AC"}], ")"}]}], "-", 
+     RowBox[{
+      RowBox[{"(", 
+       RowBox[{"CA", "-", "AC"}], ")"}], "B"}], "+", 
+     RowBox[{"C", 
+      RowBox[{"(", 
+       RowBox[{"AB", "-", "BA"}], ")"}]}], "-", 
+     RowBox[{
+      RowBox[{"(", 
+       RowBox[{"AB", "-", "BA"}], ")"}], "C"}]}]}], 
+   "Text"], "\[IndentingNewLine]", 
+  StyleBox[
+   RowBox[{"=", 
+    RowBox[{
+    "ABC", "-", "ACB", "-", "BCA", "+", "CBA", "+", "BCA", "-", "BAC", "-", 
+     "CAB", "+", 
+     StyleBox[
+      RowBox[{
+       StyleBox["A", "Text",
+        FontFamily->"Arial"], 
+       StyleBox[
+        StyleBox[
+         StyleBox["C", "Text",
+          FontFamily->"Arial"], "Text",
+         FontFamily->"Arial"], "Text",
+        FontFamily->"Arial"], "B"}]], "+", "CAB", "-", "CBA", "-", "ABC", "+",
+      "BAC"}]}], "Text",
+   FontFamily->"Arial"], "\[IndentingNewLine]", 
+  StyleBox[
+   RowBox[{"=", 
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{"ABC", "-", "ABC"}], ")"}], "+", 
+     RowBox[{"(", 
+      RowBox[{"ACB", "-", "ACB"}], ")"}], "+", 
+     RowBox[{"(", 
+      RowBox[{"CBA", "-", "CBA"}], ")"}], "+", 
+     RowBox[{"(", 
+      RowBox[{"BAC", "-", "BAC"}], ")"}], "+", 
+     RowBox[{"(", 
+      RowBox[{"CAB", "-", "CAB"}], ")"}]}]}],
+   FontFamily->"Arial"], "\n", 
+  StyleBox[
+   RowBox[{"=", 
+    RowBox[{"0", Cell[""]}]}],
+   FontFamily->"Arial"]}]],
+ "\n      "
+}], "Text",
+ CellChangeTimes->CompressedData["
+1:eJxTTMoPSmViYGAQBmIQfXu52UKFy68cT6nwbwTRWyo37gbR26XWHQbRclx6
+p0B02bIlZ0F0l2PwdRD9eNWmDyDa5uXhLyBaQc78K4j+sf4CmyKQ/nuwRwxE
+70lmkAHRr56G6YHooNdqJiDa7Um8JYh+kXKaXQlIF6uHcYDofTL5C9uA9Lrm
+umUg2uvdos0g+my6wQ4QXSdifAhE/91bcAxEa+3JOg2iY866ngXR95YG3QbR
+91n/3gXRh38eewaiV73b/QJE7zme8AFEz5kU9htEMy3NY2oH0p8CLZhB9NwH
+x7hBdOO5DB4QrTjrwcUtQPrrKrHLIBoAa3WuHA==
+  "]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ StyleBox["2. Coherent States\n", "Text"],
+ StyleBox["A coherent state of a 1D simple harmonic oscillator is defined to \
+be an eigenstate of the annihilation operator ", "Text",
+  FontSize->12],
+ StyleBox[Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{
+     OverscriptBox["a", "^"], ":", "  ", 
+     RowBox[{
+      OverscriptBox["a", "^"], 
+      TemplateBox[{"\[Lambda]"},
+       "Ket"]}]}], "=", 
+    RowBox[{"\[Lambda]", 
+     TemplateBox[{"\[Lambda]"},
+      "Ket"]}]}], TraditionalForm]], "Text",
+  FontSize->12], "Text"],
+ StyleBox[" where ", "Text",
+  FontSize->12],
+ StyleBox[Cell[BoxData[
+  FormBox[
+   RowBox[{"\[Lambda]", " "}], TraditionalForm]], "Text",
+  FontSize->12], "Text"],
+ StyleBox["is, in general, complex.\na) What is the average number of \
+excitations in a state ", "Text",
+  FontSize->12],
+ StyleBox[Cell[BoxData[
+  FormBox[
+   TemplateBox[{"\[Lambda]"},
+    "Ket"], TraditionalForm]], "Text"], "Text"],
+ StyleBox[" (where, according to the above convention ", "Text",
+  FontSize->12],
+ StyleBox[Cell[BoxData[
+  FormBox[
+   StyleBox[
+    TemplateBox[{"\[Lambda]"},
+     "Ket"],
+    FontSize->14], TraditionalForm]], "Text",
+  FormatType->"TraditionalForm"], "Text"],
+ StyleBox[" is an eigenstate of the annihilation operator)?\nb) Using the \
+Heisenberg representation of this operator, ", "Text",
+  FontSize->12],
+ StyleBox[Cell[BoxData[
+  FormBox[
+   RowBox[{
+    OverscriptBox["x", "^"], "(", "t", ")"}], TraditionalForm]], "Text",
+  FontSize->12], "Text"],
+ StyleBox[", calculate the expectation value of this operator for state ", 
+  "Text",
+  FontSize->12],
+ StyleBox[Cell[BoxData[
+  FormBox[
+   TemplateBox[{"\[Lambda]"},
+    "Ket"], TraditionalForm]], "Text",
+  FontSize->12], "Text"],
+ StyleBox[".\nc) Show that the state ", "Text",
+  FontSize->12],
+ StyleBox[Cell[BoxData[
+  FormBox[
+   RowBox[{
+    TemplateBox[{"\[Lambda]"},
+     "Ket"], "=", 
+    RowBox[{
+     SuperscriptBox["e", 
+      FractionBox[
+       RowBox[{"-", 
+        SuperscriptBox[
+         RowBox[{
+         "\[LeftBracketingBar]", "\[Lambda]", "\[RightBracketingBar]"}], 
+         "2"]}], "2"]], 
+     SuperscriptBox["e", 
+      SuperscriptBox["\[Lambda]a", "\[Dagger]"]], 
+     TemplateBox[{"0"},
+      "Ket"]}]}], TraditionalForm]], "Text",
+  FontSize->12], "Text"],
+ StyleBox[" is a normalized coherent state.\nd) Express ", "Text",
+  FontSize->12],
+ StyleBox[Cell[BoxData[
+  FormBox[
+   TemplateBox[{"\[Lambda]"},
+    "Ket"], TraditionalForm]], "Text",
+  FontSize->12], "Text"],
+ StyleBox[" as ", "Text",
+  FontSize->12],
+ StyleBox[Cell[BoxData[
+  FormBox[
+   RowBox[{
+    UnderoverscriptBox["\[Sum]", 
+     RowBox[{"n", "=", "0"}], "\[Infinity]"], 
+    RowBox[{
+     RowBox[{"f", "(", "n", ")"}], 
+     TemplateBox[{"n"},
+      "Ket"]}]}], TraditionalForm]], "Text",
+  FontSize->12], "Text"],
+ StyleBox[". Show that the probablitiy distribution ", "Text",
+  FontSize->12],
+ StyleBox[Cell[BoxData[
+  FormBox[
+   SuperscriptBox[
+    RowBox[{"\[LeftBracketingBar]", 
+     RowBox[{"f", "(", "n", ")"}], "\[RightBracketingBar]"}], "2"], 
+   TraditionalForm]], "Text",
+  FontSize->12], "Text"],
+ StyleBox[" is Poisson-distributed in n.", "Text",
+  FontSize->12]
+}], "Section",
+ CellChangeTimes->{{3.6003537552065425`*^9, 3.6003537888664675`*^9}, {
+   3.600353934649806*^9, 3.6003541913804903`*^9}, {3.6003542372671146`*^9, 
+   3.600354458951794*^9}, {3.60035450905366*^9, 3.6003549363461*^9}, {
+   3.6003550386799526`*^9, 3.600355168748392*^9}, {3.6003552056965055`*^9, 
+   3.6003552071685896`*^9}, 3.600355275497498*^9, 3.6003554654113607`*^9, {
+   3.600562383558401*^9, 3.600562448302105*^9}, {3.600563736874807*^9, 
+   3.600563745220284*^9}, 3.600656032487814*^9, {3.600656398665758*^9, 
+   3.600656405010121*^9}, {3.600657336938424*^9, 3.6006574283106503`*^9}}],
+
+Cell[TextData[{
+ StyleBox["2a) ", "Text"],
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{
+     TemplateBox[{"\[Lambda]"},
+      "Bra"], 
+     OverscriptBox["N", "^"], 
+     TemplateBox[{"\[Lambda]"},
+      "Ket"]}], "=", 
+    RowBox[{
+     RowBox[{
+      TemplateBox[{"\[Lambda]"},
+       "Ket"], 
+      SuperscriptBox["a", "\[Dagger]"], "a", 
+      TemplateBox[{"\[Lambda]"},
+       "Ket"]}], "=", 
+     RowBox[{
+      RowBox[{
+       TemplateBox[{"\[Lambda]"},
+        "Bra"], 
+       SuperscriptBox["\[Lambda]", "*"], "\[Lambda]", 
+       TemplateBox[{"\[Lambda]"},
+        "Ket"]}], "=", 
+      SuperscriptBox[
+       RowBox[{"\[LeftBracketingBar]", "\[Lambda]", "\[RightBracketingBar]"}],
+        "2"]}]}]}], TraditionalForm]]],
+ "\n2b) The actual problem statement directs me to my notes for the \
+expression of ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    OverscriptBox["x", "^"], "(", "t", ")"}], TraditionalForm]]],
+ ". This makes it rather unfortunate for me to have notes. However, I am \
+going to choose to see this as an opportunity to reinforce elementary \
+concepts.\n\nThe Heisenberg representation of an operator is chosen in such a \
+way as to transfer the time-dependence from the state ket to the operator. \
+However, in doing so we must be careful to make sure that all expectation \
+values are the same at the end (so as to keep the predictions the same). In \
+order to keep the expectation values the same, I am led down the path of \
+using unitary matrices to transform the operator. Note that if I transform a \
+state ket by a unitary U that the inner product is maintained : ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    TemplateBox[{"\[Beta]","\[Beta]"},
+     "BraKet"], "=", 
+    RowBox[{
+     RowBox[{
+      TemplateBox[{"\[Psi]"},
+       "Bra"], 
+      SuperscriptBox["U", "\[Dagger]"], "U", 
+      TemplateBox[{"\[Psi]"},
+       "Ket"]}], "=", 
+     TemplateBox[{"\[Psi]","\[Psi]"},
+      "BraKet"]}]}], TraditionalForm]]],
+ " since ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SuperscriptBox["U", "\[Dagger]"], "U"}], TraditionalForm]]],
+ " = \[DoubleStruckL].\nThus, consider a transformation that acts on the \
+time-dependent state \[VerticalSeparator]\[Psi](t)\[RightAngleBracket] such \
+that ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{"U", 
+     TemplateBox[{RowBox[{"\[Psi]", "(", "t", ")"}]},
+      "Ket"]}], "=", 
+    TemplateBox[{RowBox[{"\[Psi]", "(", 
+        SubscriptBox["t", "0"], ")"}]},
+     "Ket"]}], TraditionalForm]]],
+ " where ",
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox["t", "0"], TraditionalForm]]],
+ " is a particular time during the evolution of ",
+ Cell[BoxData[
+  TemplateBox[{"\[Psi]"},
+   "Ket"]],
+  FontFamily->"Arial"],
+ ". Then, the effect of some operator ",
+ Cell[BoxData[
+  FormBox[
+   OverscriptBox["A", 
+    RowBox[{" ", "^"}]], TraditionalForm]]],
+ " on the state ",
+ Cell[BoxData[
+  TemplateBox[{RowBox[{"\[Psi]", 
+      RowBox[{"(", "t", ")"}]}]},
+   "Ket"]],
+  FontFamily->"Arial"],
+ " can be expressed as ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{
+     OverscriptBox["A", "^"], "  ", 
+     TemplateBox[{RowBox[{"\[Psi]", 
+         RowBox[{"(", "t", ")"}]}]},
+      "Ket"]}], "=", 
+    RowBox[{
+     OverscriptBox["A", "^"], "U", " ", 
+     TemplateBox[{RowBox[{"\[Psi]", "(", 
+         SubscriptBox["t", "0"], ")"}]},
+      "Ket"]}]}], TraditionalForm]]],
+ " and the expectation of ",
+ Cell[BoxData[
+  FormBox[
+   OverscriptBox["A", "^"], TraditionalForm]]],
+ " is given by ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    TemplateBox[{RowBox[{
+        RowBox[{"\[Psi]", "(", 
+          SubscriptBox["t", "0"], ")"}], 
+        Cell[""]}]},
+     "Bra"], 
+    SuperscriptBox["U", "\[Dagger]"], "AU", 
+    TemplateBox[{RowBox[{
+        RowBox[{"\[Psi]", "(", 
+          SubscriptBox["t", "0"], ")"}], 
+        Cell[""]}]},
+     "Ket"]}], TraditionalForm]]],
+ ". Now, since all the time dependence is stored in between the kets, we can \
+call ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{
+     SuperscriptBox["U", "\[Dagger]"], "AU"}], "=", 
+    RowBox[{"A", "(", "t", ")"}]}], TraditionalForm]]],
+ ". This is the Heiseberg representation of the operator A. \n\nI just looked \
+at the lecture notes after realizing I had no idea what ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"x", "(", "t", ")"}], TraditionalForm]]],
+ " is. It turns out x(t) is a well-defined operator : x(t) = k ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"(", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"a", "(", "0", ")"}], 
+      SuperscriptBox["e", 
+       RowBox[{"-", "i\[Omega]t"}]]}], "+", 
+     RowBox[{
+      RowBox[{
+       SuperscriptBox["a", "\[Dagger]"], "(", "0", ")"}], 
+      SuperscriptBox["e", "i\[Omega]t"]}]}], ")"}], TraditionalForm]]],
+ " , where k is a normalization constant with appropriate units. I just need \
+to calculate the expectation value of this operator.\n"
+}], "Text",
+ CellChangeTimes->{{3.6003537552065425`*^9, 3.6003537888664675`*^9}, {
+   3.600353934649806*^9, 3.6003541913804903`*^9}, {3.6003542372671146`*^9, 
+   3.600354458951794*^9}, {3.60035450905366*^9, 3.6003549363461*^9}, {
+   3.6003550386799526`*^9, 3.600355168748392*^9}, {3.6003552056965055`*^9, 
+   3.6003552071685896`*^9}, 3.600355275497498*^9, {3.6003554654113607`*^9, 
+   3.6003560935742893`*^9}, {3.600356124426054*^9, 3.600356130874423*^9}, {
+   3.6003563862380285`*^9, 3.6003568728328605`*^9}, {3.6003571232201815`*^9, 
+   3.6003573265298104`*^9}, {3.6003574031221914`*^9, 3.600357472617166*^9}, {
+   3.6005624528883667`*^9, 3.600562630938551*^9}, {3.60056374095504*^9, 
+   3.600563743258172*^9}, {3.600656037896123*^9, 3.6006560480407033`*^9}, {
+   3.60065643419479*^9, 3.600656449820684*^9}}],
+
+Cell[TextData[Cell[BoxData[{
+ FormBox[
+  RowBox[{
+   RowBox[{
+    TemplateBox[{"\[Lambda]"},
+     "Bra"], 
+    RowBox[{"x", "(", "t", ")"}], 
+    TemplateBox[{"\[Lambda]"},
+     "Ket"]}], "=", 
+   RowBox[{
+    TemplateBox[{"\[Lambda]"},
+     "Bra"], "k", 
+    FormBox[
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"a", "(", "0", ")"}], 
+        SuperscriptBox["e", 
+         RowBox[{"-", "i\[Omega]t"}]]}], "+", 
+       RowBox[{
+        RowBox[{
+         SuperscriptBox["a", "\[Dagger]"], "(", "0", ")"}], 
+        SuperscriptBox["e", "i\[Omega]t"]}]}], ")"}],
+     TraditionalForm], 
+    TemplateBox[{"\[Lambda]"},
+     "Ket"]}]}], TraditionalForm], "\[IndentingNewLine]", 
+ FormBox[
+  RowBox[{"=", 
+   RowBox[{
+    RowBox[{
+     TemplateBox[{"\[Lambda]"},
+      "Bra"], "k", "*", 
+     RowBox[{"a", "(", "0", ")"}], 
+     SuperscriptBox["e", 
+      RowBox[{"-", "i\[Omega]t"}]], 
+     TemplateBox[{"\[Lambda]"},
+      "Ket"]}], "+", 
+    RowBox[{
+     TemplateBox[{"\[Lambda]"},
+      "Bra"], "k", "*", 
+     RowBox[{
+      SuperscriptBox["a", "\[Dagger]"], "(", "0", ")"}], 
+     SuperscriptBox["e", "i\[Omega]t"], 
+     TemplateBox[{"\[Lambda]"},
+      "Ket"]}]}]}], TraditionalForm], "\[IndentingNewLine]", 
+ FormBox[
+  RowBox[{"=", 
+   RowBox[{
+    RowBox[{
+     SuperscriptBox["ke", 
+      RowBox[{"-", "i\[Omega]t"}]], "\[Lambda]"}], "+", 
+    RowBox[{
+     SuperscriptBox["ke", "i\[Omega]t"], 
+     SuperscriptBox["\[Lambda]", "*"]}]}]}], 
+  TraditionalForm], "\[IndentingNewLine]", 
+ FormBox[
+  RowBox[{"=", 
+   RowBox[{"k", "\[VerticalSeparator]", "\[Lambda]", "\[VerticalSeparator]", 
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{
+       SuperscriptBox["e", 
+        RowBox[{"-", "i\[Omega]t"}]], 
+       SuperscriptBox["e", "i\[Phi]"]}], "+", 
+      RowBox[{
+       SuperscriptBox["e", "i\[Omega]t"], 
+       SuperscriptBox["e", 
+        RowBox[{"-", "i\[Phi]"}]]}]}], ")"}]}]}], 
+  TraditionalForm], "\[IndentingNewLine]", 
+ FormBox[
+  RowBox[{"=", 
+   RowBox[{
+    RowBox[{"2", "k"}], "\[VerticalSeparator]", "\[Lambda]", 
+    "\[VerticalSeparator]", 
+    RowBox[{"cos", "(", 
+     RowBox[{"\[Omega]t", "-", "\[Phi]"}], ")"}]}]}], 
+  TraditionalForm]}]]], "Text",
+ CellChangeTimes->{{3.6003537552065425`*^9, 3.6003537888664675`*^9}, {
+   3.600353934649806*^9, 3.6003541913804903`*^9}, {3.6003542372671146`*^9, 
+   3.600354458951794*^9}, {3.60035450905366*^9, 3.6003549363461*^9}, {
+   3.6003550386799526`*^9, 3.600355168748392*^9}, {3.6003552056965055`*^9, 
+   3.6003552071685896`*^9}, 3.600355275497498*^9, {3.6003554654113607`*^9, 
+   3.6003560935742893`*^9}, {3.600356124426054*^9, 3.600356130874423*^9}, {
+   3.6003563862380285`*^9, 3.6003568728328605`*^9}, {3.6003571232201815`*^9, 
+   3.6003573265298104`*^9}, {3.6003574031221914`*^9, 
+   3.6003582482655306`*^9}, {3.600358306663871*^9, 3.600358308641984*^9}, {
+   3.6004493244227886`*^9, 3.6004493244227886`*^9}, {3.600556637994774*^9, 
+   3.600556883309805*^9}, {3.6005569516407137`*^9, 3.6005571350692053`*^9}, {
+   3.6006564593432283`*^9, 3.600656460177276*^9}}],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"Now", ",", " ", 
+   RowBox[{
+   "k", " ", "is", " ", "just", " ", "a", " ", "constant", " ", "of", " ", 
+    RowBox[{"proportionality", " ", ":", 
+     RowBox[{Cell[""], 
+      RowBox[{Cell[TextData[{
+        "k = ",
+        Cell[BoxData[
+         FormBox[
+          SqrtBox[
+           FractionBox["\[HBar]", 
+            RowBox[{"2", "m\[Omega]"}]]], TraditionalForm]],
+         FormatType->"TraditionalForm"]
+       }]], ".", " ", "The"}], " ", "final", " ", "result", " ", "can", " ", 
+      "be", " ", "expressed", " ", "as", " ", 
+      RowBox[{Cell[TextData[Cell[BoxData[
+        FormBox[
+         RowBox[{
+          RowBox[{
+           TemplateBox[{"\[Lambda]"},
+            "Bra"], 
+           RowBox[{"x", "(", "t", ")"}], 
+           TemplateBox[{"\[Lambda]"},
+            "Ket"]}], "=", 
+          RowBox[{
+           SqrtBox[
+            FractionBox[
+             RowBox[{"2", "\[HBar]"}], "m\[Omega]"]], "|", "\[Lambda]", "|", 
+           RowBox[{"cos", "(", 
+            RowBox[{"\[Omega]t", "-", "\[Phi]"}], ")"}]}]}], TraditionalForm]],
+        FormatType->"TraditionalForm"]]], "."}]}]}]}]}], TextForm]], "Text",
+ CellChangeTimes->{{3.6003537552065425`*^9, 3.6003537888664675`*^9}, {
+   3.600353934649806*^9, 3.6003541913804903`*^9}, {3.6003542372671146`*^9, 
+   3.600354458951794*^9}, {3.60035450905366*^9, 3.6003549363461*^9}, {
+   3.6003550386799526`*^9, 3.600355168748392*^9}, {3.6003552056965055`*^9, 
+   3.6003552071685896`*^9}, 3.600355275497498*^9, {3.6003554654113607`*^9, 
+   3.6003560935742893`*^9}, {3.600356124426054*^9, 3.600356130874423*^9}, {
+   3.6003563862380285`*^9, 3.6003568728328605`*^9}, {3.6003571232201815`*^9, 
+   3.6003573265298104`*^9}, {3.6003574031221914`*^9, 
+   3.6003582482655306`*^9}, {3.600358306663871*^9, 3.6003584921934824`*^9}, {
+   3.6003585609924173`*^9, 3.6003585808545537`*^9}, {3.6005571743604527`*^9, 
+   3.600557248326683*^9}, {3.600562665963554*^9, 3.600562670125792*^9}}],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{
+    RowBox[{"2", "c"}], ")"}], " ", "To", " ", "show", " ", "that", " ", 
+   "the", " ", "state", " ", "is", " ", "normalized", " ", "all", " ", "we", 
+   " ", "have", " ", "to", " ", "do", " ", "is", " ", "take", " ", "the", " ",
+    "inner", " ", "product", " ", "with", " ", "itself", " ", "and", " ", 
+   "show", " ", "that", " ", "that", " ", "number", " ", "is", " ", "1.", " ", 
+   RowBox[{"So", ":"}]}], TextForm]], "Text",
+ CellChangeTimes->{{3.6003537552065425`*^9, 3.6003537888664675`*^9}, {
+   3.600353934649806*^9, 3.6003541913804903`*^9}, {3.6003542372671146`*^9, 
+   3.600354458951794*^9}, {3.60035450905366*^9, 3.6003549363461*^9}, {
+   3.6003550386799526`*^9, 3.600355168748392*^9}, {3.6003552056965055`*^9, 
+   3.6003552071685896`*^9}, 3.600355275497498*^9, {3.6003554654113607`*^9, 
+   3.6003560935742893`*^9}, {3.600356124426054*^9, 3.600356130874423*^9}, {
+   3.6003563862380285`*^9, 3.6003568728328605`*^9}, {3.6003571232201815`*^9, 
+   3.6003573265298104`*^9}, {3.6003574031221914`*^9, 
+   3.6003582482655306`*^9}, {3.600358306663871*^9, 3.6003584921934824`*^9}, {
+   3.6003585609924173`*^9, 3.6003586218028955`*^9}}],
+
+Cell[TextData[Cell[BoxData[{
+ StyleBox[Cell[TextData[{
+   Cell[BoxData[
+    FormBox[
+     RowBox[{
+      TemplateBox[{"\[Lambda]","\[Lambda]"},
+       "BraKet"], "=", 
+      RowBox[{
+       TemplateBox[{"0"},
+        "Bra"], 
+       SuperscriptBox["e", 
+        OverscriptBox["2", 
+         RowBox[{"-", 
+          RowBox[{"\[VerticalSeparator]", "\[Lambda]", 
+           SuperscriptBox["\[VerticalSeparator]", "2"]}]}]]], 
+       SuperscriptBox["e", 
+        RowBox[{
+         SuperscriptBox["\[Lambda]", "*"], "a"}]], 
+       SuperscriptBox["e", 
+        OverscriptBox["2", 
+         RowBox[{"-", 
+          RowBox[{"\[VerticalSeparator]", "\[Lambda]", 
+           SuperscriptBox["\[VerticalSeparator]", "2"]}]}]]], 
+       SuperscriptBox["e", 
+        SuperscriptBox["\[Lambda]a", "\[Dagger]"]], 
+       TemplateBox[{"0"},
+        "Ket"]}]}], TraditionalForm]]],
+   "\n= ",
+   Cell[BoxData[
+    FormBox[
+     RowBox[{
+      SuperscriptBox["e", 
+       RowBox[{"-", 
+        RowBox[{"\[VerticalSeparator]", "\[Lambda]", 
+         SuperscriptBox["\[VerticalSeparator]", "2"]}]}]], 
+      TemplateBox[{"0"},
+       "Bra"], 
+      SuperscriptBox["e", 
+       RowBox[{
+        SuperscriptBox["\[Lambda]", "*"], "a"}]], 
+      SuperscriptBox["e", 
+       SuperscriptBox["\[Lambda]a", "\[Dagger]"]], 
+      TemplateBox[{"0"},
+       "Ket"]}], TraditionalForm]]],
+   "\n\nNow, ",
+   Cell[BoxData[
+    FormBox[
+     RowBox[{
+      RowBox[{"[", 
+       RowBox[{
+        RowBox[{
+         SuperscriptBox["\[Lambda]", "*"], "a"}], ",", 
+        SuperscriptBox["\[Lambda]a", "\[Dagger]"]}], "]"}], "=", 
+      SuperscriptBox[
+       RowBox[{"\[LeftBracketingBar]", "\[Lambda]", "\[RightBracketingBar]"}],
+        "2"]}], TraditionalForm]]],
+   "\nSo, ",
+   Cell[BoxData[
+    FormBox[
+     RowBox[{
+      RowBox[{"[", 
+       RowBox[{
+        RowBox[{
+         SuperscriptBox["\[Lambda]", "*"], "a"}], ",", 
+        RowBox[{"[", 
+         RowBox[{
+          RowBox[{
+           SuperscriptBox["\[Lambda]", "*"], "a"}], ",", 
+          SuperscriptBox["\[Lambda]a", "\[Dagger]"]}], "]"}]}], "]"}], "=", 
+      "0"}], TraditionalForm]]],
+   " and ",
+   Cell[BoxData[
+    FormBox[
+     RowBox[{
+      RowBox[{"[", 
+       RowBox[{
+        SuperscriptBox["\[Lambda]a", "\[Dagger]"], ",", 
+        RowBox[{"[", 
+         RowBox[{
+          RowBox[{
+           SuperscriptBox["\[Lambda]", "*"], "a"}], ",", 
+          SuperscriptBox["\[Lambda]a", "\[Dagger]"]}], "]"}]}], "]"}], "=", 
+      "0"}], TraditionalForm]]],
+   "\n\nAccording to the Baker-Campbell-Hausdorff Formula:\n\n",
+   Cell[BoxData[
+    FormBox[
+     RowBox[{
+      SuperscriptBox["e", 
+       RowBox[{"A", "+", "B"}]], "=", 
+      RowBox[{
+       SuperscriptBox["e", 
+        FractionBox[
+         RowBox[{"-", 
+          RowBox[{"[", 
+           RowBox[{"A", ",", "B"}], "]"}]}], "2"]], 
+       SuperscriptBox["e", "A"], 
+       SuperscriptBox["e", "B"]}]}], TraditionalForm]]],
+   "=",
+   Cell[BoxData[
+    FormBox[
+     RowBox[{
+      SuperscriptBox["e", 
+       FractionBox[
+        RowBox[{"[", 
+         RowBox[{"A", ",", "B"}], "]"}], "2"]], 
+      SuperscriptBox["e", "B"], 
+      SuperscriptBox["e", "A"]}], TraditionalForm]]],
+   " whenever [A,[A,B]]=[B,[A,B]]=0\nThus, ",
+   Cell[BoxData[
+    FormBox[
+     SuperscriptBox["e", 
+      RowBox[{"-", 
+       SuperscriptBox[
+        RowBox[{
+        "\[LeftBracketingBar]", "\[Lambda]", "\[RightBracketingBar]"}], 
+        "2"]}]], TraditionalForm]],
+    FormatType->"TraditionalForm"],
+   Cell[BoxData[
+    FormBox[
+     RowBox[{
+      RowBox[{
+       SuperscriptBox["e", 
+        RowBox[{
+         SuperscriptBox["\[Lambda]", "*"], "a"}]], 
+       SuperscriptBox["e", 
+        SuperscriptBox["\[Lambda]a", "\[Dagger]"]]}], "=", 
+      SuperscriptBox["e", 
+       SuperscriptBox["\[Lambda]a", "\[Dagger]"]]}], TraditionalForm]]],
+   Cell[BoxData[
+    FormBox[
+     SuperscriptBox["e", 
+      RowBox[{
+       SuperscriptBox["\[Lambda]", "*"], "a"}]], TraditionalForm]]],
+   "\nSo, \[LeftAngleBracket]\[Lambda]\[VerticalSeparator]\[Lambda]\
+\[RightAngleBracket] = ",
+   Cell[BoxData[
+    FormBox[
+     SuperscriptBox["e", 
+      FractionBox[
+       RowBox[{"-", 
+        RowBox[{"\[VerticalSeparator]", "\[Lambda]", 
+         SuperscriptBox["\[VerticalSeparator]", "2"]}]}], "2"]], 
+     TraditionalForm]]],
+   " ",
+   Cell[BoxData[
+    FormBox[
+     RowBox[{
+      TemplateBox[{"0"},
+       "Bra"], 
+      SuperscriptBox["e", 
+       SuperscriptBox["\[Lambda]a", "\[Dagger]"]], 
+      SuperscriptBox["e", 
+       RowBox[{
+        SuperscriptBox["\[Lambda]", "*"], "a"}]], 
+      TemplateBox[{"0"},
+       "Ket"]}], TraditionalForm]]],
+   "\n= \[LeftAngleBracket]0|(1+",
+   Cell[BoxData[
+    FormBox[Cell[TextData[{
+      " ",
+      Cell[BoxData[
+       FormBox[
+        RowBox[{
+         SuperscriptBox["\[Lambda]a", "\[Dagger]"], "+", 
+         FractionBox[
+          SuperscriptBox[
+           RowBox[{"(", 
+            SuperscriptBox["\[Lambda]a", "\[Dagger]"], ")"}], "2"], "2"], "+", 
+         FractionBox[
+          SuperscriptBox[
+           RowBox[{"(", 
+            SuperscriptBox["\[Lambda]a", "\[Dagger]"], ")"}], "3"], 
+          RowBox[{"3", "!"}]]}], TraditionalForm]]]
+     }]], TraditionalForm]]],
+   "+ ... + ",
+   Cell[BoxData[
+    FormBox[
+     FractionBox[
+      SuperscriptBox[
+       RowBox[{"(", 
+        SuperscriptBox["\[Lambda]a", "\[Dagger]"], ")"}], "n"], 
+      RowBox[{"n", "!"}]], TraditionalForm]]],
+   ") (1+ ",
+   Cell[BoxData[
+    FormBox[
+     RowBox[{
+      RowBox[{
+       SuperscriptBox["\[Lambda]", "*"], "a"}], "+", 
+      FractionBox[Cell[TextData[Cell[BoxData[
+        FormBox[
+         SuperscriptBox[
+          RowBox[{"(", 
+           RowBox[{
+            SuperscriptBox["\[Lambda]", "*"], "a"}], ")"}], "2"], 
+         TraditionalForm]]]]], "2"], "+", Cell[TextData[Cell[BoxData[
+       FormBox[
+        RowBox[{
+         RowBox[{
+          RowBox[{
+           FractionBox[
+            SuperscriptBox[
+             RowBox[{"(", 
+              RowBox[{
+               SuperscriptBox["\[Lambda]", "*"], "a"}], ")"}], "3"], 
+            RowBox[{"3", "!"}]], "+"}], "..."}], "+", 
+         FractionBox[
+          SuperscriptBox[
+           RowBox[{"(", 
+            RowBox[{
+             SuperscriptBox["\[Lambda]", "*"], "a"}], ")"}], "n"], 
+          RowBox[{"n", "!"}]]}], TraditionalForm]]]]]}], TraditionalForm]]],
+   ")|0\[RightAngleBracket]"
+  }], "Text"],
+  FontFamily->"Arial"], "\[IndentingNewLine]", 
+ RowBox[{
+  StyleBox[
+   RowBox[{
+    RowBox[{
+    "The", " ", "effect", " ", "of", " ", "successively", " ", "higher", " ", 
+     "terms", " ", "of", " ", "a", " ", "is", " ", "to", " ", "annihilate", 
+     " ", "the", " ", 
+     TemplateBox[{"0"},
+      "Ket"], " ", "state", " ", "ket"}], ";", " ", "similarly"}],
+   FontFamily->"Arial"], 
+  StyleBox[",",
+   FontFamily->"Arial"], 
+  StyleBox[" ",
+   FontFamily->"Arial"], 
+  StyleBox[
+   RowBox[{"the", " ", "effect", " ", "of", " ", 
+    StyleBox[
+     RowBox[{"s", "uccessively"}]], " ", "higher", " ", "terms", " ", "of", 
+    " ", 
+    SuperscriptBox["a", "\[Dagger]"], " ", "is", " ", "to", " ", "annihilate",
+     " ", "the", 
+    StyleBox[" ",
+     FontFamily->"Arial"], 
+    StyleBox[
+     TemplateBox[{"0"},
+      "Bra"],
+     FontFamily->"Arial"], 
+    StyleBox["state",
+     FontFamily->"Arial"], 
+    StyleBox[" ",
+     FontFamily->"Arial"], 
+    StyleBox["bra",
+     FontFamily->"Arial"], 
+    StyleBox[" ",
+     FontFamily->"Arial"], 
+    RowBox[{
+     RowBox[{
+      StyleBox["(",
+       FontFamily->"Arial"], 
+      RowBox[{
+       StyleBox[
+        RowBox[{"i", ".", "e", ".", "  ", Cell[TextData[{
+          StyleBox["a", "Text"],
+          Cell[BoxData[
+           TemplateBox[{"0"},
+            "Ket"]],
+           FontFamily->"Arial"],
+          StyleBox["= 0", "Text"],
+          Cell[BoxData[
+           StyleBox[
+            TemplateBox[{"0"},
+             "Ket"],
+            FontFamily->"Arial"]]],
+          StyleBox[" = 0 =", "Text"],
+          StyleBox[Cell[BoxData[
+           StyleBox[
+            RowBox[{" ", 
+             RowBox[{
+              TemplateBox[{"0"},
+               "Bra"], "0"}]}],
+            FontFamily->"Arial"]], "Text"], "Text"]
+         }]]}],
+        FontFamily->"Arial"], 
+       StyleBox["=",
+        FontFamily->"Arial"], 
+       RowBox[{
+        StyleBox[
+         TemplateBox[{"0"},
+          "Bra"],
+         FontFamily->"Arial"], 
+        SuperscriptBox["a", "\[Dagger]"]}]}], 
+      StyleBox[")",
+       FontFamily->"Arial"]}], 
+     StyleBox[".",
+      FontFamily->"Arial"], 
+     StyleBox[" ",
+      FontFamily->"Arial"], 
+     StyleBox["Thus",
+      FontFamily->"Arial"]}]}],
+   FontFamily->"Arial"], 
+  StyleBox[",",
+   FontFamily->"Arial"], 
+  StyleBox[" ",
+   FontFamily->"Arial"], 
+  RowBox[{
+   RowBox[{
+    StyleBox["the",
+     FontFamily->"Arial"], 
+    StyleBox[" ",
+     FontFamily->"Arial"], 
+    StyleBox["only",
+     FontFamily->"Arial"], 
+    StyleBox[" ",
+     FontFamily->"Arial"], 
+    StyleBox["terms",
+     FontFamily->"Arial"], 
+    StyleBox[" ",
+     FontFamily->"Arial"], 
+    StyleBox["that",
+     FontFamily->"Arial"], 
+    StyleBox[" ",
+     FontFamily->"Arial"], 
+    StyleBox["survive",
+     FontFamily->"Arial"], 
+    StyleBox[" ",
+     FontFamily->"Arial"], 
+    StyleBox["are",
+     FontFamily->"Arial"], 
+    StyleBox[" ",
+     FontFamily->"Arial"], 
+    StyleBox["the",
+     FontFamily->"Arial"], 
+    StyleBox[" ",
+     FontFamily->"Arial"], 
+    StyleBox["constant",
+     FontFamily->"Arial"], 
+    StyleBox[" ",
+     FontFamily->"Arial"], 
+    StyleBox["terms",
+     FontFamily->"Arial"], 
+    StyleBox[" ",
+     FontFamily->"Arial"], 
+    RowBox[{
+     StyleBox[
+      RowBox[{"(", 
+       RowBox[{
+       "the", " ", "\"\<1's\>\"", " ", "in", " ", "the", " ", "expansion"}], 
+       ")"}],
+      FontFamily->"Arial"], "."}]}], " ", "\[IndentingNewLine]", 
+   StyleBox["\[IndentingNewLine]",
+    FontFamily->"Arial"], 
+   StyleBox["=",
+    FontFamily->"Arial"], 
+   StyleBox[
+    RowBox[{
+     RowBox[{
+      TemplateBox[{"0"},
+       "Bra"], 
+      RowBox[{"(", 
+       RowBox[{
+        RowBox[{
+         RowBox[{
+         "1", " ", "+", " ", "0", " ", "+", " ", "0", " ", "+", " ", "0", " ",
+           "+"}], " ", "..."}], " ", "+", " ", "0"}], ")"}], " ", 
+      RowBox[{"(", 
+       RowBox[{
+        RowBox[{
+         RowBox[{
+         "1", " ", "+", " ", "0", " ", "+", " ", "0", " ", "+", " ", "0", " ",
+           "+"}], " ", "..."}], " ", "+", " ", "0"}], ")"}], " ", 
+      TemplateBox[{"0"},
+       "Ket"]}], " ", "=", " ", "1", " "}],
+    FontFamily->"Arial"]}]}]}],
+ CellChangeTimes->{{3.6003537552065425`*^9, 3.6003537888664675`*^9}, {
+   3.600353934649806*^9, 3.6003541913804903`*^9}, {3.6003542372671146`*^9, 
+   3.600354458951794*^9}, {3.60035450905366*^9, 3.6003549363461*^9}, {
+   3.6003550386799526`*^9, 3.600355168748392*^9}, {3.6003552056965055`*^9, 
+   3.6003552071685896`*^9}, 3.600355275497498*^9, {3.6003554654113607`*^9, 
+   3.6003560935742893`*^9}, {3.600356124426054*^9, 3.600356130874423*^9}, {
+   3.6003563862380285`*^9, 3.6003568728328605`*^9}, {3.6003571232201815`*^9, 
+   3.6003573265298104`*^9}, {3.6003574031221914`*^9, 
+   3.6003582482655306`*^9}, {3.600358306663871*^9, 3.6003584921934824`*^9}, {
+   3.6003585609924173`*^9, 3.600358707405792*^9}, {3.6003590682074285`*^9, 
+   3.600359405571725*^9}, {3.6003594678902893`*^9, 3.6003594833551736`*^9}, {
+   3.6003595787106276`*^9, 3.600359918564066*^9}, {3.6003604361636715`*^9, 
+   3.6003604361636715`*^9}, {3.6003607242101464`*^9, 3.600360726490277*^9}, {
+   3.600360820283642*^9, 3.6003608554236517`*^9}, {3.600360966436001*^9, 
+   3.6003612061677127`*^9}, {3.600361248097111*^9, 3.6003613703101015`*^9}, {
+   3.600361476217159*^9, 3.600361842906132*^9}, {3.600361888974767*^9, 
+   3.600361994362795*^9}, {3.600362138906062*^9, 3.6003621664766397`*^9}, {
+   3.6003622469662433`*^9, 3.600362267600423*^9}, {3.600362470662038*^9, 
+   3.6003625420841227`*^9}, {3.6005568892621455`*^9, 
+   3.6005568985836787`*^9}, {3.600557314171449*^9, 3.600557326328144*^9}, {
+   3.6005573587159967`*^9, 3.6005574373204927`*^9}},
+ FontFamily->"Arial Narrow"]], "Text",
+ CellChangeTimes->{{3.6003537552065425`*^9, 3.6003537888664675`*^9}, {
+   3.600353934649806*^9, 3.6003541913804903`*^9}, {3.6003542372671146`*^9, 
+   3.600354458951794*^9}, {3.60035450905366*^9, 3.6003549363461*^9}, {
+   3.6003550386799526`*^9, 3.600355168748392*^9}, {3.6003552056965055`*^9, 
+   3.6003552071685896`*^9}, 3.600355275497498*^9, {3.6003554654113607`*^9, 
+   3.6003560935742893`*^9}, {3.600356124426054*^9, 3.600356130874423*^9}, {
+   3.6003563862380285`*^9, 3.6003568728328605`*^9}, {3.6003571232201815`*^9, 
+   3.6003573265298104`*^9}, {3.6003574031221914`*^9, 
+   3.6003582482655306`*^9}, {3.600358306663871*^9, 3.6003584921934824`*^9}, {
+   3.6003585609924173`*^9, 3.600358707405792*^9}, {3.6003590682074285`*^9, 
+   3.600359405571725*^9}, {3.6003594678902893`*^9, 3.6003594833551736`*^9}, {
+   3.6003595787106276`*^9, 3.600359918564066*^9}, {3.6003604361636715`*^9, 
+   3.6003604361636715`*^9}, {3.6003607242101464`*^9, 3.600360726490277*^9}, {
+   3.600360820283642*^9, 3.6003608554236517`*^9}, {3.600360966436001*^9, 
+   3.6003612061677127`*^9}, {3.600361248097111*^9, 3.6003613703101015`*^9}, {
+   3.600361476217159*^9, 3.600361842906132*^9}, {3.600361888974767*^9, 
+   3.600361994362795*^9}, {3.600362138906062*^9, 3.6003621664766397`*^9}, {
+   3.6003622469662433`*^9, 3.600362267600423*^9}, {3.600362470662038*^9, 
+   3.6003625420841227`*^9}, {3.6005568892621455`*^9, 
+   3.6005568985836787`*^9}, {3.600557314171449*^9, 3.600557326328144*^9}, {
+   3.6005573587159967`*^9, 3.6005575110647106`*^9}, {3.600557574655348*^9, 
+   3.6005578477619686`*^9}, {3.600562710286089*^9, 3.6005628538833027`*^9}, {
+   3.6006565021146746`*^9, 3.600656519233654*^9}, {3.600656558077876*^9, 
+   3.6006565651512804`*^9}, {3.6006575818504324`*^9, 3.600657589066845*^9}, {
+   3.6006867967624297`*^9, 3.6006868292422876`*^9}, {3.6006868664714165`*^9, 
+   3.6006870773564787`*^9}, {3.6006872273170557`*^9, 3.600687242360916*^9}, {
+   3.600687283431266*^9, 3.6006872842633133`*^9}, {3.6006876604098277`*^9, 
+   3.6006876636010103`*^9}, {3.6006877080695534`*^9, 3.600687809027328*^9}, {
+   3.6006878429262667`*^9, 3.6006878495856476`*^9}}],
+
+Cell[TextData[{
+ "To show that the state is a coherent state it is necessary to consider the \
+action of operator ",
+ Cell[BoxData[
+  FormBox[
+   OverscriptBox["a", "^"], TraditionalForm]]],
+ " on that state. The given form of ",
+ Cell[BoxData[
+  FormBox[
+   TemplateBox[{"\[Lambda]"},
+    "Ket"], TraditionalForm]]],
+ " can be expressed in an alternative form as an infinite superposition of \
+Fock (number) states.\n\n",
+ Cell[BoxData[{
+  FormBox[
+   RowBox[{
+    TemplateBox[{"\[Lambda]"},
+     "Ket"], "=", 
+    RowBox[{
+     RowBox[{
+      SuperscriptBox["e", 
+       FractionBox[
+        RowBox[{"-", 
+         RowBox[{"\[VerticalSeparator]", "\[Lambda]", 
+          SuperscriptBox["\[VerticalSeparator]", "2"]}]}], "2"]], 
+      SuperscriptBox["e", 
+       SuperscriptBox["\[Lambda]a", "\[Dagger]"]], 
+      TemplateBox[{"0"},
+       "Ket"]}], "=", 
+     RowBox[{
+      RowBox[{
+       SuperscriptBox["e", 
+        FractionBox[
+         RowBox[{"-", 
+          RowBox[{"\[VerticalSeparator]", "\[Lambda]", 
+           SuperscriptBox["\[VerticalSeparator]", "2"]}]}], "2"]], 
+       SuperscriptBox["e", 
+        SuperscriptBox["\[Lambda]a", "\[Dagger]"]], 
+       TemplateBox[{"0"},
+        "Ket"]}], "=", 
+      RowBox[{
+       RowBox[{
+        SuperscriptBox["e", 
+         FractionBox[
+          RowBox[{"-", 
+           RowBox[{"\[VerticalSeparator]", "\[Lambda]", 
+            SuperscriptBox["\[VerticalSeparator]", "2"]}]}], "2"]], "(", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"1", "+", 
+           SuperscriptBox["\[Lambda]a", "\[Dagger]"], "+", 
+           FractionBox[
+            SuperscriptBox[
+             RowBox[{"(", 
+              SuperscriptBox["\[Lambda]a", "\[Dagger]"], ")"}], "2"], 
+            RowBox[{"2", "!"}]], "+", 
+           FractionBox[
+            SuperscriptBox[
+             RowBox[{"(", 
+              SuperscriptBox["\[Lambda]a", "\[Dagger]"], ")"}], "3"], 
+            RowBox[{"3", "!"}]], "+"}], "..."}], "+", 
+         FractionBox[
+          SuperscriptBox[
+           RowBox[{"(", 
+            SuperscriptBox["\[Lambda]a", "\[Dagger]"], ")"}], "n"], 
+          RowBox[{"n", "!"}]]}], ")"}], 
+       TemplateBox[{"0"},
+        "Ket"]}]}]}]}], TraditionalForm], "\[IndentingNewLine]", 
+  FormBox[
+   RowBox[{"=", 
+    RowBox[{
+     RowBox[{
+      SuperscriptBox["e", 
+       FractionBox[
+        RowBox[{"-", 
+         RowBox[{"\[VerticalSeparator]", "\[Lambda]", 
+          SuperscriptBox["\[VerticalSeparator]", "2"]}]}], "2"]], "(", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"1", "+", 
+         SuperscriptBox["\[Lambda]a", "\[Dagger]"], "+", 
+         RowBox[{
+          FractionBox[
+           SuperscriptBox["\[Lambda]", "2"], 
+           RowBox[{"2", "!"}]], 
+          SuperscriptBox[
+           RowBox[{"(", 
+            SuperscriptBox["a", "\[Dagger]"], ")"}], "2"]}], "+"}], "..."}], 
+       "+", 
+       RowBox[{
+        FractionBox[
+         SuperscriptBox["\[Lambda]", "n"], 
+         RowBox[{"n", "!"}]], 
+        SuperscriptBox[
+         RowBox[{"(", 
+          SuperscriptBox["a", "\[Dagger]"], ")"}], "n"]}]}], ")"}], 
+     TemplateBox[{"0"},
+      "Ket"]}]}], TraditionalForm], "\[LineSeparator]", 
+  FormBox[
+   RowBox[{"=", 
+    RowBox[{
+     SuperscriptBox["e", 
+      FractionBox[
+       RowBox[{"-", 
+        RowBox[{"\[VerticalSeparator]", "\[Lambda]", 
+         SuperscriptBox["\[VerticalSeparator]", "2"]}]}], "2"]], "(", 
+     RowBox[{
+      RowBox[{
+       RowBox[{
+        TemplateBox[{"0"},
+         "Ket"], "+", 
+        RowBox[{"\[Lambda]", 
+         TemplateBox[{"1"},
+          "Ket"]}], "+", 
+        RowBox[{
+         FractionBox[
+          SuperscriptBox["\[Lambda]", "2"], 
+          RowBox[{"2", "!"}]], 
+         SqrtBox[
+          RowBox[{"2", "!"}]], 
+         TemplateBox[{"2"},
+          "Ket"]}], "+", 
+        RowBox[{
+         FractionBox[
+          SuperscriptBox["\[Lambda]", "3"], 
+          RowBox[{"3", "!"}]], 
+         SqrtBox[
+          RowBox[{"3", "!"}]], 
+         TemplateBox[{"3"},
+          "Ket"]}], "+"}], "..."}], "+", 
+      RowBox[{
+       FractionBox[
+        SuperscriptBox["\[Lambda]", "n"], 
+        RowBox[{"n", "!"}]], 
+       SqrtBox[
+        RowBox[{"n", "!"}]], 
+       TemplateBox[{"n"},
+        "Ket"]}]}], ")"}]}], TraditionalForm], "\[IndentingNewLine]", 
+  FormBox[
+   RowBox[{"=", 
+    RowBox[{
+     SuperscriptBox["e", 
+      FractionBox[
+       RowBox[{"-", 
+        RowBox[{"\[VerticalSeparator]", "\[Lambda]", 
+         SuperscriptBox["\[VerticalSeparator]", "2"]}]}], "2"]], 
+     RowBox[{
+      SubscriptBox[
+       SuperscriptBox["\[Sum]", "\[Infinity]"], 
+       RowBox[{"i", "=", "0"}]], 
+      RowBox[{
+       FractionBox[
+        SuperscriptBox["\[Lambda]", "i"], 
+        SqrtBox[
+         RowBox[{"i", "!"}]]], 
+       TemplateBox[{"i"},
+        "Ket"]}]}]}]}], TraditionalForm]}]],
+ "\n\nThe above used the property that ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{
+     SuperscriptBox[
+      RowBox[{"(", 
+       SuperscriptBox["a", "\[Dagger]"], ")"}], "i"], 
+     TemplateBox[{"0"},
+      "Ket"]}], "=", 
+    RowBox[{
+     SqrtBox[
+      RowBox[{"i", "!"}]], 
+     TemplateBox[{"i"},
+      "Ket"]}]}], TraditionalForm]]],
+ ". Now, considering the effect of ",
+ Cell[BoxData[
+  FormBox[
+   OverscriptBox["a", "^"], TraditionalForm]]],
+ " on this state. Note that ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{"a", 
+     TemplateBox[{"n"},
+      "Ket"]}], "=", 
+    RowBox[{
+     SqrtBox["n"], 
+     TemplateBox[{RowBox[{"n", "-", "1"}]},
+      "Ket"]}]}], TraditionalForm]]],
+ "\n",
+ Cell[BoxData[{
+  FormBox[
+   RowBox[{
+    RowBox[{"a", 
+     TemplateBox[{"\[Lambda]"},
+      "Ket"]}], "=", 
+    RowBox[{
+     SuperscriptBox["e", 
+      FractionBox[
+       RowBox[{"-", 
+        RowBox[{"\[VerticalSeparator]", "\[Lambda]", 
+         SuperscriptBox["\[VerticalSeparator]", "2"]}]}], "2"]], "a", 
+     RowBox[{
+      SubscriptBox[
+       SuperscriptBox["\[Sum]", "\[Infinity]"], 
+       RowBox[{"i", "=", "0"}]], 
+      RowBox[{
+       FractionBox[
+        SuperscriptBox["\[Lambda]", "i"], 
+        SqrtBox[
+         RowBox[{"i", "!"}]]], 
+       TemplateBox[{"i"},
+        "Ket"]}]}]}]}], TraditionalForm], "\[IndentingNewLine]", 
+  FormBox[
+   RowBox[{"=", 
+    RowBox[{
+     SuperscriptBox["e", 
+      FractionBox[
+       RowBox[{"-", 
+        RowBox[{"\[VerticalSeparator]", "\[Lambda]", 
+         SuperscriptBox["\[VerticalSeparator]", "2"]}]}], "2"]], 
+     RowBox[{
+      SubscriptBox[
+       SuperscriptBox["\[Sum]", "\[Infinity]"], 
+       RowBox[{"i", "=", "1"}]], 
+      RowBox[{
+       FractionBox[
+        RowBox[{
+         SuperscriptBox["\[Lambda]", "i"], 
+         SqrtBox["i"]}], 
+        SqrtBox[
+         RowBox[{"i", "!"}]]], 
+       TemplateBox[{RowBox[{"i", "-", "1"}]},
+        "Ket"]}]}]}]}], TraditionalForm], "\[IndentingNewLine]", 
+  FormBox[
+   RowBox[{"=", 
+    RowBox[{
+     SuperscriptBox["e", 
+      FractionBox[
+       RowBox[{"-", 
+        RowBox[{"\[VerticalSeparator]", "\[Lambda]", 
+         SuperscriptBox["\[VerticalSeparator]", "2"]}]}], "2"]], 
+     RowBox[{
+      SubscriptBox[
+       SuperscriptBox["\[Sum]", "\[Infinity]"], 
+       RowBox[{"i", "=", "0"}]], 
+      RowBox[{
+       FractionBox[
+        SuperscriptBox["\[Lambda]", 
+         RowBox[{"i", "+", "1"}]], 
+        SqrtBox[
+         RowBox[{"i", "!"}]]], 
+       TemplateBox[{"i"},
+        "Ket"]}]}]}]}], TraditionalForm], "\[IndentingNewLine]", 
+  FormBox[
+   RowBox[{"=", 
+    RowBox[{"\[Lambda]", "(", 
+     RowBox[{
+      SuperscriptBox["e", 
+       FractionBox[
+        RowBox[{"-", 
+         RowBox[{"\[VerticalSeparator]", "\[Lambda]", 
+          SuperscriptBox["\[VerticalSeparator]", "2"]}]}], "2"]], 
+      RowBox[{
+       SubscriptBox[
+        SuperscriptBox["\[Sum]", "\[Infinity]"], 
+        RowBox[{"i", "=", "0"}]], 
+       RowBox[{
+        FractionBox[
+         SuperscriptBox["\[Lambda]", "i"], 
+         SqrtBox[
+          RowBox[{"i", "!"}]]], 
+        TemplateBox[{"i"},
+         "Ket"]}]}]}], ")"}]}], TraditionalForm], "\[IndentingNewLine]", 
+  FormBox[
+   RowBox[{"=", 
+    RowBox[{"\[Lambda]", 
+     TemplateBox[{"\[Lambda]"},
+      "Ket"]}]}], TraditionalForm]}]],
+ "\n\nWhere the ",
+ Cell[BoxData[
+  FormBox[
+   SuperscriptBox["2", "nd"], TraditionalForm]]],
+ " to ",
+ Cell[BoxData[
+  FormBox[
+   SuperscriptBox["3", "rd"], TraditionalForm]]],
+ " line, above, utilized a shift in index and the ",
+ Cell[BoxData[
+  FormBox[
+   SuperscriptBox["3", "rd"], TraditionalForm]]],
+ " to ",
+ Cell[BoxData[
+  FormBox[
+   SuperscriptBox["4", "th"], TraditionalForm]]],
+ " line, above, utilized the identity ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SuperscriptBox["\[Lambda]", 
+     RowBox[{"j", "+", "1"}]], "=", 
+    SuperscriptBox["\[Lambda]\[Lambda]", "j"]}], TraditionalForm]]],
+ ".\n\nNote that the above expression changed in the index (the ",
+ Cell[BoxData[
+  FormBox[
+   SuperscriptBox["1", "st"], TraditionalForm]]],
+ " state was dropped to the ",
+ Cell[BoxData[
+  FormBox[
+   SuperscriptBox["0", "th"], TraditionalForm]]],
+ " state) and the factor of ",
+ Cell[BoxData[
+  FormBox[
+   SqrtBox["i"], TraditionalForm]]],
+ " hops out since ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{"a", 
+     TemplateBox[{"n"},
+      "Ket"]}], "=", 
+    RowBox[{
+     SqrtBox["n"], 
+     TemplateBox[{RowBox[{"n", "-", "1"}]},
+      "Ket"]}]}], TraditionalForm]]],
+ "\n",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"=", 
+    RowBox[{
+     SuperscriptBox["e", 
+      FractionBox[
+       RowBox[{"-", 
+        RowBox[{"\[VerticalSeparator]", "\[Lambda]", 
+         SuperscriptBox["\[VerticalSeparator]", "2"]}]}], "2"]], "(", 
+     RowBox[{
+      SubscriptBox[
+       SuperscriptBox["\[Sum]", "n"], 
+       RowBox[{"i", "=", "0"}]], 
+      RowBox[{
+       FractionBox[
+        SuperscriptBox["\[Lambda]", "i"], 
+        SqrtBox[
+         RowBox[{
+          RowBox[{"(", 
+           RowBox[{"i", "-", "1"}], ")"}], "!"}]]], 
+       TemplateBox[{"i"},
+        "Ket"]}]}], ")"}]}], TraditionalForm]]]
+}], "Text",
+ CellChangeTimes->{{3.6003537552065425`*^9, 3.6003537888664675`*^9}, {
+   3.600353934649806*^9, 3.6003541913804903`*^9}, {3.6003542372671146`*^9, 
+   3.600354458951794*^9}, {3.60035450905366*^9, 3.6003549363461*^9}, {
+   3.6003550386799526`*^9, 3.600355168748392*^9}, {3.6003552056965055`*^9, 
+   3.6003552071685896`*^9}, 3.600355275497498*^9, {3.6003554654113607`*^9, 
+   3.6003560935742893`*^9}, {3.600356124426054*^9, 3.600356130874423*^9}, {
+   3.6003563862380285`*^9, 3.6003568728328605`*^9}, {3.6003571232201815`*^9, 
+   3.6003573265298104`*^9}, {3.6003574031221914`*^9, 
+   3.6003582482655306`*^9}, {3.600358306663871*^9, 3.6003584921934824`*^9}, {
+   3.6003585609924173`*^9, 3.600358707405792*^9}, {3.6003590682074285`*^9, 
+   3.600359405571725*^9}, {3.6003594678902893`*^9, 3.6003594833551736`*^9}, {
+   3.6003595787106276`*^9, 3.600359918564066*^9}, {3.6003604361636715`*^9, 
+   3.6003604361636715`*^9}, {3.6003607242101464`*^9, 3.600360726490277*^9}, {
+   3.600360820283642*^9, 3.6003608554236517`*^9}, {3.600360966436001*^9, 
+   3.6003612061677127`*^9}, {3.600361248097111*^9, 3.6003613703101015`*^9}, {
+   3.600361476217159*^9, 3.600361842906132*^9}, {3.600361888974767*^9, 
+   3.600361994362795*^9}, {3.600362138906062*^9, 3.6003621664766397`*^9}, {
+   3.6003622469662433`*^9, 3.600362267600423*^9}, {3.600362470662038*^9, 
+   3.6003625420841227`*^9}, {3.6005568892621455`*^9, 
+   3.6005568985836787`*^9}, {3.600557314171449*^9, 3.600557326328144*^9}, {
+   3.6005573587159967`*^9, 3.6005575110647106`*^9}, {3.600557574655348*^9, 
+   3.600558182912138*^9}, {3.6005582486849003`*^9, 3.6005582573293943`*^9}, {
+   3.600558378170306*^9, 3.6005583903950057`*^9}, {3.6005584295912476`*^9, 
+   3.600558646907677*^9}, {3.600558701521801*^9, 3.6005587862016444`*^9}, {
+   3.600559225548774*^9, 3.600559267654182*^9}, {3.600560385739133*^9, 
+   3.600560514693508*^9}, {3.6005606608138657`*^9, 3.6005610706293063`*^9}, 
+   3.6005611141327944`*^9, {3.600656592434841*^9, 3.6006566576975737`*^9}}],
+
+Cell[TextData[{
+ "2d) The goal is to form the state ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    TemplateBox[{"\[Lambda]"},
+     "Ket"], "=", 
+    RowBox[{
+     SuperscriptBox["e", 
+      FractionBox[
+       RowBox[{"-", 
+        RowBox[{"|", "\[Lambda]", 
+         SuperscriptBox["|", "2"]}]}], "2"]], 
+     SuperscriptBox["e", 
+      SuperscriptBox["\[Lambda]a", "\[Dagger]"]], 
+     TemplateBox[{"0"},
+      "Ket"]}]}], TraditionalForm]]],
+ " as a sum of Fock (number) states. I know how the annihilation operator \
+acts on number states. I also know how the annihilation operator acts on \
+number states. Consider the action of the annihilation operator (1.x) on \
+\[VerticalSeparator]\[Lambda]\[RightAngleBracket] and, separately, on a sum \
+of Fock states (2.x)."
+}], "Text",
+ CellChangeTimes->{{3.6003625630923243`*^9, 3.600362573749934*^9}, {
+   3.6003629864015365`*^9, 3.600363064719016*^9}, {3.6003658685073833`*^9, 
+   3.6003659787986917`*^9}, {3.600535996429144*^9, 3.6005360140141497`*^9}, 
+   3.600536099144019*^9, {3.60053696564358*^9, 3.6005369780362887`*^9}, {
+   3.6006560954944177`*^9, 3.6006561196567993`*^9}}],
+
+Cell[TextData[{
+ "1.a\t",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{"a", 
+     TemplateBox[{"\[Lambda]"},
+      "Ket"]}], "=", 
+    RowBox[{"\[Lambda]", 
+     TemplateBox[{"\[Lambda]"},
+      "Ket"]}]}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ "\n\n",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"Separately", ",", 
+    RowBox[{
+     RowBox[{
+     "presupposing", " ", "the", " ", "knowledge", " ", "that", " ", "a", 
+      TemplateBox[{"n"},
+       "Ket"]}], "=", 
+     RowBox[{
+      SqrtBox["n"], 
+      TemplateBox[{RowBox[{"n", "-", "1"}]},
+       "Ket"]}]}]}], TraditionalForm]]],
+ "\n\n2.a\t",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{"a", 
+     TemplateBox[{"\[Lambda]"},
+      "Ket"]}], "=", 
+    RowBox[{
+     RowBox[{"a", 
+      RowBox[{
+       SubscriptBox[
+        SuperscriptBox["\[Sum]", "\[Infinity]"], 
+        RowBox[{"n", "=", "0"}]], 
+       RowBox[{
+        RowBox[{"f", "(", "n", ")"}], 
+        TemplateBox[{"n"},
+         "Ket"]}]}]}], "=", 
+     RowBox[{
+      SubscriptBox[
+       SuperscriptBox["\[Sum]", "\[Infinity]"], 
+       RowBox[{"n", "=", "1"}]], 
+      RowBox[{
+       RowBox[{"f", "(", "n", ")"}], 
+       SqrtBox["n"], 
+       TemplateBox[{RowBox[{"n", "-", "1"}]},
+        "Ket"]}]}]}]}], TraditionalForm]]],
+ " "
+}], "Text",
+ CellChangeTimes->{{3.6003659841689987`*^9, 3.6003662580576644`*^9}, {
+   3.6003662892374477`*^9, 3.600366308704561*^9}, {3.6005292013784895`*^9, 
+   3.6005293836619153`*^9}, {3.600529427817441*^9, 3.600529464936564*^9}, {
+   3.600529496668379*^9, 3.600529497283414*^9}, {3.600536021863599*^9, 
+   3.6005360776127872`*^9}, {3.6005361393403177`*^9, 3.600536214621624*^9}, 
+   3.6005367219616423`*^9, {3.600536925879306*^9, 3.600536997582407*^9}, {
+   3.6005371043545136`*^9, 3.6005371375144105`*^9}, {3.6006566790017924`*^9, 
+   3.6006566790017924`*^9}}],
+
+Cell["\<\
+Next, consider the result of an inner product with a Fock state on the two \
+above states. \
+\>", "Text",
+ CellChangeTimes->{{3.6003659841689987`*^9, 3.6003662580576644`*^9}, {
+   3.6003662892374477`*^9, 3.600366308704561*^9}, {3.6005292013784895`*^9, 
+   3.6005293836619153`*^9}, {3.600529427817441*^9, 3.600529464936564*^9}, {
+   3.600529496668379*^9, 3.600529497283414*^9}, {3.600536021863599*^9, 
+   3.6005361294747534`*^9}, {3.6005362336537123`*^9, 3.6005362362938633`*^9}, 
+   3.6005366120463552`*^9, {3.600536908194294*^9, 3.6005369125095406`*^9}, {
+   3.6006561438911858`*^9, 3.60065615130861*^9}}],
+
+Cell[TextData[{
+ "1.b\t",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{
+     TemplateBox[{"0"},
+      "Bra"], "a", 
+     TemplateBox[{"\[Lambda]"},
+      "Ket"]}], "=", 
+    RowBox[{
+     RowBox[{
+      TemplateBox[{"0"},
+       "Bra"], "\[Lambda]", 
+      TemplateBox[{"\[Lambda]"},
+       "Ket"]}], "=", 
+     RowBox[{
+      RowBox[{"\[Lambda]", 
+       TemplateBox[{"0","\[Lambda]"},
+        "BraKet"]}], "=", 
+      RowBox[{
+       RowBox[{"\[Lambda]", 
+        RowBox[{
+         TemplateBox[{"0"},
+          "Bra"], "(", 
+         RowBox[{
+          SubscriptBox[
+           SuperscriptBox["\[Sum]", "\[Infinity]"], 
+           RowBox[{"n", "=", "0"}]], 
+          RowBox[{
+           RowBox[{"f", "(", "n", ")"}], 
+           TemplateBox[{"n"},
+            "Ket"]}]}], ")"}]}], "=", 
+       RowBox[{"\[Lambda]f", "(", "0", ")"}]}]}]}]}], TraditionalForm]]],
+ "\t   (by orthonormality of the Fock states)\n2.b\t",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{
+     TemplateBox[{"0"},
+      "Bra"], "a", 
+     TemplateBox[{"\[Lambda]"},
+      "Ket"]}], "=", 
+    RowBox[{
+     RowBox[{
+      TemplateBox[{"0"},
+       "Bra"], "a", 
+      RowBox[{
+       SubscriptBox[
+        SuperscriptBox["\[Sum]", "\[Infinity]"], 
+        RowBox[{"n", "=", "0"}]], 
+       RowBox[{
+        RowBox[{"f", "(", "n", ")"}], 
+        TemplateBox[{"n"},
+         "Ket"]}]}]}], "=", 
+     RowBox[{
+      RowBox[{
+       TemplateBox[{"0"},
+        "Bra"], 
+       RowBox[{
+        SubscriptBox[
+         SuperscriptBox["\[Sum]", "\[Infinity]"], 
+         RowBox[{"n", "=", "1"}]], 
+        RowBox[{
+         RowBox[{"f", "(", "n", ")"}], 
+         SqrtBox["n"], 
+         TemplateBox[{RowBox[{"n", "-", "1"}]},
+          "Ket"]}]}]}], "=", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"f", "(", "1", ")"}], "*", "1", "*", 
+        TemplateBox[{"0","0"},
+         "BraKet"]}], "=", 
+       RowBox[{"f", "(", "1", ")"}]}]}]}]}], TraditionalForm]]],
+ "\t   (by orthonormality of the Fock states)\n\nSo ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{"\[Lambda]f", "(", "0", ")"}], "=", 
+    RowBox[{"f", "(", "1", ")"}]}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ "\n\nConsider this same procedure using Fock state ",
+ Cell[BoxData[
+  FormBox[
+   TemplateBox[{"1"},
+    "Ket"], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ ".\n1.c\t",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{
+     TemplateBox[{"1"},
+      "Bra"], "a", 
+     TemplateBox[{"\[Lambda]"},
+      "Ket"]}], "=", 
+    RowBox[{
+     RowBox[{
+      TemplateBox[{"1"},
+       "Bra"], "\[Lambda]", 
+      TemplateBox[{"\[Lambda]"},
+       "Ket"]}], "=", 
+     RowBox[{
+      RowBox[{"\[Lambda]", 
+       TemplateBox[{"1","\[Lambda]"},
+        "BraKet"]}], "=", 
+      RowBox[{
+       RowBox[{"\[Lambda]", 
+        RowBox[{
+         TemplateBox[{"1"},
+          "Bra"], "(", 
+         RowBox[{
+          SubscriptBox[
+           SuperscriptBox["\[Sum]", "\[Infinity]"], 
+           RowBox[{"n", "=", "0"}]], 
+          RowBox[{
+           RowBox[{"f", "(", "n", ")"}], 
+           TemplateBox[{"n"},
+            "Ket"]}]}], ")"}]}], "=", 
+       RowBox[{
+        RowBox[{"\[Lambda]f", "(", "1", ")"}], "=", 
+        RowBox[{
+         SuperscriptBox["\[Lambda]", "2"], 
+         RowBox[{"f", "(", "0", ")"}]}]}]}]}]}]}], TraditionalForm]]],
+ "\t\t(by orthonormality of the Fock states)\n2.c\t",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{
+     TemplateBox[{"1"},
+      "Bra"], "a", 
+     TemplateBox[{"\[Lambda]"},
+      "Ket"]}], "=", 
+    RowBox[{
+     RowBox[{
+      TemplateBox[{"1"},
+       "Bra"], "a", 
+      RowBox[{
+       SubscriptBox[
+        SuperscriptBox["\[Sum]", "\[Infinity]"], 
+        RowBox[{"n", "=", "0"}]], 
+       RowBox[{
+        RowBox[{"f", "(", "n", ")"}], 
+        TemplateBox[{"n"},
+         "Ket"]}]}]}], "=", 
+     RowBox[{
+      RowBox[{
+       TemplateBox[{"1"},
+        "Bra"], 
+       RowBox[{
+        SubscriptBox[
+         SuperscriptBox["\[Sum]", "\[Infinity]"], 
+         RowBox[{"n", "=", "1"}]], 
+        RowBox[{
+         RowBox[{"f", "(", "n", ")"}], 
+         SqrtBox["n"], 
+         TemplateBox[{RowBox[{"n", "-", "1"}]},
+          "Ket"]}]}]}], "=", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"f", "(", "2", ")"}], "*", 
+        SqrtBox["2"], "*", 
+        TemplateBox[{"1","1"},
+         "BraKet"]}], "=", 
+       RowBox[{
+        SqrtBox["2"], 
+        RowBox[{"f", "(", "2", ")"}]}]}]}]}]}], TraditionalForm]]],
+ "\t\t(by orthonormality of the Fock states)\n\nSo ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{"f", "(", "2", ")"}], "=", 
+    RowBox[{
+     FractionBox[
+      SuperscriptBox["\[Lambda]", "2"], 
+      SqrtBox["2"]], 
+     RowBox[{"f", "(", "0", ")"}]}]}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ "\n\nConsider this same procedure using Fock state ",
+ Cell[BoxData[
+  FormBox[
+   TemplateBox[{"2"},
+    "Ket"], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ ".\n1.d\t",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{
+     TemplateBox[{"2"},
+      "Bra"], "a", 
+     TemplateBox[{"\[Lambda]"},
+      "Ket"]}], "=", 
+    RowBox[{
+     RowBox[{
+      TemplateBox[{"2"},
+       "Bra"], "\[Lambda]", 
+      TemplateBox[{"\[Lambda]"},
+       "Ket"]}], "=", 
+     RowBox[{
+      RowBox[{"\[Lambda]", 
+       TemplateBox[{"2","\[Lambda]"},
+        "BraKet"]}], "=", 
+      RowBox[{
+       RowBox[{"\[Lambda]", 
+        RowBox[{
+         TemplateBox[{"2"},
+          "Bra"], "(", 
+         RowBox[{
+          SubscriptBox[
+           SuperscriptBox["\[Sum]", "\[Infinity]"], 
+           RowBox[{"n", "=", "0"}]], 
+          RowBox[{
+           RowBox[{"f", "(", "n", ")"}], 
+           TemplateBox[{"n"},
+            "Ket"]}]}], ")"}]}], "=", 
+       RowBox[{
+        RowBox[{"\[Lambda]f", "(", "2", ")"}], "=", 
+        RowBox[{
+         FractionBox[
+          SuperscriptBox["\[Lambda]", "3"], 
+          SqrtBox["2"]], 
+         RowBox[{"f", "(", "0", ")"}]}]}]}]}]}]}], TraditionalForm]]],
+ "\t\t(by orthonormality of the Fock states)\n2.d\t",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{
+     TemplateBox[{"2"},
+      "Bra"], "a", 
+     TemplateBox[{"\[Lambda]"},
+      "Ket"]}], "=", 
+    RowBox[{
+     RowBox[{
+      TemplateBox[{"2"},
+       "Bra"], "a", 
+      RowBox[{
+       SubscriptBox[
+        SuperscriptBox["\[Sum]", "\[Infinity]"], 
+        RowBox[{"n", "=", "0"}]], 
+       RowBox[{
+        RowBox[{"f", "(", "n", ")"}], 
+        TemplateBox[{"n"},
+         "Ket"]}]}]}], "=", 
+     RowBox[{
+      RowBox[{
+       TemplateBox[{"2"},
+        "Bra"], 
+       RowBox[{
+        SubscriptBox[
+         SuperscriptBox["\[Sum]", "\[Infinity]"], 
+         RowBox[{"n", "=", "1"}]], 
+        RowBox[{
+         RowBox[{"f", "(", "n", ")"}], 
+         SqrtBox["n"], 
+         TemplateBox[{RowBox[{"n", "-", "1"}]},
+          "Ket"]}]}]}], "=", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"f", "(", "3", ")"}], "*", 
+        SqrtBox["3"], "*", 
+        TemplateBox[{"2","2"},
+         "BraKet"]}], "=", 
+       RowBox[{
+        SqrtBox["3"], 
+        RowBox[{"f", "(", "3", ")"}]}]}]}]}]}], TraditionalForm]]],
+ "\t(by orthonormality of the Fock states)\n\nSo ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{"f", "(", "3", ")"}], "=", 
+    RowBox[{
+     FractionBox[
+      SuperscriptBox["\[Lambda]", "3"], 
+      SqrtBox[
+       RowBox[{"3", "!"}]]], 
+     RowBox[{"f", "(", "0", ")"}]}]}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ "\n\nIt seems to be the case that ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{"f", "(", "n", ")"}], "=", 
+    RowBox[{
+     FractionBox[
+      SuperscriptBox["\[Lambda]", "n"], 
+      SqrtBox[
+       RowBox[{"n", "!"}]]], 
+     RowBox[{"f", "(", "0", ")"}]}]}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ " (see table below)\n\n\n",
+ Cell[BoxData[GridBox[{
+    {
+     FormBox["n",
+      TraditionalForm], 
+     RowBox[{
+      TemplateBox[{"n"},
+       "Bra"], "a", 
+      TemplateBox[{"\[Lambda]"},
+       "Ket"]}], 
+     RowBox[{
+      TemplateBox[{"n"},
+       "Bra"], "a", 
+      RowBox[{
+       SubscriptBox[
+        SuperscriptBox["\[Sum]", "\[Infinity]"], 
+        RowBox[{"n", "=", "0"}]], 
+       RowBox[{"f", 
+        RowBox[{"(", "n", ")"}], 
+        TemplateBox[{"n"},
+         "Ket"]}]}]}]},
+    {"0", 
+     RowBox[{"\[Lambda]f", 
+      RowBox[{"(", "0", ")"}]}], 
+     RowBox[{"f", 
+      RowBox[{"(", "1", ")"}]}]},
+    {"1", 
+     RowBox[{"\[Lambda]f", 
+      RowBox[{"(", "1", ")"}]}], 
+     RowBox[{
+      SqrtBox["2"], "f", 
+      RowBox[{"(", "2", ")"}]}]},
+    {"2", 
+     RowBox[{"\[Lambda]f", 
+      RowBox[{"(", "2", ")"}]}], 
+     RowBox[{
+      SqrtBox["3"], "f", 
+      RowBox[{"(", "3", ")"}]}]},
+    {"3", 
+     RowBox[{"\[Lambda]f", 
+      RowBox[{"(", "3", ")"}]}], 
+     RowBox[{
+      SqrtBox["4"], "f", 
+      RowBox[{"(", "4", ")"}]}]},
+    {"4", 
+     RowBox[{"\[Lambda]f", 
+      RowBox[{"(", "4", ")"}]}], 
+     RowBox[{
+      SqrtBox["5"], "f", 
+      RowBox[{"(", "5", ")"}]}]},
+    {"...", "...", "..."},
+    {"n", 
+     RowBox[{"\[Lambda]f", 
+      RowBox[{"(", "n", ")"}]}], 
+     RowBox[{
+      SqrtBox[
+       RowBox[{"n", "+", "1"}]], "f", 
+      RowBox[{"(", 
+       RowBox[{"n", "+", "1"}], ")"}]}]}
+   },
+   GridBoxDividers->{
+    "Columns" -> {{True}}, "ColumnsIndexed" -> {}, "Rows" -> {{True}}, 
+     "RowsIndexed" -> {}}]],
+  FontFamily->"Arial"],
+ "\n\nThus ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    TemplateBox[{"\[Lambda]"},
+     "Ket"], "=", 
+    RowBox[{
+     RowBox[{
+      SubscriptBox[
+       SuperscriptBox["\[Sum]", "\[Infinity]"], 
+       RowBox[{"n", "=", "0"}]], 
+      RowBox[{
+       FractionBox[
+        SuperscriptBox["\[Lambda]", "n"], 
+        SqrtBox[
+         RowBox[{"n", "!"}]]], 
+       RowBox[{"f", "(", "0", ")"}], 
+       TemplateBox[{"n"},
+        "Ket"]}]}], "=", 
+     RowBox[{
+      RowBox[{"f", "(", "0", ")"}], 
+      RowBox[{
+       SubscriptBox[
+        SuperscriptBox["\[Sum]", "\[Infinity]"], 
+        RowBox[{"n", "=", "0"}]], 
+       RowBox[{
+        FractionBox[
+         SuperscriptBox["\[Lambda]", "n"], 
+         SqrtBox[
+          RowBox[{"n", "!"}]]], 
+        TemplateBox[{"n"},
+         "Ket"]}]}]}]}]}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ "\n\nNote that f(0) is ",
+ Cell[BoxData[
+  FormBox[
+   SuperscriptBox["e", 
+    RowBox[{"-", 
+     RowBox[{"\[VerticalSeparator]", "\[Lambda]", "\[VerticalSeparator]"}]}]],
+    TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ " : ",
+ Cell[BoxData[{
+  FormBox[
+   RowBox[{
+    TemplateBox[{"\[Lambda]","\[Lambda]"},
+     "BraKet"], "=", 
+    RowBox[{"1", "=", 
+     RowBox[{
+      RowBox[{
+       SuperscriptBox["f", "*"], "(", "0", ")"}], 
+      RowBox[{"(", 
+       RowBox[{
+        SubscriptBox[
+         SuperscriptBox["\[Sum]", "\[Infinity]"], 
+         RowBox[{"i", "=", "0"}]], 
+        RowBox[{
+         FractionBox[
+          SuperscriptBox[
+           RowBox[{"(", 
+            SuperscriptBox["\[Lambda]", "*"], ")"}], "i"], 
+          SqrtBox[
+           RowBox[{"i", "!"}]]], 
+         TemplateBox[{"i"},
+          "Bra"]}]}], ")"}], 
+      RowBox[{"f", "(", "0", ")"}], 
+      RowBox[{"(", 
+       RowBox[{
+        SubscriptBox[
+         SuperscriptBox["\[Sum]", "\[Infinity]"], 
+         RowBox[{"j", "=", "0"}]], 
+        RowBox[{
+         FractionBox[
+          SuperscriptBox["\[Lambda]", "j"], 
+          SqrtBox[
+           RowBox[{"j", "!"}]]], 
+         TemplateBox[{"j"},
+          "Ket"]}]}], ")"}]}]}]}], TraditionalForm], "\[IndentingNewLine]", 
+  FormBox[
+   RowBox[{"=", 
+    RowBox[{
+     SuperscriptBox[
+      RowBox[{"\[LeftBracketingBar]", 
+       RowBox[{"f", "(", "0", ")"}], "\[RightBracketingBar]"}], "2"], 
+     RowBox[{"(", 
+      RowBox[{
+       SubscriptBox[
+        SuperscriptBox["\[Sum]", "\[Infinity]"], 
+        RowBox[{"k", "=", "0"}]], 
+       RowBox[{
+        FractionBox[
+         SuperscriptBox[
+          RowBox[{"(", 
+           SuperscriptBox["\[Lambda]", "*"], ")"}], "k"], 
+         SqrtBox[
+          RowBox[{"k", "!"}]]], 
+        TemplateBox[{"k"},
+         "Bra"], 
+        FractionBox[
+         SuperscriptBox["\[Lambda]", "k"], 
+         SqrtBox[
+          RowBox[{"k", "!"}]]], 
+        TemplateBox[{"k"},
+         "Ket"]}]}], ")"}]}]}], TraditionalForm], "\[IndentingNewLine]", 
+  FormBox[
+   RowBox[{"=", 
+    RowBox[{
+     RowBox[{
+      SuperscriptBox[
+       RowBox[{"\[LeftBracketingBar]", 
+        RowBox[{"f", "(", "0", ")"}], "\[RightBracketingBar]"}], "2"], 
+      RowBox[{
+       SubscriptBox[
+        SuperscriptBox["\[Sum]", "\[Infinity]"], 
+        RowBox[{"k", "=", "0"}]], 
+       FractionBox[
+        RowBox[{"\[VerticalSeparator]", "\[Lambda]", 
+         SuperscriptBox["\[VerticalSeparator]", 
+          RowBox[{"2", "k"}]]}], 
+        RowBox[{"k", "!"}]]}]}], "=", 
+     RowBox[{
+      SuperscriptBox[
+       RowBox[{"\[LeftBracketingBar]", 
+        RowBox[{"f", "(", "0", ")"}], "\[RightBracketingBar]"}], "2"], 
+      SuperscriptBox["e", 
+       RowBox[{"\[VerticalSeparator]", "\[Lambda]", 
+        SuperscriptBox["\[VerticalSeparator]", "2"]}]]}]}]}], 
+   TraditionalForm]}],
+  FormatType->"TraditionalForm"],
+ "\n\nSo ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SuperscriptBox["e", 
+     FractionBox[
+      RowBox[{"-", 
+       RowBox[{"\[VerticalSeparator]", "\[Lambda]", 
+        SuperscriptBox["\[VerticalSeparator]", "2"]}]}], "2"]], "=", 
+    SuperscriptBox[
+     RowBox[{"\[LeftBracketingBar]", 
+      RowBox[{"f", "(", "0", ")"}], "\[RightBracketingBar]"}], "2"]}], 
+   TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ ". I am free to pick the phase of f(0) since it only contributes a global \
+phase to ",
+ Cell[BoxData[
+  FormBox[
+   TemplateBox[{"\[Lambda]"},
+    "Ket"], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ ". I will choose f(0) to be real.\n\n",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    TemplateBox[{"\[Lambda]"},
+     "Ket"], "=", 
+    RowBox[{
+     SubscriptBox[
+      SuperscriptBox["\[Sum]", "\[Infinity]"], 
+      RowBox[{"n", "=", "0"}]], 
+     RowBox[{
+      SuperscriptBox["e", 
+       FractionBox[
+        RowBox[{"-", 
+         RowBox[{"\[VerticalSeparator]", "\[Lambda]", 
+          SuperscriptBox["\[VerticalSeparator]", "2"]}]}], "2"]], 
+      FractionBox[
+       SuperscriptBox["\[Lambda]", "n"], 
+       SqrtBox[
+        RowBox[{"n", "!"}]]], 
+      TemplateBox[{"n"},
+       "Ket"]}]}]}], TraditionalForm]]],
+ "\t(see the last half of 2c)\n\nThus, ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{"|", 
+     RowBox[{"f", "(", "n", ")"}], 
+     SuperscriptBox["|", "2"]}], "=", 
+    RowBox[{
+     SuperscriptBox["e", 
+      RowBox[{"-", 
+       RowBox[{"\[VerticalSeparator]", "\[Lambda]", 
+        SuperscriptBox["\[VerticalSeparator]", "2"]}]}]], " ", 
+     FractionBox[
+      RowBox[{"\[VerticalSeparator]", "\[Lambda]", 
+       SuperscriptBox["\[VerticalSeparator]", 
+        RowBox[{"2", "n"}]]}], 
+      RowBox[{"n", "!"}]]}]}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ "  which (according to Wikipedia and my notes from an undergraduate course) \
+is the Poisson distribution of the parameter ",
+ Cell[BoxData[
+  FormBox[
+   SuperscriptBox[
+    RowBox[{"\[LeftBracketingBar]", "\[Lambda]", "\[RightBracketingBar]"}], 
+    "2"], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ " in n."
+}], "Text",
+ CellChangeTimes->{{3.6003659841689987`*^9, 3.6003662580576644`*^9}, {
+   3.6003662892374477`*^9, 3.600366308704561*^9}, {3.6005292013784895`*^9, 
+   3.6005293836619153`*^9}, {3.600529427817441*^9, 3.600529464936564*^9}, {
+   3.600529496668379*^9, 3.600529497283414*^9}, {3.600536021863599*^9, 
+   3.6005361294747534`*^9}, {3.6005362336537123`*^9, 3.6005362362938633`*^9}, 
+   3.6005366120463552`*^9, {3.600536908194294*^9, 3.6005369147336683`*^9}, {
+   3.6005369606272926`*^9, 3.600537089368656*^9}, {3.6005371531993074`*^9, 
+   3.600537259533389*^9}, {3.6005373018968124`*^9, 3.600537569371111*^9}, {
+   3.6005376055121784`*^9, 3.6005376391091003`*^9}, {3.600537815992217*^9, 
+   3.600537923834385*^9}, {3.6005379751363196`*^9, 3.600538315074763*^9}, {
+   3.600543533164221*^9, 3.6005435616488495`*^9}, {3.600543723464105*^9, 
+   3.6005437865417128`*^9}, {3.6005554370980864`*^9, 3.600555586881654*^9}, {
+   3.600555788600191*^9, 3.6005557922474003`*^9}, {3.600555846905526*^9, 
+   3.6005561526960163`*^9}, {3.6005562246031294`*^9, 
+   3.6005562322725677`*^9}, {3.6005562687476544`*^9, 
+   3.6005563298431487`*^9}, {3.600556369278404*^9, 3.6005564408564987`*^9}, {
+   3.6005564940395403`*^9, 3.6005565474395943`*^9}, {3.6005569043590093`*^9, 
+   3.6005569150996237`*^9}, {3.6005611330148745`*^9, 
+   3.6005611451115665`*^9}, {3.600564352176*^9, 3.6005644808633604`*^9}, {
+   3.6006561766090574`*^9, 3.600656180990308*^9}, {3.6006562552825565`*^9, 
+   3.600656287028373*^9}, {3.6006566869252453`*^9, 3.600656694573683*^9}, {
+   3.6006567929853115`*^9, 3.6006568257481856`*^9}}]
+}, Open  ]],
+
+Cell[TextData[{
+ "3. Pauli Operators\n",
+ StyleBox["The Pauli operators can be defined in an orthonormal basis as: ", 
+  "Text"],
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{
+     SubscriptBox["\[Sigma]", "x"], " ", "=", 
+     RowBox[{
+      RowBox[{
+       TemplateBox[{"+"},
+        "Ket"], 
+       TemplateBox[{"-"},
+        "Bra"]}], "+", 
+      RowBox[{
+       TemplateBox[{"-"},
+        "Ket"], 
+       TemplateBox[{"+"},
+        "Bra"]}]}]}], "  ", ",", " ", 
+    RowBox[{
+     SubscriptBox["\[Sigma]", "y"], "=", 
+     RowBox[{"-", 
+      RowBox[{"i", "(", 
+       RowBox[{
+        RowBox[{
+         TemplateBox[{"+"},
+          "Ket"], 
+         TemplateBox[{"-"},
+          "Bra"]}], "-", 
+        RowBox[{
+         TemplateBox[{"-"},
+          "Ket"], 
+         TemplateBox[{"+"},
+          "Bra"]}]}], ")"}]}]}], "  ", ",", "  ", 
+    RowBox[{
+     SubscriptBox["\[Sigma]", "z"], "=", 
+     RowBox[{
+      RowBox[{
+       TemplateBox[{"+"},
+        "Ket"], 
+       TemplateBox[{"+"},
+        "Bra"]}], "-", 
+      RowBox[{
+       TemplateBox[{"-"},
+        "Ket"], 
+       TemplateBox[{"-"},
+        "Bra"]}]}]}]}], TraditionalForm]],
+  FontSize->12],
+ StyleBox[" . Using these definitions, show that ", "Text",
+  FontSize->12],
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{"[", 
+     RowBox[{
+      SubscriptBox["\[Sigma]", "i"], " ", ",", " ", 
+      SubscriptBox["\[Sigma]", "j"]}], "]"}], "=", 
+    RowBox[{"2", 
+     SubscriptBox["i\[Epsilon]", "ijk"], 
+     SubscriptBox["\[Sigma]", "k"]}]}], TraditionalForm]],
+  FontSize->12],
+ StyleBox[" ",
+  FontSize->12],
+ StyleBox["and that ", "Text",
+  FontSize->12],
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{
+      SubscriptBox["\[Sigma]", "i"], ",", 
+      SubscriptBox["\[Sigma]", "j"]}], "}"}], "=", 
+    RowBox[{"2", 
+     SubscriptBox["\[Delta]", "ij"]}]}], TraditionalForm]],
+  FontSize->12],
+ StyleBox[".", "Text",
+  FontSize->12]
+}], "Section",
+ CellChangeTimes->{{3.600449328607028*^9, 3.6004497828550096`*^9}, {
+  3.6004504477280383`*^9, 3.6004504482080655`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["3a) Commutator Relationships", "Subsubtitle",
+ CellChangeTimes->{{3.6004497876482835`*^9, 3.600449922195979*^9}, {
+  3.6004500247338448`*^9, 3.6004502404261813`*^9}, {3.6004502936432247`*^9, 
+  3.6004502971584263`*^9}, {3.600450454338416*^9, 3.600450517384022*^9}, {
+  3.600450604129984*^9, 3.60045066263233*^9}, {3.600450780922096*^9, 
+  3.6004510390438595`*^9}, {3.6004510716317234`*^9, 3.60045113661744*^9}, {
+  3.6004511810859838`*^9, 3.6004514532485504`*^9}, {3.600468615251161*^9, 
+  3.600469602929653*^9}, {3.6004704753665533`*^9, 3.600470547544682*^9}}],
+
+Cell[BoxData[{
+ FormBox[
+  RowBox[{
+   RowBox[{"Consider", ",", 
+    FormBox[
+     RowBox[{
+      RowBox[{
+       RowBox[{"[", 
+        RowBox[{
+         SubscriptBox["\[Sigma]", "x"], ",", 
+         SubscriptBox["\[Sigma]", "y"]}], "]"}], "=", 
+       RowBox[{
+        RowBox[{
+         SubscriptBox["\[Sigma]", "x"], 
+         SubscriptBox["\[Sigma]", "y"]}], "-", 
+        RowBox[{
+         SubscriptBox["\[Sigma]", "y"], 
+         SubscriptBox["\[Sigma]", "x"]}]}]}], "\[IndentingNewLine]", 
+      RowBox[{"=", 
+       RowBox[{
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{
+           TemplateBox[{"+"},
+            "Ket"], 
+           TemplateBox[{"-"},
+            "Bra"]}], "+", 
+          RowBox[{
+           TemplateBox[{"-"},
+            "Ket"], 
+           TemplateBox[{"+"},
+            "Bra"]}]}], ")"}], 
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{"-", "i"}], " ", 
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{
+             TemplateBox[{"+"},
+              "Ket"], 
+             TemplateBox[{"-"},
+              "Bra"]}], "-", 
+            RowBox[{
+             TemplateBox[{"-"},
+              "Ket"], 
+             TemplateBox[{"+"},
+              "Bra"]}]}], ")"}]}], ")"}]}]}], "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"+", 
+        RowBox[{"i", "(", 
+         RowBox[{
+          RowBox[{
+           TemplateBox[{"+"},
+            "Ket"], 
+           TemplateBox[{"-"},
+            "Bra"]}], "-", 
+          RowBox[{
+           TemplateBox[{"-"},
+            "Ket"], 
+           TemplateBox[{"+"},
+            "Bra"]}]}], ")"}]}], " ", 
+       RowBox[{"(", " ", 
+        RowBox[{
+         RowBox[{
+          TemplateBox[{"+"},
+           "Ket"], 
+          TemplateBox[{"-"},
+           "Bra"]}], "+", 
+         RowBox[{
+          TemplateBox[{"-"},
+           "Ket"], 
+          TemplateBox[{"+"},
+           "Bra"]}]}], ")"}]}], "\[IndentingNewLine]", 
+      RowBox[{"=", " ", 
+       RowBox[{
+        RowBox[{"i", "(", 
+         RowBox[{
+          RowBox[{
+           TemplateBox[{"+"},
+            "Ket"], 
+           TemplateBox[{"+"},
+            "Bra"]}], "-", 
+          RowBox[{
+           TemplateBox[{"-"},
+            "Ket"], 
+           TemplateBox[{"-"},
+            "Bra"]}]}], ")"}], "+", 
+        RowBox[{"i", "(", 
+         RowBox[{
+          RowBox[{
+           TemplateBox[{"+"},
+            "Ket"], 
+           TemplateBox[{"+"},
+            "Bra"]}], "-", 
+          RowBox[{
+           TemplateBox[{"-"},
+            "Ket"], 
+           TemplateBox[{"-"},
+            "Bra"]}]}], ")"}]}]}], "\[IndentingNewLine]", 
+      RowBox[{"=", 
+       RowBox[{
+        RowBox[{"2", 
+         RowBox[{"i", "(", 
+          RowBox[{
+           RowBox[{
+            TemplateBox[{"+"},
+             "Ket"], 
+            TemplateBox[{"+"},
+             "Bra"]}], "-", 
+           RowBox[{
+            TemplateBox[{"-"},
+             "Ket"], 
+            TemplateBox[{"-"},
+             "Bra"]}]}], ")"}]}], "=", 
+        RowBox[{"2", 
+         SubscriptBox["i\[Sigma]", "z"]}]}]}]}],
+     TraditionalForm]}], "\[IndentingNewLine]"}], 
+  TraditionalForm], "\[IndentingNewLine]", 
+ FormBox[
+  RowBox[{
+   RowBox[{
+   "As", " ", "a", " ", "consequence", " ", "of", " ", "the", " ", "work", 
+    " ", "done", " ", "in", " ", "Problem", " ", "1", " ", "it", " ", "is", 
+    " ", "clear", " ", "that", 
+    FormBox[
+     RowBox[{
+      RowBox[{"[", 
+       RowBox[{
+        SubscriptBox["\[Sigma]", "y"], ",", 
+        SubscriptBox["\[Sigma]", "x"]}], "]"}], "=", 
+      RowBox[{
+       RowBox[{"-", "2"}], 
+       SubscriptBox["i\[Sigma]", "z"]}]}],
+     TraditionalForm], 
+    FormBox[
+     RowBox[{"\[IndentingNewLine]", "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"[", 
+         RowBox[{
+          SubscriptBox["\[Sigma]", "x"], ",", 
+          SubscriptBox["\[Sigma]", "z"]}], "]"}], "=", 
+        RowBox[{
+         RowBox[{
+          SubscriptBox["\[Sigma]", "x"], 
+          SubscriptBox["\[Sigma]", "z"]}], "-", 
+         RowBox[{
+          SubscriptBox["\[Sigma]", "z"], 
+          SubscriptBox["\[Sigma]", "x"]}]}]}], "\[IndentingNewLine]", 
+       RowBox[{"=", 
+        RowBox[{
+         RowBox[{"(", 
+          RowBox[{
+           RowBox[{
+            TemplateBox[{"+"},
+             "Ket"], 
+            TemplateBox[{"-"},
+             "Bra"]}], "+", 
+           RowBox[{
+            TemplateBox[{"-"},
+             "Ket"], 
+            TemplateBox[{"+"},
+             "Bra"]}]}], ")"}], 
+         RowBox[{"(", 
+          RowBox[{
+           RowBox[{
+            TemplateBox[{"+"},
+             "Ket"], 
+            TemplateBox[{"+"},
+             "Bra"]}], "-", 
+           RowBox[{
+            TemplateBox[{"-"},
+             "Ket"], 
+            TemplateBox[{"-"},
+             "Bra"]}]}], ")"}]}]}], "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"-", 
+         RowBox[{"(", 
+          RowBox[{
+           RowBox[{
+            TemplateBox[{"+"},
+             "Ket"], 
+            TemplateBox[{"+"},
+             "Bra"]}], "-", 
+           RowBox[{
+            TemplateBox[{"-"},
+             "Ket"], 
+            TemplateBox[{"-"},
+             "Bra"]}]}], " ", ")"}]}], 
+        RowBox[{"(", " ", 
+         RowBox[{
+          RowBox[{
+           TemplateBox[{"+"},
+            "Ket"], 
+           TemplateBox[{"-"},
+            "Bra"]}], "+", 
+          RowBox[{
+           TemplateBox[{"-"},
+            "Ket"], 
+           TemplateBox[{"+"},
+            "Bra"]}]}], ")"}]}], "\[IndentingNewLine]", 
+       RowBox[{"=", 
+        RowBox[{
+         RowBox[{"(", 
+          RowBox[{
+           RowBox[{
+            RowBox[{"-", 
+             TemplateBox[{"+"},
+              "Ket"]}], 
+            TemplateBox[{"-"},
+             "Bra"]}], "+", 
+           RowBox[{
+            TemplateBox[{"-"},
+             "Ket"], 
+            TemplateBox[{"+"},
+             "Bra"]}]}], ")"}], "-", 
+         RowBox[{"(", 
+          RowBox[{
+           RowBox[{
+            TemplateBox[{"+"},
+             "Ket"], 
+            TemplateBox[{"-"},
+             "Bra"]}], "-", 
+           RowBox[{
+            TemplateBox[{"-"},
+             "Ket"], 
+            TemplateBox[{"+"},
+             "Bra"]}]}], ")"}]}]}], "\[IndentingNewLine]", 
+       RowBox[{"=", 
+        RowBox[{
+         RowBox[{"2", 
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{
+             TemplateBox[{"-"},
+              "Ket"], 
+             TemplateBox[{"+"},
+              "Bra"]}], "-", 
+            RowBox[{
+             TemplateBox[{"+"},
+              "Ket"], 
+             TemplateBox[{"-"},
+              "Bra"]}]}], ")"}]}], "=", 
+         RowBox[{
+          RowBox[{"-", "2"}], 
+          SubscriptBox["i\[Sigma]", "y"]}]}]}]}]}],
+     TraditionalForm]}], "\[IndentingNewLine]"}], 
+  TraditionalForm], "\[IndentingNewLine]", 
+ FormBox[
+  RowBox[{
+   RowBox[{
+   "As", " ", "a", " ", "consequence", " ", "of", " ", "the", " ", "work", 
+    " ", "done", " ", "in", 
+    FormBox["Problem",
+     TraditionalForm], "1", " ", "it", " ", "is", " ", "clear", " ", "that", 
+    FormBox[
+     RowBox[{
+      RowBox[{"[", 
+       RowBox[{
+        SubscriptBox["\[Sigma]", "z"], ",", 
+        SubscriptBox["\[Sigma]", "x"]}], "]"}], "=", 
+      RowBox[{"2", 
+       SubscriptBox["i\[Sigma]", "y"]}]}],
+     TraditionalForm], 
+    FormBox[
+     RowBox[{"\[IndentingNewLine]", "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"[", 
+         RowBox[{
+          SubscriptBox["\[Sigma]", "y"], ",", 
+          SubscriptBox["\[Sigma]", "z"]}], "]"}], "=", 
+        RowBox[{
+         RowBox[{
+          SubscriptBox["\[Sigma]", "y"], 
+          SubscriptBox["\[Sigma]", "z"]}], "-", 
+         RowBox[{
+          SubscriptBox["\[Sigma]", "z"], 
+          SubscriptBox["\[Sigma]", "y"]}]}]}], "\[IndentingNewLine]", 
+       RowBox[{"=", 
+        RowBox[{
+         RowBox[{"-", 
+          RowBox[{"i", "(", 
+           RowBox[{
+            RowBox[{
+             TemplateBox[{"+"},
+              "Ket"], 
+             TemplateBox[{"-"},
+              "Bra"]}], "-", 
+            RowBox[{
+             TemplateBox[{"-"},
+              "Ket"], 
+             TemplateBox[{"+"},
+              "Bra"]}]}], ")"}]}], " ", 
+         RowBox[{"(", 
+          RowBox[{
+           RowBox[{
+            TemplateBox[{"+"},
+             "Ket"], 
+            TemplateBox[{"+"},
+             "Bra"]}], "-", 
+           RowBox[{
+            TemplateBox[{"-"},
+             "Ket"], 
+            TemplateBox[{"-"},
+             "Bra"]}]}], ")"}]}]}], "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"+", 
+         RowBox[{"i", "(", 
+          RowBox[{
+           RowBox[{
+            TemplateBox[{"+"},
+             "Ket"], 
+            TemplateBox[{"+"},
+             "Bra"]}], "-", 
+           RowBox[{
+            TemplateBox[{"-"},
+             "Ket"], 
+            TemplateBox[{"-"},
+             "Bra"]}]}], " ", ")"}]}], 
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{
+           TemplateBox[{"+"},
+            "Ket"], 
+           TemplateBox[{"-"},
+            "Bra"]}], "-", 
+          RowBox[{
+           TemplateBox[{"-"},
+            "Ket"], 
+           TemplateBox[{"+"},
+            "Bra"]}]}], ")"}]}], " ", "\[IndentingNewLine]", 
+       RowBox[{"=", 
+        RowBox[{
+         RowBox[{"i", "(", 
+          RowBox[{
+           RowBox[{
+            TemplateBox[{"+"},
+             "Ket"], 
+            TemplateBox[{"-"},
+             "Bra"]}], "+", 
+           RowBox[{
+            TemplateBox[{"-"},
+             "Ket"], 
+            TemplateBox[{"+"},
+             "Bra"]}]}], ")"}], "+", 
+         RowBox[{"i", "(", 
+          RowBox[{
+           RowBox[{
+            TemplateBox[{"+"},
+             "Ket"], 
+            TemplateBox[{"-"},
+             "Bra"]}], "+", 
+           RowBox[{
+            TemplateBox[{"-"},
+             "Ket"], 
+            TemplateBox[{"+"},
+             "Bra"]}]}], ")"}]}]}], "\[IndentingNewLine]", 
+       RowBox[{"=", 
+        RowBox[{
+         RowBox[{"2", 
+          RowBox[{"i", "(", 
+           RowBox[{
+            RowBox[{
+             TemplateBox[{"+"},
+              "Ket"], 
+             TemplateBox[{"-"},
+              "Bra"]}], "+", 
+            RowBox[{
+             TemplateBox[{"-"},
+              "Ket"], 
+             TemplateBox[{"+"},
+              "Bra"]}]}], ")"}]}], "=", 
+         RowBox[{"2", 
+          SubscriptBox["i\[Sigma]", "x"]}]}]}]}]}],
+     TraditionalForm]}], "\[IndentingNewLine]"}], 
+  TraditionalForm], "\[IndentingNewLine]", 
+ FormBox[
+  RowBox[{
+   RowBox[{
+   "As", " ", "a", " ", "consequence", " ", "of", " ", "the", " ", "work", 
+    " ", "done", " ", "in", " ", "Problem", " ", "1", " ", "it", " ", "is", 
+    " ", "clear", " ", "that", 
+    FormBox[
+     RowBox[{
+      RowBox[{"[", 
+       RowBox[{
+        SubscriptBox["\[Sigma]", "z"], ",", 
+        SubscriptBox["\[Sigma]", "y"]}], "]"}], "=", 
+      RowBox[{
+       RowBox[{"-", "2"}], 
+       SubscriptBox["i\[Sigma]", "x"]}]}],
+     TraditionalForm]}], "\[IndentingNewLine]"}], 
+  TraditionalForm], "\[IndentingNewLine]", 
+ FormBox[
+  RowBox[{"Thus", ",", 
+   RowBox[{"by", " ", "construction"}], ",", 
+   RowBox[{"it", " ", "has", " ", "been", " ", "shown", " ", "that", 
+    FormBox[
+     RowBox[{
+      RowBox[{"[", 
+       RowBox[{
+        SubscriptBox["\[Sigma]", "i"], " ", ",", 
+        SubscriptBox["\[Sigma]", "j"]}], "]"}], "=", 
+      RowBox[{"2", 
+       SubscriptBox["i\[Epsilon]", "ijk"], 
+       SubscriptBox["\[Sigma]", "k"]}]}],
+     TraditionalForm]}]}], TraditionalForm]}], "Text",
+ CellChangeTimes->{{3.6004497876482835`*^9, 3.600449922195979*^9}, {
+  3.6004500247338448`*^9, 3.6004502404261813`*^9}, {3.6004502936432247`*^9, 
+  3.6004502971584263`*^9}, {3.600450454338416*^9, 3.600450517384022*^9}, {
+  3.600450604129984*^9, 3.60045066263233*^9}, {3.600450780922096*^9, 
+  3.6004510390438595`*^9}, {3.6004510716317234`*^9, 3.60045113661744*^9}, {
+  3.6004511810859838`*^9, 3.6004514532485504`*^9}, {3.600468615251161*^9, 
+  3.600469602929653*^9}, {3.6004704753665533`*^9, 3.6004705855498557`*^9}, {
+  3.6006563119757996`*^9, 3.600656316400053*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["3b) Anticommutator Relationships", "Subsubtitle",
+ CellChangeTimes->{{3.6004497876482835`*^9, 3.600449922195979*^9}, {
+  3.6004500247338448`*^9, 3.6004502404261813`*^9}, {3.6004502936432247`*^9, 
+  3.6004502971584263`*^9}, {3.600450454338416*^9, 3.600450517384022*^9}, {
+  3.600450604129984*^9, 3.60045066263233*^9}, {3.600450780922096*^9, 
+  3.6004510390438595`*^9}, {3.6004510716317234`*^9, 3.60045113661744*^9}, {
+  3.6004511810859838`*^9, 3.6004514532485504`*^9}, {3.600468615251161*^9, 
+  3.600469602929653*^9}, {3.6004704753665533`*^9, 3.600470577163376*^9}}],
+
+Cell[BoxData[{
+ FormBox[
+  RowBox[{"Similarly", ",", " ", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{
+      SubscriptBox["\[Sigma]", "x"], ",", 
+      SubscriptBox["\[Sigma]", "y"]}], "}"}], "=", 
+    RowBox[{
+     RowBox[{
+      SubscriptBox["\[Sigma]", "x"], 
+      SubscriptBox["\[Sigma]", "y"]}], "+", 
+     RowBox[{
+      SubscriptBox["\[Sigma]", "y"], 
+      SubscriptBox["\[Sigma]", "x"]}]}]}]}], 
+  TraditionalForm], "\[LineSeparator]", 
+ FormBox[
+  RowBox[{"=", 
+   RowBox[{
+    RowBox[{"-", 
+     RowBox[{"i", "(", 
+      RowBox[{
+       RowBox[{
+        TemplateBox[{"+"},
+         "Ket"], 
+        TemplateBox[{"-"},
+         "Bra"]}], "+", 
+       RowBox[{
+        TemplateBox[{"-"},
+         "Ket"], 
+        TemplateBox[{"+"},
+         "Bra"]}]}], ")"}]}], 
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{
+       TemplateBox[{"+"},
+        "Ket"], 
+       TemplateBox[{"-"},
+        "Bra"]}], "-", 
+      RowBox[{
+       TemplateBox[{"-"},
+        "Ket"], 
+       TemplateBox[{"+"},
+        "Bra"]}]}], ")"}]}]}], TraditionalForm], "\[IndentingNewLine]", 
+ FormBox[
+  RowBox[{
+   RowBox[{"-", 
+    RowBox[{"i", "(", 
+     RowBox[{
+      RowBox[{
+       TemplateBox[{"+"},
+        "Ket"], 
+       TemplateBox[{"-"},
+        "Bra"]}], "-", 
+      RowBox[{
+       TemplateBox[{"-"},
+        "Ket"], 
+       TemplateBox[{"+"},
+        "Bra"]}]}], ")"}]}], " ", 
+   RowBox[{"(", " ", 
+    RowBox[{
+     RowBox[{
+      TemplateBox[{"+"},
+       "Ket"], 
+      TemplateBox[{"-"},
+       "Bra"]}], "+", 
+     RowBox[{
+      TemplateBox[{"-"},
+       "Ket"], 
+      TemplateBox[{"+"},
+       "Bra"]}]}], ")"}]}], TraditionalForm], "\[IndentingNewLine]", 
+ FormBox[
+  RowBox[{"=", 
+   RowBox[{
+    RowBox[{"-", 
+     RowBox[{"i", "(", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"-", 
+         TemplateBox[{"+"},
+          "Ket"]}], 
+        TemplateBox[{"+"},
+         "Bra"]}], "+", 
+       RowBox[{
+        TemplateBox[{"-"},
+         "Ket"], 
+        TemplateBox[{"-"},
+         "Bra"]}]}], ")"}]}], "-", 
+    RowBox[{"i", "(", 
+     RowBox[{
+      RowBox[{
+       TemplateBox[{"+"},
+        "Ket"], 
+       TemplateBox[{"+"},
+        "Bra"]}], "-", 
+      RowBox[{
+       TemplateBox[{"-"},
+        "Ket"], 
+       TemplateBox[{"-"},
+        "Bra"]}]}], ")"}]}]}], TraditionalForm], "\[IndentingNewLine]", 
+ FormBox[
+  RowBox[{
+   RowBox[{"=", "0"}], "\[IndentingNewLine]"}], 
+  TraditionalForm], "\[IndentingNewLine]", 
+ FormBox[
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     SubscriptBox["\[Sigma]", "x"], ",", 
+     SubscriptBox["\[Sigma]", "z"]}], "}"}], "=", 
+   RowBox[{
+    RowBox[{
+     SubscriptBox["\[Sigma]", "x"], 
+     SubscriptBox["\[Sigma]", "z"]}], "+", 
+    RowBox[{
+     SubscriptBox["\[Sigma]", "z"], 
+     SubscriptBox["\[Sigma]", "x"]}]}]}], 
+  TraditionalForm], "\[IndentingNewLine]", 
+ FormBox[
+  RowBox[{"=", 
+   RowBox[{
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{
+       TemplateBox[{"+"},
+        "Ket"], 
+       TemplateBox[{"-"},
+        "Bra"]}], "+", 
+      RowBox[{
+       TemplateBox[{"-"},
+        "Ket"], 
+       TemplateBox[{"+"},
+        "Bra"]}]}], ")"}], 
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{
+       TemplateBox[{"+"},
+        "Ket"], 
+       TemplateBox[{"+"},
+        "Bra"]}], "-", 
+      RowBox[{
+       TemplateBox[{"-"},
+        "Ket"], 
+       TemplateBox[{"-"},
+        "Bra"]}]}], ")"}]}]}], TraditionalForm], "\[IndentingNewLine]", 
+ FormBox[
+  RowBox[{
+   RowBox[{"+", 
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{
+       TemplateBox[{"+"},
+        "Ket"], 
+       TemplateBox[{"+"},
+        "Bra"]}], "-", 
+      RowBox[{
+       TemplateBox[{"-"},
+        "Ket"], 
+       TemplateBox[{"-"},
+        "Bra"]}]}], " ", ")"}]}], 
+   RowBox[{"(", " ", 
+    RowBox[{
+     RowBox[{
+      TemplateBox[{"+"},
+       "Ket"], 
+      TemplateBox[{"-"},
+       "Bra"]}], "+", 
+     RowBox[{
+      TemplateBox[{"-"},
+       "Ket"], 
+      TemplateBox[{"+"},
+       "Bra"]}]}], ")"}]}], TraditionalForm], "\[IndentingNewLine]", 
+ FormBox[
+  RowBox[{"=", 
+   RowBox[{
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"-", 
+        TemplateBox[{"+"},
+         "Ket"]}], 
+       TemplateBox[{"-"},
+        "Bra"]}], "+", 
+      RowBox[{
+       TemplateBox[{"-"},
+        "Ket"], 
+       TemplateBox[{"+"},
+        "Bra"]}]}], ")"}], "+", 
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{
+       TemplateBox[{"+"},
+        "Ket"], 
+       TemplateBox[{"-"},
+        "Bra"]}], "-", 
+      RowBox[{
+       TemplateBox[{"-"},
+        "Ket"], 
+       TemplateBox[{"+"},
+        "Bra"]}]}], ")"}]}]}], TraditionalForm], "\[IndentingNewLine]", 
+ FormBox[
+  RowBox[{
+   RowBox[{"=", "0"}], "\[IndentingNewLine]"}], 
+  TraditionalForm], "\[IndentingNewLine]", 
+ FormBox[
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     SubscriptBox["\[Sigma]", "y"], ",", 
+     SubscriptBox["\[Sigma]", "z"]}], "}"}], "=", 
+   RowBox[{
+    RowBox[{
+     SubscriptBox["\[Sigma]", "y"], 
+     SubscriptBox["\[Sigma]", "z"]}], "+", 
+    RowBox[{
+     SubscriptBox["\[Sigma]", "z"], 
+     SubscriptBox["\[Sigma]", "y"]}]}]}], 
+  TraditionalForm], "\[IndentingNewLine]", 
+ FormBox[
+  RowBox[{"=", 
+   RowBox[{
+    RowBox[{"-", 
+     RowBox[{"i", "(", 
+      RowBox[{
+       RowBox[{
+        TemplateBox[{"+"},
+         "Ket"], 
+        TemplateBox[{"-"},
+         "Bra"]}], "-", 
+       RowBox[{
+        TemplateBox[{"-"},
+         "Ket"], 
+        TemplateBox[{"+"},
+         "Bra"]}]}], ")"}]}], " ", 
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{
+       TemplateBox[{"+"},
+        "Ket"], 
+       TemplateBox[{"+"},
+        "Bra"]}], "-", 
+      RowBox[{
+       TemplateBox[{"-"},
+        "Ket"], 
+       TemplateBox[{"-"},
+        "Bra"]}]}], ")"}]}]}], TraditionalForm], "\[IndentingNewLine]", 
+ FormBox[
+  RowBox[{
+   RowBox[{
+    RowBox[{"-", 
+     RowBox[{"i", "(", 
+      RowBox[{
+       RowBox[{
+        TemplateBox[{"+"},
+         "Ket"], 
+        TemplateBox[{"+"},
+         "Bra"]}], "-", 
+       RowBox[{
+        TemplateBox[{"-"},
+         "Ket"], 
+        TemplateBox[{"-"},
+         "Bra"]}]}], " ", ")"}]}], 
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{
+       TemplateBox[{"+"},
+        "Ket"], 
+       TemplateBox[{"-"},
+        "Bra"]}], "-", 
+      RowBox[{
+       TemplateBox[{"-"},
+        "Ket"], 
+       TemplateBox[{"+"},
+        "Bra"]}]}], ")"}]}], " "}], TraditionalForm], "\[IndentingNewLine]", 
+ FormBox[
+  RowBox[{"=", 
+   RowBox[{
+    RowBox[{"i", "(", 
+     RowBox[{
+      RowBox[{
+       TemplateBox[{"+"},
+        "Ket"], 
+       TemplateBox[{"-"},
+        "Bra"]}], "+", 
+      RowBox[{
+       TemplateBox[{"-"},
+        "Ket"], 
+       TemplateBox[{"+"},
+        "Bra"]}]}], ")"}], "-", 
+    RowBox[{"i", "(", 
+     RowBox[{
+      RowBox[{
+       TemplateBox[{"+"},
+        "Ket"], 
+       TemplateBox[{"-"},
+        "Bra"]}], "+", 
+      RowBox[{
+       TemplateBox[{"-"},
+        "Ket"], 
+       TemplateBox[{"+"},
+        "Bra"]}]}], ")"}]}]}], TraditionalForm], "\[IndentingNewLine]", 
+ FormBox[
+  RowBox[{
+   RowBox[{"=", "0"}], "\[IndentingNewLine]"}], 
+  TraditionalForm], "\[IndentingNewLine]", 
+ FormBox[
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     SubscriptBox["\[Sigma]", "x"], ",", 
+     SubscriptBox["\[Sigma]", "x"]}], "}"}], "=", 
+   RowBox[{
+    RowBox[{"2", 
+     SuperscriptBox[
+      SubscriptBox["\[Sigma]", 
+       RowBox[{"x", " "}]], "2"]}], "=", 
+    RowBox[{"2", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{
+        TemplateBox[{"+"},
+         "Ket"], 
+        TemplateBox[{"-"},
+         "Bra"]}], "+", 
+       RowBox[{
+        TemplateBox[{"-"},
+         "Ket"], 
+        TemplateBox[{"+"},
+         "Bra"]}]}], " ", ")"}], 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{
+        TemplateBox[{"+"},
+         "Ket"], 
+        TemplateBox[{"-"},
+         "Bra"]}], "+", 
+       RowBox[{
+        TemplateBox[{"-"},
+         "Ket"], 
+        TemplateBox[{"+"},
+         "Bra"]}]}], " ", ")"}]}]}]}], 
+  TraditionalForm], "\[IndentingNewLine]", 
+ FormBox[
+  RowBox[{
+   RowBox[{"=", 
+    RowBox[{
+     RowBox[{"2", 
+      RowBox[{"(", 
+       RowBox[{
+        RowBox[{
+         TemplateBox[{"+"},
+          "Ket"], 
+         TemplateBox[{"+"},
+          "Bra"]}], "+", 
+        RowBox[{
+         TemplateBox[{"-"},
+          "Ket"], 
+         TemplateBox[{"-"},
+          "Bra"]}]}], ")"}]}], "=", 
+     RowBox[{"2", "\[DoubleStruckOne]"}]}]}], "\[IndentingNewLine]"}], 
+  TraditionalForm], "\[IndentingNewLine]", 
+ FormBox[
+  RowBox[{
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{
+      SubscriptBox["\[Sigma]", "y"], ",", 
+      SubscriptBox["\[Sigma]", "y"]}], "}"}], "=", 
+    RowBox[{
+     RowBox[{"2", 
+      SuperscriptBox[
+       SubscriptBox["\[Sigma]", 
+        RowBox[{"y", " "}]], "2"]}], "=", 
+     RowBox[{
+      RowBox[{"-", "2"}], 
+      RowBox[{"(", 
+       RowBox[{
+        RowBox[{
+         TemplateBox[{"+"},
+          "Ket"], 
+         TemplateBox[{"-"},
+          "Bra"]}], "-", 
+        RowBox[{
+         TemplateBox[{"-"},
+          "Ket"], 
+         TemplateBox[{"+"},
+          "Bra"]}]}], ")"}], " ", 
+      RowBox[{"(", 
+       RowBox[{
+        RowBox[{
+         TemplateBox[{"+"},
+          "Ket"], 
+         TemplateBox[{"-"},
+          "Bra"]}], "-", 
+        RowBox[{
+         TemplateBox[{"-"},
+          "Ket"], 
+         TemplateBox[{"+"},
+          "Bra"]}]}], ")"}]}]}]}], " "}], 
+  TraditionalForm], "\[IndentingNewLine]", 
+ FormBox[
+  RowBox[{
+   RowBox[{"=", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"-", "2"}], 
+      RowBox[{"(", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"-", 
+          TemplateBox[{"+"},
+           "Ket"]}], 
+         TemplateBox[{"+"},
+          "Bra"]}], "-", 
+        RowBox[{
+         TemplateBox[{"-"},
+          "Ket"], 
+         TemplateBox[{"-"},
+          "Bra"]}]}], ")"}]}], "=", 
+     RowBox[{"2", "\[DoubleStruckOne]"}]}]}], "\[IndentingNewLine]"}], 
+  TraditionalForm], "\[IndentingNewLine]", 
+ FormBox[
+  RowBox[{
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{
+      SubscriptBox["\[Sigma]", "z"], ",", 
+      SubscriptBox["\[Sigma]", "z"]}], "}"}], "=", 
+    RowBox[{
+     RowBox[{"2", 
+      SuperscriptBox[
+       SubscriptBox["\[Sigma]", 
+        RowBox[{"z", " "}]], "2"]}], "=", 
+     RowBox[{"2", 
+      RowBox[{"(", 
+       RowBox[{
+        RowBox[{
+         TemplateBox[{"+"},
+          "Ket"], 
+         TemplateBox[{"+"},
+          "Bra"]}], "-", 
+        RowBox[{
+         TemplateBox[{"-"},
+          "Ket"], 
+         TemplateBox[{"-"},
+          "Bra"]}]}], ")"}], 
+      RowBox[{"(", 
+       RowBox[{
+        RowBox[{
+         TemplateBox[{"+"},
+          "Ket"], 
+         TemplateBox[{"+"},
+          "Bra"]}], "-", 
+        RowBox[{
+         TemplateBox[{"-"},
+          "Ket"], 
+         TemplateBox[{"-"},
+          "Bra"]}]}], ")"}]}]}]}], " "}], 
+  TraditionalForm], "\[IndentingNewLine]", 
+ FormBox[
+  RowBox[{
+   RowBox[{"=", 
+    RowBox[{
+     RowBox[{"2", 
+      RowBox[{"(", 
+       RowBox[{
+        RowBox[{
+         TemplateBox[{"+"},
+          "Ket"], 
+         TemplateBox[{"+"},
+          "Bra"]}], "+", 
+        RowBox[{
+         TemplateBox[{"-"},
+          "Ket"], 
+         TemplateBox[{"-"},
+          "Bra"]}]}], ")"}]}], "=", 
+     RowBox[{"2", "\[DoubleStruckOne]"}]}]}], "\[IndentingNewLine]"}], 
+  TraditionalForm], "\[IndentingNewLine]", 
+ FormBox[
+  RowBox[{"Thus", ",", " ", 
+   RowBox[{
+    RowBox[{
+    "it", " ", "has", " ", "been", " ", "shown", " ", "by", " ", 
+     "construction", " ", "that", " ", 
+     RowBox[{"{", 
+      RowBox[{
+       SubscriptBox["\[Sigma]", "i"], " ", ",", 
+       SubscriptBox["\[Sigma]", "j"]}], "}"}]}], "=", 
+    RowBox[{"2", 
+     SubscriptBox["\[Delta]", "ij"], "\[DoubleStruckOne]"}]}]}], 
+  TraditionalForm]}], "Text",
+ CellChangeTimes->{{3.6004497876482835`*^9, 3.600449922195979*^9}, {
+  3.6004500247338448`*^9, 3.6004502404261813`*^9}, {3.6004502936432247`*^9, 
+  3.6004502971584263`*^9}, {3.600450454338416*^9, 3.600450517384022*^9}, {
+  3.600450604129984*^9, 3.60045066263233*^9}, {3.600450780922096*^9, 
+  3.6004510390438595`*^9}, {3.6004510716317234`*^9, 3.60045113661744*^9}, {
+  3.6004511810859838`*^9, 3.6004514532485504`*^9}, {3.600468615251161*^9, 
+  3.600469602929653*^9}, {3.6004704753665533`*^9, 3.6004705621465173`*^9}, {
+  3.600470739242646*^9, 3.6004707398586817`*^9}, {3.600656904126669*^9, 
+  3.6006569408567696`*^9}, {3.6006569712775097`*^9, 3.600657012934892*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ "4 An example of degeneracy\n",
+ StyleBox["Consider the two observables A nad B represented in a certain \
+basis by the matrices A \[DotEqual] ", "Text"],
+ StyleBox[Cell[BoxData[
+  FormBox[
+   RowBox[{"(", GridBox[{
+      {"a", "0", "0"},
+      {"0", 
+       RowBox[{"-", "a"}], "0"},
+      {"0", "0", 
+       RowBox[{"-", "a"}]}
+     }], ")"}], TraditionalForm]], "Text"], "Text"],
+ StyleBox[" , B \[DotEqual] ", "Text"],
+ StyleBox[Cell[BoxData[
+  FormBox[
+   RowBox[{"(", GridBox[{
+      {"b", "0", "0"},
+      {"0", "0", 
+       RowBox[{"-", "ib"}]},
+      {"0", "ib", "0"}
+     }], ")"}], TraditionalForm]], "Text"], "Text"],
+ StyleBox[" with both a and b being real numbers.\na) A exhibits a degenerate \
+spectrum. Does B exhibit a degenerate spectrum?\nb) Show that A and B \
+commute.\nc) i) Find a set of basis vectors that are eigenstates of both A \
+and B.\n    ii) Specify the eigenvalues corresponding to these eigenstates.\n \
+   iii) Are the eigenvalues, alone, enough to characterize the eigenstate \
+(i.e. is there degeneracy in the basis states)?", "Text"]
+}], "Section",
+ CellChangeTimes->{{3.600470748494176*^9, 3.600471180571889*^9}}],
+
+Cell[TextData[{
+ "4a) To determine if B has a degenerate spectrum it is enough to determine \
+the eigenvalues of B. I am interested then, in the case where det(B - \
+\[DoubleStruckI]\[Lambda]) =0\n",
+ StyleBox[" ", "Text"],
+ StyleBox[Cell[BoxData[{
+  FormBox[
+   RowBox[{
+    RowBox[{"\[VerticalSeparator]", GridBox[{
+       {
+        RowBox[{"b", "-", "\[Lambda]"}], "0", "0"},
+       {"0", 
+        RowBox[{"-", "\[Lambda]"}], 
+        RowBox[{"-", "ib"}]},
+       {"0", "ib", 
+        RowBox[{"-", "\[Lambda]"}]}
+      }], "\[VerticalSeparator]"}], "=", "0"}], 
+   TraditionalForm], "\[IndentingNewLine]", 
+  FormBox[
+   RowBox[{
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{"b", "-", "\[Lambda]"}], ")"}], 
+     RowBox[{"(", 
+      RowBox[{
+       SuperscriptBox["\[Lambda]", "2"], "-", 
+       SuperscriptBox["b", "2"]}], ")"}]}], "=", "0"}], 
+   TraditionalForm], "\[IndentingNewLine]", 
+  FormBox[
+   RowBox[{
+    RowBox[{
+     RowBox[{
+      RowBox[{"(", 
+       RowBox[{"b", "-", "\[Lambda]"}], ")"}], 
+      RowBox[{"(", 
+       RowBox[{"\[Lambda]", "-", "b"}], ")"}], 
+      RowBox[{"(", 
+       RowBox[{"\[Lambda]", "+", "b"}], ")"}]}], "=", "0"}], 
+    "\[IndentingNewLine]"}], TraditionalForm], "\[IndentingNewLine]", 
+  FormBox[
+   RowBox[{"Thus", ",", " ", 
+    RowBox[{
+     SubscriptBox["\[Lambda]", "1"], "=", 
+     RowBox[{
+      SubscriptBox["\[Lambda]", "2"], "=", 
+      RowBox[{
+       RowBox[{"b", " ", "and", " ", 
+        SubscriptBox["\[Lambda]", "3"]}], "=", 
+       RowBox[{
+        RowBox[{"-", "b"}], " ", "so", " ", "that", " ", "there", " ", "is", 
+        " ", "degeneracy", " ", "in", " ", "the", " ", "observable", " ", 
+        RowBox[{"B", "."}]}]}]}]}]}], TraditionalForm]}], "Text"], "Text"],
+ StyleBox["\n This has been confirmed by using ", "Text"],
+ StyleBox["Mathematica", "Text",
+  FontSlant->"Italic"],
+ StyleBox[" (below).", "Text"]
+}], "Text",
+ CellChangeTimes->{{3.600471199925996*^9, 3.600471449592276*^9}, {
+  3.600471498725086*^9, 3.600471515559049*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Eigensystem", "[", 
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"b", ",", "0", ",", "0"}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"0", ",", "0", ",", 
+      RowBox[{
+       RowBox[{"-", "I"}], "*", "b"}]}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"0", ",", 
+      RowBox[{"I", "*", "b"}], ",", "0"}], "}"}]}], "}"}], "]"}]], "Input",
+ CellChangeTimes->{{3.6004714556466227`*^9, 3.6004714798450065`*^9}, 
+   3.600471546730832*^9}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"-", "b"}], ",", "b", ",", "b"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"0", ",", "\[ImaginaryI]", ",", "1"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"0", ",", 
+       RowBox[{"-", "\[ImaginaryI]"}], ",", "1"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"1", ",", "0", ",", "0"}], "}"}]}], "}"}]}], "}"}]], "Output",
+ CellChangeTimes->{
+  3.600471765644353*^9, 3.60051969123254*^9, {3.600520033675127*^9, 
+   3.600520049156012*^9}}]
+}, Open  ]],
+
+Cell[TextData[{
+ "\n4b) To show that A and B commute it is enough to compute the product AB \
+and subtract the product BA and show that this is zero.\n\n ",
+ StyleBox[Cell[BoxData[{
+  FormBox[
+   RowBox[{
+    RowBox[{"[", 
+     RowBox[{"A", ",", "B"}], "]"}], "=", 
+    RowBox[{"AB", "-", "BA"}]}], TraditionalForm], "\[IndentingNewLine]", 
+  FormBox[
+   RowBox[{"=", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"(", GridBox[{
+         {"a", "0", "0"},
+         {"0", 
+          RowBox[{"-", "a"}], "0"},
+         {"0", "0", 
+          RowBox[{"-", "a"}]}
+        }], ")"}], 
+      RowBox[{
+       StyleBox["(", "Text"], GridBox[{
+         {"b", "0", "0"},
+         {"0", "0", 
+          RowBox[{"-", "ib"}]},
+         {"0", "ib", "0"}
+        }], ")"}]}], 
+     StyleBox["-", "Text"], 
+     RowBox[{
+      RowBox[{
+       StyleBox["(", "Text"], GridBox[{
+         {"b", "0", "0"},
+         {"0", "0", 
+          RowBox[{"-", "ib"}]},
+         {"0", "ib", "0"}
+        }], ")"}], 
+      RowBox[{"(", GridBox[{
+         {"a", "0", "0"},
+         {"0", 
+          RowBox[{"-", "a"}], "0"},
+         {"0", "0", 
+          RowBox[{"-", "a"}]}
+        }], ")"}]}]}]}], TraditionalForm], "\[IndentingNewLine]", 
+  FormBox[
+   RowBox[{"=", 
+    RowBox[{
+     InterpretationBox[Cell[BoxData[
+       FormBox[
+        RowBox[{"(", "\[NoBreak]", GridBox[{
+           {
+            RowBox[{"a", " ", "b"}], "0", "0"},
+           {"0", "0", 
+            RowBox[{"a", " ", "ib"}]},
+           {"0", 
+            RowBox[{
+             RowBox[{"-", "a"}], " ", "ib"}], "0"}
+          },
+          
+          GridBoxAlignment->{
+           "Columns" -> {{Center}}, "ColumnsIndexed" -> {}, 
+            "Rows" -> {{Baseline}}, "RowsIndexed" -> {}},
+          GridBoxSpacings->{"Columns" -> {
+              Offset[0.27999999999999997`], {
+               Offset[0.7]}, 
+              Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+              Offset[0.2], {
+               Offset[0.4]}, 
+              Offset[0.2]}, "RowsIndexed" -> {}}], "\[NoBreak]", ")"}], 
+        TraditionalForm]], "Text"],
+      ExpressionCell[
+       TraditionalForm[{{$CellContext`a $CellContext`b, 0, 0}, {
+         0, 0, $CellContext`a $CellContext`ib}, {
+         0, (-$CellContext`a) $CellContext`ib, 0}}], "Text"]], " ", 
+     StyleBox["-", "Text"], 
+     InterpretationBox[Cell[BoxData[
+       FormBox[
+        RowBox[{"(", "\[NoBreak]", GridBox[{
+           {
+            RowBox[{"a", " ", "b"}], "0", "0"},
+           {"0", "0", 
+            RowBox[{"a", " ", "ib"}]},
+           {"0", 
+            RowBox[{
+             RowBox[{"-", "a"}], " ", "ib"}], "0"}
+          },
+          
+          GridBoxAlignment->{
+           "Columns" -> {{Center}}, "ColumnsIndexed" -> {}, 
+            "Rows" -> {{Baseline}}, "RowsIndexed" -> {}},
+          GridBoxSpacings->{"Columns" -> {
+              Offset[0.27999999999999997`], {
+               Offset[0.7]}, 
+              Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+              Offset[0.2], {
+               Offset[0.4]}, 
+              Offset[0.2]}, "RowsIndexed" -> {}}], "\[NoBreak]", ")"}], 
+        TraditionalForm]], "Text"],
+      ExpressionCell[
+       TraditionalForm[{{$CellContext`a $CellContext`b, 0, 0}, {
+         0, 0, $CellContext`a $CellContext`ib}, {
+         0, (-$CellContext`a) $CellContext`ib, 0}}], "Text"]]}]}], 
+   TraditionalForm], "\[IndentingNewLine]", 
+  FormBox[
+   RowBox[{"=", "0"}], TraditionalForm]}], "Text"], "Text"],
+ StyleBox[" ", "Text"]
+}], "Text",
+ CellChangeTimes->{{3.6004714556466227`*^9, 3.6004714798450065`*^9}, {
+   3.600471546730832*^9, 3.6004716092404075`*^9}, 3.60047169722644*^9, {
+   3.6004719781285067`*^9, 3.6004720073571787`*^9}, {3.6004721209846773`*^9, 
+   3.6004721499883366`*^9}, {3.600472250469084*^9, 3.6004722706232367`*^9}, {
+   3.600472332192758*^9, 3.6004723769603186`*^9}, {3.600472431939463*^9, 
+   3.600472472320773*^9}, {3.6004725641740265`*^9, 3.600472621986333*^9}, {
+   3.600519426543401*^9, 3.6005194283905067`*^9}, {3.600519892231036*^9, 
+   3.600519893958135*^9}}],
+
+Cell["\<\
+4c) i) To determine the simultaneous set of eigenstates of A and B it is \
+necessary to first find the eigenstates of A and the eigenstates of B.\
+\>", "Text",
+ CellChangeTimes->{{3.6005194406002045`*^9, 3.60051947968444*^9}, {
+  3.600519528681243*^9, 3.600519553348654*^9}, {3.6005244591652503`*^9, 
+  3.6005244599882975`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Eigensystem", "[", 
+  FormBox[
+   RowBox[{"(", GridBox[{
+      {"a", "0", "0"},
+      {"0", 
+       RowBox[{"-", "a"}], "0"},
+      {"0", "0", 
+       RowBox[{"-", "a"}]}
+     }], ")"}],
+   TraditionalForm], "]"}]], "Input",
+ CellChangeTimes->{{3.6005195618291388`*^9, 3.600519583328368*^9}, {
+  3.600519919203579*^9, 3.600519976490856*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"-", "a"}], ",", 
+     RowBox[{"-", "a"}], ",", "a"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"0", ",", "0", ",", "1"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"0", ",", "1", ",", "0"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"1", ",", "0", ",", "0"}], "}"}]}], "}"}]}], "}"}]], "Output",
+ CellChangeTimes->{
+  3.6005196912875433`*^9, 3.6005199773039026`*^9, {3.6005200337221293`*^9, 
+   3.6005200492100153`*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Eigensystem", "[", 
+  RowBox[{
+   StyleBox["(", "Text"], GridBox[{
+     {"b", "0", "0"},
+     {"0", "0", 
+      RowBox[{
+       RowBox[{"-", "I"}], "*", "b"}]},
+     {"0", 
+      RowBox[{"I", "*", "b"}], "0"}
+    }], ")"}], 
+  StyleBox["]", "Text"]}]], "Input",
+ CellChangeTimes->{{3.60051960170642*^9, 3.600519656801571*^9}, {
+  3.6005197171670237`*^9, 3.600519788023076*^9}, {3.6005198841045713`*^9, 
+  3.6005199099960527`*^9}, {3.600520012814934*^9, 3.6005200246326094`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"-", "b"}], ",", "b", ",", "b"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"0", ",", "\[ImaginaryI]", ",", "1"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"0", ",", 
+       RowBox[{"-", "\[ImaginaryI]"}], ",", "1"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"1", ",", "0", ",", "0"}], "}"}]}], "}"}]}], "}"}]], "Output",
+ GeneratedCell->False,
+ CellAutoOverwrite->False,
+ CellChangeTimes->{
+  3.6005197418894377`*^9, {3.6005198998834743`*^9, 3.600519908293955*^9}, {
+   3.6005200089117107`*^9, 3.6005200492360168`*^9}, 3.600520180406519*^9}]
+}, Open  ]],
+
+Cell[TextData[{
+ "Since the set of eigenvectors for the two operators are not the same then \
+we have to form linear combinations of one of the sets of eigenvectors. We \
+can choose to do this in such a way that the eigenvectors of one operator are \
+transformed into that of the other operator.\n\nSo, working with the set of \
+eigenvectors for operator B = ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"(", GridBox[{
+        {"0"},
+        {"\[DoubleStruckI]"},
+        {"1"}
+       }], ")"}], " ", ",", " ", 
+     RowBox[{"(", GridBox[{
+        {"0"},
+        {
+         RowBox[{"-", "\[DoubleStruckI]"}]},
+        {"1"}
+       }], ")"}], " ", ",", " ", 
+     RowBox[{"(", GridBox[{
+        {"1"},
+        {"0"},
+        {"0"}
+       }], ")"}]}], "}"}], TraditionalForm]]],
+ " and labeling the eigenvectors as follows ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SubscriptBox["b", "1"], "=", 
+    RowBox[{"(", GridBox[{
+       {"0"},
+       {"\[DoubleStruckI]"},
+       {"1"}
+      }], ")"}]}], TraditionalForm]]],
+ " , ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SubscriptBox["b", "2"], "=", 
+    RowBox[{"(", GridBox[{
+       {"0"},
+       {
+        RowBox[{"-", "\[DoubleStruckI]"}]},
+       {"1"}
+      }], ")"}]}], TraditionalForm]]],
+ " , ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SubscriptBox["b", "3"], "=", 
+    RowBox[{"(", GridBox[{
+       {"1"},
+       {"0"},
+       {"0"}
+      }], ")"}]}], TraditionalForm]]],
+ " . As long as the eigenvalues of two eigenvectors are the same then I am \
+free to take linear combinations of the corresponding eigenvectors and the \
+result will be an eigenvector of the corresponding operator. Consider ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{
+     SubscriptBox["a", "1"], "=", 
+     RowBox[{"(", GridBox[{
+        {"0"},
+        {"0"},
+        {"1"}
+       }], ")"}]}], " ", ",", " ", 
+    RowBox[{
+     SubscriptBox["a", "2"], "=", 
+     RowBox[{"(", GridBox[{
+        {"0"},
+        {"1"},
+        {"0"}
+       }], ")"}]}], " ", ",", " ", 
+    RowBox[{
+     SubscriptBox["a", "2"], "=", 
+     RowBox[{"(", GridBox[{
+        {"0"},
+        {"0"},
+        {"1"}
+       }], ")"}], " ", " "}]}], TraditionalForm]]],
+ ". So, ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{
+     SubscriptBox["\[DoubleStruckI]a", "i"], "+", 
+     SubscriptBox["a", "2"]}], "=", 
+    SubscriptBox["b", "1"]}], TraditionalForm]]],
+ "  and  ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{
+     RowBox[{"-", 
+      SubscriptBox["\[DoubleStruckI]a", "1"]}], "+", 
+     SubscriptBox["a", "2"]}], "=", 
+    SubscriptBox["b", "2"]}], TraditionalForm]]],
+ " . Consider the act of A on ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{
+     SubscriptBox["a", "1"], "+", 
+     SubscriptBox["\[DoubleStruckI]a", "2"]}], "=", 
+    SubscriptBox["b", "1"]}], TraditionalForm]]],
+ "."
+}], "Text",
+ GeneratedCell->False,
+ CellAutoOverwrite->False,
+ CellChangeTimes->{
+  3.6005197418894377`*^9, {3.6005198998834743`*^9, 3.600519908293955*^9}, {
+   3.6005200089117107`*^9, 3.6005200492360168`*^9}, {3.600520180406519*^9, 
+   3.6005202087301393`*^9}, {3.6005202528946652`*^9, 3.600520413420847*^9}, {
+   3.6005205136605806`*^9, 3.600520673002694*^9}, {3.60052186285675*^9, 
+   3.6005218844429846`*^9}, {3.6005222454016304`*^9, 
+   3.6005222786615324`*^9}, {3.6005223442602844`*^9, 3.600522416581421*^9}, {
+   3.6005224478662105`*^9, 3.600522592198466*^9}, {3.600523231511032*^9, 
+   3.600523237031348*^9}, {3.6005244733020587`*^9, 3.600524474302116*^9}, {
+   3.600657095640623*^9, 3.6006571004648986`*^9}}],
+
+Cell[TextData[{
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SubscriptBox["Ab", "1"], "=", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"(", GridBox[{
+         {"a", "0", "0"},
+         {"0", 
+          RowBox[{"-", "a"}], "0"},
+         {"0", "0", 
+          RowBox[{"-", "a"}]}
+        }], ")"}], 
+      RowBox[{"(", 
+       RowBox[{
+        RowBox[{"(", GridBox[{
+           {"0"},
+           {"0"},
+           {"1"}
+          }], ")"}], "+", 
+        RowBox[{"\[DoubleStruckI]", "(", GridBox[{
+           {"0"},
+           {"1"},
+           {"0"}
+          }], ")"}]}], ")"}]}], "  ", "=", " ", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"(", GridBox[{
+          {"0"},
+          {"0"},
+          {
+           RowBox[{"-", "a"}]}
+         }], ")"}], "+", 
+       RowBox[{"(", GridBox[{
+          {"0"},
+          {
+           RowBox[{"-", "\[DoubleStruckI]a"}]},
+          {"0"}
+         }], ")"}]}], "=", 
+      RowBox[{
+       RowBox[{"-", 
+        RowBox[{"a", "(", GridBox[{
+           {"0"},
+           {"\[DoubleStruckI]"},
+           {"1"}
+          }], ")"}]}], "=", 
+       RowBox[{"-", 
+        SubscriptBox["ab", "1"]}]}]}]}]}], TraditionalForm]],
+  CellChangeTimes->{{3.6005195618291388`*^9, 3.600519583328368*^9}, {
+   3.600519919203579*^9, 3.600519976490856*^9}}],
+ " . Thus, a new eigenstate of A has been generated with eigenvalue ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"-", "a"}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ ".\n\nSimilarly, ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{
+     SubscriptBox["a", "1"], "-", 
+     SubscriptBox["\[DoubleStruckI]a", "2"]}], "=", 
+    SubscriptBox["b", "2"]}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ " can be shown to be an eigenvalue of A. "
+}], "Text",
+ GeneratedCell->False,
+ CellAutoOverwrite->False,
+ CellChangeTimes->{
+  3.6005197418894377`*^9, {3.6005198998834743`*^9, 3.600519908293955*^9}, {
+   3.6005200089117107`*^9, 3.6005200492360168`*^9}, {3.600520180406519*^9, 
+   3.6005202087301393`*^9}, {3.6005202528946652`*^9, 3.600520413420847*^9}, {
+   3.6005205136605806`*^9, 3.600520673002694*^9}, {3.60052186285675*^9, 
+   3.6005218844429846`*^9}, {3.6005222454016304`*^9, 
+   3.6005222786615324`*^9}, {3.6005223442602844`*^9, 3.600522416581421*^9}, {
+   3.6005224478662105`*^9, 3.600522785301511*^9}, {3.6005228471080456`*^9, 
+   3.600522880199939*^9}, {3.6005229454476705`*^9, 3.600523175104806*^9}, {
+   3.6005234935890226`*^9, 3.6005236656648645`*^9}, {3.600524214555259*^9, 
+   3.60052421824347*^9}}],
+
+Cell[BoxData[{
+ FormBox[
+  RowBox[{
+   RowBox[{
+    SubscriptBox["Ab", "2"], "=", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"(", GridBox[{
+         {"a", "0", "0"},
+         {"0", 
+          RowBox[{"-", "a"}], "0"},
+         {"0", "0", 
+          RowBox[{"-", "a"}]}
+        }], ")"}], 
+      RowBox[{"(", 
+       RowBox[{
+        RowBox[{"(", GridBox[{
+           {"0"},
+           {"0"},
+           {"1"}
+          }], ")"}], "-", 
+        RowBox[{"\[DoubleStruckI]", "(", GridBox[{
+           {"0"},
+           {"1"},
+           {"0"}
+          }], ")"}]}], ")"}]}], "  ", "=", " ", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"(", GridBox[{
+          {"0"},
+          {"0"},
+          {
+           RowBox[{"-", "a"}]}
+         }], ")"}], "+", 
+       RowBox[{"(", GridBox[{
+          {"0"},
+          {"\[DoubleStruckI]a"},
+          {"0"}
+         }], ")"}]}], "=", 
+      RowBox[{
+       RowBox[{"-", 
+        RowBox[{"a", "(", GridBox[{
+           {"0"},
+           {
+            RowBox[{"-", "\[DoubleStruckI]"}]},
+           {"1"}
+          }], ")"}]}], "=", 
+       RowBox[{"-", 
+        SubscriptBox["ab", "2"]}]}]}]}]}], " ", "\[IndentingNewLine]"}], 
+  TraditionalForm], "\[IndentingNewLine]", 
+ FormBox[
+  RowBox[{"Thus", ",", " ", 
+   RowBox[{
+    RowBox[{
+    "a", " ", "mutual", " ", "set", " ", "of", " ", "eigenstates", " ", "is", 
+     " ", 
+     RowBox[{"{", 
+      RowBox[{
+       SubscriptBox["b", "1"], ",", 
+       SubscriptBox["b", "2"], ",", 
+       SubscriptBox["b", "3"]}], "}"}]}], " ", "=", " ", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{
+        SubscriptBox["a", "1"], "+", 
+        SubscriptBox["\[DoubleStruckI]a", "2"]}], ",", 
+       RowBox[{
+        SubscriptBox["a", "1"], "-", 
+        SubscriptBox["\[DoubleStruckI]a", "2"]}], ",", 
+       SubscriptBox["a", "3"]}], "}"}], "."}]}]}], TraditionalForm]}], "Text",
+ CellChangeTimes->{{3.600524225158866*^9, 3.6005242590528045`*^9}, {
+   3.600524291208644*^9, 3.600524403337057*^9}, 3.60052447839935*^9, 
+   3.6005247962885323`*^9, {3.600657058391492*^9, 3.600657062116705*^9}}],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{
+    RowBox[{
+     RowBox[{
+      RowBox[{
+       RowBox[{
+        RowBox[{
+         RowBox[{
+          RowBox[{"4", "c"}], ")"}], " ", "ii"}], ")"}], " ", "The", " ", 
+       "corresponding", " ", "eigenvalues", " ", "for", " ", "operator", " ", 
+       "A", " ", "are", " ", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"-", "a"}], ",", 
+         RowBox[{"-", "a"}], ",", "a"}], "}"}]}], ";", " ", 
+      RowBox[{
+       RowBox[{"for", " ", "operator", " ", 
+        RowBox[{"B", " ", ":", " ", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"-", "b"}], ",", "b", ",", "b"}], "}"}], " ", "given", 
+          " ", "the", " ", "set", " ", "of", " ", 
+          RowBox[{"(", "ordered", ")"}], " ", "eigenvectors", " ", 
+          RowBox[{"{", 
+           RowBox[{
+            SubscriptBox["b", "1"], ",", 
+            SubscriptBox["b", "2"], ",", 
+            SubscriptBox["b", "3"]}], "}"}]}]}]}], " ", "=", " ", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{
+           SubscriptBox["a", "1"], "+", 
+           SubscriptBox["\[DoubleStruckI]a", "2"]}], ",", 
+          RowBox[{
+           SubscriptBox["a", "1"], "-", 
+           SubscriptBox["\[DoubleStruckI]a", "2"]}], ",", 
+          SubscriptBox["a", "3"]}], "}"}], "  ", 
+        RowBox[{"(", 
+         RowBox[{"see", " ", "4", "c"}], ")"}], "i"}]}]}], ")"}], " ", "for", 
+    " ", "the", " ", "definitions", " ", "of", " ", "these", " ", 
+    "eigenvectors"}], ")"}], TraditionalForm]], "Text",
+ CellChangeTimes->{{3.600524225158866*^9, 3.6005242590528045`*^9}, {
+   3.600524291208644*^9, 3.600524403337057*^9}, 3.60052447839935*^9, 
+   3.6005247962885323`*^9, {3.600657058391492*^9, 3.600657068095047*^9}, {
+   3.6006571306536255`*^9, 3.600657179460417*^9}}],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{
+    RowBox[{"iii", ")"}], " ", "The", " ", 
+    RowBox[{"operators", "'"}], "  ", "eigenvectors", " ", "share", " ", 
+    RowBox[{"eigenvalues", " ", ":", " ", 
+     RowBox[{"The", " ", 
+      SubscriptBox["b", "2"], " ", "and", " ", 
+      SubscriptBox["b", "3"], " ", "eigenvectors", " ", "both", " ", "yield", 
+      " ", "b", " ", "for", " ", "operator", " ", "B"}]}]}], ",", " ", 
+   RowBox[{
+    RowBox[{"the", " ", 
+     SubscriptBox["b", "1"], " ", "and", " ", 
+     SubscriptBox["b", "2"], "  ", "eigenvectors", " ", "yield"}], " ", "-", 
+    RowBox[{"a", "  ", "for", " ", "operator", " ", 
+     RowBox[{"A", ".", " ", "Thus"}]}]}], ",", " ", 
+   RowBox[{
+   "the", " ", "eigenvalues", " ", "do", " ", "not", " ", "uniquely", " ", 
+    "characterize", " ", "each", " ", "state", " ", 
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{
+      "this", " ", "is", " ", "commonly", " ", "referred", " ", "to", " ", 
+       "as", " ", "\"\<degeneracy\>\""}], ")"}], "."}]}]}], TextForm]], "Text",
+ CellChangeTimes->{{3.600524225158866*^9, 3.6005242590528045`*^9}, {
+  3.600524291208644*^9, 3.600524403337057*^9}, {3.60052447839935*^9, 
+  3.600524584147399*^9}, {3.6006572031497717`*^9, 3.6006573038325305`*^9}}]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{1904, 985},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+PrintingCopies->1,
+PrintingPageRange->{32000, 32000},
+PrintingOptions->{"Magnification"->1.,
+"PaperOrientation"->"Portrait",
+"PaperSize"->{612, 792}},
+Magnification->1.4000000953674316`,
+FrontEndVersion->"9.0 for Microsoft Windows (64-bit) (January 25, 2013)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[579, 22, 229, 6, 77, "Subtitle"],
+Cell[CellGroupData[{
+Cell[833, 32, 423, 9, 225, "Section"],
+Cell[1259, 43, 269, 5, 97, "Text"],
+Cell[1531, 50, 415, 9, 124, "Text"],
+Cell[1949, 61, 350, 7, 124, "Text"],
+Cell[2302, 70, 2756, 90, 213, "Text"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[5095, 165, 3788, 114, 286, "Section"],
+Cell[8886, 281, 5663, 166, 463, "Text"],
+Cell[14552, 449, 3059, 88, 196, "Text"],
+Cell[17614, 539, 1972, 43, 82, "Text"],
+Cell[19589, 584, 1187, 19, 42, "Text"],
+Cell[20779, 605, 14292, 417, 653, "Text"],
+Cell[35074, 1024, 12003, 373, 873, "Text"],
+Cell[47080, 1399, 1130, 27, 96, "Text"],
+Cell[48213, 1428, 1842, 60, 186, "Text"],
+Cell[50058, 1490, 616, 10, 42, "Text"],
+Cell[50677, 1502, 16876, 575, 1480, "Text"]
+}, Open  ]],
+Cell[67568, 2080, 2072, 80, 153, "Section"],
+Cell[CellGroupData[{
+Cell[69665, 2164, 567, 7, 45, "Subsubtitle"],
+Cell[70235, 2173, 12145, 415, 936, "Text"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[82417, 2593, 571, 7, 45, "Subsubtitle"],
+Cell[82991, 2602, 12369, 499, 1053, "Text"],
+Cell[CellGroupData[{
+Cell[95385, 3105, 1170, 29, 334, "Section"],
+Cell[96558, 3136, 2008, 58, 277, "Text"],
+Cell[CellGroupData[{
+Cell[98591, 3198, 477, 14, 42, "Input"],
+Cell[99071, 3214, 564, 17, 41, "Output"]
+}, Open  ]],
+Cell[99650, 3234, 4091, 113, 340, "Text"],
+Cell[103744, 3349, 338, 6, 42, "Text"],
+Cell[CellGroupData[{
+Cell[104107, 3359, 365, 12, 82, "Input"],
+Cell[104475, 3373, 547, 17, 41, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[105059, 3395, 502, 14, 83, "Input"],
+Cell[105564, 3411, 669, 19, 41, "Output"]
+}, Open  ]],
+Cell[106248, 3433, 3574, 122, 283, "Text"],
+Cell[109825, 3557, 2509, 79, 149, "Text"],
+Cell[112337, 3638, 2088, 73, 158, "Text"],
+Cell[114428, 3713, 1839, 48, 72, "Text"],
+Cell[116270, 3763, 1259, 27, 71, "Text"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

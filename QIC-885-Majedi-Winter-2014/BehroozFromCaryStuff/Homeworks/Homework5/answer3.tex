@@ -1,0 +1,95 @@
+\begin{homeworkProblem}
+
+\begin{homeworkSection}{(a)}
+Cherent photon state can be derived by applying generalized displacement operator on the vacume state:
+\begin{equation}
+\ket{\alpha}=D(\alpha)\ket{0}=\exp[\alpha\A{a}^\dagger-\alpha^*\A{a}]\ket{0}
+\end{equation}
+According to the lecture notes, two diffetrent coherent states characterized by $\alpha$ and $\beta$ are corrolated as:
+\begin{equation}\label{P3-1}
+\bracket{\alpha}{\beta}=\exp\left[-\frac{1}{2}(\abs{\alpha}^2+\abs{\beta}^2)+\alpha^*\beta\right]
+\end{equation}
+The state $\ket{\psi}$ is defined by:
+\begin{equation}
+\ket{\psi}=A(\ket{\alpha}+\ket{-\alpha})
+\end{equation}
+So we get:
+\begin{equation}
+\bracket{\psi}{\psi}=\abs{A}^2\left\{\bracket{\alpha}{\alpha}+\bracket{-\alpha}{-\alpha}+2\Re\bracket{-\alpha}{\alpha}\right\}
+\end{equation}
+Using \eqref{P3-1} we arrive at:
+\begin{equation}
+\bracket{\psi}{\psi} &=&\abs{A}^2\left\{2+2e^{-2\abs{\alpha}^2}\right\}\quad\Lrw\quad A=\frac{1}{\sqrt{2+2e^{-2\abs{\alpha}^2}}}\nonumber\\
+\end{equation}
+
+\end{homeworkSection}
+\begin{homeworkSection}{(b)}
+If $\alpha$ is very large normalization costant is:
+\begin{equation}
+\alpha\gg 1\qquad\Lrw\qquad A\approx\lim_{\alpha\to\infty}\frac{1}{\sqrt{2+2e^{-2\abs{\alpha}^2}}}=\frac{1}{\sqrt{2}}
+\end{equation}
+this means that we would have two uncorrolated states.
+\end{homeworkSection}
+%--------------------------------c--------------
+\begin{homeworkSection}{(c)}
+According to the lecture notes the coherent state $\ket{\alpha}$ can be expanded in number states basis:
+\begin{equation}
+\ket{\alpha}=e^{-\abs{\alpha}^2/2}\sum_n\frac{\alpha^n}{\sqrt{n!}}\ket{n}
+\end{equation} 
+So $\ket{\psi}$ is:
+\begin{equation}\label{P3-110}
+\ket{\psi}=\frac{2e^{-\abs{\alpha}^2/2}}{\sqrt{2+2e^{-2\abs{\alpha}^2}}}\sum_{k=0}^{\infty}\frac{\alpha^{2k}}{\sqrt{(2k)!}}\ket{2k}
+\end{equation} If $\alpha$ is too large then:
+\begin{equation}
+\ket{\psi}\approx\sqrt{2}e^{-\abs{\alpha}^2/2}\sum_{k=0}^{\infty}\frac{\alpha^{2k}}{\sqrt{(2k)!}}\ket{2k}
+\end{equation}
+So photon number probability distribution is:
+\begin{equation}
+p(n)=
+\left\{
+\begin{array}{ll}
+
+\frac{2e^{-\abs{\alpha}^2}}{1+e^{-2\abs{\alpha}^2}}\frac{\alpha^{2n}}{n!}\approx 2e^{-\abs{\alpha}^2}\frac{\alpha^{2n}}{n!}  & \text{n even}\\
+0 &\text{n odd}
+\end{array}
+\right.
+\end{equation}
+This looks like Poisson statistics.
+\end{homeworkSection}
+%----d---------
+\begin{homeworkSection}{(d)}
+The density operator associated with this state is:
+\begin{equation}\label{P3-220}
+\A{\rho}=\ket{\psi}\bra{\psi}=\abs{A}^2\left\{\ket{\alpha}\bra{\alpha}+\ket{-\alpha}\bra{\alpha}+\ket{\alpha}\bra{-\alpha}+\ket{-\alpha}\bra{-\alpha}\right\}
+\end{equation}
+ This density operator can be also written in terms of orthogonal number states. Using \eqref{P3-110} we obtain:
+ \begin{equation}
+ \A{\rho}=\frac{2e^{-\abs{\alpha}^2}}{1+e^{-2\abs{\alpha}^2}}\sum_{nm}\frac{\alpha^{2n}\alpha^*^{2m}}{\sqrt{(2n)!(2m)!}}\ket{2n}\bra{2m}
+ \end{equation}
+\end{homeworkSection}
+%---------e---------------
+\begin{homeworkSection}{(e)}
+Te probe state is another coherent state expressed by $\ket{\mu}$, Q function can be calculated as follows:
+\begin{equation}
+Q(\mu)=\frac{1}{2\pi}\bra{\mu}\A{\rho}\ket{\mu}
+\end{equation}
+Using \eqref{P3-220} we can write:
+\begin{equation}
+Q(\mu)=\frac{1}{2\pi}\abs{A}^2\left\{\abs{\bracket{\mu}{\alpha}}^2+\abs{\bracket{-\mu}{\alpha}}^2
++2\Re\bracket{\mu}{\alpha}\bracket{-\alpha}{\mu}
+\right\}
+\end{equation}
+More explicitly:
+\begin{equation}
+Q(\mu)=\frac{1}{2\pi}\frac{1}{2+2e^{-2\abs{\alpha}^2}}\left\{\exp(-\abs{\mu-\alpha}^2)+\exp(-\abs{\mu+\alpha}^2)
++2\Re\exp(-\abs{\mu}^2-\abs{\alpha}^2+\mu^*\alpha-\alpha^*\mu)
+\right\}
+\end{equation}
+This expression can be simplifyed more as:
+\begin{equation}
+Q(\mu)=\frac{1}{4\pi(1+e^{-2\abs{\alpha}^2})}\left\{\exp(-\abs{\mu-\alpha}^2)+\exp(-\abs{\mu+\alpha}^2)
++2\Re\exp(-\abs{\mu}^2-\abs{\alpha}^2)\cos[\Im(\mu^*\alpha)]\right\}
+\end{equation}
+\end{homeworkSection}
+
+\end{homeworkProblem}
