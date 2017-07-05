@@ -1,0 +1,102 @@
+% Problem 6
+\begin{homeworkProblem}
+    The problem of determining the Q (or Husimi) function for a given state can
+    be reduced to calculating
+    \[
+        Q(\alpha) = \frac{1}{\pi} \braket{\alpha|\rho|\alpha} \enskip.
+    \]
+    Given the state of interest we can calculated the Q function as
+    \begin{align}
+        Q(\alpha) &= \frac{1}{2\pi} \braket{
+            \alpha |
+            \left( \ket{\beta} + \ket{-\beta} \right)
+            \left( \bra{\beta} + \bra{-\beta} \right)
+        | \alpha} \\
+        &= \frac{1}{2\pi} \big|\left( \braket{\alpha|\beta} +
+        \braket{\alpha|-\beta}
+    \right)\big|^2
+    \intertext{Coherent states are not orthogonal and have an inner product
+        like $ \braket{\beta|\alpha} = e^{-\frac{1}{2}\left( |\beta|^2 +
+    |\alpha|^2 - 2 \beta^*\alpha \right)}$.}
+        &= \frac{1}{2\pi} \big|
+    e^{-\frac{1}{2}\left( |\beta|^2 + |\alpha|^2 - 2 \alpha^*\beta
+    \right)}
+    +
+    e^{-\frac{1}{2}\left( |\beta|^2 + |\alpha|^2 + 2 \alpha^*\beta
+    \right)}
+    \big|^2 \\
+    &= \frac{1}{2\pi} \big|
+    e^{-\frac{1}{2}\left( |\beta|^2 + |\alpha|^2 \right)}
+    \left(e^{\alpha^*\beta}+e^{- \alpha^*\beta}\right)
+    \big|^2 \\
+    &= \frac{1}{2\pi}
+    e^{-\left( |\beta|^2 + |\alpha|^2 \right)}
+    \bigg|
+    \left(e^{\alpha^*\beta}+e^{- \alpha^*\beta}\right)
+    \bigg|^2 \\
+    &= \frac{1}{2\pi}
+    e^{-\left( |\beta|^2 + |\alpha|^2 \right)}
+    \bigg| 2 \cosh(\alpha^* \beta) \bigg|^2 \\
+    &= \frac{1}{2\pi}
+    e^{-\left( |\beta|^2 + |\alpha|^2 \right)}
+    4 \cosh(\alpha^* \beta) \cosh(\alpha \beta^*) \\
+    &= \frac{2}{\pi}
+    e^{-\left( |\beta|^2 + |\alpha|^2 \right)}
+    \cosh(\alpha^* \beta) \cosh(\alpha \beta^*)
+    \end{align}
+    We now determine the Q function for the mixture.
+    \begin{align}
+        Q(\alpha) &= \frac{1}{2\pi}
+        \bra{\alpha}
+        \left( \ket{\beta}\bra{\beta} + \ket{-\beta}\bra{-\beta} \right)
+        \ket{\alpha} \\
+        &= \frac{1}{2\pi}
+        \left( |\braket{\alpha|\beta}|^2 + |\braket{\alpha|-\beta}|^2 \right)
+        \intertext{Coherent states are not orthogonal and have an inner product
+            like $ \braket{\beta|\alpha} = e^{-\frac{1}{2}\left( |\beta|^2 +
+        |\alpha|^2 - 2 \beta^*\alpha \right)}$.}
+        &= \frac{1}{2\pi}
+        \left(
+            \left| e^{-\frac{1}{2}
+            \left( |\beta|^2 + |\alpha|^2 - 2 \alpha^*\beta \right)}
+            \right|^2
+            +
+            \left| e^{-\frac{1}{2}
+            \left( |\beta|^2 + |\alpha|^2 + 2 \alpha^*\beta \right)}
+            \right|^2
+        \right) \\
+        &= \frac{1}{2\pi}
+        \left(
+            e^{-\left( |\beta|^2 + |\alpha|^2 \right)}
+            \left| e^{ \alpha^*\beta }
+            \right|^2
+            +
+            e^{-\left( |\beta|^2 + |\alpha|^2 \right)}
+            \left| e^{- \alpha^*\beta } \right|^2
+        \right) \\
+        &= \frac{1}{2\pi}
+        e^{-\left( |\beta|^2 + |\alpha|^2 \right)}
+        \left(
+            \left| e^{ \alpha^*\beta } \right|^2
+            +
+            \left| e^{- \alpha^*\beta } \right|^2
+        \right)
+    \end{align}
+    Now, these expressions, while not fully simplified, are sufficient for the
+    purposes of plotting. We provide these plots below in
+    Figs.~\ref{fig:Problem6a} and \ref{fig:Problem6b}.
+    \begin{figure}[ht]
+        \centering
+        \input{Problem6a.tex}
+        \caption{Q function plotted for the superposition state for $ \beta = 3 $.}
+        \label{fig:Problem6a}
+    \end{figure}
+    \begin{figure}[ht]
+        \centering
+        \input{Problem6b.tex}
+        \caption{Q function plotted for the mixture state for $ \beta = 3 $.}
+        \label{fig:Problem6b}
+    \end{figure}
+    Clearly, the interference phenomena are invisible, now. I can not
+    distinguish between the superposition and the mixed state.
+\end{homeworkProblem}
